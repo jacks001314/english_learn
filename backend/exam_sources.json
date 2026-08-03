@@ -1,0 +1,69 @@
+[
+  {
+    "id":"beijing-zhongkao-2024","title":"2024年北京市初中学业水平考试英语真题（原卷 PDF）","year":2024,"region":"北京市","subject":"英语","durationMinutes":90,"totalScore":60,"status":"published","sourceType":"verified-reprint","sourceOrganization":"北京高考在线（转载整理）","sourceUrl":"https://www.gaokzx.com/gk/zhongkao/126361.html","attachmentUrl":"https://cdn.gaokzx.com/17228521279972024%E5%8C%97%E4%BA%AC%E4%B8%AD%E8%80%83%E7%9C%9F%E9%A2%98%E8%8B%B1%E8%AF%AD%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.pdf","fileSha256":"AA33A6F733641F54D746747FE0B7161933790BCAD292E602C7DE20EB3EC1BE6F","pageCount":15,"copyrightNote":"公开转载资料，非北京市教育考试院发布；已保存来源页、附件地址和文件校验值。","instructions":"本条目提供经文件核验的历年真题原卷；题目结构化校对完成后开放在线作答。","sections":[]
+  },
+  {"id":"beijing-zhongkao-2023","title":"2023年北京中考英语真题（原卷 PDF）","year":2023,"region":"北京市","subject":"英语","durationMinutes":90,"totalScore":60,"status":"published","sourceType":"verified-reprint","sourceOrganization":"北京高考在线（转载整理）","sourceUrl":"https://www.gaokzx.com/c/202308/77956.html","attachmentUrl":"https://cdn.gaokzx.com/zixunzhan/202403/3b3ef4f9-893c-40ec-ae1d-43e868a33d8a.pdf","fileSha256":"DBD3C2FD61347F211981FBBD396BF4DD8AD9889E6D647A5F73A1275BD7F410C6","pageCount":14,"copyrightNote":"公开转载资料，非官方发布；来源和文件已核验。","sections":[]},
+  {"id":"beijing-zhongkao-2022","title":"2022年北京中考英语真题（原卷 PDF）","year":2022,"region":"北京市","subject":"英语","durationMinutes":90,"totalScore":60,"status":"published","sourceType":"verified-reprint","sourceOrganization":"北京高考在线（转载整理）","sourceUrl":"https://www.gaokzx.com/c/202207/62724.html","attachmentUrl":"https://cdn.gaokzx.com/zixunzhan/202403/c536ad17-b9bc-47a2-b74c-fdaa3d54ad0d.pdf","fileSha256":"AFA74705007CC8C01C642C810B5318B4B9DB2A018A6DEC7608DF08DA70545670","pageCount":15,"copyrightNote":"公开转载资料，非官方发布；来源和文件已核验。","sections":[]},
+  {"id":"beijing-zhongkao-2021","title":"2021年北京中考英语真题（原卷 PDF）","year":2021,"region":"北京市","subject":"英语","durationMinutes":90,"totalScore":40,"status":"published","sourceType":"verified-reprint","sourceOrganization":"北京高考在线（转载整理）","sourceUrl":"https://www.gaokzx.com/c/202106/53921.html","attachmentUrl":"https://cdn.gaokzx.com/zixunzhan/202403/6f49eb30-a3e8-4c91-9003-d405af2a1886.pdf","fileSha256":"4A6FC8619289447D20406039160301A3A1466ED25B1B12893A7944B575BA2DA3","pageCount":13,"copyrightNote":"公开转载资料，非官方发布；扫描型文件，来源和文件已核验。","sections":[]},
+  {"id":"beijing-zhongkao-2020","title":"2020年北京中考英语真题（原卷 PDF）","year":2020,"region":"北京市","subject":"英语","durationMinutes":90,"totalScore":60,"status":"published","sourceType":"verified-reprint","sourceOrganization":"北京高考在线（转载整理）","sourceUrl":"https://www.gaokzx.com/c/202105/52327.html","attachmentUrl":"https://cdn.gaokzx.com/zixunzhan/202403/9d399175-7952-4ccd-b403-e0a5a8436227.pdf","fileSha256":"4C9A879B0B298D257AA5B85EFABB4A1900C638B03910FA694B47D91E6F209180","pageCount":19,"copyrightNote":"公开转载资料，非官方发布；来源和文件已核验。","sections":[]},
+  {"id":"beijing-zhongkao-2019","title":"2019年北京中考英语真题（原卷 PDF）","year":2019,"region":"北京市","subject":"英语","durationMinutes":90,"totalScore":60,"status":"published","sourceType":"verified-reprint","sourceOrganization":"北京高考在线（转载整理）","sourceUrl":"https://www.gaokzx.com/c/202105/52251.html","attachmentUrl":"https://cdn.gaokzx.com/zixunzhan/202403/7450a608-a10a-450f-a73c-91d0fff360d9.pdf","fileSha256":"6836DE7A00B53151D6FEAD7BB1294FA269F8CBC7B1E49A11C0766D1BC6554991","pageCount":23,"copyrightNote":"公开转载资料，非官方发布；来源和文件已核验。","sections":[]},
+  {"id":"beijing-zhongkao-2018","title":"2018年北京中考英语真题（原卷 PDF）","year":2018,"region":"北京市","subject":"英语","durationMinutes":90,"totalScore":60,"status":"published","sourceType":"verified-reprint","sourceOrganization":"北京高考在线（转载整理）","sourceUrl":"https://www.gaokzx.com/c/202105/52259.html","attachmentUrl":"https://cdn.gaokzx.com/zixunzhan/202403/cedee074-62bb-4870-8fa2-de37b6903e89.pdf","fileSha256":"1AB161FA1B64E2B20C624595F0E41C13A99FF91B8616CB8637443F9DE3C30C9E","pageCount":20,"copyrightNote":"公开转载资料，非官方发布；来源和文件已核验。","sections":[]},
+  {
+    "id": "beijing-zhongkao-demo-2026",
+    "title": "北京市中考英语结构化功能样卷",
+    "year": 2026,
+    "region": "北京市",
+    "subject": "英语",
+    "durationMinutes": 45,
+    "totalScore": 40,
+    "status": "published",
+    "sourceType": "original-demo",
+    "sourceOrganization": "英语学习乐园",
+    "copyrightNote": "平台原创功能样卷，仅用于系统功能演示，不是官方真题。",
+    "instructions": "本卷用于演示北京中考英语题库、限时考试、自动评分和成绩分析功能。",
+    "sections": [
+      {
+        "id": "grammar",
+        "title": "一、单项选择",
+        "type": "choice",
+        "instructions": "从每题所给的四个选项中，选择最佳选项。",
+        "questions": [
+          {"id":"g1","type":"choice","prompt":"My sister enjoys reading. _____ often visits the library on weekends.","options":["He","She","It","They"],"answer":"B","explanation":"主语指代 my sister，应使用 She。","score":2,"tags":["代词"]},
+          {"id":"g2","type":"choice","prompt":"We planted many trees _____ the river last spring.","options":["along","during","without","inside"],"answer":"A","explanation":"along the river 表示“沿着河流”。","score":2,"tags":["介词"]},
+          {"id":"g3","type":"choice","prompt":"—Must I finish the report tonight? —No, you _____. You can hand it in tomorrow.","options":["mustn't","needn't","shouldn't","can't"],"answer":"B","explanation":"对 Must I...? 的否定回答使用 needn't。","score":2,"tags":["情态动词"]},
+          {"id":"g4","type":"choice","prompt":"The students _____ a science project when the teacher entered the classroom.","options":["discuss","discussed","were discussing","will discuss"],"answer":"C","explanation":"when 引导的过去时间点发生时，动作正在进行，使用过去进行时。","score":2,"tags":["时态"]},
+          {"id":"g5","type":"choice","prompt":"This old building _____ carefully every year to keep it safe.","options":["checks","checked","is checked","was checking"],"answer":"C","explanation":"建筑物是被检查，且 every year 表示一般现在时，使用一般现在时被动语态。","score":2,"tags":["被动语态"]}
+        ]
+      },
+      {
+        "id": "reading",
+        "title": "二、阅读理解",
+        "type": "reading",
+        "instructions": "阅读短文，根据内容选择最佳选项。",
+        "questions": [
+          {"id":"r1","type":"choice","passage":"Every Friday, students at Green Hill School spend twenty minutes repairing useful objects. They fix lamps, toys and small pieces of furniture. The repair club began when students noticed how many things were thrown away because of simple problems. Local volunteers teach them to use tools safely. The club has reduced waste and helped students become more patient.","prompt":"Why did the repair club begin?","options":["Students wanted longer breaks.","Too many repair shops had closed.","Useful things were thrown away too easily.","Teachers needed new furniture."],"answer":"C","explanation":"短文指出社团始于学生发现许多物品仅因小问题就被丢弃。","score":3,"tags":["阅读理解","细节理解"]},
+          {"id":"r2","type":"choice","passage":"Every Friday, students at Green Hill School spend twenty minutes repairing useful objects. They fix lamps, toys and small pieces of furniture. The repair club began when students noticed how many things were thrown away because of simple problems. Local volunteers teach them to use tools safely. The club has reduced waste and helped students become more patient.","prompt":"What have students learned besides repair skills?","options":["How to sell furniture.","How to be more patient.","How to design a school.","How to avoid volunteers."],"answer":"B","explanation":"最后一句明确说明社团帮助学生变得更有耐心。","score":3,"tags":["阅读理解","细节理解"]},
+          {"id":"r3","type":"choice","passage":"Every Friday, students at Green Hill School spend twenty minutes repairing useful objects. They fix lamps, toys and small pieces of furniture. The repair club began when students noticed how many things were thrown away because of simple problems. Local volunteers teach them to use tools safely. The club has reduced waste and helped students become more patient.","prompt":"What is the best title for the passage?","options":["A Club That Gives Things Another Life","The Most Expensive School Tools","Why Students Need More Homework","A Friday without Teachers"],"answer":"A","explanation":"文章核心是维修社团让旧物重新被使用。","score":3,"tags":["阅读理解","主旨大意"]}
+        ]
+      },
+      {
+        "id": "completion",
+        "title": "三、词语填空",
+        "type": "fill",
+        "questions": [
+          {"id":"f1","type":"fill","prompt":"用括号内单词的适当形式填空：The more carefully you listen, the _____ (well) you will understand others.","answer":"better","explanation":"“the + 比较级, the + 比较级”结构，well 的比较级是 better。","score":4,"tags":["比较级"]},
+          {"id":"f2","type":"fill","prompt":"根据中文完成句子：我们为自己的文化感到骄傲。We are _____ _____ our culture.","answer":"proud of","explanation":"be proud of 表示“为……感到骄傲”。","score":4,"tags":["固定搭配"]}
+        ]
+      },
+      {
+        "id": "writing",
+        "title": "四、书面表达",
+        "type": "writing",
+        "instructions": "主观题暂不自动计分，提交后显示参考要求。",
+        "questions": [
+          {"id":"w1","type":"writing","prompt":"假如你是李华，你校英语社团正在征集主题为 A Small Action That Made a Difference 的短文。请描述一次你或他人的小行动，以及它带来的影响。词数不少于 50。","answer":"内容应包括行动、原因、过程和影响，语言连贯，表达清楚。","explanation":"建议使用一般过去时描述经历，并用 because, so, although 等连接词组织内容。","score":10,"tags":["书面表达"]}
+        ]
+      }
+    ]
+  }
+]

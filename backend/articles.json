@@ -1,0 +1,1698 @@
+[
+  {
+    "id": "library-light",
+    "title": "The Light in the Library",
+    "chineseTitle": "图书馆里的灯光",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "阅读",
+    "minutes": 4,
+    "intro": "一本书也许不能替你走路，却能为你照亮下一步。",
+    "paragraphs": [
+      {
+        "en": "Every afternoon, Mia waited for her mother in the school library. At first, she only sat by the window and watched the playground grow quiet.",
+        "zh": "每天下午，米娅都会在学校图书馆等妈妈。起初，她只是坐在窗边，看着操场渐渐安静下来。"
+      },
+      {
+        "en": "One rainy day, the librarian placed a book beside her. “A good story is a small lamp,” she said. Mia opened it and soon forgot the rain outside.",
+        "zh": "一个雨天，图书管理员在她身旁放了一本书。“好故事是一盏小灯。”她说。米娅翻开书，很快便忘记了窗外的雨。"
+      },
+      {
+        "en": "From then on, Mia visited new worlds while she waited. She crossed oceans, climbed mountains, and listened to voices from long ago.",
+        "zh": "从那以后，米娅在等待时游历了一个个新世界。她越过海洋，攀登高山，聆听久远年代的声音。"
+      },
+      {
+        "en": "Whenever life seemed dark, she opened a book and found a light waiting inside.",
+        "zh": "每当生活显得昏暗，她就翻开一本书，并在其中找到一束等待着她的光。"
+      }
+    ],
+    "words": [
+      [
+        "librarian",
+        "图书管理员"
+      ],
+      [
+        "cross",
+        "穿越"
+      ],
+      [
+        "voice",
+        "声音"
+      ],
+      [
+        "seem",
+        "似乎"
+      ]
+    ],
+    "quote": "A good story is a small lamp.",
+    "quoteZh": "好故事是一盏小灯。"
+  },
+  {
+    "id": "seed-way",
+    "title": "A Seed Knows the Way",
+    "chineseTitle": "种子知道方向",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "自然",
+    "minutes": 3,
+    "intro": "成长常常发生在看不见的地方。",
+    "paragraphs": [
+      {
+        "en": "A tiny seed lay under the cold earth. It could not see the sun, but it felt the spring rain moving through the soil.",
+        "zh": "一粒小种子躺在冰冷的泥土下。它看不见太阳，却能感到春雨正穿过土壤。"
+      },
+      {
+        "en": "The seed did not hurry. First, it sent a root down into the darkness. Then it pushed a green shoot upward, little by little.",
+        "zh": "种子并不着急。它先把根伸向黑暗深处，然后一点一点地将绿色嫩芽推向上方。"
+      },
+      {
+        "en": "When it finally reached the light, the wind was strong, yet its hidden roots held it firmly.",
+        "zh": "当它终于触到阳光时，风很强劲，但藏在地下的根让它稳稳站立。"
+      },
+      {
+        "en": "Real growth is often quiet. Before we rise, we must learn to grow roots where no one is watching.",
+        "zh": "真正的成长往往悄无声息。在向上生长之前，我们必须先在无人注视的地方学会扎根。"
+      }
+    ],
+    "words": [
+      [
+        "soil",
+        "土壤"
+      ],
+      [
+        "root",
+        "根"
+      ],
+      [
+        "shoot",
+        "嫩芽"
+      ],
+      [
+        "firmly",
+        "牢固地"
+      ]
+    ],
+    "quote": "Real growth is often quiet.",
+    "quoteZh": "真正的成长往往悄无声息。"
+  },
+  {
+    "id": "extra-chair",
+    "title": "The Extra Chair",
+    "chineseTitle": "多出来的椅子",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "友谊",
+    "minutes": 4,
+    "intro": "一个小小的善意，可以让陌生人不再孤单。",
+    "paragraphs": [
+      {
+        "en": "On the first day of school, Daniel noticed a new student eating alone. The dining hall was noisy, but the space around the boy seemed strangely silent.",
+        "zh": "开学第一天，丹尼尔注意到一位新同学独自吃饭。餐厅很嘈杂，但男孩周围却显得格外安静。"
+      },
+      {
+        "en": "Daniel carried an extra chair to his table and waved. He simply said, “You can sit here if you like.”",
+        "zh": "丹尼尔搬了一把多余的椅子到自己桌旁，挥了挥手。他只是说：“如果你愿意，可以坐这里。”"
+      },
+      {
+        "en": "The new student smiled and joined them. Before long, they were talking about football, music, and school life.",
+        "zh": "新同学笑了，加入了他们。不久，他们便聊起足球、音乐和校园生活。"
+      },
+      {
+        "en": "Kindness does not always need grand words. Sometimes it is only an extra chair and enough courage to offer it.",
+        "zh": "善意并不总需要华丽的语言。有时，它只是一把多出来的椅子，以及主动递出它的勇气。"
+      }
+    ],
+    "words": [
+      [
+        "notice",
+        "注意到"
+      ],
+      [
+        "extra",
+        "额外的"
+      ],
+      [
+        "join",
+        "加入"
+      ],
+      [
+        "offer",
+        "主动给予"
+      ]
+    ],
+    "quote": "Kindness does not always need grand words.",
+    "quoteZh": "善意并不总需要华丽的语言。"
+  },
+  {
+    "id": "river-stone",
+    "title": "The River and the Stone",
+    "chineseTitle": "河流与石头",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "成长",
+    "minutes": 4,
+    "intro": "坚持不一定声势浩大，它也可以像流水一样温柔。",
+    "paragraphs": [
+      {
+        "en": "A river met a great stone in its path. The stone laughed, “You are soft, and I am strong. You will never pass me.”",
+        "zh": "一条河遇见了挡在路上的巨石。石头笑道：“你如此柔弱，而我如此坚硬。你永远过不去。”"
+      },
+      {
+        "en": "The river did not argue. It moved around the stone and through every narrow space it could find. Day after day, it continued.",
+        "zh": "河流没有争辩。它绕过石头，也流过每一道能找到的狭缝。日复一日，它继续前行。"
+      },
+      {
+        "en": "Many years passed. The stone became smooth, while the river reached the sea. Its strength came from never stopping.",
+        "zh": "许多年过去了。石头变得光滑，而河流抵达了大海。它的力量来自从未停止。"
+      },
+      {
+        "en": "We do not have to defeat every difficulty at once. Patient effort can shape even the hardest obstacle.",
+        "zh": "我们不必一次击败所有困难。耐心的努力甚至能改变最坚硬的障碍。"
+      }
+    ],
+    "words": [
+      [
+        "argue",
+        "争辩"
+      ],
+      [
+        "narrow",
+        "狭窄的"
+      ],
+      [
+        "smooth",
+        "光滑的"
+      ],
+      [
+        "obstacle",
+        "障碍"
+      ]
+    ],
+    "quote": "Its strength came from never stopping.",
+    "quoteZh": "它的力量来自从未停止。"
+  },
+  {
+    "id": "stars-window",
+    "title": "A Window to the Stars",
+    "chineseTitle": "通往星空的窗",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "科学",
+    "minutes": 5,
+    "intro": "好奇心让遥远的星光成为通往知识的道路。",
+    "paragraphs": [
+      {
+        "en": "When Leo received a small telescope, the moon was the first thing he searched for. Through the lens, its bright face was filled with shadows and ancient marks.",
+        "zh": "利奥收到一架小望远镜后，首先寻找的就是月亮。透过镜片，月亮明亮的表面布满阴影和古老的痕迹。"
+      },
+      {
+        "en": "He kept a notebook and wrote down questions: Why does the moon change shape? Could life exist somewhere else?",
+        "zh": "他开始记观察笔记，并写下问题：月亮为什么会改变形状？别处可能存在生命吗？"
+      },
+      {
+        "en": "Some questions had clear answers. Others opened the door to even more questions. Learning was a path with no final end.",
+        "zh": "有些问题有明确答案，另一些却打开了更多问题的大门。学习是一条没有终点的道路。"
+      },
+      {
+        "en": "Each night, the telescope became a window. The stars remained distant, but curiosity brought them closer.",
+        "zh": "每个夜晚，望远镜都变成一扇窗。星星依旧遥远，但好奇心让它们变得更近。"
+      }
+    ],
+    "words": [
+      [
+        "telescope",
+        "望远镜"
+      ],
+      [
+        "lens",
+        "镜片"
+      ],
+      [
+        "exist",
+        "存在"
+      ],
+      [
+        "curiosity",
+        "好奇心"
+      ]
+    ],
+    "quote": "Curiosity brought the distant stars closer.",
+    "quoteZh": "好奇心让遥远的星星变得更近。"
+  },
+  {
+    "id": "pocket-map",
+    "title": "The Map in My Pocket",
+    "chineseTitle": "口袋里的地图",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "梦想",
+    "minutes": 5,
+    "intro": "目标像地图，真正的道路仍要一步一步走出来。",
+    "paragraphs": [
+      {
+        "en": "Before her first long hike, Ava folded a map and placed it in her pocket. A red line showed the way to the top of the hill.",
+        "zh": "第一次长途徒步前，艾娃折好地图，放进口袋。图上的红线标出了通往山顶的路线。"
+      },
+      {
+        "en": "The map looked simple. The real path was not. Rain had turned the ground to mud, and every turn seemed steeper than the last.",
+        "zh": "地图看起来很简单，真实的道路却并非如此。雨水把地面变成泥地，每一个转弯似乎都比上一个更陡。"
+      },
+      {
+        "en": "Ava checked her direction, rested when she needed to, and kept moving. At sunset, she reached the top.",
+        "zh": "艾娃确认方向，在需要时休息，然后继续前行。日落时，她到达了山顶。"
+      },
+      {
+        "en": "A goal can show us a direction, but it cannot walk the difficult ground for us. The journey becomes ours through each step we take.",
+        "zh": "目标能指出方向，却不能替我们走过艰难的土地。唯有踏出每一步，旅程才真正属于我们。"
+      }
+    ],
+    "words": [
+      [
+        "fold",
+        "折叠"
+      ],
+      [
+        "steep",
+        "陡峭的"
+      ],
+      [
+        "direction",
+        "方向"
+      ],
+      [
+        "journey",
+        "旅程"
+      ]
+    ],
+    "quote": "A goal can show the direction, but it cannot walk for us.",
+    "quoteZh": "目标能指出方向，却不能替我们行走。"
+  },
+  {
+    "id": "sound-listening",
+    "title": "The Sound of Listening",
+    "chineseTitle": "倾听的声音",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "沟通",
+    "minutes": 5,
+    "intro": "真正的倾听，是给另一个人留出完整的空间。",
+    "paragraphs": [
+      {
+        "en": "Nora was good at giving advice. Whenever a friend described a problem, she quickly offered three solutions.",
+        "zh": "诺拉很擅长提建议。每当朋友说起难题，她很快就会给出三种解决办法。"
+      },
+      {
+        "en": "One day, Sam quietly said, “I do not need an answer yet. I only need someone to hear me.”",
+        "zh": "一天，山姆轻声说：“我还不需要答案。我只需要有人听我说。”"
+      },
+      {
+        "en": "Nora put away her phone and listened without interrupting. She noticed the pauses and the feelings he found difficult to name.",
+        "zh": "诺拉收起手机，不打断地倾听。她留意到话语间的停顿，也感受到那些他难以说出的情绪。"
+      },
+      {
+        "en": "To listen well is not to wait for our turn to speak; it is to make room for another person.",
+        "zh": "认真倾听不是等待轮到自己说话，而是为另一个人留出空间。"
+      }
+    ],
+    "words": [
+      [
+        "advice",
+        "建议"
+      ],
+      [
+        "solution",
+        "解决办法"
+      ],
+      [
+        "interrupt",
+        "打断"
+      ],
+      [
+        "pause",
+        "停顿"
+      ]
+    ],
+    "quote": "To listen well is to make room for another person.",
+    "quoteZh": "认真倾听，是为另一个人留出空间。"
+  },
+  {
+    "id": "after-storm",
+    "title": "Morning After the Storm",
+    "chineseTitle": "暴风雨后的清晨",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "希望",
+    "minutes": 5,
+    "intro": "希望不是风雨从未来过，而是风雨之后仍愿意重建。",
+    "paragraphs": [
+      {
+        "en": "The storm arrived at midnight. Wind shook the windows, rain flooded the streets, and an old tree fell across the road.",
+        "zh": "暴风雨在午夜来临。狂风摇动窗户，雨水淹没街道，一棵老树倒在道路中央。"
+      },
+      {
+        "en": "People stepped outside slowly. Then Mr. Chen brought a saw, two teenagers carried branches away, and someone made hot tea.",
+        "zh": "人们慢慢走出家门。接着，陈先生拿来锯子，两名少年搬走树枝，还有人泡了热茶。"
+      },
+      {
+        "en": "By noon, the road was open. Neighbors who had barely spoken before were working side by side, tired but smiling.",
+        "zh": "到中午，道路重新畅通。以前几乎没说过话的邻居并肩劳动，虽然疲惫，却带着笑容。"
+      },
+      {
+        "en": "Hope is not the belief that storms will never come. It is the choice to clear the road together when they pass.",
+        "zh": "希望并非相信暴风雨永不来临，而是在风雨过去后，选择一起清理道路。"
+      }
+    ],
+    "words": [
+      [
+        "flood",
+        "淹没"
+      ],
+      [
+        "branch",
+        "树枝"
+      ],
+      [
+        "barely",
+        "几乎不"
+      ],
+      [
+        "clear",
+        "清理"
+      ]
+    ],
+    "quote": "Hope is the choice to clear the road together.",
+    "quoteZh": "希望，是选择一起清理前路。"
+  },
+  {
+    "id": "ai-teacher",
+    "title": "Can AI Be a Good Teacher?",
+    "chineseTitle": "人工智能能成为好老师吗？",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "人工智能",
+    "minutes": 4,
+    "intro": "工具可以给出答案，教育则帮助我们学会思考。",
+    "paragraphs": [
+      {
+        "en": "AI can explain a math problem in seconds and repeat the explanation without becoming impatient. For many students, that makes learning easier.",
+        "zh": "人工智能能在几秒内解释数学题，也能不厌其烦地重复讲解，这让许多学生学得更轻松。"
+      },
+      {
+        "en": "Yet a good teacher does more than provide information. A teacher notices confusion, encourages courage, and understands different kinds of silence.",
+        "zh": "然而，好老师不只提供信息。老师会发现困惑、鼓励勇气，也能理解不同含义的沉默。"
+      },
+      {
+        "en": "AI may be a powerful learning partner, but students still need human care and their own judgment. Technology should support thinking, not replace it.",
+        "zh": "人工智能可以成为强大的学习伙伴，但学生仍需要人的关怀和自己的判断。技术应支持思考，而非取代思考。"
+      }
+    ],
+    "words": [
+      [
+        "impatient",
+        "不耐烦的"
+      ],
+      [
+        "confusion",
+        "困惑"
+      ],
+      [
+        "judgment",
+        "判断力"
+      ]
+    ],
+    "quote": "Technology should support thinking, not replace it.",
+    "quoteZh": "技术应当支持思考，而不是取代思考。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "quiet-hour",
+    "title": "The Power of One Quiet Hour",
+    "chineseTitle": "安静一小时的力量",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "学习方法",
+    "minutes": 4,
+    "intro": "专注不是天赋，而是一种可以练习的能力。",
+    "paragraphs": [
+      {
+        "en": "Lily often studied with five browser tabs open and her phone beside her notebook. She worked for hours but remembered very little.",
+        "zh": "莉莉学习时常开着五个网页标签，手机也放在笔记本旁。她学了很久，却记不住多少。"
+      },
+      {
+        "en": "She began putting her phone in another room and choosing one clear task for forty minutes. At first, the silence felt uncomfortable. Soon, it became peaceful.",
+        "zh": "她开始把手机放到另一个房间，并在四十分钟内只完成一项任务。起初她不习惯安静，很快却感到平和。"
+      },
+      {
+        "en": "One focused hour can be worth more than an afternoon of divided attention. Concentration grows each time we protect it.",
+        "zh": "专注的一小时，可能比注意力分散的一下午更有价值。每当我们保护专注力时，它都会成长。"
+      }
+    ],
+    "words": [
+      [
+        "task",
+        "任务"
+      ],
+      [
+        "focused",
+        "专注的"
+      ],
+      [
+        "concentration",
+        "专注力"
+      ]
+    ],
+    "quote": "Concentration grows each time we protect it.",
+    "quoteZh": "每当我们保护专注力时，它都会成长。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "failure-data",
+    "title": "What Failure Can Teach Us",
+    "chineseTitle": "失败能教会我们什么",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "成长",
+    "minutes": 4,
+    "intro": "错误不是终点，也可以是一份有价值的数据。",
+    "paragraphs": [
+      {
+        "en": "After losing a race, Ben wanted to hide his result. His coach asked him to study it: Where did his speed fall? When did his breathing change?",
+        "zh": "比赛失利后，本想藏起成绩。教练却请他研究：速度在哪里下降？呼吸何时发生变化？"
+      },
+      {
+        "en": "The result stopped being an insult and became information. Ben changed his training and measured progress over months, not days.",
+        "zh": "这个结果不再是打击，而变成了信息。本改变了训练方式，并以月而不是以天衡量进步。"
+      },
+      {
+        "en": "Failure hurts when it closes a door. It helps when it shows us where the door is and what key we still need.",
+        "zh": "失败关上一扇门时会令人难过；但当它指出门在哪里、我们还需要怎样的钥匙时，也能带来帮助。"
+      }
+    ],
+    "words": [
+      [
+        "result",
+        "结果"
+      ],
+      [
+        "measure",
+        "衡量"
+      ],
+      [
+        "progress",
+        "进步"
+      ]
+    ],
+    "quote": "Failure can become information.",
+    "quoteZh": "失败可以变成有价值的信息。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "phone-mirror",
+    "title": "The Mirror in the Phone",
+    "chineseTitle": "手机里的镜子",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "网络生活",
+    "minutes": 4,
+    "intro": "社交媒体展示的是生活片段，而不是生活全貌。",
+    "paragraphs": [
+      {
+        "en": "Online, everyone seemed to be traveling, winning prizes, or laughing with friends. Looking at the pictures, Kai felt that his ordinary life was too small.",
+        "zh": "网络上，每个人似乎都在旅行、获奖或与朋友欢笑。看着那些照片，凯觉得自己的普通生活太不起眼。"
+      },
+      {
+        "en": "Then he remembered that he also posted only his best moments. The screen was a wall covered with carefully chosen pictures, not a window into complete lives.",
+        "zh": "后来他想起，自己也只发布最好的时刻。屏幕是一面贴满精选照片的墙，而不是观察完整人生的窗。"
+      },
+      {
+        "en": "Comparison is unfair when we compare our whole story with another person’s best page. A picture is a moment, not a whole life.",
+        "zh": "拿自己的完整故事与别人最精彩的一页相比并不公平。一张照片只是一个瞬间，而不是完整人生。"
+      }
+    ],
+    "words": [
+      [
+        "ordinary",
+        "普通的"
+      ],
+      [
+        "complete",
+        "完整的"
+      ],
+      [
+        "comparison",
+        "比较"
+      ]
+    ],
+    "quote": "A picture is a moment, not a whole life.",
+    "quoteZh": "一张照片只是一个瞬间，而不是完整的人生。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "future-jobs",
+    "title": "Jobs That Do Not Exist Yet",
+    "chineseTitle": "尚未出现的职业",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "未来职业",
+    "minutes": 4,
+    "intro": "未来需要的不只是已有答案，更是学习新事物的能力。",
+    "paragraphs": [
+      {
+        "en": "Some of tomorrow’s jobs have not been invented. Twenty years ago, few students planned to become app designers or drone engineers.",
+        "zh": "有些未来职业尚未出现。二十年前，很少有学生计划成为应用设计师或无人机工程师。"
+      },
+      {
+        "en": "Good planning now means more than learning one tool. Curiosity, communication, and the ability to learn may last longer than any technology.",
+        "zh": "今天的良好规划不只是学会一种工具。好奇心、沟通力和学习能力可能比任何技术都更持久。"
+      },
+      {
+        "en": "We cannot prepare for every job title. We can prepare to meet change with useful skills and an open mind.",
+        "zh": "我们无法为每一个职业名称做准备，却可以培养实用能力和开放心态，以迎接变化。"
+      }
+    ],
+    "words": [
+      [
+        "invent",
+        "发明"
+      ],
+      [
+        "communication",
+        "沟通"
+      ],
+      [
+        "prepare",
+        "准备"
+      ]
+    ],
+    "quote": "Prepare for change, not only for a title.",
+    "quoteZh": "要为变化做好准备，而不只是为一个职业名称。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "small-habits",
+    "title": "Why Small Habits Win",
+    "chineseTitle": "微习惯为什么有效",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "生活智慧",
+    "minutes": 4,
+    "intro": "每天进步一点，比偶尔努力很多更可靠。",
+    "paragraphs": [
+      {
+        "en": "Noah planned to finish a book every week. The exciting but heavy plan lasted only three days.",
+        "zh": "诺亚计划每周读完一本书。这个令人兴奋却过于沉重的计划只坚持了三天。"
+      },
+      {
+        "en": "He started again with ten pages each night. It seemed almost too easy, which was exactly why he could continue on busy days.",
+        "zh": "他重新开始，每晚只读十页。它似乎简单得过头，却正因如此，他在忙碌的日子也能坚持。"
+      },
+      {
+        "en": "A small habit is a vote for the person we want to become. One vote changes little, but hundreds create a clear result.",
+        "zh": "一个微小习惯，是为我们想成为的人投出的一票。一票改变不大，但数百票会产生清晰的结果。"
+      }
+    ],
+    "words": [
+      [
+        "habit",
+        "习惯"
+      ],
+      [
+        "continue",
+        "继续"
+      ],
+      [
+        "result",
+        "结果"
+      ]
+    ],
+    "quote": "Make a habit small enough to repeat.",
+    "quoteZh": "让习惯小到足以重复。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "kind-disagreement",
+    "title": "How to Disagree Kindly",
+    "chineseTitle": "如何友善地表达不同意见",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "沟通",
+    "minutes": 4,
+    "intro": "不同意见不必变成彼此攻击。",
+    "paragraphs": [
+      {
+        "en": "During a discussion, Maya heard an opinion she strongly disliked. Before replying, she asked, “What experience led you to that view?”",
+        "zh": "讨论中，玛雅听到了一个非常不赞同的观点。回应前，她问：“什么经历让你产生这个看法？”"
+      },
+      {
+        "en": "The question did not make them agree. It made both students explain their reasons instead of questioning each other’s character.",
+        "zh": "这个问题没有让他们达成一致，却让双方解释理由，而不是质疑彼此的人品。"
+      },
+      {
+        "en": "Respectful disagreement is not weakness. It protects truth and the relationship at the same time.",
+        "zh": "尊重地表达不同意见并非软弱。它能同时维护事实与关系。"
+      }
+    ],
+    "words": [
+      [
+        "opinion",
+        "观点"
+      ],
+      [
+        "character",
+        "品格"
+      ],
+      [
+        "respectful",
+        "尊重他人的"
+      ]
+    ],
+    "quote": "Challenge the idea without attacking the person.",
+    "quoteZh": "质疑观点，但不要攻击表达观点的人。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "alone-crowd",
+    "title": "Alone in a Crowd",
+    "chineseTitle": "人群中的孤独",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "心理成长",
+    "minutes": 4,
+    "intro": "被许多人看见，不等于被真正理解。",
+    "paragraphs": [
+      {
+        "en": "A person can receive a hundred messages and still feel lonely. Connection is not counted only by how many people know our name.",
+        "zh": "一个人可能收到上百条消息，却依然孤独。联系的深浅，不只取决于多少人知道我们的名字。"
+      },
+      {
+        "en": "Real friendship needs attention, honesty, and time. These qualities are slower than clicking a like button, but they reach much deeper.",
+        "zh": "真正的友谊需要关注、坦诚和时间。这些品质比点赞慢得多，却能抵达更深的地方。"
+      },
+      {
+        "en": "When loneliness appears, one honest conversation may help more than another hour of scrolling.",
+        "zh": "孤独出现时，一次真诚的交谈可能比再刷一小时屏幕更有帮助。"
+      }
+    ],
+    "words": [
+      [
+        "connection",
+        "联系"
+      ],
+      [
+        "honesty",
+        "坦诚"
+      ],
+      [
+        "scroll",
+        "滚动浏览"
+      ]
+    ],
+    "quote": "To be noticed is not always to be known.",
+    "quoteZh": "被人注意，并不总意味着被人理解。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "plastic-journey",
+    "title": "The Journey of a Plastic Bottle",
+    "chineseTitle": "塑料瓶的旅程",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "环保",
+    "minutes": 4,
+    "intro": "我们扔掉的东西，并不会真正消失。",
+    "paragraphs": [
+      {
+        "en": "A bottle beside a road may be carried by rain into a river and finally into the sea. Its short use can begin a journey lasting hundreds of years.",
+        "zh": "路边的塑料瓶可能被雨水带进河流，最后进入海洋。短暂的使用会开启一段持续数百年的旅程。"
+      },
+      {
+        "en": "Sunlight breaks plastic into smaller pieces but does not make it disappear. Tiny pieces can enter the bodies of fish and birds.",
+        "zh": "阳光会把塑料分解成更小的碎片，却无法让它消失。微小碎片可能进入鱼类和鸟类的身体。"
+      },
+      {
+        "en": "Using less, reusing, and recycling correctly can change where the bottle’s journey ends.",
+        "zh": "减少使用、重复利用并正确回收，能够改变塑料瓶旅程的终点。"
+      }
+    ],
+    "words": [
+      [
+        "lasting",
+        "持续的"
+      ],
+      [
+        "tiny",
+        "微小的"
+      ],
+      [
+        "recycle",
+        "回收"
+      ]
+    ],
+    "quote": "There is no real “away” when we throw something away.",
+    "quoteZh": "当我们扔掉东西时，并不存在真正的“消失”。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "mars-home",
+    "title": "Should Humans Live on Mars?",
+    "chineseTitle": "人类应该移居火星吗？",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "太空探索",
+    "minutes": 4,
+    "intro": "探索新世界，也会让我们重新认识自己的家园。",
+    "paragraphs": [
+      {
+        "en": "Mars attracts us because it is both near and mysterious. Living there could teach us about survival and the history of our solar system.",
+        "zh": "火星吸引我们，因为它相对接近又充满神秘。居住在那里能让我们学习生存和太阳系的历史。"
+      },
+      {
+        "en": "But Mars has no air we can breathe and little protection from radiation. Every glass of water and breath would depend on technology.",
+        "zh": "但火星没有可供呼吸的空气，也几乎无法抵御辐射。每一杯水和每一次呼吸都将依赖技术。"
+      },
+      {
+        "en": "Perhaps the greatest lesson of Mars is how rare Earth is. Exploring another planet should increase our care for this one.",
+        "zh": "也许火星最大的启示，是地球何其珍贵。探索另一颗星球，应让我们更珍惜这一颗。"
+      }
+    ],
+    "words": [
+      [
+        "mysterious",
+        "神秘的"
+      ],
+      [
+        "survival",
+        "生存"
+      ],
+      [
+        "radiation",
+        "辐射"
+      ]
+    ],
+    "quote": "Looking outward can teach us to value home.",
+    "quoteZh": "向外探索，能教会我们珍惜家园。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "money-happiness",
+    "title": "Can Money Buy Happiness?",
+    "chineseTitle": "金钱能买到幸福吗？",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "人生思考",
+    "minutes": 4,
+    "intro": "金钱能解决许多问题，却不能回答所有问题。",
+    "paragraphs": [
+      {
+        "en": "Money can buy food, medicine, safety, and time. When these needs are missing, enough money can greatly improve life.",
+        "zh": "金钱可以买到食物、药品、安全和时间。当这些需求缺失时，足够的金钱能极大改善生活。"
+      },
+      {
+        "en": "Beyond basic comfort, more possessions do not always create deeper happiness. Trust, purpose, health, and belonging cannot simply be ordered.",
+        "zh": "在基本舒适之外，更多物品并不总能创造更深的幸福。信任、目标、健康和归属感无法直接订购。"
+      },
+      {
+        "en": "Money is a useful tool, not a complete map of a good life. Wisdom is knowing what it can buy and what must be built differently.",
+        "zh": "金钱是有用的工具，却不是美好生活的完整地图。智慧在于明白什么能买到，什么必须以其他方式建立。"
+      }
+    ],
+    "words": [
+      [
+        "possession",
+        "所有物"
+      ],
+      [
+        "purpose",
+        "目标感"
+      ],
+      [
+        "wisdom",
+        "智慧"
+      ]
+    ],
+    "quote": "Money is a tool, not the meaning of life.",
+    "quoteZh": "金钱是工具，而不是生活的意义。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "sleep-learn",
+    "title": "Why Sleep Helps Us Learn",
+    "chineseTitle": "睡眠为什么帮助学习",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "健康",
+    "minutes": 4,
+    "intro": "休息不是学习的敌人，而是学习过程的一部分。",
+    "paragraphs": [
+      {
+        "en": "While we sleep, the brain sorts information, strengthens useful memories, and clears away some of the day’s mental noise.",
+        "zh": "睡眠时，大脑会整理信息、加强有用记忆，并清除白天的一部分思维杂音。"
+      },
+      {
+        "en": "Studying very late may create more reading time, but a tired brain pays less attention and remembers less.",
+        "zh": "学习到很晚也许增加了阅读时间，但疲惫的大脑注意力更弱，记住的内容也更少。"
+      },
+      {
+        "en": "Good learning needs effort and recovery. Closing a book at the right time can be the smartest study decision.",
+        "zh": "有效学习既需要努力，也需要恢复。在合适的时候合上书，有时正是最明智的决定。"
+      }
+    ],
+    "words": [
+      [
+        "strengthen",
+        "加强"
+      ],
+      [
+        "mental",
+        "思维的"
+      ],
+      [
+        "recovery",
+        "恢复"
+      ]
+    ],
+    "quote": "Rest is part of learning.",
+    "quoteZh": "休息是学习的一部分。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "check-news",
+    "title": "Before You Share",
+    "chineseTitle": "转发之前",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "媒介素养",
+    "minutes": 4,
+    "intro": "在信息传播越来越快时，停下来核实是一种责任。",
+    "paragraphs": [
+      {
+        "en": "A surprising headline can travel around a school in minutes. Strong emotion makes people share before asking whether the story is true.",
+        "zh": "一个惊人的标题能在几分钟内传遍校园。强烈情绪让人们在判断真假前就转发。"
+      },
+      {
+        "en": "Careful readers look for the original source, date, evidence, and reports from other reliable places. They separate facts from opinions.",
+        "zh": "谨慎的读者会寻找原始来源、日期、证据和其他可靠报道，也会区分事实与观点。"
+      },
+      {
+        "en": "Pausing may feel slow, but correcting false information later is much harder. In a fast network, thoughtful delay is useful.",
+        "zh": "停下来似乎很慢，但事后纠正虚假信息更困难。在高速网络中，审慎的延迟很有用。"
+      }
+    ],
+    "words": [
+      [
+        "headline",
+        "标题"
+      ],
+      [
+        "evidence",
+        "证据"
+      ],
+      [
+        "reliable",
+        "可靠的"
+      ]
+    ],
+    "quote": "Check first; share second.",
+    "quoteZh": "先核实，再转发。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "own-success",
+    "title": "Your Own Definition of Success",
+    "chineseTitle": "你自己的成功定义",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "人生思考",
+    "minutes": 4,
+    "intro": "如果从不定义成功，我们就容易追逐别人的答案。",
+    "paragraphs": [
+      {
+        "en": "Success is often shown as a high score, a famous school, or an impressive job. These achievements do not fit every person in the same way.",
+        "zh": "成功常被描述成高分、名校或令人羡慕的工作，但这些成就并不以同样方式适合每个人。"
+      },
+      {
+        "en": "One person may value discovery, another service, creativity, family, or peace. A meaningful goal should reflect our values, not only win applause.",
+        "zh": "有人重视探索，有人重视服务、创造、家庭或平静。有意义的目标应反映价值观，而不只为赢得掌声。"
+      },
+      {
+        "en": "We can learn from other people’s paths without borrowing their destination. Growing up includes deciding what a good life means to us.",
+        "zh": "我们可以借鉴别人的道路，却不必借用他们的终点。成长也包括决定美好生活对自己意味着什么。"
+      }
+    ],
+    "words": [
+      [
+        "achievement",
+        "成就"
+      ],
+      [
+        "reflect",
+        "反映"
+      ],
+      [
+        "applause",
+        "掌声"
+      ]
+    ],
+    "quote": "Learn from another path; choose your own destination.",
+    "quoteZh": "借鉴别人的道路，选择自己的终点。",
+    "collection": "热门话题原创"
+  },
+  {
+    "id": "paper-crane",
+    "title": "The Paper Crane by the Window",
+    "chineseTitle": "窗边的纸鹤",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "校园故事",
+    "minutes": 5,
+    "intro": "一份安静的鼓励也能陪人走过困难。",
+    "paragraphs": [
+      {
+        "en": "A paper crane appeared on Emma’s desk before an important test. On one wing, someone had written, “Take one question at a time.”",
+        "zh": "一次重要考试前，艾玛的桌上出现了一只纸鹤。它的一侧翅膀上写着：“一次只解决一道题。”"
+      },
+      {
+        "en": "The message slowed her racing heart. After the test, she folded another crane for a worried classmate.",
+        "zh": "这句话让她慌乱的心慢了下来。考试后，她又为紧张的同学折了一只纸鹤。"
+      },
+      {
+        "en": "Encouragement had traveled without needing a name.",
+        "zh": "鼓励不需要名字，也能继续传递。"
+      }
+    ],
+    "words": [
+      [
+        "crane",
+        "纸鹤"
+      ],
+      [
+        "racing",
+        "急速跳动的"
+      ],
+      [
+        "encouragement",
+        "鼓励"
+      ]
+    ],
+    "quote": "Encouragement can travel without a name.",
+    "quoteZh": "鼓励不需要名字，也能继续传递。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "old-bridge",
+    "title": "The Bridge That Remembered",
+    "chineseTitle": "记得往事的桥",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "历史文化",
+    "minutes": 5,
+    "intro": "古老建筑连接今天与过去。",
+    "paragraphs": [
+      {
+        "en": "An old stone bridge had stood above the river for three hundred years.",
+        "zh": "一座古老的石桥已在河上矗立三百年。"
+      },
+      {
+        "en": "A historian showed students marks left by floods, repairs, and generations of builders.",
+        "zh": "历史学家向学生指出洪水、修缮和几代工匠留下的痕迹。"
+      },
+      {
+        "en": "The bridge became a record written in stone.",
+        "zh": "这座桥成为写在石头上的记录。"
+      }
+    ],
+    "words": [
+      [
+        "historian",
+        "历史学家"
+      ],
+      [
+        "repair",
+        "修缮"
+      ],
+      [
+        "generation",
+        "一代人"
+      ]
+    ],
+    "quote": "Old places are memories we can walk through.",
+    "quoteZh": "古老的地方是我们可以走过的记忆。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "orchestra-chair",
+    "title": "The Empty Chair in the Orchestra",
+    "chineseTitle": "乐团里的空椅子",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "音乐艺术",
+    "minutes": 5,
+    "intro": "合作需要为别人的声音留出空间。",
+    "paragraphs": [
+      {
+        "en": "During rehearsal, every player wanted to be heard, and few were truly listening.",
+        "zh": "排练时，每位演奏者都想被听见，却很少有人真正倾听。"
+      },
+      {
+        "en": "The conductor said, “Music also lives in the space we leave for others.”",
+        "zh": "指挥说：“音乐也存在于我们为别人留下的空间里。”"
+      },
+      {
+        "en": "They played again, and many instruments finally became one piece of music.",
+        "zh": "他们再次演奏，众多乐器终于汇成了一首完整的音乐。"
+      }
+    ],
+    "words": [
+      [
+        "orchestra",
+        "管弦乐团"
+      ],
+      [
+        "rehearsal",
+        "排练"
+      ],
+      [
+        "conductor",
+        "指挥"
+      ]
+    ],
+    "quote": "Harmony begins when we listen.",
+    "quoteZh": "和谐始于倾听。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "moon-garden",
+    "title": "The Garden Under the Moon",
+    "chineseTitle": "月光下的花园",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "自然观察",
+    "minutes": 5,
+    "intro": "白天结束后，另一个世界才刚醒来。",
+    "paragraphs": [
+      {
+        "en": "Nina thought the garden slept at night until her grandfather took her outside.",
+        "zh": "妮娜以为花园在夜里会沉睡，直到爷爷带她走到户外。"
+      },
+      {
+        "en": "White flowers opened, a moth rested on a leaf, and a hedgehog moved beneath the bushes.",
+        "zh": "白花开放，飞蛾停在叶上，刺猬穿过灌木。"
+      },
+      {
+        "en": "Darkness was a different stage where other lives performed.",
+        "zh": "黑暗是其他生命登场的另一座舞台。"
+      }
+    ],
+    "words": [
+      [
+        "moth",
+        "飞蛾"
+      ],
+      [
+        "hedgehog",
+        "刺猬"
+      ],
+      [
+        "curtain",
+        "幕布"
+      ]
+    ],
+    "quote": "Night is alive in another way.",
+    "quoteZh": "夜晚以另一种方式充满生命。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "lost-recipe",
+    "title": "Grandmother’s Missing Recipe",
+    "chineseTitle": "奶奶遗失的食谱",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "家庭文化",
+    "minutes": 5,
+    "intro": "味道也藏在共同度过的时间里。",
+    "paragraphs": [
+      {
+        "en": "When the recipe book disappeared, Jun worried that his grandmother’s special soup was lost forever.",
+        "zh": "食谱本不见后，俊担心奶奶的拿手汤会永远失传。"
+      },
+      {
+        "en": "She asked him to cook beside her and judged the heat by listening to the pot.",
+        "zh": "奶奶请他一起下厨，并听着锅里的声音判断火候。"
+      },
+      {
+        "en": "Jun learned what no recipe could hold: patience, attention, and stories.",
+        "zh": "俊学到了食谱无法容纳的东西：耐心、专注和故事。"
+      }
+    ],
+    "words": [
+      [
+        "recipe",
+        "食谱"
+      ],
+      [
+        "judge",
+        "判断"
+      ],
+      [
+        "patience",
+        "耐心"
+      ]
+    ],
+    "quote": "Tradition lives in what we practice together.",
+    "quoteZh": "传统存在于共同实践之中。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "robot-mistake",
+    "title": "The Robot That Made a Mistake",
+    "chineseTitle": "犯错的机器人",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "科技伦理",
+    "minutes": 5,
+    "intro": "智慧也包括发现知识的边界。",
+    "paragraphs": [
+      {
+        "en": "The school robot sorted recycling quickly, but placed every blue object in the paper bin.",
+        "zh": "学校机器人快速分类回收物，却把所有蓝色物品都放进纸类箱。"
+      },
+      {
+        "en": "The programmers discovered that its training examples were too simple.",
+        "zh": "程序员发现它的训练例子过于简单。"
+      },
+      {
+        "en": "They taught it to ask when uncertain. A useful system must know its limits.",
+        "zh": "他们教它在不确定时询问。有用的系统必须知道自身边界。"
+      }
+    ],
+    "words": [
+      [
+        "sort",
+        "分类"
+      ],
+      [
+        "uncertain",
+        "不确定的"
+      ],
+      [
+        "limit",
+        "边界"
+      ]
+    ],
+    "quote": "Intelligence includes knowing when to ask.",
+    "quoteZh": "智慧包括知道何时应该询问。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "rain-roof",
+    "title": "A Roof That Saves Rain",
+    "chineseTitle": "会收集雨水的屋顶",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "绿色校园",
+    "minutes": 5,
+    "intro": "好的设计让资源重新进入循环。",
+    "paragraphs": [
+      {
+        "en": "Students noticed how much clean water the school garden needed.",
+        "zh": "学生们注意到校园花园需要大量清水。"
+      },
+      {
+        "en": "They designed tanks and filters to collect rain from the roof.",
+        "zh": "他们设计储水箱和过滤装置来收集屋顶雨水。"
+      },
+      {
+        "en": "The project helped the school notice a resource always falling from the sky.",
+        "zh": "这个项目帮助学校发现了一种一直从天空落下的资源。"
+      }
+    ],
+    "words": [
+      [
+        "tank",
+        "储水箱"
+      ],
+      [
+        "filter",
+        "过滤装置"
+      ],
+      [
+        "resource",
+        "资源"
+      ]
+    ],
+    "quote": "Good design helps us notice what we waste.",
+    "quoteZh": "好的设计帮助我们看见被浪费的资源。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "last-runner",
+    "title": "The Last Runner",
+    "chineseTitle": "最后一名跑者",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "体育精神",
+    "minutes": 5,
+    "intro": "坚持完成自己的比赛也是胜利。",
+    "paragraphs": [
+      {
+        "en": "When the fastest runners finished, Ravi was still far behind.",
+        "zh": "最快的选手完赛时，拉维还远远落后。"
+      },
+      {
+        "en": "A teammate returned to run beside him, and others clapped with his steps.",
+        "zh": "一名队友回到跑道陪跑，其他人也随着他的步伐鼓掌。"
+      },
+      {
+        "en": "The result showed his place; his final steps showed his character.",
+        "zh": "成绩显示了名次，最后的脚步展现了品格。"
+      }
+    ],
+    "words": [
+      [
+        "track",
+        "跑道"
+      ],
+      [
+        "rhythm",
+        "节奏"
+      ],
+      [
+        "character",
+        "品格"
+      ]
+    ],
+    "quote": "A finish can reveal courage.",
+    "quoteZh": "完成比赛能够展现勇气。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "painting-label",
+    "title": "The Label Beside the Painting",
+    "chineseTitle": "画作旁的说明牌",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "艺术思考",
+    "minutes": 5,
+    "intro": "艺术是创作者与观看者故事的相遇。",
+    "paragraphs": [
+      {
+        "en": "Sofia saw a painting of an empty room and felt lonely.",
+        "zh": "索菲娅看见空房间的画，感到孤独。"
+      },
+      {
+        "en": "The label said the artist had painted a peaceful place after years of noise.",
+        "zh": "说明牌写道，艺术家在多年喧嚣后画下了宁静空间。"
+      },
+      {
+        "en": "The same room carried two different stories.",
+        "zh": "同一个房间承载着两个不同的故事。"
+      }
+    ],
+    "words": [
+      [
+        "label",
+        "说明牌"
+      ],
+      [
+        "peaceful",
+        "宁静的"
+      ],
+      [
+        "viewer",
+        "观看者"
+      ]
+    ],
+    "quote": "Art is where two stories meet.",
+    "quoteZh": "艺术是两个故事相遇之处。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "familiar-smell",
+    "title": "The Science of a Familiar Smell",
+    "chineseTitle": "熟悉气味里的科学",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "脑科学",
+    "minutes": 5,
+    "intro": "气味为什么能突然打开久远记忆？",
+    "paragraphs": [
+      {
+        "en": "The smell of oranges brought Lina back to her childhood kitchen.",
+        "zh": "橙子的气味把莉娜带回童年厨房。"
+      },
+      {
+        "en": "Smell signals travel through brain areas connected with emotion and memory.",
+        "zh": "嗅觉信号会经过与情绪和记忆相连的大脑区域。"
+      },
+      {
+        "en": "The same orange may open a different memory for every person.",
+        "zh": "同一个橙子可能为每个人打开不同的记忆。"
+      }
+    ],
+    "words": [
+      [
+        "signal",
+        "信号"
+      ],
+      [
+        "emotion",
+        "情绪"
+      ],
+      [
+        "memory",
+        "记忆"
+      ]
+    ],
+    "quote": "A scent can be a key inside the mind.",
+    "quoteZh": "气味可以成为打开内心的钥匙。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "one-minute",
+    "title": "One Minute Before Replying",
+    "chineseTitle": "回复前的一分钟",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "情绪管理",
+    "minutes": 5,
+    "intro": "暂停让我们有机会选择回应。",
+    "paragraphs": [
+      {
+        "en": "An angry message appeared on Theo’s phone, and he wrote an even angrier reply.",
+        "zh": "西奥收到令人恼火的消息，写下了更加愤怒的回复。"
+      },
+      {
+        "en": "He waited one minute. During that minute, his breathing slowed.",
+        "zh": "他等待了一分钟，呼吸慢了下来。"
+      },
+      {
+        "en": "He deleted half the words and asked a question instead.",
+        "zh": "他删掉一半的话，改为提出问题。"
+      }
+    ],
+    "words": [
+      [
+        "reply",
+        "回复"
+      ],
+      [
+        "delete",
+        "删除"
+      ],
+      [
+        "conversation",
+        "对话"
+      ]
+    ],
+    "quote": "A pause creates space between feeling and action.",
+    "quoteZh": "暂停在感受与行动之间创造空间。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "shared-bike",
+    "title": "The Bicycle Everyone Shared",
+    "chineseTitle": "大家共用的自行车",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "社区生活",
+    "minutes": 5,
+    "intro": "公共物品需要共同责任。",
+    "paragraphs": [
+      {
+        "en": "The neighborhood bought bicycles that anyone could borrow. Soon, one tire was flat.",
+        "zh": "社区购买了任何人都能借用的自行车。不久，一只轮胎没气了。"
+      },
+      {
+        "en": "People complained, but no one believed repairs were their job.",
+        "zh": "人们抱怨，却没人认为维修是自己的责任。"
+      },
+      {
+        "en": "Students created a repair morning. “Everyone’s” began to mean “ours.”",
+        "zh": "学生设立维修日。“大家的”开始意味着“我们的”。"
+      }
+    ],
+    "words": [
+      [
+        "borrow",
+        "借用"
+      ],
+      [
+        "repair",
+        "维修"
+      ],
+      [
+        "responsibility",
+        "责任"
+      ]
+    ],
+    "quote": "Shared ownership needs shared care.",
+    "quoteZh": "共同所有需要共同爱护。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "coral-city",
+    "title": "A City Built by Tiny Animals",
+    "chineseTitle": "微小动物建造的城市",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "海洋生命",
+    "minutes": 5,
+    "intro": "珊瑚礁是微小生命长期合作的成果。",
+    "paragraphs": [
+      {
+        "en": "A coral reef looks like a colorful underwater city, yet its builders are tiny polyps.",
+        "zh": "珊瑚礁像多彩的海底城市，建造者却是微小的珊瑚虫。"
+      },
+      {
+        "en": "Generation after generation, they build homes for many sea creatures.",
+        "zh": "一代又一代，它们为许多海洋生物建造家园。"
+      },
+      {
+        "en": "Protecting reefs means protecting an entire community.",
+        "zh": "保护珊瑚礁就是保护整个生命群落。"
+      }
+    ],
+    "words": [
+      [
+        "reef",
+        "珊瑚礁"
+      ],
+      [
+        "polyp",
+        "珊瑚虫"
+      ],
+      [
+        "community",
+        "群落"
+      ]
+    ],
+    "quote": "Great cities can begin with tiny builders.",
+    "quoteZh": "伟大的生命之城可由微小建造者创造。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "word-no-twin",
+    "title": "The Word That Had No Twin",
+    "chineseTitle": "没有双胞胎的词",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "语言文化",
+    "minutes": 5,
+    "intro": "翻译在不同文化之间搭桥。",
+    "paragraphs": [
+      {
+        "en": "Mei found a word in a poem with no exact twin in English.",
+        "zh": "梅发现诗中一个词在英语里没有完全对应的表达。"
+      },
+      {
+        "en": "It was an invitation to explain a different way of seeing the world.",
+        "zh": "这是一个解释不同世界观的邀请。"
+      },
+      {
+        "en": "Translation lets readers notice the beautiful distance between languages.",
+        "zh": "翻译让读者看见语言之间美丽的距离。"
+      }
+    ],
+    "words": [
+      [
+        "translate",
+        "翻译"
+      ],
+      [
+        "exact",
+        "完全准确的"
+      ],
+      [
+        "distance",
+        "距离"
+      ]
+    ],
+    "quote": "Translation builds a bridge without removing the river.",
+    "quoteZh": "翻译架起桥梁，却不抹去河流。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "dark-sky",
+    "title": "The Town That Turned Off Its Lights",
+    "chineseTitle": "关掉灯光的小镇",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "环境保护",
+    "minutes": 5,
+    "intro": "减少光污染能让星空重新出现。",
+    "paragraphs": [
+      {
+        "en": "For one night, a town turned off unnecessary lights.",
+        "zh": "一个夜晚，小镇关闭了不必要的灯光。"
+      },
+      {
+        "en": "The Milky Way appeared, and night animals benefited from natural darkness.",
+        "zh": "银河出现了，夜行动物也从自然黑暗中受益。"
+      },
+      {
+        "en": "Pollution can be too much of something useful in the wrong place.",
+        "zh": "污染可能只是有用之物在错误地点出现得太多。"
+      }
+    ],
+    "words": [
+      [
+        "unnecessary",
+        "不必要的"
+      ],
+      [
+        "benefit",
+        "受益"
+      ],
+      [
+        "pollution",
+        "污染"
+      ]
+    ],
+    "quote": "We need light, but we also need darkness.",
+    "quoteZh": "我们需要光，也需要黑暗。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "things-library",
+    "title": "A Library Without Books",
+    "chineseTitle": "没有书的图书馆",
+    "grade": "八年级",
+    "difficulty": "进阶",
+    "topic": "创新生活",
+    "minutes": 5,
+    "intro": "图书馆也可以共享工具。",
+    "paragraphs": [
+      {
+        "en": "People borrowed drills, sewing machines, tents, and cake pans from this unusual library.",
+        "zh": "人们从这家特别的图书馆借电钻、缝纫机、帐篷和蛋糕模具。"
+      },
+      {
+        "en": "Sharing saved money, reduced waste, and helped neighbors learn skills.",
+        "zh": "共享节省金钱、减少浪费，也帮助邻居学习技能。"
+      },
+      {
+        "en": "A community grows stronger when resources are open to many people.",
+        "zh": "当资源向更多人开放时，社区会变得更强大。"
+      }
+    ],
+    "words": [
+      [
+        "drill",
+        "电钻"
+      ],
+      [
+        "reduce",
+        "减少"
+      ],
+      [
+        "resource",
+        "资源"
+      ]
+    ],
+    "quote": "Sharing turns objects into opportunities.",
+    "quoteZh": "共享让物品变成机会。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "question-tree",
+    "title": "The Tree of Questions",
+    "chineseTitle": "问题之树",
+    "grade": "七年级",
+    "difficulty": "基础",
+    "topic": "科学思维",
+    "minutes": 5,
+    "intro": "一个好问题会长出更多问题。",
+    "paragraphs": [
+      {
+        "en": "The teacher drew a tree and wrote, “Why do leaves change color?” on its trunk.",
+        "zh": "老师画了一棵树，并在树干上写下：“树叶为什么会变色？”"
+      },
+      {
+        "en": "Each answer produced new branches and new questions.",
+        "zh": "每个答案都长出新的枝条和问题。"
+      },
+      {
+        "en": "The students discovered the shape of curiosity.",
+        "zh": "学生们发现了好奇心的形状。"
+      }
+    ],
+    "words": [
+      [
+        "trunk",
+        "树干"
+      ],
+      [
+        "branch",
+        "树枝"
+      ],
+      [
+        "curiosity",
+        "好奇心"
+      ]
+    ],
+    "quote": "Every strong question grows new branches.",
+    "quoteZh": "有力量的问题会长出新的枝条。",
+    "collection": "主题拓展"
+  },
+  {
+    "id": "future-letter",
+    "title": "A Letter to My Future Self",
+    "chineseTitle": "写给未来自己的信",
+    "grade": "九年级",
+    "difficulty": "挑战",
+    "topic": "自我成长",
+    "minutes": 5,
+    "intro": "成长是在变化中重新认识自己。",
+    "paragraphs": [
+      {
+        "en": "At fifteen, Hana wrote a letter to the person she would be at twenty-five.",
+        "zh": "十五岁时，花奈给二十五岁的自己写了一封信。"
+      },
+      {
+        "en": "Ten years later, her plans had changed, but she still wished to be useful, brave, and kind.",
+        "zh": "十年后，计划已改变，但她仍希望成为有用、勇敢而善良的人。"
+      },
+      {
+        "en": "A direction can remain even when the road changes.",
+        "zh": "道路会改变，方向却可以保留。"
+      }
+    ],
+    "words": [
+      [
+        "promise",
+        "承诺"
+      ],
+      [
+        "recognize",
+        "认出"
+      ],
+      [
+        "direction",
+        "方向"
+      ]
+    ],
+    "quote": "The road may change while the direction remains.",
+    "quoteZh": "道路可以改变，方向仍可保留。",
+    "collection": "主题拓展"
+  }
+]

@@ -1,0 +1,567 @@
+[
+  {
+    "id": "beijing-zhongkao-2024",
+    "title": "2024年北京市初中学业水平考试英语真题",
+    "year": 2024,
+    "region": "北京市",
+    "subject": "英语",
+    "durationMinutes": 90,
+    "totalScore": 60,
+    "status": "published",
+    "sourceType": "verified-reprint",
+    "sourceOrganization": "北京高考在线（转载整理）",
+    "sourceUrl": "https://www.gaokzx.com/gk/zhongkao/126361.html",
+    "attachmentUrl": "https://cdn.gaokzx.com/17228521279972024%E5%8C%97%E4%BA%AC%E4%B8%AD%E8%80%83%E7%9C%9F%E9%A2%98%E8%8B%B1%E8%AF%AD%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.pdf",
+    "fileSha256": "AA33A6F733641F54D746747FE0B7161933790BCAD292E602C7DE20EB3EC1BE6F",
+    "pageCount": 15,
+    "copyrightNote": "依据公开转载 PDF 人工结构化，非北京市教育考试院官方发布。",
+    "instructions": "本卷共五道大题，满分60分，考试时间90分钟。客观题自动评分；阅读表达和作文提交后显示参考答案。",
+    "sections": [
+      {
+        "id": "grammar",
+        "title": "一、单项填空（每题0.5分，共6分）",
+        "type": "choice",
+        "instructions": "从A、B、C、D四个选项中选择最佳选项。",
+        "questions": [
+          {
+            "id": "q1",
+            "type": "choice",
+            "prompt": "My friends and I like sports. ______ often play basketball together after school.",
+            "options": [
+              "We",
+              "I",
+              "They",
+              "You"
+            ],
+            "answer": "A",
+            "explanation": "My friends and I 对应主语 We。",
+            "score": 0.5
+          },
+          {
+            "id": "q2",
+            "type": "choice",
+            "prompt": "The Chang’e-6 landed on the far side of the moon ______ June 2, 2024.",
+            "options": [
+              "at",
+              "on",
+              "to",
+              "in"
+            ],
+            "answer": "B",
+            "explanation": "具体日期前使用 on。",
+            "score": 0.5
+          },
+          {
+            "id": "q3",
+            "type": "choice",
+            "prompt": "—Bill, ______ I use your ruler? —Of course you can.",
+            "options": [
+              "can",
+              "must",
+              "need",
+              "should"
+            ],
+            "answer": "A",
+            "explanation": "can 可用于请求许可。",
+            "score": 0.5
+          },
+          {
+            "id": "q4",
+            "type": "choice",
+            "prompt": "What a lovely reading room! It’s one of ______ in our school.",
+            "options": [
+              "nice",
+              "nicer",
+              "nicest",
+              "the nicest"
+            ],
+            "answer": "D",
+            "explanation": "one of the + 形容词最高级。",
+            "score": 0.5
+          },
+          {
+            "id": "q5",
+            "type": "choice",
+            "prompt": "—Lily, your new schoolbag is pretty. ______ did you buy it? —In a store near my home.",
+            "options": [
+              "How",
+              "Where",
+              "Why",
+              "When"
+            ],
+            "answer": "B",
+            "explanation": "答语是地点，使用 Where。",
+            "score": 0.5
+          },
+          {
+            "id": "q6",
+            "type": "choice",
+            "prompt": "—Would you like to go boating with me? —Yes, I’d love to, ______ I have to finish my science project first.",
+            "options": [
+              "and",
+              "or",
+              "but",
+              "for"
+            ],
+            "answer": "C",
+            "explanation": "前后构成转折关系。",
+            "score": 0.5
+          },
+          {
+            "id": "q7",
+            "type": "choice",
+            "prompt": "—What did you do last Saturday? —I ______ to the nursing home and worked as a volunteer.",
+            "options": [
+              "go",
+              "went",
+              "will go",
+              "was going"
+            ],
+            "answer": "B",
+            "explanation": "last Saturday 表示一般过去时。",
+            "score": 0.5
+          },
+          {
+            "id": "q8",
+            "type": "choice",
+            "prompt": "A lot of people in China ______ by high-speed train every year.",
+            "options": [
+              "travel",
+              "traveled",
+              "will travel",
+              "have traveled"
+            ],
+            "answer": "A",
+            "explanation": "every year 表示一般现在时。",
+            "score": 0.5
+          },
+          {
+            "id": "q9",
+            "type": "choice",
+            "prompt": "—What were you doing yesterday evening? —I ______ a book in my study.",
+            "options": [
+              "am reading",
+              "have read",
+              "was reading",
+              "will read"
+            ],
+            "answer": "C",
+            "explanation": "描述过去某一时刻正在进行的动作。",
+            "score": 0.5
+          },
+          {
+            "id": "q10",
+            "type": "choice",
+            "prompt": "With the help of my teacher, I ______ much progress in English since last year.",
+            "options": [
+              "am making",
+              "will make",
+              "was making",
+              "have made"
+            ],
+            "answer": "D",
+            "explanation": "since last year 常与现在完成时连用。",
+            "score": 0.5
+          },
+          {
+            "id": "q11",
+            "type": "choice",
+            "prompt": "Chinese ______ by more and more people around the world these days.",
+            "options": [
+              "speaks",
+              "spoke",
+              "is spoken",
+              "was spoken"
+            ],
+            "answer": "C",
+            "explanation": "Chinese 与 speak 为被动关系，且描述当前事实。",
+            "score": 0.5
+          },
+          {
+            "id": "q12",
+            "type": "choice",
+            "prompt": "—Do you know ______ the art festival? —Next Friday.",
+            "options": [
+              "when did we hold",
+              "when we held",
+              "when will we hold",
+              "when we will hold"
+            ],
+            "answer": "D",
+            "explanation": "宾语从句使用陈述语序，且动作发生在将来。",
+            "score": 0.5
+          }
+        ]
+      },
+      {
+        "id": "cloze",
+        "title": "二、完形填空（每题1分，共8分）",
+        "type": "choice",
+        "instructions": "阅读短文，选择最佳选项。",
+        "questions": [
+          {
+            "id": "q13",
+            "type": "choice",
+            "passage": "Every summer Serena attended a horseback-riding camp. Coach Rose asked her to ride Harley instead of her favorite horse Piper. Harley was tall and unfamiliar, and at first threw Serena off. Rose explained that Harley was scared too. Serena spoke to him gently, walked him around the ring and slowly built mutual trust. By the final race, they worked confidently together and won. Serena then understood why Rose had paired them.",
+            "prompt": "Rose needed to save Piper for newer ______ this year.",
+            "options": [
+              "leaders",
+              "riders",
+              "climbers",
+              "drivers"
+            ],
+            "answer": "B",
+            "explanation": "Piper 是马，应留给新骑手 riders。",
+            "score": 1
+          },
+          {
+            "id": "q14",
+            "type": "choice",
+            "prompt": "Serena felt ______ when she could not ride Piper.",
+            "options": [
+              "stupid",
+              "disappointed",
+              "comfortable",
+              "lucky"
+            ],
+            "answer": "B",
+            "explanation": "不能骑最喜欢的马使她失望。",
+            "score": 1
+          },
+          {
+            "id": "q15",
+            "type": "choice",
+            "prompt": "Serena thought Harley was too hard to ______.",
+            "options": [
+              "refuse",
+              "raise",
+              "cheat",
+              "control"
+            ],
+            "answer": "D",
+            "explanation": "被马甩下后，她认为 Harley 难以控制。",
+            "score": 1
+          },
+          {
+            "id": "q16",
+            "type": "choice",
+            "prompt": "Serena decided it was time for a fresh ______.",
+            "options": [
+              "answer",
+              "memory",
+              "start",
+              "topic"
+            ],
+            "answer": "C",
+            "explanation": "a fresh start 意为重新开始。",
+            "score": 1
+          },
+          {
+            "id": "q17",
+            "type": "choice",
+            "prompt": "She talked to Harley ______ until he calmed down.",
+            "options": [
+              "angrily",
+              "softly",
+              "curiously",
+              "sadly"
+            ],
+            "answer": "B",
+            "explanation": "她温柔地与马交流。",
+            "score": 1
+          },
+          {
+            "id": "q18",
+            "type": "choice",
+            "prompt": "Their confidence in each other ______.",
+            "options": [
+              "fell",
+              "returned",
+              "grew",
+              "remained"
+            ],
+            "answer": "C",
+            "explanation": "随着共同进步，彼此的信任增长。",
+            "score": 1
+          },
+          {
+            "id": "q19",
+            "type": "choice",
+            "prompt": "Harley, ______ the excitement of the day, ran through the course quickly.",
+            "options": [
+              "sensing",
+              "breaking",
+              "hiding",
+              "spreading"
+            ],
+            "answer": "A",
+            "explanation": "sense the excitement 表示感受到兴奋气氛。",
+            "score": 1
+          },
+          {
+            "id": "q20",
+            "type": "choice",
+            "prompt": "Rose wanted Serena to ______ herself to become a better rider.",
+            "options": [
+              "advise",
+              "accept",
+              "choose",
+              "challenge"
+            ],
+            "answer": "D",
+            "explanation": "教练希望她挑战自己。",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "id": "reading",
+        "title": "三、阅读理解（每题2分，共26分）",
+        "type": "reading",
+        "questions": [
+          {
+            "id": "q21",
+            "type": "choice",
+            "passage": "A White’s sells locally grown fruit. B William’s sells fresh food, cakes and cookies. C Parker’s sells women’s clothes and beautiful handmade hats. D Brown’s sells fairly priced shoes and new children’s clothing.",
+            "prompt": "Helen wants to buy a beautiful hat for her mother. Which store should she choose?",
+            "options": [
+              "White’s",
+              "William’s",
+              "Parker’s",
+              "Brown’s"
+            ],
+            "answer": "C",
+            "explanation": "Parker’s 售卖手工帽子。",
+            "score": 2
+          },
+          {
+            "id": "q22",
+            "type": "choice",
+            "prompt": "Peter needs a big cake and cookies for a birthday party. Which store should he choose?",
+            "options": [
+              "White’s",
+              "William’s",
+              "Parker’s",
+              "Brown’s"
+            ],
+            "answer": "B",
+            "explanation": "William’s 售卖蛋糕和曲奇。",
+            "score": 2
+          },
+          {
+            "id": "q23",
+            "type": "choice",
+            "prompt": "Mark wants to buy his grandfather a pair of sports shoes. Which store should he choose?",
+            "options": [
+              "White’s",
+              "William’s",
+              "Parker’s",
+              "Brown’s"
+            ],
+            "answer": "D",
+            "explanation": "Brown’s 售卖价格公道的鞋。",
+            "score": 2
+          },
+          {
+            "id": "q24",
+            "type": "choice",
+            "passage": "Scott, president of the recycling club, learned online that electronic waste was increasing rapidly. He organized an e-waste drive at school. Families brought unwanted phones, televisions, computers and keyboards. The event was so successful that people suggested holding one every term.",
+            "prompt": "What did Scott learn during his online research?",
+            "options": [
+              "Students are enthusiastic about recycling.",
+              "A lot of waste is recycled every year.",
+              "The amount of e-waste is increasing rapidly.",
+              "There are many recycling clubs."
+            ],
+            "answer": "C",
+            "explanation": "原文明确指出电子垃圾数量快速增加。",
+            "score": 2
+          },
+          {
+            "id": "q25",
+            "type": "choice",
+            "prompt": "How did Scott feel at first on the big day?",
+            "options": [
+              "Proud.",
+              "Upset.",
+              "Excited.",
+              "Nervous."
+            ],
+            "answer": "D",
+            "explanation": "活动开始时 Scott 很紧张。",
+            "score": 2
+          },
+          {
+            "id": "q26",
+            "type": "choice",
+            "prompt": "What did Scott realize at the end of the event?",
+            "options": [
+              "All environmental problems could be solved.",
+              "A simple action could have a lasting influence.",
+              "Only teamwork makes events successful.",
+              "Families prefer school activities."
+            ],
+            "answer": "B",
+            "explanation": "结尾指出简单行动可以产生长远影响。",
+            "score": 2
+          },
+          {
+            "id": "q27",
+            "type": "choice",
+            "passage": "A 2022 online navigation-game experiment compared nearly four million players’ performance with their backgrounds. Northern Europeans and people from cities with disorganized streets often performed better. Studies of the forest-living Tsimane community found no gender difference, even among children. Researchers concluded that culture, environment and opportunities to explore strongly shape navigation skills.",
+            "prompt": "Why was the 2022 experiment carried out?",
+            "options": [
+              "To develop an online game.",
+              "To improve players’ ability.",
+              "To identify weak players.",
+              "To find what causes differences in way-finding ability."
+            ],
+            "answer": "D",
+            "explanation": "实验目的是研究影响辨路能力的因素。",
+            "score": 2
+          },
+          {
+            "id": "q28",
+            "type": "choice",
+            "prompt": "Who is probably best at finding their way?",
+            "options": [
+              "A woman who often explores nature.",
+              "A girl who studies culture.",
+              "A man who only runs on a sports ground.",
+              "A boy in a city with orderly streets."
+            ],
+            "answer": "A",
+            "explanation": "探索环境的生活经验有助于形成导航能力。",
+            "score": 2
+          },
+          {
+            "id": "q29",
+            "type": "choice",
+            "prompt": "What can we learn from the navigation passage?",
+            "options": [
+              "Good navigators are mostly made, not born.",
+              "Skills mainly differ by gender.",
+              "Skills are inherited and never lost.",
+              "Navigators drive technology."
+            ],
+            "answer": "A",
+            "explanation": "文章强调经验和环境，而非先天性别。",
+            "score": 2
+          },
+          {
+            "id": "q30",
+            "type": "choice",
+            "passage": "People sometimes act against their inner values, which may cause shame, damaged relationships and self-doubt. Recognizing this disagreement, reflecting mindfully and communicating openly can help people change. Compassion for ourselves and others allows us to discuss difficulties honestly and gradually align our behavior with our beliefs.",
+            "prompt": "Why does the writer use examples at the beginning?",
+            "options": [
+              "To stress an unavoidable need.",
+              "To show a result of wrong values.",
+              "To describe a common human experience.",
+              "To introduce relationship changes."
+            ],
+            "answer": "C",
+            "explanation": "例子说明行为与价值观不一致是普遍经历。",
+            "score": 2
+          },
+          {
+            "id": "q31",
+            "type": "choice",
+            "prompt": "What does “aligning” most probably mean?",
+            "options": [
+              "Matching.",
+              "Comparing.",
+              "Mixing.",
+              "Confusing."
+            ],
+            "answer": "A",
+            "explanation": "align 在此意为使行为与信念一致。",
+            "score": 2
+          },
+          {
+            "id": "q32",
+            "type": "choice",
+            "prompt": "Which statement would the writer agree with?",
+            "options": [
+              "Discomfort forces us to give up beliefs.",
+              "Behavior weakens our understanding of life.",
+              "Open communication makes change possible.",
+              "Silence helps us meet our standards."
+            ],
+            "answer": "C",
+            "explanation": "文章支持正念和开放交流促进改变。",
+            "score": 2
+          },
+          {
+            "id": "q33",
+            "type": "choice",
+            "prompt": "What is the writer’s main purpose?",
+            "options": [
+              "To encourage people to stay true to their beliefs.",
+              "To prove the importance of correct values.",
+              "To compare ways of handling discomfort.",
+              "To discuss improper actions only."
+            ],
+            "answer": "A",
+            "explanation": "全文鼓励人们通过反思让行动符合内心信念。",
+            "score": 2
+          }
+        ]
+      },
+      {
+        "id": "response",
+        "title": "四、阅读表达（共10分）",
+        "type": "subjective",
+        "questions": [
+          {
+            "id": "q34",
+            "type": "subjective",
+            "passage": "The writer used a running app and became overly focused on distance, time and calories. Tiny numerical differences made him disappointed, although he had achieved a lot. He argues that exercise should build confidence, improve daily life and make us feel healthy—not merely produce impressive numbers.",
+            "prompt": "Why did the writer start to use the app?",
+            "answer": "To keep a record of his running.",
+            "explanation": "参考答案：To keep a record of his running.",
+            "score": 2
+          },
+          {
+            "id": "q35",
+            "type": "subjective",
+            "prompt": "What did the writer forget to consider when he focused too much on numbers?",
+            "answer": "What he achieved.",
+            "explanation": "参考答案：He forgot to consider what he achieved.",
+            "score": 2
+          },
+          {
+            "id": "q36",
+            "type": "subjective",
+            "prompt": "According to the writer, what should be our purpose of exercising?",
+            "answer": "Building our confidence.",
+            "explanation": "参考答案：Building our confidence.",
+            "score": 2
+          },
+          {
+            "id": "q37",
+            "type": "subjective",
+            "prompt": "Which is more important: feeling good about yourself or about the numbers? Give two reasons.",
+            "answer": "Open answer. Support the choice with two relevant reasons.",
+            "explanation": "开放题：观点明确，并给出两个与健康、信心或生活质量有关的理由。",
+            "score": 4
+          }
+        ]
+      },
+      {
+        "id": "writing",
+        "title": "五、文段表达（10分）",
+        "type": "writing",
+        "questions": [
+          {
+            "id": "q38",
+            "type": "writing",
+            "prompt": "任选一题写不少于50词：①你校将接待国外学生代表团，请为英语社团设计一项交流活动并说明理由；②介绍你最好的一位朋友，并叙述你们之间一段难忘的经历。",
+            "answer": "内容完整、语言准确、结构连贯；需回应所选题目的全部要点。",
+            "explanation": "题目①应包含活动设计和理由；题目②应包含朋友介绍及一次难忘经历。",
+            "score": 10
+          }
+        ]
+      }
+    ]
+  }
+]

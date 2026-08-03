@@ -1,0 +1,10 @@
+﻿import {api} from '../api.js';
+import {renderMarkdown} from '../markdown.js';
+export default{
+  props:{mode:{default:'general'},context:{default:()=>({})}},
+  data:()=>({open:false,enabled:false,engine:'codex-core',busy:false,error:'',text:'',threadId:'',messages:[{role:'assistant',text:'你好！我是你的智能英语学习助手。可以问我单词、语法、阅读、错题或写作问题。'}]}),
+  async mounted(){try{const status=await api('/api/agent/status');this.enabled=status.enabled;this.engine=status.engine||'codex-core'}catch(_){}},
+  methods:{renderMarkdown,async send(){const text=this.text.trim();if(!text||this.busy)return;this.messages.push({role:'user',text});this.text='';this.busy=true;this.error='';try{const out=await api('/api/agent/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,threadId:this.threadId,mode:this.mode,context:this.context})});this.threadId=out.threadId;this.messages.push({role:'assistant',text:out.message})}catch(e){this.error=e.message}finally{this.busy=false;this.$nextTick(()=>{const box=this.$refs.messages;if(box)box.scrollTop=box.scrollHeight})}},newChat(){this.threadId='';this.messages=[{role:'assistant',text:'新对话已开始。今天想学习什么？'}]}},
+  template:`<div v-if="enabled" class="agent-assistant"><button class="agent-fab" @click="open=!open" title="智能学习助手">🤖<span>AI 助学</span></button><section v-if="open" class="agent-panel"><header><div><b>智能英语助教</b><small>由 {{engine==='claude-code'?'Claude Code':'Codex Core'}} 驱动</small></div><button @click="newChat">新对话</button><button @click="open=false">×</button></header><main ref="messages"><article v-for="(m,i) in messages" :key="i" :class="m.role"><b>{{m.role==='user'?'我':'助教'}}</b><div v-if="m.role==='assistant'" class="agent-markdown" v-html="renderMarkdown(m.text)"></div><p v-else>{{m.text}}</p></article><p v-if="busy" class="agent-thinking">正在思考...</p></main><div v-if="error" class="agent-error">{{error}}</div><footer><textarea v-model="text" @keydown.enter.exact.prevent="send" rows="2" placeholder="输入学习问题，Enter 发送"></textarea><button :disabled="busy||!text.trim()" @click="send">发送</button></footer></section></div>`
+}
+

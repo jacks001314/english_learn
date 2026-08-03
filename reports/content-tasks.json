@@ -1,0 +1,12 @@
+[
+  {
+    "file": "backend/primary_school.json",
+    "tasks": null,
+    "counts": {}
+  },
+  {
+    "file": "backend/middle_school.json",
+    "tasks": null,
+    "counts": {}
+  }
+]

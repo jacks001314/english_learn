@@ -1,0 +1,13 @@
+# Ignore hidden directories such as .gocache and .tmp.
+.*/
+!/.agents/
+!/.agents/**
+!/.github/
+!/.github/workflows/
+!/.github/workflows/macos-platform-gates.yml
+fuck.*
+code.exe
+bin/
+!sandbox/windowssandbox/bin/
+!sandbox/windowssandbox/bin/**
+dist/

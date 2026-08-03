@@ -1,0 +1,68 @@
+:root{--workspace-gutter:clamp(12px,1.25vw,24px)}
+.app-shell.sidebar-collapsed{--sidebar-width:82px}.sidebar-collapsed .app-sidebar{width:var(--sidebar-width)}
+.app-content>main{width:calc(100% - var(--workspace-gutter)*2);max-width:none;min-width:0;margin-inline:auto;container:workspace/inline-size}
+.app-content>main>*{min-width:0;max-width:100%}
+.app-content>main main{width:100%;max-width:none;margin:0}
+.app-content>main :is(section,article,aside,main,div,form,fieldset,label){min-width:0}
+.app-content>main :is(input,select,textarea){max-width:100%}
+.desktop-home,.smart-studio,.hw-admin-shell,.lifecycle-workbench,.exam-builder,.factory-page,.reading-view,.exam-view,.workbench,.agent-settings-page,.homework-page,.admin-view,.admin-overview,.content-status-view,.report-view,.mistakes-view,.quiz-view,.learn-view{width:100%;max-width:none;margin-left:0;margin-right:0}
+.factory-page,.agent-settings-page,.security-panel{max-width:1500px;margin-inline:auto}
+.user-table-wrap,.content-list,.article-list,.lifecycle-validation,.factory-review-toolbar{max-width:100%;overscroll-behavior:contain}
+.user-table-wrap{overflow-x:auto}.user-table{width:100%;min-width:620px}
+
+/* Fluid desktop columns use the actual content width after the sidebar is removed. */
+.home-workspace{grid-template-columns:minmax(0,1fr) clamp(260px,24cqi,330px)}
+.reading-layout{grid-template-columns:clamp(230px,22cqi,280px) minmax(0,1fr)}
+.exam-view .exam-library{grid-template-columns:minmax(0,1fr) clamp(230px,23cqi,320px)}
+.workbench-grid{grid-template-columns:clamp(260px,27cqi,390px) minmax(0,1fr)}
+.factory-layout{grid-template-columns:clamp(270px,25cqi,360px) minmax(0,1fr)}
+.homework-grid{grid-template-columns:clamp(220px,24cqi,300px) minmax(0,1fr)}
+.admin-grid{grid-template-columns:minmax(0,1.5fr) minmax(260px,.7fr)}
+.smart-grid{grid-template-columns:minmax(280px,.95fr) minmax(340px,1.2fr) clamp(230px,19cqi,280px)}
+.hw-admin-grid{grid-template-columns:clamp(220px,20cqi,280px) minmax(0,1fr) clamp(280px,24cqi,340px);height:clamp(560px,calc(100vh - 238px),860px);min-height:0}
+.lifecycle-grid{grid-template-columns:clamp(210px,19cqi,255px) minmax(0,1fr) clamp(220px,20cqi,274px);height:clamp(560px,calc(100vh - 260px),860px);min-height:0}
+.exam-builder-layout{grid-template-columns:clamp(210px,20cqi,264px) minmax(0,1fr) clamp(220px,19cqi,244px);min-height:0}
+.exam-builder-list,.exam-builder-editor,.exam-builder-inspector{height:clamp(560px,calc(100vh - 260px),860px);min-height:0}
+.exam-session-layout{grid-template-columns:minmax(0,980px) clamp(190px,18cqi,230px);max-width:1240px}
+.smart-studio,.hw-admin-shell{width:100%}
+.smart-hero,.hw-admin-hero,.home-welcome,.exam-builder-hero,.lifecycle-hero,.factory-hero,.reading-banner,.exam-hero{max-width:100%}
+.smart-grid>*,.hw-admin-grid>*,.lifecycle-grid>*,.exam-builder-layout>*,.home-workspace>*,.reading-layout>*,.exam-library>*,.factory-layout>*,.workbench-grid>*{min-width:0}
+
+@container workspace (max-width:1180px){
+  .home-welcome{gap:24px;padding:28px}.home-daily-progress{min-width:260px}.home-workspace{grid-template-columns:minmax(0,1fr) 270px;gap:18px}.learning-path{grid-template-columns:repeat(2,minmax(0,1fr))}.recent-word-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hw-admin-hero{grid-template-columns:minmax(260px,1fr) minmax(280px,auto) auto;padding:19px 21px;gap:16px}.hw-admin-metrics{min-width:0}.hw-admin-metrics>div{padding-inline:10px}.hw-admin-toolbar{flex-wrap:wrap}.hw-admin-search{flex:1 1 220px;max-width:none}
+  .smart-hero{gap:20px}.smart-hero-progress{min-width:270px}.smart-controls{grid-template-columns:auto auto minmax(180px,1fr) auto}.smart-focus em:nth-of-type(n+3){display:none}
+  .lifecycle-toolbar,.exam-builder-toolbar{display:flex;flex-wrap:wrap}.lifecycle-search,.exam-builder-search{flex:1 1 240px}.lifecycle-grid{gap:9px}.exam-builder-layout{gap:9px}
+  .factory-review-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))!important}.factory-review-toolbar button{width:100%;min-width:0}.factory-review-toolbar>div{grid-column:1/-1}
+  .learn-view .toolbar{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}.learn-view .toolbar input{grid-column:span 2}.learn-view .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .factory-stats,.home-metrics,.report-summary,.admin-metrics{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+}
+
+@container workspace (max-width:980px){
+  .smart-grid{grid-template-columns:repeat(2,minmax(0,1fr));min-height:0}.smart-signals{grid-column:1/-1}.smart-event-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+  .hw-admin-grid{height:auto;grid-template-columns:clamp(205px,27cqi,235px) minmax(0,1fr)}.hw-admin-library,.hw-admin-workspace{height:clamp(560px,calc(100vh - 235px),800px)}.hw-admin-inspector{grid-column:1/-1;min-height:0;overflow:visible}.hw-admin-inspector.detail{display:grid;grid-template-columns:clamp(250px,34cqi,330px) minmax(0,1fr);grid-template-rows:auto auto minmax(180px,auto)}.hw-admin-inspector.detail>header,.hw-admin-inspector.detail>.hw-submission-progress{grid-column:1/-1}.hw-admin-inspector.detail>.hw-submission-roster{grid-column:1;grid-row:3;border-right:1px solid #dfe7e3;border-bottom:0}.hw-admin-inspector.detail>.hw-submission-detail,.hw-admin-inspector.detail>.hw-admin-empty{grid-column:2;grid-row:3;margin:0}.hw-admin-inspector.create{display:grid;grid-template-columns:1fr 1fr}.hw-admin-inspector.create>header,.hw-admin-inspector.create>.hw-publish-footer{grid-column:1/-1}.hw-admin-inspector.create>.hw-publish-section{border-right:1px solid #e4eae7}.hw-admin-inspector.create>.hw-publish-footer{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px}.hw-admin-inspector.create>.hw-publish-footer>div{margin:0}.hw-admin-inspector.create>.hw-publish-footer>button{width:auto;min-width:120px}.hw-admin-inspector.create>.hw-publish-footer>button.text{min-width:64px;margin:0}
+  .lifecycle-grid{height:auto;grid-template-columns:clamp(205px,27cqi,235px) minmax(0,1fr)}.lifecycle-list,.lifecycle-editor,.lifecycle-welcome{height:clamp(560px,calc(100vh - 255px),800px)}.lifecycle-history{grid-column:1/-1;height:auto;max-height:520px}.lifecycle-welcome{grid-column:2}.lifecycle-timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:5px}.lifecycle-timeline>button:after{display:none}
+  .exam-builder-layout{grid-template-columns:clamp(205px,27cqi,235px) minmax(0,1fr)}.exam-builder-list,.exam-builder-editor{height:clamp(560px,calc(100vh - 255px),800px)}.exam-builder-inspector{position:static;grid-column:1/-1;width:100%;height:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.exam-builder-inspector section+section{padding-top:5px;border-top:0;border-left:1px solid var(--line);padding-left:14px}
+  .workbench-grid{grid-template-columns:230px minmax(0,1fr);height:clamp(560px,72vh,820px)}.factory-layout{grid-template-columns:250px minmax(0,1fr)}.admin-grid{grid-template-columns:minmax(0,1fr)}
+  .reading-layout{grid-template-columns:220px minmax(0,1fr)}.paper-head{padding-inline:28px}.article-body{padding-inline:30px}.study-notes,.recite-tip{margin-inline:30px}.paper-footer{padding-inline:30px}
+  .exam-view .exam-library{grid-template-columns:minmax(0,1fr) 230px}.exam-view .paper-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.exam-session-layout{grid-template-columns:minmax(0,1fr)}.exam-question-nav{position:static;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center}.exam-question-grid{grid-template-columns:repeat(10,minmax(28px,1fr))}
+  .factory-schedules{grid-template-columns:minmax(260px,.7fr) minmax(0,1fr)}
+}
+
+@container workspace (max-width:760px){
+  .home-welcome,.smart-hero,.hw-admin-hero,.exam-builder-hero,.lifecycle-hero,.factory-hero,.reading-banner,.exam-hero,.admin-heading,.workbench-top{align-items:flex-start;flex-direction:column}.hw-admin-hero{display:flex}.hw-admin-metrics{width:100%;grid-template-columns:repeat(4,minmax(0,1fr))}.hw-admin-new{align-self:flex-start}.smart-hero-progress{width:100%;min-width:0}.home-daily-progress{width:100%;min-width:0}
+  .home-workspace{grid-template-columns:minmax(0,1fr)}.home-focus{padding:20px 0 0;border-top:1px solid var(--line);border-left:0}.recent-word-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .smart-controls{display:flex;flex-wrap:wrap}.smart-focus{order:4;width:100%}.smart-grid{grid-template-columns:minmax(0,1fr)}.smart-signals{grid-column:auto}.smart-event-list{grid-template-columns:minmax(0,1fr)}
+  .hw-admin-filters{max-width:100%;overflow-x:auto}.hw-admin-filters button{min-width:68px}.hw-compose-row,.hw-question-answer,.hw-detail-copy{grid-template-columns:minmax(0,1fr)}.hw-assignment-overview{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lifecycle-form,.content-form,.exam-builder-form-grid,.exam-builder-source-details>div,.agent-form-grid,.engine-options{grid-template-columns:minmax(0,1fr)}.lifecycle-form>*,.content-form>*,.exam-builder-form-grid>*{grid-column:1!important}.lifecycle-editor-actions,.editor-actions{align-items:flex-start;flex-wrap:wrap}.lifecycle-editor-actions>div:last-child,.editor-actions>div{flex-wrap:wrap}
+  .exam-builder-section-card>header{grid-template-columns:30px minmax(0,1fr) 90px}.exam-builder-section-card>header>.exam-builder-icon-actions{grid-column:2/-1}.exam-builder-question-head{grid-template-columns:28px minmax(100px,1fr) 80px}.exam-builder-question-head>*:last-child{grid-column:2/-1}.exam-builder-answer-row{grid-template-columns:1fr 1fr}.exam-builder-answer-row>*:last-child{grid-column:1/-1}
+  .factory-review{grid-template-columns:minmax(0,1fr)}.factory-review>*{grid-column:1!important}.factory-review-toolbar{grid-template-columns:1fr 1fr!important}.factory-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.factory-schedules{grid-template-columns:minmax(0,1fr)}
+  .reading-banner{display:flex}.reading-layout{grid-template-columns:minmax(0,1fr)}.article-sidebar{position:static;max-height:none}.article-list{display:flex;overflow-x:auto}.article-list-item{min-width:220px}.study-notes{grid-template-columns:minmax(0,1fr)}
+  .exam-view .exam-library{grid-template-columns:minmax(0,1fr)}.attempt-history{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 15px}.exam-toolbar{position:static;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.exam-toolbar>*{min-width:0}.exam-question-nav{grid-template-columns:minmax(0,1fr)}
+  .admin-grid{grid-template-columns:minmax(0,1fr)}.workbench-tabs{flex-wrap:wrap}.workbench-tabs input{flex-basis:100%;order:5}.report-summary,.home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@container workspace (max-width:620px){
+  .hw-admin-grid,.lifecycle-grid,.exam-builder-layout,.workbench-grid,.factory-layout,.homework-grid{grid-template-columns:minmax(0,1fr);height:auto}.hw-admin-library,.hw-admin-workspace,.lifecycle-list,.lifecycle-editor,.lifecycle-welcome,.exam-builder-list,.exam-builder-editor{width:100%;height:auto;min-height:420px}.hw-admin-inspector.detail,.hw-admin-inspector.create,.exam-builder-inspector{display:block}.hw-admin-inspector.detail>*{grid-column:auto;grid-row:auto}.lifecycle-history,.lifecycle-welcome,.exam-builder-inspector{grid-column:auto}.content-list{display:flex;overflow-x:auto}.content-list>button{min-width:220px}.hw-question-card>header{grid-template-columns:30px minmax(90px,1fr) auto 28px}.hw-admin-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto}.hw-admin-filters,.hw-admin-search{grid-column:1/-1;width:100%}.hw-admin-inspector.create>.hw-publish-footer{display:block}.hw-admin-inspector.create>.hw-publish-footer>button{width:100%;margin-top:7px}
+  .learn-view .toolbar,.learn-view .grid,.options,.mini-grid,.content-status-grid{grid-template-columns:minmax(0,1fr)}.learn-view .toolbar>*{grid-column:1!important}.factory-stats,.hw-admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.exam-builder-options-editor,.exam-builder-answer-row{grid-template-columns:minmax(0,1fr)}.exam-builder-answer-row>*{grid-column:1!important}.paper-grid{grid-template-columns:minmax(0,1fr)!important}
+}

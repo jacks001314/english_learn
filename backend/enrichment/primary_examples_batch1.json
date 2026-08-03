@@ -1,0 +1,22 @@
+[
+  {"id":"a.m.","example":"The library opens at 8 a.m.","exampleTranslation":"图书馆上午八点开门。","topic":"时间","grade":"四年级","unit":"扩展词汇"},
+  {"id":"again","example":"Please say that again.","exampleTranslation":"请再说一遍。","topic":"基础表达","grade":"三年级","unit":"扩展词汇"},
+  {"id":"all right","example":"Are you all right now?","exampleTranslation":"你现在还好吗？","topic":"基础表达","grade":"三年级","unit":"扩展词汇"},
+  {"id":"always","example":"I always wash my hands before lunch.","exampleTranslation":"我总是在午饭前洗手。","topic":"日常生活","grade":"三年级","unit":"扩展词汇"},
+  {"id":"and","example":"Tom and Amy are good friends.","exampleTranslation":"汤姆和艾米是好朋友。","topic":"基础表达","grade":"三年级","unit":"扩展词汇"},
+  {"id":"any","example":"Do you have any questions?","exampleTranslation":"你有任何问题吗？","topic":"基础表达","grade":"五年级","unit":"扩展词汇"},
+  {"id":"but","example":"I like tea, but my sister likes milk.","exampleTranslation":"我喜欢茶，但我妹妹喜欢牛奶。","topic":"基础表达","grade":"四年级","unit":"扩展词汇"},
+  {"id":"certainly","example":"Certainly, you can use my pencil.","exampleTranslation":"当然可以，你可以用我的铅笔。","topic":"基础表达","grade":"五年级","unit":"扩展词汇"},
+  {"id":"come on","example":"Come on, we are late for class!","exampleTranslation":"快点，我们上课要迟到了！","topic":"基础表达","grade":"五年级","unit":"扩展词汇"},
+  {"id":"day","example":"We have a new English lesson today.","exampleTranslation":"今天我们有一节新的英语课。","topic":"时间","grade":"三年级","unit":"扩展词汇"},
+  {"id":"each","example":"Each student has a book.","exampleTranslation":"每个学生都有一本书。","topic":"学校","grade":"四年级","unit":"扩展词汇"},
+  {"id":"enjoy","example":"I enjoy reading stories after dinner.","exampleTranslation":"我喜欢晚饭后读故事。","topic":"兴趣","grade":"五年级","unit":"扩展词汇"},
+  {"id":"everywhere","example":"There are flowers everywhere in spring.","exampleTranslation":"春天到处都是花。","topic":"自然","grade":"五年级","unit":"扩展词汇"},
+  {"id":"few","example":"Only a few students stayed after class.","exampleTranslation":"只有几个学生课后留下来。","topic":"学校","grade":"六年级","unit":"扩展词汇"},
+  {"id":"come from","example":"My friend comes from Canada.","exampleTranslation":"我的朋友来自加拿大。","topic":"国家","grade":"五年级","unit":"扩展词汇"},
+  {"id":"drop","example":"A drop of water fell on the table.","exampleTranslation":"一滴水落在桌子上。","topic":"自然","grade":"六年级","unit":"扩展词汇"},
+  {"id":"else","example":"Would you like anything else?","exampleTranslation":"你还想要别的东西吗？","topic":"基础表达","grade":"五年级","unit":"扩展词汇"},
+  {"id":"every","example":"Every child needs enough sleep.","exampleTranslation":"每个孩子都需要充足的睡眠。","topic":"健康","grade":"五年级","unit":"扩展词汇"},
+  {"id":"climbing","example":"The children are climbing the hill carefully.","exampleTranslation":"孩子们正在小心地爬山。","topic":"活动","grade":"六年级","unit":"扩展词汇"},
+  {"id":"come out","example":"The moon came out after the clouds moved away.","exampleTranslation":"云散去后月亮露了出来。","topic":"自然","grade":"六年级","unit":"扩展词汇"}
+]

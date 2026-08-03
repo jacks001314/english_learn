@@ -1,0 +1,15 @@
+[
+{"id":"air-conditioner","meaning":"空调；空气调节器","pos":"n.","example":"Please turn on the air-conditioner; the room is hot.","exampleTranslation":"请打开空调，房间里很热。","topic":"家居","grade":"五年级","unit":"词条清洗"},
+{"id":"truck","meaning":"卡车；货车","pos":"n.","example":"The truck carries vegetables to the market.","exampleTranslation":"这辆卡车把蔬菜运到市场。","topic":"交通","grade":"四年级","unit":"词条清洗"},
+{"id":"lives","meaning":"life的复数形式；生命","pos":"n.","example":"Doctors work hard to save lives.","exampleTranslation":"医生努力挽救生命。","topic":"健康","grade":"六年级","unit":"词条清洗"},
+{"id":"tomoto","word":"tomato","meaning":"西红柿；番茄","pos":"n.","example":"We put a tomato in the salad.","exampleTranslation":"我们在沙拉里放了一个西红柿。","topic":"食物","grade":"三年级","unit":"词条清洗"},
+{"id":"fɑ:ðə ] (","word":"grandfather","meaning":"祖父；外祖父","pos":"n.","phonetic":"/ˈɡrænfɑːðə(r)/","example":"My grandfather teaches me to grow vegetables.","exampleTranslation":"我的祖父教我种蔬菜。","topic":"家庭","grade":"三年级","unit":"词条清洗"},
+{"id":"tried","word":"tired","meaning":"疲劳的；累的","pos":"adj.","phonetic":"/ˈtaɪəd/","example":"I felt tired after the long walk.","exampleTranslation":"长途步行后我感到很累。","topic":"健康","grade":"四年级","unit":"词条清洗"},
+{"id":"ship：","word":"ship","meaning":"船；舰","pos":"n.","example":"The ship carried food across the sea.","exampleTranslation":"这艘船把食物运过大海。","topic":"交通","grade":"四年级","unit":"词条清洗"},
+{"id":"then：","word":"then","meaning":"然后；接着","pos":"adv.","example":"Wash the apples, then cut them into pieces.","exampleTranslation":"先洗苹果，然后把它们切成小块。","topic":"基础表达","grade":"三年级","unit":"词条清洗"},
+{"id":"subway：","word":"subway","meaning":"地铁","pos":"n.","example":"We take the subway to the museum.","exampleTranslation":"我们乘地铁去博物馆。","topic":"交通","grade":"四年级","unit":"词条清洗"},
+{"id":"traffic：","word":"traffic","meaning":"交通；来往车辆","pos":"n.","example":"There is heavy traffic near the school gate.","exampleTranslation":"校门附近交通繁忙。","topic":"交通","grade":"五年级","unit":"词条清洗"},
+{"id":"train：","word":"train","meaning":"火车","pos":"n.","example":"The train leaves at nine in the morning.","exampleTranslation":"火车上午九点出发。","topic":"交通","grade":"三年级","unit":"词条清洗"},
+{"id":"turn：","word":"turn","meaning":"转弯；转向","pos":"v.","example":"Turn left at the second crossing.","exampleTranslation":"在第二个路口左转。","topic":"方位","grade":"四年级","unit":"词条清洗"},
+{"id":"show","word":"show","meaning":"显示；展示；演出","pos":"v./n.","example":"Please show me your science project.","exampleTranslation":"请把你的科学项目展示给我看。","topic":"学校","grade":"四年级","unit":"词条清洗"}
+]

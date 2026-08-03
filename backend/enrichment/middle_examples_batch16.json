@@ -1,0 +1,22 @@
+[
+  {"id":"shot","example":"The goalkeeper saved a powerful shot from the striker.","exampleTranslation":"守门员挡住了前锋的一记有力射门。","topic":"运动","grade":"初中","unit":"词汇复习"},
+  {"id":"shoulder","example":"She carried the heavy bag over one shoulder.","exampleTranslation":"她把沉重的包挎在一边肩膀上。","topic":"身体","grade":"初中","unit":"词汇复习"},
+  {"id":"shout","example":"Please do not shout in the library.","exampleTranslation":"请不要在图书馆大喊大叫。","topic":"学校","grade":"初中","unit":"词汇复习"},
+  {"id":"shower","example":"I take a quick shower after basketball practice.","exampleTranslation":"篮球训练后我快速冲了个澡。","topic":"健康","grade":"初中","unit":"词汇复习"},
+  {"id":"showery","example":"The showery weather kept us indoors all afternoon.","exampleTranslation":"阵雨天气让我们整个下午都待在室内。","topic":"天气","grade":"初中","unit":"词汇复习"},
+  {"id":"shut","example":"Please shut the window before you leave.","exampleTranslation":"离开前请关上窗户。","topic":"生活","grade":"初中","unit":"词汇复习"},
+  {"id":"sign","example":"The sign tells visitors not to touch the paintings.","exampleTranslation":"标牌提醒游客不要触摸画作。","topic":"公共场所","grade":"初中","unit":"词汇复习"},
+  {"id":"silence","example":"The teacher asked for silence during the test.","exampleTranslation":"考试期间老师要求保持安静。","topic":"学校","grade":"初中","unit":"词汇复习"},
+  {"id":"silent","example":"The classroom became silent when the principal entered.","exampleTranslation":"校长进来时教室安静了下来。","topic":"学校","grade":"初中","unit":"词汇复习"},
+  {"id":"silently","example":"The students silently read the instructions.","exampleTranslation":"学生们默默地阅读说明。","topic":"学习","grade":"初中","unit":"词汇复习"},
+  {"id":"silly","example":"It was silly to leave an umbrella at home on such a rainy day.","exampleTranslation":"这么下雨的天气把伞落在家里真是傻。","topic":"生活","grade":"初中","unit":"词汇复习"},
+  {"id":"simple","example":"The science experiment is simple enough for beginners.","exampleTranslation":"这个科学实验对初学者来说足够简单。","topic":"学习","grade":"初中","unit":"词汇复习"},
+  {"id":"simply","example":"I simply forgot to bring my notebook.","exampleTranslation":"我只是忘了带笔记本。","topic":"学习","grade":"初中","unit":"词汇复习"},
+  {"id":"since","example":"She has lived in this town since 2020.","exampleTranslation":"她从2020年起就住在这个城镇。","topic":"时间","grade":"初中","unit":"词汇复习"},
+  {"id":"single","example":"There is a single empty seat near the door.","exampleTranslation":"门旁只有一个空座位。","topic":"生活","grade":"初中","unit":"词汇复习"},
+  {"id":"sink","example":"The stone sank slowly to the bottom of the pond.","exampleTranslation":"石头慢慢沉到了池塘底部。","topic":"自然","grade":"初中","unit":"词汇复习"},
+  {"id":"sit down","example":"Please sit down and wait for your turn.","exampleTranslation":"请坐下等候轮到你。","topic":"交流","grade":"初中","unit":"词汇复习"},
+  {"id":"situation","example":"The rescue team quickly understood the dangerous situation.","exampleTranslation":"救援队很快了解了危险的情况。","topic":"安全","grade":"初中","unit":"词汇复习"},
+  {"id":"skill","example":"Cooking is a useful skill for every teenager.","exampleTranslation":"烹饪是每个青少年都很有用的技能。","topic":"生活","grade":"初中","unit":"词汇复习"},
+  {"id":"sleepy","example":"I felt sleepy after studying until midnight.","exampleTranslation":"学习到午夜后我感到很困。","topic":"健康","grade":"初中","unit":"词汇复习"}
+]

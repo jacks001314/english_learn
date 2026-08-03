@@ -1,0 +1,1562 @@
+{
+  "files": [
+    {
+      "path": "backend/primary_school.json",
+      "words": 1331,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "backend/middle_school.json",
+      "words": 2895,
+      "errors": 0,
+      "warnings": 193
+    }
+  ],
+  "issues": [
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 23,
+      "id": "ability",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 39,
+      "id": "active",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 46,
+      "id": "address",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 47,
+      "id": "admire",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 74,
+      "id": "alexander graham bell",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 75,
+      "id": "alfred",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 76,
+      "id": "alien",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 84,
+      "id": "all of a sudden",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 95,
+      "id": "aloud",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 104,
+      "id": "american adj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 109,
+      "id": "ancestor",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 116,
+      "id": "annie",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 153,
+      "id": "as soon as conj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 157,
+      "id": "as...as conj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 187,
+      "id": "attend",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 188,
+      "id": "attention",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 197,
+      "id": "avoid",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 287,
+      "id": "best-seller n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 296,
+      "id": "billy",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 301,
+      "id": "biscuit",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 311,
+      "id": "blouse",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 341,
+      "id": "brain",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 342,
+      "id": "brand",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 357,
+      "id": "britain",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 369,
+      "id": "burial",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 372,
+      "id": "bus station n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 373,
+      "id": "business",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 384,
+      "id": "by mistake",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 406,
+      "id": "canadian",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 410,
+      "id": "candy",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 414,
+      "id": "cap",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 426,
+      "id": "carla",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 468,
+      "id": "chemistry",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 480,
+      "id": "choice",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 487,
+      "id": "circle",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 489,
+      "id": "clara",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 502,
+      "id": "clerk",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 518,
+      "id": "coat",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 521,
+      "id": "coin",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 567,
+      "id": "connect … with",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 572,
+      "id": "convenient",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 573,
+      "id": "conversation",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 575,
+      "id": "cookie",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 579,
+      "id": "coral reef n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 581,
+      "id": "corner",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 585,
+      "id": "cotton",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 605,
+      "id": "credit card n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 608,
+      "id": "crispy",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 640,
+      "id": "dead",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 681,
+      "id": "dining room n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 684,
+      "id": "direct",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 695,
+      "id": "discover",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 707,
+      "id": "divide ... into",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 753,
+      "id": "dvd n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 757,
+      "id": "each other pron",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 763,
+      "id": "earthquake",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 765,
+      "id": "east",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 792,
+      "id": "emily",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 798,
+      "id": "enemy",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 799,
+      "id": "energy",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 803,
+      "id": "english-speaking adj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 819,
+      "id": "even though",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 820,
+      "id": "even though conj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 855,
+      "id": "express",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 856,
+      "id": "expression",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 865,
+      "id": "faithfully",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 871,
+      "id": "fall in love with",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 877,
+      "id": "family name n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 878,
+      "id": "family tree n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 890,
+      "id": "fascinating",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 967,
+      "id": "fork",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 977,
+      "id": "france",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 984,
+      "id": "fridge",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1005,
+      "id": "garden",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1013,
+      "id": "germany",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1048,
+      "id": "glass",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1069,
+      "id": "gobi desert n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1071,
+      "id": "goddess",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1087,
+      "id": "grammar",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1096,
+      "id": "grass",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1118,
+      "id": "half-way adv",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1121,
+      "id": "halloween",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1127,
+      "id": "handbag",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1137,
+      "id": "hard-working adj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1200,
+      "id": "high jump n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1202,
+      "id": "high school n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1232,
+      "id": "hot dog n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1252,
+      "id": "human being n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1265,
+      "id": "ice cream n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1302,
+      "id": "increase",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1312,
+      "id": "inside prep",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1327,
+      "id": "introduction",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1353,
+      "id": "jean",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1357,
+      "id": "jerry",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1400,
+      "id": "kind-hearted adj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1413,
+      "id": "knowledge",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1423,
+      "id": "lantern",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1441,
+      "id": "leader",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1489,
+      "id": "living room n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1490,
+      "id": "living-room n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1491,
+      "id": "local",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1493,
+      "id": "lock",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1497,
+      "id": "long jump n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1508,
+      "id": "look up to",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1534,
+      "id": "mail",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1560,
+      "id": "mall",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1578,
+      "id": "material",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1612,
+      "id": "mid-autumn n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1615,
+      "id": "middle school n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1617,
+      "id": "midfield player n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1635,
+      "id": "mobile phone n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1647,
+      "id": "mooncake n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1654,
+      "id": "morning paper n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1686,
+      "id": "mystery",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1707,
+      "id": "neither...nor.. conj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1725,
+      "id": "no matter",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1729,
+      "id": "noise",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1743,
+      "id": "not only … but also",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1747,
+      "id": "note",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1760,
+      "id": "o'clock (=of the clock) ad. v",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1820,
+      "id": "out of prep",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1829,
+      "id": "overnight",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1844,
+      "id": "pal",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1852,
+      "id": "pardon",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1854,
+      "id": "parents n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1861,
+      "id": "partner",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1870,
+      "id": "patient",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1871,
+      "id": "pattern",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1872,
+      "id": "paula",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1876,
+      "id": "pay attention to",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1884,
+      "id": "peking opera n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1888,
+      "id": "pencil-box n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1898,
+      "id": "period",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1905,
+      "id": "physics",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1912,
+      "id": "picnic",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1952,
+      "id": "policeman",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1965,
+      "id": "position",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 1969,
+      "id": "post office n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 1992,
+      "id": "prevent",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2006,
+      "id": "product",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2013,
+      "id": "pronounce",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2025,
+      "id": "punish",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2028,
+      "id": "purpose",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2044,
+      "id": "queue jumper n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2045,
+      "id": "quick",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2061,
+      "id": "rained v",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2070,
+      "id": "reading room n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2077,
+      "id": "receive",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2099,
+      "id": "repeat",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2103,
+      "id": "request",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2110,
+      "id": "restroom",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2114,
+      "id": "review",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2155,
+      "id": "rush",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2170,
+      "id": "sar n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2205,
+      "id": "secret",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2218,
+      "id": "sentence",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2301,
+      "id": "sleepy",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2303,
+      "id": "sliver",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2321,
+      "id": "so that conj",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2338,
+      "id": "somebody",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2353,
+      "id": "sour",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2355,
+      "id": "south africa n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2368,
+      "id": "speed",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2372,
+      "id": "spider",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2380,
+      "id": "spring festival n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2398,
+      "id": "steel",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2400,
+      "id": "steering wheel n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2410,
+      "id": "stonehenge",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2418,
+      "id": "stranger",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2437,
+      "id": "sudden",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2440,
+      "id": "suggest",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2442,
+      "id": "suit",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2457,
+      "id": "surface",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2475,
+      "id": "table tennis n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2548,
+      "id": "textbook",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2561,
+      "id": "the great hall of the people n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2562,
+      "id": "the great wall n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2566,
+      "id": "the olympics",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2568,
+      "id": "the palace museum n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2570,
+      "id": "the summer palace n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2656,
+      "id": "translate",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2695,
+      "id": "two-story n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2726,
+      "id": "usa n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2740,
+      "id": "victor",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2741,
+      "id": "victory",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2755,
+      "id": "waiting room n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2766,
+      "id": "warn",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2770,
+      "id": "washroom",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2839,
+      "id": "wisely",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2843,
+      "id": "without doubt",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "meaning_page_reference",
+      "file": "backend/middle_school.json",
+      "index": 2844,
+      "id": "wolf",
+      "message": "中文释义疑似残留教材页码"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2872,
+      "id": "writing brush n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    },
+    {
+      "severity": "warning",
+      "code": "word_contains_pos",
+      "file": "backend/middle_school.json",
+      "index": 2889,
+      "id": "young pioneer n",
+      "message": "英文词汇末尾疑似混入词性标记"
+    }
+  ]
+}
