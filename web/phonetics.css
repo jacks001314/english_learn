@@ -1,0 +1,474 @@
+/* 国际音标学习 (IPA Learning) */
+.phon-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 22px clamp(12px, 2vw, 30px) 48px;
+}
+
+.phon-headline {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+.phon-eyebrow {
+  color: var(--green, #176b4d);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+.phon-headline h1 {
+  font-size: 30px;
+  letter-spacing: -0.5px;
+  color: var(--ink, #17231f);
+  margin: 4px 0 4px;
+}
+.phon-sub {
+  color: var(--muted, #6d7b75);
+  margin: 0 0 16px;
+  font-size: 13px;
+  max-width: 760px;
+}
+.phon-sub em {
+  font-style: normal;
+  color: var(--green-dark, #0d4f39);
+  font-weight: 750;
+}
+.phon-count {
+  min-width: 96px;
+  padding: 14px 16px;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.82);
+  text-align: center;
+}
+.phon-count b {
+  display: block;
+  color: var(--green-dark, #0d4f39);
+  font-size: 26px;
+}
+.phon-count span {
+  color: var(--muted, #6d7b75);
+  font-size: 11px;
+}
+
+.phon-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 14px;
+}
+.phon-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: #f0f5f2;
+  border-radius: 12px;
+}
+.phon-tabs button {
+  padding: 8px 18px;
+  border: none;
+  background: transparent;
+  color: var(--muted, #6d7b75);
+  font-size: 13px;
+  font-weight: 650;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.phon-tabs button.active {
+  background: #fff;
+  color: var(--green-dark, #0d4f39);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(30, 60, 47, 0.1);
+}
+
+.phon-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: min(360px, 100%);
+  flex: 1;
+}
+.phon-search span {
+  color: var(--muted, #6d7b75);
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.phon-search input {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 10px;
+  background: #f8faf7;
+  color: var(--ink, #17231f);
+  font-size: 13px;
+}
+.phon-search button {
+  border: 0;
+  background: #edf3ef;
+  color: #64736c;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.phon-layout {
+  display: grid;
+  grid-template-columns: 292px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.phon-list {
+  background: #fff;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 16px;
+  padding: 14px 12px;
+  position: sticky;
+  top: 16px;
+  box-shadow: 0 10px 30px rgba(40, 70, 56, 0.05);
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+}
+.phon-list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 4px 12px;
+}
+.phon-list-head b {
+  color: var(--ink, #17231f);
+  font-size: 14px;
+}
+.phon-list-head small {
+  color: var(--muted, #6d7b75);
+  font-size: 11px;
+}
+.phon-group + .phon-group {
+  margin-top: 2px;
+}
+.phon-group-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 9px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #f7faf8;
+  color: var(--green-dark, #0d4f39);
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+  transition: background 0.14s, border 0.14s;
+}
+.phon-group-head:hover {
+  background: #eef5f1;
+  border-color: #d9e8df;
+}
+.phon-group-chevron {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: #e4efe9;
+  color: var(--green-dark, #0d4f39);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+.phon-group-title {
+  flex: 1;
+  font-weight: 800;
+}
+.phon-group-head small {
+  color: var(--muted, #6d7b75);
+  font-size: 11px;
+}
+.phon-group-body {
+  padding: 2px 0 8px;
+}
+.phon-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 9px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  margin-bottom: 3px;
+  position: relative;
+  transition: background 0.14s, border 0.14s;
+}
+.phon-item:hover {
+  background: #f3f8f5;
+}
+.phon-item.active {
+  background: #edf5f1;
+  border-color: #cbe2d7;
+}
+.phon-item.active::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--green, #176b4d);
+}
+.phon-symbol {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #eef4f1;
+  color: var(--green-dark, #0d4f39);
+  font-size: 19px;
+  font-weight: 800;
+  font-family: Georgia, serif;
+}
+.phon-item.active .phon-symbol {
+  background: var(--green, #176b4d);
+  color: #fff;
+}
+.phon-item-info {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.phon-item-info b {
+  font-size: 13px;
+  color: var(--ink, #17231f);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.phon-item-info small {
+  color: var(--muted, #6d7b75);
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phon-detail {
+  background: #fff;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 16px;
+  padding: 26px 28px;
+  min-height: 460px;
+  box-shadow: 0 10px 30px rgba(40, 70, 56, 0.05);
+}
+.phon-detail-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.phon-big-symbol {
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #e9f2ed, #f5faf7);
+  color: var(--green-dark, #0d4f39);
+  font-size: 42px;
+  font-weight: 800;
+  font-family: Georgia, serif;
+  border: 1px solid #d7e8df;
+}
+.phon-detail-copy {
+  min-width: 0;
+  flex: 1;
+}
+.phon-detail-copy h2 {
+  margin: 4px 0 4px;
+  color: var(--ink, #17231f);
+  font-size: 23px;
+}
+.phon-detail-copy p {
+  margin: 0;
+  color: var(--muted, #6d7b75);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.phon-play {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--green, #176b4d);
+  background: #fff;
+  color: var(--green-dark, #0d4f39);
+  font-size: 13px;
+  font-weight: 750;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.phon-play span {
+  font-size: 11px;
+}
+.phon-play:hover {
+  background: var(--green, #176b4d);
+  color: #fff;
+}
+
+.phon-keyword {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #f5faf7;
+  border: 1px solid #e4efe9;
+  border-radius: 13px;
+  margin-bottom: 20px;
+}
+.phon-keyword > div {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.phon-keyword span {
+  color: var(--muted, #6d7b75);
+  font-size: 11px;
+  font-weight: 750;
+}
+.phon-keyword b {
+  color: var(--green-dark, #0d4f39);
+  font-size: 21px;
+  font-family: Georgia, serif;
+}
+.phon-keyword em {
+  color: #6d7b75;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-style: normal;
+}
+.phon-keyword small {
+  color: var(--muted, #6d7b75);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.phon-patterns {
+  display: grid;
+  gap: 18px;
+}
+.phon-pattern {
+  border-top: 1px solid var(--line, #dfe8e2);
+  padding-top: 14px;
+}
+.phon-pattern-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.phon-pattern-head span {
+  color: var(--muted, #6d7b75);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.phon-pattern-head b {
+  color: var(--green-dark, #0d4f39);
+  font-size: 16px;
+  font-family: Georgia, serif;
+}
+.phon-pattern-head small {
+  margin-left: auto;
+  color: var(--muted, #6d7b75);
+  font-size: 11px;
+}
+.phon-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.phon-example {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 11px;
+  background: #fff;
+  cursor: pointer;
+  transition: border 0.14s, transform 0.14s, box-shadow 0.14s;
+}
+.phon-example:hover {
+  border-color: #a9c6b7;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(40, 70, 56, 0.07);
+}
+.phon-example b {
+  color: var(--green-dark, #0d4f39);
+  font-size: 15px;
+  font-family: Georgia, serif;
+}
+.phon-example span {
+  color: #3d4f47;
+  font-size: 12px;
+}
+
+.phon-empty {
+  color: var(--muted, #6d7b75);
+  padding: 30px 12px;
+  text-align: center;
+  border: 1px dashed #cbd8d1;
+  border-radius: 12px;
+}
+
+@media (max-width: 860px) {
+  .phon-layout {
+    grid-template-columns: 1fr;
+  }
+  .phon-list {
+    position: static;
+    max-height: 42vh;
+  }
+  .phon-detail {
+    padding: 20px 18px;
+  }
+  .phon-headline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .phon-detail-head {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .phon-big-symbol {
+    width: 72px;
+    height: 72px;
+    font-size: 32px;
+  }
+}

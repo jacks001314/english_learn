@@ -1,0 +1,477 @@
+{
+  "七年级上册": {
+    "Unit 1": {
+      "topic": "be 动词与一般现在时",
+      "summary": "用 be 动词(am/is/are)介绍姓名、年龄、身份；用一般现在时描述习惯与状态。",
+      "examples": [
+        "I am a new student.",
+        "She is polite and helpful.",
+        "We are in Class 2."
+      ]
+    },
+    "Unit 2": {
+      "topic": "一般现在时(第三人称单数)与情态动词 can",
+      "summary": "主语为第三人称单数时动词加 -s/-es；用 can 表达能力。",
+      "examples": [
+        "He plays the guitar every day.",
+        "She enjoys rock music.",
+        "I can play the piano."
+      ]
+    },
+    "Unit 3": {
+      "topic": "物主代词与一般现在时",
+      "summary": "区分形容词性物主代词(my/your/his/her)与名词性物主代词(mine/yours/his/hers)。",
+      "examples": [
+        "This is my father.",
+        "That book is mine.",
+        "Her hair is long."
+      ]
+    },
+    "Unit 4": {
+      "topic": "可数与不可数名词；some/any",
+      "summary": "可数名词有单复数，不可数名词常用 some/any；how many 接可数，how much 接不可数。",
+      "examples": [
+        "I have some dumplings.",
+        "There is no milk in the fridge.",
+        "How many lanterns are there?"
+      ]
+    },
+    "Unit 5": {
+      "topic": "一般现在时与现在进行时；情态动词",
+      "summary": "一般现在时表示习惯事实，现在进行时表示正在发生；can/must 表示能力与义务。",
+      "examples": [
+        "Pigeons can find their homes.",
+        "The dog is running now.",
+        "We must protect wild animals."
+      ]
+    },
+    "Unit 6": {
+      "topic": "一般现在时；表达用途(use...to/for)",
+      "summary": "用一般现在时描述自然规律；用 be used to / for 表达用途。",
+      "examples": [
+        "Plants make their own food.",
+        "We use water to grow plants.",
+        "Oxygen is for breathing."
+      ]
+    }
+  },
+  "七年级下册": {
+    "Unit 1": {
+      "topic": "一般现在时；形容词描述感受",
+      "summary": "用一般现在时表达对幸福、生活的看法；用形容词描述感受。",
+      "examples": [
+        "Happiness is a choice.",
+        "The soup looks watery.",
+        "She feels happy."
+      ]
+    },
+    "Unit 2": {
+      "topic": "一般将来时(be going to/will)；祈使句",
+      "summary": "be going to 表示计划，will 表示预测；祈使句表示建议与鼓励。",
+      "examples": [
+        "I am going to run a marathon.",
+        "She will cross the finish line.",
+        "Go for it!"
+      ]
+    },
+    "Unit 3": {
+      "topic": "可数与不可数名词；some/any；比较级",
+      "summary": "区分食物名词的可数与不可数；用 more/less 与形容词比较级描述。",
+      "examples": [
+        "This beef is saltier than that.",
+        "I would like some porridge.",
+        "There is less sugar in it."
+      ]
+    },
+    "Unit 4": {
+      "topic": "情态动词(can/may/might)；现在进行时",
+      "summary": "用 can 表示能力，may/might 表示可能；现在进行时描述正在发生的活动。",
+      "examples": [
+        "You might see a butterfly.",
+        "I am reading a novel now.",
+        "May I join you?"
+      ]
+    },
+    "Unit 5": {
+      "topic": "一般现在时；形容词与副词；比较级",
+      "summary": "用形容词描述自然景观，副词修饰动作；比较级比较自然特征。",
+      "examples": [
+        "The sky is soft and bright.",
+        "The water looks calm.",
+        "The night sky is more beautiful."
+      ]
+    },
+    "Unit 6": {
+      "topic": "一般将来时(be going to)；情态动词；祈使句",
+      "summary": "描述旅行计划用 be going to；表达愿望与建议；祈使句提醒注意事项。",
+      "examples": [
+        "We are going to travel south.",
+        "You must take a map.",
+        "Remember your passport."
+      ]
+    }
+  },
+  "八年级上册": {
+    "Module 1": {
+      "topic": "提建议(should/Let's/Why not/It's a good idea to)",
+      "summary": "用 should、Let's、Why not、It's a good idea to 提出建议。",
+      "examples": [
+        "You should practise speaking aloud.",
+        "Let's look it up in a dictionary.",
+        "It's a good idea to write down new words."
+      ]
+    },
+    "Module 2": {
+      "topic": "形容词比较级",
+      "summary": "比较两个人或两处地方时用比较级(taller than, wider than)。",
+      "examples": [
+        "My town is smaller than Shanghai.",
+        "The river is wider than the road.",
+        "Cambridge is older than London."
+      ]
+    },
+    "Module 3": {
+      "topic": "形容词/副词比较级与最高级",
+      "summary": "比较级用于两者比较，最高级用于三者以上；The most... 结构。",
+      "examples": [
+        "Football is more exciting than tennis.",
+        "This year we practise more carefully.",
+        "He is the best player in our team."
+      ]
+    },
+    "Module 4": {
+      "topic": "形容词最高级",
+      "summary": "用最高级(the fastest/the most comfortable)比较多种交通方式。",
+      "examples": [
+        "The plane is the fastest way.",
+        "The train is the most comfortable.",
+        "Walking is the cheapest choice."
+      ]
+    },
+    "Module 5": {
+      "topic": "动词不定式；双宾语",
+      "summary": "want to do / plan to do；give/pass/show + 人 + 物。",
+      "examples": [
+        "I wanted to see the show.",
+        "He gave me a ticket.",
+        "She showed us the old teahouse."
+      ]
+    },
+    "Module 6": {
+      "topic": "动词不定式作主语/宾补",
+      "summary": "It's + adj. + to do；allow/help + 人 + to do。",
+      "examples": [
+        "It is important to protect animals.",
+        "The park allows people to get closer.",
+        "We work hard to save them."
+      ]
+    },
+    "Module 7": {
+      "topic": "过去进行时(was/were + doing)",
+      "summary": "描述过去某一时刻正在发生的动作。",
+      "examples": [
+        "Alice was sitting by the river.",
+        "She was thinking about the rabbit.",
+        "It was raining at that time."
+      ]
+    },
+    "Module 8": {
+      "topic": "when/while 过去进行时",
+      "summary": "用 while 引导持续动作，when 引导突发动作。",
+      "examples": [
+        "While I was riding, a car appeared.",
+        "I was trying to pick it up when it bit me.",
+        "He was running when he fell."
+      ]
+    },
+    "Module 9": {
+      "topic": "大数字表达",
+      "summary": "million/billion 与 hundred/thousand 的用法。",
+      "examples": [
+        "The population is about 1.37 billion.",
+        "The city has two hundred thousand people."
+      ]
+    },
+    "Module 10": {
+      "topic": "情态动词 may/might",
+      "summary": "表示推测和可能。",
+      "examples": [
+        "It might snow tonight.",
+        "She may come tomorrow.",
+        "It might be sunny later."
+      ]
+    },
+    "Module 11": {
+      "topic": "情态动词 must; 行为习惯表达",
+      "summary": "must 表示必须；描述不同文化的习俗。",
+      "examples": [
+        "You must use a knife and fork.",
+        "They must wait for the host.",
+        "In China, we open gifts later."
+      ]
+    },
+    "Module 12": {
+      "topic": "情态动词与祈使句(急救指令)",
+      "summary": "祈使句用于指令；情态动词描述急救原则。",
+      "examples": [
+        "Keep calm and stay still.",
+        "You must call for help.",
+        "Do not move the person."
+      ]
+    }
+  },
+  "八年级下册": {
+    "Module 1": {
+      "topic": "系动词(sound/smell/taste/look/feel)",
+      "summary": "系动词后接形容词作表语，表示感觉与印象。",
+      "examples": [
+        "The soup smells delicious.",
+        "It sounds wonderful.",
+        "She looks friendly."
+      ]
+    },
+    "Module 2": {
+      "topic": "现在完成时(ever/never)",
+      "summary": "描述经历：have/has + 过去分词。",
+      "examples": [
+        "I have entered a competition.",
+        "She has never been abroad.",
+        "Have you ever seen a tower?"
+      ]
+    },
+    "Module 3": {
+      "topic": "现在完成时(yet/already/just)",
+      "summary": "用 already/just 表完成，yet 表疑问与否定。",
+      "examples": [
+        "The spaceship has just reached Mars.",
+        "We have already started the project.",
+        "They haven't arrived yet."
+      ]
+    },
+    "Module 4": {
+      "topic": "现在完成时(since/for)",
+      "summary": "since 接时间点，for 接时间段，表示持续。",
+      "examples": [
+        "I have felt ill since Monday.",
+        "We have played football for a year."
+      ]
+    },
+    "Module 5": {
+      "topic": "现在完成时(so far/over)",
+      "summary": "描述至今为止的持续状态。",
+      "examples": [
+        "Tintin has been popular for years.",
+        "I have watched the film twice."
+      ]
+    },
+    "Module 6": {
+      "topic": "简单句的五种基本句型",
+      "summary": "主谓、主谓宾、主系表、主谓双宾、主谓宾宾补。",
+      "examples": [
+        "She collects stamps.",
+        "His hobby is sailing.",
+        "It makes me happy."
+      ]
+    },
+    "Module 7": {
+      "topic": "一般将来时；情态动词",
+      "summary": "will/be going to 表计划；情态动词表建议与义务。",
+      "examples": [
+        "I am going to join the camp.",
+        "You should prepare your passport.",
+        "The trip will last a month."
+      ]
+    },
+    "Module 8": {
+      "topic": "宾语从句(that/if/whether)",
+      "summary": "宾语从句用陈述语序；that 表陈述，if/whether 表是否。",
+      "examples": [
+        "I believe that we are here.",
+        "I don't know if it will rain."
+      ]
+    },
+    "Module 9": {
+      "topic": "宾语从句(whether/if/特殊疑问词)",
+      "summary": "询问是否或细节时用宾语从句。",
+      "examples": [
+        "I wonder whether she will come.",
+        "I don't know why she was sad."
+      ]
+    },
+    "Module 10": {
+      "topic": "宾语从句(that)",
+      "summary": "表达想法、看法时用 that 引导宾语从句。",
+      "examples": [
+        "I think that he is a good presenter.",
+        "He said that the show was on air."
+      ]
+    }
+  },
+  "九年级上册": {
+    "Module 1": {
+      "topic": "六种时态复习",
+      "summary": "复习一般现在时、一般过去时、一般将来时、现在进行时、现在完成时、过去进行时。",
+      "examples": [
+        "I have seen the Grand Canyon.",
+        "The Great Wall was built long ago.",
+        "We will travel next week."
+      ]
+    },
+    "Module 2": {
+      "topic": "状语从句(as soon as/until)",
+      "summary": "时间状语从句用 as soon as、until 等引导。",
+      "examples": [
+        "My family goes out as soon as the holiday begins.",
+        "We waited until the flag rose."
+      ]
+    },
+    "Module 3": {
+      "topic": "状语从句(though/so...that)",
+      "summary": "though 表让步；so...that 表结果。",
+      "examples": [
+        "Though it was hard, she never gave up.",
+        "He worked so hard that he succeeded."
+      ]
+    },
+    "Module 4": {
+      "topic": "让步状语从句(although)",
+      "summary": "although/though 引导让步状语从句。",
+      "examples": [
+        "Although I was alone, I felt fine.",
+        "He managed it although it was difficult."
+      ]
+    },
+    "Module 5": {
+      "topic": "祈使句；if 条件句(主将从现)",
+      "summary": "祈使句表示规则；if 引导条件句，主句用一般将来时。",
+      "examples": [
+        "Don't cross that rope!",
+        "If you go to London, visit the museum."
+      ]
+    },
+    "Module 6": {
+      "topic": "if 条件句(主将从现)",
+      "summary": "if 引导真实条件句，主句用 will + 动词原形。",
+      "examples": [
+        "If I finish first, I will go out.",
+        "If you tell the truth, you will feel better."
+      ]
+    },
+    "Module 7": {
+      "topic": "一般现在时被动语态",
+      "summary": "am/is/are + 过去分词。",
+      "examples": [
+        "The book is still read today.",
+        "His ideas are loved by many."
+      ]
+    },
+    "Module 8": {
+      "topic": "一般过去时/一般将来时被动语态",
+      "summary": "was/were + 过去分词；will be + 过去分词。",
+      "examples": [
+        "She was chosen for the team.",
+        "He was invited to the competition.",
+        "The game will be held here."
+      ]
+    },
+    "Module 9": {
+      "topic": "现在完成时与情态动词被动语态",
+      "summary": "have/has been + 过去分词；can/must be + 过去分词。",
+      "examples": [
+        "The computer has been used for years.",
+        "Books will be replaced by the Internet?"
+      ]
+    },
+    "Module 10": {
+      "topic": "定语从句(that/which)",
+      "summary": "that/which 引导定语从句修饰物。",
+      "examples": [
+        "I have photos that I took in Australia.",
+        "The game that they like is football."
+      ]
+    },
+    "Module 11": {
+      "topic": "定语从句(who/which)",
+      "summary": "who 修饰人，which 修饰物。",
+      "examples": [
+        "He's the boy who won the prize.",
+        "The photo which we liked was hers."
+      ]
+    },
+    "Module 12": {
+      "topic": "构词法(reduce/reuse/recycle)；被动语态",
+      "summary": "掌握环保相关词汇；用被动语态描述环保行动。",
+      "examples": [
+        "Rubbish is divided into groups.",
+        "Plastic is recycled into new things."
+      ]
+    }
+  },
+  "九年级下册": {
+    "Module 1": {
+      "topic": "名词、冠词、数词",
+      "summary": "复习可数/不可数名词、冠词与数词用法。",
+      "examples": [
+        "We took a flight by plane.",
+        "The pilot landed at the airport."
+      ]
+    },
+    "Module 2": {
+      "topic": "代词",
+      "summary": "掌握人称、物主、反身与指示代词。",
+      "examples": [
+        "This is our school; that one is theirs.",
+        "Help yourself to some tea."
+      ]
+    },
+    "Module 3": {
+      "topic": "形容词与副词；used to",
+      "summary": "形容词修饰名词，副词修饰动词；used to 表示过去习惯。",
+      "examples": [
+        "Life used to be hard.",
+        "Life is easier today."
+      ]
+    },
+    "Module 4": {
+      "topic": "情态动词(must/can/may)",
+      "summary": "表达必须、许可与可能；规则与建议。",
+      "examples": [
+        "You must set off early.",
+        "You should bring a rope.",
+        "We may rest here."
+      ]
+    },
+    "Module 5": {
+      "topic": "时态综合复习",
+      "summary": "在健康话题中综合运用多种时态。",
+      "examples": [
+        "I have been ill for a week.",
+        "I will take more exercise."
+      ]
+    },
+    "Module 6": {
+      "topic": "被动语态；宾语从句",
+      "summary": "描述西方餐桌礼仪用被动语态；表达观点用宾语从句。",
+      "examples": [
+        "Knives and forks are used for Western food.",
+        "I think that we should be polite."
+      ]
+    },
+    "Module 7": {
+      "topic": "宾语从句与被动语态",
+      "summary": "表达语言学习观点；用被动语态描述英语使用。",
+      "examples": [
+        "English is spoken all over the world.",
+        "I think that English is useful."
+      ]
+    },
+    "Module 8": {
+      "topic": "一般将来时；宾语从句",
+      "summary": "展望未来、表达愿望与计划。",
+      "examples": [
+        "I will study at a university.",
+        "I believe that our future is bright."
+      ]
+    }
+  }
+}

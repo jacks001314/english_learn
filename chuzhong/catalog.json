@@ -1,0 +1,636 @@
+{
+  "textbook": {
+    "publisher": "外研社 (Foreign Language Teaching and Research Press / FLTRP)",
+    "series": "外研版 义务教育教科书·英语（新标准）",
+    "school": "北京市三帆中学 (Beijing Sanfan Middle School)",
+    "level": "初中 (Grades 7-9)",
+    "edition_note": "七年级使用「外研版2024」新教材（单元制，每单元含 Starting out / Understanding ideas / Developing ideas / Presenting ideas / Reflection）；八年级、九年级使用「外研2011课标版」（模块制，每模块含 Unit 1 / Unit 2 / Unit 3 Language in use）。目录仅收录模块/单元标题与主题，不包含课文正文、对话或阅读原文。",
+    "structure_note": "七年级为新版单元制（每学期 6 个正式单元）；八年级、九年级为模块制，每个模块通常含 3 个单元，其中 Unit 3 为语法综合运用 ''Language in use''，部分册次在模块之间夹有 Revision module A/B（复习模块）。"
+  },
+  "catalog": {
+    "七年级": {
+      "上册": [
+        {
+          "module": "Unit 1",
+          "title": "A new start",
+          "topic": "新学期与身份建构（school life & identity）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 2",
+          "title": "More than fun",
+          "topic": "爱好与文化交融（hobbies & culture）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 3",
+          "title": "Family ties",
+          "topic": "亲情与代际理解（family & intergenerational understanding）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 4",
+          "title": "Time to celebrate",
+          "topic": "节日与文化符号（festivals & cultural symbols）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 5",
+          "title": "Fantastic friends",
+          "topic": "友谊与人际（friendship）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 6",
+          "title": "The power of plants",
+          "topic": "人与自然·跨学科（plants, nature, STEM）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        }
+      ],
+      "下册": [
+        {
+          "module": "Unit 1",
+          "title": "The secrets of happiness",
+          "topic": "幸福与生活态度（happiness & life attitude）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 2",
+          "title": "Go for it!",
+          "topic": "目标与行动（goal & action）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 3",
+          "title": "Food matters",
+          "topic": "饮食文化（food culture）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 4",
+          "title": "The art of having fun",
+          "topic": "娱乐与休闲（leisure & fun）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 5",
+          "title": "Amazing nature",
+          "topic": "自然奇观（amazing nature）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        },
+        {
+          "module": "Unit 6",
+          "title": "Hitting the road",
+          "topic": "旅行与出发（travel）",
+          "units": [
+            "Starting out",
+            "Understanding ideas",
+            "Developing ideas",
+            "Presenting ideas",
+            "Reflection"
+          ]
+        }
+      ]
+    },
+    "八年级": {
+      "上册": [
+        {
+          "module": "Module 1",
+          "title": "How to learn English",
+          "topic": "英语学习方法（提建议）",
+          "units": [
+            "Unit 1 Let's try to speak English as much as possible.",
+            "Unit 2 You should smile at her.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 2",
+          "title": "My home town and my country",
+          "topic": "家乡与国家（比较级）",
+          "units": [
+            "Unit 1 It's taller than many other buildings.",
+            "Unit 2 Cambridge is a beautiful city in the east of England.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 3",
+          "title": "Sports",
+          "topic": "体育运动（比较级与最高级）",
+          "units": [
+            "Unit 1 Nothing is more exciting than playing tennis.",
+            "Unit 2 This year we practise more carefully.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 4",
+          "title": "Planes, ships and trains",
+          "topic": "交通出行（最高级）",
+          "units": [
+            "Unit 1 He lives the farthest from school.",
+            "Unit 2 What is the best way to travel?",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 5",
+          "title": "Lao She's Teahouse",
+          "topic": "老舍茶馆与中国文化",
+          "units": [
+            "Unit 1 I wanted to see the Beijing Opera.",
+            "Unit 2 It describes the changes in Chinese society.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 6",
+          "title": "Animals in danger",
+          "topic": "濒危动物与环保",
+          "units": [
+            "Unit 1 It allows people to get closer to them.",
+            "Unit 2 The WWF is working hard to save them all.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Revision module 1-6",
+          "title": "Revision",
+          "topic": "复习（Module 1-6）",
+          "units": []
+        },
+        {
+          "module": "Module 7",
+          "title": "A famous story",
+          "topic": "著名故事（过去进行时）",
+          "units": [
+            "Unit 1 Alice was sitting with her sister by the river.",
+            "Unit 2 She was thinking about her cat.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 8",
+          "title": "Accidents",
+          "topic": "事故与急救（when/while 引导）",
+          "units": [
+            "Unit 1 While the cars were changing to red, a car suddenly appeared.",
+            "Unit 2 I was trying to pick it up when it bit me again.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 9",
+          "title": "Population",
+          "topic": "人口问题",
+          "units": [
+            "Unit 1 The population of China is about 1.37 billion.",
+            "Unit 2 Arnwick was a city with 200,000 people.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 10",
+          "title": "The weather",
+          "topic": "天气（may/might）",
+          "units": [
+            "Unit 1 It might snow.",
+            "Unit 2 The weather is fine all year round.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 11",
+          "title": "Way of life",
+          "topic": "生活方式与习俗",
+          "units": [
+            "Unit 1 In China, we open a gift later.",
+            "Unit 2 In England, you usually drink tea with milk.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 12",
+          "title": "Help",
+          "topic": "急救与安全",
+          "units": [
+            "Unit 1 What should we do before help arrives?",
+            "Unit 2 Stay away from windows and heavy furniture.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Revision module 7-12",
+          "title": "Revision",
+          "topic": "复习（Module 7-12）",
+          "units": []
+        }
+      ],
+      "下册": [
+        {
+          "module": "Module 1",
+          "title": "Feelings and impressions",
+          "topic": "感觉与印象（系动词）",
+          "units": [
+            "Unit 1 It smells delicious.",
+            "Unit 2 I feel nervous when I speak Chinese.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 2",
+          "title": "Experiences",
+          "topic": "经历（现在完成时）",
+          "units": [
+            "Unit 1 I've also entered lots of speaking competitions.",
+            "Unit 2 They have seen the Pyramids.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 3",
+          "title": "Journey to space",
+          "topic": "太空探索（现在完成时）",
+          "units": [
+            "Unit 1 Has it arrived yet?",
+            "Unit 2 We have not found life on any other planets yet.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 4",
+          "title": "Seeing the doctor",
+          "topic": "健康与就医（现在完成时）",
+          "units": [
+            "Unit 1 I haven't done much exercise since I got my computer.",
+            "Unit 2 We have played football for a year now.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 5",
+          "title": "Cartoon stories",
+          "topic": "卡通故事",
+          "units": [
+            "Unit 1 It's time to watch a cartoon.",
+            "Unit 2 Tintin has been popular for over eighty years.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Revision of Module 1-5",
+          "title": "Revision",
+          "topic": "复习（Module 1-5）",
+          "units": []
+        },
+        {
+          "module": "Module 6",
+          "title": "Hobbies",
+          "topic": "兴趣爱好",
+          "units": [
+            "Unit 1 Do you collect anything?",
+            "Unit 2 Hobbies can make you grow as a person.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 7",
+          "title": "Summer in Los Angeles",
+          "topic": "夏令营与文化课程",
+          "units": [
+            "Unit 1 Please write to me and send me some photos!",
+            "Unit 2 Fill out a form and come to learn English in LA.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 8",
+          "title": "Time off",
+          "topic": "度假与休闲（宾语从句）",
+          "units": [
+            "Unit 1 I can hardly believe we are in the city centre.",
+            "Unit 2 We thought somebody was moving about.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 9",
+          "title": "Friendship",
+          "topic": "友谊（宾语从句）",
+          "units": [
+            "Unit 1 Could I ask if you've mentioned this to her?",
+            "Unit 2 I believe that the world is what you think it is.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 10",
+          "title": "On the radio",
+          "topic": "广播节目（宾语从句）",
+          "units": [
+            "Unit 1 I hope that you can join us one day.",
+            "Unit 2 It seemed that they were speaking to me in person.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Revision of Module 6-10",
+          "title": "Revision",
+          "topic": "复习（Module 6-10）",
+          "units": []
+        }
+      ]
+    },
+    "九年级": {
+      "上册": [
+        {
+          "module": "Module 1",
+          "title": "Wonders of the world",
+          "topic": "世界奇观（时态复习）",
+          "units": [
+            "Unit 1 It's more than 2,000 years old.",
+            "Unit 2 The Grand Canyon was not just big.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 2",
+          "title": "Public holidays",
+          "topic": "公共节日",
+          "units": [
+            "Unit 1 My family always go somewhere interesting as soon as the holiday begins.",
+            "Unit 2 We have celebrated the festival since the first pioneers arrived in America.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 3",
+          "title": "Heroes",
+          "topic": "英雄人物",
+          "units": [
+            "Unit 1 She trained hard, so she became a great player later.",
+            "Unit 2 There were few doctors, so he had to work very hard on his own.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 4",
+          "title": "Home alone",
+          "topic": "独自在家（让步状语从句）",
+          "units": [
+            "Unit 1 I can look after myself, although it won't be easy for me.",
+            "Unit 2 I became so bored with their orders that I wished they would leave me alone.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 5",
+          "title": "Museums",
+          "topic": "博物馆与规则",
+          "units": [
+            "Unit 1 Don't cross that rope!",
+            "Unit 2 If you ever go to London, make sure you visit the Science Museum.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 6",
+          "title": "Problems",
+          "topic": "问题与建议（if 条件句）",
+          "units": [
+            "Unit 1 If I start after dinner, I'll finish it before I go to bed.",
+            "Unit 2 If you tell him the truth now, you will show that you are honest.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Revision Module A",
+          "title": "Revision",
+          "topic": "复习（Module 1-6）",
+          "units": []
+        },
+        {
+          "module": "Module 7",
+          "title": "Great books",
+          "topic": "名著（被动语态）",
+          "units": [
+            "Unit 1 We're still influenced by Confucius's ideas.",
+            "Unit 2 It is still read and loved.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 8",
+          "title": "Sports life",
+          "topic": "体育生活（被动语态）",
+          "units": [
+            "Unit 1 Daming wasn't chosen for the team last time.",
+            "Unit 2 He was invited to competitions around the world.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 9",
+          "title": "Great inventions",
+          "topic": "伟大发明（被动语态）",
+          "units": [
+            "Unit 1 Will computers be used more than books in the future?",
+            "Unit 2 Will books be replaced by the Internet?",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 10",
+          "title": "Australia",
+          "topic": "澳大利亚（定语从句）",
+          "units": [
+            "Unit 1 I have some photos that I took in Australia last year.",
+            "Unit 2 The game that they like most is Australian football.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 11",
+          "title": "Photos",
+          "topic": "摄影（定语从句）",
+          "units": [
+            "Unit 1 He's the boy who won the photo competition last year!",
+            "Unit 2 The photo which we liked best was taken by Zhao Min.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 12",
+          "title": "Save our world",
+          "topic": "环保（reduce, reuse, recycle）",
+          "units": [
+            "Unit 1 If everyone starts to do something, the world will be saved.",
+            "Unit 2 Repeat these three words daily: reduce, reuse and recycle.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Revision Module B",
+          "title": "Revision",
+          "topic": "复习（Module 7-12）",
+          "units": []
+        }
+      ],
+      "下册": [
+        {
+          "module": "Module 1",
+          "title": "Travel",
+          "topic": "旅行（名词、冠词、数词）",
+          "units": [
+            "Unit 1 We toured the city by bus and by taxi.",
+            "Unit 2 It's a long story.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 2",
+          "title": "Education",
+          "topic": "教育（代词）",
+          "units": [
+            "Unit 1 They don't sit in rows.",
+            "Unit 2 What do I like best about school?",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 3",
+          "title": "Life now and then",
+          "topic": "现在与过去的生活（形容词与副词）",
+          "units": [
+            "Unit 1 They sometimes work harder.",
+            "Unit 2 I think life is better today.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 4",
+          "title": "Rules and suggestions",
+          "topic": "规则与建议（情态动词）",
+          "units": [
+            "Unit 1 You must be careful of falling stones.",
+            "Unit 2 We must keep the camp clean.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Revision A",
+          "title": "Revision",
+          "topic": "复习（Module 1-4）",
+          "units": []
+        },
+        {
+          "module": "Module 5",
+          "title": "Look after yourself",
+          "topic": "自我照顾与健康（时态）",
+          "units": [
+            "Unit 1 We'd better get you to hospital.",
+            "Unit 2 Get off the sofa!",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 6",
+          "title": "Eating together",
+          "topic": "聚餐与西方餐桌文化",
+          "units": [
+            "Unit 1 When is the school-leavers' party?",
+            "Unit 2 Knives and forks are used for most Western food.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 7",
+          "title": "English for you and me",
+          "topic": "英语学习与语言",
+          "units": [
+            "Unit 1 Have you ever been to an English corner?",
+            "Unit 2 We all own English.",
+            "Unit 3 Language in use."
+          ]
+        },
+        {
+          "module": "Module 8",
+          "title": "My future life",
+          "topic": "未来生活与毕业",
+          "units": [
+            "Unit 1 Here's to our friendship and the future.",
+            "Unit 2 I know that you will be better at maths.",
+            "Unit 3 Language in use."
+          ]
+        }
+      ]
+    }
+  }
+}

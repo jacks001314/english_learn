@@ -1,0 +1,1667 @@
+{
+  "book": "八年级下册",
+  "items": [
+    {
+      "file": "Module10_On_the_radio.md",
+      "heading": "八年级下册 Module 10 On the radio",
+      "section": "Module 10",
+      "topic": "广播节目与梦想；词汇对齐：director / show / show sb. around / on air / avoid / background / national / international / presenter / interview / seem / listener / in person / part-time / article / studio / purpose",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "What do you want to be when you grow up, Leo?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "I want to be a radio presenter. I love talking to people."
+        },
+        {
+          "speaker": "Mia",
+          "text": "That is a great dream. How did you become interested in the radio?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "I once visited a studio with my father. I watched a presenter interviewing a singer live on air."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Did you meet the director?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "Yes. He showed us around the studio, and he explained how the show is made."
+        },
+        {
+          "speaker": "Mia",
+          "text": "It sounds exciting. I hope you can make your dream come true."
+        }
+      ],
+      "reading": {
+        "title": "A Voice on the Radio",
+        "paragraphs": [
+          "My dream began a long time ago, when I was a small boy. Every morning, my father listened to the radio while he made breakfast. He said that a good voice could travel all over the country, and that words could reach people's hearts.",
+          "One day, my father took me to visit a radio station. A friendly presenter gave us a tour. He showed us around the studio, where the microphones stood ready. He also explained how to read the news, how to talk to a guest, and how to avoid making mistakes when the show was on air.",
+          "That day I learned something important. A radio show is not just a man talking to a machine. Behind every voice there is a team. There is a director, who plans the show. There are writers, who make the script. There are technicians, who control the background music and the sound.",
+          "In the studio, I watched a presenter interview a special guest. They were calm and warm, and they treated each other with respect. The camera and the microphone seemed to disappear. It was just two people talking.",
+          "Later, I found out that the presenter also worked part-time as a writer for a national newspaper. In the evening, he wrote articles, and in the morning, he spoke to thousands of listeners. He told me that the purpose of the radio was to connect people, and to bring a little light into their lives.",
+          "Now I know what I want to do. I want to be a voice for people, to share good stories, and to bring people together. Whether it is a small school show or an international station, I will keep working for my dream."
+        ]
+      },
+      "words": [
+        {
+          "word": "presenter",
+          "sentence": "...a radio presenter.",
+          "meaning": "主持人"
+        },
+        {
+          "word": "show",
+          "sentence": "...how the show is made.",
+          "meaning": "节目"
+        },
+        {
+          "word": "show sb. around",
+          "sentence": "He showed us around the studio...",
+          "meaning": "带某人参观"
+        },
+        {
+          "word": "director",
+          "sentence": "...a director, who plans the show.",
+          "meaning": "导演；负责人"
+        },
+        {
+          "word": "on air",
+          "sentence": "...when the show was on air.",
+          "meaning": "播出（直播）"
+        },
+        {
+          "word": "avoid",
+          "sentence": "...how to avoid making mistakes...",
+          "meaning": "避免"
+        },
+        {
+          "word": "background",
+          "sentence": "...the background music...",
+          "meaning": "背景"
+        },
+        {
+          "word": "national",
+          "sentence": "...a national newspaper.",
+          "meaning": "国家的"
+        },
+        {
+          "word": "international",
+          "sentence": "...an international station.",
+          "meaning": "国际的"
+        },
+        {
+          "word": "interview",
+          "sentence": "...interview a guest...",
+          "meaning": "采访"
+        },
+        {
+          "word": "seem",
+          "sentence": "...seemed to disappear.",
+          "meaning": "似乎"
+        },
+        {
+          "word": "listener",
+          "sentence": "...thousands of listeners.",
+          "meaning": "听众"
+        },
+        {
+          "word": "in person",
+          "sentence": "...in person.（拓展）",
+          "meaning": "亲自"
+        },
+        {
+          "word": "part-time",
+          "sentence": "...worked part-time...",
+          "meaning": "兼职"
+        },
+        {
+          "word": "article",
+          "sentence": "...wrote articles...",
+          "meaning": "文章"
+        },
+        {
+          "word": "studio",
+          "sentence": "...the studio...",
+          "meaning": "演播室"
+        },
+        {
+          "word": "purpose",
+          "sentence": "The purpose of the radio...",
+          "meaning": "目的"
+        },
+        {
+          "word": "present",
+          "sentence": "(拓展) present the show",
+          "meaning": "呈现"
+        },
+        {
+          "word": "broadcast",
+          "sentence": "(拓展) broadcast live",
+          "meaning": "广播"
+        }
+      ]
+    },
+    {
+      "file": "Module1_Feelings_and_impressions.md",
+      "heading": "八年级下册 Module 1 Feelings and impressions",
+      "section": "Module 1",
+      "topic": "感觉与印象（系动词）；词汇对齐：smell / soft / sour / pizza / lovely / done / try / Have a try / pie / sound / sweet tooth / salt / jam / favourite / ear / glasses / jeans / fair / pretty / proud / be proud of / stranger / message / can't wait",
+      "dialogue": [
+        {
+          "speaker": "Amy",
+          "text": "This soup smells delicious. Did you make it yourself?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "Yes. I tried a new recipe. Would you like to have a try?"
+        },
+        {
+          "speaker": "Amy",
+          "text": "Sure! ... Mmm, it tastes lovely. Is there sugar in it?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "A little. I have a sweet tooth, so I added some jam."
+        },
+        {
+          "speaker": "Amy",
+          "text": "It looks a little soft, but it's really good. What about this pie?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "That one is still in the oven. Wait until dinner!"
+        },
+        {
+          "speaker": "Amy",
+          "text": "I can't wait. You are great at cooking, Tom. I'm proud of you."
+        }
+      ],
+      "reading": {
+        "title": "A Friend's First Visit",
+        "paragraphs": [
+          "My pen friend Ella is coming to visit me for the first time. I am a little nervous, because I want her to have a good impression of my town and my family.",
+          "This morning, I went to the station to meet her. The moment I saw her, I knew it was Ella. She had fair hair and wore round glasses and blue jeans. She looked friendly and a little shy.",
+          "I took her home. The whole kitchen was full of a sweet smell, because my mother was making an apple pie. Ella said she loved it, and she asked for the recipe right away. She has a sweet tooth, just like me.",
+          "At dinner, we talked about many things. Ella told me about her school, and I told her about mine. She was a little nervous about meeting my parents, but they were very kind, and soon she felt at home.",
+          "The best moment came after dinner. My father played a song, and Ella began to sing along softly. It sounded wonderful, and everybody smiled. In that moment, I knew we would be good friends for a long time.",
+          "First impressions are important, but they are only the beginning. The real friendship shows itself little by little, in the small, warm moments we share."
+        ]
+      },
+      "words": [
+        {
+          "word": "smell",
+          "sentence": "This soup smells delicious.",
+          "meaning": "闻起来"
+        },
+        {
+          "word": "soft",
+          "sentence": "It looks a little soft...",
+          "meaning": "柔软的"
+        },
+        {
+          "word": "sour",
+          "sentence": "(拓展) The milk is sour.",
+          "meaning": "酸的"
+        },
+        {
+          "word": "pizza",
+          "sentence": "(拓展) pizza",
+          "meaning": "披萨"
+        },
+        {
+          "word": "lovely",
+          "sentence": "It tastes lovely.",
+          "meaning": "可爱的；美好的"
+        },
+        {
+          "word": "try",
+          "sentence": "I tried a new recipe.",
+          "meaning": "尝试"
+        },
+        {
+          "word": "have a try",
+          "sentence": "Would you like to have a try?",
+          "meaning": "试一试"
+        },
+        {
+          "word": "pie",
+          "sentence": "...an apple pie.",
+          "meaning": "馅饼"
+        },
+        {
+          "word": "sound",
+          "sentence": "It sounded wonderful.",
+          "meaning": "听起来"
+        },
+        {
+          "word": "sweet tooth",
+          "sentence": "I have a sweet tooth...",
+          "meaning": "爱吃甜食"
+        },
+        {
+          "word": "salt",
+          "sentence": "(拓展) a little salt",
+          "meaning": "盐"
+        },
+        {
+          "word": "jam",
+          "sentence": "...added some jam.",
+          "meaning": "果酱"
+        },
+        {
+          "word": "favourite",
+          "sentence": "...my favourite.（拓展）",
+          "meaning": "最喜欢的"
+        },
+        {
+          "word": "ear",
+          "sentence": "...ears（拓展）",
+          "meaning": "耳朵"
+        },
+        {
+          "word": "glasses",
+          "sentence": "She wore round glasses...",
+          "meaning": "眼镜"
+        },
+        {
+          "word": "jeans",
+          "sentence": "...blue jeans...",
+          "meaning": "牛仔裤"
+        },
+        {
+          "word": "fair",
+          "sentence": "She had fair hair...",
+          "meaning": "金色的；白皙的"
+        },
+        {
+          "word": "pretty",
+          "sentence": "...pretty（拓展）",
+          "meaning": "漂亮的"
+        },
+        {
+          "word": "proud",
+          "sentence": "I'm proud of you.",
+          "meaning": "自豪的"
+        },
+        {
+          "word": "be proud of",
+          "sentence": "I'm proud of you.",
+          "meaning": "为…感到自豪"
+        },
+        {
+          "word": "stranger",
+          "sentence": "She was a stranger.（拓展）",
+          "meaning": "陌生人"
+        },
+        {
+          "word": "message",
+          "sentence": "Leave a message.（拓展）",
+          "meaning": "消息"
+        },
+        {
+          "word": "can't wait",
+          "sentence": "I can't wait.",
+          "meaning": "迫不及待"
+        },
+        {
+          "word": "done",
+          "sentence": "The pie is done.（拓展）",
+          "meaning": "做好了的"
+        },
+        {
+          "word": "impressed",
+          "sentence": "(拓展) be impressed",
+          "meaning": "印象深刻"
+        }
+      ]
+    },
+    {
+      "file": "Module2_Experiences.md",
+      "heading": "八年级下册 Module 2 Experiences",
+      "section": "Module 2",
+      "topic": "经历（现在完成时）；词汇对齐：ever / enter / competition / prize / first prize / dream / afford / write about / make up / invite / move / send / Germany / France / tower / ancient / king / queen / Arabic / way / mix / miss / count / count down",
+      "dialogue": [
+        {
+          "speaker": "Emma",
+          "text": "Have you ever entered a writing competition?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "Yes, I have. Last year I entered one and won the first prize!"
+        },
+        {
+          "speaker": "Emma",
+          "text": "That's amazing! What did you write about?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "I wrote about my dream of visiting France. I described the ancient towers and how I would mix with the local people."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Did they give you a prize?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "They sent me a book and an invitation to a writing club. I couldn't afford to travel, but the prize was still great."
+        },
+        {
+          "speaker": "Emma",
+          "text": "I have never entered one. Maybe I should try."
+        },
+        {
+          "speaker": "Leo",
+          "text": "You should. Everyone has a story to tell."
+        }
+      ],
+      "reading": {
+        "title": "A Dream Comes True",
+        "paragraphs": [
+          "Have you ever dreamed of seeing the world? Many of us have. Some dreams stay in our hearts for years, and then, unexpectedly, they come true.",
+          "My friend Lena always loved stories about other countries. When she was a child, she used to read about France and Germany, and she imagined herself walking through the streets of Paris. She wished she could visit the Eiffel Tower or stand in front of an ancient castle. But money was short, and her family could not afford such a long trip.",
+          "Then one day, her school announced a writing competition. The topic was \"My Dream Journey.\" Lena was excited. She wrote about a trip she had never taken: walking by a river, speaking a little Arabic to a shopkeeper, and watching the sun go down behind an old tower. She made up many of the details, but she wrote every word with her heart.",
+          "To her surprise, Lena won the first prize. The prize was a trip to France, together with a group of students. She could not believe her eyes. After years of dreaming, she was finally going.",
+          "In France, Lena saw everything she had written about. It did not feel like a dream. It felt like coming home. Since that trip, she has written three more stories, and she has started a small blog to share her experiences.",
+          "Lena says that we should never stop dreaming. A dream may seem impossible, but if we work for it, it can come true. You have not missed your chance yet. Count down the days, and start today."
+        ]
+      },
+      "words": [
+        {
+          "word": "ever",
+          "sentence": "Have you ever...?",
+          "meaning": "曾经"
+        },
+        {
+          "word": "enter",
+          "sentence": "I entered a writing competition.",
+          "meaning": "参加；进入"
+        },
+        {
+          "word": "competition",
+          "sentence": "...a writing competition.",
+          "meaning": "比赛"
+        },
+        {
+          "word": "prize",
+          "sentence": "...won the first prize.",
+          "meaning": "奖"
+        },
+        {
+          "word": "first prize",
+          "sentence": "...the first prize.",
+          "meaning": "一等奖"
+        },
+        {
+          "word": "dream",
+          "sentence": "...my dream of visiting France.",
+          "meaning": "梦想"
+        },
+        {
+          "word": "afford",
+          "sentence": "She could not afford...",
+          "meaning": "负担得起"
+        },
+        {
+          "word": "write about",
+          "sentence": "She wrote about a trip...",
+          "meaning": "写…内容"
+        },
+        {
+          "word": "make up",
+          "sentence": "She made up many of the details.",
+          "meaning": "编造"
+        },
+        {
+          "word": "invite",
+          "sentence": "...an invitation...",
+          "meaning": "邀请"
+        },
+        {
+          "word": "move",
+          "sentence": "(拓展) move to a new city",
+          "meaning": "移动；搬家"
+        },
+        {
+          "word": "send",
+          "sentence": "They sent me a book...",
+          "meaning": "寄；送"
+        },
+        {
+          "word": "Germany",
+          "sentence": "...about France and Germany...",
+          "meaning": "德国"
+        },
+        {
+          "word": "France",
+          "sentence": "...a trip to France.",
+          "meaning": "法国"
+        },
+        {
+          "word": "tower",
+          "sentence": "...the Eiffel Tower...",
+          "meaning": "塔"
+        },
+        {
+          "word": "ancient",
+          "sentence": "...an ancient castle...",
+          "meaning": "古老的"
+        },
+        {
+          "word": "king",
+          "sentence": "(拓展) a king",
+          "meaning": "国王"
+        },
+        {
+          "word": "queen",
+          "sentence": "(拓展) a queen",
+          "meaning": "女王"
+        },
+        {
+          "word": "Arabic",
+          "sentence": "...a little Arabic...",
+          "meaning": "阿拉伯语"
+        },
+        {
+          "word": "way",
+          "sentence": "...my way home.（拓展）",
+          "meaning": "路；方式"
+        },
+        {
+          "word": "mix",
+          "sentence": "...mix with the local people.",
+          "meaning": "混合；交往"
+        },
+        {
+          "word": "miss",
+          "sentence": "You haven't missed your chance.",
+          "meaning": "错过"
+        },
+        {
+          "word": "count",
+          "sentence": "Count down the days.",
+          "meaning": "数"
+        },
+        {
+          "word": "count down",
+          "sentence": "Count down the days...",
+          "meaning": "倒数"
+        }
+      ]
+    },
+    {
+      "file": "Module3_Journey_to_space.md",
+      "heading": "八年级下册 Module 3 Journey to space",
+      "section": "Module 3",
+      "topic": "太空探索（现在完成时）；词汇对齐：earth / moon / news / planet / reach / yet / just / model / spaceship / project / no problem / latest / discover / astronaut / space travel / none / environment / solar / system / group / galaxy / universe / light / impossible",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "Have you heard the latest news? A new spaceship has just reached the Moon."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Really? I have read about space travel before, but I have never seen a real spacecraft."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Our science club is building a model of a rocket. Would you like to join?"
+        },
+        {
+          "speaker": "Mia",
+          "text": "Yes! I have always wanted to learn about the solar system."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Great. We will look at the planets and the stars in the galaxy."
+        },
+        {
+          "speaker": "Mia",
+          "text": "It sounds like a wonderful project. Maybe one day we will even find life on another planet."
+        }
+      ],
+      "reading": {
+        "title": "New Worlds",
+        "paragraphs": [
+          "For thousands of years, people have looked up at the night sky and wondered what is out there. Today, that wonder has become a journey into space.",
+          "The first rockets carried only animals and simple instruments. Then, in 1961, a human went into space for the first time. It was a moment that changed history. Since then, astronauts have travelled further and further. They have walked on the Moon, sent machines to other planets, and built space stations that circle the Earth.",
+          "Space is very different from our home. There is no air, and the temperature can be very hot or very cold. Because of this, astronauts have to wear special suits and carry their own oxygen. They have to learn to work, eat and sleep in a tiny space. It is not an easy life, but it is an exciting one.",
+          "Our project at school is about the solar system. We have made a small model of the eight planets, and we have placed a tiny sun in the middle. We have learned that the Earth is one of eight planets, and that the Moon travels around it. We have also learned about the galaxy we live in, and about the universe of stars and planets beyond it.",
+          "We have not discovered life on other planets yet. Some scientists believe it is possible, while others think it is impossible. On this question, the journey is not over. Every new spaceship, every new telescope and every new photograph brings us a little closer to the answer.",
+          "Maybe one day, one of us will travel to the stars."
+        ]
+      },
+      "words": [
+        {
+          "word": "earth",
+          "sentence": "...the Earth is one of eight planets...",
+          "meaning": "地球"
+        },
+        {
+          "word": "moon",
+          "sentence": "...reached the Moon.",
+          "meaning": "月球"
+        },
+        {
+          "word": "news",
+          "sentence": "...the latest news.",
+          "meaning": "新闻"
+        },
+        {
+          "word": "planet",
+          "sentence": "...another planet.",
+          "meaning": "行星"
+        },
+        {
+          "word": "reach",
+          "sentence": "...has just reached the Moon.",
+          "meaning": "到达"
+        },
+        {
+          "word": "yet",
+          "sentence": "We have not discovered life yet.",
+          "meaning": "还（未）"
+        },
+        {
+          "word": "just",
+          "sentence": "...has just reached...",
+          "meaning": "刚刚"
+        },
+        {
+          "word": "model",
+          "sentence": "...a model of a rocket.",
+          "meaning": "模型"
+        },
+        {
+          "word": "spaceship",
+          "sentence": "A new spaceship...",
+          "meaning": "宇宙飞船"
+        },
+        {
+          "word": "project",
+          "sentence": "...a wonderful project.",
+          "meaning": "项目"
+        },
+        {
+          "word": "no problem",
+          "sentence": "(拓展) No problem!",
+          "meaning": "没问题"
+        },
+        {
+          "word": "latest",
+          "sentence": "...the latest news.",
+          "meaning": "最新的"
+        },
+        {
+          "word": "discover",
+          "sentence": "...discovered life...",
+          "meaning": "发现"
+        },
+        {
+          "word": "astronaut",
+          "sentence": "Astronauts travel...",
+          "meaning": "宇航员"
+        },
+        {
+          "word": "space travel",
+          "sentence": "...about space travel...",
+          "meaning": "太空旅行"
+        },
+        {
+          "word": "none",
+          "sentence": "None of them came.（拓展）",
+          "meaning": "没有一个"
+        },
+        {
+          "word": "environment",
+          "sentence": "The environment is harsh.（拓展）",
+          "meaning": "环境"
+        },
+        {
+          "word": "solar",
+          "sentence": "...the solar system.",
+          "meaning": "太阳的"
+        },
+        {
+          "word": "system",
+          "sentence": "...the solar system.",
+          "meaning": "系统"
+        },
+        {
+          "word": "group",
+          "sentence": "...a group of students.（拓展）",
+          "meaning": "组"
+        },
+        {
+          "word": "galaxy",
+          "sentence": "...the galaxy we live in.",
+          "meaning": "星系"
+        },
+        {
+          "word": "universe",
+          "sentence": "...the universe of stars...",
+          "meaning": "宇宙"
+        },
+        {
+          "word": "light",
+          "sentence": "...light years away.（拓展）",
+          "meaning": "光"
+        },
+        {
+          "word": "impossible",
+          "sentence": "Some think it is impossible.",
+          "meaning": "不可能的"
+        },
+        {
+          "word": "space",
+          "sentence": "(拓展) out in space",
+          "meaning": "太空"
+        }
+      ]
+    },
+    {
+      "file": "Module4_Seeing_the_doctor.md",
+      "heading": "八年级下册 Module 4 Seeing the doctor",
+      "section": "Module 4",
+      "topic": "健康与就医（现在完成时 + since/for）；词汇对齐：cough / fever / headache / ache / toothache / ill / since / catch a cold / take sb.'s temperature / fast food / health / well / heart / active / pet / member / take part in / condition / in excellent condition / sleepy / daily / weak",
+      "dialogue": [
+        {
+          "speaker": "Doctor",
+          "text": "Good morning. What's the matter?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "I have a cough and a headache. I've felt ill since Monday."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "Let me take your temperature. ... You have a fever. Have you caught a cold?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "I think so. It was raining, and I stayed outside for a long time."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "You haven't been feeling well. Have you eaten fast food a lot?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "Yes, I have. I eat it almost every day."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "That's not healthy. You should eat well and take part in sports."
+        },
+        {
+          "speaker": "Ben",
+          "text": "I will, doctor. Thank you."
+        }
+      ],
+      "reading": {
+        "title": "Look After Yourself",
+        "paragraphs": [
+          "Health is the most important thing we have. We often do not think about it until we become ill, and then it is too late. A doctor can help us when we are sick, but the best medicine is a good habit.",
+          "Many students these days do not move enough. They sit at their desks for hours, eat fast food, and go to bed very late. Soon they catch a cold easily, or they get a headache and a cough. Their body becomes weak, and they feel sleepy all day.",
+          "The good news is that a healthy life is not difficult. First, eat well. Eat vegetables and fruit, and drink enough water. Do not take too much sugar or too much salt. Second, be active. Take part in sports or go for a walk every day. This makes your heart strong and keeps you in excellent condition. Third, sleep enough. Your body needs rest to repair itself, especially after a long day of school.",
+          "Doctors also say that our feelings are a part of our health. When we are worried or sad, we may feel ill. So it is important to talk to someone and to enjoy the simple things in life. A pet or a friend can be a great help.",
+          "If you have a fever or a toothache, do not wait. See a doctor early, and take the medicine you are given. But remember: the best way to stay well is to look after yourself every day."
+        ]
+      },
+      "words": [
+        {
+          "word": "cough",
+          "sentence": "I have a cough...",
+          "meaning": "咳嗽"
+        },
+        {
+          "word": "fever",
+          "sentence": "You have a fever.",
+          "meaning": "发烧"
+        },
+        {
+          "word": "headache",
+          "sentence": "I have a headache.",
+          "meaning": "头痛"
+        },
+        {
+          "word": "ache",
+          "sentence": "(拓展) My leg aches.",
+          "meaning": "疼痛"
+        },
+        {
+          "word": "toothache",
+          "sentence": "...a toothache...",
+          "meaning": "牙痛"
+        },
+        {
+          "word": "ill",
+          "sentence": "I've felt ill since Monday.",
+          "meaning": "生病的"
+        },
+        {
+          "word": "since",
+          "sentence": "...since Monday.",
+          "meaning": "自从"
+        },
+        {
+          "word": "take sb.'s temperature",
+          "sentence": "Let me take your temperature.",
+          "meaning": "量体温"
+        },
+        {
+          "word": "catch a cold",
+          "sentence": "Have you caught a cold?",
+          "meaning": "感冒"
+        },
+        {
+          "word": "fast food",
+          "sentence": "...eaten fast food a lot...",
+          "meaning": "快餐"
+        },
+        {
+          "word": "health",
+          "sentence": "Health is the most important thing.",
+          "meaning": "健康"
+        },
+        {
+          "word": "well",
+          "sentence": "You haven't been feeling well.",
+          "meaning": "健康的"
+        },
+        {
+          "word": "heart",
+          "sentence": "This makes your heart strong...",
+          "meaning": "心脏"
+        },
+        {
+          "word": "active",
+          "sentence": "Be active.",
+          "meaning": "活跃的"
+        },
+        {
+          "word": "pet",
+          "sentence": "A pet can be a great help.",
+          "meaning": "宠物"
+        },
+        {
+          "word": "member",
+          "sentence": "(拓展) a family member",
+          "meaning": "成员"
+        },
+        {
+          "word": "take part in",
+          "sentence": "...take part in sports...",
+          "meaning": "参加"
+        },
+        {
+          "word": "condition",
+          "sentence": "...in excellent condition.",
+          "meaning": "状况"
+        },
+        {
+          "word": "in excellent condition",
+          "sentence": "...in excellent condition.",
+          "meaning": "状态极佳"
+        },
+        {
+          "word": "sleepy",
+          "sentence": "...feel sleepy all day.",
+          "meaning": "困倦的"
+        },
+        {
+          "word": "daily",
+          "sentence": "...every day...（daily 相关）",
+          "meaning": "日常的"
+        },
+        {
+          "word": "weak",
+          "sentence": "Their body becomes weak.",
+          "meaning": "虚弱的"
+        }
+      ]
+    },
+    {
+      "file": "Module5_Cartoon_stories.md",
+      "heading": "八年级下册 Module 5 Cartoon stories",
+      "section": "Module 5",
+      "topic": "卡通故事；词汇对齐：cartoon / handsome / smart / sky / fight / cool / hero / humorous / can't help doing / laugh / lesson / orange-and-white / ugly / win the heart of / schoolbag / lead / clever / mess / heaven / expect / artist / invent / copy / black-and-white / own",
+      "dialogue": [
+        {
+          "speaker": "Lucy",
+          "text": "What are you watching, Tom?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "A cartoon about a brave cat. He fights the bad guys and always saves the day."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Is he cool?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "Yes! He is smart and humorous, and he has a strong heart. He wins the hearts of everyone."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "I like cartoons, too. They are funny, but they also teach us lessons."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Right. A good cartoon can make us laugh and think at the same time."
+        }
+      ],
+      "reading": {
+        "title": "The Little Hero",
+        "paragraphs": [
+          "Everyone loves a good story, and cartoons are stories in pictures. They are funny, colourful and full of action. But a really good cartoon is much more than a child's game.",
+          "Think about a little cat who is not big or strong. He is a little ugly, and his home is a small corner under the roof. But he has a smart mind and a kind heart. Every day, he helps the people around him. He saves a lost child, he leads his friends out of a mess, and he fights the trouble that comes to the house.",
+          "People love this cat because he is not perfect. He is like us. He makes mistakes, and sometimes he is afraid. But when something is wrong, he stands up and tries. He is humorous, too. Even in a dangerous moment, he finds something to laugh about. That is why he has won the hearts of so many people.",
+          "Some cartoons have been with us for a very long time. They appear again and again, in books, in films, even on schoolbags. An artist once invented a character, and then copied the same idea for years. Some stories are shown in black-and-white, but the feelings are still bright.",
+          "Cartoons are a gift. They give us a few minutes of joy and a memory that stays with us. They may be simple, but they carry a big lesson: be brave, be kind, and never give up."
+        ]
+      },
+      "words": [
+        {
+          "word": "cartoon",
+          "sentence": "A cartoon about a brave cat.",
+          "meaning": "卡通"
+        },
+        {
+          "word": "fight",
+          "sentence": "He fights the bad guys...",
+          "meaning": "战斗"
+        },
+        {
+          "word": "cool",
+          "sentence": "Is he cool?",
+          "meaning": "酷的"
+        },
+        {
+          "word": "hero",
+          "sentence": "...a brave cat...（hero）",
+          "meaning": "英雄"
+        },
+        {
+          "word": "humorous",
+          "sentence": "He is smart and humorous...",
+          "meaning": "幽默的"
+        },
+        {
+          "word": "laugh",
+          "sentence": "make us laugh...",
+          "meaning": "笑"
+        },
+        {
+          "word": "lesson",
+          "sentence": "...teach us lessons.",
+          "meaning": "教训；课"
+        },
+        {
+          "word": "smart",
+          "sentence": "He has a smart mind...",
+          "meaning": "聪明的"
+        },
+        {
+          "word": "clever",
+          "sentence": "...a clever cat.（拓展）",
+          "meaning": "聪明的"
+        },
+        {
+          "word": "handsome",
+          "sentence": "(拓展) a handsome boy",
+          "meaning": "英俊的"
+        },
+        {
+          "word": "sky",
+          "sentence": "...in the sky.（拓展）",
+          "meaning": "天空"
+        },
+        {
+          "word": "lead",
+          "sentence": "He leads his friends out...",
+          "meaning": "带领"
+        },
+        {
+          "word": "mess",
+          "sentence": "...out of a mess...",
+          "meaning": "混乱"
+        },
+        {
+          "word": "heaven",
+          "sentence": "(拓展) heaven",
+          "meaning": "天堂"
+        },
+        {
+          "word": "expect",
+          "sentence": "(拓展) What do you expect?",
+          "meaning": "期望"
+        },
+        {
+          "word": "artist",
+          "sentence": "An artist once invented a character...",
+          "meaning": "艺术家"
+        },
+        {
+          "word": "invent",
+          "sentence": "...invented a character...",
+          "meaning": "发明；创造"
+        },
+        {
+          "word": "copy",
+          "sentence": "...copied the same idea...",
+          "meaning": "复制"
+        },
+        {
+          "word": "black-and-white",
+          "sentence": "...in black-and-white...",
+          "meaning": "黑白"
+        },
+        {
+          "word": "own",
+          "sentence": "...his own home.（拓展）",
+          "meaning": "自己的"
+        },
+        {
+          "word": "orange-and-white",
+          "sentence": "(拓展) orange-and-white",
+          "meaning": "橙白相间的"
+        },
+        {
+          "word": "ugly",
+          "sentence": "He is a little ugly...",
+          "meaning": "丑的"
+        },
+        {
+          "word": "win the heart of",
+          "sentence": "...won the hearts of so many people.",
+          "meaning": "赢得…的心"
+        },
+        {
+          "word": "schoolbag",
+          "sentence": "...on schoolbags.",
+          "meaning": "书包"
+        },
+        {
+          "word": "can't help doing",
+          "sentence": "I can't help laughing.（拓展）",
+          "meaning": "忍不住做"
+        }
+      ]
+    },
+    {
+      "file": "Module6_Hobbies.md",
+      "heading": "八年级下册 Module 6 Hobbies",
+      "section": "Module 6",
+      "topic": "兴趣爱好；词汇对齐：fan / stamp / tidy up / shelf / have a look / coin / note / pound / dollar / must / valuable / value / person / interest / skill / activity / sailing / come out / result / as a result / pleasure / success / encourage",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "What do you do in your free time, Leo?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "I collect stamps. My grandfather started it, and it has become my interest too."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Do they have much value?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "Some are quite valuable, but for me, the pleasure is in the collection itself."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Have a look at my shelf - I have some old coins and notes from different places."
+        },
+        {
+          "speaker": "Leo",
+          "text": "Wow! That's a great collection. Hobbies are useful, because they teach us new skills."
+        },
+        {
+          "speaker": "Mia",
+          "text": "And they help us enjoy life. As a result, we become more positive people."
+        }
+      ],
+      "reading": {
+        "title": "Hobbies Make Us Grow",
+        "paragraphs": [
+          "Everybody has a hobby. It can be a sport, a game, a collection or a craft. Some people like to sail, some love to play music, and some enjoy making things with their hands.",
+          "A hobby is more than a way to pass the time. It teaches us useful skills and can even lead to success. My cousin Tom started to collect stamps when he was six. He learned to read about different countries, to be careful with his things, and to keep his collection tidy. He was always happy to tidy up the shelf and show visitors his latest pieces.",
+          "Over the years, Tom's collection grew. Some stamps were not worth much, but a few were very valuable. He once found a rare stamp at a small shop for only a few pounds. He took a photo and posted it online. The news came out, and many collectors wanted to buy it. Tom chose to keep it, because it was part of his story.",
+          "As a result, Tom became a kind of expert. People asked for his advice, and he started to write a small blog about stamps. He encouraged other students to start their own collections. In this way, a simple hobby opened many doors for him.",
+          "Of course, we should not let a hobby take up all our time. School is important, and a hobby is a part of life, not the whole of it.",
+          "A hobby is like a friend. It entertains us, it teaches us, and it gives us pleasure and confidence. Whatever you love to do, keep doing it. It may become something great."
+        ]
+      },
+      "words": [
+        {
+          "word": "fan",
+          "sentence": "(拓展) a football fan",
+          "meaning": "粉丝；迷"
+        },
+        {
+          "word": "stamp",
+          "sentence": "I collect stamps.",
+          "meaning": "邮票"
+        },
+        {
+          "word": "tidy up",
+          "sentence": "...tidy up the shelf...",
+          "meaning": "整理"
+        },
+        {
+          "word": "shelf",
+          "sentence": "...the shelf...",
+          "meaning": "架子"
+        },
+        {
+          "word": "have a look",
+          "sentence": "Have a look at my shelf...",
+          "meaning": "看一看"
+        },
+        {
+          "word": "coin",
+          "sentence": "...old coins...",
+          "meaning": "硬币"
+        },
+        {
+          "word": "note",
+          "sentence": "...notes from different places.",
+          "meaning": "纸币；笔记"
+        },
+        {
+          "word": "pound",
+          "sentence": "...only a few pounds.",
+          "meaning": "英镑"
+        },
+        {
+          "word": "dollar",
+          "sentence": "(拓展) dollars",
+          "meaning": "美元"
+        },
+        {
+          "word": "must",
+          "sentence": "(拓展) You must be careful.",
+          "meaning": "必须"
+        },
+        {
+          "word": "valuable",
+          "sentence": "Some are quite valuable...",
+          "meaning": "珍贵的"
+        },
+        {
+          "word": "value",
+          "sentence": "Do they have much value?",
+          "meaning": "价值"
+        },
+        {
+          "word": "person",
+          "sentence": "...a positive person.（拓展）",
+          "meaning": "人"
+        },
+        {
+          "word": "interest",
+          "sentence": "...my interest too.",
+          "meaning": "兴趣"
+        },
+        {
+          "word": "skill",
+          "sentence": "...teach us new skills.",
+          "meaning": "技能"
+        },
+        {
+          "word": "activity",
+          "sentence": "...an interesting activity.（拓展）",
+          "meaning": "活动"
+        },
+        {
+          "word": "sailing",
+          "sentence": "Some like to sail...",
+          "meaning": "航海"
+        },
+        {
+          "word": "come out",
+          "sentence": "The news came out...",
+          "meaning": "出来；出版"
+        },
+        {
+          "word": "result",
+          "sentence": "(拓展) the result",
+          "meaning": "结果"
+        },
+        {
+          "word": "as a result",
+          "sentence": "As a result, Tom became an expert.",
+          "meaning": "结果；因此"
+        },
+        {
+          "word": "pleasure",
+          "sentence": "...the pleasure is in the collection...",
+          "meaning": "乐趣"
+        },
+        {
+          "word": "success",
+          "sentence": "...lead to success.",
+          "meaning": "成功"
+        },
+        {
+          "word": "encourage",
+          "sentence": "He encouraged other students...",
+          "meaning": "鼓励"
+        }
+      ]
+    },
+    {
+      "file": "Module7_Summer_in_Los_Angeles.md",
+      "heading": "八年级下册 Module 7 Summer in Los Angeles",
+      "section": "Module 7",
+      "topic": "夏令营与文化课程；词汇对齐：list / make a list / crazy / at the end of / shorts / trousers / sunglasses / homestay / weigh / total / weight / passport / culture / at the same time / last / depend / depend on / provide / test / guest / daily life / form / friendship / stay in touch with / prefer / certain",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "Have you decided to join the summer camp in LA?"
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Yes, I have. My parents have already paid for it."
+        },
+        {
+          "speaker": "Tom",
+          "text": "What do you need to prepare?"
+        },
+        {
+          "speaker": "Lucy",
+          "text": "I need my passport, and I have made a list of things to take, like sunglasses and shorts."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Will you stay in a hotel?"
+        },
+        {
+          "speaker": "Lucy",
+          "text": "No, I will have a homestay with an American family. It is a good way to learn about their daily life."
+        },
+        {
+          "speaker": "Tom",
+          "text": "That sounds great. I prefer home life, but it is a wonderful chance to practise my English."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "It is. In the end, I hope to make lifelong friends."
+        }
+      ],
+      "reading": {
+        "title": "My Summer in Los Angeles",
+        "paragraphs": [
+          "This summer, I am going to Los Angeles with a group of students for a language camp. I have never been abroad before, so I am both excited and a little nervous.",
+          "Before I go, I have a lot to do. First, I need to get my passport ready. I have also made a list of everything I need: sunglasses for the sun, shorts and trousers, a pair of good shoes, and a small camera. My suitcase has become quite heavy, so I will have to weigh it at the airport. I cannot take too much, because there is a total weight limit.",
+          "The best part of the trip is the homestay. I will live with an American family, and in this way, I can learn about their daily life. In the morning, I will have breakfast with them, and at night, I will tell them about my day. They will provide me with a warm room and good food, and I will help them a little at the same time. This is a wonderful way to build true friendship.",
+          "During the day, we will take English classes and do fun activities. We will visit interesting places, take a trip to the sea, and work in small groups. At the end of the course, there will be a test, but I am not worried. The most important thing is to speak and to enjoy myself.",
+          "Some of my friends think I am a little crazy to go so far away. But I know that this month will last in my memory for a lifetime. I cannot wait to make new friends and to see the world. This trip depends on nothing but my own courage, and I am ready for the adventure."
+        ]
+      },
+      "words": [
+        {
+          "word": "list",
+          "sentence": "I have made a list...",
+          "meaning": "清单"
+        },
+        {
+          "word": "make a list",
+          "sentence": "...made a list of everything...",
+          "meaning": "列清单"
+        },
+        {
+          "word": "crazy",
+          "sentence": "...think I am a little crazy...",
+          "meaning": "疯狂的"
+        },
+        {
+          "word": "at the end of",
+          "sentence": "At the end of the course...",
+          "meaning": "在…末尾"
+        },
+        {
+          "word": "shorts",
+          "sentence": "...short and trousers...",
+          "meaning": "短裤"
+        },
+        {
+          "word": "trousers",
+          "sentence": "...shorts and trousers...",
+          "meaning": "长裤"
+        },
+        {
+          "word": "sunglasses",
+          "sentence": "...sunglasses for the sun...",
+          "meaning": "太阳镜"
+        },
+        {
+          "word": "homestay",
+          "sentence": "...a homestay with an American family.",
+          "meaning": "寄宿家庭"
+        },
+        {
+          "word": "weigh",
+          "sentence": "I will have to weigh it...",
+          "meaning": "称重"
+        },
+        {
+          "word": "total",
+          "sentence": "...a total weight limit.",
+          "meaning": "总的"
+        },
+        {
+          "word": "weight",
+          "sentence": "...weight limit.",
+          "meaning": "重量"
+        },
+        {
+          "word": "passport",
+          "sentence": "I need my passport...",
+          "meaning": "护照"
+        },
+        {
+          "word": "culture",
+          "sentence": "...learn about their culture.（拓展）",
+          "meaning": "文化"
+        },
+        {
+          "word": "at the same time",
+          "sentence": "...at the same time.",
+          "meaning": "同时"
+        },
+        {
+          "word": "last",
+          "sentence": "...last in my memory...",
+          "meaning": "持续"
+        },
+        {
+          "word": "depend",
+          "sentence": "This trip depends on nothing but courage.",
+          "meaning": "依靠"
+        },
+        {
+          "word": "depend on",
+          "sentence": "...depends on nothing but my own courage...",
+          "meaning": "依赖"
+        },
+        {
+          "word": "provide",
+          "sentence": "They will provide me with a warm room...",
+          "meaning": "提供"
+        },
+        {
+          "word": "test",
+          "sentence": "...there will be a test...",
+          "meaning": "测验"
+        },
+        {
+          "word": "guest",
+          "sentence": "(拓展) a guest",
+          "meaning": "客人"
+        },
+        {
+          "word": "daily life",
+          "sentence": "...their daily life.",
+          "meaning": "日常生活"
+        },
+        {
+          "word": "form",
+          "sentence": "...form friendship.（拓展）",
+          "meaning": "形式；形成"
+        },
+        {
+          "word": "friendship",
+          "sentence": "...build true friendship.",
+          "meaning": "友谊"
+        },
+        {
+          "word": "stay in touch with",
+          "sentence": "I will stay in touch with them.",
+          "meaning": "保持联系"
+        },
+        {
+          "word": "prefer",
+          "sentence": "I prefer home life...",
+          "meaning": "更喜欢"
+        },
+        {
+          "word": "certain",
+          "sentence": "...certain things.（拓展）",
+          "meaning": "某些"
+        }
+      ]
+    },
+    {
+      "file": "Module8_Time_off.md",
+      "heading": "八年级下册 Module 8 Time off",
+      "section": "Module 8",
+      "topic": "度假与休闲；词汇对齐：hardly / take up / point out / sights / thirsty / at the top of / waste / square / kilometre / shape / human / wake / wake sb. up / somebody / about / path / pull / freshwater / woken",
+      "dialogue": [
+        {
+          "speaker": "Anna",
+          "text": "What do you like to do when you have time off, Tom?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "I go to the mountains. There are so many wonderful sights up there."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Is it hard to climb?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "A little. The path is long, and sometimes I am thirsty and tired. But when I reach the top, the view is amazing."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Can you see the whole town from there?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "Yes. The lake below is a perfect shape, and the square is as small as a stamp."
+        },
+        {
+          "speaker": "Anna",
+          "text": "That sounds lovely. I waste too much time sitting at home. Maybe I should get up and go outside too."
+        }
+      ],
+      "reading": {
+        "title": "A Day in the Mountains",
+        "paragraphs": [
+          "My family loves the mountains. Whenever we have time off, we put on our shoes, take a little water, and walk along the path into the hills.",
+          "Last Saturday, we set out early. The morning air was cool and fresh, and the birds were singing. We climbed for hours. The path was steep, and I was hot and thirsty. \"I hardly have any strength left,\" I said. \"Can we rest?\"",
+          "My father pointed at the top. \"Not yet,\" he said. \"The best sights are at the top of the mountain.\"",
+          "So we kept going. Along the way, we saw a small stream of clear freshwater. We stopped and drank, and the water was cold and sweet. We also saw a little animal that pulled something across the path. It was a beautiful day to be outside.",
+          "At last, we reached the top. The town below looked like a small toy. The lake was a big, round shape, and the square was as small as a coin. For a moment, I forgot all my worries. I stood there, feeling tiny but very happy.",
+          "Somebody once said that we should wake up each day and enjoy the world. I now understand what that means. When we are busy, we forget to look around. But when we take time off, we remember how beautiful the earth is.",
+          "On the way home, I felt tired but happy. The day was not wasted at all."
+        ]
+      },
+      "words": [
+        {
+          "word": "sights",
+          "sentence": "There are so many wonderful sights...",
+          "meaning": "景色"
+        },
+        {
+          "word": "thirsty",
+          "sentence": "I was hot and thirsty.",
+          "meaning": "口渴的"
+        },
+        {
+          "word": "at the top of",
+          "sentence": "...at the top of the mountain.",
+          "meaning": "在…顶部"
+        },
+        {
+          "word": "path",
+          "sentence": "...walk along the path...",
+          "meaning": "小路"
+        },
+        {
+          "word": "pull",
+          "sentence": "...pulled something across the path.",
+          "meaning": "拉"
+        },
+        {
+          "word": "freshwater",
+          "sentence": "...a small stream of clear freshwater.",
+          "meaning": "淡水"
+        },
+        {
+          "word": "shape",
+          "sentence": "...a big, round shape...",
+          "meaning": "形状"
+        },
+        {
+          "word": "square",
+          "sentence": "...the square was as small as a coin.",
+          "meaning": "广场"
+        },
+        {
+          "word": "kilometre",
+          "sentence": "(拓展) a kilometre",
+          "meaning": "千米"
+        },
+        {
+          "word": "waste",
+          "sentence": "The day was not wasted at all.",
+          "meaning": "浪费"
+        },
+        {
+          "word": "hardly",
+          "sentence": "I hardly have any strength left.",
+          "meaning": "几乎不"
+        },
+        {
+          "word": "take up",
+          "sentence": "(拓展) take up a hobby",
+          "meaning": "占用；从事"
+        },
+        {
+          "word": "point out",
+          "sentence": "My father pointed at the top.（point out）",
+          "meaning": "指出"
+        },
+        {
+          "word": "human",
+          "sentence": "...human beings.（拓展）",
+          "meaning": "人类"
+        },
+        {
+          "word": "wake up",
+          "sentence": "We should wake up each day...",
+          "meaning": "醒来"
+        },
+        {
+          "word": "wake sb. up",
+          "sentence": "Please wake me up at six.（拓展）",
+          "meaning": "叫醒"
+        },
+        {
+          "word": "somebody",
+          "sentence": "Somebody once said...",
+          "meaning": "某人"
+        },
+        {
+          "word": "about",
+          "sentence": "We talked about the trip.（拓展）",
+          "meaning": "关于"
+        },
+        {
+          "word": "woken",
+          "sentence": "(拓展) has woken",
+          "meaning": "醒来（过去分词）"
+        },
+        {
+          "word": "rest",
+          "sentence": "Can we rest?",
+          "meaning": "休息"
+        }
+      ]
+    },
+    {
+      "file": "Module9_Friendship.md",
+      "heading": "八年级下册 Module 9 Friendship",
+      "section": "Module 9",
+      "topic": "友谊（宾语从句）；词汇对齐：helpline / separate / explain / refuse / treat / herself / whether / lonely / regret / introduce / join in / no problem / silence / in silence / pass / bright / treasure / day by day / trust / include / circle / stick / glue / suggestion / patient",
+      "dialogue": [
+        {
+          "speaker": "Emma",
+          "text": "You look quiet. Is something wrong?"
+        },
+        {
+          "speaker": "Anna",
+          "text": "I had a fight with my best friend. I regret what I said to her."
+        },
+        {
+          "speaker": "Emma",
+          "text": "It is hard to lose a friend. Have you tried to explain your feelings?"
+        },
+        {
+          "speaker": "Anna",
+          "text": "I did, but she refused to talk. I feel so lonely now."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Give her a little time. Trust that the friendship can be mended. A good suggestion is to write her a note."
+        },
+        {
+          "speaker": "Anna",
+          "text": "You are right. I will try to talk to her again tomorrow."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Be patient, and things will get better day by day."
+        }
+      ],
+      "reading": {
+        "title": "A Friend Worth Keeping",
+        "paragraphs": [
+          "True friendship is one of the most beautiful treasures in life. A good friend is with us in the bright days and in the dark ones. But friendship is not always easy. Sometimes there are misunderstandings, and sometimes we hurt the people we love.",
+          "My friend Lucy and I have known each other since we were little. We used to do everything together. Then one day, we had a small fight over a project. I wanted to do it my way, and she wanted to do it hers. We both said things we did not mean, and then we stopped talking.",
+          "For a few days, we kept our silence. It was a sad time. I felt lonely and I did not know what to do. I told my mother about it, and she gave me some advice. She said, \"Do not let a small thing separate you. You should explain how you feel and listen to her, too.\"",
+          "So I did as she suggested. I wrote a note to Lucy, and I passed it to her after class. I wrote that I was sorry and that I valued our friendship. She read it, and she smiled at me. That afternoon, we walked home together and talked for a long time.",
+          "That day I learned that friendship needs trust and patience. We have to be kind, even when we are angry. And we have to build the bond again, day by day, like glue that holds two pieces together.",
+          "Lucy is still my best friend. Our friendship has survived, and it is stronger now. I know that whatever happens, we will find a way to be friends again."
+        ]
+      },
+      "words": [
+        {
+          "word": "helpline",
+          "sentence": "(拓展) a helpline",
+          "meaning": "求助热线"
+        },
+        {
+          "word": "separate",
+          "sentence": "Do not let a small thing separate you.",
+          "meaning": "使分开"
+        },
+        {
+          "word": "explain",
+          "sentence": "...explain how you feel...",
+          "meaning": "解释"
+        },
+        {
+          "word": "refuse",
+          "sentence": "She refused to talk.",
+          "meaning": "拒绝"
+        },
+        {
+          "word": "treat",
+          "sentence": "(拓展) treat her well",
+          "meaning": "对待"
+        },
+        {
+          "word": "herself",
+          "sentence": "She wanted to do it hers.（herself 相关）",
+          "meaning": "她自己"
+        },
+        {
+          "word": "whether",
+          "sentence": "(拓展) whether you agree",
+          "meaning": "是否"
+        },
+        {
+          "word": "lonely",
+          "sentence": "I feel so lonely...",
+          "meaning": "孤独的"
+        },
+        {
+          "word": "regret",
+          "sentence": "I regret what I said.",
+          "meaning": "后悔"
+        },
+        {
+          "word": "introduce",
+          "sentence": "(拓展) introduce yourself",
+          "meaning": "介绍"
+        },
+        {
+          "word": "join in",
+          "sentence": "(拓展) join in the game",
+          "meaning": "加入"
+        },
+        {
+          "word": "silence",
+          "sentence": "We kept our silence.",
+          "meaning": "沉默"
+        },
+        {
+          "word": "in silence",
+          "sentence": "...in silence.（拓展）",
+          "meaning": "默不作声"
+        },
+        {
+          "word": "pass",
+          "sentence": "I passed it to her.",
+          "meaning": "递"
+        },
+        {
+          "word": "bright",
+          "sentence": "...in the bright days...",
+          "meaning": "明亮的"
+        },
+        {
+          "word": "treasure",
+          "sentence": "...beautiful treasures...",
+          "meaning": "珍宝"
+        },
+        {
+          "word": "day by day",
+          "sentence": "...better day by day.",
+          "meaning": "一天天"
+        },
+        {
+          "word": "trust",
+          "sentence": "Friendship needs trust...",
+          "meaning": "信任"
+        },
+        {
+          "word": "include",
+          "sentence": "(拓展) include everyone",
+          "meaning": "包括"
+        },
+        {
+          "word": "circle",
+          "sentence": "...a circle of friends.（拓展）",
+          "meaning": "圈子"
+        },
+        {
+          "word": "stick",
+          "sentence": "...stick together.（拓展）",
+          "meaning": "粘住"
+        },
+        {
+          "word": "glue",
+          "sentence": "...like glue...",
+          "meaning": "胶水"
+        },
+        {
+          "word": "suggestion",
+          "sentence": "A good suggestion is to write...",
+          "meaning": "建议"
+        },
+        {
+          "word": "patient",
+          "sentence": "Be patient...",
+          "meaning": "耐心的"
+        },
+        {
+          "word": "mended",
+          "sentence": "...can be mended.（拓展）",
+          "meaning": "修补"
+        }
+      ]
+    }
+  ]
+}

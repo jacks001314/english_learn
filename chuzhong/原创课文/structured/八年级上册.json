@@ -1,0 +1,1978 @@
+{
+  "book": "八年级上册",
+  "items": [
+    {
+      "file": "Module10_The_weather.md",
+      "heading": "八年级上册 Module 10 The weather",
+      "section": "Module 10",
+      "topic": "天气（may/might）；词汇对齐：cloud / shower / snow / storm / cloudy / rainy / snowy / sunny / windy / skate / thick / ice / joke / might / temperature / minus / degree / although / wet / neither / terrible / wish / probably / come on / mile / round / northwest / southeast / from time to time",
+      "dialogue": [
+        {
+          "speaker": "Amy",
+          "text": "What are you doing this weekend, Tom?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "I'm not sure. It depends on the weather."
+        },
+        {
+          "speaker": "Amy",
+          "text": "Look at the clouds. It might rain, so we may not be able to go skating."
+        },
+        {
+          "speaker": "Tom",
+          "text": "I saw the weather report. The temperature will probably go down to minus five degrees tonight. It's going to be very cold."
+        },
+        {
+          "speaker": "Amy",
+          "text": "If the ice is thick enough, we can skate. But if it snows, the roads will be wet and terrible."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Let's wait and see. It may be snowy in the north, but it's usually sunny here."
+        },
+        {
+          "speaker": "Amy",
+          "text": "Come on, we can't stay inside all day. If the weather is fine, it's a chance to go out."
+        }
+      ],
+      "reading": {
+        "title": "The Weather Changes",
+        "paragraphs": [
+          "The weather is different in different places. In the northwest, the wind often blows for many days, and the sky is grey. In the southeast, there are showers from time to time, and it rains a lot in July.",
+          "Sometimes the weather changes in a strange way. In the morning, the sky is clear and sunny. At noon, dark clouds appear, and the sun disappears. Then the wind gets up, the temperature drops to a low point, and a storm comes suddenly. People run indoors and wish they had brought an umbrella. After an hour, the rain stops, and the sun shines again. That is how it goes, again and again.",
+          "This is not a joke. A sudden change in the weather can be dangerous. Although we cannot stop rain or snow, we can still pay attention to it. If it might snow, we wear warm clothes. If there is ice on the road, we walk slowly and do not drive fast. If a storm is coming, we stay away from windows and wait until it is over.",
+          "Weather is never boring for the people who live here. It is a little bit of everything: hot and cold, wet and dry, fine and terrible. You never know what it will be like tomorrow."
+        ]
+      },
+      "words": [
+        {
+          "word": "might",
+          "sentence": "It might rain...",
+          "meaning": "可能"
+        },
+        {
+          "word": "probably",
+          "sentence": "The temperature will probably go down...",
+          "meaning": "大概"
+        },
+        {
+          "word": "temperature",
+          "sentence": "The temperature drops...",
+          "meaning": "温度"
+        },
+        {
+          "word": "degree",
+          "sentence": "...minus five degrees...",
+          "meaning": "度"
+        },
+        {
+          "word": "minus",
+          "sentence": "...to minus five degrees.",
+          "meaning": "零下"
+        },
+        {
+          "word": "cloud",
+          "sentence": "...dark clouds appear...",
+          "meaning": "云"
+        },
+        {
+          "word": "cloudy",
+          "sentence": "The sky was cloudy.（拓展）",
+          "meaning": "多云的"
+        },
+        {
+          "word": "shower",
+          "sentence": "...there are showers...",
+          "meaning": "阵雨"
+        },
+        {
+          "word": "snow",
+          "sentence": "If it snows...",
+          "meaning": "雪"
+        },
+        {
+          "word": "icy",
+          "sentence": "(拓展) icy road",
+          "meaning": "结冰的"
+        },
+        {
+          "word": "storm",
+          "sentence": "...a storm comes suddenly.",
+          "meaning": "暴风雨"
+        },
+        {
+          "word": "sunny",
+          "sentence": "...the sky is clear and sunny.",
+          "meaning": "晴朗的"
+        },
+        {
+          "word": "rainy",
+          "sentence": "It rains a lot...（rainy 拓展）",
+          "meaning": "多雨的"
+        },
+        {
+          "word": "snowy",
+          "sentence": "It may be snowy...",
+          "meaning": "下雪的"
+        },
+        {
+          "word": "windy",
+          "sentence": "The wind often blows...（windy 扩展）",
+          "meaning": "多风的"
+        },
+        {
+          "word": "thick",
+          "sentence": "If the ice is thick enough...",
+          "meaning": "厚的"
+        },
+        {
+          "word": "ice",
+          "sentence": "...if there is ice on the road.",
+          "meaning": "冰"
+        },
+        {
+          "word": "wet",
+          "sentence": "The roads will be wet...",
+          "meaning": "湿的"
+        },
+        {
+          "word": "terrible",
+          "sentence": "...a terrible day.",
+          "meaning": "极坏的"
+        },
+        {
+          "word": "wish",
+          "sentence": "...wish they had brought an umbrella.",
+          "meaning": "希望"
+        },
+        {
+          "word": "although",
+          "sentence": "Although we cannot stop rain...",
+          "meaning": "虽然"
+        },
+        {
+          "word": "neither",
+          "sentence": "Neither of us likes the cold.（拓展）",
+          "meaning": "两者都不"
+        },
+        {
+          "word": "joke",
+          "sentence": "This is not a joke.",
+          "meaning": "玩笑"
+        },
+        {
+          "word": "come on",
+          "sentence": "Come on, we can't stay inside...",
+          "meaning": "加油；快"
+        },
+        {
+          "word": "mile",
+          "sentence": "...a few miles away.（拓展）",
+          "meaning": "英里"
+        },
+        {
+          "word": "round",
+          "sentence": "We walked round the lake.（拓展）",
+          "meaning": "围绕"
+        },
+        {
+          "word": "northwest",
+          "sentence": "In the northwest...",
+          "meaning": "西北"
+        },
+        {
+          "word": "southeast",
+          "sentence": "In the southeast...",
+          "meaning": "东南"
+        },
+        {
+          "word": "from time to time",
+          "sentence": "...from time to time...",
+          "meaning": "不时；有时"
+        }
+      ]
+    },
+    {
+      "file": "Module11_Way_of_life.md",
+      "heading": "八年级上册 Module 11 Way of life",
+      "section": "Module 11",
+      "topic": "生活方式与习俗；词汇对齐：cap / chess / set / a chess set / chopstick / toy / video / video game / gift / surprise / immediately / difference / accept / tradition / example / for example / must / month / serious / taste / experience / stay / someone / for the first time / sandwich / chip / fish and chips / onto / gentleman / shoulder",
+      "dialogue": [
+        {
+          "speaker": "Lucy",
+          "text": "I'm having dinner with a British family tonight. What should I do?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "You must be polite and wait for them to start. Also, when you get a gift, you should open it in front of them."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Really? In my country, we usually open a gift later."
+        },
+        {
+          "speaker": "Ben",
+          "text": "That's a small difference. Here, people use a knife and fork, and they often have fish and chips."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Do I have to use chopsticks?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "No, for Western food you use a knife and fork. It is a good experience for you."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Thanks. It's my first time, so I'll try to remember your advice."
+        }
+      ],
+      "reading": {
+        "title": "At the Dinner Table",
+        "paragraphs": [
+          "Different countries have different ways of life. Some of them are small, but they can be very serious traditions. For people who visit a new place for the first time, it is important to know what to do.",
+          "In Britain, for example, people usually have a cup of tea with milk, and a west-country dinner often includes fish and chips. At the table, a gentleman may hold the door open for others, and he often helps the person next to him. When guests arrive, a host may offer them a small gift, such as a toy or a video game for a child.",
+          "When you receive a gift, you should accept it with a smile and open it immediately. In some cultures, the words \"thank you\" are enough. In others, you must say something about the present, or it may seem that you do not like it.",
+          "At the dinner table, there are also rules. You should not start eating before the host. You should keep your hands above the table, and if you need something, you should ask someone to pass it to you. An important rule is simple: be polite, and enjoy the experience of trying new food and new ways.",
+          "People say that the best way to understand a country is to sit down and eat with its people. When you taste their food, you taste their way of life."
+        ]
+      },
+      "words": [
+        {
+          "word": "must",
+          "sentence": "You must be polite...",
+          "meaning": "必须"
+        },
+        {
+          "word": "gift",
+          "sentence": "...a small gift...",
+          "meaning": "礼物"
+        },
+        {
+          "word": "accept",
+          "sentence": "You should accept it...",
+          "meaning": "接受"
+        },
+        {
+          "word": "immediately",
+          "sentence": "...open it immediately.",
+          "meaning": "立即"
+        },
+        {
+          "word": "difference",
+          "sentence": "That's a small difference.",
+          "meaning": "差异"
+        },
+        {
+          "word": "tradition",
+          "sentence": "...serious traditions.",
+          "meaning": "传统"
+        },
+        {
+          "word": "for example",
+          "sentence": "In Britain, for example...",
+          "meaning": "例如"
+        },
+        {
+          "word": "experience",
+          "sentence": "It is a good experience...",
+          "meaning": "经历；体验"
+        },
+        {
+          "word": "taste",
+          "sentence": "...taste their food...",
+          "meaning": "品尝"
+        },
+        {
+          "word": "chopstick",
+          "sentence": "...use chopsticks...",
+          "meaning": "筷子"
+        },
+        {
+          "word": "gentleman",
+          "sentence": "A gentleman may hold the door open...",
+          "meaning": "先生；男士"
+        },
+        {
+          "word": "shoulder",
+          "sentence": "...on the table?（拓展）",
+          "meaning": "肩膀"
+        },
+        {
+          "word": "fish and chips",
+          "sentence": "...fish and chips.",
+          "meaning": "炸鱼加薯条"
+        },
+        {
+          "word": "sandwich",
+          "sentence": "(拓展) a sandwich",
+          "meaning": "三明治"
+        },
+        {
+          "word": "toy",
+          "sentence": "...a toy or a video game...",
+          "meaning": "玩具"
+        },
+        {
+          "word": "video game",
+          "sentence": "...a video game...",
+          "meaning": "电子游戏"
+        },
+        {
+          "word": "cap",
+          "sentence": "(拓展) a baseball cap",
+          "meaning": "帽子"
+        },
+        {
+          "word": "chess set",
+          "sentence": "(拓展) a chess set",
+          "meaning": "一副国际象棋"
+        },
+        {
+          "word": "set",
+          "sentence": "(拓展) a set",
+          "meaning": "一套"
+        },
+        {
+          "word": "month",
+          "sentence": "...next month.（拓展）",
+          "meaning": "月份"
+        },
+        {
+          "word": "serious",
+          "sentence": "...very serious traditions.",
+          "meaning": "严肃的"
+        },
+        {
+          "word": "stay",
+          "sentence": "Stay for dinner.（拓展）",
+          "meaning": "停留"
+        },
+        {
+          "word": "onto",
+          "sentence": "Put it onto the table.（拓展）",
+          "meaning": "到…上"
+        },
+        {
+          "word": "someone",
+          "sentence": "...ask someone to pass it...",
+          "meaning": "某人"
+        },
+        {
+          "word": "for the first time",
+          "sentence": "...for the first time...",
+          "meaning": "首次"
+        }
+      ]
+    },
+    {
+      "file": "Module12_Help.md",
+      "heading": "八年级上册 Module 12 Help",
+      "section": "Module 12",
+      "topic": "急救与安全；词汇对齐：broken / glass / stairs / aid / first aid / medical / imagine / bottom / at the bottom of / wrong / trouble / lift / lift up / harmful / drop / training / make sure / cover / earthquake / warn / inside / under / window / keep / clear / keep clear of / calm / brave / helpful / power",
+      "dialogue": [
+        {
+          "speaker": "May",
+          "text": "Ben, are you all right? What happened?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "I fell down the stairs and I think my leg is broken. It really hurts."
+        },
+        {
+          "speaker": "May",
+          "text": "Don't move. Let me help you. First, we should call for medical help."
+        },
+        {
+          "speaker": "Ben",
+          "text": "My phone is at the bottom of my bag. I can't reach it."
+        },
+        {
+          "speaker": "May",
+          "text": "It's OK. I'll call the doctor and stay with you. Keep calm."
+        },
+        {
+          "speaker": "Ben",
+          "text": "What should I do while we wait?"
+        },
+        {
+          "speaker": "May",
+          "text": "Just stay still and keep clear of the edge. Lift your head a little if you can."
+        },
+        {
+          "speaker": "Ben",
+          "text": "That helps. Thank you, May. You are so helpful."
+        }
+      ],
+      "reading": {
+        "title": "Help Comes First",
+        "paragraphs": [
+          "Accidents can happen at any time. When they do, knowing what to do is very important. The most useful thing we can learn, after the habit of being careful, is first aid.",
+          "If someone falls and breaks an arm, do not move the person. Instead, stay calm and call for medical help. Make sure the area is safe, and keep people clear of the injured person. If there is blood, cover the wound with a clean cloth and press it gently. This can reduce the pain until a doctor arrives.",
+          "In an earthquake, the rules are different. First, stay inside and get under a strong table. Keep away from windows, because broken glass can be harmful. If the ground is shaking, drop, cover and hold on. After the shaking stops, leave the building carefully and do not use the stairs; use the exit steps beside the building, or a safe door.",
+          "We cannot always stop accidents from happening. But we can prepare ourselves for them. Schools teach students about danger, and some towns even warn people by giving them training on how to react. When we keep these simple rules in our minds, we can be brave and helpful when it matters most. That is the true power of help."
+        ]
+      },
+      "words": [
+        {
+          "word": "first aid",
+          "sentence": "...is first aid.",
+          "meaning": "急救"
+        },
+        {
+          "word": "medical",
+          "sentence": "...call for medical help.",
+          "meaning": "医疗的"
+        },
+        {
+          "word": "broken",
+          "sentence": "...my leg is broken.",
+          "meaning": "损坏的；骨折的"
+        },
+        {
+          "word": "stairs",
+          "sentence": "...the stairs...",
+          "meaning": "楼梯"
+        },
+        {
+          "word": "lift",
+          "sentence": "Lift your head a little.",
+          "meaning": "抬起"
+        },
+        {
+          "word": "lift up",
+          "sentence": "(拓展) Lift it up together.",
+          "meaning": "抬起"
+        },
+        {
+          "word": "bottom",
+          "sentence": "...at the bottom of my bag.",
+          "meaning": "底部"
+        },
+        {
+          "word": "at the bottom of",
+          "sentence": "...at the bottom of my bag.",
+          "meaning": "在…底部"
+        },
+        {
+          "word": "cover",
+          "sentence": "...cover the wound...",
+          "meaning": "覆盖"
+        },
+        {
+          "word": "clear",
+          "sentence": "Keep clear of the edge.",
+          "meaning": "清理；使畅通"
+        },
+        {
+          "word": "keep clear of",
+          "sentence": "Keep clear of the edge.",
+          "meaning": "不和…接触"
+        },
+        {
+          "word": "calm",
+          "sentence": "Keep calm.",
+          "meaning": "镇静的"
+        },
+        {
+          "word": "harmful",
+          "sentence": "Broken glass can be harmful.",
+          "meaning": "有害的"
+        },
+        {
+          "word": "keep",
+          "sentence": "Keep away from windows.",
+          "meaning": "保持"
+        },
+        {
+          "word": "drop",
+          "sentence": "...drop, cover and hold on.",
+          "meaning": "落下；伏倒"
+        },
+        {
+          "word": "warn",
+          "sentence": "...warn people...",
+          "meaning": "警告"
+        },
+        {
+          "word": "training",
+          "sentence": "...by giving them training...",
+          "meaning": "训练"
+        },
+        {
+          "word": "make sure",
+          "sentence": "Make sure the area is safe...",
+          "meaning": "确保"
+        },
+        {
+          "word": "imagine",
+          "sentence": "Can you imagine the danger?（拓展）",
+          "meaning": "想象"
+        },
+        {
+          "word": "wrong",
+          "sentence": "What's wrong?",
+          "meaning": "有毛病"
+        },
+        {
+          "word": "trouble",
+          "sentence": "He is in trouble.（拓展）",
+          "meaning": "麻烦"
+        },
+        {
+          "word": "glass",
+          "sentence": "...broken glass...",
+          "meaning": "玻璃"
+        },
+        {
+          "word": "inside",
+          "sentence": "Stay inside.（拓展）",
+          "meaning": "向里面"
+        },
+        {
+          "word": "under",
+          "sentence": "...under a strong table.",
+          "meaning": "在…下面"
+        },
+        {
+          "word": "window",
+          "sentence": "Keep away from windows.",
+          "meaning": "窗户"
+        },
+        {
+          "word": "earthquake",
+          "sentence": "In an earthquake...",
+          "meaning": "地震"
+        },
+        {
+          "word": "brave",
+          "sentence": "We can be brave...",
+          "meaning": "勇敢的"
+        },
+        {
+          "word": "helpful",
+          "sentence": "You are so helpful.",
+          "meaning": "有帮助的"
+        },
+        {
+          "word": "power",
+          "sentence": "...the true power of help.",
+          "meaning": "力量；电力"
+        },
+        {
+          "word": "aid",
+          "sentence": "(拓展) aid",
+          "meaning": "援助"
+        }
+      ]
+    },
+    {
+      "file": "Module1_How_to_learn_English.md",
+      "heading": "八年级上册 Module 1 How to learn English",
+      "section": "Module 1",
+      "topic": "英语学习方法（提建议）",
+      "dialogue": [
+        {
+          "speaker": "Lily",
+          "text": "Hi, Tom. You look worried. What's the matter?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "I'm a little shy, and I often make mistakes when I speak English. I understand English when I read it, but I can't say anything naturally."
+        },
+        {
+          "speaker": "Lily",
+          "text": "That's very common. Do you have any good advice from your teacher?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "She said I should pronounce every word aloud and practise speaking every day. But I always forget the words the next day."
+        },
+        {
+          "speaker": "Lily",
+          "text": "Maybe you should write down the new words in a notebook and look them up in a dictionary. A good memory comes from a good habit."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Do you think it's a good idea to read aloud?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Of course. Reading aloud helps you remember the spelling and the grammar at the same time."
+        },
+        {
+          "speaker": "Tom",
+          "text": "What else can I do?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Try to find a conversation partner. If you talk to others quickly, you'll become more confident."
+        }
+      ],
+      "reading": {
+        "title": "A Better Way to Learn English",
+        "paragraphs": [
+          "Many students say that English is difficult, but the problem is not the language. It is the way they study.",
+          "First, do not try to remember every word alone. Words live in sentences. When you meet a new word, look it up in a dictionary, write it down, and then make a sentence with it. In this way, you will not only learn the word but also learn how to use it.",
+          "Second, speak aloud. It sounds simple, but it is very helpful. When you read a short passage aloud, you improve your pronunciation and your listening at the same time. You also begin to feel more natural about the sound of English.",
+          "Third, keep a small notebook. Every day after class, write down three new words and one important sentence from the lesson. Read the notebook before you go to bed, and again the next morning. This little habit is the secret to a strong memory.",
+          "Finally, do not be shy. Make mistakes, and learn from them. When you ask for help, your teacher and friends are happy to give you advice. Conversation is the best classroom, and practice is the best teacher.",
+          "If you follow these simple steps, you will slowly improve. Little by little, English will become a friend instead of a problem."
+        ]
+      },
+      "words": [
+        {
+          "word": "matter",
+          "sentence": "What's the matter?",
+          "meaning": "问题；麻烦"
+        },
+        {
+          "word": "mistake",
+          "sentence": "I often make mistakes...",
+          "meaning": "错误"
+        },
+        {
+          "word": "advice",
+          "sentence": "Do you have any good advice...?",
+          "meaning": "建议"
+        },
+        {
+          "word": "pronounce",
+          "sentence": "You should pronounce every word aloud.",
+          "meaning": "发音"
+        },
+        {
+          "word": "aloud",
+          "sentence": "...pronounce every word aloud.",
+          "meaning": "大声地"
+        },
+        {
+          "word": "forget",
+          "sentence": "I always forget the words...",
+          "meaning": "忘记"
+        },
+        {
+          "word": "write down",
+          "sentence": "...write down the new words...",
+          "meaning": "写下"
+        },
+        {
+          "word": "dictionary",
+          "sentence": "...look them up in a dictionary.",
+          "meaning": "词典"
+        },
+        {
+          "word": "grammar",
+          "sentence": "...remember the spelling and the grammar...",
+          "meaning": "语法"
+        },
+        {
+          "word": "conversation",
+          "sentence": "Try to find a conversation partner.",
+          "meaning": "对话"
+        },
+        {
+          "word": "quickly",
+          "sentence": "If you talk to others quickly...",
+          "meaning": "迅速地"
+        },
+        {
+          "word": "natural",
+          "sentence": "...feel more natural about the sound...",
+          "meaning": "自然的"
+        },
+        {
+          "word": "improve",
+          "sentence": "You improve your pronunciation...",
+          "meaning": "改进；提高"
+        },
+        {
+          "word": "suggest",
+          "sentence": "...I suggest reading aloud.",
+          "meaning": "建议"
+        },
+        {
+          "word": "shy",
+          "sentence": "Do not be shy.",
+          "meaning": "害羞的"
+        },
+        {
+          "word": "spelling",
+          "sentence": "...the spelling and the grammar...",
+          "meaning": "拼写"
+        }
+      ]
+    },
+    {
+      "file": "Module2_My_home_town_and_my_country.md",
+      "heading": "八年级上册 Module 2 My home town and my country",
+      "section": "Module 2",
+      "topic": "家乡与国家（形容词比较级）；词汇对齐：hill / population / wide / million / north / south / west / especially / be famous for / university / island / area / low / mountain / countryside / umbrella / pretty good",
+      "dialogue": [
+        {
+          "speaker": "Anna",
+          "text": "Where do you come from, Mark?"
+        },
+        {
+          "speaker": "Mark",
+          "text": "I come from a small town in the north of England. It is much smaller than this city."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Really? What is it like?"
+        },
+        {
+          "speaker": "Mark",
+          "text": "It is very quiet and pretty. There are low hills and a wide river, and the countryside is green all year round."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Is it famous for anything?"
+        },
+        {
+          "speaker": "Mark",
+          "text": "Yes, it is famous for its old university. Many visitors come here, especially in summer."
+        },
+        {
+          "speaker": "Anna",
+          "text": "What about the population?"
+        },
+        {
+          "speaker": "Mark",
+          "text": "Only about two hundred thousand people. It is not as crowded as a big city."
+        },
+        {
+          "speaker": "Anna",
+          "text": "It sounds like a nice home town. I would like to visit it one day."
+        }
+      ],
+      "reading": {
+        "title": "My Home Town",
+        "paragraphs": [
+          "My home town is a small town in the north of my country. It is a quiet place with a population of about two hundred thousand. You will not find any tall buildings here. Instead, you will see low houses, green hills and a wide river running through the town.",
+          "The town is famous for its old university. Students come from all over the country to study here, especially in autumn when the leaves turn red. In summer, visitors sit by the river and watch the boats, and they often say that the town is very pretty.",
+          "We also have some beautiful mountains and an island near the coast, but the countryside is my favourite part. It is quiet and clean, and the air is fresh.",
+          "People sometimes ask me why I do not want to move to a bigger city. I always give the same answer: a big city is exciting, but my home town is where my heart is. It may be small, but it is pretty good."
+        ]
+      },
+      "words": [
+        {
+          "word": "north",
+          "sentence": "...in the north of England.",
+          "meaning": "北方"
+        },
+        {
+          "word": "population",
+          "sentence": "...with a population of about two hundred thousand.",
+          "meaning": "人口"
+        },
+        {
+          "word": "be famous for",
+          "sentence": "The town is famous for its old university.",
+          "meaning": "因…而著名"
+        },
+        {
+          "word": "especially",
+          "sentence": "...especially in autumn...",
+          "meaning": "尤其"
+        },
+        {
+          "word": "wide",
+          "sentence": "...a wide river running through the town.",
+          "meaning": "宽的"
+        },
+        {
+          "word": "low",
+          "sentence": "...low houses, green hills...",
+          "meaning": "低的"
+        },
+        {
+          "word": "mountain",
+          "sentence": "We also have some beautiful mountains...",
+          "meaning": "山"
+        },
+        {
+          "word": "countryside",
+          "sentence": "...the countryside is my favourite part.",
+          "meaning": "乡村"
+        },
+        {
+          "word": "island",
+          "sentence": "...an island near the coast...",
+          "meaning": "岛"
+        },
+        {
+          "word": "university",
+          "sentence": "...its old university.",
+          "meaning": "大学"
+        },
+        {
+          "word": "pretty good",
+          "sentence": "...it is pretty good.",
+          "meaning": "相当好"
+        },
+        {
+          "word": "thousand",
+          "sentence": "...about two hundred thousand people.",
+          "meaning": "千"
+        }
+      ]
+    },
+    {
+      "file": "Module3_Sports.md",
+      "heading": "八年级上册 Module 3 Sports",
+      "section": "Module 3",
+      "topic": "体育运动（比较级与最高级）；词汇对齐：baseball / volleyball / boring / exciting / relaxing / score / already / matter / hurt / enjoyable / Olympics / stadium / miss / mind / plenty of / beat / careless / cheer...on / coach / against / train / practice / warm-up / usual / better / after-school / pleased / pass / pity / chance / loudly / confident",
+      "dialogue": [
+        {
+          "speaker": "Jack",
+          "text": "Are you going to watch the football match tonight?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "I am. It is the final, and the two teams are both very strong."
+        },
+        {
+          "speaker": "Jack",
+          "text": "Which team do you think is better?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "I think ours will win. They have a new coach, and they train harder than before."
+        },
+        {
+          "speaker": "Jack",
+          "text": "But the other team beat us last time. That was careless of us."
+        },
+        {
+          "speaker": "Ben",
+          "text": "We have practised plenty of times since then. Everyone is more confident now."
+        },
+        {
+          "speaker": "Jack",
+          "text": "What is the score going to be?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "I hope it will be two to one. Come and cheer the team on with us!"
+        }
+      ],
+      "reading": {
+        "title": "A Better Player",
+        "paragraphs": [
+          "Last year, Leo was a careless player. He was fast, but he never listened to his coach, and he often missed easy chances. His team always lost, and Leo felt sorry. He was not pleased with himself.",
+          "Then he decided to change. He began to do warm-up exercises every day, and he practised after school for an hour. His coach taught him how to pass the ball and how to play against strong teams. Slowly, Leo became more careful and more confident.",
+          "This year, his team is the best in the school. They have scored many goals, and Leo has scored more than anyone else. \"Sports is not only about winning,\" Leo says. \"It is about learning to work together. Playing football is exciting, but working with my team is even more enjoyable.\"",
+          "Now Leo is the most important player on the team. He does not miss his chances any more, and his teammates cheer him on loudly. This autumn, they will take part in the school Olympics. Leo says he is ready and he is not afraid."
+        ]
+      },
+      "words": [
+        {
+          "word": "coach",
+          "sentence": "They have a new coach...",
+          "meaning": "教练"
+        },
+        {
+          "word": "train",
+          "sentence": "...they train harder than before.",
+          "meaning": "训练"
+        },
+        {
+          "word": "beat",
+          "sentence": "The other team beat us last time.",
+          "meaning": "打败"
+        },
+        {
+          "word": "careless",
+          "sentence": "Leo was a careless player.",
+          "meaning": "粗心的"
+        },
+        {
+          "word": "plenty of",
+          "sentence": "We have practised plenty of times...",
+          "meaning": "大量的"
+        },
+        {
+          "word": "confident",
+          "sentence": "Everyone is more confident now.",
+          "meaning": "自信的"
+        },
+        {
+          "word": "score",
+          "sentence": "What is the score going to be?",
+          "meaning": "得分"
+        },
+        {
+          "word": "cheer...on",
+          "sentence": "Come and cheer the team on...",
+          "meaning": "为…加油"
+        },
+        {
+          "word": "practice",
+          "sentence": "He practised after school...",
+          "meaning": "练习"
+        },
+        {
+          "word": "warm-up",
+          "sentence": "...do warm-up exercises...",
+          "meaning": "热身"
+        },
+        {
+          "word": "miss",
+          "sentence": "...he often missed easy chances.",
+          "meaning": "错过"
+        },
+        {
+          "word": "pleased",
+          "sentence": "He was not pleased with himself.",
+          "meaning": "高兴的"
+        },
+        {
+          "word": "enjoyable",
+          "sentence": "...even more enjoyable.",
+          "meaning": "令人愉快的"
+        },
+        {
+          "word": "exciting",
+          "sentence": "Playing football is exciting...",
+          "meaning": "令人兴奋的"
+        },
+        {
+          "word": "pass",
+          "sentence": "...how to pass the ball...",
+          "meaning": "传球"
+        },
+        {
+          "word": "against",
+          "sentence": "...play against strong teams.",
+          "meaning": "对抗"
+        },
+        {
+          "word": "loudly",
+          "sentence": "...cheer him on loudly.",
+          "meaning": "大声地"
+        },
+        {
+          "word": "chance",
+          "sentence": "...easy chances.",
+          "meaning": "机会"
+        },
+        {
+          "word": "pity",
+          "sentence": "*（拓展）* What a pity!",
+          "meaning": "遗憾"
+        },
+        {
+          "word": "matter",
+          "sentence": "What's the matter?",
+          "meaning": "问题"
+        },
+        {
+          "word": "hurt",
+          "sentence": "My knee hurts.",
+          "meaning": "受伤（拓展）"
+        },
+        {
+          "word": "mind",
+          "sentence": "Do you mind opening the window?",
+          "meaning": "介意（拓展）"
+        },
+        {
+          "word": "better",
+          "sentence": "...a better player.",
+          "meaning": "更好的"
+        },
+        {
+          "word": "after-school",
+          "sentence": "He practised after school...",
+          "meaning": "课后的"
+        },
+        {
+          "word": "usual",
+          "sentence": "This is his usual routine.",
+          "meaning": "通常的（拓展）"
+        },
+        {
+          "word": "already",
+          "sentence": "He has already scored two goals.",
+          "meaning": "已经（拓展）"
+        },
+        {
+          "word": "Olympics",
+          "sentence": "...the school Olympics.",
+          "meaning": "奥运会"
+        },
+        {
+          "word": "stadium",
+          "sentence": "We watched the game at the stadium.",
+          "meaning": "体育场（拓展）"
+        }
+      ]
+    },
+    {
+      "file": "Module4_Planes_ships_and_trains.md",
+      "heading": "八年级上册 Module 4 Planes, ships and trains",
+      "section": "Module 4",
+      "topic": "交通出行（最高级）；词汇对齐：road / accident / except / choice / classmate / far from / close / crowded / all the time / journey / book / park / outside / however / cost",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "How did you get to school today, Sam?"
+        },
+        {
+          "speaker": "Sam",
+          "text": "I took the underground. It is the fastest way, and it is not crowded at seven o'clock."
+        },
+        {
+          "speaker": "Mia",
+          "text": "But it costs a lot. I think the bus is cheaper."
+        },
+        {
+          "speaker": "Sam",
+          "text": "The bus is too slow. It stops all the time, and sometimes there is an accident on the road."
+        },
+        {
+          "speaker": "Mia",
+          "text": "That is true. However, I live far from school, so the bus is the only choice without my parents' car."
+        },
+        {
+          "speaker": "Sam",
+          "text": "What about the train? It is the most comfortable way to travel."
+        },
+        {
+          "speaker": "Mia",
+          "text": "I agree. Last month I took the train to visit my uncle, and I booked my ticket on my phone."
+        },
+        {
+          "speaker": "Sam",
+          "text": "Nice. When I grow up, I want to travel by plane, the fastest way of all."
+        }
+      ],
+      "reading": {
+        "title": "How Do We Travel?",
+        "paragraphs": [
+          "People travel in different ways. We walk, ride bicycles, take buses, drive cars, catch trains and fly in planes. Each way has its own good points and bad points.",
+          "The underground is usually the quickest way to move around a big city. It is fast, and it is never too crowded if you start early. However, it can cost a lot, and you have to wait for the next train.",
+          "The bus is cheaper. It stops near your home, and you can see the city outside the window. But it is often late, and it is crowded all the time because many people use it.",
+          "Trains are comfortable. You can stand up, walk around, and enjoy a long journey. They are good for travelling between cities, but not every town has a train station.",
+          "Planes are the fastest, but they are not always close to the city centre. You have to travel to the airport, so a short trip does not always save time.",
+          "Many students in my class walk or take the bus to school. My classmate, however, lives far from school, so he takes the underground every morning. He says it is the best choice, because he never wants to be late."
+        ]
+      },
+      "words": [
+        {
+          "word": "crowded",
+          "sentence": "It is not crowded at seven o'clock.",
+          "meaning": "拥挤的"
+        },
+        {
+          "word": "cost",
+          "sentence": "It costs a lot.",
+          "meaning": "花费"
+        },
+        {
+          "word": "however",
+          "sentence": "However, I live far from school...",
+          "meaning": "然而"
+        },
+        {
+          "word": "far from",
+          "sentence": "...live far from school...",
+          "meaning": "离…远"
+        },
+        {
+          "word": "choice",
+          "sentence": "...the only choice...",
+          "meaning": "选择"
+        },
+        {
+          "word": "road",
+          "sentence": "...an accident on the road.",
+          "meaning": "公路"
+        },
+        {
+          "word": "accident",
+          "sentence": "...there is an accident on the road.",
+          "meaning": "事故"
+        },
+        {
+          "word": "all the time",
+          "sentence": "...crowded all the time...",
+          "meaning": "一直"
+        },
+        {
+          "word": "journey",
+          "sentence": "...enjoy a long journey.",
+          "meaning": "旅程"
+        },
+        {
+          "word": "book",
+          "sentence": "I booked my ticket...",
+          "meaning": "预订"
+        },
+        {
+          "word": "outside",
+          "sentence": "...see the city outside the window.",
+          "meaning": "在…外面"
+        },
+        {
+          "word": "close",
+          "sentence": "...not always close to the city centre.",
+          "meaning": "近的"
+        },
+        {
+          "word": "except",
+          "sentence": "Everyone went except me.（拓展）",
+          "meaning": "除…之外"
+        },
+        {
+          "word": "classmate",
+          "sentence": "My classmate, however...",
+          "meaning": "同班同学"
+        },
+        {
+          "word": "park",
+          "sentence": "I found a place to park my bike.（拓展）",
+          "meaning": "停放"
+        },
+        {
+          "word": "underground",
+          "sentence": "I took the underground.",
+          "meaning": "地铁（拓展）"
+        }
+      ]
+    },
+    {
+      "file": "Module5_Lao_She_Teahouse.md",
+      "heading": "八年级上册 Module 5 Lao She Teahouse",
+      "section": "Module 5",
+      "topic": "老舍茶馆与中国文化；词汇对齐：actress / teahouse / offer / end / in the end / no idea / act / show / common / twentieth / describe / society / head teacher / college / novel / name / if / magic",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "Have you ever been to a teahouse in China?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Yes, I went to a famous teahouse in Beijing with my parents. The show was about the changes in Chinese society."
+        },
+        {
+          "speaker": "Tom",
+          "text": "That sounds interesting. Do you remember the name of the play?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "No idea! But I know that an old writer named Lao She wrote it. He is very famous."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Did you like the actors?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Yes, the actress who played the main character was great. At the end, everybody clapped."
+        },
+        {
+          "speaker": "Tom",
+          "text": "I'd like to go there too. Can you take me one day?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Of course. I'll book the tickets and we can watch a tea show together."
+        }
+      ],
+      "reading": {
+        "title": "A Cup of Tea and a Story",
+        "paragraphs": [
+          "In the centre of Beijing there is an old teahouse with a warm, common name. Every evening, visitors come in from the street, sit at round tables, and wait for the show to begin.",
+          "The play is named after a great writer. Over a hundred years ago, he wrote about a family, a teahouse and the changes in Chinese society. The show is not a long novel, but it tells a big story. It describes how people lived and how times changed.",
+          "On the stage, the actors move and talk while the audience drinks tea. The main actress plays a kind woman, and her performance makes the whole show feel like magic. Some who watch it for the first time have no idea how the story will end. In the end, many of them feel sad, but everyone claps.",
+          "Today, the teahouse is a common place for students and travellers. If you visit Beijing, you should not miss it. It is a wonderful way to understand Chinese culture, and a chance to enjoy a cup of tea and a story at the same time."
+        ]
+      },
+      "words": [
+        {
+          "word": "teahouse",
+          "sentence": "...an old teahouse...",
+          "meaning": "茶馆"
+        },
+        {
+          "word": "show",
+          "sentence": "The show was about the changes...",
+          "meaning": "演出"
+        },
+        {
+          "word": "society",
+          "sentence": "...changes in Chinese society.",
+          "meaning": "社会"
+        },
+        {
+          "word": "describe",
+          "sentence": "It describes how people lived...",
+          "meaning": "描述"
+        },
+        {
+          "word": "name",
+          "sentence": "The play is named after a great writer.",
+          "meaning": "命名"
+        },
+        {
+          "word": "no idea",
+          "sentence": "No idea!",
+          "meaning": "不知道"
+        },
+        {
+          "word": "actress",
+          "sentence": "The main actress plays a kind woman...",
+          "meaning": "女演员"
+        },
+        {
+          "word": "in the end",
+          "sentence": "In the end, many of them feel sad...",
+          "meaning": "最后"
+        },
+        {
+          "word": "end",
+          "sentence": "At the end, everybody clapped.",
+          "meaning": "结尾"
+        },
+        {
+          "word": "common",
+          "sentence": "...a warm, common name.",
+          "meaning": "普通的"
+        },
+        {
+          "word": "magic",
+          "sentence": "...feel like magic.",
+          "meaning": "魔法"
+        },
+        {
+          "word": "novel",
+          "sentence": "It is not a long novel...",
+          "meaning": "小说"
+        },
+        {
+          "word": "offer",
+          "sentence": "The show offers visitors...（拓展）",
+          "meaning": "提供"
+        },
+        {
+          "word": "twentieth",
+          "sentence": "...in the twentieth century.（拓展）",
+          "meaning": "第二十"
+        },
+        {
+          "word": "if",
+          "sentence": "If you visit Beijing...",
+          "meaning": "如果"
+        },
+        {
+          "word": "college",
+          "sentence": "He went to college later.（拓展）",
+          "meaning": "大学"
+        },
+        {
+          "word": "head teacher",
+          "sentence": "Our head teacher joined us.（拓展）",
+          "meaning": "校长"
+        },
+        {
+          "word": "act",
+          "sentence": "The play has three acts.（拓展）",
+          "meaning": "一幕"
+        }
+      ]
+    },
+    {
+      "file": "Module6_Animals_in_danger.md",
+      "heading": "八年级上册 Module 6 Animals in danger",
+      "section": "Module 6",
+      "topic": "濒危动物与环保；词汇对齐：snake / neck / thin / danger / in danger / at last / interested / allow / think of / protect / wild / grow / take away / enough / peace / in peace / notice / look after / raise / research / baby / situation / scientist / produce / southwest / in order to / government / set up / nature / develop / feed / symbol",
+      "dialogue": [
+        {
+          "speaker": "Emma",
+          "text": "Did you read about the pandas last night?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "Yes. They are in danger, aren't they?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "Right. There are only a few thousand left in the wild, so scientists are worried about the situation."
+        },
+        {
+          "speaker": "Leo",
+          "text": "What are they doing to protect them?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "They set up nature parks in the southwest of China. The pandas can live and feed in peace there."
+        },
+        {
+          "speaker": "Leo",
+          "text": "That sounds good. Do they look after the babies?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "Yes. Scientists raise the baby pandas and take away the danger. In order to help them, the government gives enough land to the parks."
+        },
+        {
+          "speaker": "Leo",
+          "text": "I'm glad people are interested in saving them. Pandas are a symbol of China."
+        }
+      ],
+      "reading": {
+        "title": "Saving the Pandas",
+        "paragraphs": [
+          "The giant panda is a symbol of China and a favourite of people around the world. Sadly, it is also in danger. In the past, there were many pandas in the wild, but now there are only a few thousand. Scientists say the main problem is that pandas do not have enough bamboo to eat.",
+          "Pandas live in the mountains of the southwest of China. As towns grow, the bamboo forests become smaller, and the wild animals have less food and less space. A panda baby is very small, and it cannot look after itself. In the wild, many babies do not grow up because they are cold or hungry.",
+          "To help the pandas, the government has set up nature parks and reserves. Scientists work there all year. They research the pandas, feed them, and raise the babies until they are strong. They also plant bamboo, so the pandas have enough food to live in peace.",
+          "After years of hard work, the number of pandas is slowly growing. This gives scientists hope. They believe that if we protect nature and wild animals, the pandas will always be with us."
+        ]
+      },
+      "words": [
+        {
+          "word": "in danger",
+          "sentence": "It is also in danger.",
+          "meaning": "处于危险中"
+        },
+        {
+          "word": "protect",
+          "sentence": "...protect them?",
+          "meaning": "保护"
+        },
+        {
+          "word": "wild",
+          "sentence": "...in the wild...",
+          "meaning": "野生的"
+        },
+        {
+          "word": "situation",
+          "sentence": "...the situation.",
+          "meaning": "情况"
+        },
+        {
+          "word": "set up",
+          "sentence": "...set up nature parks...",
+          "meaning": "建立"
+        },
+        {
+          "word": "nature",
+          "sentence": "...protect nature...",
+          "meaning": "大自然"
+        },
+        {
+          "word": "feed",
+          "sentence": "They feed them...",
+          "meaning": "喂养"
+        },
+        {
+          "word": "in peace",
+          "sentence": "...live in peace.",
+          "meaning": "平静地"
+        },
+        {
+          "word": "look after",
+          "sentence": "It cannot look after itself.",
+          "meaning": "照顾"
+        },
+        {
+          "word": "raise",
+          "sentence": "Scientists raise the baby pandas...",
+          "meaning": "喂养；抚养"
+        },
+        {
+          "word": "research",
+          "sentence": "They research the pandas...",
+          "meaning": "研究"
+        },
+        {
+          "word": "scientist",
+          "sentence": "Scientists say...",
+          "meaning": "科学家"
+        },
+        {
+          "word": "enough",
+          "sentence": "...enough bamboo to eat.",
+          "meaning": "足够"
+        },
+        {
+          "word": "government",
+          "sentence": "The government has set up...",
+          "meaning": "政府"
+        },
+        {
+          "word": "southwest",
+          "sentence": "...in the southwest of China.",
+          "meaning": "西南"
+        },
+        {
+          "word": "in order to",
+          "sentence": "In order to help them...",
+          "meaning": "为了"
+        },
+        {
+          "word": "symbol",
+          "sentence": "...a symbol of China.",
+          "meaning": "象征"
+        },
+        {
+          "word": "grow",
+          "sentence": "The number is slowly growing.",
+          "meaning": "增长"
+        },
+        {
+          "word": "take away",
+          "sentence": "...take away the danger.",
+          "meaning": "拿走"
+        },
+        {
+          "word": "produce",
+          "sentence": "The forests produce bamboo.（拓展）",
+          "meaning": "产生"
+        },
+        {
+          "word": "notice",
+          "sentence": "Did you notice the sign?（拓展）",
+          "meaning": "注意到"
+        },
+        {
+          "word": "allow",
+          "sentence": "The park allows visitors.（拓展）",
+          "meaning": "允许"
+        },
+        {
+          "word": "interested",
+          "sentence": "People are interested in pandas.",
+          "meaning": "感兴趣的"
+        },
+        {
+          "word": "think of",
+          "sentence": "It makes me think of nature.（拓展）",
+          "meaning": "想起"
+        },
+        {
+          "word": "at last",
+          "sentence": "At last, the park opened.（拓展）",
+          "meaning": "最终"
+        },
+        {
+          "word": "baby",
+          "sentence": "A baby panda is very small.",
+          "meaning": "幼崽"
+        },
+        {
+          "word": "thin",
+          "sentence": "The trees are thin.（拓展）",
+          "meaning": "薄的"
+        },
+        {
+          "word": "snake",
+          "sentence": "There is a snake in the zoo.（拓展）",
+          "meaning": "蛇"
+        },
+        {
+          "word": "neck",
+          "sentence": "The giraffe has a long neck.（拓展）",
+          "meaning": "脖子"
+        },
+        {
+          "word": "develop",
+          "sentence": "The town is developing.（拓展）",
+          "meaning": "发展"
+        },
+        {
+          "word": "report",
+          "sentence": "We wrote a report.（拓展）",
+          "meaning": "报告（近义）"
+        }
+      ]
+    },
+    {
+      "file": "Module7_A_famous_story.md",
+      "heading": "八年级上册 Module 7 A famous story",
+      "section": "Module 7",
+      "topic": "著名故事（过去进行时）；词汇对齐：fall / follow / hole / rabbit / ssh / ground / tea party / twice / once or twice / suddenly / pink / pocket / field / think about / deep / while / land / dry",
+      "dialogue": [
+        {
+          "speaker": "Mum",
+          "text": "What are you reading, Lucy?"
+        },
+        {
+          "speaker": "Lucy",
+          "text": "A famous story about a girl and a rabbit. While she was sitting in a garden, she suddenly saw a rabbit running past her."
+        },
+        {
+          "speaker": "Mum",
+          "text": "Did the rabbit speak?"
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Yes! The rabbit was looking at a small watch and saying, \"Oh dear, I'm late!\" The girl was so surprised that she followed it into a deep hole."
+        },
+        {
+          "speaker": "Mum",
+          "text": "And what happened next?"
+        },
+        {
+          "speaker": "Lucy",
+          "text": "She fell and landed on the ground, and then she came to a strange tea party. People were sitting around a table while she was wondering where she was."
+        },
+        {
+          "speaker": "Mum",
+          "text": "What a wonderful story! I think I have read it once or twice myself."
+        }
+      ],
+      "reading": {
+        "title": "Down the Rabbit Hole",
+        "paragraphs": [
+          "One hot afternoon, a girl was sitting quietly in a garden with her sister. She was feeling bored, and she did not know what to do. Then she saw a white rabbit running past her. It was not a common rabbit, because it was wearing a coat and carrying a watch.",
+          "The rabbit stopped for a moment, took the watch out of its pocket, and looked at it. \"Oh dear, oh dear, I'm late!\" it cried. Before the girl could think about it, the rabbit jumped into a small hole under a tree.",
+          "The girl was very interested, so she followed it. She ran, and then she began to fall down, down, down into a very deep hole. The hole was so deep that she thought she was falling all the way to the other side of the world.",
+          "At the bottom, she landed softly on the ground. Around her, the dry earth had turned into a strange, beautiful land. A small door stood in the wall, and she could hear the sound of a tea party coming from behind it.",
+          "The girl did not know where she was, but she was not afraid. She was still thinking about the rabbit, and she wanted to find it. And that is how her wonderful adventure began."
+        ]
+      },
+      "words": [
+        {
+          "word": "follow",
+          "sentence": "She followed it into a deep hole.",
+          "meaning": "跟随"
+        },
+        {
+          "word": "hole",
+          "sentence": "...a small hole under a tree.",
+          "meaning": "洞"
+        },
+        {
+          "word": "rabbit",
+          "sentence": "...a white rabbit...",
+          "meaning": "兔子"
+        },
+        {
+          "word": "suddenly",
+          "sentence": "She suddenly saw a rabbit...",
+          "meaning": "突然"
+        },
+        {
+          "word": "pocket",
+          "sentence": "...out of its pocket...",
+          "meaning": "口袋"
+        },
+        {
+          "word": "ground",
+          "sentence": "...landed softly on the ground.",
+          "meaning": "地面"
+        },
+        {
+          "word": "deep",
+          "sentence": "...a very deep hole.",
+          "meaning": "深的"
+        },
+        {
+          "word": "while",
+          "sentence": "While she was sitting in a garden...",
+          "meaning": "当…时"
+        },
+        {
+          "word": "think about",
+          "sentence": "...think about it...",
+          "meaning": "思考"
+        },
+        {
+          "word": "dry",
+          "sentence": "...the dry earth...",
+          "meaning": "干的"
+        },
+        {
+          "word": "tea party",
+          "sentence": "...a strange tea party.",
+          "meaning": "茶会"
+        },
+        {
+          "word": "once or twice",
+          "sentence": "...once or twice myself.",
+          "meaning": "一两次"
+        },
+        {
+          "word": "twice",
+          "sentence": "(拓展) I read it twice.",
+          "meaning": "两次"
+        },
+        {
+          "word": "fall",
+          "sentence": "She began to fall down...",
+          "meaning": "落下"
+        },
+        {
+          "word": "land",
+          "sentence": "She landed softly.",
+          "meaning": "落地"
+        },
+        {
+          "word": "pink",
+          "sentence": "She wore a pink dress.（拓展）",
+          "meaning": "粉色的"
+        },
+        {
+          "word": "field",
+          "sentence": "They ran across a field.（拓展）",
+          "meaning": "田野"
+        },
+        {
+          "word": "ssh",
+          "sentence": "\"Ssh!\" she said softly.（拓展）",
+          "meaning": "嘘"
+        },
+        {
+          "word": "ground",
+          "sentence": "(拓展) He sat on the ground.",
+          "meaning": "地面"
+        }
+      ]
+    },
+    {
+      "file": "Module8_Accidents.md",
+      "heading": "八年级上册 Module 8 Accidents",
+      "section": "Module 8",
+      "topic": "事故与急救；词汇对齐：pale / appear / round / corner / hit / glad / in time / fall off / risk / attention / pay attention / side / side by side / bite / climb / hide / throw / fridge / pain / worse / medicine",
+      "dialogue": [
+        {
+          "speaker": "Doctor",
+          "text": "Come in and sit down. What's the matter?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "I fell off my bike on my way to school. My knee hurts and the skin is broken."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "When did it happen?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "About half an hour ago. A car appeared suddenly at the corner, and I had to stop. I was lucky that it didn't hit me, but I fell to the side of the road."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "Does it hurt a lot?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "Yes, and it's getting worse."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "Let me look. Don't worry, it's not too bad. You need to keep the wound clean and take some medicine. Please pay attention to the traffic next time."
+        },
+        {
+          "speaker": "Tom",
+          "text": "I will. Thank you, doctor."
+        }
+      ],
+      "reading": {
+        "title": "A Lucky Day",
+        "paragraphs": [
+          "Last Monday was a cold day. Ben was riding his bike to school, thinking about the maths test. He was not paying attention to the road, so he did not see the car coming around the corner.",
+          "The driver shouted, and the car stopped just in time. But Ben was so surprised that he fell off his bike and hit the ground. His face turned pale, and his arm was in pain.",
+          "A kind woman came to help him. She took Ben's bag, and together they walked to the side of the road. \"Are you all right?\" she asked. \"You must pay attention to the traffic. Cars can appear very suddenly.\"",
+          "Ben thanked her and checked his arm. The skin was hurt but not broken. He was glad that nothing worse had happened.",
+          "That evening, his mother cleaned the cut and gave him some medicine. She told him to be more careful the next time.",
+          "Now, whenever Ben rides his bike, he always looks round before he turns. He knows that a small mistake can lead to a big accident, and that safety comes first."
+        ]
+      },
+      "words": [
+        {
+          "word": "fall off",
+          "sentence": "...fell off his bike...",
+          "meaning": "从…跌落"
+        },
+        {
+          "word": "hit",
+          "sentence": "...hit the ground.",
+          "meaning": "撞击"
+        },
+        {
+          "word": "pale",
+          "sentence": "His face turned pale.",
+          "meaning": "苍白的"
+        },
+        {
+          "word": "appear",
+          "sentence": "Cars can appear very suddenly.",
+          "meaning": "出现"
+        },
+        {
+          "word": "corner",
+          "sentence": "...the car coming around the corner.",
+          "meaning": "拐角"
+        },
+        {
+          "word": "in time",
+          "sentence": "...stopped just in time.",
+          "meaning": "及时"
+        },
+        {
+          "word": "pain",
+          "sentence": "His arm was in pain.",
+          "meaning": "疼痛"
+        },
+        {
+          "word": "worse",
+          "sentence": "...nothing worse had happened.",
+          "meaning": "更糟的"
+        },
+        {
+          "word": "medicine",
+          "sentence": "...gave him some medicine.",
+          "meaning": "药"
+        },
+        {
+          "word": "pay attention",
+          "sentence": "...pay attention to the traffic.",
+          "meaning": "注意"
+        },
+        {
+          "word": "attention",
+          "sentence": "...pay attention...",
+          "meaning": "注意力"
+        },
+        {
+          "word": "side",
+          "sentence": "...to the side of the road.",
+          "meaning": "侧面"
+        },
+        {
+          "word": "round",
+          "sentence": "He looks round before he turns.",
+          "meaning": "转（头）"
+        },
+        {
+          "word": "glad",
+          "sentence": "He was glad...",
+          "meaning": "高兴的"
+        },
+        {
+          "word": "risk",
+          "sentence": "(拓展) Riding fast is a risk.",
+          "meaning": "危险"
+        },
+        {
+          "word": "bite",
+          "sentence": "The dog bit him.（拓展）",
+          "meaning": "咬"
+        },
+        {
+          "word": "climb",
+          "sentence": "He climbed the tree.（拓展）",
+          "meaning": "攀爬"
+        },
+        {
+          "word": "hide",
+          "sentence": "They hid behind the door.（拓展）",
+          "meaning": "躲藏"
+        },
+        {
+          "word": "throw",
+          "sentence": "Don't throw the ball here.（拓展）",
+          "meaning": "扔"
+        },
+        {
+          "word": "fridge",
+          "sentence": "The milk is in the fridge.（拓展）",
+          "meaning": "冰箱"
+        },
+        {
+          "word": "side by side",
+          "sentence": "They sat side by side.（拓展）",
+          "meaning": "并排"
+        }
+      ]
+    },
+    {
+      "file": "Module9_Population.md",
+      "heading": "八年级上册 Module 9 Population",
+      "section": "Module 9",
+      "topic": "人口问题；词汇对齐：noise / prepare / report / billion / huge / increase / hang on / notes / cause / problem / grow / birth / flat / rubbish / quiet / local / close down / mention / pollution / solve / public / service / pupil / reduce / create",
+      "dialogue": [
+        {
+          "speaker": "Teacher",
+          "text": "We are going to write a report about our town. What problems does it have?"
+        },
+        {
+          "speaker": "Anna",
+          "text": "The population is growing very fast. More and more people are moving in, so there is a huge increase in traffic and noise."
+        },
+        {
+          "speaker": "Leo",
+          "text": "That's true. Lots of new flats are being built, but our streets are still crowded."
+        },
+        {
+          "speaker": "Teacher",
+          "text": "What about the environment?"
+        },
+        {
+          "speaker": "Anna",
+          "text": "There is too much rubbish, and the pollution from cars is getting worse. It is a serious problem."
+        },
+        {
+          "speaker": "Leo",
+          "text": "I think the local government should create more public services and schools."
+        },
+        {
+          "speaker": "Teacher",
+          "text": "Good idea. When you write your report, remember to take notes, and mention some ways to reduce the problem."
+        }
+      ],
+      "reading": {
+        "title": "A Growing Town",
+        "paragraphs": [
+          "Our town is not big, but it is growing quickly. Twenty years ago, only a few thousand people lived here. Today, the population is over three hundred thousand, and the number is still increasing every year.",
+          "This growth brings both good things and bad things. On the one hand, new schools, shops and public services are being built, so there are more jobs. On the other hand, life is becoming noisier and more crowded. The streets are full of cars, and the problem of pollution is getting worse. Large buildings and new flats take the place of quiet fields and gardens.",
+          "Some local people are worried. They say that too much traffic and rubbish cause health problems. They also want the government to build more homes before the town gets too crowded.",
+          "How can we solve these problems? First, we should reduce the rubbish we make and reuse what we use. Second, we can walk or take the bus instead of driving a car. Third, the government must plan for the future before the population grows too large.",
+          "A town is like a family. It grows, and it must look after itself. If people and the government work together, our town will be a good place to live."
+        ]
+      },
+      "words": [
+        {
+          "word": "population",
+          "sentence": "The population is over three hundred thousand.",
+          "meaning": "人口"
+        },
+        {
+          "word": "report",
+          "sentence": "We are going to write a report...",
+          "meaning": "报告"
+        },
+        {
+          "word": "grow",
+          "sentence": "Our town is growing quickly.",
+          "meaning": "增长"
+        },
+        {
+          "word": "increase",
+          "sentence": "The number is still increasing...",
+          "meaning": "增加"
+        },
+        {
+          "word": "noise",
+          "sentence": "...noisier and more crowded.",
+          "meaning": "噪音"
+        },
+        {
+          "word": "huge",
+          "sentence": "...a huge increase in traffic...",
+          "meaning": "巨大的"
+        },
+        {
+          "word": "problem",
+          "sentence": "The problem of pollution...",
+          "meaning": "问题"
+        },
+        {
+          "word": "pollution",
+          "sentence": "...the pollution from cars...",
+          "meaning": "污染"
+        },
+        {
+          "word": "flat",
+          "sentence": "...new flats...",
+          "meaning": "公寓"
+        },
+        {
+          "word": "rubbish",
+          "sentence": "...too much rubbish...",
+          "meaning": "垃圾"
+        },
+        {
+          "word": "local",
+          "sentence": "Some local people are worried.",
+          "meaning": "当地的"
+        },
+        {
+          "word": "government",
+          "sentence": "...the government must plan...",
+          "meaning": "政府"
+        },
+        {
+          "word": "public",
+          "sentence": "...public services...",
+          "meaning": "公共的"
+        },
+        {
+          "word": "service",
+          "sentence": "...public services...",
+          "meaning": "服务"
+        },
+        {
+          "word": "pupil",
+          "sentence": "(拓展) Every pupil needs a school.",
+          "meaning": "学生"
+        },
+        {
+          "word": "solve",
+          "sentence": "How can we solve these problems?",
+          "meaning": "解决"
+        },
+        {
+          "word": "reduce",
+          "sentence": "We should reduce the rubbish...",
+          "meaning": "减少"
+        },
+        {
+          "word": "create",
+          "sentence": "...create more public services...",
+          "meaning": "创造"
+        },
+        {
+          "word": "mention",
+          "sentence": "...mention some ways...",
+          "meaning": "提及"
+        },
+        {
+          "word": "cause",
+          "sentence": "...cause health problems.",
+          "meaning": "造成"
+        },
+        {
+          "word": "prepare",
+          "sentence": "We must prepare for the future.（拓展）",
+          "meaning": "准备"
+        },
+        {
+          "word": "notes",
+          "sentence": "...take notes...",
+          "meaning": "笔记"
+        },
+        {
+          "word": "birth",
+          "sentence": "(拓展) the birth rate",
+          "meaning": "出生"
+        },
+        {
+          "word": "hang on",
+          "sentence": "Hang on a minute.（拓展）",
+          "meaning": "稍等"
+        },
+        {
+          "word": "billion",
+          "sentence": "(拓展) a billion",
+          "meaning": "十亿"
+        },
+        {
+          "word": "quiet",
+          "sentence": "...quiet fields...",
+          "meaning": "安静的"
+        },
+        {
+          "word": "close down",
+          "sentence": "The old factory closed down.（拓展）",
+          "meaning": "关闭"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,11 @@
 import { api } from "../api.js";
+import { sortedTopics, exercisesByTopic, loadGrammarProgress, topicMastery } from "../grammar/index.js";
 
 export default {
   emits: ["navigate"],
+  props: {
+    userId: { type: String, default: "" },
+  },
   data: () => ({
     level: "primary",
     minutes: 30,
@@ -26,6 +30,20 @@ export default {
     },
     levelLabel() {
       return this.level === "middle" ? "初中" : "小学";
+    },
+    // 语法专题推荐：按完成比例从低到高排序，优先补尚未练习的专题。
+    grammarPlan() {
+      const progress = loadGrammarProgress(this.userId);
+      const items = sortedTopics.map((topic) => {
+        const list = exercisesByTopic[topic.id] || [];
+        const m = topicMastery(progress, topic.id, list.length);
+        return { id: topic.id, title: topic.title, category: topic.category, total: list.length, done: m.done, percent: m.percent };
+      });
+      const pending = items
+        .filter((i) => i.percent < 100)
+        .sort((a, b) => a.percent - b.percent || b.total - a.total);
+      const doneCount = items.filter((i) => i.percent >= 100).length;
+      return { items, pending, doneCount, total: items.length };
     },
   },
   mounted() {
@@ -191,6 +209,27 @@ export default {
           <div v-else class="smart-empty compact"><b>还没有学习信号</b><span>等待第一条学习记录。</span></div>
         </aside>
       </div>
+
+      <section class="smart-grammar">
+        <header>
+          <div><span>GRAMMAR TOPICS</span><h2>语法专项</h2></div>
+          <small>外研版初中 · 已完成 {{ grammarPlan.doneCount }} / {{ grammarPlan.total }} 个专题</small>
+        </header>
+        <p class="smart-grammar-tip">按专题系统学习结构、用法与易错点，并直接练习北京市中考真题。</p>
+        <div v-if="grammarPlan.pending.length" class="smart-grammar-list">
+          <button
+            v-for="item in grammarPlan.pending.slice(0, 4)"
+            :key="item.id"
+            @click="$emit('navigate', { view: 'grammar', contentId: item.id })"
+          >
+            <div><b>{{ item.title }}</b><span>{{ item.category }} · {{ item.done }}/{{ item.total }} 题</span></div>
+            <i><u :style="{ width: item.percent + '%' }"></u></i>
+            <strong>{{ item.percent }}%</strong>
+          </button>
+        </div>
+        <div v-else class="smart-empty compact"><b>语法专题已全部完成</b><span>可以回头重做，巩固易错点。</span></div>
+        <button class="smart-grammar-more" @click="$emit('navigate', 'grammar')">进入语法专题 →</button>
+      </section>
     </section>
   `,
 };

@@ -1,0 +1,1194 @@
+{
+  "book": "七年级下册",
+  "items": [
+    {
+      "file": "Unit1_The_secrets_of_happiness.md",
+      "heading": "七年级下册 Unit 1 The secrets of happiness",
+      "section": "Unit 1",
+      "topic": "幸福与生活态度；词汇对齐：review / chocolate / factory / exciting / most / magical / part / side / town / poor / stay / watery / cabbage / freezing / forget / touch / once / sunless / everything / rich / choose / complete / expression / passage / comment / theme / description / agree / understand",
+      "dialogue": [
+        {
+          "speaker": "Grace",
+          "text": "Your new school looks great. Do you like it?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "Yes, it's exciting, but the best part is meeting new friends."
+        },
+        {
+          "speaker": "Grace",
+          "text": "What makes you happy?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "Little things. A walk in the park, a warm cup of chocolate after lunch, or a sunny day."
+        },
+        {
+          "speaker": "Grace",
+          "text": "I agree. But some people think only money can bring happiness."
+        },
+        {
+          "speaker": "Ben",
+          "text": "A rich life is not always a happy one. Happiness is a choice, and it starts in our hearts."
+        },
+        {
+          "speaker": "Grace",
+          "text": "That's true. I feel happy when I help others and when I share something with my friends."
+        }
+      ],
+      "reading": {
+        "title": "The Secrets of Happiness",
+        "paragraphs": [
+          "What is happiness? It is a word we all know, but it is not easy to describe. Some people say that happiness comes from money or success. Others think it is mostly a feeling we are born with. In my opinion, happiness is a choice we make every day.",
+          "Happiness is often found in small things. A child smiles when he opens a piece of chocolate. A girl feels warm when her mother touches her hand. A man is glad when he returns to his quiet little town after a long trip. Even in a poor village, where the winter is cold and the light is sunless, people can be happy because they have each other.",
+          "Sometimes we forget that the most ordinary days can be the happiest. A bowl of watery soup may not taste special, but it is very welcome in a freezing winter. A simple meal with your family can make you feel complete. A short walk in the morning, a game with a friend, the beautiful sound of rain on the window - these are the simple secrets of happiness.",
+          "Of course, the happy life is not perfect. There is always a dark side, and we all have problems. But when we choose to look at the bright side, we understand that we are rich in many ways.",
+          "So do not wait for a special day to be happy. Give a smile, share a kind word, and be thankful for what you have. Happiness is not something that happens to us. It is something we choose, again and again."
+        ]
+      },
+      "words": [
+        {
+          "word": "describe",
+          "sentence": "It is not easy to describe.",
+          "meaning": "描述"
+        },
+        {
+          "word": "choose",
+          "sentence": "Happiness is a choice we make...",
+          "meaning": "选择"
+        },
+        {
+          "word": "chocolate",
+          "sentence": "...a piece of chocolate.",
+          "meaning": "巧克力"
+        },
+        {
+          "word": "touch",
+          "sentence": "...touches her hand.",
+          "meaning": "触摸"
+        },
+        {
+          "word": "town",
+          "sentence": "...his quiet little town...",
+          "meaning": "城镇"
+        },
+        {
+          "word": "poor",
+          "sentence": "Even in a poor village...",
+          "meaning": "贫穷的"
+        },
+        {
+          "word": "watery",
+          "sentence": "A bowl of watery soup...",
+          "meaning": "稀的；水多的"
+        },
+        {
+          "word": "freezing",
+          "sentence": "...in a freezing winter.",
+          "meaning": "冰冷的"
+        },
+        {
+          "word": "sunless",
+          "sentence": "...the light is sunless.",
+          "meaning": "无阳光的"
+        },
+        {
+          "word": "complete",
+          "sentence": "...make you feel complete.",
+          "meaning": "完整的"
+        },
+        {
+          "word": "side",
+          "sentence": "There is always a dark side...",
+          "meaning": "一边"
+        },
+        {
+          "word": "most",
+          "sentence": "...the most ordinary days...",
+          "meaning": "最"
+        },
+        {
+          "word": "exciting",
+          "sentence": "It's exciting...",
+          "meaning": "令人兴奋的"
+        },
+        {
+          "word": "magic",
+          "sentence": "...magical...（拓展）",
+          "meaning": "有魔力的"
+        },
+        {
+          "word": "part",
+          "sentence": "The best part is meeting new friends.",
+          "meaning": "部分"
+        },
+        {
+          "word": "stay",
+          "sentence": "Stay for a while.（拓展）",
+          "meaning": "停留"
+        },
+        {
+          "word": "forget",
+          "sentence": "Sometimes we forget...",
+          "meaning": "忘记"
+        },
+        {
+          "word": "once",
+          "sentence": "Once, I felt lonely.（拓展）",
+          "meaning": "曾经"
+        },
+        {
+          "word": "everything",
+          "sentence": "...everything is fine.（拓展）",
+          "meaning": "一切"
+        },
+        {
+          "word": "rich",
+          "sentence": "A rich life is not always happy.",
+          "meaning": "富有的"
+        },
+        {
+          "word": "review",
+          "sentence": "...review what we learned.（拓展）",
+          "meaning": "复习"
+        },
+        {
+          "word": "factory",
+          "sentence": "...in the factory.（拓展）",
+          "meaning": "工厂"
+        },
+        {
+          "word": "cabbage",
+          "sentence": "(拓展) cabbage",
+          "meaning": "卷心菜"
+        },
+        {
+          "word": "expression",
+          "sentence": "...a happy expression.（拓展）",
+          "meaning": "表情"
+        },
+        {
+          "word": "passage",
+          "sentence": "...a short passage.（拓展）",
+          "meaning": "段落"
+        },
+        {
+          "word": "comment",
+          "sentence": "Please leave a comment.（拓展）",
+          "meaning": "评论"
+        },
+        {
+          "word": "theme",
+          "sentence": "The theme is happiness.",
+          "meaning": "主题"
+        },
+        {
+          "word": "agree",
+          "sentence": "I agree with you.",
+          "meaning": "同意"
+        },
+        {
+          "word": "understand",
+          "sentence": "I understand what you mean.",
+          "meaning": "理解"
+        }
+      ]
+    },
+    {
+      "file": "Unit2_Go_for_it.md",
+      "heading": "七年级下册 Unit 2 Go for it!",
+      "section": "Unit 2",
+      "topic": "目标与行动；词汇对齐：last but not least / marathon / however / still / metre / line / breath / hold your breath / would / confident / stomachache / shall / either / choice / seem / someone / neither / cheer / cross / lifelong / dream / past / record / none / member / moment / if / possible / purpose / raise",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "There is a school marathon next month. I want to run it."
+        },
+        {
+          "speaker": "Leo",
+          "text": "A marathon is a long race - over forty-two kilometres! Are you sure?"
+        },
+        {
+          "speaker": "Mia",
+          "text": "Yes. It seems hard, but I have a dream. I want to cross the finish line. If I train every day, it is possible."
+        },
+        {
+          "speaker": "Leo",
+          "text": "You are so confident. I will cheer for you at the finish line."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Thank you. It is a lifelong goal for me, not just a one-day race."
+        },
+        {
+          "speaker": "Leo",
+          "text": "Go for it, Mia! Last but not least, remember to enjoy the race."
+        }
+      ],
+      "reading": {
+        "title": "Go for the Finish Line",
+        "paragraphs": [
+          "Last year, my friend Mia watched a marathon in our town. The runners were strong, and the crowd cheered as they ran past. Mia stood by the road and felt her heart beat faster. That day she made a choice: one day, she would be one of those runners.",
+          "At first, Mia could not run far. After a few hundred metres, she was tired and out of breath. Her legs hurt, and her stomach ached. Sometimes she wanted to stop. But she did not give up. She told herself that a long race begins with a single step.",
+          "Every morning before school, she ran along the river. Her father rode his bike next to her. \"Hold your breath and run slowly,\" he said. \"Do not think about the record. Just keep going.\"",
+          "Soon, Mia could run further than ever before. She joined a running club, and made new friends who had the same dream. They trained together and helped one another. Sometimes she would lose a race, but she never lost her purpose. Every time she was tired, she would think of the day she first watched the runners and decided to go for it.",
+          "On the day of the race, the town came to watch. Mia stood at the start line, took a deep breath, and ran. The crowd shouted her name. At last, she crossed the finish line. It was the best moment of her whole life.",
+          "We all have dreams. The secret is not to wait, but to start. If you set a purpose and work hard, nothing is impossible. So go for it - your finish line is waiting for you."
+        ]
+      },
+      "words": [
+        {
+          "word": "marathon",
+          "sentence": "...a school marathon...",
+          "meaning": "马拉松"
+        },
+        {
+          "word": "kilometre",
+          "sentence": "...over forty-two kilometres!",
+          "meaning": "千米"
+        },
+        {
+          "word": "line",
+          "sentence": "...cross the finish line.",
+          "meaning": "线"
+        },
+        {
+          "word": "cross",
+          "sentence": "She crossed the finish line.",
+          "meaning": "穿过"
+        },
+        {
+          "word": "breath",
+          "sentence": "...out of breath.",
+          "meaning": "呼吸"
+        },
+        {
+          "word": "hold your breath",
+          "sentence": "Hold your breath...",
+          "meaning": "屏住呼吸"
+        },
+        {
+          "word": "confident",
+          "sentence": "You are so confident.",
+          "meaning": "自信的"
+        },
+        {
+          "word": "stomachache",
+          "sentence": "Her stomach ached...",
+          "meaning": "胃痛"
+        },
+        {
+          "word": "choice",
+          "sentence": "She made a choice...",
+          "meaning": "选择"
+        },
+        {
+          "word": "seem",
+          "sentence": "It seems hard...",
+          "meaning": "似乎"
+        },
+        {
+          "word": "dream",
+          "sentence": "I have a dream.",
+          "meaning": "梦想"
+        },
+        {
+          "word": "cheer",
+          "sentence": "The crowd cheered...",
+          "meaning": "欢呼"
+        },
+        {
+          "word": "record",
+          "sentence": "Do not think about the record.",
+          "meaning": "记录"
+        },
+        {
+          "word": "purpose",
+          "sentence": "...her purpose.",
+          "meaning": "目的"
+        },
+        {
+          "word": "possible",
+          "sentence": "It is possible.",
+          "meaning": "可能的"
+        },
+        {
+          "word": "member",
+          "sentence": "...a member of the club.（拓展）",
+          "meaning": "成员"
+        },
+        {
+          "word": "moment",
+          "sentence": "...the best moment...",
+          "meaning": "时刻"
+        },
+        {
+          "word": "none",
+          "sentence": "None of us gave up.（拓展）",
+          "meaning": "没有一个"
+        },
+        {
+          "word": "neither",
+          "sentence": "Neither Anna nor Leo came.（拓展）",
+          "meaning": "两者都不"
+        },
+        {
+          "word": "either",
+          "sentence": "You can take either one.（拓展）",
+          "meaning": "任一"
+        },
+        {
+          "word": "however",
+          "sentence": "However, it was hard.（拓展）",
+          "meaning": "然而"
+        },
+        {
+          "word": "still",
+          "sentence": "She still tried.（拓展）",
+          "meaning": "仍然"
+        },
+        {
+          "word": "shall",
+          "sentence": "Shall we go?（拓展）",
+          "meaning": "将要；好吗"
+        },
+        {
+          "word": "would",
+          "sentence": "I would like to run.（拓展）",
+          "meaning": "将会"
+        },
+        {
+          "word": "raise",
+          "sentence": "They raised money.（拓展）",
+          "meaning": "筹集"
+        },
+        {
+          "word": "metre",
+          "sentence": "...a few hundred metres...",
+          "meaning": "米"
+        },
+        {
+          "word": "someone",
+          "sentence": "Someone cheered loudly.",
+          "meaning": "某人"
+        },
+        {
+          "word": "if",
+          "sentence": "If I train every day...",
+          "meaning": "如果"
+        },
+        {
+          "word": "past",
+          "sentence": "...in the past.（拓展）",
+          "meaning": "过去"
+        },
+        {
+          "word": "lifelong",
+          "sentence": "It is a lifelong goal...",
+          "meaning": "终身的"
+        },
+        {
+          "word": "last but not least",
+          "sentence": "Last but not least, remember to enjoy the race.",
+          "meaning": "最后但同样重要的是"
+        }
+      ]
+    },
+    {
+      "file": "Unit3_Food_matters.md",
+      "heading": "七年级下册 Unit 3 Food matters",
+      "section": "Unit 3",
+      "topic": "饮食与文化、健康；词汇对齐：certain / mine / beef / carrot / mutton / fat / hen / pot / onion / pancake / porridge / sweet / plain / menu / medicine / than / pill / remain / another / connection / prove / similar / special / order / pie / delicious / sandwich / scramble / circle / slice",
+      "dialogue": [
+        {
+          "speaker": "Lucy",
+          "text": "I'm hungry. What would you like for dinner?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "Let's order something warm. I'd like a bowl of beef noodles."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "I think I'll have a sandwich and some carrot soup."
+        },
+        {
+          "speaker": "Tom",
+          "text": "On cold days, I love porridge with a little sugar. It's simple but delicious."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Food is not just for eating. It has a special connection to our culture."
+        },
+        {
+          "speaker": "Tom",
+          "text": "You're right. Every dish tells a story about the people who make it."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "Then let's try something new and discover the story behind it."
+        }
+      ],
+      "reading": {
+        "title": "Food Matters",
+        "paragraphs": [
+          "Everyone needs food. It gives us energy and keeps us healthy. But food is more than fuel. It is a part of our homes, our memories and our culture.",
+          "Different places have different foods. In the north, people like sweet and strong flavours - beef, mutton and pies are popular in winter. In the south, people might choose lighter meals with rice and fresh vegetables. No matter where we are, the food we grow up with often becomes our favourite, and it reminds us of home.",
+          "The way we cook is also very important. A pot of soup can take a whole afternoon. A simple pancake can be made in minutes. We scramble eggs in the morning, slice an onion, and fry it with carrots. These small actions are part of a daily family life.",
+          "But we must be careful, too. Too much fat or too much sugar is not good for us. Some people treat food like medicine, taking a pill when they feel ill. Others eat all day and forget to rest. A healthy meal should be plain but good, with enough vegetables and not too much salt.",
+          "Food also brings people together. At a family dinner, we sit around the table and share what happens in our lives. A certain dish can make us remember an old story, and a shared meal can prove how much we care about each other. Some traditions remain the same for hundreds of years, while others change as people travel and learn from one another.",
+          "Next time you sit down to eat, think about the food on your plate. It is connected to the earth, to the farmers, to your family and to you. Food matters more than we think."
+        ]
+      },
+      "words": [
+        {
+          "word": "order",
+          "sentence": "Let's order something warm.",
+          "meaning": "点餐；命令"
+        },
+        {
+          "word": "beef",
+          "sentence": "...a bowl of beef noodles.",
+          "meaning": "牛肉"
+        },
+        {
+          "word": "carrot",
+          "sentence": "...carrot soup.",
+          "meaning": "胡萝卜"
+        },
+        {
+          "word": "sandwich",
+          "sentence": "...a sandwich...",
+          "meaning": "三明治"
+        },
+        {
+          "word": "porridge",
+          "sentence": "...I love porridge...",
+          "meaning": "粥"
+        },
+        {
+          "word": "sweet",
+          "sentence": "...sweet and strong flavours...",
+          "meaning": "甜"
+        },
+        {
+          "word": "delicious",
+          "sentence": "...simple but delicious.",
+          "meaning": "美味的"
+        },
+        {
+          "word": "mutton",
+          "sentence": "...beef, mutton and pies...",
+          "meaning": "羊肉"
+        },
+        {
+          "word": "pie",
+          "sentence": "...mutton and pies...",
+          "meaning": "馅饼"
+        },
+        {
+          "word": "pot",
+          "sentence": "A pot of soup...",
+          "meaning": "锅"
+        },
+        {
+          "word": "pancake",
+          "sentence": "A simple pancake...",
+          "meaning": "煎饼"
+        },
+        {
+          "word": "scramble",
+          "sentence": "We scramble eggs...",
+          "meaning": "炒（蛋）"
+        },
+        {
+          "word": "slice",
+          "sentence": "...slice an onion.",
+          "meaning": "切片"
+        },
+        {
+          "word": "onion",
+          "sentence": "...an onion...",
+          "meaning": "洋葱"
+        },
+        {
+          "word": "fat",
+          "sentence": "Too much fat is not good.",
+          "meaning": "脂肪"
+        },
+        {
+          "word": "sugar",
+          "sentence": "...too much sugar...",
+          "meaning": "糖"
+        },
+        {
+          "word": "plain",
+          "sentence": "A healthy meal should be plain...",
+          "meaning": "清淡的；简单的"
+        },
+        {
+          "word": "medicine",
+          "sentence": "...like medicine...",
+          "meaning": "药"
+        },
+        {
+          "word": "pill",
+          "sentence": "...taking a pill...",
+          "meaning": "药丸"
+        },
+        {
+          "word": "menu",
+          "sentence": "...on the menu.（拓展）",
+          "meaning": "菜单"
+        },
+        {
+          "word": "certain",
+          "sentence": "A certain dish can make us remember...",
+          "meaning": "某种；确定的"
+        },
+        {
+          "word": "another",
+          "sentence": "...learn from one another.",
+          "meaning": "另一个"
+        },
+        {
+          "word": "connection",
+          "sentence": "...a special connection...",
+          "meaning": "联系"
+        },
+        {
+          "word": "prove",
+          "sentence": "...can prove how much we care...",
+          "meaning": "证明"
+        },
+        {
+          "word": "similar",
+          "sentence": "They are similar.（拓展）",
+          "meaning": "相似的"
+        },
+        {
+          "word": "special",
+          "sentence": "It's special.",
+          "meaning": "特别的"
+        },
+        {
+          "word": "remain",
+          "sentence": "Some traditions remain the same...",
+          "meaning": "保持；留下"
+        },
+        {
+          "word": "circle",
+          "sentence": "...around the table...（circle 相关）",
+          "meaning": "圆"
+        },
+        {
+          "word": "than",
+          "sentence": "...more than we think.",
+          "meaning": "比"
+        },
+        {
+          "word": "hen",
+          "sentence": "(拓展) a hen",
+          "meaning": "母鸡"
+        },
+        {
+          "word": "mine",
+          "sentence": "This book is mine.（拓展）",
+          "meaning": "我的"
+        }
+      ]
+    },
+    {
+      "file": "Unit4_The_art_of_having_fun.md",
+      "heading": "七年级下册 Unit 4 The art of having fun",
+      "section": "Unit 4",
+      "topic": "娱乐与休闲；词汇对齐：dull / imagine / alone / might / tool / list / something / novel / magazine / solar / media / bored / feeling / lift / funny / youthful / invite / daily / while / housework / explore / discussion / unforgettable / discover / mosquito / insect / butterfly / prince / monster / ever",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "I'm bored. There's nothing to do this weekend."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Imagine how much fun you could have. Why not read a novel or a magazine?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "I read all the time. I want to do something different."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Then let's explore the park. In spring, you can see butterflies and insects. We might even discover something new."
+        },
+        {
+          "speaker": "Tom",
+          "text": "That sounds better than being alone at home."
+        },
+        {
+          "speaker": "Mia",
+          "text": "It's a good feeling, isn't it? Real fun is something you make yourself."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Let me invite my cousin too, and we can have an unforgettable day."
+        }
+      ],
+      "reading": {
+        "title": "The Art of Having Fun",
+        "paragraphs": [
+          "It is easy to say \"I'm bored.\" Sometimes a day feels dull, and everything seems the same. But fun is not something that falls from the sky. It is something we learn to make, and this is an art.",
+          "Some people find fun in small things. They read a novel in the afternoon light or look through an old magazine. Others get up and go outside. They ride a bike, play a game, or explore the woods to discover a new insect, a butterfly or a quiet pond.",
+          "Fun does not need expensive toys or a crowded place. It can come from simple tools. On a sunny day, you can watch the sky. On a rainy one, you can listen to the sound of the rain and draw a picture. You can invite a friend to help with the housework and turn work into play.",
+          "The best memories are often the simplest ones. I still remember a summer evening when we sat on the grass and talked until it was dark. We did not do anything special; we just talked and laughed. That evening is an unforgettable part of my life.",
+          "Sometimes, being alone is also a part of fun. When you are by yourself, you can dream a little. You might imagine a prince on a mountain or a friendly monster in the forest. Your mind is a wonderful and youthful place.",
+          "So the next time you feel that a day is boring, remember two things. First, fun is inside you. And second, life is a story that you are writing every day. You are free to fill it with laughter, ideas and adventure."
+        ]
+      },
+      "words": [
+        {
+          "word": "bored",
+          "sentence": "I'm bored.",
+          "meaning": "无聊的"
+        },
+        {
+          "word": "dull",
+          "sentence": "A day feels dull...",
+          "meaning": "沉闷的"
+        },
+        {
+          "word": "imagine",
+          "sentence": "Imagine how much fun you could have.",
+          "meaning": "想象"
+        },
+        {
+          "word": "alone",
+          "sentence": "...being alone...",
+          "meaning": "独自"
+        },
+        {
+          "word": "novel",
+          "sentence": "They read a novel...",
+          "meaning": "小说"
+        },
+        {
+          "word": "magazine",
+          "sentence": "...a magazine...",
+          "meaning": "杂志"
+        },
+        {
+          "word": "explore",
+          "sentence": "...explore the woods...",
+          "meaning": "探索"
+        },
+        {
+          "word": "discover",
+          "sentence": "...discover a new insect...",
+          "meaning": "发现"
+        },
+        {
+          "word": "insect",
+          "sentence": "...an insect...",
+          "meaning": "昆虫"
+        },
+        {
+          "word": "butterfly",
+          "sentence": "...a butterfly...",
+          "meaning": "蝴蝶"
+        },
+        {
+          "word": "mosquito",
+          "sentence": "(拓展) a mosquito",
+          "meaning": "蚊子"
+        },
+        {
+          "word": "invite",
+          "sentence": "You can invite a friend...",
+          "meaning": "邀请"
+        },
+        {
+          "word": "housework",
+          "sentence": "...help with the housework...",
+          "meaning": "家务"
+        },
+        {
+          "word": "feeling",
+          "sentence": "It's a good feeling...",
+          "meaning": "感觉"
+        },
+        {
+          "word": "lift",
+          "sentence": "Music can lift your spirit.（拓展）",
+          "meaning": "使振作"
+        },
+        {
+          "word": "funny",
+          "sentence": "The story is funny.（拓展）",
+          "meaning": "有趣的"
+        },
+        {
+          "word": "youthful",
+          "sentence": "Your mind is a youthful place.",
+          "meaning": "有活力的"
+        },
+        {
+          "word": "daily",
+          "sentence": "...in daily life.（拓展）",
+          "meaning": "日常的"
+        },
+        {
+          "word": "while",
+          "sentence": "...while it was raining.",
+          "meaning": "当…时"
+        },
+        {
+          "word": "discussion",
+          "sentence": "...a discussion...（拓展）",
+          "meaning": "讨论"
+        },
+        {
+          "word": "unforgettable",
+          "sentence": "...an unforgettable part...",
+          "meaning": "难忘的"
+        },
+        {
+          "word": "might",
+          "sentence": "We might discover something.",
+          "meaning": "可能"
+        },
+        {
+          "word": "tool",
+          "sentence": "...simple tools.",
+          "meaning": "工具"
+        },
+        {
+          "word": "list",
+          "sentence": "Make a list of fun things.（拓展）",
+          "meaning": "清单"
+        },
+        {
+          "word": "something",
+          "sentence": "I want something different.",
+          "meaning": "某事"
+        },
+        {
+          "word": "princess",
+          "sentence": "(拓展) a prince",
+          "meaning": "王子"
+        },
+        {
+          "word": "monster",
+          "sentence": "...a friendly monster...",
+          "meaning": "怪物"
+        },
+        {
+          "word": "ever",
+          "sentence": "...the best ever.（拓展）",
+          "meaning": "曾经"
+        },
+        {
+          "word": "solar",
+          "sentence": "The solar system is vast.（拓展）",
+          "meaning": "太阳的"
+        },
+        {
+          "word": "media",
+          "sentence": "...social media...（拓展）",
+          "meaning": "媒体"
+        }
+      ]
+    },
+    {
+      "file": "Unit5_Amazing_nature.md",
+      "heading": "七年级下册 Unit 5 Amazing nature",
+      "section": "Unit 5",
+      "topic": "自然奇观；词汇对齐：plateau / cloud / soft / brightly / lotus / sky / calm / above / express / grassland / field / few / present / proud / likely / local / designer / guide / describe / landscape / common / Mount / tide / exhibition / tour / lungfish / lung / scientist / behaviour / land",
+      "dialogue": [
+        {
+          "speaker": "Anna",
+          "text": "Have you ever seen the sea?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "Yes. I stood by the water and watched the tide come in. It was calm and wonderful."
+        },
+        {
+          "speaker": "Anna",
+          "text": "I'd like to see a mountain. My uncle is a tour guide, and he once showed me pictures of a snowy Mount."
+        },
+        {
+          "speaker": "Leo",
+          "text": "The landscape there is amazing. The clouds are soft and bright, and the sky is so wide."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Nature makes me think. It is the best artist in the world."
+        },
+        {
+          "speaker": "Leo",
+          "text": "I agree. It is hard to describe, but you feel it in your heart."
+        }
+      ],
+      "reading": {
+        "title": "Amazing Nature",
+        "paragraphs": [
+          "Nature is the greatest artist in the world. It paints the sky in the morning, and it puts clouds in strange and beautiful shapes. It makes the grass grow green on the wide grassland, and it keeps the land calm and quiet at night.",
+          "Our country is full of natural wonders. You can visit a high plateau where the air is thin and the light is bright. You can walk across a cool field and see lotus flowers open in the still water. At the coast, you can watch the tide rise and fall, a dance that has gone on for thousands of years. Near a great Mount, the clouds sit above the peaks like soft white snow.",
+          "Scientists study these places to learn about the world. They watch the behaviour of animals and the changes of the land. The lungfish is one such animal; it has both lungs and can live on land for a long time. The more we understand nature, the more we see how amazing it truly is.",
+          "People also make nature a part of their lives. A local designer might paint a lotus on a piece of cloth. A guide may show visitors an exhibition about the sounds of the forest. A child may proudly present a drawing of the sea to his mother. In this way, nature moves from the outside world into our hearts.",
+          "Nature is not something we own. It is something we are part of. If we keep it safe, it will keep us safe, too."
+        ]
+      },
+      "words": [
+        {
+          "word": "plateau",
+          "sentence": "You can visit a high plateau...",
+          "meaning": "高原"
+        },
+        {
+          "word": "cloud",
+          "sentence": "The clouds sit above the peaks...",
+          "meaning": "云"
+        },
+        {
+          "word": "soft",
+          "sentence": "...soft white snow.",
+          "meaning": "柔软的"
+        },
+        {
+          "word": "brightly",
+          "sentence": "...the light is bright.",
+          "meaning": "明亮地"
+        },
+        {
+          "word": "lotus",
+          "sentence": "...lotus flowers...",
+          "meaning": "莲花"
+        },
+        {
+          "word": "sky",
+          "sentence": "...it paints the sky...",
+          "meaning": "天空"
+        },
+        {
+          "word": "calm",
+          "sentence": "...keeps the land calm...",
+          "meaning": "平静的"
+        },
+        {
+          "word": "above",
+          "sentence": "...above the peaks.",
+          "meaning": "在…上方"
+        },
+        {
+          "word": "grassland",
+          "sentence": "...the wide grassland...",
+          "meaning": "草原"
+        },
+        {
+          "word": "field",
+          "sentence": "...a cool field...",
+          "meaning": "田野"
+        },
+        {
+          "word": "landscape",
+          "sentence": "The landscape there is amazing.",
+          "meaning": "风景"
+        },
+        {
+          "word": "common",
+          "sentence": "(拓展) a common plant",
+          "meaning": "普通的"
+        },
+        {
+          "word": "Mount",
+          "sentence": "Near a great Mount...",
+          "meaning": "山；峰"
+        },
+        {
+          "word": "tide",
+          "sentence": "...watch the tide rise and fall...",
+          "meaning": "潮汐"
+        },
+        {
+          "word": "exhibition",
+          "sentence": "...an exhibition...",
+          "meaning": "展览"
+        },
+        {
+          "word": "tour",
+          "sentence": "My uncle is a tour guide... (tour)",
+          "meaning": "游览"
+        },
+        {
+          "word": "guide",
+          "sentence": "...a tour guide...",
+          "meaning": "导游"
+        },
+        {
+          "word": "designer",
+          "sentence": "A local designer...",
+          "meaning": "设计师"
+        },
+        {
+          "word": "describe",
+          "sentence": "It is hard to describe...",
+          "meaning": "描述"
+        },
+        {
+          "word": "express",
+          "sentence": "...express your feelings.（拓展）",
+          "meaning": "表达"
+        },
+        {
+          "word": "present",
+          "sentence": "...present a drawing...",
+          "meaning": "展示；礼物"
+        },
+        {
+          "word": "proud",
+          "sentence": "...proudly present...",
+          "meaning": "自豪的"
+        },
+        {
+          "word": "likely",
+          "sentence": "It is likely to rain.（拓展）",
+          "meaning": "很可能"
+        },
+        {
+          "word": "local",
+          "sentence": "...a local designer...",
+          "meaning": "当地的"
+        },
+        {
+          "word": "few",
+          "sentence": "...a few people.（拓展）",
+          "meaning": "少数"
+        },
+        {
+          "word": "lungfish",
+          "sentence": "The lungfish has both lungs...",
+          "meaning": "肺鱼"
+        },
+        {
+          "word": "lung",
+          "sentence": "...it has both lungs...",
+          "meaning": "肺"
+        },
+        {
+          "word": "scientist",
+          "sentence": "Scientists study these places...",
+          "meaning": "科学家"
+        },
+        {
+          "word": "behaviour",
+          "sentence": "...the behaviour of animals...",
+          "meaning": "行为"
+        },
+        {
+          "word": "land",
+          "sentence": "...live on land...",
+          "meaning": "陆地"
+        }
+      ]
+    },
+    {
+      "file": "Unit6_Hitting_the_road.md",
+      "heading": "七年级下册 Unit 6 Hitting the road",
+      "section": "Unit 6",
+      "topic": "旅行与出发；词汇对齐：airport / burn / expect / deep / lemon / reply / mouthful / surprisingly / mask / normal / ancient / further / look forward to / general / in general / curious / cultural / understanding / main / prefer / interest / places of interest / hotel / comfortable / postcard / waterfall / south / powerful / thunder / painting",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "Where are you going for the holiday, Anna?"
+        },
+        {
+          "speaker": "Anna",
+          "text": "I'm going to the south, to see a big waterfall. I've been looking forward to it for a long time."
+        },
+        {
+          "speaker": "Tom",
+          "text": "How are you getting there?"
+        },
+        {
+          "speaker": "Anna",
+          "text": "By train. And then I'll stay in a small hotel near the waterfall."
+        },
+        {
+          "speaker": "Tom",
+          "text": "What do you like most about travelling?"
+        },
+        {
+          "speaker": "Anna",
+          "text": "I'm curious about different places. I like to visit places of interest and learn about ancient cultures."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Me too. In general, travel makes us see the world in a new way."
+        }
+      ],
+      "reading": {
+        "title": "Hit the Road",
+        "paragraphs": [
+          "There is a special feeling when you step out of the airport, or when the train starts to move. Your trip has begun. Your heart is full of excitement, and you cannot wait to see what is waiting for you.",
+          "Why do we travel? In general, we travel because we are curious. We want to see a distant waterfall, to stand in front of an ancient temple, or to swim in a warm sea in the south. We look forward to visiting famous places of interest and hearing their stories. We also want to taste the local food, buy a colourful postcard, and meet people who live differently from us.",
+          "Travel is also a way to understand the world. When we see how others live, we learn more about our own lives. We learn to be patient and kind. We learn that a normal day in another place can feel like a wonderful dream.",
+          "Sometimes travel is not easy. The road may be long, and the weather may change. A powerful thunderstorm can make the sky dark, and the bus may be late. But these small surprises become the best stories we tell our friends. The mouthful of strange food we were too shy to try, the map we could not read, the painting we loved in a museum - these are the things we remember best.",
+          "So do not be afraid to leave home. Pack a small bag, take a deep breath, and go. A trip does not have to be far or expensive. Even a walk to the next town can be a wonderful adventure.",
+          "The road is calling you. Hit the road, and let the world surprise you."
+        ]
+      },
+      "words": [
+        {
+          "word": "airport",
+          "sentence": "...step out of the airport...",
+          "meaning": "机场"
+        },
+        {
+          "word": "expect",
+          "sentence": "(拓展) What do you expect?",
+          "meaning": "期望"
+        },
+        {
+          "word": "deep",
+          "sentence": "...a deep breath...",
+          "meaning": "深的"
+        },
+        {
+          "word": "lemon",
+          "sentence": "(拓展) a lemon",
+          "meaning": "柠檬"
+        },
+        {
+          "word": "reply",
+          "sentence": "(拓展) Wait for a reply.",
+          "meaning": "回复"
+        },
+        {
+          "word": "mouthful",
+          "sentence": "The mouthful of strange food...",
+          "meaning": "一口"
+        },
+        {
+          "word": "surprisingly",
+          "sentence": "...surprisingly, it was quiet.（拓展）",
+          "meaning": "出人意料地"
+        },
+        {
+          "word": "mask",
+          "sentence": "(拓展) a face mask",
+          "meaning": "面具"
+        },
+        {
+          "word": "normal",
+          "sentence": "A normal day...",
+          "meaning": "正常的"
+        },
+        {
+          "word": "ancient",
+          "sentence": "...an ancient temple...",
+          "meaning": "古老的"
+        },
+        {
+          "word": "further",
+          "sentence": "...travel further.（拓展）",
+          "meaning": "更远"
+        },
+        {
+          "word": "look forward to",
+          "sentence": "I've been looking forward to it...",
+          "meaning": "期待"
+        },
+        {
+          "word": "general",
+          "sentence": "In general, we travel because we are curious.",
+          "meaning": "一般的"
+        },
+        {
+          "word": "in general",
+          "sentence": "In general, we travel...",
+          "meaning": "总的来说"
+        },
+        {
+          "word": "curious",
+          "sentence": "We are curious.",
+          "meaning": "好奇的"
+        },
+        {
+          "word": "cultural",
+          "sentence": "...learn about ancient cultures.",
+          "meaning": "文化的"
+        },
+        {
+          "word": "understanding",
+          "sentence": "...a way to understand the world.",
+          "meaning": "理解"
+        },
+        {
+          "word": "main",
+          "sentence": "...the main reason.（拓展）",
+          "meaning": "主要的"
+        },
+        {
+          "word": "prefer",
+          "sentence": "I prefer to travel in autumn.（拓展）",
+          "meaning": "更喜欢"
+        },
+        {
+          "word": "interest",
+          "sentence": "...places of interest...",
+          "meaning": "兴趣"
+        },
+        {
+          "word": "places of interest",
+          "sentence": "...visiting famous places of interest...",
+          "meaning": "名胜"
+        },
+        {
+          "word": "hotel",
+          "sentence": "...a small hotel...",
+          "meaning": "旅馆"
+        },
+        {
+          "word": "comfortable",
+          "sentence": "(拓展) a comfortable bed",
+          "meaning": "舒适的"
+        },
+        {
+          "word": "postcard",
+          "sentence": "...buy a colourful postcard.",
+          "meaning": "明信片"
+        },
+        {
+          "word": "waterfall",
+          "sentence": "...a big waterfall...",
+          "meaning": "瀑布"
+        },
+        {
+          "word": "south",
+          "sentence": "...in the south.",
+          "meaning": "南方"
+        },
+        {
+          "word": "powerful",
+          "sentence": "A powerful thunderstorm...",
+          "meaning": "强大的"
+        },
+        {
+          "word": "thunder",
+          "sentence": "...a powerful thunderstorm...",
+          "meaning": "雷"
+        },
+        {
+          "word": "painting",
+          "sentence": "...the painting we loved...",
+          "meaning": "画"
+        },
+        {
+          "word": "burn",
+          "sentence": "(拓展) the sun can burn you",
+          "meaning": "燃烧；晒伤"
+        }
+      ]
+    }
+  ]
+}

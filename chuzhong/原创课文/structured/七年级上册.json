@@ -1,0 +1,1221 @@
+{
+  "book": "七年级上册",
+  "items": [
+    {
+      "file": "Unit1_A_new_start.md",
+      "heading": "七年级上册 Unit 1 A new start",
+      "section": "Unit 1",
+      "topic": "新学期与身份建构；词汇对齐：without / sentence / point out / mistake / polite / mind / fact / in fact / need / remember / important / plan / problem / homework / task / project / advice / journey / thought / primary school / pool / protect / wide",
+      "dialogue": [
+        {
+          "speaker": "Lily",
+          "text": "Hi, I'm Lily. This is our first day at middle school. How do you feel?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "A little nervous, to be honest. I'm still thinking about my primary school."
+        },
+        {
+          "speaker": "Lily",
+          "text": "Me too. But a new start is a new journey."
+        },
+        {
+          "speaker": "Tom",
+          "text": "What do you think is the most important thing in the first week?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "I think we need a good plan. We have lots of homework and different projects."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Do you have any advice for me?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Yes. Write down your tasks and check them every day. If you make a mistake, don't worry. Just point it out and try again."
+        },
+        {
+          "speaker": "Tom",
+          "text": "That's a good idea. Let's help each other, and then school life will be a lot easier."
+        }
+      ],
+      "reading": {
+        "title": "A New Start",
+        "paragraphs": [
+          "September is a special month. It is the time when a new school year begins. For many of us, it is also the start of a new journey in our lives.",
+          "At primary school, we were the oldest students. Now, at middle school, we are the youngest again. Sometimes we feel a little worried. We have new teachers, new friends and new subjects. The first week is full of problems: we forget the classroom, we cannot find the dining hall, and we often have too much homework.",
+          "In fact, all these problems are easy to solve. The most important thing is to make a plan. Make a list of your tasks for each day. Write down your homework the moment the teacher gives it. Then finish one thing at a time.",
+          "It is also useful to remember that nobody is perfect. If you make a mistake, do not be afraid. Point it out to your teacher, and learn from it. A kind friend is always helpful, too. When someone feels lost, a polite word can make the whole day better.",
+          "This is the secret of a good new start: stay calm, work hard, and help each other. With a little plan and a lot of practice, middle school will be a wonderful time for all of us."
+        ]
+      },
+      "words": [
+        {
+          "word": "primary school",
+          "sentence": "At primary school, we were the oldest...",
+          "meaning": "小学"
+        },
+        {
+          "word": "journey",
+          "sentence": "...a new journey in our lives.",
+          "meaning": "旅程"
+        },
+        {
+          "word": "important",
+          "sentence": "The most important thing is to make a plan.",
+          "meaning": "重要的"
+        },
+        {
+          "word": "plan",
+          "sentence": "...make a plan.",
+          "meaning": "计划"
+        },
+        {
+          "word": "problem",
+          "sentence": "...full of problems...",
+          "meaning": "问题"
+        },
+        {
+          "word": "homework",
+          "sentence": "...too much homework.",
+          "meaning": "作业"
+        },
+        {
+          "word": "task",
+          "sentence": "Make a list of your tasks...",
+          "meaning": "任务"
+        },
+        {
+          "word": "project",
+          "sentence": "...different projects.",
+          "meaning": "项目"
+        },
+        {
+          "word": "need",
+          "sentence": "We need a good plan.",
+          "meaning": "需要"
+        },
+        {
+          "word": "remember",
+          "sentence": "It is also useful to remember...",
+          "meaning": "记住"
+        },
+        {
+          "word": "fact",
+          "sentence": "In fact, all these problems...",
+          "meaning": "事实"
+        },
+        {
+          "word": "in fact",
+          "sentence": "In fact, all these problems...",
+          "meaning": "事实上"
+        },
+        {
+          "word": "mistake",
+          "sentence": "If you make a mistake...",
+          "meaning": "错误"
+        },
+        {
+          "word": "point out",
+          "sentence": "Point it out to your teacher...",
+          "meaning": "指出"
+        },
+        {
+          "word": "polite",
+          "sentence": "A polite word can make the whole day better.",
+          "meaning": "有礼貌的"
+        },
+        {
+          "word": "advice",
+          "sentence": "Do you have any advice for me?",
+          "meaning": "建议"
+        },
+        {
+          "word": "mind",
+          "sentence": "Do you mind helping me?（拓展）",
+          "meaning": "介意"
+        },
+        {
+          "word": "thought",
+          "sentence": "I'm still thinking about...（拓展）",
+          "meaning": "想法"
+        },
+        {
+          "word": "without",
+          "sentence": "We can't do it without teamwork.（拓展）",
+          "meaning": "没有"
+        },
+        {
+          "word": "sentence",
+          "sentence": "Make a sentence with the word.（拓展）",
+          "meaning": "句子"
+        },
+        {
+          "word": "meaning",
+          "sentence": "What's the meaning?（拓展）",
+          "meaning": "意思"
+        },
+        {
+          "word": "pool",
+          "sentence": "We swim in the pool.（拓展）",
+          "meaning": "水池"
+        },
+        {
+          "word": "protect",
+          "sentence": "We must protect the environment.（拓展）",
+          "meaning": "保护"
+        },
+        {
+          "word": "wind",
+          "sentence": "The wind is strong.（拓展）",
+          "meaning": "风"
+        },
+        {
+          "word": "wide",
+          "sentence": "The road is wide.（拓展）",
+          "meaning": "宽的"
+        },
+        {
+          "word": "really",
+          "sentence": "That's really great.（拓展）",
+          "meaning": "真正地"
+        },
+        {
+          "word": "hers",
+          "sentence": "This book is hers.（拓展）",
+          "meaning": "她的"
+        },
+        {
+          "word": "dry",
+          "sentence": "The weather is dry.（拓展）",
+          "meaning": "干的"
+        },
+        {
+          "word": "something",
+          "sentence": "I have something to tell you.（拓展）",
+          "meaning": "某事"
+        },
+        {
+          "word": "life",
+          "sentence": "School life is busy.（拓展）",
+          "meaning": "生活"
+        }
+      ]
+    },
+    {
+      "file": "Unit2_More_than_fun.md",
+      "heading": "七年级上册 Unit 2 More than fun",
+      "section": "Unit 2",
+      "topic": "爱好与文化交融；词汇对齐：rock music / electric / guitar / band / sound / different / suddenly / hit / rush / festival / decide / practice / stage / nod / instrument / everybody / smile / enjoy / skate / club / volleyball / traditional / paper-cutting / hold / ground / weak / high / nature / adventure / awake",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "What's your hobby, Alan?"
+        },
+        {
+          "speaker": "Alan",
+          "text": "I play the guitar in a band. We play rock music at the school festival."
+        },
+        {
+          "speaker": "Mia",
+          "text": "That sounds exciting! How did you start?"
+        },
+        {
+          "speaker": "Alan",
+          "text": "I decided to learn an instrument last year. At first my fingers were weak, but I practised every day."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Do you enjoy it?"
+        },
+        {
+          "speaker": "Alan",
+          "text": "Yes! When I play on the stage, everybody smiles. It's more than fun."
+        },
+        {
+          "speaker": "Mia",
+          "text": "What about you? Do you have a hobby?"
+        },
+        {
+          "speaker": "Alan",
+          "text": "I also like paper-cutting. It's a traditional Chinese art. I hold the paper on the table and cut it carefully."
+        },
+        {
+          "speaker": "Mia",
+          "text": "You can do many things. That's really cool."
+        }
+      ],
+      "reading": {
+        "title": "More Than Fun",
+        "paragraphs": [
+          "Everybody has a hobby. Some people like sports, some enjoy painting, and some love music. A hobby is not only a way to have fun; it can also teach us important things about ourselves.",
+          "Last year, I joined a music club and learned to play the guitar. At first, it was hard. My hands were weak, and I could not hold the strings well. The sound I made was terrible. But I decided to keep going. Every afternoon, I found a quiet place and practised for an hour.",
+          "One day, our band was asked to play at the school festival. I was very nervous as I walked onto the stage. Then I began to play, and suddenly the music took over. I stopped thinking about the people in front of me. I just focused on the notes. The whole hall was quiet, and then the audience began to cheer.",
+          "After that day, I understood something. Hobbies are more than fun. They teach us patience and courage. A friend of mine enjoys paper-cutting, and he says the same thing. His hobby connects him to our traditional culture. Another friend loves skating, and another plays volleyball. They are different, but they all feel the same joy.",
+          "So find a hobby that you love. Work hard at it, listen to your heart, and you may discover a wonderful world. Your hobby is waiting to wake you up."
+        ]
+      },
+      "words": [
+        {
+          "word": "guitar",
+          "sentence": "...learned to play the guitar.",
+          "meaning": "吉他"
+        },
+        {
+          "word": "band",
+          "sentence": "...the band was asked to play...",
+          "meaning": "乐队"
+        },
+        {
+          "word": "rock music",
+          "sentence": "We play rock music...",
+          "meaning": "摇滚乐"
+        },
+        {
+          "word": "sound",
+          "sentence": "The sound I made was terrible.",
+          "meaning": "声音"
+        },
+        {
+          "word": "instrument",
+          "sentence": "...learn an instrument...",
+          "meaning": "乐器"
+        },
+        {
+          "word": "decide",
+          "sentence": "I decided to keep going.",
+          "meaning": "决定"
+        },
+        {
+          "word": "practice",
+          "sentence": "...practised for an hour.",
+          "meaning": "练习"
+        },
+        {
+          "word": "stage",
+          "sentence": "...walked onto the stage.",
+          "meaning": "舞台"
+        },
+        {
+          "word": "hold",
+          "sentence": "...hold the strings well.",
+          "meaning": "握住"
+        },
+        {
+          "word": "weak",
+          "sentence": "My hands were weak.",
+          "meaning": "虚弱的"
+        },
+        {
+          "word": "festival",
+          "sentence": "...the school festival.",
+          "meaning": "节日"
+        },
+        {
+          "word": "suddenly",
+          "sentence": "Suddenly the music took over.",
+          "meaning": "突然"
+        },
+        {
+          "word": "everybody",
+          "sentence": "Everybody has a hobby.",
+          "meaning": "每个人"
+        },
+        {
+          "word": "smile",
+          "sentence": "...everybody smiles.",
+          "meaning": "微笑"
+        },
+        {
+          "word": "enjoy",
+          "sentence": "...enjoy painting...",
+          "meaning": "享受"
+        },
+        {
+          "word": "club",
+          "sentence": "I joined a music club...",
+          "meaning": "俱乐部"
+        },
+        {
+          "word": "traditional",
+          "sentence": "...traditional Chinese art.",
+          "meaning": "传统的"
+        },
+        {
+          "word": "paper-cutting",
+          "sentence": "...likes paper-cutting.",
+          "meaning": "剪纸"
+        },
+        {
+          "word": "nature",
+          "sentence": "...connect to the natural world.（拓展）",
+          "meaning": "自然"
+        },
+        {
+          "word": "adventure",
+          "sentence": "Life is an adventure.",
+          "meaning": "冒险"
+        },
+        {
+          "word": "awake",
+          "sentence": "...wake you up.",
+          "meaning": "清醒的"
+        },
+        {
+          "word": "high",
+          "sentence": "The mountain is high.（拓展）",
+          "meaning": "高的"
+        },
+        {
+          "word": "ground",
+          "sentence": "He fell to the ground.（拓展）",
+          "meaning": "地面"
+        },
+        {
+          "word": "electric",
+          "sentence": "...an electric guitar.（拓展）",
+          "meaning": "电的"
+        },
+        {
+          "word": "rush",
+          "sentence": "People rush to the shops.（拓展）",
+          "meaning": "冲；赶"
+        },
+        {
+          "word": "nod",
+          "sentence": "She nodded her head.（拓展）",
+          "meaning": "点头"
+        },
+        {
+          "word": "different",
+          "sentence": "They are different.",
+          "meaning": "不同的"
+        },
+        {
+          "word": "hit",
+          "sentence": "He hit the drum.（拓展）",
+          "meaning": "击打"
+        },
+        {
+          "word": "skate",
+          "sentence": "...loves skating.",
+          "meaning": "滑冰"
+        },
+        {
+          "word": "volleyball",
+          "sentence": "...plays volleyball.",
+          "meaning": "排球"
+        }
+      ]
+    },
+    {
+      "file": "Unit3_Family_ties.md",
+      "heading": "七年级上册 Unit 3 Family ties",
+      "section": "Unit 3",
+      "topic": "亲情与代际理解；词汇对齐：silent / along / mountain / road / handsome / strict / follow / touching / son / serve / area / absent / seldom / position / carry / across / memory / tear / growth / hide / care / hug / kiss / marry / pick up / actress / change / race",
+      "dialogue": [
+        {
+          "speaker": "Lucy",
+          "text": "You look quiet today. Is everything all right, Jack?"
+        },
+        {
+          "speaker": "Jack",
+          "text": "I am thinking about my father. He works in another city and comes home only twice a year."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "That must be hard for both of you."
+        },
+        {
+          "speaker": "Jack",
+          "text": "Yes. When I was little, I thought he was strict and seldom smiled. Then I grew up and understood."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "What changed your mind?"
+        },
+        {
+          "speaker": "Jack",
+          "text": "One day he saw me from far away and ran across the road to hug me. I saw a tear in his eye."
+        },
+        {
+          "speaker": "Lucy",
+          "text": "That's really touching. Our family is always with us, even when we are far apart."
+        }
+      ],
+      "reading": {
+        "title": "The Man on the Road",
+        "paragraphs": [
+          "My father was a postman. Every morning, he got up before the sun and walked along the mountain road to serve the people in the small village. The road was long and difficult, but he never complained.",
+          "My father was a quiet man. He seldom spoke, and to me he seemed strict. When I made a mistake, he would not shout. He would only look at me with serious eyes, and then carry on with his work. I thought he did not care about me, and I hid my feelings inside.",
+          "As I grew older, I began to understand. He worked hard because he loved us. He gave his strength and his time to give us a better life. When he came home, he would pick up my little brother with a laugh, even though he was tired. His hands were strong and warm.",
+          "One rainy day, I was walking home from school when I saw him on the road. He was carrying a heavy bag, and his old coat was wet. When he saw me, he ran across the road and opened his arms. We stood there in the rain, and he hugged me. I felt the tears I had hidden for so long.",
+          "Now I understand what family means. It is not about big words or grand gifts. It is about the small things we do for each other every day. A father's love is silent, but it is like the mountain that stands still and strong."
+        ]
+      },
+      "words": [
+        {
+          "word": "postman",
+          "sentence": "My father was a postman.",
+          "meaning": "邮递员"
+        },
+        {
+          "word": "along",
+          "sentence": "...walked along the mountain road...",
+          "meaning": "沿着"
+        },
+        {
+          "word": "mountain",
+          "sentence": "...the mountain road...",
+          "meaning": "山"
+        },
+        {
+          "word": "road",
+          "sentence": "...the mountain road...",
+          "meaning": "公路"
+        },
+        {
+          "word": "serve",
+          "sentence": "...serve the people...",
+          "meaning": "服务"
+        },
+        {
+          "word": "strict",
+          "sentence": "He seemed strict.",
+          "meaning": "严格的"
+        },
+        {
+          "word": "seldom",
+          "sentence": "He seldom spoke.",
+          "meaning": "很少"
+        },
+        {
+          "word": "carry",
+          "sentence": "He was carrying a heavy bag...",
+          "meaning": "背；提"
+        },
+        {
+          "word": "across",
+          "sentence": "...ran across the road...",
+          "meaning": "穿过"
+        },
+        {
+          "word": "hug",
+          "sentence": "He hugged me.",
+          "meaning": "拥抱"
+        },
+        {
+          "word": "tear",
+          "sentence": "...a tear in his eye.",
+          "meaning": "眼泪"
+        },
+        {
+          "word": "touching",
+          "sentence": "That's really touching.",
+          "meaning": "感人的"
+        },
+        {
+          "word": "silent",
+          "sentence": "A father's love is silent...",
+          "meaning": "沉默的"
+        },
+        {
+          "word": "hide",
+          "sentence": "I hid my feelings inside.",
+          "meaning": "隐藏"
+        },
+        {
+          "word": "care",
+          "sentence": "He cared about us.",
+          "meaning": "关心"
+        },
+        {
+          "word": "memory",
+          "sentence": "I keep the memory.（拓展）",
+          "meaning": "记忆"
+        },
+        {
+          "word": "growth",
+          "sentence": "...grow older...（拓展）",
+          "meaning": "成长"
+        },
+        {
+          "word": "son",
+          "sentence": "He raised his son.（拓展）",
+          "meaning": "儿子"
+        },
+        {
+          "word": "area",
+          "sentence": "...in the area.（拓展）",
+          "meaning": "地区"
+        },
+        {
+          "word": "absent",
+          "sentence": "He was absent from dinner.（拓展）",
+          "meaning": "缺席的"
+        },
+        {
+          "word": "position",
+          "sentence": "He took a new position.（拓展）",
+          "meaning": "职位"
+        },
+        {
+          "word": "pick up",
+          "sentence": "He picked up my little brother...",
+          "meaning": "抱起"
+        },
+        {
+          "word": "handsome",
+          "sentence": "My uncle is handsome.（拓展）",
+          "meaning": "英俊的"
+        },
+        {
+          "word": "follow",
+          "sentence": "Follow me, please.（拓展）",
+          "meaning": "跟随"
+        },
+        {
+          "word": "kiss",
+          "sentence": "She kissed me goodnight.（拓展）",
+          "meaning": "亲吻"
+        },
+        {
+          "word": "marry",
+          "sentence": "They married in spring.（拓展）",
+          "meaning": "结婚"
+        },
+        {
+          "word": "queen",
+          "sentence": "(拓展) a queen",
+          "meaning": "女王"
+        },
+        {
+          "word": "actress",
+          "sentence": "(拓展) an actress",
+          "meaning": "女演员"
+        },
+        {
+          "word": "change",
+          "sentence": "Times change.（拓展）",
+          "meaning": "改变"
+        },
+        {
+          "word": "race",
+          "sentence": "The race was long.（拓展）",
+          "meaning": "赛跑"
+        }
+      ]
+    },
+    {
+      "file": "Unit4_Time_to_celebrate.md",
+      "heading": "七年级上册 Unit 4 Time to celebrate",
+      "section": "Unit 4",
+      "topic": "节日与文化符号；词汇对齐：unusual / university / treat / realise / dumpling / whole / cucumber / hang / balloon / lantern / dish / joke / shocked / laugh / pork / round / shape / reunion / piece / knife / smell / fill / Christmas / waste / throw away / pollution / plastic / celebrate / meal",
+      "dialogue": [
+        {
+          "speaker": "Anna",
+          "text": "Are you excited about the Spring Festival, Li?"
+        },
+        {
+          "speaker": "Li",
+          "text": "Very much. It's the most important festival in my country."
+        },
+        {
+          "speaker": "Anna",
+          "text": "What do you usually do?"
+        },
+        {
+          "speaker": "Li",
+          "text": "My whole family comes home for a reunion. We hang red lanterns and make round dumplings together."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Do you give presents?"
+        },
+        {
+          "speaker": "Li",
+          "text": "Yes, and we give children red envelopes. We also share a big meal on the night before the festival."
+        },
+        {
+          "speaker": "Anna",
+          "text": "It sounds wonderful. What is your favourite part?"
+        },
+        {
+          "speaker": "Li",
+          "text": "Sitting with everyone and laughing. That is what celebration really means to me."
+        }
+      ],
+      "reading": {
+        "title": "A Family Reunion",
+        "paragraphs": [
+          "Every culture has its own festivals, and each one tells a story about the people who celebrate it. For me, the Spring Festival is more than a day off. It is the time when a whole family comes together.",
+          "Before the festival, the house is filled with colour. We hang red lanterns on the door, put up paper decorations and buy round dumplings with pork and vegetables. Dumplings have a special shape, because they look like small pieces of moon, a symbol of reunion.",
+          "In the kitchen, everyone has a job. My mother makes the filling, my father rolls the dough, and I help stuff the dumplings. The kitchen smells wonderful. We cook a big meal for the night before the festival, and the whole table is full of dishes.",
+          "On the evening of the festival, we sit around the table and eat. The television is on, but nobody really watches it. We talk about life, we laugh about old jokes, and we remember the people who are far away. At midnight, fireworks fill the sky, and we wish each other a happy new year.",
+          "Sometimes I think we celebrate too much, and we waste food or use too much plastic. That is not good for the planet. A good celebration should also be a kind one.",
+          "Each generation seems to celebrate in a different way, but the heart of the festival never changes. It is about love, family and hope. When we sit together, we understand what we are celebrating, and we realise that home is the best place of all."
+        ]
+      },
+      "words": [
+        {
+          "word": "celebrate",
+          "sentence": "...the people who celebrate it.",
+          "meaning": "庆祝"
+        },
+        {
+          "word": "festival",
+          "sentence": "...its own festivals...",
+          "meaning": "节日"
+        },
+        {
+          "word": "reunion",
+          "sentence": "...a symbol of reunion.",
+          "meaning": "团圆"
+        },
+        {
+          "word": "whole",
+          "sentence": "...a whole family comes together.",
+          "meaning": "整个的"
+        },
+        {
+          "word": "hang",
+          "sentence": "We hang red lanterns...",
+          "meaning": "悬挂"
+        },
+        {
+          "word": "lantern",
+          "sentence": "...red lanterns...",
+          "meaning": "灯笼"
+        },
+        {
+          "word": "dumpling",
+          "sentence": "...round dumplings...",
+          "meaning": "饺子"
+        },
+        {
+          "word": "round",
+          "sentence": "...round dumplings...",
+          "meaning": "圆的"
+        },
+        {
+          "word": "shape",
+          "sentence": "Dumplings have a special shape...",
+          "meaning": "形状"
+        },
+        {
+          "word": "piece",
+          "sentence": "...small pieces of moon...",
+          "meaning": "一块"
+        },
+        {
+          "word": "pork",
+          "sentence": "...dumplings with pork...",
+          "meaning": "猪肉"
+        },
+        {
+          "word": "smell",
+          "sentence": "The kitchen smells wonderful.",
+          "meaning": "闻"
+        },
+        {
+          "word": "fill",
+          "sentence": "...filled with colour.",
+          "meaning": "填满"
+        },
+        {
+          "word": "meal",
+          "sentence": "...a big meal...",
+          "meaning": "膳食"
+        },
+        {
+          "word": "dish",
+          "sentence": "...full of dishes.",
+          "meaning": "菜肴"
+        },
+        {
+          "word": "laugh",
+          "sentence": "We laugh about old jokes.",
+          "meaning": "笑"
+        },
+        {
+          "word": "joke",
+          "sentence": "...old jokes...",
+          "meaning": "玩笑"
+        },
+        {
+          "word": "treat",
+          "sentence": "(拓展) a treat",
+          "meaning": "款待"
+        },
+        {
+          "word": "realise",
+          "sentence": "We realise that home is the best place.",
+          "meaning": "意识到"
+        },
+        {
+          "word": "unusual",
+          "sentence": "It was an unusual festival.（拓展）",
+          "meaning": "不寻常的"
+        },
+        {
+          "word": "university",
+          "sentence": "(拓展) university",
+          "meaning": "大学"
+        },
+        {
+          "word": "cucumber",
+          "sentence": "(拓展) cucumber",
+          "meaning": "黄瓜"
+        },
+        {
+          "word": "balloon",
+          "sentence": "...balloons at the party.（拓展）",
+          "meaning": "气球"
+        },
+        {
+          "word": "knife",
+          "sentence": "...a knife...（拓展）",
+          "meaning": "刀"
+        },
+        {
+          "word": "shocked",
+          "sentence": "I was shocked at the news.（拓展）",
+          "meaning": "震惊的"
+        },
+        {
+          "word": "against the law",
+          "sentence": "It is against the law.（拓展）",
+          "meaning": "违法"
+        },
+        {
+          "word": "Christmas",
+          "sentence": "...at Christmas.（拓展）",
+          "meaning": "圣诞节"
+        },
+        {
+          "word": "waste",
+          "sentence": "We waste food...",
+          "meaning": "浪费"
+        },
+        {
+          "word": "throw away",
+          "sentence": "Don't throw it away.",
+          "meaning": "扔掉"
+        },
+        {
+          "word": "pollution",
+          "sentence": "...good for the planet...（pollution 相关）",
+          "meaning": "污染"
+        },
+        {
+          "word": "plastic",
+          "sentence": "...too much plastic.",
+          "meaning": "塑料"
+        }
+      ]
+    },
+    {
+      "file": "Unit5_Fantastic_friends.md",
+      "heading": "七年级上册 Unit 5 Fantastic friends",
+      "section": "Unit 5",
+      "topic": "动物与我们（友谊、救助）；词汇对齐：pigeon / surprise / knocking / droppings / boring / feed / madly / scary / research / recognise / themselves / mirror / itself / maybe / several / kilometre / get lost / speed / amazing / enough / beaver / wolf / engineer / hero / rescue / earthquake / missing / save / dead / dodo",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "Did you know that some animals can help people?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Yes! I read about a pigeon that carried a message for a long way."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Amazing. Scientists say that pigeons can recognise places and never get lost."
+        },
+        {
+          "speaker": "Lily",
+          "text": "What about dogs? They are famous for helping in an earthquake."
+        },
+        {
+          "speaker": "Tom",
+          "text": "True. After a big earthquake, rescue dogs can find people who are missing. They are real heroes."
+        },
+        {
+          "speaker": "Lily",
+          "text": "I think animals are fantastic friends. They are never boring to be with."
+        },
+        {
+          "speaker": "Tom",
+          "text": "I agree. We should feed them and take care of them, and they give us so much in return."
+        }
+      ],
+      "reading": {
+        "title": "Fantastic Friends",
+        "paragraphs": [
+          "When I was a child, my grandfather kept pigeons on the roof of our house. Every morning, he would open the small door and throw the birds some food. Then they would fly up into the sky and dance in the wind.",
+          "One day, he gave me a pigeon and asked me to take it to a place several kilometres away. I was sure the bird would get lost. But when I reached the place and opened the box, the pigeon flew out and turned round. That afternoon, it was already sitting on the roof, waiting for me. I was so surprised that I could not believe my eyes.",
+          "Since then, I have been interested in animals and in the amazing things they can do. Pigeons can recognise homes far away. Beavers build riverside homes that are warm and safe. A wolf can travel across great distances to find its family. Nobody teaches them; they seem to know what to do by themselves.",
+          "Some animals are also brave helpers. After a big earthquake, rescue dogs find people who are missing under the broken walls. They work without a rest, and they never give up. For the people they save, these dogs are heroes.",
+          "Sadly, some animals are not so lucky. The dodo is dead, and many others are in danger. That is why we should respect every living thing. A horse, a bird, a dog or a cat can be a fantastic friend. If we love them and look after them, they will never let us down."
+        ]
+      },
+      "words": [
+        {
+          "word": "pigeon",
+          "sentence": "...he kept pigeons on the roof...",
+          "meaning": "鸽子"
+        },
+        {
+          "word": "feed",
+          "sentence": "...throw the birds some food...",
+          "meaning": "喂"
+        },
+        {
+          "word": "recognise",
+          "sentence": "Pigeons can recognise homes...",
+          "meaning": "认出"
+        },
+        {
+          "word": "get lost",
+          "sentence": "The bird would get lost.",
+          "meaning": "迷路"
+        },
+        {
+          "word": "several",
+          "sentence": "...several kilometres away.",
+          "meaning": "几个"
+        },
+        {
+          "word": "kilometre",
+          "sentence": "...several kilometres away.",
+          "meaning": "千米"
+        },
+        {
+          "word": "amazing",
+          "sentence": "...the amazing things they can do.",
+          "meaning": "惊人的"
+        },
+        {
+          "word": "surprise",
+          "sentence": "I was so surprised...",
+          "meaning": "使惊讶"
+        },
+        {
+          "word": "themselves",
+          "sentence": "...by themselves.",
+          "meaning": "他们自己"
+        },
+        {
+          "word": "itself",
+          "sentence": "The bike can move by itself.（拓展）",
+          "meaning": "它自己"
+        },
+        {
+          "word": "beaver",
+          "sentence": "Beavers build riverside homes...",
+          "meaning": "海狸"
+        },
+        {
+          "word": "wolf",
+          "sentence": "A wolf can travel across great distances...",
+          "meaning": "狼"
+        },
+        {
+          "word": "research",
+          "sentence": "Scientists do research.（拓展）",
+          "meaning": "研究"
+        },
+        {
+          "word": "rescue",
+          "sentence": "...rescue dogs...",
+          "meaning": "营救"
+        },
+        {
+          "word": "earthquake",
+          "sentence": "After a big earthquake...",
+          "meaning": "地震"
+        },
+        {
+          "word": "missing",
+          "sentence": "...people who are missing...",
+          "meaning": "失踪的"
+        },
+        {
+          "word": "save",
+          "sentence": "...the people they save...",
+          "meaning": "救"
+        },
+        {
+          "word": "hero",
+          "sentence": "...these dogs are heroes.",
+          "meaning": "英雄"
+        },
+        {
+          "word": "dead",
+          "sentence": "The dodo is dead.",
+          "meaning": "死的"
+        },
+        {
+          "word": "dodo",
+          "sentence": "...the dodo...",
+          "meaning": "渡渡鸟"
+        },
+        {
+          "word": "boring",
+          "sentence": "They are never boring...",
+          "meaning": "无趣的"
+        },
+        {
+          "word": "scary",
+          "sentence": "The film was scary.（拓展）",
+          "meaning": "可怕的"
+        },
+        {
+          "word": "madly",
+          "sentence": "The dog ran madly.（拓展）",
+          "meaning": "疯狂地"
+        },
+        {
+          "word": "knock around",
+          "sentence": "(拓展) knock around",
+          "meaning": "四处闲逛"
+        },
+        {
+          "word": "droppings",
+          "sentence": "(拓展) bird droppings",
+          "meaning": "鸟粪"
+        },
+        {
+          "word": "speed",
+          "sentence": "...at great speed.（拓展）",
+          "meaning": "速度"
+        },
+        {
+          "word": "enough",
+          "sentence": "...enough food.",
+          "meaning": "足够"
+        },
+        {
+          "word": "engineer",
+          "sentence": "(拓展) an engineer",
+          "meaning": "工程师"
+        },
+        {
+          "word": "mirror",
+          "sentence": "The bird looked in the mirror.（拓展）",
+          "meaning": "镜子"
+        },
+        {
+          "word": "maybe",
+          "sentence": "Maybe it's true.",
+          "meaning": "也许"
+        }
+      ]
+    },
+    {
+      "file": "Unit6_The_power_of_plants.md",
+      "heading": "七年级上册 Unit 6 The power of plants",
+      "section": "Unit 6",
+      "topic": "人与自然·跨学科（植物、生命、健康）；词汇对齐：within / quarter / workshop / leaf / each / collect / root / send / rise / stem / mix / produce / sugar / product / oxygen / human / though / breathe / soon / dark / rest / natural / seed / grow / part / rainforest / culture / corn silk / health / rose",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "Look at this little plant. It's only a seed now."
+        },
+        {
+          "speaker": "Leo",
+          "text": "Each seed can grow into a big tree. How does it do that?"
+        },
+        {
+          "speaker": "Mia",
+          "text": "A plant makes its own food. It collects light and water and produces sugar."
+        },
+        {
+          "speaker": "Leo",
+          "text": "And it makes oxygen for us to breathe, right?"
+        },
+        {
+          "speaker": "Mia",
+          "text": "Yes. Without plants, humans could not live on the earth."
+        },
+        {
+          "speaker": "Leo",
+          "text": "That's amazing. We can also use plants for food and for making paper, even for medicine."
+        },
+        {
+          "speaker": "Mia",
+          "text": "So we should protect the rainforest and every living plant."
+        }
+      ],
+      "reading": {
+        "title": "The Power of Plants",
+        "paragraphs": [
+          "A tiny seed can become a whole forest. This is the quiet power of plants, and it is one of the most wonderful things in nature.",
+          "A plant works like a small factory. Its roots find water deep in the soil and send it up through the stem. Its leaves rise into the air and collect light from the sun. From the light, the water and the air, the plant makes its own food. We call this process food-making, and it also gives out oxygen, the gas that every human and animal needs to breathe. Without it, the world would soon become dark and still.",
+          "People have used plants for a very long time. We eat their fruits, roots and seeds. We take sugar and healthy products from them. We make paper, wood, cloth and medicine. In a beautiful forest, like the rainforest, the air is fresh, and the plants are part of the culture and stories of the people who live there.",
+          "In some places, people use special plants, such as corn silk, to make tea for health. A rose is not only a gift of love; its leaves and petals hold useful oils.",
+          "Though we cannot see them work, plants are always busy. They do not rest as we do. They grow slowly, day and night, in the light and in the dark.",
+          "So the next time you plant a seed, think about it. In one small seed there is the power to give food, to make air, and to heal the body. That is why we must look after the plants, the soil and the green world around us. The power of plants is the power of life itself."
+        ]
+      },
+      "words": [
+        {
+          "word": "seed",
+          "sentence": "A tiny seed can become a whole forest.",
+          "meaning": "种子"
+        },
+        {
+          "word": "grow",
+          "sentence": "They grow slowly...",
+          "meaning": "生长"
+        },
+        {
+          "word": "root",
+          "sentence": "Its roots find water deep in the soil...",
+          "meaning": "根"
+        },
+        {
+          "word": "stem",
+          "sentence": "...send it up through the stem.",
+          "meaning": "茎"
+        },
+        {
+          "word": "leaf",
+          "sentence": "Its leaves rise into the air...",
+          "meaning": "叶子"
+        },
+        {
+          "word": "collect",
+          "sentence": "...collect light from the sun.",
+          "meaning": "收集"
+        },
+        {
+          "word": "rise",
+          "sentence": "Its leaves rise into the air...",
+          "meaning": "升起"
+        },
+        {
+          "word": "produce",
+          "sentence": "...makes its own food...（produce）",
+          "meaning": "生产"
+        },
+        {
+          "word": "sugar",
+          "sentence": "...makes its own food...（sugar 相关）",
+          "meaning": "糖"
+        },
+        {
+          "word": "oxygen",
+          "sentence": "...gives out oxygen...",
+          "meaning": "氧气"
+        },
+        {
+          "word": "breathe",
+          "sentence": "...every human and animal needs to breathe.",
+          "meaning": "呼吸"
+        },
+        {
+          "word": "human",
+          "sentence": "...every human...",
+          "meaning": "人类"
+        },
+        {
+          "word": "natural",
+          "sentence": "...one of the most wonderful things in nature.",
+          "meaning": "自然的"
+        },
+        {
+          "word": "within",
+          "sentence": "Within a short time, the seed grows.（拓展）",
+          "meaning": "在…里面"
+        },
+        {
+          "word": "quarter",
+          "sentence": "...a quarter of the garden.（拓展）",
+          "meaning": "四分之一"
+        },
+        {
+          "word": "workshop",
+          "sentence": "...a small workshop.（拓展）",
+          "meaning": "车间"
+        },
+        {
+          "word": "send",
+          "sentence": "It sends water up.",
+          "meaning": "发送"
+        },
+        {
+          "word": "mix",
+          "sentence": "...mix the soil.（拓展）",
+          "meaning": "混合"
+        },
+        {
+          "word": "product",
+          "sentence": "...healthy products...",
+          "meaning": "产品"
+        },
+        {
+          "word": "though",
+          "sentence": "Though we cannot see them work...",
+          "meaning": "虽然"
+        },
+        {
+          "word": "soon",
+          "sentence": "The world would soon become dark.",
+          "meaning": "很快"
+        },
+        {
+          "word": "dark",
+          "sentence": "...become dark and still.",
+          "meaning": "黑暗"
+        },
+        {
+          "word": "rest",
+          "sentence": "They do not rest as we do.",
+          "meaning": "休息"
+        },
+        {
+          "word": "part",
+          "sentence": "...part of the culture...",
+          "meaning": "部分"
+        },
+        {
+          "word": "rainforest",
+          "sentence": "...a beautiful forest, like the rainforest...",
+          "meaning": "雨林"
+        },
+        {
+          "word": "culture",
+          "sentence": "...the culture and stories...",
+          "meaning": "文化"
+        },
+        {
+          "word": "corn silk",
+          "sentence": "Such as corn silk...",
+          "meaning": "玉米须"
+        },
+        {
+          "word": "health",
+          "sentence": "...make tea for health.",
+          "meaning": "健康"
+        },
+        {
+          "word": "rose",
+          "sentence": "A rose is not only a gift...",
+          "meaning": "玫瑰"
+        },
+        {
+          "word": "each",
+          "sentence": "Each seed can grow...",
+          "meaning": "每个"
+        },
+        {
+          "word": "product",
+          "sentence": "(拓展) product",
+          "meaning": "产品"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1124 @@
+{
+  "book": "九年级下册",
+  "items": [
+    {
+      "file": "Module1_Travel.md",
+      "heading": "九年级下册 Module 1 Travel",
+      "section": "Module 1",
+      "topic": "旅行（名词、冠词、数词）；词汇对齐：flight / because of / direct / pilot / succeed / as long as / school-leaver / exactly / take care / sir / officer / stupid / take off / jacket",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "Where are you going for your holiday, Lily?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "I am going to take a flight to a small country in Europe."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Is it a direct flight?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Yes, it is. It takes about seven hours, so I will be a little tired. But I cannot wait to see the old streets."
+        },
+        {
+          "speaker": "Tom",
+          "text": "I hope you succeed in finding your dream place."
+        },
+        {
+          "speaker": "Lily",
+          "text": "Thank you. As long as the weather is fine, everything will be wonderful."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Take care, and send me a postcard!"
+        }
+      ],
+      "reading": {
+        "title": "The Long Flight",
+        "paragraphs": [
+          "Last summer, I took my first long flight. I was very excited, but also a little nervous. I had never travelled so far before, and I did not know what to expect.",
+          "At the airport, a friendly officer checked my ticket and my passport. \"Where are you going?\" he asked. I told him exactly where I was going. \"Have a good trip,\" he said with a smile. I felt much better because of his kind words.",
+          "The plane took off right on time. As we rose into the sky, my city became smaller and smaller. The houses looked like little toys, and the roads looked like thin lines. I watched the clouds below and felt very high up.",
+          "It was a long flight, and I was not as comfortable as I had hoped. My legs felt stiff, and the food was not very good. The pilot told us that we would have a little bad weather for a short time. But I did not mind. I was too busy looking out of the window.",
+          "After seven hours, the plane came down gently. When I stepped out, the air was warm and different. Everything about the new country was strange and exciting.",
+          "That trip taught me something important. Travel is not always easy, but it is always worth it. As long as we are brave and patient, we can see wonderful places and meet wonderful people.",
+          "Now, whenever I hear the sound of an engine, I think of the open sky and the wide world. A journey is a gift we give to ourselves, and I want to take many more."
+        ]
+      },
+      "words": [
+        {
+          "word": "flight",
+          "sentence": "...took my first long flight.",
+          "meaning": "航班"
+        },
+        {
+          "word": "because of",
+          "sentence": "...because of his kind words.",
+          "meaning": "因为"
+        },
+        {
+          "word": "direct",
+          "sentence": "Is it a direct flight?",
+          "meaning": "直飞的"
+        },
+        {
+          "word": "pilot",
+          "sentence": "The pilot told us...",
+          "meaning": "飞行员"
+        },
+        {
+          "word": "succeed",
+          "sentence": "I hope you succeed...",
+          "meaning": "成功"
+        },
+        {
+          "word": "as long as",
+          "sentence": "As long as we are brave...",
+          "meaning": "只要"
+        },
+        {
+          "word": "school-leaver",
+          "sentence": "(拓展) a school-leaver",
+          "meaning": "毕业生"
+        },
+        {
+          "word": "exactly",
+          "sentence": "...told him exactly where...",
+          "meaning": "确切地"
+        },
+        {
+          "word": "take care",
+          "sentence": "Take care...",
+          "meaning": "保重"
+        },
+        {
+          "word": "sir",
+          "sentence": "(拓展) Yes, sir.",
+          "meaning": "先生"
+        },
+        {
+          "word": "officer",
+          "sentence": "A friendly officer checked...",
+          "meaning": "官员；警官"
+        },
+        {
+          "word": "stupid",
+          "sentence": "(拓展) That was stupid.",
+          "meaning": "愚蠢的"
+        },
+        {
+          "word": "take off",
+          "sentence": "The plane took off...",
+          "meaning": "起飞"
+        },
+        {
+          "word": "jacket",
+          "sentence": "(拓展) a jacket",
+          "meaning": "夹克"
+        },
+        {
+          "word": "passport",
+          "sentence": "...my passport.",
+          "meaning": "护照"
+        },
+        {
+          "word": "airport",
+          "sentence": "...at the airport...",
+          "meaning": "机场"
+        },
+        {
+          "word": "engine",
+          "sentence": "...the sound of an engine...",
+          "meaning": "引擎"
+        }
+      ]
+    },
+    {
+      "file": "Module2_Education.md",
+      "heading": "九年级下册 Module 2 Education",
+      "section": "Module 2",
+      "topic": "教育（代词）；词汇对齐：ours / tie / row / pool / pass / secondary / secondary school / absent / bell",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "What is your school like, Leo?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "It is a big secondary school. We sit in rows in a bright classroom, and we wear a tie."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Do you have a swimming pool?"
+        },
+        {
+          "speaker": "Leo",
+          "text": "No, but we have a big sports field. We swim at the city pool after school."
+        },
+        {
+          "speaker": "Mia",
+          "text": "I like our old school bell. It rings at the start of every class."
+        },
+        {
+          "speaker": "Leo",
+          "text": "That is nice. Little things like that make a school feel like a second home."
+        }
+      ],
+      "reading": {
+        "title": "My School, My Home",
+        "paragraphs": [
+          "Some people say that school is a second home, and I agree with them. Our school is not the biggest or the most modern, but it is a special place where we learn, grow and make friends.",
+          "My school is a secondary school, and it sits on a quiet street. When you walk in through the gate, you see a red building with long windows. In the morning, the bright sun shines on the glass, and our school looks warm and friendly.",
+          "In the classroom, we sit in rows facing the blackboard. Every student has a desk and a chair. We wear a uniform, and we tie a blue tie around our necks. The teacher stands at the front and explains, while we listen and take notes. At ten o'clock, the old bell rings, and we run out into the yard for a short rest.",
+          "Our school has good teachers who care about us. They help us with our homework and listen to our problems. They are patient and kind, and they always encourage us to try our best.",
+          "We also have a small library and a sports field. In the afternoon, we play football or basketball. Some days, we swim at the pool near the school. I am never absent from these lessons, because I love them.",
+          "Looking back, I have learned many things here. I have learned English, maths and science. But more importantly, I have learned how to be a good person. The friendships we make and the lessons we learn together will stay with us for the rest of our lives.",
+          "Education is not only about books. It is about learning to see the world, to think for ourselves, and to help one another. That is what makes a school so important to us."
+        ]
+      },
+      "words": [
+        {
+          "word": "secondary school",
+          "sentence": "My school is a secondary school...",
+          "meaning": "中学"
+        },
+        {
+          "word": "secondary",
+          "sentence": "(拓展) secondary",
+          "meaning": "中学的"
+        },
+        {
+          "word": "row",
+          "sentence": "...we sit in rows...",
+          "meaning": "排；行"
+        },
+        {
+          "word": "tie",
+          "sentence": "...tie a blue tie...",
+          "meaning": "领带；系"
+        },
+        {
+          "word": "pool",
+          "sentence": "...swim at the pool...",
+          "meaning": "游泳池"
+        },
+        {
+          "word": "pass",
+          "sentence": "(拓展) pass the exam",
+          "meaning": "通过；经过"
+        },
+        {
+          "word": "absent",
+          "sentence": "I am never absent...",
+          "meaning": "缺席的"
+        },
+        {
+          "word": "bell",
+          "sentence": "...the old bell rings...",
+          "meaning": "铃"
+        },
+        {
+          "word": "ours",
+          "sentence": "...a second home.（代词相关）",
+          "meaning": "我们的（东西）"
+        },
+        {
+          "word": "uniform",
+          "sentence": "We wear a uniform...",
+          "meaning": "校服"
+        },
+        {
+          "word": "encourage",
+          "sentence": "They always encourage us...",
+          "meaning": "鼓励"
+        },
+        {
+          "word": "board",
+          "sentence": "...the blackboard.",
+          "meaning": "黑板"
+        }
+      ]
+    },
+    {
+      "file": "Module3_Life_now_and_then.md",
+      "heading": "九年级下册 Module 3 Life now and then",
+      "section": "Module 3",
+      "topic": "现在与过去的生活（形容词与副词）；词汇对齐：wealthy / fear / used to / wealth / double / seldom / spare / spare time / speak up / deaf / tiny / electric / light / candle / postman / cold / heat / full-time / role / education / transport",
+      "dialogue": [
+        {
+          "speaker": "Grandma",
+          "text": "Life was very different when I was young, Tom."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Really? What was it like?"
+        },
+        {
+          "speaker": "Grandma",
+          "text": "We had no electric lights, so we used candles at night. The houses were small and the cold in winter was terrible."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Did you have many things to do?"
+        },
+        {
+          "speaker": "Grandma",
+          "text": "No, we seldom had spare time. We worked in the fields all day. But we had a lot of fun together."
+        },
+        {
+          "speaker": "Tom",
+          "text": "I think life is easier now, but maybe you were happier then."
+        },
+        {
+          "speaker": "Grandma",
+          "text": "Maybe. Money does not always bring happiness."
+        }
+      ],
+      "reading": {
+        "title": "Life Now and Then",
+        "paragraphs": [
+          "My grandmother is a kind old lady. She often tells me stories about her life when she was a girl, and they make me think about how much the world has changed.",
+          "When my grandmother was young, life was not easy. Her family was poor, and they were not wealthy. The house was tiny, and there were several children in one small room. In winter, the cold was very hard, and there was little heat. At night, they used candles instead of electric lights.",
+          "There was also no television and no computer. Children seldom had spare time, because they had to work in the fields and help the family. My grandmother had to walk a long way to school. There was no bus, and the transport was by horse or on foot.",
+          "But my grandmother says that life was happy in another way. People knew each other well, and they helped one another. When a postman came to the village, he would sit and talk for a while. In the evenings, families would sit together and tell stories by the fire.",
+          "Today, life is much easier. We have warm homes, good food, and cars to take us anywhere. We have electric light, so we can read and work at night. We have schools and hospitals, and a full-time education is open to everyone.",
+          "Of course, life is faster now, and people often have no time to stop and talk. We fear we may lose the warmth of the past.",
+          "I think both times have their good points. We should be thankful for the easy life we have today, but we should also keep the kindness of the old days. Technology cannot replace a good heart."
+        ]
+      },
+      "words": [
+        {
+          "word": "wealthy",
+          "sentence": "They were not wealthy.",
+          "meaning": "富有的"
+        },
+        {
+          "word": "fear",
+          "sentence": "We fear we may lose...",
+          "meaning": "害怕"
+        },
+        {
+          "word": "used to",
+          "sentence": "(拓展) used to do",
+          "meaning": "过去常常"
+        },
+        {
+          "word": "wealth",
+          "sentence": "(拓展) wealth",
+          "meaning": "财富"
+        },
+        {
+          "word": "double",
+          "sentence": "...doubled.（拓展）",
+          "meaning": "双倍"
+        },
+        {
+          "word": "seldom",
+          "sentence": "Children seldom had spare time.",
+          "meaning": "很少"
+        },
+        {
+          "word": "spare time",
+          "sentence": "...seldom had spare time.",
+          "meaning": "空闲时间"
+        },
+        {
+          "word": "speak up",
+          "sentence": "(拓展) speak up",
+          "meaning": "大声说"
+        },
+        {
+          "word": "deaf",
+          "sentence": "(拓展) deaf",
+          "meaning": "聋的"
+        },
+        {
+          "word": "tiny",
+          "sentence": "The house was tiny.",
+          "meaning": "极小的"
+        },
+        {
+          "word": "electric",
+          "sentence": "...electric lights...",
+          "meaning": "电的"
+        },
+        {
+          "word": "light",
+          "sentence": "...electric lights...",
+          "meaning": "灯；光"
+        },
+        {
+          "word": "candle",
+          "sentence": "...used candles at night.",
+          "meaning": "蜡烛"
+        },
+        {
+          "word": "postman",
+          "sentence": "When a postman came...",
+          "meaning": "邮递员"
+        },
+        {
+          "word": "cold",
+          "sentence": "The cold was very hard.",
+          "meaning": "寒冷"
+        },
+        {
+          "word": "heat",
+          "sentence": "There was little heat.",
+          "meaning": "热"
+        },
+        {
+          "word": "full-time",
+          "sentence": "...a full-time education...",
+          "meaning": "全职的"
+        },
+        {
+          "word": "role",
+          "sentence": "(拓展) a role",
+          "meaning": "角色"
+        },
+        {
+          "word": "education",
+          "sentence": "...education...",
+          "meaning": "教育"
+        },
+        {
+          "word": "transport",
+          "sentence": "The transport was by horse.",
+          "meaning": "交通"
+        },
+        {
+          "word": "grandmother",
+          "sentence": "My grandmother...",
+          "meaning": "祖母"
+        },
+        {
+          "word": "technology",
+          "sentence": "Technology cannot replace...",
+          "meaning": "技术"
+        }
+      ]
+    },
+    {
+      "file": "Module4_Rules_and_suggestions.md",
+      "heading": "九年级下册 Module 4 Rules and suggestions",
+      "section": "Module 4",
+      "topic": "规则与建议（情态动词）；词汇对齐：set off / sock / whenever / proper / edge / yourself / go off / starve / in one go / rock / rock climbing / stone / fairly / smooth / straight / tent / fall / fall asleep / hang / sudden / gun / soft / still / wood / blood",
+      "dialogue": [
+        {
+          "speaker": "Ben",
+          "text": "We are going to go rock climbing this weekend. Would you like to come?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "I would, but I am a little worried. Is it safe?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "It is, as long as we follow the rules. We must set off early and wear proper shoes and a strong rope."
+        },
+        {
+          "speaker": "Tom",
+          "text": "What should I bring?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "Bring food, a bottle of water, and a warm jacket. Do not get too close to the edge."
+        },
+        {
+          "speaker": "Tom",
+          "text": "OK. I will listen carefully and do as you say."
+        }
+      ],
+      "reading": {
+        "title": "Up the Cliff",
+        "paragraphs": [
+          "Last autumn, my class went on a school trip to climb a big cliff. It was one of the most exciting days of my life, and it also taught me some very important rules.",
+          "We set off early in the morning. The sky was clear, and the air was cool. Our teacher gave each of us a few simple suggestions: wear proper shoes, carry enough water, and do not go too near the edge. She told us to walk slowly and to hold the rope carefully.",
+          "The climb was hard but beautiful. The rocks were rough but smooth in some places. We climbed in small steps, and we did not try to do it all in one go. When we were tired, we stopped and rested. We sat on the white stones, ate our lunch, and watched the birds fly far below us.",
+          "At one point, we came to a very narrow part. The path was straight and the ground was steep. I was a little afraid, but I remembered to stay calm and keep my balance. Step by step, I moved along the edge of the rock.",
+          "At the top, the view was amazing. We could see the whole valley, the river, and the small houses of our town far away. I felt so proud.",
+          "On the way back, we were very tired, and some of us almost fell asleep on the bus. But we were all happy.",
+          "The trip taught me that rules are not made to stop us from having fun. They are there to keep us safe, so that we can enjoy the adventure without fear. Whenever we go into the mountains, I remember these simple words."
+        ]
+      },
+      "words": [
+        {
+          "word": "set off",
+          "sentence": "We set off early...",
+          "meaning": "出发"
+        },
+        {
+          "word": "sock",
+          "sentence": "(拓展) a sock",
+          "meaning": "袜子"
+        },
+        {
+          "word": "whenever",
+          "sentence": "Whenever we go into the mountains...",
+          "meaning": "无论何时"
+        },
+        {
+          "word": "proper",
+          "sentence": "...wear proper shoes...",
+          "meaning": "合适的；恰当的"
+        },
+        {
+          "word": "edge",
+          "sentence": "...near the edge.",
+          "meaning": "边缘"
+        },
+        {
+          "word": "yourself",
+          "sentence": "(拓展) help yourself",
+          "meaning": "你自己"
+        },
+        {
+          "word": "go off",
+          "sentence": "(拓展) the alarm went off",
+          "meaning": "响起；离开"
+        },
+        {
+          "word": "starve",
+          "sentence": "(拓展) I'm starving.",
+          "meaning": "挨饿"
+        },
+        {
+          "word": "in one go",
+          "sentence": "...all in one go.",
+          "meaning": "一次完成"
+        },
+        {
+          "word": "rock climbing",
+          "sentence": "...go rock climbing...",
+          "meaning": "攀岩"
+        },
+        {
+          "word": "rock",
+          "sentence": "The rocks were rough...",
+          "meaning": "岩石"
+        },
+        {
+          "word": "stone",
+          "sentence": "...the white stones...",
+          "meaning": "石头"
+        },
+        {
+          "word": "fairly",
+          "sentence": "...fairly（拓展）",
+          "meaning": "相当地"
+        },
+        {
+          "word": "smooth",
+          "sentence": "...smooth in some places.",
+          "meaning": "光滑的"
+        },
+        {
+          "word": "straight",
+          "sentence": "The path was straight...",
+          "meaning": "直的"
+        },
+        {
+          "word": "tent",
+          "sentence": "(拓展) put up a tent",
+          "meaning": "帐篷"
+        },
+        {
+          "word": "fall",
+          "sentence": "...almost fell asleep...",
+          "meaning": "落下；倒下"
+        },
+        {
+          "word": "fall asleep",
+          "sentence": "...almost fell asleep...",
+          "meaning": "入睡"
+        },
+        {
+          "word": "hang",
+          "sentence": "(拓展) hang the coat",
+          "meaning": "挂"
+        },
+        {
+          "word": "sudden",
+          "sentence": "(拓展) a sudden move",
+          "meaning": "突然的"
+        },
+        {
+          "word": "gun",
+          "sentence": "(拓展) a gun",
+          "meaning": "枪"
+        },
+        {
+          "word": "soft",
+          "sentence": "...soft...（拓展）",
+          "meaning": "柔软的"
+        },
+        {
+          "word": "still",
+          "sentence": "...stay still（拓展）",
+          "meaning": "静止的"
+        },
+        {
+          "word": "wood",
+          "sentence": "(拓展) wood",
+          "meaning": "木头"
+        },
+        {
+          "word": "blood",
+          "sentence": "(拓展) blood",
+          "meaning": "血"
+        },
+        {
+          "word": "cliff",
+          "sentence": "...a big cliff...",
+          "meaning": "悬崖"
+        },
+        {
+          "word": "rope",
+          "sentence": "...hold the rope...",
+          "meaning": "绳子"
+        },
+        {
+          "word": "valley",
+          "sentence": "...the whole valley...",
+          "meaning": "山谷"
+        }
+      ]
+    },
+    {
+      "file": "Module5_Look_after_yourself.md",
+      "heading": "九年级下册 Module 5 Look after yourself",
+      "section": "Module 5",
+      "topic": "自我照顾与健康；词汇对齐：catch up / blind / ouch / call off / thanks to / health care / expect / require / physical / effort / once in a while / harm / agreement",
+      "dialogue": [
+        {
+          "speaker": "Doctor",
+          "text": "How are you today, Ben?"
+        },
+        {
+          "speaker": "Ben",
+          "text": "I'm a little better, doctor. Thanks to this medicine, I have caught up on my sleep."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "Good. But you need to take care of yourself every day, not just when you are ill."
+        },
+        {
+          "speaker": "Ben",
+          "text": "What should I do?"
+        },
+        {
+          "speaker": "Doctor",
+          "text": "Eat well, rest enough, and do some physical exercise. It is not a lot of effort."
+        },
+        {
+          "speaker": "Ben",
+          "text": "I will. I used to work so hard that I forgot to sleep."
+        },
+        {
+          "speaker": "Doctor",
+          "text": "That can harm your health. Remember, your body is your best friend. Take care of it."
+        }
+      ],
+      "reading": {
+        "title": "Look After Yourself",
+        "paragraphs": [
+          "We often hear people say that health is the most important thing in life. But how many of us really take care of ourselves? We work hard, study late, and forget to rest. We eat fast food and sit in front of a screen all day. Then, one day, our body says, \"Enough!\"",
+          "My friend Ben learned this the hard way. He was a very hard-working student. He always wanted to be the best, and he spent every minute on his schoolwork. He would stay up late and get up early, and he seldom had time to eat well or to exercise.",
+          "One day, Ben felt very tired and his head hurt. He could not even see the words on the page clearly. He did not feel blind, but everything seemed to spin. His mother took him to the doctor. The doctor said that he was too tired, and that his body needed rest.",
+          "The doctor gave him a simple plan. He was expected to sleep eight hours a night and to eat healthy food. He was also asked to do some physical exercise, like walking or swimming, once in a while. It did not require a lot of effort, he said. It just needed to be done every day.",
+          "Ben followed the plan. After a few weeks, he felt much better. He could study well without feeling ill. He learned that working hard is good, but it should not harm our health.",
+          "We all need to agree on one thing: there is nothing more valuable than our health. We can get more money, more books and more things. But we cannot buy back our health once it is lost.",
+          "So take a little time to look after yourself. Eat well, move your body, rest your eyes and mind. It is the best gift you can give to yourself."
+        ]
+      },
+      "words": [
+        {
+          "word": "catch up",
+          "sentence": "...caught up on my sleep.",
+          "meaning": "赶上；补上"
+        },
+        {
+          "word": "blind",
+          "sentence": "He did not feel blind...",
+          "meaning": "瞎的"
+        },
+        {
+          "word": "ouch",
+          "sentence": "(拓展) Ouch!",
+          "meaning": "哎哟"
+        },
+        {
+          "word": "call off",
+          "sentence": "(拓展) call off the game",
+          "meaning": "取消"
+        },
+        {
+          "word": "thanks to",
+          "sentence": "Thanks to this medicine...",
+          "meaning": "多亏"
+        },
+        {
+          "word": "health care",
+          "sentence": "...health care...",
+          "meaning": "医疗保健"
+        },
+        {
+          "word": "expect",
+          "sentence": "He was expected to sleep...",
+          "meaning": "期望"
+        },
+        {
+          "word": "require",
+          "sentence": "It did not require a lot of effort...",
+          "meaning": "需要"
+        },
+        {
+          "word": "physical",
+          "sentence": "...some physical exercise...",
+          "meaning": "身体的"
+        },
+        {
+          "word": "effort",
+          "sentence": "It did not require a lot of effort...",
+          "meaning": "努力"
+        },
+        {
+          "word": "once in a while",
+          "sentence": "...once in a while...",
+          "meaning": "偶尔"
+        },
+        {
+          "word": "harm",
+          "sentence": "It should not harm our health.",
+          "meaning": "伤害"
+        },
+        {
+          "word": "agreement",
+          "sentence": "We all need to agree...（agreement）",
+          "meaning": "同意；协议"
+        },
+        {
+          "word": "spin",
+          "sentence": "Everything seemed to spin.",
+          "meaning": "旋转"
+        },
+        {
+          "word": "exercise",
+          "sentence": "...do some exercise...",
+          "meaning": "锻炼"
+        }
+      ]
+    },
+    {
+      "file": "Module6_Eating_together.md",
+      "heading": "九年级下册 Module 6 Eating together",
+      "section": "Module 6",
+      "topic": "聚餐与西方餐桌文化；词汇对齐：invitation / calendar / balloon / paint / heat / heat up / knife / fork / spoon / cheeseburger / Italian / westerner / west / serve / similar / wing / lady / gentleman / help yourself / cross",
+      "dialogue": [
+        {
+          "speaker": "Mia",
+          "text": "I got an invitation to a dinner party this weekend."
+        },
+        {
+          "speaker": "Tom",
+          "text": "How nice! Is it a Western meal?"
+        },
+        {
+          "speaker": "Mia",
+          "text": "I think so. I am a little worried about the table manners."
+        },
+        {
+          "speaker": "Tom",
+          "text": "Do not worry. Just use the knife and fork, and wait for the host to start."
+        },
+        {
+          "speaker": "Mia",
+          "text": "What should I say?"
+        },
+        {
+          "speaker": "Tom",
+          "text": "Remember to say \"thank you\" and \"help yourself\" politely. A polite guest is always welcome."
+        }
+      ],
+      "reading": {
+        "title": "Dinner at a Western Table",
+        "paragraphs": [
+          "Last month, I received an invitation to a dinner party at my friend Lily's house. It was my first time at a Western meal, so I was both excited and a little nervous.",
+          "On the day of the party, I marked the date on my calendar. I was careful not to be late. I even painted a small picture to give to Lily as a present.",
+          "When I arrived, the table was already set. There were plates, cups and glasses on both sides. In the middle, there was a big dish of food, and next to each plate were a knife, a fork and a spoon. Lily's mother served the food with a smile, and she said, \"Help yourself!\"",
+          "I chose some food and sat down. At first, I held my fork in the wrong hand, and I felt a little silly. But I watched the others and soon learned. In the West, people usually hold the fork in the left hand and the knife in the right. We eat together, and we talk at the same time.",
+          "The food was delicious. There were cheeses, roasted chicken and some golden, crisp wings. We also had some Italian pizza and cheeseburgers for everyone to share. The food was warm, and the house felt cosy.",
+          "At the table, I met many new people. There was a friendly lady, and a kind gentleman who told me funny stories. We laughed and talked for hours.",
+          "By the end, I understood that food is more than something to eat. It is a way to bring people together. Whether it is a Western meal or a Chinese one, the best part is the same: sitting with friends, sharing food, and enjoying the time together."
+        ]
+      },
+      "words": [
+        {
+          "word": "invitation",
+          "sentence": "I received an invitation...",
+          "meaning": "邀请"
+        },
+        {
+          "word": "calendar",
+          "sentence": "...marked the date on my calendar.",
+          "meaning": "日历"
+        },
+        {
+          "word": "balloon",
+          "sentence": "(拓展) a balloon",
+          "meaning": "气球"
+        },
+        {
+          "word": "paint",
+          "sentence": "I painted a small picture...",
+          "meaning": "画画"
+        },
+        {
+          "word": "heat / heat up",
+          "sentence": "The food was warm...（heat up 拓展）",
+          "meaning": "加热"
+        },
+        {
+          "word": "knife",
+          "sentence": "...a knife, a fork and a spoon.",
+          "meaning": "刀"
+        },
+        {
+          "word": "fork",
+          "sentence": "...the fork in the left hand...",
+          "meaning": "叉子"
+        },
+        {
+          "word": "spoon",
+          "sentence": "...a spoon.",
+          "meaning": "勺子"
+        },
+        {
+          "word": "cheeseburger",
+          "sentence": "(拓展) cheeseburgers",
+          "meaning": "芝士汉堡"
+        },
+        {
+          "word": "Italian",
+          "sentence": "...Italian pizza...",
+          "meaning": "意大利的"
+        },
+        {
+          "word": "westerner",
+          "sentence": "...a Westerner...",
+          "meaning": "西方人"
+        },
+        {
+          "word": "west",
+          "sentence": "In the West...",
+          "meaning": "西方"
+        },
+        {
+          "word": "serve",
+          "sentence": "Lily's mother served the food...",
+          "meaning": "服务；端上"
+        },
+        {
+          "word": "similar",
+          "sentence": "...similar（拓展）",
+          "meaning": "相似的"
+        },
+        {
+          "word": "wing",
+          "sentence": "Some golden, crisp wings.",
+          "meaning": "翅膀；鸡翅"
+        },
+        {
+          "word": "lady",
+          "sentence": "There was a friendly lady...",
+          "meaning": "女士"
+        },
+        {
+          "word": "gentleman",
+          "sentence": "...a kind gentleman...",
+          "meaning": "先生"
+        },
+        {
+          "word": "help yourself",
+          "sentence": "\"Help yourself!\"",
+          "meaning": "请自便"
+        },
+        {
+          "word": "cross",
+          "sentence": "(拓展) cross the street",
+          "meaning": "穿过"
+        },
+        {
+          "word": "table manners",
+          "sentence": "...the table manners...",
+          "meaning": "餐桌礼仪"
+        }
+      ]
+    },
+    {
+      "file": "Module7_English_for_you_and_me.md",
+      "heading": "九年级下册 Module 7 English for you and me",
+      "section": "Module 7",
+      "topic": "英语学习与语言；词汇对齐：achieve / including / speaker / boss / secretary / quarter / industry / zero / Indian / type",
+      "dialogue": [
+        {
+          "speaker": "Tom",
+          "text": "English is so important these days. Have you ever been to an English corner?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "Yes, I have. I talk to other speakers there, and it helps me a lot."
+        },
+        {
+          "speaker": "Tom",
+          "text": "What do you want to achieve with your English?"
+        },
+        {
+          "speaker": "Lily",
+          "text": "I want to work in a big company one day and travel around the world."
+        },
+        {
+          "speaker": "Tom",
+          "text": "That sounds great. Many people in business speak English every day."
+        },
+        {
+          "speaker": "Lily",
+          "text": "I know. English belongs to everyone, and there is no reason to be afraid of it."
+        }
+      ],
+      "reading": {
+        "title": "English for You and Me",
+        "paragraphs": [
+          "English is one of the most widely spoken languages in the world. It is used in business, in science, on the Internet and in almost every part of our lives. More people speak English than any other language, and more and more people are learning it every day.",
+          "English was once the language of a few countries. Today, it belongs to the whole world. A speaker in India, a boss in America and a secretary in England all use the same words, but in their own ways. In this sense, English is not just for the English. It is for you and me.",
+          "Why is English so important? First, it helps us in our work. In many industries, people use English to write letters, send emails and talk to partners from other countries. If you can speak English, you have more chances to get a good job and to meet people from around the world.",
+          "Second, English helps us to learn and to dream. Most of the information on the Internet is in English. Great books, films and ideas travel from one country to another through this language. When we learn English, we open a door to a bigger world.",
+          "Of course, learning English is not always easy. We have to remember many words and learn the grammar. But with practice and a lot of patience, we can achieve our goals. Some people learn quickly; others need more time. The important thing is to keep going.",
+          "There is no magic to learning a language. There is only effort, a little courage, and the wish to understand others. If we use English with open minds and friendly hearts, it will always serve us well. English is a bridge, and it is for everyone."
+        ]
+      },
+      "words": [
+        {
+          "word": "achieve",
+          "sentence": "...we can achieve our goals.",
+          "meaning": "实现；获得"
+        },
+        {
+          "word": "including",
+          "sentence": "...including many people.（拓展）",
+          "meaning": "包括"
+        },
+        {
+          "word": "speaker",
+          "sentence": "A speaker in India...",
+          "meaning": "说话者"
+        },
+        {
+          "word": "boss",
+          "sentence": "...a boss in America...",
+          "meaning": "老板"
+        },
+        {
+          "word": "secretary",
+          "sentence": "...a secretary in England...",
+          "meaning": "秘书"
+        },
+        {
+          "word": "quarter",
+          "sentence": "(拓展) a quarter",
+          "meaning": "四分之一"
+        },
+        {
+          "word": "industry",
+          "sentence": "In many industries...",
+          "meaning": "工业；行业"
+        },
+        {
+          "word": "zero",
+          "sentence": "(拓展) zero",
+          "meaning": "零"
+        },
+        {
+          "word": "Indian",
+          "sentence": "A speaker in India...",
+          "meaning": "印度的"
+        },
+        {
+          "word": "type",
+          "sentence": "(拓展) type / a type of",
+          "meaning": "类型；打字"
+        },
+        {
+          "word": "language",
+          "sentence": "English is a language...",
+          "meaning": "语言"
+        },
+        {
+          "word": "grammar",
+          "sentence": "...remember the grammar.",
+          "meaning": "语法"
+        },
+        {
+          "word": "patience",
+          "sentence": "...a lot of patience...",
+          "meaning": "耐心"
+        },
+        {
+          "word": "courage",
+          "sentence": "a little courage...",
+          "meaning": "勇气"
+        },
+        {
+          "word": "bridge",
+          "sentence": "English is a bridge...",
+          "meaning": "桥"
+        }
+      ]
+    },
+    {
+      "file": "Module8_My_future_life.md",
+      "heading": "九年级下册 Module 8 My future life",
+      "section": "Module 8",
+      "topic": "未来生活与毕业；词汇对齐：handbag / beat / pardon / intend / fetch / pancake / rose / laugh at / kindness / give up / try one's best / disappointed / bedside / note / whom",
+      "dialogue": [
+        {
+          "speaker": "Lily",
+          "text": "School is almost over. Do you have any plans for the future, Jack?"
+        },
+        {
+          "speaker": "Jack",
+          "text": "I intend to study at university and become an engineer."
+        },
+        {
+          "speaker": "Lily",
+          "text": "That sounds great. What about you, Mia?"
+        },
+        {
+          "speaker": "Mia",
+          "text": "I want to be a doctor. I hope to help the sick and make people better."
+        },
+        {
+          "speaker": "Jack",
+          "text": "We have all worked hard. Let's do our best and never give up on our dreams."
+        },
+        {
+          "speaker": "Lily",
+          "text": "I agree. Even if we are disappointed sometimes, we must keep going."
+        }
+      ],
+      "reading": {
+        "title": "My Future Life",
+        "paragraphs": [
+          "Graduation day is a special time. For the first time in our lives, we say goodbye to a place we have known for years. The school hall is full of flowers and a few red roses. Our teachers stand by the door, and some of them have tears in their eyes.",
+          "I remember the first day I came to this school. I was small and a little afraid. I carried a big schoolbag and a small handbag. At the gate, I did not know whom to talk to. Now, three years later, I am leaving with wonderful friends and memories.",
+          "Looking back, I think about all the little things. The times we laughed together, the lessons we learned, and the games we played. My best friend often made us pancakes for lunch, and we would laugh at our own silly stories. When I was sad, my friends were always there, and their kindness helped me a lot.",
+          "Now a new life is waiting for us. Some of my friends intend to go to a university. Others want to work, or to travel and see the world. I have a dream, too. I want to use what I have learned to help others, and I will never give up on it.",
+          "Of course, the future will not always be easy. There will be hard days, and we may sometimes feel disappointed. But we should remember the lessons of our school days: be brave, be kind, and try your best.",
+          "I will keep a little note by my bedside. It says these words: \"Do not be afraid to try. You are stronger than you think.\" When I read it in the morning, I feel ready for a new day.",
+          "Goodbye, my school. Thank you for the years. Now, the future is calling, and I am ready to meet it."
+        ]
+      },
+      "words": [
+        {
+          "word": "handbag",
+          "sentence": "...a small handbag.",
+          "meaning": "手提包"
+        },
+        {
+          "word": "beat",
+          "sentence": "(拓展) beat the drum",
+          "meaning": "敲打；打败"
+        },
+        {
+          "word": "pardon",
+          "sentence": "Pardon?（拓展）",
+          "meaning": "请再说一遍"
+        },
+        {
+          "word": "intend",
+          "sentence": "I intend to study...",
+          "meaning": "打算"
+        },
+        {
+          "word": "fetch",
+          "sentence": "(拓展) fetch some water",
+          "meaning": "去取"
+        },
+        {
+          "word": "pancake",
+          "sentence": "...made us pancakes...",
+          "meaning": "煎饼"
+        },
+        {
+          "word": "rose",
+          "sentence": "...red roses.",
+          "meaning": "玫瑰"
+        },
+        {
+          "word": "laugh at",
+          "sentence": "We would laugh at our own silly stories.",
+          "meaning": "嘲笑；因…笑"
+        },
+        {
+          "word": "kindness",
+          "sentence": "Their kindness helped me...",
+          "meaning": "善良"
+        },
+        {
+          "word": "give up",
+          "sentence": "...never give up on it.",
+          "meaning": "放弃"
+        },
+        {
+          "word": "try one's best",
+          "sentence": "...try your best.",
+          "meaning": "尽力"
+        },
+        {
+          "word": "disappointed",
+          "sentence": "We may feel disappointed.",
+          "meaning": "失望的"
+        },
+        {
+          "word": "bedside",
+          "sentence": "...by my bedside.",
+          "meaning": "床边"
+        },
+        {
+          "word": "note",
+          "sentence": "...a little note...",
+          "meaning": "便条"
+        },
+        {
+          "word": "whom",
+          "sentence": "...did not know whom to talk to.",
+          "meaning": "谁（宾格）"
+        },
+        {
+          "word": "graduation",
+          "sentence": "Graduation day...",
+          "meaning": "毕业"
+        },
+        {
+          "word": "memory",
+          "sentence": "...memories...",
+          "meaning": "记忆"
+        },
+        {
+          "word": "engineer",
+          "sentence": "...become an engineer.",
+          "meaning": "工程师"
+        },
+        {
+          "word": "university",
+          "sentence": "...go to a university.",
+          "meaning": "大学"
+        }
+      ]
+    }
+  ]
+}
