@@ -1,0 +1,537 @@
+{
+ "book": "七年级上册",
+ "section": {
+  "section": "Starter",
+  "kind": "Starter",
+  "title": "Welcome to junior high!",
+  "titleZh": "欢迎来到初中",
+  "topic": "小升初衔接：学习用品、学科、颜色与服饰、校园场所、自我介绍、愿望与计划",
+  "goals": [
+   "认识学习用品、学科、颜色、服饰、校园场所等基础词汇",
+   "用 a/an 与基数词谈论物品的数量",
+   "用 be 动词和 be going to 介绍自己并谈计划"
+  ],
+  "grammar": {
+   "topic": "可数名词与冠词；基数词；be 动词；一般将来时（be going to）",
+   "summary": "衔接小学内容：复习可数名词单复数和 a/an，学习基数词 1—12 与 be 动词 am/is/are 的搭配，并初步接触 be going to 结构谈论打算和计划。",
+   "points": [
+    {
+     "title": "可数名词的单数与复数",
+     "detail": "单数可数名词前用 a 或 an；复数一般在词尾加 -s（textbook → textbooks，lab → labs）。",
+     "examples": [
+      "I have a schoolbag, a pencil case, three pencils, an eraser and a ruler.",
+      "There are 30 classrooms on the first and second floors."
+     ]
+    },
+    {
+     "title": "基数词",
+     "detail": "基数词表示数目，one—twelve 是常用基础数词，用来谈论数量。",
+     "examples": [
+      "I have two pencils and four pens.",
+      "One eraser and one ruler. They are all in my pencil case."
+     ]
+    },
+    {
+     "title": "冠词 a / an",
+     "detail": "a 用在以辅音音素开头的词前，an 用在以元音音素开头的词前。",
+     "examples": [
+      "a ruler / an eraser",
+      "an English teacher / a new school"
+     ]
+    },
+    {
+     "title": "be 动词",
+     "detail": "am / is / are 随人称变化，用来介绍姓名、年龄和身份。",
+     "examples": [
+      "I am ready, too.",
+      "Mr Pan is our English teacher."
+     ]
+    },
+    {
+     "title": "一般将来时 be going to",
+     "detail": "表示计划、打算要做的事，结构为 be going to + 动词原形。",
+     "examples": [
+      "I am going to wear my school uniform.",
+      "To make more friends, I am going to take part in sports."
+     ]
+    }
+   ],
+   "examples": [
+    "I have a schoolbag, a pencil case, three pencils, an eraser and a ruler.",
+    "What subjects do you like best?",
+    "I am going to join a football team."
+   ]
+  },
+  "words": [
+   {
+    "word": "ready",
+    "phonetic": "ˈredi",
+    "pos": "adj.",
+    "meaning": "准备好（做某事）的",
+    "page": 3
+   },
+   {
+    "word": "textbook",
+    "phonetic": "ˈtekstbʊk",
+    "pos": "n.",
+    "meaning": "教科书，教材，课本",
+    "page": 3
+   },
+   {
+    "word": "eraser",
+    "phonetic": "ɪˈreɪzə",
+    "pos": "n.",
+    "meaning": "橡皮",
+    "page": 3
+   },
+   {
+    "word": "junior",
+    "phonetic": "ˈdʒuːniə",
+    "pos": "adj.",
+    "meaning": "低年级的",
+    "page": 3
+   },
+   {
+    "word": "junior high",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "初级中学",
+    "page": 3
+   },
+   {
+    "word": "geography",
+    "phonetic": "dʒiˈɒɡrəfi",
+    "pos": "n.",
+    "meaning": "地理",
+    "page": 4
+   },
+   {
+    "word": "biology",
+    "phonetic": "baɪˈɒlədʒi",
+    "pos": "n.",
+    "meaning": "生物",
+    "page": 4
+   },
+   {
+    "word": "history",
+    "phonetic": "ˈhɪstəri",
+    "pos": "n.",
+    "meaning": "历史",
+    "page": 4
+   },
+   {
+    "word": "grey",
+    "phonetic": "ɡreɪ",
+    "pos": "adj.",
+    "meaning": "灰色的",
+    "page": 5
+   },
+   {
+    "word": "jacket",
+    "phonetic": "ˈdʒækɪt",
+    "pos": "n.",
+    "meaning": "夹克，短上衣",
+    "page": 5
+   },
+   {
+    "word": "scarf",
+    "phonetic": "skɑːf",
+    "pos": "n.",
+    "meaning": "围巾；头巾；披肩",
+    "page": 5
+   },
+   {
+    "word": "red scarf",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "红领巾",
+    "page": 5
+   },
+   {
+    "word": "T-shirt",
+    "phonetic": "ˈtiːʃɜːt",
+    "pos": "n.",
+    "meaning": "T恤衫，短袖运动衫",
+    "page": 5
+   },
+   {
+    "word": "uniform",
+    "phonetic": "ˈjuːnɪfɔːm",
+    "pos": "n.",
+    "meaning": "制服",
+    "page": 5
+   },
+   {
+    "word": "school uniform",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "校服",
+    "page": 5
+   },
+   {
+    "word": "of course",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "当然",
+    "page": 5
+   },
+   {
+    "word": "forget",
+    "phonetic": "fəˈɡet",
+    "pos": "v.",
+    "meaning": "忘记，遗忘",
+    "page": 5
+   },
+   {
+    "word": "building",
+    "phonetic": "ˈbɪldɪŋ",
+    "pos": "n.",
+    "meaning": "建筑物",
+    "page": 6
+   },
+   {
+    "word": "teaching building",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "教学楼",
+    "page": 6
+   },
+   {
+    "word": "dining hall",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "食堂",
+    "page": 6
+   },
+   {
+    "word": "together",
+    "phonetic": "təˈɡeðə",
+    "pos": "adv.",
+    "meaning": "一起，共同，一齐，一块儿",
+    "page": 6
+   },
+   {
+    "word": "lab",
+    "phonetic": "læb",
+    "pos": "n.",
+    "meaning": "实验室",
+    "page": 6
+   },
+   {
+    "word": "start",
+    "phonetic": "stɑːt",
+    "pos": "v.",
+    "meaning": "开始",
+    "page": 8
+   },
+   {
+    "word": "each other",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "互相，彼此",
+    "page": 9
+   },
+   {
+    "word": "everyone",
+    "phonetic": "ˈevriwʌn",
+    "pos": "pron.",
+    "meaning": "每个人，人人",
+    "page": 9
+   },
+   {
+    "word": "explore",
+    "phonetic": "ɪkˈsplɔː",
+    "pos": "v.",
+    "meaning": "探索；探讨，探究",
+    "page": 9
+   },
+   {
+    "word": "fun",
+    "phonetic": "fʌn",
+    "pos": "n.",
+    "meaning": "乐趣",
+    "page": 9
+   },
+   {
+    "word": "introduce",
+    "phonetic": "ˌɪntrəˈdjuːs",
+    "pos": "v.",
+    "meaning": "介绍",
+    "page": 9
+   },
+   {
+    "word": "yourself",
+    "phonetic": "jɔːˈself",
+    "pos": "pron.",
+    "meaning": "(pl. yourselves) 你自己",
+    "page": 9
+   },
+   {
+    "word": "hobby",
+    "phonetic": "ˈhɒbi",
+    "pos": "n.",
+    "meaning": "业余爱好，嗜好",
+    "page": 9
+   },
+   {
+    "word": "a bit",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "有点儿，稍微",
+    "page": 10
+   },
+   {
+    "word": "nervous",
+    "phonetic": "ˈnɜːvəs",
+    "pos": "adj.",
+    "meaning": "神经紧张的；焦虑不安的",
+    "page": 10
+   },
+   {
+    "word": "join",
+    "phonetic": "dʒɔɪn",
+    "pos": "v.",
+    "meaning": "成为……的一员，加入",
+    "page": 13
+   },
+   {
+    "word": "team",
+    "phonetic": "tiːm",
+    "pos": "n.",
+    "meaning": "（游戏或体育比赛的）队",
+    "page": 13
+   },
+   {
+    "word": "take part in",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "参加，参与",
+    "page": 13
+   }
+  ],
+  "phrases": [
+   {
+    "phrase": "junior high",
+    "meaning": "初级中学"
+   },
+   {
+    "phrase": "red scarf",
+    "meaning": "红领巾"
+   },
+   {
+    "phrase": "school uniform",
+    "meaning": "校服"
+   },
+   {
+    "phrase": "of course",
+    "meaning": "当然"
+   },
+   {
+    "phrase": "teaching building",
+    "meaning": "教学楼"
+   },
+   {
+    "phrase": "dining hall",
+    "meaning": "食堂"
+   },
+   {
+    "phrase": "each other",
+    "meaning": "互相，彼此"
+   },
+   {
+    "phrase": "a bit",
+    "meaning": "有点儿，稍微"
+   },
+   {
+    "phrase": "take part in",
+    "meaning": "参加，参与"
+   },
+   {
+    "phrase": "get ready",
+    "meaning": "准备好"
+   },
+   {
+    "phrase": "make friends",
+    "meaning": "交朋友"
+   },
+   {
+    "phrase": "play the piano",
+    "meaning": "弹钢琴"
+   },
+   {
+    "phrase": "get to know",
+    "meaning": "认识，了解"
+   },
+   {
+    "phrase": "get better at",
+    "meaning": "在……方面变得更好"
+   }
+  ],
+  "patterns": [
+   {
+    "pattern": "What colour is it?",
+    "meaning": "它是什么颜色的？",
+    "examples": [
+     "What colour is it? — It is grey."
+    ]
+   },
+   {
+    "pattern": "What subjects do you have now? / What subjects do you like best?",
+    "meaning": "你们现在有哪些科目？/ 你最喜欢哪些科目？",
+    "examples": [
+     "We have Chinese, maths, English, ethics and the rule of law, art, music and PE.",
+     "I like Chinese, English and art best."
+    ]
+   },
+   {
+    "pattern": "What are you going to wear ...? — I am going to wear ...",
+    "meaning": "你打算穿什么？——我打算穿……",
+    "examples": [
+     "What are you going to wear tomorrow for school?",
+     "I am going to wear a blue sports jacket and blue sports trousers."
+    ]
+   },
+   {
+    "pattern": "Good morning, everyone! / Nice to meet you.",
+    "meaning": "问候与相识用语",
+    "examples": [
+     "Good morning, everyone!",
+     "Nice to meet you."
+    ]
+   },
+   {
+    "pattern": "Hello everyone! My name is ...",
+    "meaning": "自我介绍",
+    "examples": [
+     "Hello everyone! My name is Jack. I like playing basketball and swimming.",
+     "I am a bit nervous now, but I want to make friends with you all."
+    ]
+   },
+   {
+    "pattern": "To ..., I am going to ...",
+    "meaning": "为了……，我打算……",
+    "examples": [
+     "To make more friends, I am going to take part in sports."
+    ]
+   }
+  ],
+  "notes": [
+   {
+    "title": "Know more about nouns｜可数名词",
+    "body": "单数可数名词前用 a/an；谈论不止一个时用复数名词，如 three pencils、eight computer labs。"
+   },
+   {
+    "title": "Know more about numbers and articles｜数词与冠词",
+    "body": "基数词 one—twelve 用来表示数量；a 用于辅音音素前，an 用于元音音素前，如 an eraser、an English teacher。"
+   },
+   {
+    "title": "Know more about the simple future tense｜一般将来时",
+    "body": "be going to + 动词原形表示打算、计划，如 I am going to join a football team."
+   },
+   {
+    "title": "Know more about adjectives｜形容词",
+    "body": "形容词用来描述人或事物的特征，如 a bit nervous、happy、beautiful，常作定语或表语。"
+   }
+  ],
+  "article": {
+   "reading": {
+    "title": "Know your school",
+    "kind": "reading",
+    "source": "Starter Get ready",
+    "paragraphs": [
+     "Welcome! This is your new school. There are three buildings and a playground. It is not big, but it is beautiful. Let us go around the school together!",
+     "This is the teaching building. It has three floors. There are 30 classrooms on the first and second floors. And there are 10 science labs and eight computer labs on the third floor."
+    ],
+    "audio": "/audio/7/starter/reading.mp3"
+   },
+   "extra": [
+    {
+     "title": "Get to know each other（Mr Pan 的自我介绍）",
+     "kind": "text",
+     "paragraphs": [
+      "“Good morning, everyone!” “Good morning, Teacher!”",
+      "Welcome to junior high. I am Mr Pan, your English teacher. I am so happy to meet you all. I like playing the piano, reading books and travelling. And I love working with students. This year, we will explore the world of English together. It will be a lot of fun! Now, it is your turn to introduce yourselves. Please tell us your name and your hobby. Who wants to go first?"
+     ]
+    }
+   ],
+   "dialogues": [
+    {
+     "speaker": "Mum",
+     "text": "Tomorrow is your first day of junior high school. Are you ready?"
+    },
+    {
+     "speaker": "Li Ming",
+     "text": "Yes, Mum!"
+    },
+    {
+     "speaker": "Mum",
+     "text": "Where is your schoolbag?"
+    },
+    {
+     "speaker": "Li Ming",
+     "text": "Here it is. And look at my pencil case. I have two pencils, three pens, an eraser and a ruler in it."
+    },
+    {
+     "speaker": "Mum",
+     "text": "And your textbooks? Put them in your schoolbag."
+    },
+    {
+     "speaker": "Li Ming",
+     "text": "OK."
+    }
+   ]
+  },
+  "listening": {
+   "title": "Get ready 听力（Activity 2 / 3 / 10）",
+   "tracks": [
+    {
+     "title": "Read and complete. Then listen and check",
+     "url": "/audio/7/starter/listening-1.mp3"
+    },
+    {
+     "title": "Listen and complete the conversation with a or an or a number",
+     "url": "/audio/7/starter/listening-2.mp3"
+    },
+    {
+     "title": "Listen and choose",
+     "url": "/audio/7/starter/listening-3.mp3"
+    }
+   ],
+   "tasks": [
+    "用 a/an 或数词补全对话",
+    "听录音，选择 Nana 和 Wang Tao 准备穿的衣服"
+   ],
+   "script": [
+    {
+     "speaker": "Mum",
+     "text": "How about you, Li Meng?"
+    },
+    {
+     "speaker": "Li Meng",
+     "text": "I am ready, too. Look. I have two pencils and four pens. I also have an eraser and a ruler. They are all in my pencil case."
+    },
+    {
+     "speaker": "Nana",
+     "text": "Hi, Wang Tao. What are you going to wear tomorrow for school?"
+    },
+    {
+     "speaker": "Wang Tao",
+     "text": "My school uniform, of course. I am going to wear a blue sports jacket and blue sports trousers. How about you?"
+    },
+    {
+     "speaker": "Nana",
+     "text": "I am also going to wear my school uniform. I have a grey coat, a white shirt and a grey skirt."
+    },
+    {
+     "speaker": "Wang Tao",
+     "text": "Oh, do not forget your red scarf."
+    },
+    {
+     "speaker": "Nana",
+     "text": "Thanks, I will not."
+    }
+   ]
+  },
+  "wordsAudio": "/audio/7/starter/vocab.mp3"
+ }
+}

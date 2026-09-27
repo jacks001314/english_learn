@@ -53,7 +53,7 @@ export const grammarTopics = [
     examTips: ["北京中考单项填空几乎每年 1 题，主要考形容词性物主代词和主格，靠“看主语、看后面有没有名词”两步即可判断。"],
     memoryCard: ["主格作主，宾格作宾。", "物主代词：有名词用形容词性，没名词用名词性。"],
     textbookLinks: [
-      { book: "七年级上册", section: "Unit 3", title: "Family ties" },
+      { book: "七年级上册", section: "Unit 1", title: "A new start" },
       { book: "九年级下册", section: "Module 2", title: "Education" },
     ],
   },
@@ -305,8 +305,7 @@ export const grammarTopics = [
     examTips: ["看到 every year / usually 优先考虑一般现在时；注意主语是不是第三人称单数。"],
     memoryCard: ["习惯事实用一般现在。", "三单动词加 -s。"],
     textbookLinks: [
-      { book: "七年级上册", section: "Unit 1", title: "A new start" },
-      { book: "七年级上册", section: "Unit 5", title: "Fantastic friends" },
+      { book: "七年级上册", section: "Unit 2", title: "More than fun" },
       { book: "七年级下册", section: "Unit 5", title: "Amazing nature" },
     ],
   },
@@ -353,7 +352,7 @@ export const grammarTopics = [
     examTips: ["北京中考常以 now 或对话形式考查，注意问句时态与答语一致。"],
     memoryCard: ["正在发生 be + doing。", "看到 now 想到进行时。"],
     textbookLinks: [
-      { book: "七年级上册", section: "Unit 5", title: "Fantastic friends" },
+      { book: "七年级上册", section: "Unit 6", title: "Fantastic friends" },
       { book: "七年级下册", section: "Unit 4", title: "The art of having fun" },
     ],
   },

@@ -421,4 +421,227 @@ mark.kw {
   .course-detail { padding: 20px 18px; }
   .dlg-bubble { max-width: 88%; }
   .word-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .phrase-list { grid-template-columns: 1fr; }
+  .pattern-item { padding: 14px; }
 }
+
+/* 单元信息：中文名与学习目标 */
+.detail-zh {
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--muted, #6d7b75);
+  margin-left: 6px;
+}
+.detail-goals {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 5px;
+}
+.detail-goals li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 12.5px;
+  color: var(--muted, #6d7b75);
+  line-height: 1.55;
+}
+.detail-goals li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green, #176b4d);
+  opacity: .55;
+}
+
+/* 课文来源标记 */
+.reading-kind {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(23, 107, 77, .09);
+  color: var(--green-dark, #0d4f39);
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: .4px;
+  vertical-align: middle;
+}
+.reading-body p { cursor: pointer; }
+
+/* 词性标签 */
+.w-pos {
+  align-self: flex-start;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: rgba(23, 107, 77, .09);
+  color: var(--green-dark, #0d4f39);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+/* 词组 */
+.phrase-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+.phrase-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 11px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .16s, background .16s;
+}
+.phrase-item:hover { border-color: #a9c6b7; background: #f6fbf8; }
+.phrase-item b { font-size: 14px; color: var(--ink, #17231f); }
+.phrase-item span { font-size: 12.5px; color: var(--muted, #6d7b75); }
+
+/* 句型 */
+.pattern-list { display: grid; gap: 12px; }
+.pattern-item {
+  border: 1px solid var(--line, #dfe8e2);
+  border-left: 3px solid var(--green, #176b4d);
+  border-radius: 12px;
+  background: #fff;
+  padding: 14px 16px;
+}
+.pattern-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+.pattern-head b { font-size: 14.5px; color: var(--ink, #17231f); }
+.pattern-mean { font-size: 12.5px; color: var(--muted, #6d7b75); }
+.pattern-examples { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.pattern-examples li {
+  padding: 7px 11px;
+  border-radius: 9px;
+  background: #f6fbf8;
+  font-size: 13px;
+  color: var(--ink, #17231f);
+  cursor: pointer;
+}
+.pattern-examples li:hover { background: #e9f5ee; }
+
+/* 语法要点 */
+.grammar-point {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 12px;
+  background: #fff;
+}
+.grammar-point h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--green-dark, #0d4f39);
+}
+.grammar-detail {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink, #17231f);
+}
+
+/* 知识点 */
+.note-list { display: grid; gap: 12px; }
+.note-item {
+  padding: 14px 16px;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 12px;
+  background: #fff;
+}
+.note-item h4 {
+  margin: 0 0 7px;
+  font-size: 14px;
+  color: var(--green-dark, #0d4f39);
+  line-height: 1.5;
+}
+.note-item p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink, #17231f);
+}
+
+/* 听力 */
+.listening-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.listening-head h3 { margin: 0; font-size: 17px; color: var(--ink, #17231f); }
+.audio-pending {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(180, 120, 20, .12);
+  color: #8a5b06;
+  font-size: 11px;
+  font-weight: 750;
+}
+.listening-tasks {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  color: var(--muted, #6d7b75);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+.listening-tasks li { margin-bottom: 3px; }
+.dlg-line { cursor: pointer; }
+
+/* 音频播放（教材配套录音） */
+.audio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.audio-list-head {
+  margin-top: 4px;
+  font-size: 10.5px;
+  font-weight: 850;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--green, #176b4d);
+}
+.audio-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 8px 12px;
+  border: 1px solid var(--line, #dfe8e2);
+  border-radius: 12px;
+  background: #fff;
+}
+.audio-row-sole { margin-bottom: 14px; }
+.audio-label {
+  flex: 1 1 230px;
+  min-width: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted, #6d7b75);
+}
+.audio-label b {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(23, 107, 77, .1);
+  color: var(--green-dark, #0d4f39);
+  font-size: 11px;
+  font-weight: 800;
+}
+.audio-row audio {
+  flex: 1 1 320px;
+  min-width: 210px;
+  max-width: 460px;
+  height: 34px;
+}
+.reading-block .audio-row { margin: 10px 0 12px; }

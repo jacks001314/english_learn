@@ -1,7 +1,7 @@
 import { api, postJSON } from './api.js';
 import { speak } from './speech.js?v=20260905-ipa-r3';
 import HomeView from './components/HomeView.js';
-import LearnView from './components/LearnView.js';
+import LearnView from './components/LearnView.js?v=20260926-pos-r1';
 import QuizView from './components/QuizView.js';
 import ReportView from './components/ReportView.js';
 import MistakesView from './components/MistakesView.js';
@@ -22,13 +22,14 @@ import AgentAdminView from './components/AgentAdminView.js';
 import ContentFactoryView from './components/ContentFactoryView.js';
 import HomeworkView from './components/HomeworkView.js';
 import HomeworkAdminView from './components/HomeworkAdminView.js?v=20260727-adaptive-r1';
-import SmartLearningView from './components/SmartLearningView.js?v=20260918-grammar-r7';
-import CourseView from './components/CourseView.js?v=20260918-grammar-r7';
+import SmartLearningView from './components/SmartLearningView.js?v=20260927-yufan-r1';
+import CourseView from './components/CourseView.js?v=20260927-audio-r8';
 import PhoneticsView from './components/PhoneticsView.js?v=20260905-ipa-r5';
-import GrammarView from './components/GrammarView.js?v=20260918-grammar-r7';
+import GrammarView from './components/GrammarView.js?v=20260927-yufan-r1';
+import TongbuView from './components/TongbuView.js?v=20260926-tongbu-r2';
 
 const { createApp } = Vue;
-const knownViews = new Set(['home','smart','learn','categories','course','grammar','phonetics','reading','exams','quiz','review','homework','report','mistakes','settings','security','content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
+const knownViews = new Set(['home','smart','learn','categories','course','grammar','phonetics','reading','exams','tongbu','quiz','review','homework','report','mistakes','settings','security','content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
 const adminViews = new Set(['content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
 const viewFromLocation = () => {
   const value = window.location.hash.replace(/^#\/?/, '');
@@ -38,9 +39,9 @@ const learningViews = new Set(['smart', 'learn', 'quiz', 'review', 'reading', 'e
 const freshQuizSession = () => ({ answered: 0, correct: 0, byType: {}, history: [] });
 
 createApp({
-  components: { HomeView, SmartLearningView, CourseView, GrammarView, PhoneticsView, LearnView, QuizView, ReportView, MistakesView, ReviewView, SettingsView, CategoryView, ContentStatusView, ReadingView, AuthView, AdminView, SecurityView, AdminOverview, ContentWorkbench, ExamView, ExamWorkbench, AgentAssistant, AgentAdminView, ContentFactoryView, HomeworkView, HomeworkAdminView },
+  components: { HomeView, SmartLearningView, CourseView, GrammarView, PhoneticsView, LearnView, QuizView, ReportView, MistakesView, ReviewView, SettingsView, CategoryView, ContentStatusView, ReadingView, AuthView, AdminView, SecurityView, AdminOverview, ContentWorkbench, ExamView, ExamWorkbench, AgentAssistant, AgentAdminView, ContentFactoryView, HomeworkView, HomeworkAdminView, TongbuView },
   data: () => ({
-    activeView: viewFromLocation(), workspaceMode: adminViews.has(viewFromLocation()) ? 'admin' : 'learn', level: 'primary', query: '', topic: '', grade: '', unit: '', letter: '', partOfSpeech: '', wordSort: 'word-asc', page: 1, size: 12, total: 0,
+    activeView: viewFromLocation(), workspaceMode: adminViews.has(viewFromLocation()) ? 'admin' : 'learn', level: 'primary', query: '', topic: '', grade: '', unit: '', letter: '', partOfSpeech: '', wordSort: 'word-asc', wordSortSeed: 0, page: 1, size: 12, total: 0,
     facets: { topics: [], grades: [], units: [] },
     words: [], stats: { seen: 0, mastered: 0, accuracy: 0, mistakes: 0 },
     progress: {}, quiz: null, quizType: 'en-zh', quizHint: '', quizAnswered: false, quizSelectedAnswer: '', quizCorrectAnswer: '',
@@ -229,6 +230,7 @@ createApp({
     async loadWords() {
       await this.run(async () => {
         const params = new URLSearchParams({ level: this.level, page: this.page, q: this.query.trim(), topic: this.topic, grade: this.grade, unit: this.unit, letter: this.letter, pos: this.partOfSpeech, sort: this.wordSort });
+        if (this.wordSort === 'random') params.set('seed', this.wordSortSeed);
         const data = await api(`/api/words?${params}`);
         this.words = data.items; this.total = data.total; this.size = data.size;
         if (this.continuousLearning && !this.selectedWord && this.words.length) this.selectedWord = this.words[0];
@@ -236,6 +238,12 @@ createApp({
     },
     async loadFacets() { await this.run(async () => { this.facets = await api(`/api/word-facets?level=${this.level}`); }); },
     search() { this.page = 1; this.loadWords(); },
+    setWordSort(value) {
+      this.wordSort = value;
+      // Re-picking 随机打乱 deals a fresh order; pages stay stable thanks to the seed.
+      if (value === 'random') this.wordSortSeed = Math.floor(Math.random() * 1000000000);
+      this.search();
+    },
     selectCategory(category) { this.topic = category.topic || ''; this.grade = category.grade || ''; this.unit = ''; this.letter = category.letter || ''; this.partOfSpeech = category.pos || ''; this.selectView('learn'); this.search(); },
     clearCategory() { this.topic = ''; this.grade = ''; this.unit = ''; this.letter = ''; this.partOfSpeech = ''; this.search(); },
     changePage(offset) { this.page = Math.min(this.pages, Math.max(1, this.page + offset)); this.loadWords(); },
@@ -433,6 +441,7 @@ createApp({
             <button :class="{active:activeView==='quiz'}" @click="selectView('quiz')" title="单词测验"><span class="nav-icon">Q</span><span class="nav-label">单词测验</span></button>
             <button :class="{active:activeView==='reading'}" @click="selectView('reading')" title="英语阅读"><span class="nav-icon">R</span><span class="nav-label">英语阅读</span></button>
             <button :class="{active:activeView==='exams'}" @click="selectView('exams')" title="考试练习"><span class="nav-icon">EX</span><span class="nav-label">考试练习</span></button>
+            <button :class="{active:activeView==='tongbu'}" @click="selectView('tongbu')" title="同步训练"><span class="nav-icon">TB</span><span class="nav-label">同步训练</span></button>
           <div class="nav-group-label">我的</div>
             <button :class="{active:activeView==='report'}" @click="selectView('report')" title="学习报告"><span class="nav-icon">RP</span><span class="nav-label">学习报告</span></button>
             <button :class="{active:activeView==='mistakes'}" @click="selectView('mistakes')" title="错题本"><span class="nav-icon">M</span><span class="nav-label">错题本</span></button>
@@ -460,13 +469,14 @@ createApp({
           <div v-if="error" class="error-banner" role="alert">{{ error }} <button aria-label="关闭" @click="error=''">×</button></div>
       <home-view v-if="activeView==='home'" :user="currentUser" :stats="stats" :report="report" :review-summary="reviewSummary" :session="learningSession" @navigate="handleNavigate" />
       <smart-learning-view v-else-if="activeView==='smart'" :user-id="currentUser.id" @navigate="handleNavigate" />
-      <learn-view v-else-if="activeView==='learn'" v-model:level="level" v-model:query="query" v-model:topic="topic" v-model:grade="grade" v-model:unit="unit" v-model:sort="wordSort" :letter="letter" :part-of-speech="partOfSpeech" :facets="facets" :words="words" :total="total" :page="page" :pages="pages" :mastered-ids="masteredIds" :selected-word="selectedWord" :selected-progress="selectedWordProgress" :continuous-mode="continuousLearning" @search="search" @clear-category="clearCategory" @page="changePage" @speak="speak" @master="markWord" @open="openWord" @close="closeWord" @continuous="setContinuousLearning" @practice="startWordQuiz" />
+      <learn-view v-else-if="activeView==='learn'" v-model:level="level" v-model:query="query" v-model:topic="topic" v-model:grade="grade" v-model:unit="unit" :sort="wordSort" :letter="letter" :part-of-speech="partOfSpeech" :facets="facets" :words="words" :total="total" :page="page" :pages="pages" :mastered-ids="masteredIds" :selected-word="selectedWord" :selected-progress="selectedWordProgress" :continuous-mode="continuousLearning" @update:sort="setWordSort" @search="search" @clear-category="clearCategory" @page="changePage" @speak="speak" @master="markWord" @open="openWord" @close="closeWord" @continuous="setContinuousLearning" @practice="startWordQuiz" />
       <category-view v-else-if="activeView==='categories'" :facets="facets" :level="level" @level="level=$event" @select="selectCategory" />
       <course-view v-else-if="activeView==='course'" @open-grammar="selectView('grammar')" />
       <grammar-view v-else-if="activeView==='grammar'" :user-id="currentUser.id" :target-topic-id="grammarTargetId" />
       <phonetics-view v-else-if="activeView==='phonetics'" />
       <reading-view v-else-if="activeView==='reading'" :user-id="currentUser.id" :target-article-id="readingTargetArticleId" @speak="speak" />
       <exam-view v-else-if="activeView==='exams'" :user-id="currentUser.id" @session-state="examInProgress=$event" />
+      <tongbu-view v-else-if="activeView==='tongbu'" :user-id="currentUser.id" />
       <quiz-view v-else-if="activeView==='quiz'" v-model:type="quizType" :quiz="quiz" :hint="quizHint" :answered="quizAnswered" :session="quizSession" :selected-answer="quizSelectedAnswer" :correct-answer="quizCorrectAnswer" :feedback-correct="quizFeedbackCorrect" :resumed="quizResumed" @change="loadQuiz" @speak="speak" @answer="answer" @next="loadQuiz" @restart="resetQuizSession" @navigate="handleNavigate" />
       <review-view v-else-if="activeView==='review'" :items="reviews" :level="level" :busy="reviewBusy" :summary="reviewSummary" @refresh="loadReviews" @speak="speak" @answer="answerReview" />
       <report-view v-else-if="activeView==='report'" :report="report" @refresh="loadReport" @navigate="handleNavigate" />

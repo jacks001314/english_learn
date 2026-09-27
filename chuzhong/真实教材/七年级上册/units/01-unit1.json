@@ -1,0 +1,597 @@
+{
+ "book": "七年级上册",
+ "section": {
+  "section": "Unit 1",
+  "kind": "Unit",
+  "title": "A new start",
+  "titleZh": "新的开始",
+  "topic": "初中新生活：开学第一课、校园生活、学习方式与成长规划",
+  "goals": [
+   "use pronouns to talk about a teacher you like（用代词谈论喜欢的老师）",
+   "use words and expressions in the unit to talk about your school life（用本单元词句谈论校园生活）",
+   "describe your understanding of junior high（表达对初中生活的理解）"
+  ],
+  "grammar": {
+   "topic": "人称代词和物主代词（pronouns）",
+   "summary": "本单元围绕人称代词（主格/宾格）与物主代词（形容词性/名词性）展开，并结合反身代词，用代词指代人和事物、谈论老师和校园生活。",
+   "points": [
+    {
+     "title": "人称代词的主格与宾格",
+     "detail": "作主语时用主格 I / you / he / she / it / we / they；作宾语和表语时一般用宾格 me / you / him / her / it / us / them。",
+     "examples": [
+      "I look up at Ms Chen.",
+      "My eyes meet hers.",
+      "Jack's teacher asks them to get to school early."
+     ]
+    },
+    {
+     "title": "形容词性物主代词",
+     "detail": "起形容词作用，后面必须接名词：my / your / his / her / its / our / their。",
+     "examples": [
+      "Ms Wang is my Chinese teacher.",
+      "When is our next English class?"
+     ]
+    },
+    {
+     "title": "名词性物主代词",
+     "detail": "起名词作用，后面不接名词：mine / yours / his / hers / its / ours / theirs。",
+     "examples": [
+      "Fang Wei is a new friend of mine.",
+      "My eyes meet hers."
+     ]
+    },
+    {
+     "title": "反身代词",
+     "detail": "myself / yourself / himself / herself / itself / ourselves / yourselves / themselves，表示“……自己”。",
+     "examples": [
+      "Please tell us about yourself.",
+      "He asks us to introduce ourselves."
+     ]
+    }
+   ],
+   "examples": [
+    "I look up at Ms Chen. My eyes meet hers.",
+    "In fact, this is my first lesson for all of you."
+   ]
+  },
+  "words": [
+   {
+    "word": "without",
+    "phonetic": "wɪˈðaʊt",
+    "pos": "prep.",
+    "meaning": "缺乏，没有",
+    "page": 16
+   },
+   {
+    "word": "sentence",
+    "phonetic": "ˈsentəns",
+    "pos": "n.",
+    "meaning": "句子",
+    "page": 17
+   },
+   {
+    "word": "point",
+    "phonetic": "pɔɪnt",
+    "pos": "v.",
+    "meaning": "（用手或细的物体）指",
+    "page": 17
+   },
+   {
+    "word": "point out",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "指出，指明",
+    "page": 17
+   },
+   {
+    "word": "mistake",
+    "phonetic": "mɪˈsteɪk",
+    "pos": "n.",
+    "meaning": "错误",
+    "page": 17
+   },
+   {
+    "word": "polite",
+    "phonetic": "pəˈlaɪt",
+    "pos": "adj.",
+    "meaning": "有礼貌的，客气的",
+    "page": 17
+   },
+   {
+    "word": "mind",
+    "phonetic": "maɪnd",
+    "pos": "n.",
+    "meaning": "头脑；思想，思维",
+    "page": 17
+   },
+   {
+    "word": "hers",
+    "phonetic": "hɜːz",
+    "pos": "pron.",
+    "meaning": "她的",
+    "page": 17
+   },
+   {
+    "word": "dry",
+    "phonetic": "draɪ",
+    "pos": "adj.",
+    "meaning": "干的，干燥的",
+    "page": 17
+   },
+   {
+    "word": "meaning",
+    "phonetic": "ˈmiːnɪŋ",
+    "pos": "n.",
+    "meaning": "意义，意思，含义",
+    "page": 17
+   },
+   {
+    "word": "fact",
+    "phonetic": "fækt",
+    "pos": "n.",
+    "meaning": "事实；真相",
+    "page": 17
+   },
+   {
+    "word": "in fact",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "事实上",
+    "page": 17
+   },
+   {
+    "word": "need",
+    "phonetic": "niːd",
+    "pos": "v.",
+    "meaning": "需要",
+    "page": 17
+   },
+   {
+    "word": "remember",
+    "phonetic": "rɪˈmembə",
+    "pos": "v.",
+    "meaning": "记住，记得",
+    "page": 17
+   },
+   {
+    "word": "really",
+    "phonetic": "ˈriːəli",
+    "pos": "adv.",
+    "meaning": "确实地，的确",
+    "page": 17
+   },
+   {
+    "word": "important",
+    "phonetic": "ɪmˈpɔːtənt",
+    "pos": "adj.",
+    "meaning": "重要的，重大的",
+    "page": 17
+   },
+   {
+    "word": "plan",
+    "phonetic": "plæn",
+    "pos": "v.",
+    "meaning": "计划",
+    "page": 21
+   },
+   {
+    "word": "problem",
+    "phonetic": "ˈprɒbləm",
+    "pos": "n.",
+    "meaning": "问题，难题；困难",
+    "page": 22
+   },
+   {
+    "word": "homework",
+    "phonetic": "ˈhəʊmwɜːk",
+    "pos": "n.",
+    "meaning": "家庭作业，功课",
+    "page": 22
+   },
+   {
+    "word": "task",
+    "phonetic": "tɑːsk",
+    "pos": "n.",
+    "meaning": "工作，任务",
+    "page": 23
+   },
+   {
+    "word": "project",
+    "phonetic": "ˈprɒdʒekt",
+    "pos": "n.",
+    "meaning": "（学校的）课题，研究项目",
+    "page": 23
+   },
+   {
+    "word": "advice",
+    "phonetic": "ədˈvaɪs",
+    "pos": "n.",
+    "meaning": "意见，建议；忠告，劝告",
+    "page": 23
+   },
+   {
+    "word": "journey",
+    "phonetic": "ˈdʒɜːni",
+    "pos": "n.",
+    "meaning": "旅行；旅程；历程，过程",
+    "page": 24
+   },
+   {
+    "word": "something",
+    "phonetic": "ˈsʌmθɪŋ",
+    "pos": "pron.",
+    "meaning": "某物；某事；某种东西",
+    "page": 24
+   },
+   {
+    "word": "thought",
+    "phonetic": "θɔːt",
+    "pos": "n.",
+    "meaning": "意见，主意，观点",
+    "page": 24
+   },
+   {
+    "word": "life",
+    "phonetic": "laɪf",
+    "pos": "n.",
+    "meaning": "生活",
+    "page": 25
+   },
+   {
+    "word": "primary",
+    "phonetic": "ˈpraɪməri",
+    "pos": "adj.",
+    "meaning": "小学教育的，初级教育的",
+    "page": 25
+   },
+   {
+    "word": "primary school",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "小学",
+    "page": 25
+   },
+   {
+    "word": "pool",
+    "phonetic": "puːl",
+    "pos": "n.",
+    "meaning": "水塘，水洼",
+    "page": 25
+   },
+   {
+    "word": "protect",
+    "phonetic": "prəˈtekt",
+    "pos": "v.",
+    "meaning": "保护；防护",
+    "page": 25
+   },
+   {
+    "word": "wind",
+    "phonetic": "wɪnd",
+    "pos": "n.",
+    "meaning": "风",
+    "page": 25
+   },
+   {
+    "word": "wide",
+    "phonetic": "waɪd",
+    "pos": "adj.",
+    "meaning": "宽的，宽阔的",
+    "page": 25
+   },
+   {
+    "word": "sail",
+    "phonetic": "seɪl",
+    "pos": "v.",
+    "meaning": "驾驶（船只）",
+    "page": 25
+   },
+   {
+    "word": "through",
+    "phonetic": "θruː",
+    "pos": "prep.",
+    "meaning": "从一端至另一端，穿过，通过",
+    "page": 25
+   },
+   {
+    "word": "storm",
+    "phonetic": "stɔːm",
+    "pos": "n.",
+    "meaning": "暴风雨（雪）",
+    "page": 25
+   },
+   {
+    "word": "towards",
+    "phonetic": "təˈwɔːdz",
+    "pos": "prep.",
+    "meaning": "向着，朝着（某个方向）",
+    "page": 25
+   },
+   {
+    "word": "hope",
+    "phonetic": "həʊp",
+    "pos": "v.",
+    "meaning": "希望，期望，指望",
+    "page": 25
+   }
+  ],
+  "phrases": [
+   {
+    "phrase": "point out",
+    "meaning": "指出，指明"
+   },
+   {
+    "phrase": "in fact",
+    "meaning": "事实上"
+   },
+   {
+    "phrase": "primary school",
+    "meaning": "小学"
+   },
+   {
+    "phrase": "by yourself",
+    "meaning": "独自，独立地"
+   },
+   {
+    "phrase": "try your best",
+    "meaning": "尽你所能"
+   },
+   {
+    "phrase": "work hard",
+    "meaning": "努力学习；努力工作"
+   },
+   {
+    "phrase": "look up at",
+    "meaning": "抬头看"
+   },
+   {
+    "phrase": "put up your hand",
+    "meaning": "举手"
+   },
+   {
+    "phrase": "make a mistake",
+    "meaning": "犯错误"
+   },
+   {
+    "phrase": "on purpose",
+    "meaning": "故意地"
+   },
+   {
+    "phrase": "each other",
+    "meaning": "互相，彼此"
+   },
+   {
+    "phrase": "take part in",
+    "meaning": "参加，参与"
+   },
+   {
+    "phrase": "of course",
+    "meaning": "当然"
+   },
+   {
+    "phrase": "make good plans",
+    "meaning": "做好计划"
+   }
+  ],
+  "patterns": [
+   {
+    "pattern": "Mr / Ms ... is our ... teacher.",
+    "meaning": "……是我们的……老师。",
+    "examples": [
+     "Ms Chen is our English teacher."
+    ]
+   },
+   {
+    "pattern": "I am so lucky to have a teacher like ...",
+    "meaning": "我真幸运能有像……一样的老师。",
+    "examples": [
+     "I am so lucky to have a teacher like him."
+    ]
+   },
+   {
+    "pattern": "Mr / Ms ... tells us ... / We need to ...",
+    "meaning": "……老师告诉我们……/我们需要……",
+    "examples": [
+     "Ms Chen tells us to think more in our learning.",
+     "We need to think more in our learning."
+    ]
+   },
+   {
+    "pattern": "His / Her ... make(s) me feel ...",
+    "meaning": "他的/她的……让我感到……",
+    "examples": [
+     "His clever words make me feel better."
+    ]
+   },
+   {
+    "pattern": "That is really a(n) ... lesson!",
+    "meaning": "那真是……的一课！",
+    "examples": [
+     "That is really an important lesson!"
+    ]
+   },
+   {
+    "pattern": "It is hard to ...",
+    "meaning": "……很难。",
+    "examples": [
+     "It is hard to plan their time."
+    ]
+   },
+   {
+    "pattern": "I have a problem. It is hard to ... / Can you give me some advice?",
+    "meaning": "我遇到一个问题……/你能给我一些建议吗？",
+    "examples": [
+     "I have a problem. It is hard to decide what to do first.",
+     "Can you give me some advice?"
+    ]
+   },
+   {
+    "pattern": "Sure. First, ... But how about ...? You should ...",
+    "meaning": "当然可以。首先……不过……怎么样？你应该……",
+    "examples": [
+     "Sure. First, write down your tasks.",
+     "But how about doing the most important things first? You should make a plan."
+    ]
+   }
+  ],
+  "notes": [
+   {
+    "title": "Learning without thinking is of no use.（学而不思则罔）",
+    "body": "出自《论语》，是孔子的话，意思是只学习而不思考就会迷惑而无所得。课文中 Ms Chen 故意写错这句话的作者，引导学生主动思考和质疑。"
+   },
+   {
+    "title": "孔子与孟子",
+    "body": "孔子（Confucius）被尊为“万世师表”；孟子（Mencius，约前372—前289），名轲，战国时期思想家，被尊称为“亚圣”，后人常把二人并称“孔孟”。"
+   },
+   {
+    "title": "In fact, this is my first lesson for all of you. 的双关",
+    "body": "first lesson 字面指初中开学第一堂课，同时也象征学生在初中领悟的第一个重要道理：学习不仅是接受信息，还需要主动思考和质疑。"
+   },
+   {
+    "title": "by oneself 独自",
+    "body": "by yourself 表示“独自，靠自己”。You have to sail your boat by yourself. 你不得不独自驾驶你的小船。又如：She makes the cake by herself."
+   },
+   {
+    "title": "go through 穿过；经历",
+    "body": "go through 表示从一端到另一端穿过，也表示经历困难。You will go through storms towards the sea. 你将穿过风暴驶向大海。又如：We pass through France on our way to Italy."
+   },
+   {
+    "title": "With love 信件落款",
+    "body": "英文信件常用落款还有 Yours sincerely、Best regards、Kind regards、Yours faithfully 等，选用取决于信件正式程度和双方关系；书写时落款首字母要大写，末尾用逗号。"
+   },
+   {
+    "title": "Tip：怎样查词典",
+    "body": "① 找到单词的首字母；② 按第二个、第三个字母依次在词典中查找；③ 查到单词后要看它的不同义项；④ 除纸质词典外，也可以使用在线词典或词典 App。"
+   }
+  ],
+  "article": {
+   "reading": {
+    "title": "The first lesson",
+    "kind": "reading",
+    "source": "Unit 1 Understanding ideas",
+    "paragraphs": [
+     "“Please write this down,” our English teacher Ms Chen writes the sentence on the blackboard and says. Learning without thinking is of no use.",
+     "We start to write. I write down the first word and stop. “That is not right. But is it OK to point out the mistake? Is that polite, in the first lesson?”",
+     "Questions jump into my mind.",
+     "“Why are you not writing, Wang Han?”",
+     "I look up at Ms Chen. My eyes meet hers. My mouth feels dry. I feel nervous.",
+     "But then I think about the meaning of the sentence. I put up my hand.",
+     "“Ms Chen, there is a mistake,” I say. “That sentence is from Confucius, not from Mencius.”",
+     "“Well done, Wang Han. In fact, this is my first lesson for all of you. You are now in junior high school. Learning will be more difficult. You need to think more in your learning. Please always remember this.”",
+     "That is really an important lesson!"
+    ],
+    "audio": "/audio/7/unit1/reading.mp3"
+   },
+   "extra": [
+    {
+     "title": "Before your journey starts（对话 + 爸爸妈妈的信）",
+     "kind": "dialogue+letter",
+     "paragraphs": [
+      "Dad: Mia, it is your first day in junior high tomorrow. How do you feel?",
+      "Mia: Well, I am a little nervous.",
+      "Mum: Do not worry. We have got something for you! Look!",
+      "Mia: A paper boat?",
+      "Dad: Yes, and it is also a letter from Mum and me. We want to share some thoughts with you.",
+      "Mia: Oh, thank you!",
+      "Dear Mia,",
+      "Time flies! You are now in junior high! Are you ready for your new life?",
+      "Primary school is like a small pool. Your boat is safe there. Dad and Mum can protect it from winds. But junior high is like a river. It is wide and the water moves fast. You will face new problems. We are still here to help. But sometimes you have to sail your boat by yourself. Just try your best and work hard. You will go through storms towards the sea.",
+      "We hope this letter helps you in the coming years!",
+      "With love,\nDad and Mum"
+     ]
+    },
+    {
+     "title": "A great teacher",
+     "kind": "reading",
+     "paragraphs": [
+      "The bell rings, and my English teacher comes in. “My name is Pan Ming. What is your name?” He asks us to introduce ourselves.",
+      "“How about you first?” I look up. My eyes meet his. I feel so nervous. And I give a silly answer! “I am fine, thank you, sir!” My face turns red. But Mr Pan just looks at me with a smile and says, “Oh, Fine is a great name!”",
+      "His clever words make me feel better. I am so lucky to have a teacher like him."
+     ],
+     "audio": "/audio/7/unit1/writing.mp3"
+    }
+   ],
+   "dialogues": []
+  },
+  "listening": {
+   "title": "Students' Union talk",
+   "tracks": [
+    {
+     "title": "Listen to the radio. What's the biggest problem for new students?",
+     "url": "/audio/7/unit1/listening-1.mp3"
+    },
+    {
+     "title": "Listen again and complete the poster",
+     "url": "/audio/7/unit1/listening-2.mp3"
+    },
+    {
+     "title": "Listen to the conversation and complete the table",
+     "url": "/audio/7/unit1/listening-3.mp3"
+    }
+   ],
+   "phonetics": {
+    "title": "语音练习 · Phonetics in use",
+    "url": "/audio/7/unit1/phonetics.mp3"
+   },
+   "tasks": [
+    "听录音，回答：新生最大的问题是什么？",
+    "再听一遍，完成海报填空（问题 / 建议）"
+   ],
+   "script": [
+    {
+     "speaker": "Speaker",
+     "text": "Welcome to Students' Union Radio! The new school year is beginning. What are the new students' problems? Let us take a look."
+    },
+    {
+     "speaker": "Speaker",
+     "text": "For many students, the biggest problem is: They have more subjects and more homework. They also have many activities. So how can they plan their time?"
+    },
+    {
+     "speaker": "Speaker",
+     "text": "The Students' Union will hold a talk this Thursday to help you. Come and join us!"
+    },
+    {
+     "speaker": "Wang Peng",
+     "text": "Li Lin, welcome to the Students' Union talk today."
+    },
+    {
+     "speaker": "Li Lin",
+     "text": "Hello, Wang Peng."
+    },
+    {
+     "speaker": "Wang Peng",
+     "text": "Today we are going to talk about a problem for many new students. You know, they have more subjects and more homework. It is hard to plan their time. Do you have any advice?"
+    },
+    {
+     "speaker": "Li Lin",
+     "text": "Sure. First, every day, write down your tasks and the time for each task."
+    },
+    {
+     "speaker": "Wang Peng",
+     "text": "But there are so many tasks."
+    },
+    {
+     "speaker": "Li Lin",
+     "text": "You should do the most important things first."
+    },
+    {
+     "speaker": "Wang Peng",
+     "text": "But a project may take weeks. How can we plan it?"
+    },
+    {
+     "speaker": "Li Lin",
+     "text": "Great question! You can turn a big task into small ones. Then work on them day by day."
+    },
+    {
+     "speaker": "Wang Peng",
+     "text": "Wow, these ideas are helpful! Thank you, Li Lin."
+    }
+   ]
+  },
+  "wordsAudio": "/audio/7/unit1/vocab.mp3",
+  "speaking": {
+   "title": "口语活动 · Work in pairs. Talk about a teacher you like",
+   "url": "/audio/7/unit1/speaking.mp3"
+  }
+ }
+}

@@ -46,8 +46,14 @@ export default {
         adjective: "形容词",
         adverb: "副词",
         pronoun: "代词",
+        numeral: "数词",
+        article: "冠词",
         preposition: "介词",
         conjunction: "连词",
+        interjection: "感叹词",
+        auxiliary: "助动词",
+        modal: "情态动词",
+        abbreviation: "缩略词",
         phrase: "短语",
         other: "其他",
       };
@@ -156,7 +162,24 @@ export default {
         <select v-if="facets.units.length" :value="unit" aria-label="单元" @change="$emit('update:unit', $event.target.value); $emit('search')"><option value="">全部单元</option><option v-for="item in facets.units" :key="item">{{ item }}</option></select>
         <input :value="query" placeholder="搜索单词或中文释义" aria-label="搜索单词" @input="$emit('update:query', $event.target.value)" @keydown.enter="$emit('search')">
         <button class="search-button" @click="$emit('search')">搜索</button>
-        <select :value="sort" aria-label="排序方式" @change="$emit('update:sort',$event.target.value);$emit('search')"><option value="word-asc">A → Z</option><option value="word-desc">Z → A</option></select>
+        <select :value="sort" aria-label="排序方式" @change="$emit('update:sort',$event.target.value)">
+          <optgroup label="字母顺序">
+            <option value="word-asc">A → Z</option>
+            <option value="word-desc">Z → A</option>
+          </optgroup>
+          <optgroup label="词汇结构">
+            <option value="unit">按单元</option>
+            <option value="grade">按年级</option>
+            <option value="topic">按主题</option>
+            <option value="length-asc">短词优先</option>
+            <option value="length-desc">长词优先</option>
+          </optgroup>
+          <optgroup label="学习节奏">
+            <option value="smart">智能推荐（未掌握优先）</option>
+            <option value="recent">最近更新</option>
+            <option value="random">随机打乱</option>
+          </optgroup>
+        </select>
         <label class="continuous-toggle">
           <input type="checkbox" :checked="continuousMode" @change="$emit('continuous',$event.target.checked)">
           <span>连续学习</span>

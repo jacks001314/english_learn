@@ -29,7 +29,7 @@ func loadCountries(root string) error {
 			if _, exists := wordIndex[progressKey(level, id)]; exists {
 				continue
 			}
-			item := Word{ID: id, Word: word, Meaning: meaning, Level: level, Letter: string([]rune(strings.ToUpper(word))[0]), Topic: "国家", Grade: "", Unit: "国家名称"}
+			item := Word{ID: id, Word: word, Meaning: meaning, Level: level, Pos: "n.", Letter: string([]rune(strings.ToUpper(word))[0]), Topic: "国家", Grade: "", Unit: "国家名称"}
 			datasets[level] = append(datasets[level], item)
 			wordIndex[progressKey(level, id)] = item
 		}

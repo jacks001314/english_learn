@@ -12,6 +12,7 @@ param(
     [string]$NginxProxyConfig = "scripts/english-learn.nginx.conf",
     [switch]$InstallNginxProxy,
     [switch]$SkipBuild,
+    [switch]$SkipAudioSync,
     [switch]$SkipDeploy,
     [switch]$SkipRestart
 )
@@ -95,6 +96,58 @@ function Send-RemoteFile([string]$Pscp, [string]$LocalPath, [string]$RemotePath)
     }
 }
 
+# Windows bsdtar crashes (0xC0000005) on non-ASCII archive members such as the
+# IPA phoneme files in web/audio/phonemes, so prefer Python's tarfile module.
+function New-DeploymentArchive([string]$SourceDirectory, [string]$ArchivePath, [string[]]$Items) {
+    $python = Get-Command "python" -ErrorAction SilentlyContinue
+    if (-not $python) {
+        $python = Get-Command "python3" -ErrorAction SilentlyContinue
+    }
+
+    if ($python) {
+        $scriptPath = Join-Path ([System.IO.Path]::GetTempPath()) "english-learn-archive.py"
+        $script = @'
+import os
+import sys
+import tarfile
+
+source, archive = sys.argv[1], sys.argv[2]
+items = sys.argv[3:]
+
+
+def normalize(info):
+    info.uid = 0
+    info.gid = 0
+    info.uname = "root"
+    info.gname = "root"
+    info.mtime = int(info.mtime)
+    return info
+
+
+with tarfile.open(archive, "w:gz") as bundle:
+    for item in items:
+        bundle.add(os.path.join(source, item), arcname=item, filter=normalize)
+'@
+        Set-Content -LiteralPath $scriptPath -Value $script -Encoding UTF8
+        & $python.Source $scriptPath $SourceDirectory $ArchivePath @Items
+        if ($LASTEXITCODE -ne 0) {
+            throw "Failed to create $ArchivePath with Python tarfile (exit code $LASTEXITCODE)."
+        }
+        return
+    }
+
+    Write-Host "Python was not found; falling back to the system tar command." -ForegroundColor Yellow
+    Push-Location $SourceDirectory
+    try {
+        & tar -czf $ArchivePath @Items
+        if ($LASTEXITCODE -ne 0) {
+            throw "Failed to create $ArchivePath with tar (exit code $LASTEXITCODE)."
+        }
+    } finally {
+        Pop-Location
+    }
+}
+
 if (-not (Get-Command go -ErrorAction SilentlyContinue)) {
     throw "Go was not found. Install Go 1.26.5 or a compatible version and add it to PATH."
 }
@@ -105,6 +158,12 @@ try {
         Remove-Item -LiteralPath $stagingPath -Recurse -Force
     }
     New-Item -ItemType Directory -Path $stagingPath -Force | Out-Null
+
+    # Refresh the served recordings from the raw audio folder before staging so
+    # the deployed bundle always carries the current textbook audio.
+    if (-not $SkipAudioSync) {
+        Invoke-Step "Sync textbook audio (audio_7 -> web/audio/7)" { & (Join-Path $PSScriptRoot "import-audio.ps1") }
+    }
 
     if (-not $SkipBuild) {
         Invoke-Step "Cross-compile server for linux/amd64" {
@@ -123,6 +182,17 @@ try {
     Copy-Item -LiteralPath (Join-Path $projectRoot "backend") -Destination $stagingPath -Recurse
     Copy-Item -LiteralPath (Join-Path $projectRoot "chuzhong") -Destination $stagingPath -Recurse
     Copy-Item -LiteralPath (Join-Path $projectRoot "README.md") -Destination $stagingPath
+
+    $stagedAudio = Join-Path $stagingPath "web/audio/7"
+    if (-not (Test-Path -LiteralPath $stagedAudio -PathType Container)) {
+        throw "Textbook audio was not staged: $stagedAudio. Run scripts/import-audio.ps1 first."
+    }
+    $stagedAudioFiles = @(Get-ChildItem -LiteralPath $stagedAudio -Recurse -File -Filter *.mp3)
+    if ($stagedAudioFiles.Count -eq 0) {
+        throw "Textbook audio directory is empty: $stagedAudio"
+    }
+    $stagedAudioMb = [math]::Round((($stagedAudioFiles | Measure-Object -Property Length -Sum).Sum / 1MB), 1)
+    Write-Host "Packaged textbook audio: $($stagedAudioFiles.Count) file(s), $stagedAudioMb MB" -ForegroundColor Green
 
     $version = Get-Date -Format "yyyyMMdd-HHmmss"
     Set-Content -LiteralPath (Join-Path $stagingPath "VERSION") -Value $version -Encoding Ascii
@@ -151,12 +221,7 @@ WantedBy=multi-user.target
 
     $archivePath = Join-Path $stagingPath "english-learn-linux-amd64.tar.gz"
     Invoke-Step "Create deployment archive" {
-        Push-Location $stagingPath
-        try {
-            tar -czf $archivePath english-learn web backend chuzhong README.md VERSION
-        } finally {
-            Pop-Location
-        }
+        New-DeploymentArchive $stagingPath $archivePath @("english-learn", "web", "backend", "chuzhong", "README.md", "VERSION")
     }
 
     Write-Host "Staging package ready: $archivePath" -ForegroundColor Green
@@ -190,6 +255,7 @@ WantedBy=multi-user.target
         $healthPort = ($ListenAddress -split ":")[-1]
         if ([string]::IsNullOrWhiteSpace($healthPort)) { $healthPort = "8080" }
         Invoke-Remote $plink "if command -v curl >/dev/null 2>&1; then curl -fsS 'http://127.0.0.1:$healthPort/api/health'; else echo 'curl not found; skipped health check'; fi"
+        Invoke-Remote $plink "if command -v curl >/dev/null 2>&1; then curl -fsS -o /dev/null -w 'audio http %{http_code}, %{size_download} bytes\n' 'http://127.0.0.1:$healthPort/audio/7/unit1/vocab.mp3'; else echo 'curl not found; skipped audio check'; fi"
     }
 
     if ($InstallNginxProxy) {

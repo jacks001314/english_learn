@@ -1,0 +1,568 @@
+{
+ "book": "七年级上册",
+ "section": {
+  "section": "Unit 3",
+  "kind": "Unit",
+  "title": "Family ties",
+  "titleZh": "亲情纽带",
+  "topic": "亲情与代际理解：电影《那山那人那狗》与兄弟相伴的故事",
+  "goals": [
+   "用名词所有格表达所属关系",
+   "读懂并讲述有关亲情的故事",
+   "体会“沉默的爱”并表达对家人的情感"
+  ],
+  "grammar": {
+   "topic": "名词的所有格（possessive nouns）",
+   "summary": "名词所有格表示所属关系：有生命的名词一般用 -'s 或 -'；无生命的名词常用 of 结构；还有 a friend of my father's 这样的双重所有格。",
+   "points": [
+    {
+     "title": "-'s 所有格",
+     "detail": "单数名词后加 -'s；以 -s 结尾的复数名词只加 -'。",
+     "examples": [
+      "But now the son is taking over his father's position.",
+      "Along the way, they start to see into each other's hearts."
+     ]
+    },
+    {
+     "title": "of 所有格",
+     "detail": "无生命的名词常用 of 结构表示所属。",
+     "examples": [
+      "the window of the house 房子的窗户",
+      "the end of the year 年末",
+      "the gate of our school 我们学校的大门"
+     ]
+    },
+    {
+     "title": "双重所有格",
+     "detail": "a friend of my father's 与 my father's friend 含义不同：前者含有“我父亲不止一个朋友”的意思，后者没有。",
+     "examples": [
+      "a friend of my father's",
+      "my father's friend"
+     ]
+    },
+    {
+     "title": "所有格的用法提示",
+     "detail": "表示时间、距离、国家、城市等的名词也可用 -'s，如 today's newspaper、China's capital。",
+     "examples": [
+      "today's newspaper 今天的报纸",
+      "China's capital 中国的首都"
+     ]
+    }
+   ],
+   "examples": [
+    "Tania is Catherine's grandmother.",
+    "But now the son is taking over his father's position.",
+    "Along the way, they start to see into each other's hearts."
+   ]
+  },
+  "words": [
+   {
+    "word": "silent",
+    "phonetic": "ˈsaɪlənt",
+    "pos": "adj.",
+    "meaning": "不作声的",
+    "page": 48
+   },
+   {
+    "word": "along",
+    "phonetic": "əˈlɒŋ",
+    "pos": "prep.",
+    "meaning": "顺着，沿着",
+    "page": 48
+   },
+   {
+    "word": "mountain",
+    "phonetic": "ˈmaʊntɪn",
+    "pos": "n.",
+    "meaning": "高山，山岳",
+    "page": 48
+   },
+   {
+    "word": "road",
+    "phonetic": "rəʊd",
+    "pos": "n.",
+    "meaning": "路，道路，公路",
+    "page": 48
+   },
+   {
+    "word": "handsome",
+    "phonetic": "ˈhænsəm",
+    "pos": "adj.",
+    "meaning": "（男子）英俊的，漂亮的",
+    "page": 48
+   },
+   {
+    "word": "strict",
+    "phonetic": "strɪkt",
+    "pos": "adj.",
+    "meaning": "严格的，严厉的",
+    "page": 48
+   },
+   {
+    "word": "follow",
+    "phonetic": "ˈfɒləʊ",
+    "pos": "v.",
+    "meaning": "跟着，跟随",
+    "page": 48
+   },
+   {
+    "word": "postman",
+    "phonetic": "ˈpəʊstmən",
+    "pos": "n.",
+    "meaning": "邮递员，邮差",
+    "page": 48
+   },
+   {
+    "word": "touching",
+    "phonetic": "ˈtʌtʃɪŋ",
+    "pos": "adj.",
+    "meaning": "感人的，动人的",
+    "page": 48
+   },
+   {
+    "word": "son",
+    "phonetic": "sʌn",
+    "pos": "n.",
+    "meaning": "儿子",
+    "page": 48
+   },
+   {
+    "word": "serve",
+    "phonetic": "sɜːv",
+    "pos": "v.",
+    "meaning": "为……工作；供职",
+    "page": 48
+   },
+   {
+    "word": "area",
+    "phonetic": "ˈeəriə",
+    "pos": "n.",
+    "meaning": "（国家，市镇等的）地区，区域",
+    "page": 48
+   },
+   {
+    "word": "absent",
+    "phonetic": "ˈæbsənt",
+    "pos": "adj.",
+    "meaning": "不在的，缺席的",
+    "page": 48
+   },
+   {
+    "word": "seldom",
+    "phonetic": "ˈseldəm",
+    "pos": "adv.",
+    "meaning": "很少，罕见，不常",
+    "page": 48
+   },
+   {
+    "word": "position",
+    "phonetic": "pəˈzɪʃən",
+    "pos": "n.",
+    "meaning": "职位，职务",
+    "page": 48
+   },
+   {
+    "word": "carry",
+    "phonetic": "ˈkæri",
+    "pos": "v.",
+    "meaning": "把（某物或某人）带至（新的地点或位置）",
+    "page": 49
+   },
+   {
+    "word": "across",
+    "phonetic": "əˈkrɒs",
+    "pos": "prep.",
+    "meaning": "从一边到另一边；穿过",
+    "page": 49
+   },
+   {
+    "word": "memory",
+    "phonetic": "ˈmeməri",
+    "pos": "n.",
+    "meaning": "记忆，回忆",
+    "page": 49
+   },
+   {
+    "word": "tear",
+    "phonetic": "tɪə",
+    "pos": "n.",
+    "meaning": "眼泪，泪水",
+    "page": 49
+   },
+   {
+    "word": "growth",
+    "phonetic": "ɡrəʊθ",
+    "pos": "n.",
+    "meaning": "（性格、智力或情感的）发展，成长",
+    "page": 49
+   },
+   {
+    "word": "hide",
+    "phonetic": "haɪd",
+    "pos": "v.",
+    "meaning": "把……藏起来，隐藏",
+    "page": 49
+   },
+   {
+    "word": "care",
+    "phonetic": "keə",
+    "pos": "n.",
+    "meaning": "关心",
+    "page": 49
+   },
+   {
+    "word": "hug",
+    "phonetic": "hʌɡ",
+    "pos": "n.",
+    "meaning": "拥抱",
+    "page": 49
+   },
+   {
+    "word": "kiss",
+    "phonetic": "kɪs",
+    "pos": "n.",
+    "meaning": "吻",
+    "page": 49
+   },
+   {
+    "word": "marry",
+    "phonetic": "ˈmæri",
+    "pos": "v.",
+    "meaning": "结婚；娶；嫁",
+    "page": 51
+   },
+   {
+    "word": "queen",
+    "phonetic": "kwiːn",
+    "pos": "n.",
+    "meaning": "女王",
+    "page": 53
+   },
+   {
+    "word": "pick",
+    "phonetic": "pɪk",
+    "pos": "v.",
+    "meaning": "挑选；选择",
+    "page": 53
+   },
+   {
+    "word": "pick up",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "搭载，接载",
+    "page": 53
+   },
+   {
+    "word": "actress",
+    "phonetic": "ˈæktrɪs",
+    "pos": "n.",
+    "meaning": "女演员",
+    "page": 54
+   },
+   {
+    "word": "change",
+    "phonetic": "tʃeɪndʒ",
+    "pos": "v.",
+    "meaning": "换（衣服）",
+    "page": 55
+   },
+   {
+    "word": "race",
+    "phonetic": "reɪs",
+    "pos": "v./n.",
+    "meaning": "比赛",
+    "page": 56
+   },
+   {
+    "word": "serious",
+    "phonetic": "ˈsɪəriəs",
+    "pos": "adj.",
+    "meaning": "严重的",
+    "page": 56
+   },
+   {
+    "word": "disease",
+    "phonetic": "dɪˈziːz",
+    "pos": "n.",
+    "meaning": "疾病，病",
+    "page": 56
+   },
+   {
+    "word": "stay",
+    "phonetic": "steɪ",
+    "pos": "v.",
+    "meaning": "停留，逗留，留下",
+    "page": 56
+   },
+   {
+    "word": "trailer",
+    "phonetic": "ˈtreɪlə",
+    "pos": "n.",
+    "meaning": "拖车，挂车",
+    "page": 56
+   },
+   {
+    "word": "pull",
+    "phonetic": "pʊl",
+    "pos": "v.",
+    "meaning": "拉；扯；拖",
+    "page": 56
+   },
+   {
+    "word": "bright",
+    "phonetic": "braɪt",
+    "pos": "adj.",
+    "meaning": "欢快的；充满生气的",
+    "page": 56
+   },
+   {
+    "word": "refuse",
+    "phonetic": "rɪˈfjuːz",
+    "pos": "v.",
+    "meaning": "拒绝，回绝",
+    "page": 57
+   },
+   {
+    "word": "result",
+    "phonetic": "rɪˈzʌlt",
+    "pos": "n.",
+    "meaning": "结果，后果",
+    "page": 57
+   },
+   {
+    "word": "matter",
+    "phonetic": "ˈmætə",
+    "pos": "v.",
+    "meaning": "（尤指对某人自己或对发生之事）重要，要紧，有关系",
+    "page": 57
+   },
+   {
+    "word": "power",
+    "phonetic": "ˈpaʊə",
+    "pos": "v.",
+    "meaning": "给（车辆或机器）提供动力",
+    "page": 57
+   }
+  ],
+  "phrases": [
+   {
+    "phrase": "take over",
+    "meaning": "接管，接任"
+   },
+   {
+    "phrase": "be absent from",
+    "meaning": "缺席，不在……"
+   },
+   {
+    "phrase": "along the way",
+    "meaning": "一路上"
+   },
+   {
+    "phrase": "each other's hearts",
+    "meaning": "彼此的内心"
+   },
+   {
+    "phrase": "be close to sb",
+    "meaning": "和某人亲近"
+   },
+   {
+    "phrase": "take part in",
+    "meaning": "参加，参与"
+   },
+   {
+    "phrase": "find a way",
+    "meaning": "找到办法"
+   },
+   {
+    "phrase": "more important than",
+    "meaning": "比……更重要"
+   },
+   {
+    "phrase": "stand by",
+    "meaning": "支持，陪伴"
+   },
+   {
+    "phrase": "family photo",
+    "meaning": "全家福"
+   },
+   {
+    "phrase": "have a good talk with",
+    "meaning": "和……好好谈谈"
+   },
+   {
+    "phrase": "pick sb up",
+    "meaning": "接某人"
+   }
+  ],
+  "patterns": [
+   {
+    "pattern": "... with a ... face.",
+    "meaning": "带着……表情/面容的……",
+    "examples": [
+     "An older man with a strict face follows him."
+    ]
+   },
+   {
+    "pattern": "It is about ...",
+    "meaning": "它是关于……的。",
+    "examples": [
+     "It is a touching story about the love between father and son."
+    ]
+   },
+   {
+    "pattern": "For years, ...",
+    "meaning": "多年来，……",
+    "examples": [
+     "For years, the father served as the postman for this area."
+    ]
+   },
+   {
+    "pattern": "I think it is our family's best photo.",
+    "meaning": "我觉得这是我们全家最好的一张照片。",
+    "examples": [
+     "I think it is our family's best photo."
+    ]
+   },
+   {
+    "pattern": "It brings back my memory of ...",
+    "meaning": "它让我想起……",
+    "examples": [
+     "It brings back my memory of my grandmother."
+    ]
+   },
+   {
+    "pattern": "His / Her love may be silent. But like a mountain, it is always there.",
+    "meaning": "他/她的爱或许沉默，但如山一般始终存在。",
+    "examples": [
+     "His love may be silent. But like a mountain, it is always there."
+    ]
+   }
+  ],
+  "notes": [
+   {
+    "title": "serve as 担任，起……作用",
+    "body": "serve 意为“为……工作；供职”，与 as 连用表示“担任，扮演，起……作用”。例如：She serves as the team leader in the meeting."
+   },
+   {
+    "title": "be absent from 缺席",
+    "body": "be absent from... 意为“缺席，不在……”。He was often absent from home and the son seldom saw him. 又如：They are absent from the meeting."
+   },
+   {
+    "title": "bring back 使想起",
+    "body": "bring back 意为“使想起，使回忆起”。It brings back the father's memory of carrying the son on his shoulders. 这让父亲想起以前把儿子扛在肩上的情景。"
+   },
+   {
+    "title": "be close to sb 和某人亲近",
+    "body": "They are always close to each other. 他们一直亲密无间。又如：Lucy is close to her grandmother."
+   },
+   {
+    "title": "way 表示“方法，办法”",
+    "body": "way 除“道路”外还表示“方法，办法”。One day, he finds a way. 有一天，他想到一个办法。又如：What is the best way to learn a new language?"
+   },
+   {
+    "title": "some things are more important than winning",
+    "body": "more important than 表示“比……更重要”。For the brothers, some things are more important than winning."
+   }
+  ],
+  "article": {
+   "reading": {
+    "title": "Silent love",
+    "kind": "reading",
+    "source": "Unit 3 Understanding ideas",
+    "paragraphs": [
+     "Along a mountain road, a handsome young man walks fast. An older man with a strict face follows him. This is from my favourite film, Postmen in the Mountains. It is a touching story about the love between father and son.",
+     "For years, the father served as the postman for this area. He was often absent from home and the son seldom saw him. But now the son is taking over his father's position. The father goes with him on his first day of work. Along the way, they start to see into each other's hearts.",
+     "For the first time, the son carries his father across a cold river. It brings back the father's memory of carrying the son on his shoulders. Tears quietly run down his face.",
+     "This film shows a traditional Chinese father. He is happy about his son's growth. But he just hides his care in his heart. He does not give hugs or kisses to his son. His love may be silent. But like a mountain, it is always there."
+    ],
+    "audio": "/audio/7/unit3/reading.mp3"
+   },
+   "extra": [
+    {
+     "title": "Racing together",
+     "kind": "story",
+     "paragraphs": [
+      "1 John and Robert Taylor are brothers. They are always close to each other. But Robert has a serious disease and cannot move at all. He has to stay at home every day and he often feels lonely. He wants to join the other kids. He wants to go out and play.",
+      "2 John sees Robert's sad face and wants to help. One day, he finds a way. He puts Robert in a trailer and pulls it along with his bike. For the first time, Robert feels like the other kids. A big, bright smile appears on his face.",
+      "3 Now, the brothers often take part in bike races together. It is hard for John to pull Robert's trailer. But John refuses to race without his brother. They do not often win. But for the brothers, some things are more important than winning. They enjoy the time together. “We are family,” John says.",
+      "4 For the Taylor brothers, the result does not really matter. The love between them powers their bike. And love always wins."
+     ],
+     "audio": "/audio/7/unit3/writing.mp3"
+    }
+   ],
+   "dialogues": []
+  },
+  "listening": {
+   "title": "家庭沟通：Tina 与妈妈",
+   "tracks": [
+    {
+     "title": "Listen to the family hotline programme. What problem does Tina have with her mother?",
+     "url": "/audio/7/unit3/listening-1.mp3"
+    },
+    {
+     "title": "Listen again and complete the chart",
+     "url": "/audio/7/unit3/listening-2.mp3"
+    },
+    {
+     "title": "Listen and complete the conversation",
+     "url": "/audio/7/unit3/listening-3.mp3"
+    }
+   ],
+   "phonetics": {
+    "title": "语音练习 · Phonetics in use",
+    "url": "/audio/7/unit3/phonetics.mp3"
+   },
+   "tasks": [
+    "听录音，找出 Tina 的问题并完成表格",
+    "再听一遍，体会说话人如何用委婉语（softening language）表达"
+   ],
+   "script": [
+    {
+     "speaker": "Dr Chang",
+     "text": "We all know “problem children”. But do you know “problem parents”? Children sometimes call me to talk about their “problem parents”. For example, Tina's mother is an actress at a park. Every day, she dresses up as a queen. Cool, right? But Tina doesn't think so. Her mother often goes to pick her up in this dress. Tina is not happy about this. My advice for her is: have a good talk with her mother."
+    },
+    {
+     "speaker": "Mum",
+     "text": "Tina, I will pick you up at the school gate at 5."
+    },
+    {
+     "speaker": "Tina",
+     "text": "OK, Mum. But... can you change your clothes before you come?"
+    },
+    {
+     "speaker": "Mum",
+     "text": "Why? I do not have time to change after work. I do not want to be late."
+    },
+    {
+     "speaker": "Tina",
+     "text": "It is a bit difficult to talk about. But that is too eye-catching."
+    },
+    {
+     "speaker": "Mum",
+     "text": "Oh, Tina. Don't you love my queen's dress?"
+    },
+    {
+     "speaker": "Tina",
+     "text": "Not now. I am not a little girl any more. Everyone looks at you and laughs."
+    },
+    {
+     "speaker": "Mum",
+     "text": "I am sorry. I did not know that. Now I see. I will change my clothes before I pick you up."
+    },
+    {
+     "speaker": "Tina",
+     "text": "Thank you, Mum. I hope you are not hurt."
+    },
+    {
+     "speaker": "Mum",
+     "text": "I am glad you told me this, my girl."
+    }
+   ]
+  },
+  "wordsAudio": "/audio/7/unit3/vocab.mp3",
+  "speaking": {
+   "title": "口语活动 · Draw and write about a loving family moment. Then share it with the class",
+   "url": "/audio/7/unit3/speaking.mp3"
+  }
+ }
+}

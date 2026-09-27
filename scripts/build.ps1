@@ -2,7 +2,8 @@
 param(
     [string]$OutputDirectory = "dist/english-learn",
     [switch]$SkipTests,
-    [switch]$StrictWordCheck
+    [switch]$StrictWordCheck,
+    [switch]$SkipAudioSync
 )
 
 $ErrorActionPreference = "Stop"
@@ -31,6 +32,11 @@ if (-not $outputPath.StartsWith($resolvedRoot, [System.StringComparison]::Ordina
 Push-Location $projectRoot
 try {
     $env:GOCACHE = $goCache
+    # Refresh the served recordings from the raw audio folder so the release
+    # always ships the current textbook audio (skipped when the source is absent).
+    if (-not $SkipAudioSync) {
+        Invoke-Step "Sync textbook audio (audio_7 -> web/audio/7)" { & (Join-Path $PSScriptRoot "import-audio.ps1") }
+    }
     if (-not $SkipTests) {
         Invoke-Step "Run unit tests" { go test ./... }
         Invoke-Step "Run static checks" { go vet ./... }

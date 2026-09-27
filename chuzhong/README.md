@@ -40,7 +40,7 @@ chuzhong/
 ## 教材版本说明（重要）
 
 - **七年级**：使用 **外研版（2024）新教材**（单元制）。上、下册各 6 个正式单元：
-  - 上册：Unit 1 *A new start* / Unit 2 *More than fun* / Unit 3 *Family ties* / Unit 4 *Time to celebrate* / Unit 5 *Fantastic friends* / Unit 6 *The power of plants*
+  - 上册：Unit 1 *A new start* / Unit 2 *More than fun* / Unit 3 *Family ties* / Unit 4 *Time to celebrate* / Unit 5 *The power of plants* / Unit 6 *Fantastic friends*
   - 下册：Unit 1 *The secrets of happiness* / Unit 2 *Go for it!* / Unit 3 *Food matters* / Unit 4 *The art of having fun* / Unit 5 *Amazing nature* / Unit 6 *Hitting the road*
 - **八年级、九年级**：本数据集使用 **外研2011课标版**（模块制，每个模块含 Unit 1 / Unit 2 / Unit 3 Language in use）。
   - 八年级：上册 Module 1–12、下册 Module 1–10

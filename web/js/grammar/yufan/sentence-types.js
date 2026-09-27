@@ -1,0 +1,340 @@
+// web/js/grammar/yufan/sentence-types.js
+// 整理自 yufan/句子的种类/（教材第十九章，第 338—349 页扫描图，共 13 张）
+// 契约见同目录 README.md；自检：node --check web/js/grammar/yufan/sentence-types.js
+
+export default [
+  {
+    topicId: "g-sentence-types",
+    newTopic: true,
+    category: "句法",
+    difficulty: 3,
+    title: "句子的种类",
+    sourceDirs: ["yufan/句子的种类"],
+    imagesRead: 13,
+    summary:
+      "按使用目的，英语句子分为陈述句、疑问句、祈使句和感叹句四种。本章重点是陈述句的否定结构（含部分否定、否定前移）、祈使句的肯定与否定形式，以及 what / how 引导的感叹句。",
+    intro:
+      "本讲义整理自教材第十九章「句子的种类」（共 13 张扫描图）。疑问句内容较多，教材安排在下一章（第二十章）详述，本讲义不重复；这里集中整理陈述句（肯定/否定）、祈使句与感叹句。",
+    forms: [
+      { name: "陈述句", pattern: "主语 + 谓语（肯定）／主语 + be / 情态动词 / 助动词 + not ...（否定）", note: "陈述事实或观点，用降调，句末用句号。" },
+      { name: "疑问句", pattern: "一般疑问句／特殊疑问句等", note: "本书安排在第 20 章详述；本章只作分类提示。" },
+      { name: "祈使句", pattern: "动词原形 + ...（省略主语）", note: "表示请求、命令、建议；句末用感叹号或句号，用降调。" },
+      { name: "否定祈使句", pattern: "Don't + 动词原形 ...；Let's / Let me + not + 动词原形 ...", note: "Don't let + 第三人称代词宾格/名词 + 动词原形。" },
+      { name: "感叹句（what）", pattern: "What + a/an（+ 形容词）+ 名词 + 陈述句！", note: "what 修饰名词。" },
+      { name: "感叹句（how）", pattern: "How + 形容词/副词 + 陈述句（主语 + 谓语）！", note: "how 修饰形容词、副词；how 修饰动词时动词不提前。" },
+    ],
+    points: [
+      {
+        title: "含有 not 的部分否定",
+        desc: "not 与 very、always 以及不定代词 all、both、every 及 every 的复合词连用时，表示部分否定。",
+        good: ["I don't play football very well.（我足球踢得不是很好。）", "It isn't always hot here in summer.（这里夏天不一定总是很热。）", "All of us are not students.（我们并非都是学生。）"],
+        bad: ["All of us are not students.（想表达“我们都不是学生”时应说 None of us are students.）"],
+      },
+      {
+        title: "宾语从句的否定前移",
+        desc: "主句谓语是 think、believe 等词时，宾语从句谓语的否定习惯上要前移到主句谓语前。",
+        good: ["I don't think you are right.", "We don't believe he'll win."],
+        bad: ["I think you aren't right.（不符合习惯表达）"],
+      },
+      {
+        title: "祈使句 + and / or 相当于条件状语从句",
+        desc: "祈使句有时相当于一个由 if 引导的条件状语从句；and 表顺承，or 表否则。",
+        good: ["Use your head, and you'll find a way.", "Hurry up, or you'll miss the train."],
+        bad: ["Use your head, or you'll find a way.（and / or 关系用错）"],
+      },
+      {
+        title: "感叹句 what 与 how 的分工",
+        desc: "what 修饰名词（单数可数名词要加 a/an）；how 修饰形容词、副词。",
+        good: ["What a clever boy he is!", "What nice weather it is!", "How clever the boy is!", "How fast he runs!"],
+        bad: ["How a clever boy he is!", "What clever the boy is!"],
+      },
+      {
+        title: "Let's 与 Let us 的区别",
+        desc: "Let's 包括对方，Let us 不包括对方，在反意疑问句中差别最明显。",
+        good: ["Let's go, shall we?", "Let us go, will you?"],
+        bad: ["Let's go, will you?（表示包括对方的建议时应用 shall we）"],
+      },
+      {
+        title: "用 no / never / few / little 等否定词表示否定",
+        desc: "no + 名词 = not any；never 语气比 not 强烈；few / little 表示“几乎没有”；no one = nobody；nothing = not anything；seldom、hardly 是否定副词。",
+        good: ["There is no wind. = There is not any wind.", "I'll never forget you.", "No one knows the answer. = Nobody knows the answer."],
+        bad: ["There is no any wind.（no 后面不能再加 any）"],
+      },
+    ],
+    pitfalls: [
+      "no 和名词之间不能加冠词、指示代词、物主代词以及 much、many、any、some 等限定词。",
+      "含 not 的句子中使用 very、always、all、both、every 等时是部分否定，不是全部否定。",
+      "few 修饰可数名词复数，little 修饰不可数名词；none 后面常跟 of、可表示人或物，而 nobody 只能表示人。",
+      "表示否定的词（never、seldom、hardly、little 等）放在句首时，句子要用倒装结构。",
+      "too...to...（太……以至于不……）是不使用否定词的否定句。",
+      "祈使句省略主语，谓语动词一律用原形；否定形式是 Don't + 动词原形，不要写成 don't + 其他形式。",
+      "please 位于句尾时，前面一定要加逗号；祈使句中的呼语要用逗号隔开。",
+      "感叹句中 what 后面要跟名词，how 后面要跟形容词或副词，不能混用。",
+      "how 引导的感叹句后面是陈述句语序，而疑问句的语序要颠倒过来（How busy you are! 对 How busy are you?）。",
+      "must 作“必须”讲时，mustn't / must not 是“不许（禁止）”，不是“不必要”。",
+      "将来时、完成时及情态动词的被动语态，否定词 not 要放在第一个助动词之后（will not be sent，has not been finished），不能放在 be 后面。",
+    ],
+    examTips: [
+      "感叹句选择题先看空格后第一个词：是名词短语就用 what（单数可数名词还要看有没有 a/an），是形容词/副词就用 how。",
+      "祈使句 + and / or 的题，判断前后是顺承还是相反：顺承用 and，相反（否则）用 or。",
+      "含 or not 的空格只能填 whether，不能填 if。",
+      "否定转移的标志是主句谓语 think、believe 等，看到 I ______ you are right 这类结构优先考虑否定前移。",
+      "陈述句改否定句：有 be 动词、情态动词、完成时助动词就在其后加 not；只有行为动词则借助 do / does / did + not + 动词原形。",
+    ],
+    memoryCard: [
+      "句子四类：陈述、疑问、祈使、感叹。",
+      "not 遇 very / always / all / both / every = 部分否定。",
+      "祈使句：动词原形开头，否定 Don't + 原形。",
+      "what 跟名词，how 跟形容词/副词。",
+      "祈使句 + and / or = if 条件句。",
+      "Let's 包括对方（shall we），Let us 不包括对方（will you）。",
+    ],
+    sections: [
+      {
+        heading: "一、按使用目的分四种",
+        blocks: [
+          { type: "text", text: "英语中的句子根据其使用目的可以分为陈述句、疑问句、祈使句和感叹句四种；按其语法结构（即句子的形式）可以分为简单句、并列句和复合句。本章对陈述句、祈使句、感叹句作了详细说明；疑问句所包含的内容较多，将在下一章详加叙述。" },
+          { type: "table", head: ["类型", "典型例句", "中文"], rows: [
+            ["陈述句", "This is a dog.", "这是一只狗。"],
+            ["疑问句", "Is this a dog?", "这是一只狗吗？"],
+            ["祈使句", "Open your eyes!", "睁开你的眼睛！"],
+            ["感叹句", "What a beautiful building it is!", "这是座多么漂亮的大楼啊！"],
+            ["简单句", "I am studying.", "我在学习。"],
+            ["并列句", "I was born in a small village and I lived there for nearly ten years.", "我出生在一个小村庄，并在那里生活了近十年。"],
+            ["复合句", "As soon as I get there, I'll call you.", "我一到那儿，就给你打电话。"],
+          ] },
+        ],
+      },
+      {
+        heading: "二、陈述句：肯定与否定",
+        blocks: [
+          { type: "text", text: "用以陈述事实或观点的句子叫做陈述句，陈述句包括肯定结构和否定结构。陈述句通常用降调，句末用句号“.”。陈述句是英语中最常用的句子。" },
+          { type: "examples", items: [
+            { en: "We live in Beijing.", zh: "我们住在北京。（肯定句）" },
+            { en: "We don't live in Beijing.", zh: "我们不住在北京。（否定句）" },
+          ] },
+          { type: "text", text: "1 肯定结构的陈述句" },
+          { type: "examples", items: [
+            { en: "We can use mobile phones to send short messages.", zh: "我们可以用手机发送短信。" },
+            { en: "They are looking forward to seeing the film.", zh: "他们期待着看这部电影。" },
+            { en: "I got a letter from my parents last week.", zh: "上周我收到了父母的来信。" },
+            { en: "Tom was very proud of his model plane.", zh: "汤姆为他的飞机模型而感到自豪。" },
+            { en: "I am afraid to make friends with anyone.", zh: "我不敢和任何人交朋友。" },
+            { en: "He jumped into the river and saved the boy.", zh: "他跳进河中，救了男孩一命。" },
+            { en: "She has lost touch with most of her friends from primary school.", zh: "她与小学时的大部分朋友已经失去了联系。" },
+            { en: "They will plant trees on Saturday.", zh: "周六他们要去植树。" },
+            { en: "We are going to visit him next week.", zh: "我们打算下周去拜访他。" },
+          ] },
+          { type: "text", text: "2 否定结构的陈述句" },
+          { type: "examples", items: [
+            { en: "I am not a student.", zh: "我不是学生。" },
+            { en: "He can't speak English.", zh: "他不会说英语。" },
+            { en: "I don't know him.", zh: "我不认识他。" },
+          ] },
+          { type: "table", head: ["否定句型", "结构", "例句"], rows: [
+            ["be 动词的否定句", "主语 + be 动词 + not + ...", "I wasn't good at English. / He isn't my cousin. / I'm not fond of the game."],
+            ["情态动词的否定句", "主语 + 情态动词 + not + 动词原形 + ...", "I can't do it by myself. / You mustn't take the books out. / You must not go there alone."],
+            ["完成时的否定句", "主语 + have / has / had + not + 过去分词 + ...", "I haven't finished reading the book yet. / He hasn't had his breakfast yet."],
+            ["行为动词的否定句", "主语 + do / does / did + not + 动词原形 + ...", "They don't live in Shanghai. / He doesn't do his homework every day. / She didn't pass the English exam yesterday."],
+          ] },
+          { type: "list", items: [
+            "A 进行时和被动语态（现在时、过去时、进行时的被动语态）都有 be 动词，所以它们的否定句与 be 动词的否定句同形：They aren't cleaning the room. / He was not elected as the monitor.",
+            "B 将来时（will、shall）、完成时及情态动词被动语态的否定句与 be 动词的否定句不同形：They will not be sent to the front.（× They will be not sent to the front.）/ The work has not been finished.（× The work has been not finished.）",
+          ] },
+          { type: "table", head: ["缩略形式", "缩写"], rows: [
+            ["is not / are not / was not / were not", "isn't / aren't / wasn't / weren't"],
+            ["do not / does not / did not", "don't / doesn't / didn't"],
+            ["can not / will not / must not", "can't / won't / mustn't"],
+            ["have not / has not / had not", "haven't / hasn't / hadn't"],
+            ["am not", "I'm not（am not 无缩写形式，应写成 am not 形式）"],
+          ] },
+          { type: "pitfall", text: "must 作“必须”讲时，它的否定形式 mustn't / must not 并不是“不必要”的意思，而是“不许（表示禁止）”的意思。" },
+        ],
+      },
+      {
+        heading: "三、否定结构应注意事项",
+        blocks: [
+          { type: "text", text: "A 使用 not 表示否定。" },
+          { type: "text", text: "(1) not 表示部分否定：含有 not 的句子，如果使用了 very、always 以及不定代词 all、both、every 及 every 的复合词等，则表示部分否定。" },
+          { type: "examples", items: [
+            { en: "I don't play football very well.", zh: "我足球踢得不是很好。" },
+            { en: "It isn't always hot here in summer.", zh: "这里夏天不一定总是很热。" },
+            { en: "All of us are not students.", zh: "我们并非都是学生。" },
+          ] },
+          { type: "table", head: ["部分否定", "全部否定"], rows: [
+            ["I don't play football very well.", "I don't play football well.（我足球踢得不好。）"],
+            ["It isn't always hot here in summer.", "It isn't hot here in summer.（这里夏天不热。）"],
+            ["All of us are not students.", "None of us are students.（我们都不是学生。）"],
+          ] },
+          { type: "text", text: "(2) not 的固定搭配表示否定：not...at all 一点儿也不……；not...any longer / not...any more 再也不……" },
+          { type: "examples", items: [
+            { en: "I'm not tired at all.", zh: "我一点儿也不累。" },
+            { en: "I don't like it at all.", zh: "我一点儿也不喜欢它。" },
+            { en: "I don't live here any longer. = I no longer live here.", zh: "我再也不在这儿住了。" },
+            { en: "I can not see you any more. = I can no longer see you.", zh: "我再也见不到你了。" },
+          ] },
+          { type: "tip", text: "在含有宾语从句的主从复合句中，当主句的谓语动词是 think（认为）、believe（相信）等词时，宾语从句谓语的否定习惯上要前移到主句的谓语动词前：I don't think you are right.（我认为你不对。）/ We don't believe he'll win.（我们相信他不会赢。）" },
+          { type: "text", text: "B 使用 not 以外的否定词表示否定。" },
+          { type: "examples", items: [
+            { en: "There is no wind. = There is not any wind.", zh: "一点儿风都没有。（no + 名词 = not any...）" },
+            { en: "I'll never forget you.", zh: "我决不会忘记你。（never 决不，语气比 not 强烈）" },
+            { en: "He has few friends. / I have little money. / There is little water in the glass.", zh: "他几乎没有朋友。/ 我几乎没有钱。/ 杯子里几乎没有水。" },
+            { en: "No one knows the answer. = Nobody knows the answer.", zh: "没人知道答案。" },
+            { en: "I have nothing to do today.", zh: "我今天没什么事可做。（nothing = not anything）" },
+            { en: "None of them can answer the question.", zh: "他们中没有任何一个人能回答这个问题。" },
+            { en: "I eat none of the food.", zh: "这些食物我一样也没吃。" },
+            { en: "He can hardly write his name. / We seldom watch TV.", zh: "他几乎写不出他的名字。/ 我们很少看电视。" },
+          ] },
+          { type: "table", head: ["对比项", "说明"], rows: [
+            ["few 与 little", "few 修饰可数名词复数，little 修饰不可数名词。"],
+            ["none 与 nobody", "none 后面常跟 of，none of 可表示人或物；而 nobody 只能表示人。"],
+            ["no 的搭配", "在 no 和名词之间不能加冠词、指示代词、物主代词以及 much、many、any、some 等限定词。"],
+          ] },
+          { type: "pitfall", text: "表示否定的词，比如 never、seldom、hardly、little 等放在句首时，句子要用倒装结构。" },
+          { type: "text", text: "C 不使用否定词而表示否定：too...to...（太……以至于不……）是不使用否定词的否定句。" },
+          { type: "examples", items: [
+            { en: "He is too old to work.", zh: "他年纪太大了，不能工作了。" },
+          ] },
+          { type: "table", head: ["肯定形式", "否定形式", "肯定形式", "否定形式"], rows: [
+            ["all", "none; no", "something", "not anything; nothing"],
+            ["everyone", "no one", "a few", "few"],
+            ["everything", "nothing", "a little", "little"],
+            ["some", "not any", "both", "neither"],
+            ["either", "neither; not either", "each", "no one"],
+          ] },
+        ],
+      },
+      {
+        heading: "四、祈使句",
+        blocks: [
+          { type: "text", text: "祈使句表示请求、命令、建议等。祈使句中通常不用主语，谓语动词一律用原形，句末用感叹号或者句号，用降调。" },
+          { type: "text", text: "1 肯定的祈使句：句型 动词原形 + ……（省略主语）" },
+          { type: "examples", items: [
+            { en: "Be careful!", zh: "小心！" },
+            { en: "Let's say goodbye here.", zh: "我们在此道别吧。" },
+            { en: "Stand up.", zh: "起立。" },
+            { en: "Be quiet, please.", zh: "请安静。" },
+            { en: "Do study hard. / Do sit down.", zh: "一定要努力学习。/ 务必请坐。（加强语气时在动词前加 do）" },
+          ] },
+          { type: "examples", items: [
+            { en: "Please come here.", zh: "请到这儿来。" },
+            { en: "Go this way, please.", zh: "请这边走。（please 在句尾时前面要加逗号）" },
+            { en: "Justin, come here.", zh: "贾斯廷，过来。（呼语用逗号隔开）" },
+            { en: "Here you are, Robert.", zh: "给你，罗伯特。" },
+          ] },
+          { type: "table", head: ["句型", "例句"], rows: [
+            ["Let + 第一人称代词（me / us）+ 动词原形 + ...", "Let's go to Maldives at once. / Let me try again."],
+            ["Let + 第三人称代词（him / her / it / them）或名词 + 动词原形 + ...", "Let her tell everyone. / Let Tom go there himself."],
+          ] },
+          { type: "text", text: "2 否定的祈使句" },
+          { type: "examples", items: [
+            { en: "Don't make such a noise.", zh: "不要这么吵。" },
+            { en: "Don't swim in the river. / Don't be late.", zh: "别在河里游泳。/ 别迟到。" },
+            { en: "Let's not say anything about it.", zh: "对于这件事，咱们什么也不要说。" },
+            { en: "Don't let them play with fire.", zh: "别让他们玩火。" },
+            { en: "Don't let them look down upon you.", zh: "别让他们瞧不起你。" },
+          ] },
+          { type: "table", head: ["否定句型", "结构"], rows: [
+            ["Don't + 动词原形 + ...", "Don't make such a noise. / Don't be late."],
+            ["Let's / Let us / Let me + not + 动词原形 + ...", "Let's not say anything about it."],
+            ["Don't let + 第三人称代词宾格/名词 + 动词原形 + ...", "Don't let him do that again. / Don't let them look down upon you."],
+          ] },
+          { type: "table", head: ["对比项", "说明"], rows: [
+            ["陈述句 You sit down.", "祈使句 Sit down.（省略主语 You）"],
+            ["Let's go, shall we?", "包括对方，Yes, let's. / No, let's not."],
+            ["Let us go, will you?", "不包括对方，表示征求对方的意见。"],
+            ["祈使句与条件句", "祈使句 Use your head, and you'll find a way. = 条件句 If you use your head, you'll find a way."],
+          ] },
+          { type: "tip", text: "“No + 动词 -ing 形式”也可表示禁止，尤其常用于标语等：No smoking.（禁止吸烟。）" },
+          { type: "pitfall", text: "祈使句的否定形式由动词原形开头改为 Don't + 动词原形；不要写成 don't + 动词的其他形式（如 Don't eating / Don't to eat）。" },
+        ],
+      },
+      {
+        heading: "五、感叹句",
+        blocks: [
+          { type: "text", text: "表示喜、怒、哀、乐等强烈感情时用感叹句。感叹句分为两种：一种以 what 引导，一种以 how 引导。句尾用感叹号“！”，读降调。" },
+          { type: "examples", items: [
+            { en: "What a clever boy he is!", zh: "多么聪明的男孩啊！" },
+            { en: "How clever the boy is!", zh: "这个男孩多聪明啊！" },
+          ] },
+          { type: "text", text: "1 what 引导的感叹句" },
+          { type: "table", head: ["句型", "例句"], rows: [
+            ["What + a / an（+ 形容词）+ 名词 + 陈述句（主语 + 谓语）！", "What a beautiful city it is!（〈这是一个〉多么美丽的城市啊！）"],
+            ["What（+ 形容词）+ 可数名词复数 / 不可数名词 + 陈述句（主语 + 谓语）！", "What big coconuts these are!（〈这些是〉多么大的椰子啊！）/ What nice weather it is!（多么好的天气啊！）"],
+          ] },
+          { type: "text", text: "2 how 引导的感叹句" },
+          { type: "table", head: ["句型", "例句"], rows: [
+            ["How + 形容词 / 副词 + 陈述句（主语 + 谓语）！", "How hot it is today!（今天天气多么热啊！）/ How high the kite is flying!（那只风筝飞得多么高啊！）"],
+            ["How + 主语 + 谓语 + ...", "How fast he runs!（他跑得多快啊！）/ How I want to be an astronaut!（我多想当一名宇航员啊！）"],
+          ] },
+          { type: "tip", text: "当 how 修饰动词时，动词并不提前。what 和 how 引导的感叹句在口语中常用简略式，即省略陈述句部分：How cold!（多冷啊！）/ What heavy traffic!（交通多拥挤啊！）" },
+          { type: "examples", items: [
+            { en: "How busy you are!", zh: "你多么忙啊！（感叹句：陈述句语序）" },
+            { en: "How busy are you?", zh: "你有多忙？（疑问句：疑问句语序）" },
+          ] },
+          { type: "pitfall", text: "感叹句后面是陈述句语序，而疑问句的语序要颠倒过来，这是两种句子的根本区别。另外 what 后必须跟名词（单数可数名词要带 a/an），how 后跟形容词或副词。" },
+        ],
+      },
+      {
+        heading: "六、常见易错与实战（Common Mistakes / Final Check）",
+        blocks: [
+          { type: "table", head: ["陷阱例题", "答案", "解析"], rows: [
+            ["A: Did you enjoy the concert last night? B: Very much. ______ wonderful concert it was!【威海中考】A. What a B. What C. How a D. How", "A", "名词 concert 是可数名词单数，用 What + a/an + 形容词 + 名词结构。"],
+            ["Study hard, ______ you will pass the exam in English.【武汉中考】A. so B. still C. and D. unless", "C", "“祈使句 + and + 另一个简单句”相当于 If you study hard, you will pass the exam in English."],
+            ["A: Dad, do you like my picture? B: ______! It's the nicest one I've ever seen!【兰州中考】A. What beautiful B. How careful C. How wonderful D. What wonderful picture", "C", "修饰 picture 的形容词为 beautiful、wonderful，排除 B；how 引导感叹句用 How + 形容词/副词 + (主语 + 谓语)!"],
+            ["Don't ______ too much sweet food. It's bad for your teeth. A. eating B. to eat C. eat D. ate", "C", "祈使句由动词原形开头，其否定形式为 Don't + 动词原形。"],
+          ] },
+          { type: "list", items: [
+            "按要求变换句型（第 348—349 页）：There is some milk in the bottle. → There isn't any milk in the bottle.（改为否定句）",
+            "Take the chair to the door. → Don't take the chair to the door.（改为否定句）",
+            "He did the housework yesterday. → He didn't do the housework yesterday.（改为否定句）",
+            "The ship is big. → How big the ship is! / What a big ship it is!（改为感叹句）",
+            "Tom gave a wonderful speech at the conference. → What a wonderful speech Tom gave at the conference!（改为 What 引导的感叹句）",
+            "They were very lucky. → How lucky they were!（改为 How 引导的感叹句）",
+            "You must be kind to other people. → Be kind to other people.（改为祈使句）",
+            "You mustn't leave the room. → Don't leave the room.（改为祈使句）",
+            "Shall we play tennis after school? → Let's play tennis after school.（改为祈使句）",
+            "How cold it is today! → It is very cold today.（改为肯定陈述句）",
+            "I think he will come. → I don't think he will come.（改为否定句，否定前移）",
+            "He works very hard. → How hard he works!（改为 How 引导的感叹句）",
+            "Let's go to see them. → Let's not go to see them.（改为否定句）",
+            "Let him play outside after school. → Don't let him play outside after school.（改为否定句）",
+          ] },
+          { type: "list", items: [
+            "汉译英（第 349 页，原图为练习题、未印答案）：1. 为了看到日出，我们早上很早就起床了。",
+            "2. 我很少看报纸，我不知道每天都发生什么事。",
+            "3. 我父亲并非每天早上都到办公室去。",
+            "4. 你又一次错过了讲座，太遗憾了！",
+            "5. 他跳得真高！",
+          ] },
+          { type: "pitfall", text: "第 349 页的汉译英为练习题，原图未印答案；其中第 2 题考查 seldom 与宾语从句的结合，第 3 题考查部分否定（并非每天都去），第 5 题考查 how 引导的感叹句。" },
+        ],
+      },
+    ],
+    extras: {
+      forms: [
+        { name: "陈述句的否定改写", pattern: "be / 情态动词 / 助动词后加 not；行为动词借助 do / does / did + not", note: "有 be 动词、情态动词、完成时助动词时不再加 do。" },
+      ],
+      points: [
+        {
+          title: "否定祈使句的两种形式",
+          desc: "直接命令用 Don't + 动词原形；包含说话人自己的建议用 Let's not + 动词原形；涉及第三人称用 Don't let + 宾格/名词 + 动词原形。",
+          good: ["Don't be late.", "Let's not say anything about it.", "Don't let them play with fire."],
+          bad: ["Don't to be late.", "Let's don't say anything about it."],
+        },
+      ],
+      contrasts: [
+        {
+          title: "四种句子速查",
+          head: ["类型", "形式标志", "例句"],
+          rows: [
+            ["陈述句", "主语 + 谓语，句末句号", "We live in Beijing. / We don't live in Beijing."],
+            ["疑问句", "助动词/疑问词提前，句末问号", "Is this a dog?（详见第二十章）"],
+            ["祈使句", "动词原形开头，省略主语", "Open your eyes! / Don't make such a noise."],
+            ["感叹句", "what + 名词 / how + 形容词、副词，句末感叹号", "What a beautiful building it is! / How hot it is today!"],
+          ],
+        },
+      ],
+    },
+  },
+];

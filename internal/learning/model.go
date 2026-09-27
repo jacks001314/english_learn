@@ -109,6 +109,7 @@ type WordFilter struct {
 	Letter       string
 	PartOfSpeech string
 	Sort         string
+	Seed         int
 	Page         int
 }
 

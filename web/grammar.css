@@ -820,6 +820,131 @@
   background: #eff8f3;
 }
 
+/* ---- yufan 教材讲义（讲义精讲） ---- */
+.gd-lecture .gd-lecture-src {
+  margin-left: 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--muted, #6d7b75);
+}
+.gd-lecture-intro {
+  margin: 8px 0 16px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--green, #176b4d);
+  background: #f4faf6;
+  border-radius: 0 10px 10px 0;
+  color: var(--ink, #17231f);
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+.gd-lec-section {
+  margin: 0 0 18px;
+}
+.gd-lec-section > h4 {
+  margin: 0 0 9px;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed var(--line, #dfe8e2);
+  color: var(--green-dark, #0d4f39);
+  font-size: 14px;
+  font-weight: 800;
+}
+.gd-lec-text {
+  margin: 0 0 9px;
+  color: var(--ink, #17231f);
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+.gd-lec-list {
+  margin: 0 0 10px;
+  padding-left: 0;
+  list-style: none;
+}
+.gd-lec-list li {
+  position: relative;
+  margin-bottom: 5px;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.gd-lec-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 2px;
+  color: var(--green, #176b4d);
+  font-weight: 800;
+}
+.gd-lec-ex {
+  margin: 0 0 10px;
+  padding-left: 0;
+  list-style: none;
+}
+.gd-lec-ex li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #f7fbf9;
+  cursor: pointer;
+}
+.gd-lec-ex li:hover {
+  background: #eef8f2;
+}
+.gd-lec-ex .tb-en {
+  color: var(--green-dark, #0d4f39);
+  font-weight: 650;
+}
+.gd-lec-ex .tb-zh {
+  color: var(--muted, #6d7b75);
+  font-size: 12.5px;
+}
+.gd-lec-table {
+  margin: 0 0 12px;
+  overflow-x: auto;
+}
+.gd-lec-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.gd-lec-table th,
+.gd-lec-table td {
+  border: 1px solid var(--line, #dfe8e2);
+  padding: 6px 9px;
+  text-align: left;
+  vertical-align: top;
+}
+.gd-lec-table thead th {
+  background: #eff6f1;
+  color: var(--green-dark, #0d4f39);
+  font-weight: 800;
+  white-space: nowrap;
+}
+.gd-lec-tip,
+.gd-lec-pitfall {
+  margin: 0 0 9px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.gd-lec-tip {
+  border-left: 3px solid #3b82f6;
+  background: #edf6ff;
+}
+.gd-lec-pitfall {
+  border-left: 3px solid #f59e0b;
+  background: #fff6ed;
+}
+.gd-lec-tip b,
+.gd-lec-pitfall b {
+  margin-right: 6px;
+  color: var(--green-dark, #0d4f39);
+}
+
 @media (max-width: 620px) {
   .smart-grammar-list button {
     grid-template-columns: minmax(0, 1fr) auto;

@@ -56,7 +56,7 @@
     "letter": "A",
     "meaning": "一对，两个，几个",
     "phonetic": "/ə 'kʌpl ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "时间",
     "unit": "扩展词汇",
     "word": "a couple of"
@@ -118,7 +118,7 @@
     "letter": "A",
     "meaning": "有点儿，稍微",
     "phonetic": "/ə 'litl bit/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "情绪",
     "unit": "扩展词汇",
     "word": "a little bit"
@@ -219,7 +219,7 @@
     "letter": "A",
     "meaning": "一套；一副；一组",
     "phonetic": "/ə set ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "a set of"
@@ -270,7 +270,7 @@
     "letter": "A",
     "meaning": "(=a.m.)上午",
     "phonetic": "/ei 'em/",
-    "pos": "",
+    "pos": "adv",
     "word": "A.M."
   },
   {
@@ -353,7 +353,7 @@
     "letter": "A",
     "meaning": "接受",
     "phonetic": "/ək'sept/",
-    "pos": "",
+    "pos": "v",
     "topic": "交流",
     "unit": "核心词汇",
     "word": "accept"
@@ -431,7 +431,7 @@
     "letter": "A",
     "meaning": "在……对面",
     "phonetic": "/ə'krɔ:s frɔm/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "方位",
     "unit": "扩展词汇",
     "word": "across from"
@@ -484,7 +484,7 @@
     "letter": "A",
     "meaning": "动作片",
     "phonetic": "/'ækʃn 'muːvɪ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "娱乐",
     "unit": "扩展词汇",
     "word": "action movie"
@@ -523,7 +523,7 @@
     "letter": "A",
     "meaning": "演员",
     "phonetic": "/'æktə/",
-    "pos": "",
+    "pos": "n",
     "topic": "职业",
     "unit": "核心词汇",
     "word": "actor"
@@ -536,7 +536,7 @@
     "letter": "A",
     "meaning": "女演员",
     "phonetic": "/'æktrɪs/",
-    "pos": "",
+    "pos": "n",
     "topic": "职业",
     "unit": "核心词汇",
     "word": "actress"
@@ -575,7 +575,7 @@
     "letter": "A",
     "meaning": "增加",
     "phonetic": "/æd/",
-    "pos": "",
+    "pos": "v",
     "topic": "日常活动",
     "unit": "核心词汇",
     "word": "add"
@@ -588,7 +588,7 @@
     "letter": "A",
     "meaning": "/ ædres/ n. 地址；通讯处p.22",
     "phonetic": "/ ədres/",
-    "pos": "",
+    "pos": "n",
     "senses": [
       {
         "id": "address-noun",
@@ -654,7 +654,7 @@
     "letter": "A",
     "meaning": "劝告，建议",
     "phonetic": "/əd'vaɪsɪ/",
-    "pos": "",
+    "pos": "n",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "advice"
@@ -705,7 +705,7 @@
     "letter": "A",
     "meaning": "害怕；惧怕",
     "phonetic": "/ə'freɪd/",
-    "pos": "",
+    "pos": "adj",
     "word": "afraid"
   },
   {
@@ -784,7 +784,7 @@
     "letter": "A",
     "meaning": "再一次；又一次",
     "phonetic": "/ə'gen; ə'geɪn/",
-    "pos": "",
+    "pos": "adv",
     "word": "again"
   },
   {
@@ -834,7 +834,7 @@
     "letter": "A",
     "meaning": "代理人，经纪人",
     "phonetic": "/'eɪdʒənt/",
-    "pos": "",
+    "pos": "n",
     "topic": "旅行",
     "unit": "扩展词汇",
     "word": "agent"
@@ -948,7 +948,7 @@
     "letter": "A",
     "meaning": "亚历山大·格雷厄姆·贝尔",
     "phonetic": "/ˌælɪɡˈzɑːndə(r) ˈɡreɪəm bel/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Alexander Graham Bell"
@@ -961,7 +961,7 @@
     "letter": "A",
     "meaning": "艾尔弗雷德（男名） p.26",
     "phonetic": "/ælfrid/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Alfred"
@@ -1052,7 +1052,7 @@
     "letter": "A",
     "meaning": "总的说来",
     "phonetic": "/ɔ:l in ɔ:l/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "旅行",
     "unit": "扩展词汇",
     "word": "all in all"
@@ -1065,7 +1065,7 @@
     "letter": "A",
     "meaning": "各种各样；各种类型",
     "phonetic": "/ɔ:l kaindz ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "购物",
     "unit": "扩展词汇",
     "word": "all kinds of"
@@ -1078,7 +1078,7 @@
     "letter": "A",
     "meaning": "突然; 猛地p.44",
     "phonetic": "/ɔ:l ɔv, əv ə sʌdən/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "动物",
     "unit": "扩展词汇",
     "word": "all of a sudden"
@@ -1153,7 +1153,7 @@
     "letter": "A",
     "meaning": "全年",
     "phonetic": "/ɔ:l jɪə ə'raʊnd/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "all year around"
@@ -1243,7 +1243,7 @@
     "letter": "A",
     "meaning": "ad. v.也；而且",
     "phonetic": "/'ɔːlsəʊ/",
-    "pos": "",
+    "pos": "adv",
     "word": "also"
   },
   {
@@ -1302,7 +1302,7 @@
     "letter": "A",
     "meaning": "a. 令人惊奇/喜的",
     "phonetic": "/əmeiziŋ/",
-    "pos": "",
+    "pos": "adj",
     "word": "amazing"
   },
   {
@@ -1326,7 +1326,7 @@
     "letter": "A",
     "meaning": "美国的；美国人",
     "phonetic": "/əˈmerɪkən/",
-    "pos": "",
+    "pos": "adj \u0026 n",
     "topic": "国家",
     "unit": "词条清洗",
     "word": "American"
@@ -1365,7 +1365,7 @@
     "letter": "A",
     "meaning": "游乐场",
     "phonetic": "/ˌəˈmju:zmənt pɑ:k/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "娱乐",
     "unit": "扩展词汇",
     "word": "amusement park"
@@ -1479,7 +1479,7 @@
     "letter": "A",
     "meaning": "安妮（女名）p.2",
     "phonetic": "/æni/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Annie"
@@ -1515,7 +1515,7 @@
     "letter": "A",
     "meaning": "答案；回答",
     "phonetic": "/'ɑːnsə/",
-    "pos": "",
+    "pos": "n \u0026 v",
     "senses": [
       {
         "id": "answer-noun",
@@ -1616,7 +1616,7 @@
     "letter": "A",
     "meaning": "（常用于否定句或疑问句）任何东西；任何事物",
     "phonetic": "/'enɪθɪŋ/",
-    "pos": "",
+    "pos": "pron",
     "word": "anything"
   },
   {
@@ -1666,7 +1666,7 @@
     "letter": "A",
     "meaning": "公寓房间",
     "phonetic": "/ə'pɑːrtmənt/",
-    "pos": "",
+    "pos": "n",
     "topic": "家居",
     "unit": "核心词汇",
     "word": "apartment"
@@ -1740,7 +1740,7 @@
     "letter": "A",
     "meaning": "are not 的缩写形式",
     "phonetic": "/ɑ:nt/",
-    "pos": "",
+    "pos": "v",
     "word": "aren't"
   },
   {
@@ -1803,7 +1803,7 @@
     "letter": "A",
     "meaning": "the world世界各地",
     "phonetic": "/ə'raʊnd/",
-    "pos": "",
+    "pos": "adv",
     "topic": "世界",
     "unit": "扩展词汇",
     "word": "around"
@@ -1839,7 +1839,7 @@
     "letter": "A",
     "meaning": "文章，论文",
     "phonetic": "/'ɑːrtɪkl/",
-    "pos": "",
+    "pos": "n",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "article"
@@ -1888,7 +1888,7 @@
     "letter": "A",
     "meaning": "就我所知",
     "phonetic": "/əz fɑ: əz ai nəu/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "as far as I know"
@@ -1901,7 +1901,7 @@
     "letter": "A",
     "meaning": "至于，关于",
     "phonetic": "/əz fɔ:/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "as for"
@@ -1940,7 +1940,7 @@
     "letter": "A",
     "meaning": "一…就…，尽快",
     "phonetic": "/əz su:n əz/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "通信",
     "unit": "扩展词汇",
     "word": "as soon as"
@@ -1953,7 +1953,7 @@
     "letter": "A",
     "meaning": "一……就……",
     "phonetic": "/əz su:n əz/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "as soon as"
@@ -2005,7 +2005,7 @@
     "letter": "A",
     "meaning": "和……一样",
     "phonetic": "/əz əz/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "比较",
     "unit": "词条清洗",
     "word": "as ... as"
@@ -2054,7 +2054,7 @@
     "letter": "A",
     "meaning": "请求；恳求(给予)",
     "phonetic": "/ɑ:sk fɔ:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "ask... for..."
@@ -2093,7 +2093,7 @@
     "letter": "A",
     "meaning": "宇航员",
     "phonetic": "/'æstrənɔːt/",
-    "pos": "",
+    "pos": "n",
     "topic": "科技",
     "unit": "核心词汇",
     "word": "astronaut"
@@ -2129,7 +2129,7 @@
     "letter": "A",
     "meaning": "出生时",
     "phonetic": "/æt bɜ:θ/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "at birth"
@@ -2282,7 +2282,7 @@
     "letter": "A",
     "meaning": "起初，开始",
     "phonetic": "/æt ði; ðə bi'giniŋ ɔv, əv/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "at the beginning of phr. …"
@@ -2474,7 +2474,7 @@
     "letter": "A",
     "meaning": "a. 澳大利亚/人的",
     "phonetic": "/ɔstreiliən/",
-    "pos": "",
+    "pos": "adj \u0026 n",
     "topic": "国家",
     "unit": "扩展词汇",
     "word": "Australian"
@@ -2497,7 +2497,7 @@
     "letter": "A",
     "meaning": "可得到的；有空的",
     "phonetic": "/ə'veɪləbl/",
-    "pos": "",
+    "pos": "adj",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "available"
@@ -2624,7 +2624,7 @@
     "letter": "B",
     "meaning": "坏的；糟的",
     "phonetic": "/bæd/",
-    "pos": "",
+    "pos": "adj",
     "word": "bad"
   },
   {
@@ -2648,7 +2648,7 @@
     "letter": "B",
     "meaning": "羽毛球运动",
     "phonetic": "/'bædmɪnt(ə)n/",
-    "pos": "",
+    "pos": "n",
     "topic": "运动",
     "unit": "核心词汇",
     "word": "badminton"
@@ -2950,7 +2950,7 @@
     "letter": "B",
     "meaning": "能够做某事",
     "phonetic": "/bi: 'eibl tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "能力",
     "unit": "扩展词汇",
     "word": "be able to"
@@ -3041,7 +3041,7 @@
     "letter": "B",
     "meaning": "和...不同",
     "phonetic": "/bi: 'difərənt frɔm/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "be different from"
@@ -3132,7 +3132,7 @@
     "letter": "B",
     "meaning": "掌管，管理",
     "phonetic": "/bi: in kən'trəʊl ɔv, əv/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "安全",
     "unit": "扩展词汇",
     "word": "be in control of"
@@ -3210,7 +3210,7 @@
     "letter": "B",
     "meaning": "为⋯⋯骄傲；感到自豪",
     "phonetic": "/bi: praud ɔv, əv/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "家庭",
     "unit": "扩展词汇",
     "word": "be proud of"
@@ -3223,7 +3223,7 @@
     "letter": "B",
     "meaning": "愿意迅速做某事",
     "phonetic": "/bi: 'redi tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "be ready to"
@@ -3236,7 +3236,7 @@
     "letter": "B",
     "meaning": "对……负责任",
     "phonetic": "/bi: rispɔnsəbl fɔ:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "be responsible for"
@@ -3249,7 +3249,7 @@
     "letter": "B",
     "meaning": "类似于；与...相似",
     "phonetic": "/bi: 'sɪmələ(r) tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "be similar to"
@@ -3262,7 +3262,7 @@
     "letter": "B",
     "meaning": "确信",
     "phonetic": "/bi: ʃuə ə'baut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "be sure about"
@@ -3275,7 +3275,7 @@
     "letter": "B",
     "meaning": "是…….的职责；由…….决定",
     "phonetic": "/bi: ʌp tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "be up to"
@@ -3301,7 +3301,7 @@
     "letter": "B",
     "meaning": "习惯于… 适应于…",
     "phonetic": "/bi: ju:st tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "日常生活",
     "unit": "扩展词汇",
     "word": "be used to"
@@ -3415,7 +3415,7 @@
     "letter": "B",
     "meaning": "因为；由于",
     "phonetic": "/bi'kɔ:z ɔv, əv/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "because of"
@@ -3633,7 +3633,7 @@
     "letter": "B",
     "meaning": "信任；信赖",
     "phonetic": "/bi'li:v in/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "家庭",
     "unit": "扩展词汇",
     "word": "believe in"
@@ -3685,7 +3685,7 @@
     "letter": "B",
     "meaning": "伯特（男名）",
     "phonetic": "/bə:(r)t/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Bert"
@@ -3721,7 +3721,7 @@
     "letter": "B",
     "meaning": "畅销书；畅销品",
     "phonetic": "/best 'selə/",
-    "pos": "",
+    "pos": "n",
     "topic": "阅读",
     "unit": "词条清洗",
     "word": "best-seller"
@@ -3783,7 +3783,7 @@
     "letter": "B",
     "meaning": "重要的事",
     "phonetic": "/big di:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "运动",
     "unit": "扩展词汇",
     "word": "big deal"
@@ -3835,7 +3835,7 @@
     "letter": "B",
     "meaning": "比利（男名）p.26",
     "phonetic": "/bili/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Billy"
@@ -3962,7 +3962,7 @@
     "letter": "B",
     "meaning": "搅拌器；果汁机",
     "phonetic": "/'blendər/",
-    "pos": "",
+    "pos": "n",
     "topic": "厨房",
     "unit": "扩展词汇",
     "word": "blender"
@@ -4040,7 +4040,7 @@
     "letter": "B",
     "meaning": "吹",
     "phonetic": "/bləʊ/",
-    "pos": "",
+    "pos": "v",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "blow"
@@ -4053,7 +4053,7 @@
     "letter": "B",
     "meaning": "吹灭",
     "phonetic": "/bləʊ aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "节日",
     "unit": "扩展词汇",
     "word": "blow out"
@@ -4066,7 +4066,7 @@
     "letter": "B",
     "meaning": "吹；吹动",
     "phonetic": "/blu:/",
-    "pos": "",
+    "pos": "v",
     "topic": "自然",
     "unit": "词条清洗",
     "word": "blow"
@@ -4102,7 +4102,7 @@
     "letter": "B",
     "meaning": "棋类游戏",
     "phonetic": "/bɔ:d geim/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "娱乐",
     "unit": "扩展词汇",
     "word": "board game"
@@ -4115,7 +4115,7 @@
     "letter": "B",
     "meaning": "寄宿学校",
     "phonetic": "/bɔ:(r)diŋ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "教育",
     "unit": "词条清洗",
     "word": "boarding school"
@@ -4347,7 +4347,7 @@
     "letter": "B",
     "meaning": "两者都……",
     "phonetic": "/bəuθ ænd/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "both ... and ..."
@@ -4487,7 +4487,7 @@
     "letter": "B",
     "meaning": "面包机",
     "phonetic": "/bred ˈmeɪkə(r)/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "厨房",
     "unit": "扩展词汇",
     "word": "bread maker"
@@ -4550,7 +4550,7 @@
     "letter": "B",
     "meaning": "布赖恩（男名）",
     "phonetic": "/braiən/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Brian"
@@ -4615,7 +4615,7 @@
     "letter": "B",
     "meaning": "to…给……带来好运",
     "phonetic": "/lʌk/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "文化",
     "unit": "扩展词汇",
     "word": "bring good luck"
@@ -4628,7 +4628,7 @@
     "letter": "B",
     "meaning": "拿出；推出",
     "phonetic": "/briŋ aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "bring out"
@@ -4833,7 +4833,7 @@
     "letter": "B",
     "meaning": "公共汽车站",
     "phonetic": "/bʌs 'steiʃən/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "交通",
     "unit": "词条清洗",
     "word": "bus station"
@@ -4895,7 +4895,7 @@
     "letter": "B",
     "meaning": "黄油，奶油",
     "phonetic": "/'bʌtər/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "butter"
@@ -4908,7 +4908,7 @@
     "letter": "B",
     "meaning": "蝴蝶",
     "phonetic": "/ˈbʌtəflaɪ/",
-    "pos": "",
+    "pos": "n",
     "topic": "自然",
     "unit": "扩展词汇",
     "word": "butterfly"
@@ -4960,7 +4960,7 @@
     "letter": "B",
     "meaning": "偶然；意外地",
     "phonetic": "/bai ˈæksidənt/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "by accident"
@@ -4986,7 +4986,7 @@
     "letter": "B",
     "meaning": "错误地；无意中p.45",
     "phonetic": "/bai mɪ'steɪk/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "by mistake"
@@ -5126,7 +5126,7 @@
     "letter": "C",
     "meaning": "日历，日程表",
     "phonetic": "/'kælɪndər/",
-    "pos": "",
+    "pos": "n",
     "topic": "时间",
     "unit": "扩展词汇",
     "word": "calendar"
@@ -5139,7 +5139,7 @@
     "letter": "C",
     "meaning": "卡利（哥伦比亚城市）",
     "phonetic": "/ka:li/",
-    "pos": "",
+    "pos": "n",
     "topic": "城市",
     "unit": "扩展词汇",
     "word": "Cali"
@@ -5165,7 +5165,7 @@
     "letter": "C",
     "meaning": "打电话给…某人，征召",
     "phonetic": "/kɔ:l ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "通信",
     "unit": "扩展词汇",
     "word": "call up"
@@ -5204,7 +5204,7 @@
     "letter": "C",
     "meaning": "扎营",
     "phonetic": "/kæmp/",
-    "pos": "",
+    "pos": "v",
     "topic": "旅行",
     "unit": "核心词汇",
     "word": "camp"
@@ -5217,7 +5217,7 @@
     "letter": "C",
     "meaning": "aux 能,可以,会",
     "phonetic": "/kæn/",
-    "pos": "v.",
+    "pos": "modal v.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "can"
@@ -5230,7 +5230,7 @@
     "letter": "C",
     "meaning": "我能帮您吗？",
     "phonetic": "/kæn ai help ju:/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "购物",
     "unit": "扩展词汇",
     "word": "Can I help you?"
@@ -5243,7 +5243,7 @@
     "letter": "C",
     "meaning": "can not 的缩写形式",
     "phonetic": "/kænt/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "can't"
@@ -5269,7 +5269,7 @@
     "letter": "C",
     "meaning": "a. /n .加拿大/人的 p.46",
     "phonetic": "/kəneidiən/",
-    "pos": "",
+    "pos": "adj \u0026 n",
     "topic": "国家",
     "unit": "扩展词汇",
     "word": "Canadian"
@@ -5321,7 +5321,7 @@
     "letter": "C",
     "meaning": "坎迪（女名） p.27",
     "phonetic": "/kændi/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Candy"
@@ -5445,7 +5445,7 @@
     "letter": "C",
     "meaning": "关心",
     "phonetic": "/keə(r) ə'baut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "环保",
     "unit": "扩展词汇",
     "word": "care about"
@@ -5458,7 +5458,7 @@
     "letter": "C",
     "meaning": "照顾，非常喜欢",
     "phonetic": "/keə(r) fɔ:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "家庭",
     "unit": "扩展词汇",
     "word": "care for"
@@ -5497,7 +5497,7 @@
     "letter": "C",
     "meaning": "粗心的，不小心的",
     "phonetic": "/'kerləs/",
-    "pos": "",
+    "pos": "adj",
     "topic": "运动",
     "unit": "扩展词汇",
     "word": "careless"
@@ -5510,7 +5510,7 @@
     "letter": "C",
     "meaning": "卡尔（男名）",
     "phonetic": "/ka:(r)l/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Carl"
@@ -5523,7 +5523,7 @@
     "letter": "C",
     "meaning": "卡拉（女名） p.57",
     "phonetic": "/ka:(r)lə/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Carla"
@@ -5536,7 +5536,7 @@
     "letter": "C",
     "meaning": "卡门（女名）",
     "phonetic": "/ka:(r)men/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Carmen"
@@ -5549,7 +5549,7 @@
     "letter": "C",
     "meaning": "卡罗尔",
     "phonetic": "/'kær(ə)l/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Carol"
@@ -5637,7 +5637,7 @@
     "letter": "C",
     "meaning": "赶上；抓住；捕捉",
     "phonetic": "/kætʃ/",
-    "pos": "",
+    "pos": "v",
     "topic": "交通",
     "unit": "扩展词汇",
     "word": "catch"
@@ -5689,7 +5689,7 @@
     "letter": "C",
     "meaning": "庆祝；庆贺",
     "phonetic": "/'selɪbreɪt/",
-    "pos": "",
+    "pos": "v",
     "topic": "节日",
     "unit": "扩展词汇",
     "word": "celebrate"
@@ -5741,7 +5741,7 @@
     "letter": "C",
     "meaning": "(center ['sentə]) n 中心",
     "phonetic": "/'sɛntɚ/",
-    "pos": "",
+    "pos": "n",
     "topic": "地点",
     "unit": "核心词汇",
     "word": "centre"
@@ -5792,7 +5792,7 @@
     "letter": "C",
     "meaning": "当然，肯定",
     "phonetic": "/'sɜːrtnli/",
-    "pos": "",
+    "pos": "adv",
     "word": "certainly"
   },
   {
@@ -5921,7 +5921,7 @@
     "letter": "C",
     "meaning": "查尔斯·狄更斯（作家）",
     "phonetic": "/tʃa:(r)lz/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Charles Dickens"
@@ -5946,7 +5946,7 @@
     "letter": "C",
     "meaning": "廉价的；便宜的",
     "phonetic": "/tʃiːp/",
-    "pos": "",
+    "pos": "adj",
     "word": "cheap"
   },
   {
@@ -5996,7 +5996,7 @@
     "letter": "C",
     "meaning": "察看，观察",
     "phonetic": "/tʃek aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "check out"
@@ -6035,7 +6035,7 @@
     "letter": "C",
     "meaning": "变得更高兴，振奋起来",
     "phonetic": "/tʃiə ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "情绪",
     "unit": "扩展词汇",
     "word": "cheer up"
@@ -6048,7 +6048,7 @@
     "letter": "C",
     "meaning": "干酪，奶酪",
     "phonetic": "/tʃiːz/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "cheese"
@@ -6061,7 +6061,7 @@
     "letter": "C",
     "meaning": "切尔西·兰蒙（人名）",
     "phonetic": "/tʃelsi/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Chelsea Lanmon"
@@ -6100,7 +6100,7 @@
     "letter": "C",
     "meaning": "/dʒa:nmaI/ 清迈（泰城市）",
     "phonetic": "/tʃiænmaI/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "城市",
     "unit": "自动补充",
     "word": "Chiang Mai"
@@ -6338,7 +6338,7 @@
     "letter": "C",
     "meaning": "/klerə/ 克拉拉（女名）p.10",
     "phonetic": "/kla:rə/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Clara"
@@ -6481,7 +6481,7 @@
     "letter": "C",
     "meaning": "清理，清除掉",
     "phonetic": "/kliə aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "家务",
     "unit": "扩展词汇",
     "word": "clear out"
@@ -6507,7 +6507,7 @@
     "letter": "C",
     "meaning": "职员；店员",
     "phonetic": "/kla:k/",
-    "pos": "",
+    "pos": "n",
     "topic": "职业",
     "unit": "词条清洗",
     "word": "clerk"
@@ -6592,7 +6592,7 @@
     "letter": "C",
     "meaning": "几乎，接近",
     "phonetic": "/kləʊs tu:/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "方位",
     "unit": "扩展词汇",
     "word": "close to"
@@ -6795,7 +6795,7 @@
     "letter": "C",
     "meaning": "哥伦比亚（南美洲国家）",
     "phonetic": "/kəlʌmbiə/",
-    "pos": "",
+    "pos": "n",
     "topic": "国家",
     "unit": "核心词汇",
     "word": "Colombia"
@@ -7079,7 +7079,7 @@
     "letter": "C",
     "meaning": "比较，对比",
     "phonetic": "/kəm'peə wið/",
-    "pos": "",
+    "pos": "v",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "compare...with"
@@ -7196,7 +7196,7 @@
     "letter": "C",
     "meaning": "计算机程序员",
     "phonetic": "/kəm'pju:tə ˈprəʊɡræmə(r)/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "职业",
     "unit": "词条清洗",
     "word": "computer programmer"
@@ -7313,7 +7313,7 @@
     "letter": "C",
     "meaning": "把⋯⋯和⋯⋯连接或联系起来 p.6",
     "phonetic": "/kə'nekt wið/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "connect … with"
@@ -7378,7 +7378,7 @@
     "letter": "C",
     "meaning": "a. 便利的；方便的 p.21",
     "phonetic": "/kənvi:niənt/",
-    "pos": "",
+    "pos": "adj",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "convenient"
@@ -7466,7 +7466,7 @@
     "letter": "C",
     "meaning": "珊瑚礁",
     "phonetic": "/'kɔrəl ri:f/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "自然",
     "unit": "词条清洗",
     "word": "coral reef"
@@ -7518,7 +7518,7 @@
     "letter": "C",
     "meaning": "花费；价钱",
     "phonetic": "/kɔst/",
-    "pos": "",
+    "pos": "v \u0026 n",
     "topic": "生活",
     "unit": "词条清洗",
     "word": "cost"
@@ -7569,7 +7569,7 @@
     "letter": "C",
     "meaning": "aux (口语,表示许可或请求)可以,行",
     "phonetic": "/kud/",
-    "pos": "v.",
+    "pos": "modal v.",
     "word": "could"
   },
   {
@@ -7600,7 +7600,7 @@
     "letter": "C",
     "meaning": "乡村音乐",
     "phonetic": "/'kʌntri 'mju:zik/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "音乐",
     "unit": "扩展词汇",
     "word": "country music"
@@ -7672,7 +7672,7 @@
     "letter": "C",
     "meaning": "遮盖，盖子",
     "phonetic": "/'kʌvər/",
-    "pos": "",
+    "pos": "v \u0026 n",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "cover"
@@ -7789,7 +7789,7 @@
     "letter": "C",
     "meaning": "信用卡",
     "phonetic": "/'kredit kɑ:d/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "购物",
     "unit": "词条清洗",
     "word": "credit card"
@@ -7802,7 +7802,7 @@
     "letter": "C",
     "meaning": "犯罪活动",
     "phonetic": "/kraɪm/",
-    "pos": "",
+    "pos": "n",
     "topic": "社会",
     "unit": "核心词汇",
     "word": "crime"
@@ -7815,7 +7815,7 @@
     "letter": "C",
     "meaning": "犯罪",
     "phonetic": "/'krɪmɪn(ə)l/",
-    "pos": "",
+    "pos": "n",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "criminal"
@@ -7982,7 +7982,7 @@
     "letter": "C",
     "meaning": "卷曲的",
     "phonetic": "/'kɜːlɪ/",
-    "pos": "",
+    "pos": "adj",
     "topic": "外貌",
     "unit": "核心词汇",
     "word": "curly"
@@ -8047,7 +8047,7 @@
     "letter": "C",
     "meaning": "割掉；砍掉",
     "phonetic": "/kʌt ɒf/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "cut off"
@@ -8060,7 +8060,7 @@
     "letter": "C",
     "meaning": "删去，删除",
     "phonetic": "/kʌt aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "艺术",
     "unit": "扩展词汇",
     "word": "cut out"
@@ -8073,7 +8073,7 @@
     "letter": "C",
     "meaning": "切碎",
     "phonetic": "/kʌt ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "cut up"
@@ -8106,7 +8106,7 @@
     "letter": "D",
     "meaning": "丹·德维什（人名）",
     "phonetic": "/dæn/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Dan Dervish"
@@ -8171,7 +8171,7 @@
     "letter": "D",
     "meaning": "敢于；胆敢",
     "phonetic": "/deə/",
-    "pos": "",
+    "pos": "modal v.",
     "topic": "品格",
     "unit": "词条清洗",
     "word": "dare"
@@ -8282,7 +8282,7 @@
     "letter": "D",
     "meaning": "对 付; 应付",
     "phonetic": "/di:l wið/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "deal with"
@@ -8295,7 +8295,7 @@
     "letter": "D",
     "meaning": "迪安",
     "phonetic": "/din/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Dean"
@@ -8399,7 +8399,7 @@
     "letter": "D",
     "meaning": "(pl.deer) n 鹿",
     "phonetic": "/diə/",
-    "pos": "",
+    "pos": "n",
     "topic": "动物",
     "unit": "核心词汇",
     "word": "deer"
@@ -8425,7 +8425,7 @@
     "letter": "D",
     "meaning": "删除",
     "phonetic": "/dɪ'liːt/",
-    "pos": "",
+    "pos": "v",
     "topic": "科技",
     "unit": "核心词汇",
     "word": "delete"
@@ -8477,7 +8477,7 @@
     "letter": "D",
     "meaning": "依靠于",
     "phonetic": "/diˈpend ɔn/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "depend on"
@@ -8656,7 +8656,7 @@
     "letter": "D",
     "meaning": "逐渐变弱，逐渐消失",
     "phonetic": "/daɪ daʊn/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "die down"
@@ -8695,7 +8695,7 @@
     "letter": "D",
     "meaning": "不同的",
     "phonetic": "/'dɪfərəntlɪ/",
-    "pos": "",
+    "pos": "adv",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "differently"
@@ -8773,7 +8773,7 @@
     "letter": "D",
     "meaning": "餐厅",
     "phonetic": "/ˈdaɪnɪŋ ru:m/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "家居",
     "unit": "词条清洗",
     "word": "dining room"
@@ -8890,7 +8890,7 @@
     "letter": "D",
     "meaning": "不同意",
     "phonetic": "/ˌdɪsə'ɡriː/",
-    "pos": "",
+    "pos": "v",
     "topic": "交流",
     "unit": "核心词汇",
     "word": "disagree"
@@ -9020,7 +9020,7 @@
     "letter": "D",
     "meaning": "碟；盘dishes",
     "phonetic": "/dɪʃ/",
-    "pos": "",
+    "pos": "n",
     "topic": "家务",
     "unit": "扩展词汇",
     "word": "dish"
@@ -9108,7 +9108,7 @@
     "letter": "D",
     "meaning": "把⋯⋯分开 p.46",
     "phonetic": "/divaid 'intu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "divide ... into"
@@ -9147,7 +9147,7 @@
     "letter": "D",
     "meaning": "工作干得好；做得好",
     "phonetic": "/du: ə gud dʒɒb/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "do a good job"
@@ -9294,7 +9294,7 @@
     "letter": "D",
     "meaning": "do not 的缩写形式",
     "phonetic": "/dəunt/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "don't"
@@ -9359,7 +9359,7 @@
     "letter": "D",
     "meaning": "ad. v.（坐躺倒）下",
     "phonetic": "/daʊn/",
-    "pos": "",
+    "pos": "adv",
     "topic": "日常表达",
     "unit": "扩展词汇",
     "word": "down"
@@ -9454,7 +9454,7 @@
     "letter": "D",
     "meaning": "装扮；乔装打扮",
     "phonetic": "/dres ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "节日",
     "unit": "扩展词汇",
     "word": "dress up"
@@ -9539,7 +9539,7 @@
     "letter": "D",
     "meaning": "顺便访问；随便进入",
     "phonetic": "/drɔp bai/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "朋友",
     "unit": "扩展词汇",
     "word": "drop by"
@@ -9679,7 +9679,7 @@
     "letter": "D",
     "meaning": "光盘；影碟",
     "phonetic": "/ˌdiː viː ˈdiː/",
-    "pos": "",
+    "pos": "abbr",
     "topic": "娱乐",
     "unit": "词条清洗",
     "word": "DVD"
@@ -9728,7 +9728,7 @@
     "letter": "E",
     "meaning": "互相",
     "phonetic": "/i:tʃ 'ʌðə/",
-    "pos": "",
+    "pos": "pron. phr.",
     "topic": "朋友",
     "unit": "词条清洗",
     "word": "each other"
@@ -9819,7 +9819,7 @@
     "letter": "E",
     "meaning": "容易地",
     "phonetic": "/'iːzɪlɪ/",
-    "pos": "",
+    "pos": "adv",
     "topic": "描述",
     "unit": "扩展词汇",
     "word": "easily"
@@ -9966,7 +9966,7 @@
     "letter": "E",
     "meaning": "um. 八",
     "phonetic": "/eit/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "eight"
@@ -9979,7 +9979,7 @@
     "letter": "E",
     "meaning": "um. 十八",
     "phonetic": "/ei'ti:n/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "eighteen"
@@ -10005,7 +10005,7 @@
     "letter": "E",
     "meaning": "um. 第八",
     "phonetic": "/eitθ/",
-    "pos": "n",
+    "pos": "num",
     "topic": "顺序",
     "unit": "扩展词汇",
     "word": "eighth"
@@ -10018,7 +10018,7 @@
     "letter": "E",
     "meaning": "八十",
     "phonetic": "/'eɪtɪ/",
-    "pos": "",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "eighty"
@@ -10096,7 +10096,7 @@
     "letter": "E",
     "meaning": "a. 电子(设备)的",
     "phonetic": "/ilektrɔnik/",
-    "pos": "",
+    "pos": "adj",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "electronic"
@@ -10122,7 +10122,7 @@
     "letter": "E",
     "meaning": "um. 十一",
     "phonetic": "/i'levən/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "eleven"
@@ -10158,7 +10158,7 @@
     "letter": "E",
     "meaning": "a. 使人害羞的",
     "phonetic": "/imbærəsiŋ/",
-    "pos": "",
+    "pos": "adj",
     "topic": "感受",
     "unit": "扩展词汇",
     "word": "embarrassing"
@@ -10171,7 +10171,7 @@
     "letter": "E",
     "meaning": "埃米莉（女名） p.28",
     "phonetic": "/emili/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Emily"
@@ -10288,7 +10288,7 @@
     "letter": "E",
     "meaning": "英格兰；英国",
     "phonetic": "/'ɪŋɡlənd/",
-    "pos": "",
+    "pos": "n",
     "topic": "国家",
     "unit": "自动补充",
     "word": "England"
@@ -10314,7 +10314,7 @@
     "letter": "E",
     "meaning": "说英语的",
     "phonetic": "/'iŋgliʃ spi:kɪŋ/",
-    "pos": "",
+    "pos": "adj",
     "topic": "语言",
     "unit": "词条清洗",
     "word": "English-speaking"
@@ -10363,7 +10363,7 @@
     "letter": "E",
     "meaning": "喜欢阅读",
     "phonetic": "/'riːdɪŋ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "enjoy reading"
@@ -10480,7 +10480,7 @@
     "letter": "E",
     "meaning": "欧洲",
     "phonetic": "/'jʊrəp/",
-    "pos": "",
+    "pos": "n",
     "topic": "地理",
     "unit": "扩展词汇",
     "word": "Europe"
@@ -10505,7 +10505,7 @@
     "letter": "E",
     "meaning": "甚至；愈加",
     "phonetic": "/'iːvn/",
-    "pos": "",
+    "pos": "adv",
     "word": "even"
   },
   {
@@ -10516,7 +10516,7 @@
     "letter": "E",
     "meaning": "虽然；即使 p.35",
     "phonetic": "/'iːvn ðəu/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "even though"
@@ -10529,7 +10529,7 @@
     "letter": "E",
     "meaning": "即使；虽然",
     "phonetic": "/'iːvn ðəu/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "even though"
@@ -10542,7 +10542,7 @@
     "letter": "E",
     "meaning": "即使；虽然",
     "phonetic": "/'iːvn ðəu 'iːvn if/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "even though"
@@ -10568,7 +10568,7 @@
     "letter": "E",
     "meaning": "大事，公开活动",
     "phonetic": "/ɪ'vent/",
-    "pos": "",
+    "pos": "n",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "event"
@@ -10841,7 +10841,7 @@
     "letter": "E",
     "meaning": "劳驾；请原谅",
     "phonetic": "/iks'kju:zmi:/",
-    "pos": "",
+    "pos": "phr.",
     "word": "excuse me"
   },
   {
@@ -10904,7 +10904,7 @@
     "letter": "E",
     "meaning": "信任；经历",
     "phonetic": "/ɪk'spɪriəns/",
-    "pos": "",
+    "pos": "n",
     "topic": "旅行",
     "unit": "词条清洗",
     "word": "experience"
@@ -10917,7 +10917,7 @@
     "letter": "E",
     "meaning": "专家，能手",
     "phonetic": "/'ekspɜːrt/",
-    "pos": "",
+    "pos": "n",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "expert"
@@ -11097,7 +11097,7 @@
     "letter": "F",
     "meaning": "仙女；精灵",
     "phonetic": "/feəri/",
-    "pos": "",
+    "pos": "n",
     "topic": "阅读",
     "unit": "词条清洗",
     "word": "fairy"
@@ -11136,7 +11136,7 @@
     "letter": "F",
     "meaning": "进入梦乡，睡着",
     "phonetic": "/fɔ:l ə'sli:p/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "日常生活",
     "unit": "扩展词汇",
     "word": "fall asleep"
@@ -11175,7 +11175,7 @@
     "letter": "F",
     "meaning": "爱上，喜欢上",
     "phonetic": "/fɔ:l in lʌv/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "fall in love"
@@ -11188,7 +11188,7 @@
     "letter": "F",
     "meaning": "爱上；与⋯⋯相爱 p.3",
     "phonetic": "/fɔ:l in lʌv wið/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "旅行",
     "unit": "扩展词汇",
     "word": "fall in love with"
@@ -11214,7 +11214,7 @@
     "letter": "F",
     "meaning": "绊倒",
     "phonetic": "/fɔ:l 'əʊvə/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "安全",
     "unit": "扩展词汇",
     "word": "fall over"
@@ -11263,7 +11263,7 @@
     "letter": "F",
     "meaning": "姓",
     "phonetic": "/'fæmili neim/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "family name"
@@ -11276,7 +11276,7 @@
     "letter": "F",
     "meaning": "家谱",
     "phonetic": "/'fæmili tri:/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "家庭",
     "unit": "词条清洗",
     "word": "family tree"
@@ -11354,7 +11354,7 @@
     "letter": "F",
     "meaning": "农场；务农；种田",
     "phonetic": "/fɑːm/",
-    "pos": "",
+    "pos": "n \u0026 v",
     "topic": "乡村",
     "unit": "扩展词汇",
     "word": "farm"
@@ -11367,7 +11367,7 @@
     "letter": "F",
     "meaning": "农民；农场主",
     "phonetic": "/'fɑːmə/",
-    "pos": "",
+    "pos": "n",
     "topic": "乡村",
     "unit": "扩展词汇",
     "word": "farmer"
@@ -11432,7 +11432,7 @@
     "letter": "F",
     "meaning": "a.迷人的；有吸引力的p.21",
     "phonetic": "/fæsineitiŋ/",
-    "pos": "",
+    "pos": "adj",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "fascinating"
@@ -11568,7 +11568,7 @@
     "letter": "F",
     "meaning": "喂养；饲养",
     "phonetic": "/fiːd/",
-    "pos": "",
+    "pos": "v",
     "word": "feed"
   },
   {
@@ -11579,7 +11579,7 @@
     "letter": "F",
     "meaning": "喂鸡",
     "phonetic": "/'tʃɪkɪns/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "农业",
     "unit": "核心词汇",
     "word": "feed chickens"
@@ -11605,7 +11605,7 @@
     "letter": "F",
     "meaning": "可以随便做某事",
     "phonetic": "/fi:l fri:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "feel free to"
@@ -11618,7 +11618,7 @@
     "letter": "F",
     "meaning": "想要",
     "phonetic": "/fi:l laɪk du:ɪŋ 'sʌmθiŋ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "feel like(doing sth.)"
@@ -11716,7 +11716,7 @@
     "letter": "F",
     "meaning": "um. 十五",
     "phonetic": "/fif'ti:n/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "fifteen"
@@ -11729,7 +11729,7 @@
     "letter": "F",
     "meaning": "um \u0026 adj 第五(的)",
     "phonetic": "/fifθ/",
-    "pos": "n",
+    "pos": "num",
     "topic": "顺序",
     "unit": "扩展词汇",
     "word": "fifth"
@@ -11742,7 +11742,7 @@
     "letter": "F",
     "meaning": "um 五十",
     "phonetic": "/'fifti/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "fifty"
@@ -11754,7 +11754,7 @@
     "letter": "F",
     "meaning": "打架；战斗",
     "phonetic": "/faɪt/",
-    "pos": "",
+    "pos": "v",
     "senses": [
       {
         "id": "fight-verb",
@@ -11828,7 +11828,7 @@
     "letter": "F",
     "meaning": "最后，最终",
     "phonetic": "/'faɪnəli/",
-    "pos": "",
+    "pos": "adv",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "finally"
@@ -11903,7 +11903,7 @@
     "letter": "F",
     "meaning": "火灾",
     "phonetic": "/'faɪə/",
-    "pos": "",
+    "pos": "n",
     "topic": "安全",
     "unit": "核心词汇",
     "word": "fire"
@@ -11916,7 +11916,7 @@
     "letter": "F",
     "meaning": "消防站",
     "phonetic": "/'steɪʃ(ə)n/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "地点",
     "unit": "核心词汇",
     "word": "fire station"
@@ -11941,7 +11941,7 @@
     "letter": "F",
     "meaning": "um \u0026 adv 第一,首先,最初",
     "phonetic": "/fə:st/",
-    "pos": "n",
+    "pos": "num",
     "word": "first"
   },
   {
@@ -11952,7 +11952,7 @@
     "letter": "F",
     "meaning": "名字",
     "phonetic": "/fə:st neim/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "first name"
@@ -11977,7 +11977,7 @@
     "letter": "F",
     "meaning": "鱼；鱼肉",
     "phonetic": "/fɪʃ/",
-    "pos": "",
+    "pos": "n",
     "word": "fish"
   },
   {
@@ -12024,7 +12024,7 @@
     "letter": "F",
     "meaning": "um 五",
     "phonetic": "/faiv/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "five"
@@ -12050,7 +12050,7 @@
     "letter": "F",
     "meaning": "修理，修补",
     "phonetic": "/fiks ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "fix up"
@@ -12162,7 +12162,7 @@
     "letter": "F",
     "meaning": "放风筝",
     "phonetic": "/flai ə kait/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "活动",
     "unit": "扩展词汇",
     "word": "fly a kite"
@@ -12226,7 +12226,7 @@
     "letter": "F",
     "meaning": "遵循；跟随",
     "phonetic": "/'fɒləʊ/",
-    "pos": "",
+    "pos": "v",
     "word": "follow"
   },
   {
@@ -12309,7 +12309,7 @@
     "letter": "F",
     "meaning": "无疑；肯定",
     "phonetic": "/fɔ: ʃuə/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "for sure"
@@ -12436,7 +12436,7 @@
     "letter": "F",
     "meaning": "um四十",
     "phonetic": "/'fɔːtɪ/",
-    "pos": "n.",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "forty"
@@ -12449,7 +12449,7 @@
     "letter": "F",
     "meaning": "转交；发送，向前的",
     "phonetic": "/'fɔːrwərd/",
-    "pos": "",
+    "pos": "adv",
     "topic": "通信",
     "unit": "扩展词汇",
     "word": "forward"
@@ -12488,7 +12488,7 @@
     "letter": "F",
     "meaning": "um. 四",
     "phonetic": "/fɔ:/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "four"
@@ -12501,7 +12501,7 @@
     "letter": "F",
     "meaning": "um 十四",
     "phonetic": "/'fɔ:'ti:n/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "fourteen"
@@ -12540,7 +12540,7 @@
     "letter": "F",
     "meaning": "/fr{ns/ 法国 p.35",
     "phonetic": "/fra:ns/",
-    "pos": "",
+    "pos": "n",
     "topic": "国家",
     "unit": "自动补充",
     "word": "France"
@@ -12726,7 +12726,7 @@
     "letter": "F",
     "meaning": "时常；有时",
     "phonetic": "/frɔm taim tu: taim/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "活动",
     "unit": "扩展词汇",
     "word": "from time to time"
@@ -12739,7 +12739,7 @@
     "letter": "F",
     "meaning": "从......到",
     "phonetic": "/frɔm tu:/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "时间",
     "unit": "扩展词汇",
     "word": "from... to..."
@@ -12752,7 +12752,7 @@
     "letter": "F",
     "meaning": "从……到……",
     "phonetic": "/frɔm tu:/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "交通",
     "unit": "词条清洗",
     "word": "from … to …"
@@ -12827,7 +12827,7 @@
     "letter": "F",
     "meaning": "满是…的，（有）丰富的",
     "phonetic": "/fʊl ɔv, əv/",
-    "pos": "",
+    "pos": "adj. phr.",
     "topic": "自然",
     "unit": "扩展词汇",
     "word": "full of"
@@ -12919,7 +12919,7 @@
     "letter": "G",
     "meaning": "a. 普遍的；常规的；总的；将军",
     "phonetic": "/dʒenrəl/",
-    "pos": "",
+    "pos": "adj \u0026 n",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "general"
@@ -13007,7 +13007,7 @@
     "letter": "G",
     "meaning": "感到惊讶",
     "phonetic": "/ɡet ə səˈpraɪz/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "情绪",
     "unit": "词条清洗",
     "word": "get a surprise"
@@ -13046,7 +13046,7 @@
     "letter": "G",
     "meaning": "挡……的路；妨碍",
     "phonetic": "/get in ði; ðə weɪ ɔv, əv/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "情绪",
     "unit": "扩展词汇",
     "word": "get in the way of"
@@ -13059,7 +13059,7 @@
     "letter": "G",
     "meaning": "陷入，参与",
     "phonetic": "/get 'intu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "交通",
     "unit": "扩展词汇",
     "word": "get into"
@@ -13072,7 +13072,7 @@
     "letter": "G",
     "meaning": "大动肝火；气愤",
     "phonetic": "/get mæd/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "家庭",
     "unit": "扩展词汇",
     "word": "get mad"
@@ -13147,7 +13147,7 @@
     "letter": "G",
     "meaning": "和睦相处，关系良好",
     "phonetic": "/get ɔn wið/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "get on with"
@@ -13160,7 +13160,7 @@
     "letter": "G",
     "meaning": "离开，从… 出来",
     "phonetic": "/get aut ɔv, əv/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "交通",
     "unit": "扩展词汇",
     "word": "get out of"
@@ -13173,7 +13173,7 @@
     "letter": "G",
     "meaning": "受欢迎；流行",
     "phonetic": "/get 'pɔpjulə/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "运动",
     "unit": "扩展词汇",
     "word": "get popular"
@@ -13257,7 +13257,7 @@
     "letter": "G",
     "meaning": "礼物；赠品",
     "phonetic": "/gɪft/",
-    "pos": "",
+    "pos": "n",
     "word": "gift"
   },
   {
@@ -13307,7 +13307,7 @@
     "letter": "G",
     "meaning": "捎（某人）一程",
     "phonetic": "/ɡɪv ə lift/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "交通",
     "unit": "扩展词汇",
     "word": "give ... a lift"
@@ -13333,7 +13333,7 @@
     "letter": "G",
     "meaning": "赠送，捐赠",
     "phonetic": "/ɡɪv ə'wei/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "give away"
@@ -13359,7 +13359,7 @@
     "letter": "G",
     "meaning": "分发，散发",
     "phonetic": "/ɡɪv aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "give out"
@@ -13437,7 +13437,7 @@
     "letter": "G",
     "meaning": "眼镜",
     "phonetic": "/'glɑːsɪz/",
-    "pos": "",
+    "pos": "n",
     "topic": "健康",
     "unit": "核心词汇",
     "word": "glasses"
@@ -13473,7 +13473,7 @@
     "letter": "G",
     "meaning": "沿着（这条街）走",
     "phonetic": "/gəu ə'lɔŋ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "方位",
     "unit": "扩展词汇",
     "word": "go along"
@@ -13539,7 +13539,7 @@
     "letter": "G",
     "meaning": "（闹钟）响起",
     "phonetic": "/gəu ɒf/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "日常生活",
     "unit": "词条清洗",
     "word": "go off"
@@ -13591,7 +13591,7 @@
     "letter": "G",
     "meaning": "特地；格外努力",
     "phonetic": "/gəu aut ɔv, əv wʌnz weɪ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "品格",
     "unit": "扩展词汇",
     "word": "go out of one's way"
@@ -13617,7 +13617,7 @@
     "letter": "G",
     "meaning": "去购物",
     "phonetic": "/'ʃɔpiŋ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "购物",
     "unit": "词条清洗",
     "word": "go shopping"
@@ -13676,7 +13676,7 @@
     "letter": "G",
     "meaning": "戈壁沙漠",
     "phonetic": "/ˈɡəʊbi 'dezət/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "自然",
     "unit": "词条清洗",
     "word": "Gobi Desert"
@@ -13702,7 +13702,7 @@
     "letter": "G",
     "meaning": "女神",
     "phonetic": "/gɔdes/",
-    "pos": "",
+    "pos": "n",
     "topic": "文化",
     "unit": "词条清洗",
     "word": "goddess"
@@ -13715,7 +13715,7 @@
     "letter": "G",
     "meaning": "go的单数第三人称现在时",
     "phonetic": "/gəuz/",
-    "pos": "",
+    "pos": "v",
     "topic": "交通",
     "unit": "扩展词汇",
     "word": "goes"
@@ -13767,7 +13767,7 @@
     "letter": "G",
     "meaning": "下午好！",
     "phonetic": "/gud 'ɑ:ftə'nu:n/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "Good afternoon!"
@@ -13780,7 +13780,7 @@
     "letter": "G",
     "meaning": "晚上好！",
     "phonetic": "/gud 'i:vniŋ/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "Good evening!"
@@ -13793,7 +13793,7 @@
     "letter": "G",
     "meaning": "早上好！",
     "phonetic": "/gud 'mɔ:niŋ/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "Good morning!"
@@ -14041,7 +14041,7 @@
     "letter": "G",
     "meaning": "肉汁；肉汤",
     "phonetic": "/'ɡreɪvi/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "gravy"
@@ -14090,7 +14090,7 @@
     "letter": "G",
     "meaning": "a. 阴沉的；昏暗的；灰色的",
     "phonetic": "/grei/",
-    "pos": "",
+    "pos": "adj",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "grey"
@@ -14103,7 +14103,7 @@
     "letter": "G",
     "meaning": "格里芬（姓）",
     "phonetic": "/grifin/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Griffin"
@@ -14142,7 +14142,7 @@
     "letter": "G",
     "meaning": "种植；生长；发育",
     "phonetic": "/grəʊ/",
-    "pos": "",
+    "pos": "v",
     "topic": "自然",
     "unit": "扩展词汇",
     "word": "grow"
@@ -14191,7 +14191,7 @@
     "letter": "G",
     "meaning": "客人",
     "phonetic": "/ɡest/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "核心词汇",
     "word": "guest"
@@ -14268,7 +14268,7 @@
     "letter": "H",
     "meaning": "头发；毛发",
     "phonetic": "/heə/",
-    "pos": "",
+    "pos": "n",
     "word": "hair"
   },
   {
@@ -14278,7 +14278,7 @@
     "letter": "H",
     "meaning": "一半，半数",
     "phonetic": "/hɑːf/",
-    "pos": "",
+    "pos": "n",
     "word": "half"
   },
   {
@@ -14289,7 +14289,7 @@
     "letter": "H",
     "meaning": "在途中；半路上",
     "phonetic": "/hɑːf weɪ/",
-    "pos": "",
+    "pos": "adv",
     "topic": "旅行",
     "unit": "词条清洗",
     "word": "halfway"
@@ -14302,7 +14302,7 @@
     "letter": "H",
     "meaning": "中途的adv.半路地",
     "phonetic": "/ˌhæf'weɪ/",
-    "pos": "",
+    "pos": "adv",
     "topic": "位置",
     "unit": "扩展词汇",
     "word": "halfway"
@@ -14325,7 +14325,7 @@
     "letter": "H",
     "meaning": "万圣节前夕 p.13",
     "phonetic": "/hæləui:n/",
-    "pos": "",
+    "pos": "n",
     "topic": "节日",
     "unit": "核心词汇",
     "word": "Halloween"
@@ -14338,7 +14338,7 @@
     "letter": "H",
     "meaning": "走廊；过道",
     "phonetic": "/'hɔːlweɪ/",
-    "pos": "",
+    "pos": "n",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "hallway"
@@ -14390,7 +14390,7 @@
     "letter": "H",
     "meaning": "分发",
     "phonetic": "/hænd aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "hand out"
@@ -14429,7 +14429,7 @@
     "letter": "H",
     "meaning": "英俊的",
     "phonetic": "/'hæns(ə)m/",
-    "pos": "",
+    "pos": "adj",
     "topic": "外貌",
     "unit": "核心词汇",
     "word": "handsome"
@@ -14442,7 +14442,7 @@
     "letter": "H",
     "meaning": "悬挂；(使)低垂",
     "phonetic": "/hæŋ/",
-    "pos": "",
+    "pos": "v",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "hang"
@@ -14491,7 +14491,7 @@
     "letter": "H",
     "meaning": "生日快乐！",
     "phonetic": "/'hæpi 'bə:θdei/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "Happy birthday!"
@@ -14504,7 +14504,7 @@
     "letter": "H",
     "meaning": "努力地；困难的",
     "phonetic": "/hɑːd/",
-    "pos": "",
+    "pos": "adj \u0026 adv",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "hard"
@@ -14527,7 +14527,7 @@
     "letter": "H",
     "meaning": "勤奋的；用功的",
     "phonetic": "/hɑːd'wɜːkɪŋ/",
-    "pos": "",
+    "pos": "adj",
     "topic": "学习",
     "unit": "词条清洗",
     "word": "hard-working"
@@ -14550,7 +14550,7 @@
     "letter": "H",
     "meaning": "很少；几乎从不；难得",
     "phonetic": "/'hɑːdli 'evə(r)/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "日常生活",
     "unit": "扩展词汇",
     "word": "hardly ever"
@@ -14641,7 +14641,7 @@
     "letter": "H",
     "meaning": "a. 有鬼魂出没的",
     "phonetic": "/hɔ:ntid/",
-    "pos": "",
+    "pos": "adj",
     "topic": "描述",
     "unit": "扩展词汇",
     "word": "haunted"
@@ -14676,7 +14676,7 @@
     "letter": "H",
     "meaning": "感冒",
     "phonetic": "/kəuld/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "have a cold"
   },
   {
@@ -14687,7 +14687,7 @@
     "letter": "H",
     "meaning": "感冒",
     "phonetic": "/kəuld/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "词条清洗",
     "word": "have a cold"
@@ -14700,7 +14700,7 @@
     "letter": "H",
     "meaning": "咳嗽",
     "phonetic": "/hæv ə kɔf/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "词条清洗",
     "word": "have a cough"
@@ -14713,7 +14713,7 @@
     "letter": "H",
     "meaning": "发烧",
     "phonetic": "/hæv ə 'fi:və/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "have a fever"
@@ -14726,7 +14726,7 @@
     "letter": "H",
     "meaning": "祝你过得愉快！",
     "phonetic": "/hæv ə gud dei/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "词条清洗",
     "word": "Have a good day!"
@@ -14752,7 +14752,7 @@
     "letter": "H",
     "meaning": "祝你玩得愉快！",
     "phonetic": "/hæv ə gud taim/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "词条清洗",
     "word": "Have a good time!"
@@ -14765,7 +14765,7 @@
     "letter": "H",
     "meaning": "玩得愉快",
     "phonetic": "/hæv ə ɡʊd taɪm ɪnˈdʒɔɪ wʌnˈself hæv fʌn ˈduːɪŋ ˈsʌmθɪŋ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "活动",
     "unit": "词条清洗",
     "word": "have a good time"
@@ -14778,7 +14778,7 @@
     "letter": "H",
     "meaning": "头痛",
     "phonetic": "/'hedeik/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "词条清洗",
     "word": "have a headache"
@@ -14801,7 +14801,7 @@
     "letter": "H",
     "meaning": "坐下,就坐",
     "phonetic": "/hæv ə si:t/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "have a seat"
@@ -14814,7 +14814,7 @@
     "letter": "H",
     "meaning": "胃痛",
     "phonetic": "/hæv ə 'stʌməkeɪk/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "have a stomachache"
@@ -14873,7 +14873,7 @@
     "letter": "H",
     "meaning": "关于;与……有关系",
     "phonetic": "/hæv tu: du: wið/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "have to do with"
@@ -14886,7 +14886,7 @@
     "letter": "H",
     "meaning": "有相同特征",
     "phonetic": "/hæv in 'kɒmən/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "have…in common"
@@ -14899,7 +14899,7 @@
     "letter": "H",
     "meaning": "海斯（姓）",
     "phonetic": "/heiz/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Hayes"
@@ -15033,7 +15033,7 @@
     "letter": "H",
     "meaning": "听到；听见",
     "phonetic": "/hɪə/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "hear"
@@ -15098,7 +15098,7 @@
     "letter": "H",
     "meaning": "身高；高度",
     "phonetic": "/haɪt/",
-    "pos": "",
+    "pos": "n",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "height"
@@ -15215,7 +15215,7 @@
     "letter": "H",
     "meaning": "给你",
     "phonetic": "/hiə/",
-    "pos": "",
+    "pos": "phr.",
     "word": "Here you are"
   },
   {
@@ -15304,7 +15304,7 @@
     "letter": "H",
     "meaning": "跳高",
     "phonetic": "/hai dʒʌmp/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "high jump"
@@ -15317,7 +15317,7 @@
     "letter": "H",
     "meaning": "中学",
     "phonetic": "/hai sku:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "教育",
     "unit": "扩展词汇",
     "word": "high school"
@@ -15330,7 +15330,7 @@
     "letter": "H",
     "meaning": "中学",
     "phonetic": "/hai sku:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "教育",
     "unit": "词条清洗",
     "word": "high school"
@@ -15535,7 +15535,7 @@
     "letter": "H",
     "meaning": "霍莉（女名）",
     "phonetic": "/hɔli /",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Holly"
@@ -15600,7 +15600,7 @@
     "letter": "H",
     "meaning": "蜂蜜",
     "phonetic": "/'hʌni/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "honey"
@@ -15639,7 +15639,7 @@
     "letter": "H",
     "meaning": "希望；期望；盼望n.希望",
     "phonetic": "/həʊp/",
-    "pos": "",
+    "pos": "v \u0026 n",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "hope"
@@ -15714,7 +15714,7 @@
     "letter": "H",
     "meaning": "热狗",
     "phonetic": "/hɔt dɔɡ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "食物",
     "unit": "词条清洗",
     "word": "hot dog"
@@ -15799,7 +15799,7 @@
     "letter": "H",
     "meaning": "……怎么样？",
     "phonetic": "/hau ə'baut/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "how about...?"
@@ -15812,7 +15812,7 @@
     "letter": "H",
     "meaning": "你好吗？",
     "phonetic": "/hau ɑ: ju:/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "How are you?"
@@ -15825,7 +15825,7 @@
     "letter": "H",
     "meaning": "你好吗？",
     "phonetic": "/hau ɑ: ju:/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "How are you?"
@@ -15838,7 +15838,7 @@
     "letter": "H",
     "meaning": "你好！",
     "phonetic": "/hau du: ju: du:/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "词条清洗",
     "word": "How do you do?"
@@ -15884,7 +15884,7 @@
     "letter": "H",
     "meaning": "多少钱？",
     "phonetic": "/hau mʌtʃ/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "购物",
     "unit": "词条清洗",
     "word": "How much...?"
@@ -15897,7 +15897,7 @@
     "letter": "H",
     "meaning": "几岁；多大年纪",
     "phonetic": "/hau əuld/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "家庭",
     "unit": "词条清洗",
     "word": "How old...?"
@@ -15959,7 +15959,7 @@
     "letter": "H",
     "meaning": "人；人类",
     "phonetic": "/'hju:mən bi:ɪŋ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "社会",
     "unit": "词条清洗",
     "word": "human being"
@@ -15972,7 +15972,7 @@
     "letter": "H",
     "meaning": "有幽默感的；滑稽的",
     "phonetic": "/hju:mərəs/",
-    "pos": "",
+    "pos": "adj",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "humorous"
@@ -15985,7 +15985,7 @@
     "letter": "H",
     "meaning": "um 百",
     "phonetic": "/'hʌndrəd/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "hundred"
@@ -15998,7 +15998,7 @@
     "letter": "H",
     "meaning": "许多 ；大量； 成百上千",
     "phonetic": "/'hʌndrədz ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "hundreds of"
@@ -16033,7 +16033,7 @@
     "letter": "H",
     "meaning": "赶快，急忙（做某事）",
     "phonetic": "/'hʌri ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "hurry up"
   },
   {
@@ -16080,7 +16080,7 @@
     "letter": "I",
     "meaning": "I will 的缩写形式",
     "phonetic": "/ail/",
-    "pos": "",
+    "pos": "v",
     "topic": "通信",
     "unit": "扩展词汇",
     "word": "I'll"
@@ -16093,7 +16093,7 @@
     "letter": "I",
     "meaning": "I am的缩写",
     "phonetic": "/aɪm aɪ æm/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "I'm"
@@ -16119,7 +16119,7 @@
     "letter": "I",
     "meaning": "冰淇淋",
     "phonetic": "/ˌaɪsˈkriːm/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "食物",
     "unit": "词条清洗",
     "word": "ice cream"
@@ -16184,7 +16184,7 @@
     "letter": "I",
     "meaning": "身份证；学生卡",
     "phonetic": "/ˌaɪ ˈdiː kɑ:d/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "ID card"
@@ -16328,7 +16328,7 @@
     "letter": "I",
     "meaning": "连续几次地",
     "phonetic": "/in ə rəu/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "运动",
     "unit": "扩展词汇",
     "word": "in a row"
@@ -16390,7 +16390,7 @@
     "letter": "I",
     "meaning": "依… 看",
     "phonetic": "/in wʌnz əˈpɪnjən/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "in one's opinion"
@@ -16403,7 +16403,7 @@
     "letter": "I",
     "meaning": "目的是，为了",
     "phonetic": "/in 'ɔ:də tu:/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "交通",
     "unit": "扩展词汇",
     "word": "in order to"
@@ -16416,7 +16416,7 @@
     "letter": "I",
     "meaning": "亲身；亲自",
     "phonetic": "/in 'pə:sn/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "in person"
@@ -16429,7 +16429,7 @@
     "letter": "I",
     "meaning": "沉默，无声",
     "phonetic": "/in ˈsaɪləns/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "in silence"
@@ -16442,7 +16442,7 @@
     "letter": "I",
     "meaning": "既然那样；假使那样的话",
     "phonetic": "/in ðæt keIs/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "in that case"
@@ -16455,7 +16455,7 @@
     "letter": "I",
     "meaning": "在乡下；在农村",
     "phonetic": "/in ði; ðə 'kʌntri'said/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "乡村",
     "unit": "扩展词汇",
     "word": "in the countryside"
@@ -16494,7 +16494,7 @@
     "letter": "I",
     "meaning": "面对（问题，困难）",
     "phonetic": "/in ði; ðə feis ɔv, əv/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "品格",
     "unit": "扩展词汇",
     "word": "in the face of"
@@ -16559,7 +16559,7 @@
     "letter": "I",
     "meaning": "总共；合计",
     "phonetic": "/in təutl/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "in total"
@@ -16715,7 +16715,7 @@
     "letter": "I",
     "meaning": "在里面",
     "phonetic": "/ˌɪnˈsaɪd/",
-    "pos": "",
+    "pos": "prep",
     "topic": "方位",
     "unit": "词条清洗",
     "word": "inside"
@@ -16793,7 +16793,7 @@
     "letter": "I",
     "meaning": "a. 有才智的；聪明的",
     "phonetic": "/intelIdʒənt/",
-    "pos": "",
+    "pos": "adj",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "intelligent"
@@ -16953,7 +16953,7 @@
     "letter": "I",
     "meaning": "邀请；邀请函",
     "phonetic": "/ˌɪnvɪ'teɪʃn/",
-    "pos": "",
+    "pos": "n",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "invitation"
@@ -17002,7 +17002,7 @@
     "letter": "I",
     "meaning": "is not 的缩写形式",
     "phonetic": "/'iznt/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "isn't"
@@ -17028,7 +17028,7 @@
     "letter": "I",
     "meaning": "it is 的缩写形式",
     "phonetic": "/its/",
-    "pos": "",
+    "pos": "v",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "it's"
@@ -17040,7 +17040,7 @@
     "letter": "I",
     "meaning": "a. 意大利\\人的；n. 意大利人\\语",
     "phonetic": "/Itæli ən/",
-    "pos": "",
+    "pos": "adj \u0026 n",
     "word": "Italian"
   },
   {
@@ -17103,7 +17103,7 @@
     "letter": "J",
     "meaning": "J. K. 罗琳（英国作家）",
     "phonetic": "/rəuliŋ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "J. K. Rowling"
@@ -17126,7 +17126,7 @@
     "letter": "J",
     "meaning": "杰克逊",
     "phonetic": "/'dʒæksn/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Jackson"
@@ -17139,7 +17139,7 @@
     "letter": "J",
     "meaning": "雅各布·马利（人名）",
     "phonetic": "/dʒeikəb/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Jacob Marley"
@@ -17152,7 +17152,7 @@
     "letter": "J",
     "meaning": "杰米·埃尔斯沃思（人名）",
     "phonetic": "/dʒeimi/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Jamie Ellsworth"
@@ -17204,7 +17204,7 @@
     "letter": "J",
     "meaning": "贾森（男名）",
     "phonetic": "/dʒeisən/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Jason"
@@ -17217,7 +17217,7 @@
     "letter": "J",
     "meaning": "杰斯（人名）",
     "phonetic": "/dʒeis/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Jayce"
@@ -17230,7 +17230,7 @@
     "letter": "J",
     "meaning": "琼（女名） p.60",
     "phonetic": "/dZ=ʒi:n/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Jean"
@@ -17243,7 +17243,7 @@
     "letter": "J",
     "meaning": "牛仔裤",
     "phonetic": "/dʒinz/",
-    "pos": "",
+    "pos": "n",
     "topic": "服装",
     "unit": "核心词汇",
     "word": "jeans"
@@ -17269,7 +17269,7 @@
     "letter": "J",
     "meaning": "杰夫",
     "phonetic": "/dʒef/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Jeff"
@@ -17282,7 +17282,7 @@
     "letter": "J",
     "meaning": "杰里（男名）；杰丽（女名）p.28",
     "phonetic": "/dʒeri/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Jerry"
@@ -17295,7 +17295,7 @@
     "letter": "J",
     "meaning": "杰茜卡（女名）",
     "phonetic": "/dʒesikə/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Jessica"
@@ -17318,7 +17318,7 @@
     "letter": "J",
     "meaning": "乔",
     "phonetic": "/dʒəʊ/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Joe"
@@ -17331,7 +17331,7 @@
     "letter": "J",
     "meaning": "约翰尼",
     "phonetic": "/'dʒɒnɪ/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Johnny"
@@ -17429,7 +17429,7 @@
     "letter": "J",
     "meaning": "朱莉·汤普森（人名）",
     "phonetic": "/dʒu:li/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Julie Thompson"
@@ -17455,7 +17455,7 @@
     "letter": "J",
     "meaning": "跳跃",
     "phonetic": "/dʒʌmp/",
-    "pos": "",
+    "pos": "v",
     "topic": "运动",
     "unit": "核心词汇",
     "word": "jump"
@@ -17507,7 +17507,7 @@
     "letter": "J",
     "meaning": "初中",
     "phonetic": "/ˈdʒu:nɪə(r) hai sku:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "教育",
     "unit": "扩展词汇",
     "word": "junior high school"
@@ -17582,7 +17582,7 @@
     "letter": "K",
     "meaning": "凯蒂（女名）",
     "phonetic": "/keiti/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Katie"
@@ -17605,7 +17605,7 @@
     "letter": "K",
     "meaning": "避免接近；远离",
     "phonetic": "/ki:p ə'wei frɔm/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "安全",
     "unit": "扩展词汇",
     "word": "keep away from"
@@ -17631,7 +17631,7 @@
     "letter": "K",
     "meaning": "沉住气；保持冷静",
     "phonetic": "/ki:p wʌnz ku:l/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "品格",
     "unit": "扩展词汇",
     "word": "keep one's cool"
@@ -17657,7 +17657,7 @@
     "letter": "K",
     "meaning": "肯（男名）",
     "phonetic": "/ken/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Ken"
@@ -17670,7 +17670,7 @@
     "letter": "K",
     "meaning": "凯文（男名）",
     "phonetic": "/kevin/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Kevin"
@@ -17767,7 +17767,7 @@
     "letter": "K",
     "meaning": "公斤（kilo+gram克→一千克，公斤）",
     "phonetic": "/ˈkɪləɡræm/",
-    "pos": "",
+    "pos": "n",
     "word": "kilogram"
   },
   {
@@ -17778,7 +17778,7 @@
     "letter": "K",
     "meaning": "公里",
     "phonetic": "/'kɪlə,mitɚ/",
-    "pos": "",
+    "pos": "n",
     "topic": "数学",
     "unit": "核心词汇",
     "word": "kilometer"
@@ -17814,7 +17814,7 @@
     "letter": "K",
     "meaning": "好心的；善良的",
     "phonetic": "/kaind hɑːtd/",
-    "pos": "",
+    "pos": "adj",
     "topic": "品格",
     "unit": "词条清洗",
     "word": "kind-hearted"
@@ -18006,7 +18006,7 @@
     "letter": "K",
     "meaning": "朝鲜；韩国",
     "phonetic": "/kəri:ə/",
-    "pos": "",
+    "pos": "n",
     "topic": "国家",
     "unit": "自动补充",
     "word": "Korea"
@@ -18019,7 +18019,7 @@
     "letter": "L",
     "meaning": "(=laboratory[lə'bɔrətəri])n实验室",
     "phonetic": "/læb/",
-    "pos": "",
+    "pos": "n",
     "topic": "学校",
     "unit": "核心词汇",
     "word": "lab"
@@ -18045,7 +18045,7 @@
     "letter": "L",
     "meaning": "女卫生间",
     "phonetic": "/'leidiz ru:m/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "场所",
     "unit": "词条清洗",
     "word": "ladies' room"
@@ -18067,7 +18067,7 @@
     "letter": "L",
     "meaning": "湖，湖泊",
     "phonetic": "/leɪk/",
-    "pos": "",
+    "pos": "n",
     "word": "lake"
   },
   {
@@ -18166,7 +18166,7 @@
     "letter": "L",
     "meaning": "姓",
     "phonetic": "/lɑ:st neim/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "last name"
@@ -18254,7 +18254,7 @@
     "letter": "L",
     "meaning": "洛桑（瑞士城市）",
     "phonetic": "/ləuzæn/",
-    "pos": "",
+    "pos": "n",
     "topic": "城市",
     "unit": "扩展词汇",
     "word": "Lausanne"
@@ -18293,7 +18293,7 @@
     "letter": "L",
     "meaning": "摆开；布置",
     "phonetic": "/lei aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "lay out"
@@ -18306,7 +18306,7 @@
     "letter": "L",
     "meaning": "懒散的；懒惰的",
     "phonetic": "/'leɪzɪ/",
-    "pos": "",
+    "pos": "adj",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "lazy"
@@ -18354,7 +18354,7 @@
     "letter": "L",
     "meaning": "学习；学会",
     "phonetic": "/lɜːn/",
-    "pos": "",
+    "pos": "v",
     "word": "learn"
   },
   {
@@ -18403,7 +18403,7 @@
     "letter": "L",
     "meaning": "离开；left （lea ve的过去式）",
     "phonetic": "/liː v/",
-    "pos": "",
+    "pos": "v",
     "word": "leave"
   },
   {
@@ -18414,7 +18414,7 @@
     "letter": "L",
     "meaning": "不包括；不提及；忽略",
     "phonetic": "/liː v aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "leave out"
@@ -18489,7 +18489,7 @@
     "letter": "L",
     "meaning": "借给；借出",
     "phonetic": "/lent/",
-    "pos": "",
+    "pos": "v",
     "topic": "生活",
     "unit": "词条清洗",
     "word": "lend"
@@ -18551,7 +18551,7 @@
     "letter": "L",
     "meaning": "让我想想",
     "phonetic": "/let mi: si:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "Let me see"
@@ -18564,7 +18564,7 @@
     "letter": "L",
     "meaning": "let us 的缩写形式",
     "phonetic": "/lets/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "let's"
@@ -18577,7 +18577,7 @@
     "letter": "L",
     "meaning": "让我们……",
     "phonetic": "/lets let ʌs/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "let's"
@@ -18590,7 +18590,7 @@
     "letter": "L",
     "meaning": "我们一起去",
     "phonetic": "/lets gəu/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "Let's go"
@@ -18613,7 +18613,7 @@
     "letter": "L",
     "meaning": "莴苣，生菜",
     "phonetic": "/'letɪs/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "lettuce"
@@ -18704,7 +18704,7 @@
     "letter": "L",
     "meaning": "躺下",
     "phonetic": "/laI daʊn/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "lie down"
@@ -18781,7 +18781,7 @@
     "letter": "L",
     "meaning": "像；怎么样（介词）",
     "phonetic": "/laɪk/",
-    "pos": "",
+    "pos": "prep",
     "word": "like"
   },
   {
@@ -18831,7 +18831,7 @@
     "letter": "L",
     "meaning": "听；倾听",
     "phonetic": "/'lɪs(ə)n/",
-    "pos": "",
+    "pos": "v",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "listen"
@@ -18879,7 +18879,7 @@
     "letter": "L",
     "meaning": "活的，生动的",
     "phonetic": "/lɪv/",
-    "pos": "",
+    "pos": "adj",
     "word": "live"
   },
   {
@@ -18903,7 +18903,7 @@
     "letter": "L",
     "meaning": "a. 生气勃勃的;（色彩）鲜艳的",
     "phonetic": "/laivli/",
-    "pos": "",
+    "pos": "adj",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "lively"
@@ -18916,7 +18916,7 @@
     "letter": "L",
     "meaning": "客厅",
     "phonetic": "/'lɪvɪŋ ru:m/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "家居",
     "unit": "核心词汇",
     "word": "living room"
@@ -18929,7 +18929,7 @@
     "letter": "L",
     "meaning": "起居室；客厅",
     "phonetic": "/'lɪvɪŋ ru:m/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "家居",
     "unit": "词条清洗",
     "word": "living room"
@@ -18942,7 +18942,7 @@
     "letter": "L",
     "meaning": "起居室；客厅",
     "phonetic": "/lɪvɪŋ ru:m/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "家居",
     "unit": "词条清洗",
     "word": "living room"
@@ -18980,7 +18980,7 @@
     "letter": "L",
     "meaning": "/la:k/ v. 锁上；锁住p.44",
     "phonetic": "/lɔk/",
-    "pos": "",
+    "pos": "v",
     "word": "lock"
   },
   {
@@ -19030,7 +19030,7 @@
     "letter": "L",
     "meaning": "跳远",
     "phonetic": "/lɔŋ dʒʌmp/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "long jump"
@@ -19115,7 +19115,7 @@
     "letter": "L",
     "meaning": "仔细检查",
     "phonetic": "/luk 'əʊvə/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "词条清洗",
     "word": "look over"
@@ -19141,7 +19141,7 @@
     "letter": "L",
     "meaning": "浏览，快速查看",
     "phonetic": "/luk θruː/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "look through"
@@ -19164,7 +19164,7 @@
     "letter": "L",
     "meaning": "钦佩； p.46",
     "phonetic": "/luk ʌp tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "look up to"
@@ -19280,7 +19280,7 @@
     "letter": "L",
     "meaning": "可爱的",
     "phonetic": "/'lʌvlɪ/",
-    "pos": "",
+    "pos": "adj",
     "topic": "描述",
     "unit": "核心词汇",
     "word": "lovely"
@@ -19293,7 +19293,7 @@
     "letter": "L",
     "meaning": "a 减少的；低的；矮的",
     "phonetic": "/ləu/",
-    "pos": "",
+    "pos": "adj",
     "topic": "交通",
     "unit": "扩展词汇",
     "word": "low"
@@ -19345,7 +19345,7 @@
     "letter": "L",
     "meaning": "露西",
     "phonetic": "/'lusi/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Lucy"
@@ -19358,7 +19358,7 @@
     "letter": "L",
     "meaning": "卢克（男名）",
     "phonetic": "/lu:k/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Luke"
@@ -19579,7 +19579,7 @@
     "letter": "M",
     "meaning": "有关系，作用，影响",
     "phonetic": "/meik ə 'difərəns/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "make a difference"
@@ -19592,7 +19592,7 @@
     "letter": "M",
     "meaning": "弄得一团糟，一塌糊涂",
     "phonetic": "/meik ə mes/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "家居",
     "unit": "扩展词汇",
     "word": "make a mess"
@@ -19631,7 +19631,7 @@
     "letter": "M",
     "meaning": "许愿",
     "phonetic": "/wɪʃ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "生活",
     "unit": "核心词汇",
     "word": "make a wish"
@@ -19644,7 +19644,7 @@
     "letter": "M",
     "meaning": "作出努力",
     "phonetic": "/meɪk ən ˈefət/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "make an effort"
@@ -19696,7 +19696,7 @@
     "letter": "M",
     "meaning": "自己做决定",
     "phonetic": "/meik wʌnz oʊn dɪ'sɪʒn/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "成长",
     "unit": "扩展词汇",
     "word": "make one's own decision"
@@ -19709,7 +19709,7 @@
     "letter": "M",
     "meaning": "前往，费力地前进",
     "phonetic": "/meik wʌnz weɪ/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "旅行",
     "unit": "扩展词汇",
     "word": "make one's way"
@@ -19820,7 +19820,7 @@
     "letter": "M",
     "meaning": "化妆品；化妆",
     "phonetic": "/ˈmeɪkʌp/",
-    "pos": "",
+    "pos": "n",
     "topic": "艺术",
     "unit": "词条清洗",
     "word": "makeup"
@@ -19931,7 +19931,7 @@
     "letter": "M",
     "meaning": "马克·勒布朗（人名）",
     "phonetic": "/ma:(r)k/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Marc LeBlanc"
@@ -19957,7 +19957,7 @@
     "letter": "M",
     "meaning": "玛丽亚（女名）",
     "phonetic": "/məri: ə/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Maria"
@@ -19970,7 +19970,7 @@
     "letter": "M",
     "meaning": "玛丽（女名）；马里（男名）",
     "phonetic": "/məri:/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Marie"
@@ -20022,7 +20022,7 @@
     "letter": "M",
     "meaning": "火星",
     "phonetic": "/ma:(r)z/",
-    "pos": "",
+    "pos": "n",
     "topic": "科技",
     "unit": "核心词汇",
     "word": "Mars"
@@ -20107,7 +20107,7 @@
     "letter": "M",
     "meaning": "aux 可以;可能;也许",
     "phonetic": "/mei/",
-    "pos": "v.",
+    "pos": "modal v.",
     "topic": "月份",
     "unit": "自动补充",
     "word": "may"
@@ -20195,7 +20195,7 @@
     "letter": "M",
     "meaning": "（可食用的）肉",
     "phonetic": "/miːt/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "核心词汇",
     "word": "meat"
@@ -20218,7 +20218,7 @@
     "letter": "M",
     "meaning": "中等的",
     "phonetic": "/'miːdɪəm/",
-    "pos": "",
+    "pos": "adj",
     "topic": "餐饮",
     "unit": "核心词汇",
     "word": "medium"
@@ -20430,7 +20430,7 @@
     "letter": "M",
     "meaning": "100米赛跑",
     "phonetic": "/'mi:tə reis/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "100-metre race"
@@ -20443,7 +20443,7 @@
     "letter": "M",
     "meaning": "墨西哥",
     "phonetic": "/meksikəu/",
-    "pos": "",
+    "pos": "n",
     "topic": "国家",
     "unit": "核心词汇",
     "word": "Mexico"
@@ -20482,7 +20482,7 @@
     "letter": "M",
     "meaning": "中秋节",
     "phonetic": "/ˌmɪd ˈɔːtəm/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "节日",
     "unit": "词条清洗",
     "word": "Mid-Autumn Festival"
@@ -20508,7 +20508,7 @@
     "letter": "M",
     "meaning": "中学；初中",
     "phonetic": "/'midl sku:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "教育",
     "unit": "扩展词汇",
     "word": "middle school"
@@ -20521,7 +20521,7 @@
     "letter": "M",
     "meaning": "中学",
     "phonetic": "/'midl sku:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "教育",
     "unit": "词条清洗",
     "word": "middle school"
@@ -20547,7 +20547,7 @@
     "letter": "M",
     "meaning": "中场球员",
     "phonetic": "/'midfi:ld 'pleɪə/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "midfield player"
@@ -20585,7 +20585,7 @@
     "letter": "M",
     "meaning": "可能；也许；may的过去式",
     "phonetic": "/maɪt/",
-    "pos": "aux.",
+    "pos": "modal v.",
     "word": "might"
   },
   {
@@ -20609,7 +20609,7 @@
     "letter": "M",
     "meaning": "给奶牛挤奶",
     "phonetic": "/milk ə kau/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "乡村",
     "unit": "扩展词汇",
     "word": "milk a cow"
@@ -20622,7 +20622,7 @@
     "letter": "M",
     "meaning": "百万,百万元",
     "phonetic": "/'miljən/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "million"
@@ -20757,7 +20757,7 @@
     "letter": "M",
     "meaning": "错误，失误",
     "phonetic": "/mɪ'steɪk/",
-    "pos": "",
+    "pos": "n",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "mistake"
@@ -20770,7 +20770,7 @@
     "letter": "M",
     "meaning": "可移动的；非固定的",
     "phonetic": "/məubail/",
-    "pos": "",
+    "pos": "adj",
     "topic": "科技",
     "unit": "词条清洗",
     "word": "mobile"
@@ -20783,7 +20783,7 @@
     "letter": "M",
     "meaning": "移动电话；手机",
     "phonetic": "/məubail fəun/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "科技",
     "unit": "词条清洗",
     "word": "mobile phone"
@@ -20809,7 +20809,7 @@
     "letter": "M",
     "meaning": "飞机模型",
     "phonetic": "/'mɔdl plein/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "model plane"
@@ -20933,7 +20933,7 @@
     "letter": "M",
     "meaning": "月饼",
     "phonetic": "/muːnkeɪk/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "词条清洗",
     "word": "mooncake"
@@ -21018,7 +21018,7 @@
     "letter": "M",
     "meaning": "晨报",
     "phonetic": "/'mɔ:niŋ 'peipə/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "阅读",
     "unit": "词条清洗",
     "word": "morning paper"
@@ -21188,7 +21188,7 @@
     "letter": "M",
     "meaning": "先生",
     "phonetic": "/'mistə/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Mr."
@@ -21227,7 +21227,7 @@
     "letter": "M",
     "meaning": "(女子的姓氏或姓名前)太太；夫人",
     "phonetic": "/'misiz/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Mrs."
@@ -21253,7 +21253,7 @@
     "letter": "M",
     "meaning": "(于女子的姓名前，不指明婚否)女士",
     "phonetic": "/miz/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Ms."
@@ -21289,7 +21289,7 @@
     "letter": "M",
     "meaning": "用……乘以……",
     "phonetic": "/'mʌltiplai bai/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "数学",
     "unit": "词条清洗",
     "word": "multiply ... by ..."
@@ -21363,7 +21363,7 @@
     "letter": "M",
     "meaning": "aux 必须,应当",
     "phonetic": "/mʌst/",
-    "pos": "v.",
+    "pos": "modal v.",
     "word": "must"
   },
   {
@@ -21374,7 +21374,7 @@
     "letter": "M",
     "meaning": "羊肉",
     "phonetic": "/'mʌt(ə)n/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "核心词汇",
     "word": "mutton"
@@ -21508,7 +21508,7 @@
     "letter": "N",
     "meaning": "几乎；差不多",
     "phonetic": "/niəli/",
-    "pos": "",
+    "pos": "adv",
     "topic": "时间",
     "unit": "词条清洗",
     "word": "nearly"
@@ -21560,7 +21560,7 @@
     "letter": "N",
     "meaning": "并驾齐驱；不分上下",
     "phonetic": "/nek ænd nek/",
-    "pos": "",
+    "pos": "adj. phr.",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "neck and neck"
@@ -21609,7 +21609,7 @@
     "letter": "N",
     "meaning": "街区；街坊",
     "phonetic": "/'neɪbə,hʊd/",
-    "pos": "",
+    "pos": "n",
     "topic": "社区",
     "unit": "扩展词汇",
     "word": "neighborhood"
@@ -21661,7 +21661,7 @@
     "letter": "N",
     "meaning": "既不⋯⋯也不",
     "phonetic": "/ˈni:ðə nɔ:/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "neither ... nor"
@@ -21674,7 +21674,7 @@
     "letter": "N",
     "meaning": "既不……也不……",
     "phonetic": "/ˈni:ðə nɔ:/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "neither ... nor ..."
@@ -21752,7 +21752,7 @@
     "letter": "N",
     "meaning": "新西兰",
     "phonetic": "/nju:zi:lənd/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "国家",
     "unit": "核心词汇",
     "word": "New Zealand"
@@ -21821,7 +21821,7 @@
     "letter": "N",
     "meaning": "晚上",
     "phonetic": "/naɪt/",
-    "pos": "",
+    "pos": "n",
     "topic": "时间",
     "unit": "核心词汇",
     "word": "night"
@@ -21834,7 +21834,7 @@
     "letter": "N",
     "meaning": "um. 九",
     "phonetic": "/nain/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "扩展词汇",
     "word": "nine"
@@ -21847,7 +21847,7 @@
     "letter": "N",
     "meaning": "九十",
     "phonetic": "/'naɪntɪ/",
-    "pos": "",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "ninety"
@@ -21860,7 +21860,7 @@
     "letter": "N",
     "meaning": "um \u0026adj 第九(的)",
     "phonetic": "/nainθ/",
-    "pos": "n",
+    "pos": "num",
     "topic": "顺序",
     "unit": "扩展词汇",
     "word": "ninth"
@@ -21883,7 +21883,7 @@
     "letter": "N",
     "meaning": "不再，不复",
     "phonetic": "/'nʌmbə lɔŋə(r)/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "安全",
     "unit": "扩展词汇",
     "word": "no longer"
@@ -21896,7 +21896,7 @@
     "letter": "N",
     "meaning": "不论;无论 p.35",
     "phonetic": "/'nʌmbə 'mætə/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "no matter"
@@ -21908,7 +21908,7 @@
     "letter": "N",
     "meaning": "没什么；不客气",
     "phonetic": "/nəʊ/",
-    "pos": "",
+    "pos": "phr.",
     "word": "no problem"
   },
   {
@@ -22017,7 +22017,7 @@
     "letter": "N",
     "meaning": "正常的",
     "phonetic": "/'nɔːrml/",
-    "pos": "",
+    "pos": "adj",
     "topic": "感受",
     "unit": "核心词汇",
     "word": "normal"
@@ -22115,7 +22115,7 @@
     "letter": "N",
     "meaning": "不但……，而且 p.62",
     "phonetic": "/nɔt 'əunli bʌt 'ɔːlsəʊ/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "not only … but also"
@@ -22229,7 +22229,7 @@
     "letter": "N",
     "meaning": "/na:vl/ n. （长篇）小说",
     "phonetic": "/nɔvl/",
-    "pos": "",
+    "pos": "n",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "novel"
@@ -22316,7 +22316,7 @@
     "letter": "O",
     "meaning": "…点钟",
     "phonetic": "/ə'klɔk/",
-    "pos": "",
+    "pos": "adv",
     "word": "o'clock"
   },
   {
@@ -22327,7 +22327,7 @@
     "letter": "O",
     "meaning": "点钟（用于整点）",
     "phonetic": "/ə'klɔk ɔv, əv ði; ðə klɔk æd/",
-    "pos": "",
+    "pos": "adv",
     "topic": "时间",
     "unit": "词条清洗",
     "word": "o'clock"
@@ -22389,7 +22389,7 @@
     "letter": "O",
     "meaning": "当然",
     "phonetic": "/əvkɔːs/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "日常交流",
     "unit": "核心词汇",
     "word": "of course"
@@ -22402,7 +22402,7 @@
     "letter": "O",
     "meaning": "中等身材",
     "phonetic": "/ɔv, əv 'miːdɪəm bild/",
-    "pos": "",
+    "pos": "adj. phr.",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "of medium build"
@@ -22415,7 +22415,7 @@
     "letter": "O",
     "meaning": "中等身高",
     "phonetic": "/ɔv, əv 'miːdɪəm haɪt/",
-    "pos": "",
+    "pos": "adj. phr.",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "of medium height"
@@ -22476,7 +22476,7 @@
     "letter": "O",
     "meaning": "时常；常常",
     "phonetic": "/'ɒf(tə)n/",
-    "pos": "",
+    "pos": "adv",
     "word": "often"
   },
   {
@@ -22523,7 +22523,7 @@
     "letter": "O",
     "meaning": "好；行；可以",
     "phonetic": "/əu'kei/",
-    "pos": "",
+    "pos": "int",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "OK"
@@ -22572,7 +22572,7 @@
     "letter": "O",
     "meaning": "度假",
     "phonetic": "/ɔn ə və'keɪʃ(ə)n/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "旅行",
     "unit": "扩展词汇",
     "word": "on (a) vacation"
@@ -22699,7 +22699,7 @@
     "letter": "O",
     "meaning": "从前",
     "phonetic": "/wʌns əˈpɒn/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "故事",
     "unit": "扩展词汇",
     "word": "once upon"
@@ -22725,7 +22725,7 @@
     "letter": "O",
     "meaning": "用来代替单数的人或物",
     "phonetic": "/wʌn/",
-    "pos": "pron",
+    "pos": "num \u0026 pron",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "one"
@@ -22738,7 +22738,7 @@
     "letter": "O",
     "meaning": "互相",
     "phonetic": "/wʌn ə'nʌðə/",
-    "pos": "",
+    "pos": "pron. phr.",
     "topic": "运动",
     "unit": "扩展词汇",
     "word": "one another"
@@ -22751,7 +22751,7 @@
     "letter": "O",
     "meaning": "有一天",
     "phonetic": "/wʌn dei/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "时间",
     "unit": "词条清洗",
     "word": "one day"
@@ -22764,7 +22764,7 @@
     "letter": "O",
     "meaning": "一（大）碗",
     "phonetic": "/wʌn lɑ:dʒ bəul ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "one(large)bowl of"
@@ -22865,7 +22865,7 @@
     "letter": "O",
     "meaning": "开幕式，落成典礼",
     "phonetic": "/'oʊpnɪŋ/",
-    "pos": "",
+    "pos": "n",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "opening"
@@ -22927,7 +22927,7 @@
     "letter": "O",
     "meaning": "大约",
     "phonetic": "/ɔ: səu/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "时间",
     "unit": "扩展词汇",
     "word": "or so"
@@ -22976,7 +22976,7 @@
     "letter": "O",
     "meaning": "组织，筹备",
     "phonetic": "/'ɔːrɡənaɪz/",
-    "pos": "",
+    "pos": "v",
     "topic": "环保",
     "unit": "扩展词汇",
     "word": "organize"
@@ -22989,7 +22989,7 @@
     "letter": "O",
     "meaning": "奥森·韦尔斯（电影导演）",
     "phonetic": "/ɔ:(r)sən/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "人物",
     "unit": "词条清洗",
     "word": "Orson Welles"
@@ -23077,7 +23077,7 @@
     "letter": "O",
     "meaning": "从……向外",
     "phonetic": "/aut ɔv, əv/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "方位",
     "unit": "词条清洗",
     "word": "out of"
@@ -23116,7 +23116,7 @@
     "letter": "O",
     "meaning": "ad. v.在外面adj.外面的",
     "phonetic": "/aʊt'saɪd/",
-    "pos": "",
+    "pos": "adv \u0026 adj",
     "topic": "位置",
     "unit": "扩展词汇",
     "word": "outside"
@@ -23129,7 +23129,7 @@
     "letter": "O",
     "meaning": "烤箱；烤炉",
     "phonetic": "/'ʌvn/",
-    "pos": "",
+    "pos": "n",
     "topic": "厨房",
     "unit": "扩展词汇",
     "word": "oven"
@@ -23152,7 +23152,7 @@
     "letter": "O",
     "meaning": "多次；反复地",
     "phonetic": "/'əʊvə ænd 'əʊvə ə'gen; ə'geɪn/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "音乐",
     "unit": "扩展词汇",
     "word": "over and over again"
@@ -23201,7 +23201,7 @@
     "letter": "O",
     "meaning": "睡过头",
     "phonetic": "/ˌəʊvəˈsliːp ˌəʊvəˈslept ˌəʊvəˈslept/",
-    "pos": "",
+    "pos": "v",
     "topic": "日常生活",
     "unit": "词条清洗",
     "word": "oversleep"
@@ -23213,7 +23213,7 @@
     "letter": "O",
     "meaning": "自己的，本人的，拥有",
     "phonetic": "/oʊn/",
-    "pos": "",
+    "pos": "adj \u0026 v",
     "word": "own"
   },
   {
@@ -23249,7 +23249,7 @@
     "letter": "P",
     "meaning": "(=p.m.) 下午；午后",
     "phonetic": "/pi: 'em/",
-    "pos": "",
+    "pos": "adv",
     "word": "P.M."
   },
   {
@@ -23414,7 +23414,7 @@
     "letter": "P",
     "meaning": "烙饼；薄饼",
     "phonetic": "/'pænkeɪk/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "pancake"
@@ -23492,7 +23492,7 @@
     "letter": "P",
     "meaning": "父母；双亲",
     "phonetic": "/ˈpeərənts/",
-    "pos": "",
+    "pos": "n",
     "topic": "家庭",
     "unit": "词条清洗",
     "word": "parents"
@@ -23571,7 +23571,7 @@
     "letter": "P",
     "meaning": "放弃，交出",
     "phonetic": "/pɑ:t wið/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "part with"
@@ -23718,7 +23718,7 @@
     "letter": "P",
     "meaning": "/pætən/ n. 模式；方式p.4",
     "phonetic": "/pætn/",
-    "pos": "",
+    "pos": "n",
     "topic": "衣物",
     "unit": "扩展词汇",
     "word": "pattern"
@@ -23731,7 +23731,7 @@
     "letter": "P",
     "meaning": "葆拉 （女名） p.26",
     "phonetic": "/pɔ:lə/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Paula"
@@ -23757,7 +23757,7 @@
     "letter": "P",
     "meaning": "付费",
     "phonetic": "/peɪ/",
-    "pos": "",
+    "pos": "v",
     "topic": "购物",
     "unit": "扩展词汇",
     "word": "pay"
@@ -23770,7 +23770,7 @@
     "letter": "P",
     "meaning": "付钱；支付",
     "phonetic": "/peid/",
-    "pos": "",
+    "pos": "v",
     "topic": "购物",
     "unit": "词条清洗",
     "word": "pay"
@@ -23782,7 +23782,7 @@
     "letter": "P",
     "meaning": "注意；关注 p.6",
     "phonetic": "/peɪ əˈtenʃən tuː/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "pay attention to"
   },
   {
@@ -23806,7 +23806,7 @@
     "letter": "P",
     "meaning": "付费电话",
     "phonetic": "/'peifəun/",
-    "pos": "",
+    "pos": "n",
     "topic": "交流",
     "unit": "扩展词汇",
     "word": "payphone"
@@ -23832,7 +23832,7 @@
     "letter": "P",
     "meaning": "和平",
     "phonetic": "/piːs/",
-    "pos": "",
+    "pos": "n",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "peace"
@@ -23881,7 +23881,7 @@
     "letter": "P",
     "meaning": "京剧",
     "phonetic": "/ˌpiːˈkɪŋ 'ɔpərə/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "文化",
     "unit": "词条清洗",
     "word": "Peking Opera"
@@ -23916,7 +23916,7 @@
     "letter": "P",
     "meaning": "铅笔盒；文具盒",
     "phonetic": "/ˈpensl/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "pencil box"
   },
   {
@@ -23927,7 +23927,7 @@
     "letter": "P",
     "meaning": "铅笔盒",
     "phonetic": "/'pensl bɔks/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "学校",
     "unit": "词条清洗",
     "word": "pencil box"
@@ -23963,7 +23963,7 @@
     "letter": "P",
     "meaning": "胡椒粉；辣椒",
     "phonetic": "/'pepər/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "pepper"
@@ -24129,7 +24129,7 @@
     "letter": "P",
     "meaning": "身体的",
     "phonetic": "/'fɪzɪkl/",
-    "pos": "",
+    "pos": "adj",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "physical"
@@ -24155,7 +24155,7 @@
     "letter": "P",
     "meaning": "钢琴家",
     "phonetic": "/'pɪənɪst/",
-    "pos": "",
+    "pos": "n",
     "topic": "职业",
     "unit": "扩展词汇",
     "word": "pianist"
@@ -24181,7 +24181,7 @@
     "letter": "P",
     "meaning": "毕加索（西班牙画家）",
     "phonetic": "/pikæsəu/",
-    "pos": "",
+    "pos": "n",
     "topic": "艺术",
     "unit": "词条清洗",
     "word": "Picasso"
@@ -24204,7 +24204,7 @@
     "letter": "P",
     "meaning": "接电话",
     "phonetic": "/pik ʌp pik ʌp ði; ðə fəun/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "通信",
     "unit": "词条清洗",
     "word": "pick up"
@@ -24302,7 +24302,7 @@
     "letter": "P",
     "meaning": "飞行员",
     "phonetic": "/'paɪlət/",
-    "pos": "",
+    "pos": "n",
     "topic": "职业",
     "unit": "扩展词汇",
     "word": "pilot"
@@ -24419,7 +24419,7 @@
     "letter": "P",
     "meaning": "行星",
     "phonetic": "/'plænɪt/",
-    "pos": "",
+    "pos": "n",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "planet"
@@ -24505,7 +24505,7 @@
     "letter": "P",
     "meaning": "参与",
     "phonetic": "/plei ə pɑ:t/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "play a part"
@@ -24518,7 +24518,7 @@
     "letter": "P",
     "meaning": "发挥作用；有影响",
     "phonetic": "/plei ə rəʊl/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "环保",
     "unit": "扩展词汇",
     "word": "play a role"
@@ -24531,7 +24531,7 @@
     "letter": "P",
     "meaning": "播放机；运动员",
     "phonetic": "/'pleɪə/",
-    "pos": "",
+    "pos": "n",
     "topic": "运动",
     "unit": "扩展词汇",
     "word": "player"
@@ -24635,7 +24635,7 @@
     "letter": "P",
     "meaning": "大量；充足",
     "phonetic": "/plenti ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "时间",
     "unit": "扩展词汇",
     "word": "plenty of"
@@ -24736,7 +24736,7 @@
     "letter": "P",
     "meaning": "警察局",
     "phonetic": "/'steɪʃən/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "地点",
     "unit": "扩展词汇",
     "word": "police station"
@@ -24798,7 +24798,7 @@
     "letter": "P",
     "meaning": "污染；污染物",
     "phonetic": "/pə'luːʃn/",
-    "pos": "",
+    "pos": "n",
     "topic": "环保",
     "unit": "扩展词汇",
     "word": "pollution"
@@ -24850,7 +24850,7 @@
     "letter": "P",
     "meaning": "爆米花",
     "phonetic": "/'pɑːpkɔːrn/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "popcorn"
@@ -24950,7 +24950,7 @@
     "letter": "P",
     "meaning": "邮局",
     "phonetic": "/pəʊst ˈɒfɪs/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "post office"
   },
   {
@@ -24961,7 +24961,7 @@
     "letter": "P",
     "meaning": "邮局",
     "phonetic": "/pəʊst ˈɒfɪs/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "场所",
     "unit": "词条清洗",
     "word": "post office"
@@ -25033,7 +25033,7 @@
     "letter": "P",
     "meaning": "倒；倾倒",
     "phonetic": "/pɔːr/",
-    "pos": "",
+    "pos": "v",
     "topic": "厨房",
     "unit": "词条清洗",
     "word": "pour"
@@ -25059,7 +25059,7 @@
     "letter": "P",
     "meaning": "练习；实践",
     "phonetic": "/'præktis/",
-    "pos": "",
+    "pos": "v \u0026 n",
     "topic": "学习",
     "unit": "词条清洗",
     "word": "practice"
@@ -25098,7 +25098,7 @@
     "letter": "P",
     "meaning": "预测",
     "phonetic": "/prɪ'dɪkʃn/",
-    "pos": "",
+    "pos": "n",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "prediction"
@@ -25137,7 +25137,7 @@
     "letter": "P",
     "meaning": "抓住（词根）",
     "phonetic": "/priːˈhens priːˈhend kætʃ/",
-    "pos": "",
+    "pos": "n",
     "topic": "词源",
     "unit": "词条清洗",
     "word": "prehend"
@@ -25150,7 +25150,7 @@
     "letter": "P",
     "meaning": "在……上面",
     "phonetic": "/ˌprepəˈzɪʃən/",
-    "pos": "",
+    "pos": "prep",
     "topic": "方位",
     "unit": "词条清洗",
     "word": "on"
@@ -25163,7 +25163,7 @@
     "letter": "P",
     "meaning": "准备，准备工作",
     "phonetic": "/ˌprepə'reɪʃn/",
-    "pos": "",
+    "pos": "n",
     "topic": "活动",
     "unit": "扩展词汇",
     "word": "preparation"
@@ -25307,7 +25307,7 @@
     "letter": "P",
     "meaning": "首相；大臣",
     "phonetic": "/praim ministə(r)/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "社会",
     "unit": "扩展词汇",
     "word": "prime minister"
@@ -25385,7 +25385,7 @@
     "letter": "P",
     "meaning": "大概；或许；很可能",
     "phonetic": "/'prɑːbəbli/",
-    "pos": "",
+    "pos": "adv",
     "topic": "天气",
     "unit": "扩展词汇",
     "word": "probably"
@@ -25434,7 +25434,7 @@
     "letter": "P",
     "meaning": "a. 职业的；专业的",
     "phonetic": "/prəfeʃənl/",
-    "pos": "",
+    "pos": "adj",
     "topic": "职业",
     "unit": "扩展词汇",
     "word": "professional"
@@ -25460,7 +25460,7 @@
     "letter": "P",
     "meaning": "节目；程序",
     "phonetic": "/'prəugræm/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "娱乐",
     "unit": "词条清洗",
     "word": "program (programme)"
@@ -25499,7 +25499,7 @@
     "letter": "P",
     "meaning": "承诺，诺言",
     "phonetic": "/ˈprɑmɪs/",
-    "pos": "",
+    "pos": "n \u0026 v",
     "topic": "品格",
     "unit": "扩展词汇",
     "word": "promise"
@@ -25639,7 +25639,7 @@
     "letter": "P",
     "meaning": "齐心协力；通力合作",
     "phonetic": "/pul tə'ɡeðə(r)/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "品格",
     "unit": "扩展词汇",
     "word": "pull together"
@@ -25796,7 +25796,7 @@
     "letter": "P",
     "meaning": "上演；播放",
     "phonetic": "/put ɔn/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "艺术",
     "unit": "词条清洗",
     "word": "put on"
@@ -25897,7 +25897,7 @@
     "letter": "Q",
     "meaning": "插队的人",
     "phonetic": "/kju: 'dʒʌmpə/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "礼仪",
     "unit": "词条清洗",
     "word": "queue jumper"
@@ -25923,7 +25923,7 @@
     "letter": "Q",
     "meaning": "ad.v.很快的",
     "phonetic": "/'kwɪklɪ/",
-    "pos": "",
+    "pos": "adv",
     "topic": "健康",
     "unit": "核心词汇",
     "word": "quickly"
@@ -25972,7 +25972,7 @@
     "letter": "Q",
     "meaning": "相当；很",
     "phonetic": "/kwaɪt/",
-    "pos": "",
+    "pos": "adv",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "quite"
@@ -25985,7 +25985,7 @@
     "letter": "Q",
     "meaning": "相当多；不少(后接可数名词)",
     "phonetic": "/kwaɪt ə fjuː/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "quite a few"
@@ -25998,7 +25998,7 @@
     "letter": "Q",
     "meaning": "许多",
     "phonetic": "/kwaɪt ə lɒt ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "学习",
     "unit": "词条清洗",
     "word": "quite a lot of"
@@ -26085,7 +26085,7 @@
     "letter": "R",
     "meaning": "下雨；雨水",
     "phonetic": "/reɪn/",
-    "pos": "",
+    "pos": "n \u0026 v",
     "word": "rain"
   },
   {
@@ -26109,7 +26109,7 @@
     "letter": "R",
     "meaning": "rain的过去式；下雨了",
     "phonetic": "/reɪnd/",
-    "pos": "",
+    "pos": "v",
     "topic": "天气",
     "unit": "词条清洗",
     "word": "rained"
@@ -26171,7 +26171,7 @@
     "letter": "R",
     "meaning": "宁愿；相当",
     "phonetic": "/ra: ð/",
-    "pos": "",
+    "pos": "adv",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "rather"
@@ -26220,7 +26220,7 @@
     "letter": "R",
     "meaning": "阅览室",
     "phonetic": "/ri:dɪŋ ru:m/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "学校",
     "unit": "词条清洗",
     "word": "reading room"
@@ -26475,7 +26475,7 @@
     "letter": "R",
     "meaning": "关系",
     "phonetic": "/rɪ'leɪʃnʃɪp/",
-    "pos": "",
+    "pos": "n",
     "topic": "关系",
     "unit": "核心词汇",
     "word": "relationship"
@@ -26562,7 +26562,7 @@
     "letter": "R",
     "meaning": "记住； 记起",
     "phonetic": "/rɪ'membə/",
-    "pos": "",
+    "pos": "v",
     "word": "remember"
   },
   {
@@ -26690,7 +26690,7 @@
     "letter": "R",
     "meaning": "决心，决定",
     "phonetic": "/ˌrezə'luːʃn/",
-    "pos": "",
+    "pos": "n",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "resolution"
@@ -26769,7 +26769,7 @@
     "letter": "R",
     "meaning": "结果；后果",
     "phonetic": "/rɪ'zʌlt/",
-    "pos": "",
+    "pos": "n",
     "topic": "学校",
     "unit": "扩展词汇",
     "word": "result"
@@ -26906,7 +26906,7 @@
     "letter": "R",
     "meaning": "立即，马上",
     "phonetic": "/rait ə'wei/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "right away"
@@ -27096,7 +27096,7 @@
     "letter": "R",
     "meaning": "ride的过去式；骑乘",
     "phonetic": "/rəʊd/",
-    "pos": "",
+    "pos": "v",
     "topic": "交通",
     "unit": "词条清洗",
     "word": "rode"
@@ -27309,7 +27309,7 @@
     "letter": "R",
     "meaning": "用尽，耗尽",
     "phonetic": "/rʌn aut ɔv, əv/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "run out (of)"
@@ -27335,7 +27335,7 @@
     "letter": "R",
     "meaning": "向右转",
     "phonetic": "/tɜːn raɪt/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "方位",
     "unit": "词条清洗",
     "word": "turn right"
@@ -27531,7 +27531,7 @@
     "letter": "S",
     "meaning": "特别行政区",
     "phonetic": "/ˌes eɪ ˈɑː(r)/",
-    "pos": "",
+    "pos": "n",
     "topic": "中国",
     "unit": "词条清洗",
     "word": "SAR"
@@ -27570,7 +27570,7 @@
     "letter": "S",
     "meaning": "佐藤（日本姓氏）",
     "phonetic": "/sa:tɔ/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "扩展词汇",
     "word": "Sato"
@@ -27632,7 +27632,7 @@
     "letter": "S",
     "meaning": "惊慌的",
     "phonetic": "/skeəd/",
-    "pos": "",
+    "pos": "adj",
     "topic": "感受",
     "unit": "核心词汇",
     "word": "scared"
@@ -27759,7 +27759,7 @@
     "letter": "S",
     "meaning": "科幻小说",
     "phonetic": "/'saiəns ˈfɪkʃn/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "science fiction"
@@ -27847,7 +27847,7 @@
     "letter": "S",
     "meaning": "斯克鲁奇n.（非正式）吝啬鬼",
     "phonetic": "/skru:dʒ/",
-    "pos": "",
+    "pos": "n",
     "topic": "阅读",
     "unit": "扩展词汇",
     "word": "Scrooge"
@@ -27932,7 +27932,7 @@
     "letter": "S",
     "meaning": "um \u0026adj 第二(的)",
     "phonetic": "/'sekənd/",
-    "pos": "n",
+    "pos": "num",
     "topic": "顺序",
     "unit": "核心词汇",
     "word": "second"
@@ -27994,7 +27994,7 @@
     "letter": "S",
     "meaning": "再见！",
     "phonetic": "/si: ju:/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "See you!"
@@ -28033,7 +28033,7 @@
     "letter": "S",
     "meaning": "自我改进；自我提高",
     "phonetic": "/selfɪmp'ruːvmənt/",
-    "pos": "",
+    "pos": "n",
     "topic": "成长",
     "unit": "词条清洗",
     "word": "self-improvement"
@@ -28095,7 +28095,7 @@
     "letter": "S",
     "meaning": "a. 级别（或地位）高的",
     "phonetic": "/si:niə(r)/",
-    "pos": "",
+    "pos": "adj",
     "topic": "学校",
     "unit": "核心词汇",
     "word": "senior"
@@ -28108,7 +28108,7 @@
     "letter": "S",
     "meaning": "高中",
     "phonetic": "/si:niə(r) hai sku:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "教育",
     "unit": "扩展词汇",
     "word": "senior high (school)"
@@ -28186,7 +28186,7 @@
     "letter": "S",
     "meaning": "严重地，严肃地",
     "phonetic": "/'sɪəriəsli/",
-    "pos": "",
+    "pos": "adv",
     "topic": "安全",
     "unit": "扩展词汇",
     "word": "seriously"
@@ -28199,7 +28199,7 @@
     "letter": "S",
     "meaning": "仆人",
     "phonetic": "/'sɜːrvənt/",
-    "pos": "",
+    "pos": "n",
     "topic": "阅读",
     "unit": "核心词汇",
     "word": "servant"
@@ -28277,7 +28277,7 @@
     "letter": "S",
     "meaning": "建立，设立",
     "phonetic": "/set ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "环保",
     "unit": "扩展词汇",
     "word": "set up"
@@ -28290,7 +28290,7 @@
     "letter": "S",
     "meaning": "um. 七",
     "phonetic": "/'sevn/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "seven"
@@ -28303,7 +28303,7 @@
     "letter": "S",
     "meaning": "七十",
     "phonetic": "/'sev (ə)ntɪ/",
-    "pos": "",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "seventy"
@@ -28410,7 +28410,7 @@
     "letter": "S",
     "meaning": "羊，绵羊",
     "phonetic": "/ʃiːp/",
-    "pos": "",
+    "pos": "n",
     "word": "sheep"
   },
   {
@@ -28421,7 +28421,7 @@
     "letter": "S",
     "meaning": "(pl",
     "phonetic": "/ʃelf/",
-    "pos": "",
+    "pos": "n",
     "topic": "学习用品",
     "unit": "核心词汇",
     "word": "shelf"
@@ -28532,7 +28532,7 @@
     "letter": "S",
     "meaning": "射击；投篮",
     "phonetic": "/ʃɔt/",
-    "pos": "",
+    "pos": "v",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "shoot"
@@ -28619,7 +28619,7 @@
     "letter": "S",
     "meaning": "aux (shall的过去式)将,会,应该",
     "phonetic": "/ʃud/",
-    "pos": "v.",
+    "pos": "modal v.",
     "word": "should"
   },
   {
@@ -28656,7 +28656,7 @@
     "letter": "S",
     "meaning": "冲……大声叫嚷",
     "phonetic": "/ʃaut æt/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "交流",
     "unit": "词条清洗",
     "word": "shout at"
@@ -28669,7 +28669,7 @@
     "letter": "S",
     "meaning": "对……大声喊叫",
     "phonetic": "/ʃaut tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "交流",
     "unit": "词条清洗",
     "word": "shout to"
@@ -28973,7 +28973,7 @@
     "letter": "S",
     "meaning": "词根：站立",
     "phonetic": "/sɪst stænd/",
-    "pos": "",
+    "pos": "n",
     "topic": "词源",
     "unit": "词条清洗",
     "word": "-sist-"
@@ -29048,7 +29048,7 @@
     "letter": "S",
     "meaning": "um. 六",
     "phonetic": "/siks/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "six"
@@ -29061,7 +29061,7 @@
     "letter": "S",
     "meaning": "六十",
     "phonetic": "/'sɪkstɪ/",
-    "pos": "",
+    "pos": "num",
     "topic": "数字",
     "unit": "核心词汇",
     "word": "sixty"
@@ -29194,7 +29194,7 @@
     "letter": "S",
     "meaning": "缓慢的；迟缓的",
     "phonetic": "/sləʊ/",
-    "pos": "",
+    "pos": "adj",
     "word": "slow"
   },
   {
@@ -29303,7 +29303,7 @@
     "letter": "S",
     "meaning": "平滑的；顺利的；悦耳的",
     "phonetic": "/smu:ð/",
-    "pos": "",
+    "pos": "adj",
     "topic": "自然",
     "unit": "词条清洗",
     "word": "smooth"
@@ -29341,7 +29341,7 @@
     "letter": "S",
     "meaning": "下雪；雪Snow",
     "phonetic": "/snəʊ/",
-    "pos": "",
+    "pos": "n \u0026 v",
     "word": "snow"
   },
   {
@@ -29385,7 +29385,7 @@
     "letter": "S",
     "meaning": "到目前为止；迄今为止",
     "phonetic": "/səu fɑ:/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "时间",
     "unit": "词汇复习",
     "word": "so far"
@@ -29398,7 +29398,7 @@
     "letter": "S",
     "meaning": "以便；以致",
     "phonetic": "/səu ðæt/",
-    "pos": "",
+    "pos": "conj. phr.",
     "topic": "交流",
     "unit": "词条清洗",
     "word": "so that"
@@ -29463,7 +29463,7 @@
     "letter": "S",
     "meaning": "足球",
     "phonetic": "/'sɔkə bɔ:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "soccer ball"
@@ -29541,7 +29541,7 @@
     "letter": "S",
     "meaning": "软体玩具，布绒玩具",
     "phonetic": "/sɔft tɔi/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "玩具",
     "unit": "词汇复习",
     "word": "soft toy"
@@ -29652,7 +29652,7 @@
     "letter": "S",
     "meaning": "pro某事(物)某东西",
     "phonetic": "/'sʌmθiŋ/",
-    "pos": "",
+    "pos": "pron",
     "topic": "基础表达",
     "unit": "核心词汇",
     "word": "something"
@@ -29759,7 +29759,7 @@
     "letter": "S",
     "meaning": "抱歉的；难过的；惋惜的",
     "phonetic": "/'sɒrɪ/",
-    "pos": "",
+    "pos": "adj",
     "word": "sorry"
   },
   {
@@ -29813,7 +29813,7 @@
     "letter": "S",
     "meaning": "南非",
     "phonetic": "/sauθ 'æfrikə/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "国家",
     "unit": "词条清洗",
     "word": "South Africa"
@@ -29862,7 +29862,7 @@
     "letter": "S",
     "meaning": "太空站",
     "phonetic": "/speis 'steiʃən/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "科技",
     "unit": "词汇复习",
     "word": "space station"
@@ -29949,7 +29949,7 @@
     "letter": "S",
     "meaning": "特色菜；特价品；特别的；特殊的",
     "phonetic": "/'speʃ(ə)l/",
-    "pos": "",
+    "pos": "adj \u0026 n",
     "word": "special"
   },
   {
@@ -30012,7 +30012,7 @@
     "letter": "S",
     "meaning": "花时间",
     "phonetic": "/spend taim/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "家庭",
     "unit": "词汇复习",
     "word": "spend time"
@@ -30038,7 +30038,7 @@
     "letter": "S",
     "meaning": "溢出；溅出；洒出",
     "phonetic": "/spilt/",
-    "pos": "",
+    "pos": "v",
     "topic": "生活",
     "unit": "词条清洗",
     "word": "spill"
@@ -30064,7 +30064,7 @@
     "letter": "S",
     "meaning": "吐；吐唾沫",
     "phonetic": "/spæt/",
-    "pos": "",
+    "pos": "v",
     "topic": "文明",
     "unit": "词条清洗",
     "word": "spit"
@@ -30077,7 +30077,7 @@
     "letter": "S",
     "meaning": "糟蹋；破坏；宠坏",
     "phonetic": "/spɔil/",
-    "pos": "",
+    "pos": "v",
     "topic": "天气",
     "unit": "词条清洗",
     "word": "spoil"
@@ -30126,7 +30126,7 @@
     "letter": "S",
     "meaning": "春节",
     "phonetic": "/spriŋ 'festivl/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "节日",
     "unit": "词条清洗",
     "word": "Spring Festival"
@@ -30152,7 +30152,7 @@
     "letter": "S",
     "meaning": "情人节",
     "phonetic": "/seint/",
-    "pos": "V",
+    "pos": "n. phr.",
     "topic": "节日",
     "unit": "词条清洗",
     "word": "St. Valentine's Day"
@@ -30277,7 +30277,7 @@
     "letter": "S",
     "meaning": "起跑线",
     "phonetic": "/stɑ:tɪŋ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "运动",
     "unit": "词条清洗",
     "word": "starting line"
@@ -30329,7 +30329,7 @@
     "letter": "S",
     "meaning": "熬夜；很晚不睡",
     "phonetic": "/stei ʌp leit/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "健康",
     "unit": "词条清洗",
     "word": "stay up late"
@@ -30355,7 +30355,7 @@
     "letter": "S",
     "meaning": "steal 的过去式；偷窃了",
     "phonetic": "/stəul/",
-    "pos": "",
+    "pos": "v",
     "topic": "安全",
     "unit": "词条清洗",
     "word": "stole"
@@ -30394,7 +30394,7 @@
     "letter": "S",
     "meaning": "方向盘",
     "phonetic": "/ˈstɪərɪŋ wi:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "交通",
     "unit": "词条清洗",
     "word": "steering wheel"
@@ -30473,7 +30473,7 @@
     "letter": "S",
     "meaning": "ad. v. 还.仍然",
     "phonetic": "/stɪl/",
-    "pos": "",
+    "pos": "adv",
     "topic": "基础表达",
     "unit": "核心词汇",
     "word": "still"
@@ -30538,7 +30538,7 @@
     "letter": "S",
     "meaning": "巨石阵",
     "phonetic": "/stəunhendʒ/",
-    "pos": "",
+    "pos": "n",
     "topic": "文化",
     "unit": "词条清洗",
     "word": "Stonehenge"
@@ -30704,7 +30704,7 @@
     "letter": "S",
     "meaning": "严格的；严厉的",
     "phonetic": "/strɪkt/",
-    "pos": "",
+    "pos": "adj",
     "word": "strict"
   },
   {
@@ -30799,7 +30799,7 @@
     "letter": "S",
     "meaning": "地铁",
     "phonetic": "/'sʌbweɪ/",
-    "pos": "",
+    "pos": "n",
     "word": "subway"
   },
   {
@@ -30875,7 +30875,7 @@
     "letter": "S",
     "meaning": "例如；诸如",
     "phonetic": "/sʌtʃ əz/",
-    "pos": "",
+    "pos": "prep. phr.",
     "topic": "健康",
     "unit": "词汇复习",
     "word": "such as"
@@ -30953,7 +30953,7 @@
     "letter": "S",
     "meaning": "西服；套装；适合",
     "phonetic": "/sju:t/",
-    "pos": "",
+    "pos": "n \u0026 v",
     "topic": "服装",
     "unit": "词条清洗",
     "word": "suit"
@@ -30986,7 +30986,7 @@
     "letter": "S",
     "meaning": "阳光",
     "phonetic": "/sʌn ʃain/",
-    "pos": "",
+    "pos": "n",
     "topic": "自然",
     "unit": "词条清洗",
     "word": "sunshine"
@@ -31274,7 +31274,7 @@
     "letter": "S",
     "meaning": "摇摆舞",
     "phonetic": "/swɪŋ dɑ:ns/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "艺术",
     "unit": "词汇复习",
     "word": "swing dance"
@@ -31287,7 +31287,7 @@
     "letter": "S",
     "meaning": "瑞士",
     "phonetic": "/switsə(r)lənd/",
-    "pos": "",
+    "pos": "n",
     "topic": "国家",
     "unit": "词条清洗",
     "word": "Switzerland"
@@ -31342,7 +31342,7 @@
     "letter": "T",
     "meaning": "乒乓球",
     "phonetic": "/'teibl 'tenis/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "table tennis"
   },
   {
@@ -31372,7 +31372,7 @@
     "letter": "T",
     "meaning": "捎个口信；传话",
     "phonetic": "/teik ə 'mesidʒ/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take a message"
   },
   {
@@ -31392,7 +31392,7 @@
     "letter": "T",
     "meaning": "淋浴；洗澡",
     "phonetic": "/teik ə 'ʃaʊə/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take a shower"
   },
   {
@@ -31402,7 +31402,7 @@
     "letter": "T",
     "meaning": "外貌或行为像",
     "phonetic": "/teik 'ɑ:ftə/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take after"
   },
   {
@@ -31422,7 +31422,7 @@
     "letter": "T",
     "meaning": "休息",
     "phonetic": "/teik breɪkz teik ə breɪk/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take a break"
   },
   {
@@ -31442,7 +31442,7 @@
     "letter": "T",
     "meaning": "拆除，往下拽，记录",
     "phonetic": "/teik daʊn/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take down"
   },
   {
@@ -31462,7 +31462,7 @@
     "letter": "T",
     "meaning": "吸入，吞入",
     "phonetic": "/teik in/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take in"
   },
   {
@@ -31482,7 +31482,7 @@
     "letter": "T",
     "meaning": "（飞机等）起飞；匆忙离开",
     "phonetic": "/teik ɒf/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take off"
   },
   {
@@ -31492,7 +31492,7 @@
     "letter": "T",
     "meaning": "点菜",
     "phonetic": "/teik wʌnz 'ɔ:də/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take one's order"
   },
   {
@@ -31512,7 +31512,7 @@
     "letter": "T",
     "meaning": "量体温",
     "phonetic": "/teik wʌnz 'temprətʃər/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take one's temperature"
   },
   {
@@ -31532,7 +31532,7 @@
     "letter": "T",
     "meaning": "倒垃圾",
     "phonetic": "/teik aut ði; ðə 'rʌbiʃ/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take out the rubbish"
   },
   {
@@ -31552,7 +31552,7 @@
     "letter": "T",
     "meaning": "发生；出现",
     "phonetic": "/teik pleis/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take place"
   },
   {
@@ -31562,7 +31562,7 @@
     "letter": "T",
     "meaning": "为⋯⋯感到自豪",
     "phonetic": "/teik praid in/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take pride in"
   },
   {
@@ -31572,7 +31572,7 @@
     "letter": "T",
     "meaning": "冒险",
     "phonetic": "/teik rɪskz teik ə rɪsk/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take risks"
   },
   {
@@ -31582,7 +31582,7 @@
     "letter": "T",
     "meaning": "代替；替换",
     "phonetic": "/teik sʌmbədiz pleis/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take sb.'s place"
   },
   {
@@ -31612,7 +31612,7 @@
     "letter": "T",
     "meaning": "学着做；开始做",
     "phonetic": "/teik ʌp/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take up"
   },
   {
@@ -31632,7 +31632,7 @@
     "letter": "T",
     "meaning": "认真对待",
     "phonetic": "/teik 'sɪəriəsli/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "take ... seriously"
   },
   {
@@ -31682,7 +31682,7 @@
     "letter": "T",
     "meaning": "回嘴；顶嘴",
     "phonetic": "/tɔːk bæk/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "talk back"
   },
   {
@@ -31722,7 +31722,7 @@
     "letter": "T",
     "meaning": "录音机",
     "phonetic": "/teip 'pleɪə/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "tape player"
   },
   {
@@ -31772,7 +31772,7 @@
     "letter": "T",
     "meaning": "茶艺",
     "phonetic": "/tiː ɑ:t/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "tea art"
   },
   {
@@ -31782,7 +31782,7 @@
     "letter": "T",
     "meaning": "茶具",
     "phonetic": "/tiː set/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "tea set"
   },
   {
@@ -31906,7 +31906,7 @@
     "letter": "T",
     "meaning": "青少年",
     "phonetic": "/'tiːnˌeɪdʒə/",
-    "pos": "",
+    "pos": "n",
     "word": "teenager"
   },
   {
@@ -31946,7 +31946,7 @@
     "letter": "T",
     "meaning": "电话；电话机",
     "phonetic": "/fəun/",
-    "pos": "",
+    "pos": "n",
     "word": "telephone"
   },
   {
@@ -31976,7 +31976,7 @@
     "letter": "T",
     "meaning": "温度，气候",
     "phonetic": "/'temprətʃər/",
-    "pos": "",
+    "pos": "n",
     "word": "temperature"
   },
   {
@@ -31987,7 +31987,7 @@
     "letter": "T",
     "meaning": "um 十",
     "phonetic": "/ten/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "ten"
@@ -32009,7 +32009,7 @@
     "letter": "T",
     "meaning": "帐篷",
     "phonetic": "/tent/",
-    "pos": "",
+    "pos": "n",
     "word": "tent"
   },
   {
@@ -32019,7 +32019,7 @@
     "letter": "T",
     "meaning": "特蕾莎·洛佩斯",
     "phonetic": "/təri:zə/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "Teresa Lopez"
   },
   {
@@ -32119,7 +32119,7 @@
     "letter": "T",
     "meaning": "为……而感谢你",
     "phonetic": "/θæŋk ju: fɔ:/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "thank you for ..."
   },
   {
@@ -32219,7 +32219,7 @@
     "letter": "T",
     "meaning": "人民大会堂",
     "phonetic": "/ði; ðə greit hɔ:l ɔv, əv ði; ðə 'piːp(ə)l/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "the Great Hall of the People"
   },
   {
@@ -32229,7 +32229,7 @@
     "letter": "T",
     "meaning": "长城",
     "phonetic": "/ðəgreitwɔ:l/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "the Great Wall"
   },
   {
@@ -32249,7 +32249,7 @@
     "letter": "T",
     "meaning": "越……越……",
     "phonetic": "/ði; ðə mɔ: ði; ðə mɔ:/",
-    "pos": "",
+    "pos": "conj. phr.",
     "word": "the more ..., the more ..."
   },
   {
@@ -32269,7 +32269,7 @@
     "letter": "T",
     "meaning": "奥林匹克运动会",
     "phonetic": "/əulimpiks/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "the Olympics"
   },
   {
@@ -32279,7 +32279,7 @@
     "letter": "T",
     "meaning": "太平洋",
     "phonetic": "/ði; ðə pəˈsɪfɪk 'əuʃən/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "the Pacific Ocean"
   },
   {
@@ -32289,7 +32289,7 @@
     "letter": "T",
     "meaning": "故宫博物院",
     "phonetic": "/ði; ðə pæləs mju:'ziəm/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "the Palace Museum"
   },
   {
@@ -32299,7 +32299,7 @@
     "letter": "T",
     "meaning": "与...同样的",
     "phonetic": "/ði; ðə seim əz/",
-    "pos": "",
+    "pos": "adj. phr.",
     "word": "the same as"
   },
   {
@@ -32309,7 +32309,7 @@
     "letter": "T",
     "meaning": "颐和园",
     "phonetic": "/ði; ðə 'sʌmə pæləs/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "the Summer Palace"
   },
   {
@@ -32319,7 +32319,7 @@
     "letter": "T",
     "meaning": "英国",
     "phonetic": "/ði; ðə juːˈkeɪ/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "the UK"
   },
   {
@@ -32339,7 +32339,7 @@
     "letter": "T",
     "meaning": "剧场；戏院",
     "phonetic": "/'θiətə/",
-    "pos": "",
+    "pos": "n",
     "word": "theatre"
   },
   {
@@ -32409,7 +32409,7 @@
     "letter": "T",
     "meaning": "表示存在,有..,作引导词",
     "phonetic": "/ðɛə/",
-    "pos": "",
+    "pos": "adv",
     "word": "there"
   },
   {
@@ -32419,7 +32419,7 @@
     "letter": "T",
     "meaning": "there is 的缩写形式",
     "phonetic": "/ðɛəz/",
-    "pos": "",
+    "pos": "v",
     "word": "there's"
   },
   {
@@ -32499,7 +32499,7 @@
     "letter": "T",
     "meaning": "思考；思索",
     "phonetic": "/θiŋk ə'baut/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "think about"
   },
   {
@@ -32519,7 +32519,7 @@
     "letter": "T",
     "meaning": "um \u0026adj 第三的",
     "phonetic": "/θə:d/",
-    "pos": "n",
+    "pos": "num",
     "word": "third"
   },
   {
@@ -32529,7 +32529,7 @@
     "letter": "T",
     "meaning": "a. 口渴的； 渴望的",
     "phonetic": "/θ3:(r)sti/",
-    "pos": "",
+    "pos": "adj",
     "word": "thirsty"
   },
   {
@@ -32540,7 +32540,7 @@
     "letter": "T",
     "meaning": "um. 十三",
     "phonetic": "/θə:'ti:n/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "thirteen"
@@ -32553,7 +32553,7 @@
     "letter": "T",
     "meaning": "um. 三十",
     "phonetic": "/'θə:ti/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "thirty"
@@ -32575,7 +32575,7 @@
     "letter": "T",
     "meaning": "请走这边",
     "phonetic": "/ðis weɪ pli:z/",
-    "pos": "",
+    "pos": "phr.",
     "word": "This way, please."
   },
   {
@@ -32585,7 +32585,7 @@
     "letter": "T",
     "meaning": "托马斯·沃森",
     "phonetic": "/tɔməs/",
-    "pos": "",
+    "pos": "n. phr.",
     "word": "Thomas Watson"
   },
   {
@@ -32626,7 +32626,7 @@
     "letter": "T",
     "meaning": "um. 一千",
     "phonetic": "/ˈθaʊznd/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "thousand"
@@ -32638,7 +32638,7 @@
     "letter": "T",
     "meaning": "数以千计的，许许多多的",
     "phonetic": "/ˈθaʊzndz ɔv, əv/",
-    "pos": "",
+    "pos": "phr.",
     "word": "thousands of"
   },
   {
@@ -32649,7 +32649,7 @@
     "letter": "T",
     "meaning": "um 三",
     "phonetic": "/θri:/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "three"
@@ -32785,7 +32785,7 @@
     "letter": "T",
     "meaning": "蒂姆（男名）",
     "phonetic": "/tim/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Tim"
@@ -32807,7 +32807,7 @@
     "letter": "T",
     "meaning": "蒂娜",
     "phonetic": "/'tinə/",
-    "pos": "",
+    "pos": "n",
     "word": "Tina"
   },
   {
@@ -32827,7 +32827,7 @@
     "letter": "T",
     "meaning": "《泰坦尼克号》（电影名）",
     "phonetic": "/taitænik/",
-    "pos": "",
+    "pos": "n",
     "word": "Titanic"
   },
   {
@@ -32847,7 +32847,7 @@
     "letter": "T",
     "meaning": "说实在的",
     "phonetic": "/tu: bi: ˈɒnɪst/",
-    "pos": "",
+    "pos": "phr.",
     "word": "to be honest"
   },
   {
@@ -32857,7 +32857,7 @@
     "letter": "T",
     "meaning": "使…惊讶，出乎…意料",
     "phonetic": "/tu: wʌnz sə'praiz/",
-    "pos": "",
+    "pos": "phr.",
     "word": "to one's surprise"
   },
   {
@@ -32867,7 +32867,7 @@
     "letter": "T",
     "meaning": "ad. v.在今天",
     "phonetic": "/tə'deɪ/",
-    "pos": "",
+    "pos": "adv",
     "word": "today"
   },
   {
@@ -32947,7 +32947,7 @@
     "letter": "T",
     "meaning": "ad. v.在明天",
     "phonetic": "/tə'mɒrəʊ/",
-    "pos": "",
+    "pos": "adv",
     "word": "tomorrow"
   },
   {
@@ -33097,7 +33097,7 @@
     "letter": "T",
     "meaning": "镇；市镇",
     "phonetic": "/taʊn/",
-    "pos": "",
+    "pos": "n",
     "word": "town"
   },
   {
@@ -33181,7 +33181,7 @@
     "letter": "T",
     "meaning": "火车 2. bus 公交车",
     "phonetic": "/treɪn/",
-    "pos": "",
+    "pos": "n",
     "word": "train"
   },
   {
@@ -33221,7 +33221,7 @@
     "letter": "T",
     "meaning": "旅行者",
     "phonetic": "/'trævlə/",
-    "pos": "",
+    "pos": "n",
     "word": "traveler"
   },
   {
@@ -33272,7 +33272,7 @@
     "letter": "T",
     "meaning": "特伦特（姓）",
     "phonetic": "/trent/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Trent"
@@ -33294,7 +33294,7 @@
     "letter": "T",
     "meaning": "over phr. (被...)绊倒",
     "phonetic": "/trip/",
-    "pos": "",
+    "pos": "v \u0026 n",
     "word": "trip"
   },
   {
@@ -33334,7 +33334,7 @@
     "letter": "T",
     "meaning": "真的；符合实际的",
     "phonetic": "/truː/",
-    "pos": "",
+    "pos": "adj",
     "word": "true"
   },
   {
@@ -33354,7 +33354,7 @@
     "letter": "T",
     "meaning": "相信，信任",
     "phonetic": "/trʌst/",
-    "pos": "",
+    "pos": "v",
     "senses": [
       {
         "id": "trust-verb",
@@ -33485,7 +33485,7 @@
     "letter": "T",
     "meaning": "变成",
     "phonetic": "/tə:n 'intu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "word": "turn into"
   },
   {
@@ -33545,7 +33545,7 @@
     "letter": "T",
     "meaning": "um \u0026adj 第十二(的)",
     "phonetic": "/twelfθ/",
-    "pos": "n",
+    "pos": "num",
     "word": "twelfth"
   },
   {
@@ -33556,7 +33556,7 @@
     "letter": "T",
     "meaning": "um. 十二",
     "phonetic": "/twelv/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "twelve"
@@ -33568,7 +33568,7 @@
     "letter": "T",
     "meaning": "um. 第二十",
     "phonetic": "/'twentiəθ/",
-    "pos": "n",
+    "pos": "num",
     "word": "twentieth"
   },
   {
@@ -33579,7 +33579,7 @@
     "letter": "T",
     "meaning": "um. 二十",
     "phonetic": "/'twenti/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "twenty"
@@ -33591,7 +33591,7 @@
     "letter": "T",
     "meaning": "um 第二十一",
     "phonetic": "/,twenti'fə:st/",
-    "pos": "n",
+    "pos": "num",
     "word": "twenty-first"
   },
   {
@@ -33622,7 +33622,7 @@
     "letter": "T",
     "meaning": "um. 二",
     "phonetic": "/tu:/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "two"
@@ -33634,7 +33634,7 @@
     "letter": "T",
     "meaning": "两层的",
     "phonetic": "/tu: 'stɔ:ri/",
-    "pos": "",
+    "pos": "adj",
     "word": "two-story"
   },
   {
@@ -33744,7 +33744,7 @@
     "letter": "U",
     "meaning": "善解人意的，体谅人的",
     "phonetic": "/ˌʌndər'stændɪŋ/",
-    "pos": "",
+    "pos": "adj",
     "word": "understanding"
   },
   {
@@ -33764,7 +33764,7 @@
     "letter": "U",
     "meaning": "出乎意料的；意外的",
     "phonetic": "/ʌnikspektid/",
-    "pos": "",
+    "pos": "adj",
     "word": "unexpected"
   },
   {
@@ -33784,7 +33784,7 @@
     "letter": "U",
     "meaning": "校服；制服",
     "phonetic": "/'juːnɪfɔːm/",
-    "pos": "",
+    "pos": "n",
     "word": "uniform"
   },
   {
@@ -33814,7 +33814,7 @@
     "letter": "U",
     "meaning": "大学，高等学府",
     "phonetic": "/ˌjuːnɪ'vɜːrsəti/",
-    "pos": "",
+    "pos": "n",
     "word": "university"
   },
   {
@@ -33854,7 +33854,7 @@
     "letter": "U",
     "meaning": "直到 ... 的时候；直到…为止",
     "phonetic": "/ən'tɪl/",
-    "pos": "",
+    "pos": "prep",
     "word": "until"
   },
   {
@@ -33894,7 +33894,7 @@
     "letter": "U",
     "meaning": "到达（某数量，程度），不多于",
     "phonetic": "/ʌp tu:/",
-    "pos": "",
+    "pos": "prep. phr.",
     "word": "up to"
   },
   {
@@ -33905,7 +33905,7 @@
     "letter": "U",
     "meaning": "难过，失望",
     "phonetic": "/ʌp'set/",
-    "pos": "",
+    "pos": "adj",
     "topic": "情绪",
     "unit": "扩展词汇",
     "word": "upset"
@@ -33918,7 +33918,7 @@
     "letter": "U",
     "meaning": "颠倒；倒转",
     "phonetic": "/ˌʌpsaɪd ˈdaʊn/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "生活",
     "unit": "扩展词汇",
     "word": "upside down"
@@ -33954,7 +33954,7 @@
     "letter": "U",
     "meaning": "美国",
     "phonetic": "/juːesˈeɪ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "国家",
     "unit": "自动补充",
     "word": "USA n"
@@ -33990,7 +33990,7 @@
     "letter": "U",
     "meaning": "曾经…，过去…",
     "phonetic": "/ju:st tu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "日常生活",
     "unit": "扩展词汇",
     "word": "used to"
@@ -34028,7 +34028,7 @@
     "letter": "U",
     "meaning": "ad. v.通常",
     "phonetic": "/'juʒuəli/",
-    "pos": "",
+    "pos": "adv",
     "word": "usually"
   },
   {
@@ -34038,7 +34038,7 @@
     "letter": "V",
     "meaning": "假期",
     "phonetic": "/və'keɪʃ(ə)n/",
-    "pos": "",
+    "pos": "n",
     "word": "vacation"
   },
   {
@@ -34049,7 +34049,7 @@
     "letter": "V",
     "meaning": "a. 很有用的；宝贵的",
     "phonetic": "/væljuəbl/",
-    "pos": "",
+    "pos": "adj",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "valuable"
@@ -34118,7 +34118,7 @@
     "letter": "V",
     "meaning": "维克托（男名） p.59",
     "phonetic": "/viktə(r)/",
-    "pos": "",
+    "pos": "n",
     "topic": "人物",
     "unit": "自动补充",
     "word": "Victor"
@@ -34144,7 +34144,7 @@
     "letter": "V",
     "meaning": "录像，录像带",
     "phonetic": "/'vɪdioʊ/",
-    "pos": "",
+    "pos": "n",
     "topic": "科技",
     "unit": "扩展词汇",
     "word": "video"
@@ -34177,7 +34177,7 @@
     "letter": "V",
     "meaning": "小提琴手",
     "phonetic": "/ˌvaɪə'lɪnɪst/",
-    "pos": "",
+    "pos": "n",
     "topic": "音乐",
     "unit": "扩展词汇",
     "word": "violinist"
@@ -34295,7 +34295,7 @@
     "letter": "W",
     "meaning": "等候室；候诊室",
     "phonetic": "/weɪtɪŋ ru:m/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "健康",
     "unit": "词条清洗",
     "word": "waiting room"
@@ -34341,7 +34341,7 @@
     "letter": "W",
     "meaning": "走路时撞到",
     "phonetic": "/wɔ:k 'intu:/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "安全",
     "unit": "扩展词汇",
     "word": "walk into"
@@ -34564,7 +34564,7 @@
     "letter": "W",
     "meaning": "西瓜",
     "phonetic": "/'wɔːtərmelən/",
-    "pos": "",
+    "pos": "n",
     "word": "watermelon"
   },
   {
@@ -34587,7 +34587,7 @@
     "letter": "W",
     "meaning": "方式，路线",
     "phonetic": "/weɪ/",
-    "pos": "",
+    "pos": "n",
     "word": "way"
   },
   {
@@ -34633,7 +34633,7 @@
     "letter": "W",
     "meaning": "穿；戴",
     "phonetic": "/weə/",
-    "pos": "",
+    "pos": "v",
     "word": "wear"
   },
   {
@@ -34880,7 +34880,7 @@
     "letter": "W",
     "meaning": "……怎么样？",
     "phonetic": "/hwɔt ə'baut/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "What about...?"
@@ -34893,7 +34893,7 @@
     "letter": "W",
     "meaning": "……怎么样？",
     "phonetic": "/hwɔt ə'baut/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "基础表达",
     "unit": "词条清洗",
     "word": "What about...?"
@@ -34906,7 +34906,7 @@
     "letter": "W",
     "meaning": "what is 的缩写形式",
     "phonetic": "/hwɔts/",
-    "pos": "",
+    "pos": "v",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "what's"
@@ -34919,7 +34919,7 @@
     "letter": "W",
     "meaning": "怎么了？出什么事了？",
     "phonetic": "/hwɔts ði; ðə 'mætə/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "What's the matter?"
@@ -34932,7 +34932,7 @@
     "letter": "W",
     "meaning": "哪儿不舒服？",
     "phonetic": "/hwɔts rɔ:ŋ/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "健康",
     "unit": "扩展词汇",
     "word": "What's wrong?"
@@ -35184,7 +35184,7 @@
     "letter": "W",
     "meaning": "野生救援协会（美国）",
     "phonetic": "/waildeid/",
-    "pos": "",
+    "pos": "n",
     "topic": "环保",
     "unit": "扩展词汇",
     "word": "WildAid"
@@ -35196,7 +35196,7 @@
     "letter": "W",
     "meaning": "aux 将,会,要",
     "phonetic": "/wil/",
-    "pos": "v.",
+    "pos": "aux v.",
     "word": "will"
   },
   {
@@ -35345,7 +35345,7 @@
     "letter": "W",
     "meaning": "毫无疑问；的确 p.43",
     "phonetic": "/wi'ðaut daut/",
-    "pos": "",
+    "pos": "adv. phr.",
     "topic": "运动",
     "unit": "扩展词汇",
     "word": "without doubt"
@@ -35443,7 +35443,7 @@
     "letter": "W",
     "meaning": "（狗叫声）汪汪",
     "phonetic": "/wʊf/",
-    "pos": "",
+    "pos": "int",
     "topic": "动物",
     "unit": "扩展词汇",
     "word": "woof"
@@ -35492,7 +35492,7 @@
     "letter": "W",
     "meaning": "成功地发展，解决",
     "phonetic": "/wə:k aut/",
-    "pos": "",
+    "pos": "v. phr.",
     "topic": "学习",
     "unit": "扩展词汇",
     "word": "work out"
@@ -35538,7 +35538,7 @@
     "letter": "W",
     "meaning": "二战",
     "phonetic": "/wə:ld wɔ:(r) tuː/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "历史",
     "unit": "扩展词汇",
     "word": "World War II"
@@ -35623,7 +35623,7 @@
     "letter": "W",
     "meaning": "（表示意愿）愿意",
     "phonetic": "/wʊd; wəd/",
-    "pos": "",
+    "pos": "modal v.",
     "topic": "基础表达",
     "unit": "扩展词汇",
     "word": "would"
@@ -35692,7 +35692,7 @@
     "letter": "W",
     "meaning": "毛笔",
     "phonetic": "/raɪtɪŋ brʌʃ/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "文化",
     "unit": "词条清洗",
     "word": "writing brush"
@@ -35741,7 +35741,7 @@
     "letter": "Y",
     "meaning": "庭院拍卖会",
     "phonetic": "/jɑ:d seil/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "购物",
     "unit": "扩展词汇",
     "word": "yard sale"
@@ -35843,7 +35843,7 @@
     "letter": "Y",
     "meaning": "酸奶",
     "phonetic": "/'joʊɡərt/",
-    "pos": "",
+    "pos": "n",
     "topic": "食物",
     "unit": "扩展词汇",
     "word": "yogurt"
@@ -35866,7 +35866,7 @@
     "letter": "Y",
     "meaning": "别客气",
     "phonetic": "/jɔː ˈwelkəm/",
-    "pos": "",
+    "pos": "phr.",
     "topic": "社交",
     "unit": "扩展词汇",
     "word": "You're welcome."
@@ -35889,7 +35889,7 @@
     "letter": "Y",
     "meaning": "少先队员",
     "phonetic": "/jʌŋ paiəniə/",
-    "pos": "",
+    "pos": "n. phr.",
     "topic": "社会",
     "unit": "词条清洗",
     "word": "Young Pioneer"
@@ -35948,7 +35948,7 @@
     "letter": "Z",
     "meaning": "um \u0026 n 零",
     "phonetic": "/'ziərəu/",
-    "pos": "n",
+    "pos": "num",
     "topic": "数字",
     "unit": "自动补充",
     "word": "zero"

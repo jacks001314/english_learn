@@ -1,0 +1,637 @@
+{
+ "book": "七年级上册",
+ "section": {
+  "section": "Unit 5",
+  "kind": "Unit",
+  "title": "The power of plants",
+  "titleZh": "植物的力量",
+  "topic": "人与自然·跨学科：植物的光合作用与中英茶文化",
+  "goals": [
+   "用一般将来时谈论植物的作用与未来的事",
+   "说明植物对人类和动物的重要性",
+   "用 May I ...? / Could I ...? 征求并给予许可"
+  ],
+  "grammar": {
+   "topic": "一般将来时（be going to 与 will）",
+   "summary": "一般将来时表示将来要发生的动作或存在的状态。be going to 强调计划和打算，will 表示预测、意愿或临时的决定；两者后面都接动词原形。",
+   "points": [
+    {
+     "title": "be going to 表示计划、打算",
+     "detail": "结构为 be going to + 动词原形，be 随主语变化。",
+     "examples": [
+      "He is going to start work in the plant.",
+      "We are going to learn different parts of plants tomorrow."
+     ]
+    },
+    {
+     "title": "will 表示预测或意愿",
+     "detail": "结构为 will + 动词原形，主语不分人称。",
+     "examples": [
+      "The seeds will grow into tall plants.",
+      "There will be a robot in every family in the future."
+     ]
+    },
+    {
+     "title": "否定句与一般疑问句",
+     "detail": "be going to 的否定式在 be 后加 not；will 的否定式为 will not (won't)；一般疑问句把 be 或 will 提到句首。",
+     "examples": [
+      "I am not going to visit the museum.",
+      "Am I going to visit the museum? Yes, I am.",
+      "Will I have many presents? Yes, I will."
+     ]
+    },
+    {
+     "title": "疑问词 + 一般将来时",
+     "detail": "在句首加疑问词可询问具体信息。",
+     "examples": [
+      "When is Helen going to visit her granddaughter in China?",
+      "What are we going to do?"
+     ]
+    }
+   ],
+   "examples": [
+    "He is going to start work in the plant.",
+    "The seeds will grow into tall plants.",
+    "Without plants, the natural world would be very different!"
+   ]
+  },
+  "words": [
+   {
+    "word": "within",
+    "phonetic": "wɪˈðɪn",
+    "pos": "prep.",
+    "meaning": "在（建筑或地区）里",
+    "page": 80
+   },
+   {
+    "word": "quarter",
+    "phonetic": "ˈkwɔːtə",
+    "pos": "n.",
+    "meaning": "一刻钟，十五分钟",
+    "page": 81
+   },
+   {
+    "word": "workshop",
+    "phonetic": "ˈwɜːkʃɒp",
+    "pos": "n.",
+    "meaning": "车间，工场",
+    "page": 81
+   },
+   {
+    "word": "leaf",
+    "phonetic": "liːf",
+    "pos": "n.",
+    "meaning": "叶，叶子",
+    "page": 81
+   },
+   {
+    "word": "each",
+    "phonetic": "iːtʃ",
+    "pos": "det.",
+    "meaning": "（两个或两个以上物或人中的）每个，各",
+    "page": 81
+   },
+   {
+    "word": "collect",
+    "phonetic": "kəˈlekt",
+    "pos": "v.",
+    "meaning": "收集，采集；使集中",
+    "page": 81
+   },
+   {
+    "word": "root",
+    "phonetic": "ruːt",
+    "pos": "n.",
+    "meaning": "根",
+    "page": 81
+   },
+   {
+    "word": "send",
+    "phonetic": "send",
+    "pos": "v.",
+    "meaning": "送出，发出",
+    "page": 81
+   },
+   {
+    "word": "rise",
+    "phonetic": "raɪz",
+    "pos": "v.",
+    "meaning": "升高，上升",
+    "page": 81
+   },
+   {
+    "word": "stem",
+    "phonetic": "stem",
+    "pos": "n.",
+    "meaning": "（植物的）茎，梗，柄",
+    "page": 81
+   },
+   {
+    "word": "mix",
+    "phonetic": "mɪks",
+    "pos": "v.",
+    "meaning": "（使）混合",
+    "page": 81
+   },
+   {
+    "word": "produce",
+    "phonetic": "prəˈdjuːs",
+    "pos": "v.",
+    "meaning": "（自然地）生产，产生，出产",
+    "page": 81
+   },
+   {
+    "word": "sugar",
+    "phonetic": "ˈʃʊɡə",
+    "pos": "n.",
+    "meaning": "糖",
+    "page": 81
+   },
+   {
+    "word": "product",
+    "phonetic": "ˈprɒdʌkt",
+    "pos": "n.",
+    "meaning": "（自然过程或化学反应的）生成物",
+    "page": 81
+   },
+   {
+    "word": "oxygen",
+    "phonetic": "ˈɒksɪdʒən",
+    "pos": "n.",
+    "meaning": "氧",
+    "page": 81
+   },
+   {
+    "word": "human",
+    "phonetic": "ˈhjuːmən",
+    "pos": "n.",
+    "meaning": "人类；人",
+    "page": 81
+   },
+   {
+    "word": "though",
+    "phonetic": "ðəʊ",
+    "pos": "adv.",
+    "meaning": "可是，不过，然而",
+    "page": 81
+   },
+   {
+    "word": "breathe",
+    "phonetic": "briːð",
+    "pos": "v.",
+    "meaning": "呼吸",
+    "page": 81
+   },
+   {
+    "word": "soon",
+    "phonetic": "suːn",
+    "pos": "adv.",
+    "meaning": "不久，即刻，很快",
+    "page": 81
+   },
+   {
+    "word": "dark",
+    "phonetic": "dɑːk",
+    "pos": "adj.",
+    "meaning": "暗的；黑暗的",
+    "page": 81
+   },
+   {
+    "word": "rest",
+    "phonetic": "rest",
+    "pos": "n.",
+    "meaning": "休息（时间）",
+    "page": 81
+   },
+   {
+    "word": "natural",
+    "phonetic": "ˈnætʃərəl",
+    "pos": "adj.",
+    "meaning": "自然的，天然的",
+    "page": 81
+   },
+   {
+    "word": "seed",
+    "phonetic": "siːd",
+    "pos": "n.",
+    "meaning": "种子，籽",
+    "page": 83
+   },
+   {
+    "word": "grow",
+    "phonetic": "ɡrəʊ",
+    "pos": "v.",
+    "meaning": "生长",
+    "page": 83
+   },
+   {
+    "word": "part",
+    "phonetic": "pɑːt",
+    "pos": "n.",
+    "meaning": "部分",
+    "page": 83
+   },
+   {
+    "word": "rainforest",
+    "phonetic": "ˈreɪnfɒrɪst",
+    "pos": "n.",
+    "meaning": "（热带）雨林",
+    "page": 83
+   },
+   {
+    "word": "culture",
+    "phonetic": "ˈkʌltʃə",
+    "pos": "n.",
+    "meaning": "文化",
+    "page": 85
+   },
+   {
+    "word": "corn silk",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "玉米须",
+    "page": 87
+   },
+   {
+    "word": "health",
+    "phonetic": "helθ",
+    "pos": "n.",
+    "meaning": "健康（状况）",
+    "page": 87
+   },
+   {
+    "word": "rose",
+    "phonetic": "rəʊz",
+    "pos": "n.",
+    "meaning": "玫瑰；蔷薇",
+    "page": 87
+   },
+   {
+    "word": "cotton",
+    "phonetic": "ˈkɒtn",
+    "pos": "n.",
+    "meaning": "棉花",
+    "page": 87
+   },
+   {
+    "word": "bamboo",
+    "phonetic": "ˌbæmˈbuː",
+    "pos": "n.",
+    "meaning": "竹，竹子",
+    "page": 87
+   },
+   {
+    "word": "popular",
+    "phonetic": "ˈpɒpjələ",
+    "pos": "adj.",
+    "meaning": "受大众喜爱的，受欢迎的",
+    "page": 88
+   },
+   {
+    "word": "key",
+    "phonetic": "kiː",
+    "pos": "adj.",
+    "meaning": "至关重要的；必不可少的",
+    "page": 88
+   },
+   {
+    "word": "news",
+    "phonetic": "njuːz",
+    "pos": "n.",
+    "meaning": "消息",
+    "page": 89
+   },
+   {
+    "word": "prefer",
+    "phonetic": "prɪˈfɜː",
+    "pos": "v.",
+    "meaning": "更喜欢",
+    "page": 89
+   },
+   {
+    "word": "coffee",
+    "phonetic": "ˈkɒfi",
+    "pos": "n.",
+    "meaning": "咖啡",
+    "page": 89
+   },
+   {
+    "word": "secret",
+    "phonetic": "ˈsiːkrɪt",
+    "pos": "n.",
+    "meaning": "秘密",
+    "page": 89
+   },
+   {
+    "word": "husband",
+    "phonetic": "ˈhʌzbənd",
+    "pos": "n.",
+    "meaning": "丈夫",
+    "page": 89
+   },
+   {
+    "word": "adult",
+    "phonetic": "ˈædʌlt",
+    "pos": "n.",
+    "meaning": "成人，成年人",
+    "page": 89
+   },
+   {
+    "word": "weekend",
+    "phonetic": "ˌwiːkˈend",
+    "pos": "n.",
+    "meaning": "周末",
+    "page": 89
+   },
+   {
+    "word": "chat",
+    "phonetic": "tʃæt",
+    "pos": "v.",
+    "meaning": "闲聊，闲谈，聊天",
+    "page": 89
+   },
+   {
+    "word": "relax",
+    "phonetic": "rɪˈlæks",
+    "pos": "v.",
+    "meaning": "放松，休息",
+    "page": 89
+   },
+   {
+    "word": "yard",
+    "phonetic": "jɑːd",
+    "pos": "n.",
+    "meaning": "庭院",
+    "page": 89
+   },
+   {
+    "word": "biscuit",
+    "phonetic": "ˈbɪskɪt",
+    "pos": "n.",
+    "meaning": "饼干",
+    "page": 89
+   },
+   {
+    "word": "connect",
+    "phonetic": "kəˈnekt",
+    "pos": "v.",
+    "meaning": "沟通；连接",
+    "page": 89
+   }
+  ],
+  "phrases": [
+   {
+    "phrase": "within a plant",
+    "meaning": "在植物内部"
+   },
+   {
+    "phrase": "carbon dioxide",
+    "meaning": "二氧化碳"
+   },
+   {
+    "phrase": "send up",
+    "meaning": "向上输送"
+   },
+   {
+    "phrase": "rise up",
+    "meaning": "上升"
+   },
+   {
+    "phrase": "mix ... with ...",
+    "meaning": "把……与……混合"
+   },
+   {
+    "phrase": "take a rest",
+    "meaning": "休息一下"
+   },
+   {
+    "phrase": "more than",
+    "meaning": "不仅仅是；超过"
+   },
+   {
+    "phrase": "be useful for",
+    "meaning": "对……有用"
+   },
+   {
+    "phrase": "mean a lot to",
+    "meaning": "对……意义重大"
+   },
+   {
+    "phrase": "a cup of tea",
+    "meaning": "一杯茶；（口语）感兴趣的事物"
+   },
+   {
+    "phrase": "afternoon tea",
+    "meaning": "下午茶"
+   },
+   {
+    "phrase": "prefer A to B",
+    "meaning": "相比 B 更喜欢 A"
+   },
+   {
+    "phrase": "it is no secret that",
+    "meaning": "众所周知……"
+   },
+   {
+    "phrase": "plenty of",
+    "meaning": "大量的，充足的"
+   },
+   {
+    "phrase": "a key part of",
+    "meaning": "……的关键部分"
+   }
+  ],
+  "patterns": [
+   {
+    "pattern": "Without plants, ... will / won't ...",
+    "meaning": "没有植物，……将会/将不会……",
+    "examples": [
+     "Without plants, the natural world would be very different!",
+     "Without plants, we will not have enough food."
+    ]
+   },
+   {
+    "pattern": "... mean a lot to ...",
+    "meaning": "……对……意义重大。",
+    "examples": [
+     "It means a lot to animals and humans."
+    ]
+   },
+   {
+    "pattern": "... need ... to ...",
+    "meaning": "……需要……来……",
+    "examples": [
+     "They need it to breathe!"
+    ]
+   },
+   {
+    "pattern": "... is useful for ...",
+    "meaning": "……对……有用。",
+    "examples": [
+     "It is useful for the growth of the plant."
+    ]
+   },
+   {
+    "pattern": "... give more than ...",
+    "meaning": "……提供的不只是……",
+    "examples": [
+     "They give more than food and oxygen."
+    ]
+   },
+   {
+    "pattern": "May I ...? / Could I ...? — Certainly. / Sure. / Go ahead.",
+    "meaning": "有礼貌地请求并给予许可",
+    "examples": [
+     "May I take a video of them? — Certainly!",
+     "Could I ask you a question? — Sure, go ahead."
+    ]
+   }
+  ],
+  "notes": [
+   {
+    "title": "Within a plant｜光合作用说明文",
+    "body": "本文用拟人手法把植物写成“工厂”：绿叶里的叶绿体利用二氧化碳和光能进行光合作用，合成糖类等有机物并释放氧气；有机物供植物自身生长，氧气通过气孔释放到空气中，供动物和人类呼吸。"
+   },
+   {
+    "title": "take a rest 休息",
+    "body": "They will take a rest. take a rest 意为“休息一下”。又如：I am going upstairs to take a rest."
+   },
+   {
+    "title": "more than 不仅仅是",
+    "body": "They give more than food and oxygen. more than 表示“不仅仅，超过”，用来强调植物对自然界的重要性。又如：She is more than a friend to me."
+   },
+   {
+    "title": "What's your cup of tea? 的双关",
+    "body": "one's cup of tea 多用于口语，意为“某人感兴趣或对胃口的事物”。标题既指“一杯茶”，也指“感兴趣的生活方式和文化”。又如：Jazz isn't my cup of tea."
+   },
+   {
+    "title": "prefer A to B 相比 B 更喜欢 A",
+    "body": "prefer 意为“更喜欢”，后接名词、代词或动名词。Most of my classmates prefer coffee, but I will always choose green tea. 又如：She prefers going to the library to staying at home."
+   },
+   {
+    "title": "it is no secret that ... 众所周知",
+    "body": "It is no secret that Brits love afternoon tea. 这是固定句型，意为“众所周知……”，强调某事是公开的、毫无疑问的。"
+   }
+  ],
+  "article": {
+   "reading": {
+    "title": "Within a plant",
+    "kind": "reading",
+    "source": "Unit 5 Understanding ideas",
+    "paragraphs": [
+     "1 It is quarter past seven. Here is Worker No. 55 in his green uniform. He is going to start work in the plant.",
+     "2 He works in Workshop 1001 in the Leaf. There are 20 to 100 workers in each workshop. They collect sunlight and CO2 during the day. Now workers from the Root send up water. The water will rise up to the Leaf through the Stem. Then workers in the Leaf will mix water, CO2 and sunlight.",
+     "3 What are they going to produce? Most importantly (for them), there will be sugar! It is useful for the growth of the plant. Another product will be oxygen, but the plant does not need much of it. It means a lot to animals and humans, though — they need it to breathe!",
+     "4 The workers work hard. Soon it is going to get dark. They will take a rest.",
+     "5 There are millions of plants on earth. They give more than food and oxygen. Without plants, the natural world would be very different!"
+    ],
+    "audio": "/audio/7/unit5/reading.mp3"
+   },
+   "extra": [
+    {
+     "title": "What's your cup of tea?",
+     "kind": "story",
+     "paragraphs": [
+      "What is the most popular drink in the world after water? The answer is tea. It is not only good for our health, but also a key part of many cultures. What does tea mean to you?",
+      "Feng Tao: In Chengdu, we have as many teahouses as leaves in a cup of tea! Grandpa used to take me to the teahouse. He and his friends drank tea and shared their news. Now I study abroad. Most of my classmates prefer coffee, but I will always choose green tea. It is more than a drink for me. A cup of warm tea always makes me feel like I am back home.",
+      "Emma Jones: It is no secret that Brits love afternoon tea. But actually, we drink tea all day. My husband can drink eight cups a day! When my kids were young, I always made tea for them after school. Now they are adults, but they come back every weekend. We chat and relax in the yard with black tea and biscuits. It is our way of connecting."
+     ],
+     "audio": "/audio/7/unit5/writing.mp3"
+    }
+   ],
+   "dialogues": []
+  },
+  "listening": {
+   "title": "墨西哥甜玉米节（Amazing Plants）",
+   "tracks": [
+    {
+     "title": "Listen to the opening of the vlog. What is Jason talking about?",
+     "url": "/audio/7/unit5/listening-1.mp3"
+    },
+    {
+     "title": "Listen again and complete Jason's notes for the vlog",
+     "url": "/audio/7/unit5/listening-2.mp3"
+    },
+    {
+     "title": "Listen to the conversation and complete the sentences",
+     "url": "/audio/7/unit5/listening-3.mp3"
+    }
+   ],
+   "phonetics": {
+    "title": "语音练习 · Phonetics in use",
+    "url": "/audio/7/unit5/phonetics.mp3"
+   },
+   "tasks": [
+    "听录音，记录玉米的用途与相关文化信息",
+    "再听一遍，注意说话人如何请求和给予许可"
+   ],
+   "script": [
+    {
+     "speaker": "Jason",
+     "text": "Welcome to Amazing Plants. This is Jason. I am at the Sweet Corn Festival in Mexico. Look at this ear of corn! Can you believe the size of it? But it is not the biggest. The biggest one is nearly 40 cm long! People started growing corn in Mexico about 9,000 years ago. Today, it is a big part of their cooking. There are over 600 corn dishes now!"
+    },
+    {
+     "speaker": "Jason",
+     "text": "Corn is not just food. People even use it to make toys. It is also part of Mexican culture. Let us go and see!"
+    },
+    {
+     "speaker": "Jason",
+     "text": "Can I try the taco?"
+    },
+    {
+     "speaker": "Jose",
+     "text": "Sure."
+    },
+    {
+     "speaker": "Jason",
+     "text": "Yum! Are tacos a traditional Mexican food?"
+    },
+    {
+     "speaker": "Jose",
+     "text": "They are! We make them from corn seeds. Now try these chips. We make them with corn seeds, too."
+    },
+    {
+     "speaker": "Jason",
+     "text": "Oh, what is that?"
+    },
+    {
+     "speaker": "Jose",
+     "text": "It is corn silk tea."
+    },
+    {
+     "speaker": "Jason",
+     "text": "Corn silk?"
+    },
+    {
+     "speaker": "Jose",
+     "text": "It is the “hair” of corn. People in many countries make tea with it. It is good for your health. Try it!"
+    },
+    {
+     "speaker": "Jason",
+     "text": "It is sweet. Oh, what are these?"
+    },
+    {
+     "speaker": "Silvia",
+     "text": "They are traditional dolls. We make them with corn husks."
+    },
+    {
+     "speaker": "Jason",
+     "text": "So colourful! May I take a video of them?"
+    },
+    {
+     "speaker": "Silvia",
+     "text": "Certainly!"
+    },
+    {
+     "speaker": "Jason",
+     "text": "Corn has so many uses. This is amazing. There is a saying in Mexico: without corn, there is no country. Do you agree?"
+    }
+   ]
+  },
+  "wordsAudio": "/audio/7/unit5/vocab.mp3",
+  "speaking": {
+   "title": "口语活动 · Work in pairs. Discuss your plan for Planting Day",
+   "url": "/audio/7/unit5/speaking.mp3"
+  }
+ }
+}

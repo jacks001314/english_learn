@@ -1,0 +1,631 @@
+{
+ "book": "七年级上册",
+ "section": {
+  "section": "Unit 4",
+  "kind": "Unit",
+  "title": "Time to celebrate",
+  "titleZh": "庆祝的时刻",
+  "topic": "节日与文化符号：不一样的春节、节日里坚守岗位的医护工作者",
+  "goals": [
+   "用频度副词谈论节日习俗与日常习惯",
+   "描述并比较不同的节日庆祝方式",
+   "表达对节日文化与职业精神的理解"
+  ],
+  "grammar": {
+   "topic": "频度副词（adverbs of frequency）",
+   "summary": "频度副词表示动作发生的频率，常见的有 always、usually、often、sometimes、never，频率由高到低为 always (100%) → usually → often → sometimes → never (0%)。",
+   "points": [
+    {
+     "title": "频度副词的意义",
+     "detail": "always 总是，usually 通常，often 经常，sometimes 有时，never 从不。",
+     "examples": [
+      "My family always have it at the Spring Festival.",
+      "We often go to the cinema."
+     ]
+    },
+    {
+     "title": "频度副词的位置",
+     "detail": "一般放在 be 动词、助动词、情态动词之后，行为动词之前。",
+     "examples": [
+      "She is usually very busy.",
+      "I have always enjoyed reading.",
+      "You should always go to school on time.",
+      "We often go to the cinema."
+     ]
+    },
+    {
+     "title": "sometimes 与 often 的灵活位置",
+     "detail": "sometimes 可放在句首、句中或句末；often 也可放在句末。",
+     "examples": [
+      "Sometimes she calls me. / She calls me sometimes. 她有时候给我打电话。"
+     ]
+    }
+   ],
+   "examples": [
+    "My family always have it at the Spring Festival.",
+    "I often watch Grandma cook, but I never realised cooking was so difficult."
+   ]
+  },
+  "words": [
+   {
+    "word": "unusual",
+    "phonetic": "ʌnˈjuːʒuəl",
+    "pos": "adj.",
+    "meaning": "不平常的",
+    "page": 64
+   },
+   {
+    "word": "university",
+    "phonetic": "ˌjuːnɪˈvɜːsəti",
+    "pos": "n.",
+    "meaning": "大学",
+    "page": 64
+   },
+   {
+    "word": "treat",
+    "phonetic": "triːt",
+    "pos": "v.",
+    "meaning": "请客，款待，招待",
+    "page": 64
+   },
+   {
+    "word": "realise",
+    "phonetic": "ˈrɪəlaɪz",
+    "pos": "v.",
+    "meaning": "知道；明白；认识到",
+    "page": 64
+   },
+   {
+    "word": "dumpling",
+    "phonetic": "ˈdʌmplɪŋ",
+    "pos": "n.",
+    "meaning": "水饺",
+    "page": 64
+   },
+   {
+    "word": "whole",
+    "phonetic": "həʊl",
+    "pos": "adj.",
+    "meaning": "整个的，全部的",
+    "page": 64
+   },
+   {
+    "word": "cucumber",
+    "phonetic": "ˈkjuːkʌmbə",
+    "pos": "n.",
+    "meaning": "黄瓜",
+    "page": 64
+   },
+   {
+    "word": "hang",
+    "phonetic": "hæŋ",
+    "pos": "v.",
+    "meaning": "悬挂",
+    "page": 65
+   },
+   {
+    "word": "balloon",
+    "phonetic": "bəˈluːn",
+    "pos": "n.",
+    "meaning": "气球",
+    "page": 65
+   },
+   {
+    "word": "lantern",
+    "phonetic": "ˈlæntən",
+    "pos": "n.",
+    "meaning": "灯笼；提灯",
+    "page": 65
+   },
+   {
+    "word": "dish",
+    "phonetic": "dɪʃ",
+    "pos": "n.",
+    "meaning": "（烹制好的）菜肴，一道菜",
+    "page": 65
+   },
+   {
+    "word": "joke",
+    "phonetic": "dʒəʊk",
+    "pos": "v.",
+    "meaning": "说笑话；开玩笑",
+    "page": 65
+   },
+   {
+    "word": "law",
+    "phonetic": "lɔː",
+    "pos": "n.",
+    "meaning": "法则，法令",
+    "page": 65
+   },
+   {
+    "word": "against the law",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "违法",
+    "page": 65
+   },
+   {
+    "word": "shocked",
+    "phonetic": "ʃɒkt",
+    "pos": "adj.",
+    "meaning": "吃惊的，震惊的",
+    "page": 65
+   },
+   {
+    "word": "laugh",
+    "phonetic": "lɑːf",
+    "pos": "v.",
+    "meaning": "发出笑声，（大）笑",
+    "page": 65
+   },
+   {
+    "word": "pork",
+    "phonetic": "pɔːk",
+    "pos": "n.",
+    "meaning": "猪肉",
+    "page": 65
+   },
+   {
+    "word": "round",
+    "phonetic": "raʊnd",
+    "pos": "adj.",
+    "meaning": "圆形的，环形的",
+    "page": 65
+   },
+   {
+    "word": "shape",
+    "phonetic": "ʃeɪp",
+    "pos": "n.",
+    "meaning": "形，形状，外形",
+    "page": 65
+   },
+   {
+    "word": "reunion",
+    "phonetic": "ˌriːˈjuːnjən",
+    "pos": "n.",
+    "meaning": "团圆，团聚",
+    "page": 65
+   },
+   {
+    "word": "piece",
+    "phonetic": "piːs",
+    "pos": "n.",
+    "meaning": "块；片；段；截",
+    "page": 65
+   },
+   {
+    "word": "knife",
+    "phonetic": "naɪf",
+    "pos": "n.",
+    "meaning": "刀",
+    "page": 65
+   },
+   {
+    "word": "smell",
+    "phonetic": "smel",
+    "pos": "n.",
+    "meaning": "气味",
+    "page": 65
+   },
+   {
+    "word": "fill",
+    "phonetic": "fɪl",
+    "pos": "v.",
+    "meaning": "弥漫，充满",
+    "page": 65
+   },
+   {
+    "word": "Christmas",
+    "phonetic": "ˈkrɪsməs",
+    "pos": "n.",
+    "meaning": "圣诞节（期间）",
+    "page": 70
+   },
+   {
+    "word": "waste",
+    "phonetic": "weɪst",
+    "pos": "n.",
+    "meaning": "废料，废弃物",
+    "page": 70
+   },
+   {
+    "word": "throw",
+    "phonetic": "θrəʊ",
+    "pos": "v.",
+    "meaning": "投，扔，抛，掷",
+    "page": 70
+   },
+   {
+    "word": "throw away",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "扔掉，丢弃",
+    "page": 70
+   },
+   {
+    "word": "pollution",
+    "phonetic": "pəˈluːʃən",
+    "pos": "n.",
+    "meaning": "污染",
+    "page": 70
+   },
+   {
+    "word": "plastic",
+    "phonetic": "ˈplæstɪk",
+    "pos": "adj.",
+    "meaning": "塑料制的",
+    "page": 70
+   },
+   {
+    "word": "celebrate",
+    "phonetic": "ˈseləbreɪt",
+    "pos": "v.",
+    "meaning": "庆祝",
+    "page": 70
+   },
+   {
+    "word": "meal",
+    "phonetic": "miːl",
+    "pos": "n.",
+    "meaning": "一餐；饭",
+    "page": 71
+   },
+   {
+    "word": "duty",
+    "phonetic": "ˈdjuːti",
+    "pos": "n.",
+    "meaning": "职责，义务",
+    "page": 72
+   },
+   {
+    "word": "shine",
+    "phonetic": "ʃaɪn",
+    "pos": "v.",
+    "meaning": "发光，发亮",
+    "page": 73
+   },
+   {
+    "word": "usually",
+    "phonetic": "ˈjuːʒuəli",
+    "pos": "adv.",
+    "meaning": "通常地；惯常地",
+    "page": 72
+   },
+   {
+    "word": "break",
+    "phonetic": "breɪk",
+    "pos": "n.",
+    "meaning": "中断，暂停",
+    "page": 72
+   },
+   {
+    "word": "emergency",
+    "phonetic": "ɪˈmɜːdʒənsi",
+    "pos": "n.",
+    "meaning": "紧急情况，不测事件",
+    "page": 72
+   },
+   {
+    "word": "miss",
+    "phonetic": "mɪs",
+    "pos": "v.",
+    "meaning": "错过",
+    "page": 72
+   },
+   {
+    "word": "thirsty",
+    "phonetic": "ˈθɜːsti",
+    "pos": "adj.",
+    "meaning": "渴的，口渴的",
+    "page": 72
+   },
+   {
+    "word": "challenge",
+    "phonetic": "ˈtʃæləndʒ",
+    "pos": "n.",
+    "meaning": "挑战，具有挑战性的事物",
+    "page": 72
+   },
+   {
+    "word": "patient",
+    "phonetic": "ˈpeɪʃənt",
+    "pos": "n.",
+    "meaning": "病人，患者",
+    "page": 72
+   },
+   {
+    "word": "situation",
+    "phonetic": "ˌsɪtʃuˈeɪʃən",
+    "pos": "n.",
+    "meaning": "形势，情况，状况，局面",
+    "page": 72
+   },
+   {
+    "word": "regret",
+    "phonetic": "rɪˈɡret",
+    "pos": "v.",
+    "meaning": "后悔（做了某事）；对……感到遗憾",
+    "page": 73
+   },
+   {
+    "word": "decision",
+    "phonetic": "dɪˈsɪʒən",
+    "pos": "n.",
+    "meaning": "决定，抉择",
+    "page": 73
+   },
+   {
+    "word": "support",
+    "phonetic": "səˈpɔːt",
+    "pos": "n.",
+    "meaning": "支持",
+    "page": 73
+   },
+   {
+    "word": "medical",
+    "phonetic": "ˈmedɪkəl",
+    "pos": "adj.",
+    "meaning": "医学的；医疗的",
+    "page": 73
+   },
+   {
+    "word": "firework",
+    "phonetic": "ˈfaɪəwɜːk",
+    "pos": "n.",
+    "meaning": "烟火，烟花",
+    "page": 73
+   }
+  ],
+  "phrases": [
+   {
+    "phrase": "family reunion",
+    "meaning": "家庭团聚"
+   },
+   {
+    "phrase": "against the law",
+    "meaning": "违法"
+   },
+   {
+    "phrase": "stand for",
+    "meaning": "代表，象征"
+   },
+   {
+    "phrase": "take a break from",
+    "meaning": "从……中暂时停下休息"
+   },
+   {
+    "phrase": "stand by",
+    "meaning": "随时待命；支持"
+   },
+   {
+    "phrase": "give up",
+    "meaning": "放弃"
+   },
+   {
+    "phrase": "make the most of",
+    "meaning": "充分利用"
+   },
+   {
+    "phrase": "be thankful for",
+    "meaning": "对……感激"
+   },
+   {
+    "phrase": "treat sb to sth",
+    "meaning": "请某人吃/享受……"
+   },
+   {
+    "phrase": "the lion's head",
+    "meaning": "狮子头（一道菜）"
+   },
+   {
+    "phrase": "answer the call of duty",
+    "meaning": "响应职责的召唤"
+   },
+   {
+    "phrase": "a must for sb",
+    "meaning": "对某人来说是必不可少的"
+   }
+  ],
+  "patterns": [
+   {
+    "pattern": "I often ..., but I never ...",
+    "meaning": "我经常……，但我从不……",
+    "examples": [
+     "I often watch Grandma cook, but I never realised cooking was so difficult."
+    ]
+   },
+   {
+    "pattern": "The best part of the festival is ...",
+    "meaning": "节日中最棒的部分是……",
+    "examples": [
+     "The best part of the festival is the family reunion dinner."
+    ]
+   },
+   {
+    "pattern": "... hang(s) balloons and lanterns in ...",
+    "meaning": "……在……挂气球和灯笼。",
+    "examples": [
+     "After Emilia hangs balloons and lanterns in the dining room, I put the last dish on the table."
+    ]
+   },
+   {
+    "pattern": "... is a must for ...",
+    "meaning": "……对……是必不可少的。",
+    "examples": [
+     "Dumplings are a must for the Spring Festival."
+    ]
+   },
+   {
+    "pattern": "My family always have ... at ... / I feel like ...",
+    "meaning": "我家总是在……吃……/我感觉……",
+    "examples": [
+     "My family always have it at the Spring Festival.",
+     "I feel like I am back home."
+    ]
+   },
+   {
+    "pattern": "I think ... is a new way to celebrate, because ... / I am not sure about that. / I see it differently, because ...",
+    "meaning": "表达同意与不同意",
+    "examples": [
+     "I think making a tree from old boxes is a new way to celebrate, because it is good for the environment.",
+     "I am not sure about that. I see it differently, because a tree is important at Christmas."
+    ]
+   }
+  ],
+  "notes": [
+   {
+    "title": "treat sb to sth 请客，款待",
+    "body": "Today is the Spring Festival, so I want to treat her to a Chinese dinner. treat sb to sth 意为“请客，款待，招待”。又如：I treat myself to a new coat."
+   },
+   {
+    "title": "the lion's head 狮子头",
+    "body": "课文中“狮子头”是一道用猪肉做成的圆形菜。Its round shape stands for family reunions. 它圆圆的形状象征家庭团聚。"
+   },
+   {
+    "title": "Isn't that against the law? 反问句",
+    "body": "这是否定疑问句，常用来表示惊讶或用于抱怨。against the law 意为“违法”。 Emilia is shocked. 就是因为误会而惊讶。"
+   },
+   {
+    "title": "stand for 代表，表示",
+    "body": "stand for 意为“代表，表示”。What does ATM stand for? 又如：WHO stands for World Health Organization."
+   },
+   {
+    "title": "take a break from 暂停，中断",
+    "body": "For Chinese people, festivals usually mean a break from work. take a break from 意为“暂时停下……休息一下”。"
+   },
+   {
+    "title": "stand by 随时待命",
+    "body": "“We need to stand by every minute,” says Leng. stand by 意为“准备行动，随时待命”。又如：Doctors need to stand by to save people."
+   },
+   {
+    "title": "regret doing sth 后悔做过某事",
+    "body": "But she never regrets her decision to be an ER doctor. regret sth / doing sth 表示“后悔（做了某事），对……感到遗憾”。又如：I regret eating so much last night."
+   },
+   {
+    "title": "give up / answer the call of duty",
+    "body": "They give up their family time to answer the call of duty. give up 意为“放弃”，answer the call of duty 意为“响应职责的召唤”。"
+   }
+  ],
+  "article": {
+   "reading": {
+    "title": "An unusual Spring Festival",
+    "kind": "reading",
+    "source": "Unit 4 Understanding ideas",
+    "paragraphs": [
+     "1 It is my first year of university in the UK. My English friend, Emilia, is a nice girl. Sometimes, she cooks British food for me. Today is the Spring Festival, so I want to treat her to a Chinese dinner.",
+     "2 At home, I often watch Grandma cook. I never realised cooking was so difficult. How I wish to have four hands now!",
+     "3 It is midnight in China — time for dumplings. My whole family come to help me on the phone. Step by step, they teach me. I even make some cucumber flowers.",
+     "4 After Emilia hangs balloons and lanterns in the dining room, I put the last dish on the table. “This is the lion's head!”",
+     "5 “Are you joking? Isn't that against the law?” Emilia is shocked.",
+     "6 I laugh. “It is a pork meatball. My family always have it at the Spring Festival. Its round shape stands for family reunions. Try it!”",
+     "7 Emilia cuts a piece of it with her knife and puts it into her mouth. “I love it!” she says. The smell of the dishes and the sound of our laughing fill the room.",
+     "8 I feel like I am back home."
+    ],
+    "audio": "/audio/7/unit4/reading.mp3"
+   },
+   "extra": [
+    {
+     "title": "When duty shines",
+     "kind": "story",
+     "paragraphs": [
+      "1 For Chinese people, festivals usually mean a break from work and happy family reunions. But for Leng Wenying, festivals only mean more work.",
+      "2 As a doctor in the emergency room, Leng misses many family meals with her loved ones. She is often much busier during festivals. Sometimes she has to work without any breaks for 20 hours. This makes her tired and thirsty. “Festivals are a challenge because our patients are often in a bad situation. We need to stand by every minute,” says Leng.",
+      "3 Leng's duty means she has little time to be with her family at festivals. But she never regrets her decision to be an ER doctor. “I make the most of every minute with my family. I am very thankful for their support,” she says.",
+      "4 Leng is only one of millions of medical workers in China. They give up their family time to answer the call of duty. In the heart of every patient, their hard work shines brighter than fireworks."
+     ],
+     "audio": "/audio/7/unit4/writing.mp3"
+    }
+   ],
+   "dialogues": []
+  },
+  "listening": {
+   "title": "绿色圣诞（News Today 与 Mark 一家的讨论）",
+   "tracks": [
+    {
+     "title": "Listen to the news. What problems does Christmas bring?",
+     "url": "/audio/7/unit4/listening-1.mp3"
+    },
+    {
+     "title": "Listen again and complete the poster. Then write F(fact) or O(opinion) in the boxes",
+     "url": "/audio/7/unit4/listening-2.mp3"
+    },
+    {
+     "title": "Listen to the conversation and complete the ideas. Then match the ideas to the people",
+     "url": "/audio/7/unit4/listening-3.mp3"
+    }
+   ],
+   "phonetics": {
+    "title": "语音练习 · Phonetics in use",
+    "url": "/audio/7/unit4/phonetics.mp3"
+   },
+   "tasks": [
+    "听录音，完成关于圣诞浪费与污染的笔记",
+    "再听一遍，体会说话人如何表达同意与不同意"
+   ],
+   "script": [
+    {
+     "speaker": "Presenter",
+     "text": "Welcome to News Today. Christmas is coming. It will bring joy, but also waste and pollution. Each year, for example, people in the UK use about 365,000 kilometres of paper for gifts. Around the world, people throw away millions of turkeys. What is more, people cut down nearly 120 million trees to use as Christmas trees. But after Christmas, they often throw the trees away. Some families are buying plastic Christmas trees, but they can cause pollution, too. We should think about new ways of celebrating. Let us have a “green Christmas” this year."
+    },
+    {
+     "speaker": "Dad",
+     "text": "Mark, did you hear the news? Let us celebrate Christmas in a new way this year."
+    },
+    {
+     "speaker": "Mark",
+     "text": "What are we going to do?"
+    },
+    {
+     "speaker": "Mum",
+     "text": "Well, let us not have a big meal."
+    },
+    {
+     "speaker": "Mark",
+     "text": "OK. We should not waste food."
+    },
+    {
+     "speaker": "Dad",
+     "text": "And this year, we will not have a Christmas tree."
+    },
+    {
+     "speaker": "Mark",
+     "text": "I do not agree. A tree is really important at Christmas!"
+    },
+    {
+     "speaker": "Mum",
+     "text": "All right. Let us make a tree from old boxes."
+    },
+    {
+     "speaker": "Dad",
+     "text": "Maybe we can draw a tree on the wall."
+    },
+    {
+     "speaker": "Mark",
+     "text": "I am not sure about that. How about using the big plant in the living room?"
+    },
+    {
+     "speaker": "Dad",
+     "text": "Great idea!"
+    },
+    {
+     "speaker": "Mark",
+     "text": "By the way, will I still have gifts?"
+    },
+    {
+     "speaker": "Mum",
+     "text": "Yes, of course! But we will put old newspapers around the gifts."
+    },
+    {
+     "speaker": "Mark",
+     "text": "That is OK. But please use beautiful newspapers!"
+    }
+   ]
+  },
+  "wordsAudio": "/audio/7/unit4/vocab.mp3",
+  "speaking": {
+   "title": "口语活动 · Work in pairs. Talk about your ways to celebrate a traditional festival",
+   "url": "/audio/7/unit4/speaking.mp3"
+  }
+ }
+}

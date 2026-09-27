@@ -1,12 +1,27 @@
 // 语法专题模块入口：集中导出讲解数据、真题练习与本地学习进度工具。
-import { grammarTopics, grammarCategories, topicsById, sortedTopics } from "./topics.js";
-import { grammarExercises, exercisesByTopic, examYears, examExercises, otherExamExercises, adaptedExercises, authoredOnly } from "./exercises.js";
+//
+// 讲解数据 = topics.js 中手工维护的专题 + yufan 教材图片整理出的讲义与补充（见 ./yufan/）。
+import { grammarTopics as baseGrammarTopics, grammarCategories } from "./topics.js?v=20260927-yufan-r1";
+import { grammarExercises, exercisesByTopic, examYears, examExercises, otherExamExercises, adaptedExercises, authoredOnly } from "./exercises.js?v=20260927-yufan-r1";
+import { attachYufan, yufanNewTopics, lectureByTopic, yufanStats } from "./yufan/index.js?v=20260927-yufan-r1";
+
+const baseIds = new Set(baseGrammarTopics.map((t) => t.id));
+
+export const grammarTopics = [
+  ...baseGrammarTopics.map(attachYufan),
+  ...yufanNewTopics.filter((t) => !baseIds.has(t.id)),
+];
+
+export const topicsById = Object.fromEntries(grammarTopics.map((t) => [t.id, t]));
+
+export const sortedTopics = [...grammarTopics].sort(
+  (a, b) =>
+    grammarCategories.indexOf(a.category) - grammarCategories.indexOf(b.category) ||
+    (a.difficulty || 3) - (b.difficulty || 3),
+);
 
 export {
-  grammarTopics,
   grammarCategories,
-  topicsById,
-  sortedTopics,
   grammarExercises,
   exercisesByTopic,
   examYears,
@@ -14,6 +29,8 @@ export {
   otherExamExercises,
   adaptedExercises,
   authoredOnly,
+  lectureByTopic,
+  yufanStats,
 };
 
 const STORAGE_PREFIX = "english-learn-grammar-v1:";

@@ -12,6 +12,8 @@
 - 小学、初中词汇分页浏览和中英文搜索
 - 支持例句、年级、主题、教材单元等扩展词汇信息及筛选（词库补充后自动生效）
 - 分类词库支持按年级、A–Z 首字母、词性和主题浏览，并可正序或倒序排列
+- 词性分类覆盖名词、动词、形容词、副词、代词、数词、冠词、介词、连词、感叹词、助动词、情态动词、缩略词和短语，全部词条均带词性标注
+- 词汇列表支持多种排序：字母正序/倒序、按单元、按年级、按主题、按词长、智能推荐（未掌握优先）、最近更新与随机打乱
 - 内置完整国家名称词汇，支持中英文搜索和“国家”主题筛选
 - 浏览器语音合成英语朗读，无需维护独立音频文件
 - 英译中、中译英、听音选词、拼写和例句完形练习
@@ -28,6 +30,11 @@
 - 阅读与背诵完成状态保存在浏览器本地
 - 新增热门问答主题原创合集，内容不复制第三方用户文章
 - 文章首次打开时幂等导入 BoltDB，后续通过文章 API 从数据库读取
+- 初中英语同步训练模块：按“作业”切分《基础同步达标手册 七年级上》Starter 与 Unit 1–3 共 20 份练习，覆盖单词、词组、语法、选择、语法填空、翻译和阅读加油站等题型
+- 同步训练支持逐题判定对错、查看答案与讲解、按套查看词汇/词组/句型/语法/考点，并在浏览器本地记录“一次答对 / 需要复习”的练习进度
+- 课程学习模块按教材单元呈现文章、词汇、词组、句型、语法、知识点与听力七类内容，词句可点读
+- 七年级上册课程内容取自教材扫描件（OCR + 人工逐字校对），词汇按教材 Words and expressions 词表录入 298 条，听力保留原稿并接入教材配套录音
+- 教材配套录音放在 `web/audio/7/`，词汇页、文章页与听力页均内嵌播放器（听力 1/2/3、Phonetics in use、附录发音指南与专有名词）
 
 ## 项目结构
 
@@ -40,7 +47,10 @@ internal/learning/controller.go     HTTP 控制器
 internal/learning/router.go         Iris 路由注册
 internal/learning/run.go            应用生命周期
 backend/*.json                      小学、初中词汇数据
+chuzhong/真实教材/七年级上册/        教材扫描件整理的课程内容（词汇/词组/句型/语法/知识点/文章/听力）
+web/audio/7/                        七年级上册教材配套录音（词汇/课文/听力/语音/附录）
 web/js/components/                  Vue 页面与业务组件
+web/js/tongbu/                      初中同步训练题库与练习进度工具
 web/js/api.js                       前端接口模块
 web/js/speech.js                    语音模块
 web/vendor/                         本地 Vue 运行时
@@ -70,6 +80,21 @@ powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1
 ```powershell
 .\scripts\build.ps1 -OutputDirectory "dist\english-learn-next"
 ```
+
+### 教材音频
+
+构建（以及部署）会先把项目根目录 `audio_7/` 里的教材录音同步到 `web/audio/7/`
+（文件名规范化为 ASCII，`wav` 自动转 `mp3`），再打进发布目录与部署包；
+`audio_7/` 不存在时自动跳过。手动刷新或新增音频后重新同步：
+
+```powershell
+.\scripts\import-audio.ps1
+```
+
+跳过同步：`build.ps1` / `deploy.ps1` 加 `-SkipAudioSync`。
+`web/audio/7/` 完全由 `audio_7/` 生成，不要手工往里放文件（多余的会被清理）；
+其他册可用 `.\scripts\import-audio.ps1 -SourceDirectory <原始目录> -DestinationDirectory <目标目录>`。
+同步后 `go test ./internal/learning` 会逐条校验课程 JSON 引用的音频文件是否存在。
 
 产物位于 `dist\english-learn`。安装到当前用户目录：
 

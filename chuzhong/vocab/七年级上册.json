@@ -857,238 +857,6 @@
     {
       "section": "Unit 5",
       "kind": "Unit",
-      "title": "Fantastic friends",
-      "words": [
-        {
-          "word": "pigeon",
-          "phonetic": "[ ˈpɪdʒɪn",
-          "meaning": "鸽子"
-        },
-        {
-          "word": "surprise",
-          "phonetic": "səˈpraɪz",
-          "meaning": "令人惊喜的事物；意想不到的礼物；意外之事；惊奇"
-        },
-        {
-          "word": "knock around",
-          "phonetic": "nɒk əˈraʊnd",
-          "meaning": "(在某处)悠闲地度过；闲逛，漫游"
-        },
-        {
-          "word": "droppings",
-          "phonetic": "ˈdrɒpɪŋz",
-          "meaning": "n.(兽或鸟的)粪"
-        },
-        {
-          "word": "boring",
-          "phonetic": "[ ˈbɔːrɪŋ",
-          "meaning": "没趣的，令人厌倦的"
-        },
-        {
-          "word": "feed",
-          "phonetic": "fiːd",
-          "meaning": "喂，喂养；为……提供食物"
-        },
-        {
-          "word": "madly",
-          "phonetic": "ˈmædli",
-          "meaning": "adv.疯狂地；发狂地；精神失常地"
-        },
-        {
-          "word": "scary",
-          "phonetic": "ˈskeəri",
-          "meaning": "吓人的，可怕的"
-        },
-        {
-          "word": "research",
-          "phonetic": "ˈriːsɜːtʃ",
-          "meaning": "调查；研究；探索"
-        },
-        {
-          "word": "recognise",
-          "phonetic": "ˈrekəgnaɪz",
-          "meaning": "v.认出；认识，辨认出"
-        },
-        {
-          "word": "themselves",
-          "phonetic": "ðəmˈselvz",
-          "meaning": "他们自己"
-        },
-        {
-          "word": "mirror",
-          "phonetic": "ˈmɪrə",
-          "meaning": "镜子；反映；映照"
-        },
-        {
-          "word": "itself",
-          "phonetic": "ɪtˈself",
-          "meaning": "它自己"
-        },
-        {
-          "word": "maybe",
-          "phonetic": "ˈmeɪbi",
-          "meaning": "也许，大概，可能"
-        },
-        {
-          "word": "several",
-          "phonetic": "ˈsevrəl",
-          "meaning": "几个；一些"
-        },
-        {
-          "word": "kilometre",
-          "phonetic": "kɪˈlɒmɪtə(r)",
-          "meaning": "千米，公里"
-        },
-        {
-          "word": "get lost",
-          "phonetic": "ɡet lɒst",
-          "meaning": "迷路"
-        },
-        {
-          "word": "speed",
-          "phonetic": "spiːd",
-          "meaning": "速度；超速行驶"
-        },
-        {
-          "word": "amazing",
-          "phonetic": "əˈmeɪzɪŋ",
-          "meaning": "令人惊奇的，令人吃惊的；令人惊喜的"
-        },
-        {
-          "word": "enough",
-          "phonetic": "ɪˈnʌf",
-          "meaning": "足够地;充分地;充足地"
-        },
-        {
-          "word": "beaver",
-          "phonetic": "ˈbiːvə(r)",
-          "meaning": "海（河）狸"
-        },
-        {
-          "word": "wolf",
-          "phonetic": "wʊlf",
-          "meaning": "狼"
-        },
-        {
-          "word": "engineer",
-          "phonetic": "ˌendʒɪˈnɪə",
-          "meaning": "工程师，设计师"
-        },
-        {
-          "word": "hero",
-          "phonetic": "ˈhɪərəʊ",
-          "meaning": "偶像；英雄；男主角"
-        },
-        {
-          "word": "rescue",
-          "phonetic": "ˈreskjuː",
-          "meaning": "营救，救援；营救行动"
-        },
-        {
-          "word": "earthquake",
-          "phonetic": "ˈɜ:rθkweɪk",
-          "meaning": "地震"
-        },
-        {
-          "word": "missing",
-          "phonetic": "ˈmɪsɪŋ",
-          "meaning": "找不到的；失踪的；遗漏的"
-        },
-        {
-          "word": "save",
-          "phonetic": "seɪv",
-          "meaning": "救，救助；拯救"
-        },
-        {
-          "word": "dead",
-          "phonetic": "ded",
-          "meaning": "死的；不运行的"
-        },
-        {
-          "word": "dodo",
-          "phonetic": "ˈdəʊdəʊ",
-          "meaning": "渡渡鸟，孤鸽"
-        },
-        {
-          "word": "as dead as a dodo",
-          "phonetic": "æz ded æz ə ˈdəʊdəʊ",
-          "meaning": "彻底死亡"
-        },
-        {
-          "word": "character",
-          "phonetic": "ˈkærəktə",
-          "meaning": "人物；角色；文字；符号"
-        },
-        {
-          "word": "museum",
-          "phonetic": "mjuˈziːəm",
-          "meaning": "博物馆"
-        },
-        {
-          "word": "island",
-          "phonetic": "ˈaɪlənd",
-          "meaning": "岛"
-        },
-        {
-          "word": "ocean",
-          "phonetic": "ˈəʊʃ(ə)n",
-          "meaning": "海洋；大海"
-        },
-        {
-          "word": "plenty",
-          "phonetic": "ˈplenti",
-          "meaning": "大量；众多；充足"
-        },
-        {
-          "word": "friendly",
-          "phonetic": "ˈfrendli",
-          "meaning": "友好的；友爱的"
-        },
-        {
-          "word": "peaceful",
-          "phonetic": "ˈpiːsf(ə)l",
-          "meaning": "和平的；安宁的；宁静的，安静的"
-        },
-        {
-          "word": "arrive",
-          "phonetic": "əˈraɪv",
-          "meaning": "到达"
-        },
-        {
-          "word": "forest",
-          "phonetic": "ˈfɒrɪst",
-          "meaning": "森林；林区"
-        },
-        {
-          "word": "hunt",
-          "phonetic": "hʌnt",
-          "meaning": "猎取；打猎；追捕；搜寻，寻找"
-        },
-        {
-          "word": "die out",
-          "phonetic": "daɪ aʊt",
-          "meaning": "灭绝；消失"
-        },
-        {
-          "word": "full",
-          "phonetic": "fʊl",
-          "meaning": "满的，充满的；饱的"
-        },
-        {
-          "word": "fantastic",
-          "phonetic": "fænˈtæstɪk",
-          "meaning": "极好的；了不起的"
-        },
-        {
-          "word": "as happy as a clam",
-          "phonetic": "æz ˈhæpi æz ə klæm",
-          "meaning": "非常高兴的，相当满足的"
-        }
-      ]
-    },
-    {
-      "section": "Unit 6",
-      "kind": "Unit",
       "title": "The power of plants",
       "words": [
         {
@@ -1320,6 +1088,238 @@
           "word": "connect",
           "phonetic": "kəˈnekt",
           "meaning": "（使）连接；与……有联系"
+        }
+      ]
+    },
+    {
+      "section": "Unit 6",
+      "kind": "Unit",
+      "title": "Fantastic friends",
+      "words": [
+        {
+          "word": "pigeon",
+          "phonetic": "[ ˈpɪdʒɪn",
+          "meaning": "鸽子"
+        },
+        {
+          "word": "surprise",
+          "phonetic": "səˈpraɪz",
+          "meaning": "令人惊喜的事物；意想不到的礼物；意外之事；惊奇"
+        },
+        {
+          "word": "knock around",
+          "phonetic": "nɒk əˈraʊnd",
+          "meaning": "(在某处)悠闲地度过；闲逛，漫游"
+        },
+        {
+          "word": "droppings",
+          "phonetic": "ˈdrɒpɪŋz",
+          "meaning": "n.(兽或鸟的)粪"
+        },
+        {
+          "word": "boring",
+          "phonetic": "[ ˈbɔːrɪŋ",
+          "meaning": "没趣的，令人厌倦的"
+        },
+        {
+          "word": "feed",
+          "phonetic": "fiːd",
+          "meaning": "喂，喂养；为……提供食物"
+        },
+        {
+          "word": "madly",
+          "phonetic": "ˈmædli",
+          "meaning": "adv.疯狂地；发狂地；精神失常地"
+        },
+        {
+          "word": "scary",
+          "phonetic": "ˈskeəri",
+          "meaning": "吓人的，可怕的"
+        },
+        {
+          "word": "research",
+          "phonetic": "ˈriːsɜːtʃ",
+          "meaning": "调查；研究；探索"
+        },
+        {
+          "word": "recognise",
+          "phonetic": "ˈrekəgnaɪz",
+          "meaning": "v.认出；认识，辨认出"
+        },
+        {
+          "word": "themselves",
+          "phonetic": "ðəmˈselvz",
+          "meaning": "他们自己"
+        },
+        {
+          "word": "mirror",
+          "phonetic": "ˈmɪrə",
+          "meaning": "镜子；反映；映照"
+        },
+        {
+          "word": "itself",
+          "phonetic": "ɪtˈself",
+          "meaning": "它自己"
+        },
+        {
+          "word": "maybe",
+          "phonetic": "ˈmeɪbi",
+          "meaning": "也许，大概，可能"
+        },
+        {
+          "word": "several",
+          "phonetic": "ˈsevrəl",
+          "meaning": "几个；一些"
+        },
+        {
+          "word": "kilometre",
+          "phonetic": "kɪˈlɒmɪtə(r)",
+          "meaning": "千米，公里"
+        },
+        {
+          "word": "get lost",
+          "phonetic": "ɡet lɒst",
+          "meaning": "迷路"
+        },
+        {
+          "word": "speed",
+          "phonetic": "spiːd",
+          "meaning": "速度；超速行驶"
+        },
+        {
+          "word": "amazing",
+          "phonetic": "əˈmeɪzɪŋ",
+          "meaning": "令人惊奇的，令人吃惊的；令人惊喜的"
+        },
+        {
+          "word": "enough",
+          "phonetic": "ɪˈnʌf",
+          "meaning": "足够地;充分地;充足地"
+        },
+        {
+          "word": "beaver",
+          "phonetic": "ˈbiːvə(r)",
+          "meaning": "海（河）狸"
+        },
+        {
+          "word": "wolf",
+          "phonetic": "wʊlf",
+          "meaning": "狼"
+        },
+        {
+          "word": "engineer",
+          "phonetic": "ˌendʒɪˈnɪə",
+          "meaning": "工程师，设计师"
+        },
+        {
+          "word": "hero",
+          "phonetic": "ˈhɪərəʊ",
+          "meaning": "偶像；英雄；男主角"
+        },
+        {
+          "word": "rescue",
+          "phonetic": "ˈreskjuː",
+          "meaning": "营救，救援；营救行动"
+        },
+        {
+          "word": "earthquake",
+          "phonetic": "ˈɜ:rθkweɪk",
+          "meaning": "地震"
+        },
+        {
+          "word": "missing",
+          "phonetic": "ˈmɪsɪŋ",
+          "meaning": "找不到的；失踪的；遗漏的"
+        },
+        {
+          "word": "save",
+          "phonetic": "seɪv",
+          "meaning": "救，救助；拯救"
+        },
+        {
+          "word": "dead",
+          "phonetic": "ded",
+          "meaning": "死的；不运行的"
+        },
+        {
+          "word": "dodo",
+          "phonetic": "ˈdəʊdəʊ",
+          "meaning": "渡渡鸟，孤鸽"
+        },
+        {
+          "word": "as dead as a dodo",
+          "phonetic": "æz ded æz ə ˈdəʊdəʊ",
+          "meaning": "彻底死亡"
+        },
+        {
+          "word": "character",
+          "phonetic": "ˈkærəktə",
+          "meaning": "人物；角色；文字；符号"
+        },
+        {
+          "word": "museum",
+          "phonetic": "mjuˈziːəm",
+          "meaning": "博物馆"
+        },
+        {
+          "word": "island",
+          "phonetic": "ˈaɪlənd",
+          "meaning": "岛"
+        },
+        {
+          "word": "ocean",
+          "phonetic": "ˈəʊʃ(ə)n",
+          "meaning": "海洋；大海"
+        },
+        {
+          "word": "plenty",
+          "phonetic": "ˈplenti",
+          "meaning": "大量；众多；充足"
+        },
+        {
+          "word": "friendly",
+          "phonetic": "ˈfrendli",
+          "meaning": "友好的；友爱的"
+        },
+        {
+          "word": "peaceful",
+          "phonetic": "ˈpiːsf(ə)l",
+          "meaning": "和平的；安宁的；宁静的，安静的"
+        },
+        {
+          "word": "arrive",
+          "phonetic": "əˈraɪv",
+          "meaning": "到达"
+        },
+        {
+          "word": "forest",
+          "phonetic": "ˈfɒrɪst",
+          "meaning": "森林；林区"
+        },
+        {
+          "word": "hunt",
+          "phonetic": "hʌnt",
+          "meaning": "猎取；打猎；追捕；搜寻，寻找"
+        },
+        {
+          "word": "die out",
+          "phonetic": "daɪ aʊt",
+          "meaning": "灭绝；消失"
+        },
+        {
+          "word": "full",
+          "phonetic": "fʊl",
+          "meaning": "满的，充满的；饱的"
+        },
+        {
+          "word": "fantastic",
+          "phonetic": "fænˈtæstɪk",
+          "meaning": "极好的；了不起的"
+        },
+        {
+          "word": "as happy as a clam",
+          "phonetic": "æz ˈhæpi æz ə klæm",
+          "meaning": "非常高兴的，相当满足的"
         }
       ]
     }

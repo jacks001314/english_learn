@@ -14,7 +14,7 @@ import {
   recordAnswer,
   topicMastery,
   overallMastery,
-} from "../grammar/index.js";
+} from "../grammar/index.js?v=20260927-yufan-r1";
 
 const letters = ["A", "B", "C", "D", "E", "F"];
 
@@ -57,9 +57,6 @@ export default {
           .toLowerCase();
         return hay.includes(q);
       });
-    },
-    applyTarget(id) {
-      if (id && this.topics.some((t) => t.id === id)) this.selectedId = id;
     },
     groupedTopics() {
       return this.categories
@@ -133,6 +130,9 @@ export default {
       const nextPicked = { ...this.picked };
       for (const ex of this.selectedExercises) delete nextPicked[this.pickKey(ex)];
       this.picked = nextPicked;
+    },
+    applyTarget(id) {
+      if (id && this.topics.some((t) => t.id === id)) this.selectedId = id;
     },
     selectTopic(id) {
       this.selectedId = id;
@@ -224,7 +224,44 @@ export default {
             <p v-else-if="selected.spreadNote" class="gd-spread">{{ selected.spreadNote }}</p>
           </header>
 
-          <section class="gd-block">
+          <section v-if="selected.lecture" class="gd-block gd-lecture">
+            <h3>
+              <span class="sec-dot"></span>讲义精讲
+              <em v-if="selected.lecture.sourceDirs && selected.lecture.sourceDirs.length" class="gd-lecture-src">教材图片整理 · {{ selected.lecture.sourceDirs.join("、") }}</em>
+            </h3>
+            <p v-if="selected.lecture.intro" class="gd-lecture-intro">{{ selected.lecture.intro }}</p>
+            <div v-for="(sec, si) in selected.lecture.sections" :key="si" class="gd-lec-section">
+              <h4>{{ sec.heading }}</h4>
+              <template v-for="(blk, bi) in sec.blocks" :key="bi">
+                <p v-if="blk.type === 'text'" class="gd-lec-text">{{ blk.text }}</p>
+                <ul v-else-if="blk.type === 'list'" class="gd-lec-list">
+                  <li v-for="(it, ii) in blk.items" :key="ii">{{ it }}</li>
+                </ul>
+                <div v-else-if="blk.type === 'table'" class="gd-lec-table">
+                  <table>
+                    <thead>
+                      <tr><th v-for="(h, hi) in blk.head" :key="hi">{{ h }}</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(row, ri) in blk.rows" :key="ri">
+                        <td v-for="(cell, ci2) in row" :key="ci2">{{ cell }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul v-else-if="blk.type === 'examples'" class="gd-lec-ex">
+                  <li v-for="(ex, ei) in blk.items" :key="ei" @click="speak(ex.en)">
+                    <span class="tb-en">{{ ex.en }}</span>
+                    <span class="tb-zh">{{ ex.zh }}</span>
+                  </li>
+                </ul>
+                <p v-else-if="blk.type === 'tip'" class="gd-lec-tip"><b>提示</b>{{ blk.text }}</p>
+                <p v-else-if="blk.type === 'pitfall'" class="gd-lec-pitfall"><b>易错</b>{{ blk.text }}</p>
+              </template>
+            </div>
+          </section>
+
+          <section v-if="selected.forms && selected.forms.length" class="gd-block">
             <h3><span class="sec-dot"></span>结构公式</h3>
             <div class="gd-forms">
               <div v-for="(form, fi) in selected.forms" :key="fi" class="gd-form">
@@ -235,7 +272,7 @@ export default {
             </div>
           </section>
 
-          <section class="gd-block">
+          <section v-if="selected.points && selected.points.length" class="gd-block">
             <h3><span class="sec-dot"></span>用法要点</h3>
             <div class="gd-points">
               <div v-for="(point, pi) in selected.points" :key="pi" class="gd-point">
@@ -270,22 +307,22 @@ export default {
             </div>
           </section>
 
-          <section class="gd-block gd-two-col">
+          <section v-if="(selected.pitfalls && selected.pitfalls.length) || (selected.examTips && selected.examTips.length)" class="gd-block gd-two-col">
             <div>
-              <h3><span class="sec-dot"></span>易错点</h3>
-              <ul class="gd-plain">
+              <h3 v-if="selected.pitfalls && selected.pitfalls.length"><span class="sec-dot"></span>易错点</h3>
+              <ul v-if="selected.pitfalls && selected.pitfalls.length" class="gd-plain">
                 <li v-for="(p, pi) in selected.pitfalls" :key="pi">{{ p }}</li>
               </ul>
             </div>
             <div>
-              <h3><span class="sec-dot"></span>中考提示</h3>
-              <ul class="gd-plain exam">
+              <h3 v-if="selected.examTips && selected.examTips.length"><span class="sec-dot"></span>中考提示</h3>
+              <ul v-if="selected.examTips && selected.examTips.length" class="gd-plain exam">
                 <li v-for="(t, ti) in selected.examTips" :key="ti">{{ t }}</li>
               </ul>
             </div>
           </section>
 
-          <section class="gd-block">
+          <section v-if="selected.memoryCard && selected.memoryCard.length" class="gd-block">
             <h3><span class="sec-dot"></span>记忆卡</h3>
             <div class="gd-memory">
               <span v-for="(m, mi) in selected.memoryCard" :key="mi">{{ m }}</span>

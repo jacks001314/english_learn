@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strings"
 	"time"
+	"unicode"
 
 	bolt "go.etcd.io/bbolt"
 )
@@ -47,16 +48,16 @@ func (s *Service) Words(filter WordFilter) WordPage {
 		if filter.Letter != "" && !strings.EqualFold(item.Letter, filter.Letter) {
 			continue
 		}
-		if filter.PartOfSpeech != "" && !matchesPartOfSpeech(item.Pos, filter.PartOfSpeech) {
+		if filter.PartOfSpeech != "" && !matchesPartOfSpeech(item.Pos, item.Word, filter.PartOfSpeech) {
 			continue
 		}
 		matched = append(matched, item)
 	}
-	if filter.Sort == "word-desc" {
-		sort.SliceStable(matched, func(i, j int) bool { return strings.ToLower(matched[i].Word) > strings.ToLower(matched[j].Word) })
-	} else if filter.Sort == "word-asc" {
-		sort.SliceStable(matched, func(i, j int) bool { return strings.ToLower(matched[i].Word) < strings.ToLower(matched[j].Word) })
+	var progress map[string]Progress
+	if filter.Sort == sortSmart {
+		progress = s.learnedProgress()
 	}
+	sortWords(matched, filter.Sort, filter.Seed, progress)
 	start := (filter.Page - 1) * size
 	if start > len(matched) {
 		start = len(matched)
@@ -66,6 +67,20 @@ func (s *Service) Words(filter WordFilter) WordPage {
 		end = len(matched)
 	}
 	return WordPage{Items: matched[start:end], Total: len(matched), Page: filter.Page, Size: size}
+}
+
+// learnedProgress loads the current learner's progress for recommendation
+// sorting. A missing store or a read failure simply falls back to no progress,
+// which keeps the word list usable in tests and during startup.
+func (s *Service) learnedProgress() map[string]Progress {
+	if db == nil {
+		return nil
+	}
+	items, err := readProgress(s.userID)
+	if err != nil {
+		return nil
+	}
+	return items
 }
 
 func (s *Service) WordFacets(level string) WordFacets {
@@ -87,36 +102,95 @@ func (s *Service) WordFacets(level string) WordFacets {
 		if item.Letter != "" {
 			letters[strings.ToUpper(item.Letter)]++
 		}
-		for _, part := range wordPartsOfSpeech(item.Pos) {
+		for _, part := range wordPartsOfSpeech(item.Pos, item.Word) {
 			parts[part]++
 		}
 	}
-	return WordFacets{Topics: sortedKeys(topics), Grades: sortedKeys(grades), Units: sortedKeys(units), Letters: categoryCounts(letters, nil), PartsOfSpeech: categoryCounts(parts, map[string]string{"noun": "名词", "verb": "动词", "adjective": "形容词", "adverb": "副词", "pronoun": "代词", "preposition": "介词", "conjunction": "连词", "phrase": "短语", "other": "其他"})}
+	return WordFacets{Topics: sortedKeys(topics), Grades: sortedKeys(grades), Units: sortedKeys(units), Letters: categoryCounts(letters, nil), PartsOfSpeech: partOfSpeechFacets(parts)}
 }
 
-func wordPartsOfSpeech(pos string) []string {
-	value := strings.ToLower(strings.TrimSpace(pos))
-	result := []string{}
-	checks := []struct {
-		key     string
-		markers []string
-	}{{"noun", []string{"n.", " n", "n &", "n&"}}, {"verb", []string{"v.", " v", "v &", "v&"}}, {"adjective", []string{"adj", "a."}}, {"adverb", []string{"adv"}}, {"pronoun", []string{"pron"}}, {"preposition", []string{"prep"}}, {"conjunction", []string{"conj"}}, {"phrase", []string{"phr"}}}
-	for _, check := range checks {
-		for _, marker := range check.markers {
-			if strings.Contains(" "+value, marker) {
-				result = append(result, check.key)
-				break
+// posCategory describes one part-of-speech bucket of the category library.
+// Textbook word lists mark parts of speech inconsistently ("n.", "adj & adv",
+// "v./n.", "n. phr."), so every bucket carries the markers it accepts.
+type posCategory struct {
+	key     string
+	label   string
+	markers []string
+}
+
+// posCategories is the browse order shown in the category library: the word
+// classes Chinese textbooks introduce first, punctuation-heavy buckets last.
+var posCategories = []posCategory{
+	{key: "noun", label: "名词", markers: []string{"n", "noun"}},
+	{key: "verb", label: "动词", markers: []string{"v", "vt", "vi", "verb"}},
+	{key: "adjective", label: "形容词", markers: []string{"adj", "a", "adjective"}},
+	{key: "adverb", label: "副词", markers: []string{"adv", "ad", "adverb"}},
+	{key: "pronoun", label: "代词", markers: []string{"pron", "pronoun"}},
+	{key: "numeral", label: "数词", markers: []string{"num", "numeral"}},
+	{key: "article", label: "冠词", markers: []string{"art", "article"}},
+	{key: "preposition", label: "介词", markers: []string{"prep", "preposition"}},
+	{key: "conjunction", label: "连词", markers: []string{"conj", "conjunction"}},
+	{key: "interjection", label: "感叹词", markers: []string{"int", "interj", "interjection"}},
+	{key: "auxiliary", label: "助动词", markers: []string{"aux", "auxiliary"}},
+	{key: "modal", label: "情态动词", markers: []string{"modal"}},
+	{key: "abbreviation", label: "缩略词", markers: []string{"abbr", "abbreviation"}},
+	{key: "phrase", label: "短语", markers: []string{"phr", "phrase"}},
+	{key: "other", label: "其他", markers: []string{"other"}},
+}
+
+// wordPartsOfSpeech maps a stored part-of-speech marker onto the browse
+// categories. Values such as "num." must not fall into 名词 just because they
+// contain the letter n, so markers are split into tokens and compared exactly.
+// Entries without any marker fall back to 短语 for multi-word entries.
+func wordPartsOfSpeech(pos, word string) []string {
+	matched := map[string]bool{}
+	for _, marker := range posMarkers(pos) {
+		for _, category := range posCategories {
+			if contains(category.markers, marker) {
+				matched[category.key] = true
 			}
 		}
 	}
-	if len(result) == 0 {
-		result = append(result, "other")
+	result := make([]string, 0, len(matched))
+	for _, category := range posCategories {
+		if matched[category.key] {
+			result = append(result, category.key)
+		}
+	}
+	if len(result) > 0 {
+		return result
+	}
+	if isPhraseEntry(word) {
+		return []string{"phrase"}
+	}
+	return []string{"other"}
+}
+
+// posMarkers splits "adj. & adv." style values into ["adj", "adv"].
+func posMarkers(pos string) []string {
+	return strings.FieldsFunc(strings.ToLower(pos), func(r rune) bool { return !unicode.IsLetter(r) && !unicode.IsDigit(r) })
+}
+
+// isPhraseEntry reports whether a word is a multi-word expression, which the
+// library files under 短语 even when no part-of-speech marker was imported.
+func isPhraseEntry(word string) bool {
+	return strings.ContainsAny(strings.TrimSpace(word), " …")
+}
+
+// partOfSpeechFacets keeps the browse order above and drops empty buckets so
+// the category page only lists parts of speech the level actually contains.
+func partOfSpeechFacets(counts map[string]int) []CategoryCount {
+	result := make([]CategoryCount, 0, len(counts))
+	for _, category := range posCategories {
+		if counts[category.key] > 0 {
+			result = append(result, CategoryCount{Value: category.key, Label: category.label, Count: counts[category.key]})
+		}
 	}
 	return result
 }
 
-func matchesPartOfSpeech(pos, target string) bool {
-	for _, part := range wordPartsOfSpeech(pos) {
+func matchesPartOfSpeech(pos, word, target string) bool {
+	for _, part := range wordPartsOfSpeech(pos, word) {
 		if part == target {
 			return true
 		}

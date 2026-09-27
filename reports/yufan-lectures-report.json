@@ -1,0 +1,263 @@
+{
+  "generatedAt": "2026-09-27T14:30:23.477Z",
+  "imagesOnDisk": 417,
+  "lectureFiles": 25,
+  "topicsCovered": 24,
+  "imagesReadReported": 417,
+  "coverage": [
+    {
+      "dir": "yufan/主谓一致",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/介词",
+      "images": 23,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/代词",
+      "images": 31,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/倒装句",
+      "images": 7,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/冠词",
+      "images": 13,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/副词",
+      "images": 21,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/动词时态/一般现在时",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/动词时态/一般过去时",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/动词时态/完成时",
+      "images": 17,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/动词时态/将来时",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/动词时态/进行时",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/动词概说",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/助动词和情态动词",
+      "images": 21,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/被动语态",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/动词/非谓语动词",
+      "images": 17,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/句子成分和基本句型",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/句子的种类",
+      "images": 13,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/句子的结构",
+      "images": 35,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/名词",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/形容词",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/总论",
+      "images": 9,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/数词",
+      "images": 9,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/疑问句",
+      "images": 17,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/直接引语与间接引语",
+      "images": 15,
+      "referenced": 1
+    },
+    {
+      "dir": "yufan/连词",
+      "images": 19,
+      "referenced": 1
+    }
+  ],
+  "imagesAudit": [
+    {
+      "dir": "yufan/主谓一致",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/介词",
+      "images": 23,
+      "declared": 23
+    },
+    {
+      "dir": "yufan/代词",
+      "images": 31,
+      "declared": 31
+    },
+    {
+      "dir": "yufan/倒装句",
+      "images": 7,
+      "declared": 7
+    },
+    {
+      "dir": "yufan/冠词",
+      "images": 13,
+      "declared": 13
+    },
+    {
+      "dir": "yufan/副词",
+      "images": 21,
+      "declared": 21
+    },
+    {
+      "dir": "yufan/动词/动词时态/一般现在时",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/动词/动词时态/一般过去时",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/动词/动词时态/完成时",
+      "images": 17,
+      "declared": 17
+    },
+    {
+      "dir": "yufan/动词/动词时态/将来时",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/动词/动词时态/进行时",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/动词/动词概说",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/动词/助动词和情态动词",
+      "images": 21,
+      "declared": 21
+    },
+    {
+      "dir": "yufan/动词/被动语态",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/动词/非谓语动词",
+      "images": 17,
+      "declared": 17
+    },
+    {
+      "dir": "yufan/句子成分和基本句型",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/句子的种类",
+      "images": 13,
+      "declared": 13
+    },
+    {
+      "dir": "yufan/句子的结构",
+      "images": 35,
+      "declared": 35
+    },
+    {
+      "dir": "yufan/名词",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/形容词",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/总论",
+      "images": 9,
+      "declared": 9
+    },
+    {
+      "dir": "yufan/数词",
+      "images": 9,
+      "declared": 9
+    },
+    {
+      "dir": "yufan/疑问句",
+      "images": 17,
+      "declared": 17
+    },
+    {
+      "dir": "yufan/直接引语与间接引语",
+      "images": 15,
+      "declared": 15
+    },
+    {
+      "dir": "yufan/连词",
+      "images": 19,
+      "declared": 19
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

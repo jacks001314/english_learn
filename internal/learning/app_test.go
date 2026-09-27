@@ -115,7 +115,7 @@ func TestWordsSortsAlphabetically(t *testing.T) {
 func TestPartOfSpeechRecognition(t *testing.T) {
 	cases := map[string][]string{"n.": {"noun"}, "v & n": {"noun", "verb"}, "adj & adv": {"adjective", "adverb"}, "pron.": {"pronoun"}, "phr.": {"phrase"}}
 	for input, want := range cases {
-		got := wordPartsOfSpeech(input)
+		got := wordPartsOfSpeech(input, "")
 		for _, part := range want {
 			if !contains(got, part) {
 				t.Fatalf("%q = %v, missing %s", input, got, part)

@@ -1,0 +1,634 @@
+{
+ "book": "七年级上册",
+ "section": {
+  "section": "Unit 2",
+  "kind": "Unit",
+  "title": "More than fun",
+  "titleZh": "不止是乐趣",
+  "topic": "爱好与文化交融：摇滚乐与二胡、观鸟、写作与分享",
+  "goals": [
+   "用一般现在时谈论自己和他人的爱好（hobbies）",
+   "描述爱好带来的乐趣与收获",
+   "用 because / so / as a result 表达因果关系"
+  ],
+  "grammar": {
+   "topic": "一般现在时（the simple present tense）",
+   "summary": "一般现在时表示经常性、习惯性的动作或状态。be 动词随人称变为 am / is / are；行为动词在第三人称单数作主语时加 -s 或 -es；否定句和疑问句借助 do / does。",
+   "points": [
+    {
+     "title": "be 动词的一般现在时",
+     "detail": "am / is / are 表示状态或身份。",
+     "examples": [
+      "There is so much fun in music.",
+      "Music is also my grandpa's hobby.",
+      "They are my friends."
+     ]
+    },
+    {
+     "title": "行为动词的一般现在时",
+     "detail": "主语是第一、二人称或复数时，动词用原形；主语是第三人称单数时，动词加 -s 或 -es。",
+     "examples": [
+      "I play the electric guitar in the school band.",
+      "The sound of Grandpa's erhu cuts in.",
+      "He likes playing the erhu in the park."
+     ]
+    },
+    {
+     "title": "第三人称单数动词的变化规则",
+     "detail": "一般直接加 -s（plays）；以 s、x、ch、sh、o 结尾加 -es（goes、watches）；辅音字母 + y 结尾变 y 为 i 再加 -es（study → studies）。",
+     "examples": [
+      "She writes songs and shares them online.",
+      "My father watches TV every evening."
+     ]
+    },
+    {
+     "title": "否定句与疑问句",
+     "detail": "行为动词的否定句用 do not (don't) / does not (doesn't) + 动词原形；一般疑问句用 Do / Does + 主语 + 动词原形。",
+     "examples": [
+      "They do not go to school at the weekend.",
+      "Does he like music? Yes, he does."
+     ]
+    }
+   ],
+   "examples": [
+    "I play the electric guitar in the school band.",
+    "There is so much fun in music.",
+    "The sound of Grandpa's erhu cuts in."
+   ]
+  },
+  "words": [
+   {
+    "word": "rock music",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "摇滚乐",
+    "page": 32
+   },
+   {
+    "word": "electric",
+    "phonetic": "ɪˈlektrɪk",
+    "pos": "adj.",
+    "meaning": "用电的；电动的",
+    "page": 32
+   },
+   {
+    "word": "guitar",
+    "phonetic": "ɡɪˈtɑː",
+    "pos": "n.",
+    "meaning": "吉他",
+    "page": 32
+   },
+   {
+    "word": "band",
+    "phonetic": "bænd",
+    "pos": "n.",
+    "meaning": "乐队，乐团",
+    "page": 32
+   },
+   {
+    "word": "sound",
+    "phonetic": "saʊnd",
+    "pos": "n.",
+    "meaning": "声音",
+    "page": 32
+   },
+   {
+    "word": "different",
+    "phonetic": "ˈdɪfrənt",
+    "pos": "adj.",
+    "meaning": "不同的，不一样的",
+    "page": 32
+   },
+   {
+    "word": "suddenly",
+    "phonetic": "ˈsʌdənli",
+    "pos": "adv.",
+    "meaning": "突然，突如其来地",
+    "page": 33
+   },
+   {
+    "word": "hit",
+    "phonetic": "hɪt",
+    "pos": "v.",
+    "meaning": "使（某人）突然意识到",
+    "page": 33
+   },
+   {
+    "word": "rush",
+    "phonetic": "rʌʃ",
+    "pos": "v.",
+    "meaning": "冲，奔",
+    "page": 33
+   },
+   {
+    "word": "festival",
+    "phonetic": "ˈfestəvəl",
+    "pos": "n.",
+    "meaning": "（电影、戏剧、音乐等的）节，节庆，汇演",
+    "page": 33
+   },
+   {
+    "word": "decide",
+    "phonetic": "dɪˈsaɪd",
+    "pos": "v.",
+    "meaning": "决定",
+    "page": 33
+   },
+   {
+    "word": "practice",
+    "phonetic": "ˈpræktɪs",
+    "pos": "n.",
+    "meaning": "练习",
+    "page": 33
+   },
+   {
+    "word": "stage",
+    "phonetic": "steɪdʒ",
+    "pos": "n.",
+    "meaning": "舞台",
+    "page": 33
+   },
+   {
+    "word": "nod",
+    "phonetic": "nɒd",
+    "pos": "v.",
+    "meaning": "点头",
+    "page": 33
+   },
+   {
+    "word": "instrument",
+    "phonetic": "ˈɪnstrəmənt",
+    "pos": "n.",
+    "meaning": "乐器",
+    "page": 33
+   },
+   {
+    "word": "everybody",
+    "phonetic": "ˈevribɒdi",
+    "pos": "pron.",
+    "meaning": "每个人，人人",
+    "page": 33
+   },
+   {
+    "word": "smile",
+    "phonetic": "smaɪl",
+    "pos": "n./v.",
+    "meaning": "笑容；微笑",
+    "page": 33
+   },
+   {
+    "word": "enjoy",
+    "phonetic": "ɪnˈdʒɔɪ",
+    "pos": "v.",
+    "meaning": "喜欢；享受……的乐趣",
+    "page": 33
+   },
+   {
+    "word": "skate",
+    "phonetic": "skeɪt",
+    "pos": "v.",
+    "meaning": "滑冰，溜冰",
+    "page": 35
+   },
+   {
+    "word": "club",
+    "phonetic": "klʌb",
+    "pos": "n.",
+    "meaning": "俱乐部",
+    "page": 35
+   },
+   {
+    "word": "volleyball",
+    "phonetic": "ˈvɒlibɔːl",
+    "pos": "n.",
+    "meaning": "排球（运动）",
+    "page": 35
+   },
+   {
+    "word": "traditional",
+    "phonetic": "trəˈdɪʃənəl",
+    "pos": "adj.",
+    "meaning": "传统的；习俗的；惯例的",
+    "page": 35
+   },
+   {
+    "word": "paper-cutting",
+    "phonetic": "",
+    "pos": "n.",
+    "meaning": "剪纸",
+    "page": 35
+   },
+   {
+    "word": "hold",
+    "phonetic": "həʊld",
+    "pos": "v.",
+    "meaning": "握住，抓住；抱住",
+    "page": 38
+   },
+   {
+    "word": "ground",
+    "phonetic": "ɡraʊnd",
+    "pos": "n.",
+    "meaning": "地，地面",
+    "page": 39
+   },
+   {
+    "word": "weak",
+    "phonetic": "wiːk",
+    "pos": "adj.",
+    "meaning": "虚弱的，不强壮的",
+    "page": 39
+   },
+   {
+    "word": "high",
+    "phonetic": "haɪ",
+    "pos": "adj.",
+    "meaning": "高的",
+    "page": 39
+   },
+   {
+    "word": "nature",
+    "phonetic": "ˈneɪtʃə",
+    "pos": "n.",
+    "meaning": "大自然，自然",
+    "page": 39
+   },
+   {
+    "word": "notebook",
+    "phonetic": "ˈnəʊtbʊk",
+    "pos": "n.",
+    "meaning": "笔记本",
+    "page": 41
+   },
+   {
+    "word": "awake",
+    "phonetic": "əˈweɪk",
+    "pos": "adj.",
+    "meaning": "醒着的",
+    "page": 40
+   },
+   {
+    "word": "midnight",
+    "phonetic": "ˈmɪdnaɪt",
+    "pos": "n.",
+    "meaning": "午夜",
+    "page": 40
+   },
+   {
+    "word": "appear",
+    "phonetic": "əˈpɪə",
+    "pos": "v.",
+    "meaning": "（尤指突然）出现，呈现",
+    "page": 40
+   },
+   {
+    "word": "heart",
+    "phonetic": "hɑːt",
+    "pos": "n.",
+    "meaning": "心（脏）",
+    "page": 40
+   },
+   {
+    "word": "almost",
+    "phonetic": "ˈɔːlməʊst",
+    "pos": "adv.",
+    "meaning": "几乎，差不多",
+    "page": 40
+   },
+   {
+    "word": "tap",
+    "phonetic": "tæp",
+    "pos": "v.",
+    "meaning": "（用手指）轻拍，轻叩，轻敲",
+    "page": 40
+   },
+   {
+    "word": "shake",
+    "phonetic": "ʃeɪk",
+    "pos": "v.",
+    "meaning": "摇动",
+    "page": 40
+   },
+   {
+    "word": "classmate",
+    "phonetic": "ˈklɑːsmeɪt",
+    "pos": "n.",
+    "meaning": "同班同学",
+    "page": 40
+   },
+   {
+    "word": "lonely",
+    "phonetic": "ˈləʊnli",
+    "pos": "adj.",
+    "meaning": "孤单的，寂寞的",
+    "page": 40
+   },
+   {
+    "word": "magic",
+    "phonetic": "ˈmædʒɪk",
+    "pos": "adj.",
+    "meaning": "有魔力的，神奇的",
+    "page": 40
+   },
+   {
+    "word": "joy",
+    "phonetic": "dʒɔɪ",
+    "pos": "n.",
+    "meaning": "欢欣，愉快，喜悦",
+    "page": 40
+   },
+   {
+    "word": "shelf",
+    "phonetic": "ʃelf",
+    "pos": "n.",
+    "meaning": "搁板，架子",
+    "page": 41
+   },
+   {
+    "word": "leave",
+    "phonetic": "liːv",
+    "pos": "v.",
+    "meaning": "离开",
+    "page": 41
+   },
+   {
+    "word": "page",
+    "phonetic": "peɪdʒ",
+    "pos": "n.",
+    "meaning": "（书、报纸、文件等的）页，面",
+    "page": 41
+   },
+   {
+    "word": "ending",
+    "phonetic": "ˈendɪŋ",
+    "pos": "n.",
+    "meaning": "（故事、电影、活动等的）结局，结尾",
+    "page": 41
+   }
+  ],
+  "phrases": [
+   {
+    "phrase": "rock music",
+    "meaning": "摇滚乐"
+   },
+   {
+    "phrase": "electric guitar",
+    "meaning": "电吉他"
+   },
+   {
+    "phrase": "school band",
+    "meaning": "学校乐队"
+   },
+   {
+    "phrase": "art festival",
+    "meaning": "艺术节"
+   },
+   {
+    "phrase": "take part in",
+    "meaning": "参加，参与"
+   },
+   {
+    "phrase": "bird-watching",
+    "meaning": "观鸟"
+   },
+   {
+    "phrase": "fire up",
+    "meaning": "启动；（比喻）开始演奏"
+   },
+   {
+    "phrase": "take off",
+    "meaning": "起飞"
+   },
+   {
+    "phrase": "as a result",
+    "meaning": "结果，因此"
+   },
+   {
+    "phrase": "on the stage",
+    "meaning": "在舞台上"
+   },
+   {
+    "phrase": "share ... online",
+    "meaning": "在网上分享……"
+   },
+   {
+    "phrase": "at speeds of",
+    "meaning": "以……的速度"
+   },
+   {
+    "phrase": "write about",
+    "meaning": "写关于……"
+   },
+   {
+    "phrase": "learn more about",
+    "meaning": "更多地了解……"
+   }
+  ],
+  "patterns": [
+   {
+    "pattern": "What is your hobby? — My hobby is ...",
+    "meaning": "你的爱好是什么？——我的爱好是……",
+    "examples": [
+     "What is your hobby? — My hobby is playing the piano."
+    ]
+   },
+   {
+    "pattern": "As a ... lover, I ...",
+    "meaning": "作为一个……爱好者，我……",
+    "examples": [
+     "As a rock music lover, I play the electric guitar in the school band."
+    ]
+   },
+   {
+    "pattern": "I like ... / I love ...",
+    "meaning": "我喜欢……",
+    "examples": [
+     "I like playing the erhu in the park with his friends.",
+     "I love bird-watching."
+    ]
+   },
+   {
+    "pattern": "It feels great to ...",
+    "meaning": "……感觉很棒。",
+    "examples": [
+     "It feels great to enjoy our hobby together."
+    ]
+   },
+   {
+    "pattern": "There is so much fun in ...",
+    "meaning": "……中有很多乐趣。",
+    "examples": [
+     "There is so much fun in music."
+    ]
+   },
+   {
+    "pattern": "We can learn ... because ... / So ... / As a result, ...",
+    "meaning": "我们能学到……因为……/所以……/结果……",
+    "examples": [
+     "We can learn a lot because we read books about birds.",
+     "As a result, we know more about nature."
+    ]
+   }
+  ],
+  "notes": [
+   {
+    "title": "cut in 插话；（声音）突然插进来",
+    "body": "cuts in 在这里指爷爷的二胡声“插了进来”。cut in 也表示打断别人的谈话。"
+   },
+   {
+    "title": "An idea suddenly hits me.",
+    "body": "hit 意为“使（某人）突然意识到”。An idea suddenly hits me. 我脑海中灵光一闪。类似说法还有 An idea comes to me."
+   },
+   {
+    "title": "rush into 冲进",
+    "body": "rush into 意为“冲进，迅速进入”。I rush into his room. 我冲进他的房间。"
+   },
+   {
+    "title": "fire up 的比喻用法",
+    "body": "fire up 本义是“点火，启动（机器、程序）”，课文中比喻我和爷爷开始演奏乐器，就像发动机开始运作。例如：Fire up the engine. We need to leave now."
+   },
+   {
+    "title": "appear 出现",
+    "body": "appear 意为“出现，呈现”，尤指突然或不可预见地出现。例如：A door appears in the wall. / The sun appears from behind the clouds."
+   },
+   {
+    "title": "like doing sth",
+    "body": "like 后接动名词表示一贯的喜好。Emma likes writing magic stories. 又如：I like reading."
+   }
+  ],
+  "article": {
+   "reading": {
+    "title": "Rock music meets the erhu",
+    "kind": "reading",
+    "source": "Unit 2 Understanding ideas",
+    "paragraphs": [
+     "Rock music is coming out of my computer. As a rock music lover, I play the electric guitar in the school band. Sometimes I write songs and share them online. There is so much fun in music.",
+     "Right at this moment, the sound of Grandpa's erhu cuts in. Yes, music is also my grandpa's hobby. But it is a different kind of music. He likes playing the erhu in the park with his friends. They sing Beijing opera together. They have many fans.",
+     "An idea suddenly hits me: “Why don't we put our music together? I can write a song for us.”",
+     "“Grandpa!” I rush into his room...",
+     "There is an art festival every autumn in my school. I decide to take part in it with Grandpa this year. After a week's practice, we are on the stage. I nod to Grandpa and we fire up our instruments. Everybody moves with our music.",
+     "Grandpa gives me a big smile, and I smile back. It feels great to enjoy our hobby together."
+    ],
+    "audio": "/audio/7/unit2/reading.mp3"
+   },
+   "extra": [
+    {
+     "title": "Emma's notebook",
+     "kind": "story",
+     "paragraphs": [
+      "1 Oliver is awake at midnight. Suddenly, a door appears in the wall. Oliver's heart almost stops. He walks over and taps on the door.",
+      "2 Emma shakes her head and stops writing. She is new at this school. There are no old classmates here. She feels a bit lonely. Emma likes writing magic stories. She wants to make friends and share the joy of writing.",
+      "3 She looks around the library. An idea hits her.",
+      "4 Hello! This is my notebook. Do you like the story? Please write more!",
+      "5 Emma puts the notebook on a shelf and leaves.",
+      "6 A week later, Emma's notebook is still on the shelf in the library. Nervously, she opens it. Her eyes open wide. There are pages of new writing by different people! And there is a note on the last page.",
+      "7 “How about starting a writing group? Let us meet here on Wednesday after lunch.”",
+      "8 “It is the best ending to my story,” thinks Emma."
+     ],
+     "audio": "/audio/7/unit2/writing.mp3"
+    }
+   ],
+   "dialogues": []
+  },
+  "listening": {
+   "title": "观鸟（Bird-watching）与采访 Wang Chen",
+   "tracks": [
+    {
+     "title": "Listen to the conversation. What does Wang Chen do?",
+     "url": "/audio/7/unit2/listening-1.mp3"
+    },
+    {
+     "title": "Listen again and order the pictures",
+     "url": "/audio/7/unit2/listening-2.mp3"
+    },
+    {
+     "title": "Listen to the interview and complete the interviewer's notes",
+     "url": "/audio/7/unit2/listening-3.mp3"
+    }
+   ],
+   "phonetics": {
+    "title": "语音练习 · Phonetics in use",
+    "url": "/audio/7/unit2/phonetics.mp3"
+   },
+   "tasks": [
+    "听录音，给图片排序；说出小鸟不能从地面起飞的原因",
+    "再听一遍，完成采访笔记（3 个问题及回答）"
+   ],
+   "script": [
+    {
+     "speaker": "Student A",
+     "text": "Look, Wei Fang! There is a brown bird over there!"
+    },
+    {
+     "speaker": "Wei Fang",
+     "text": "Let us go closer. Oh no! It cannot fly."
+    },
+    {
+     "speaker": "Student A",
+     "text": "What should we do?"
+    },
+    {
+     "speaker": "Wei Fang",
+     "text": "Hmm... Let us get Wang Chen here. He is in the Bird-watching Club."
+    },
+    {
+     "speaker": "Student A",
+     "text": "Wang Chen, help!"
+    },
+    {
+     "speaker": "Wang Chen",
+     "text": "Let me see... Do not worry. We just need to hold it up to the window."
+    },
+    {
+     "speaker": "Student A",
+     "text": "Wow! The bird flies away."
+    },
+    {
+     "speaker": "Wei Fang",
+     "text": "Wang Chen, you know so much about birds. I am in the school news station. Can I interview you next week?"
+    },
+    {
+     "speaker": "Wang Chen",
+     "text": "Sure!"
+    },
+    {
+     "speaker": "Interviewer",
+     "text": "Hello, Wang Chen, thanks for coming."
+    },
+    {
+     "speaker": "Wang Chen",
+     "text": "Hello."
+    },
+    {
+     "speaker": "Interviewer",
+     "text": "Can you tell us something about the bird last week? Why can it not fly from the ground?"
+    },
+    {
+     "speaker": "Wang Chen",
+     "text": "Because it is a swift. These kinds of birds have weak legs, so they cannot take off from the ground. They need to take off from a high place."
+    },
+    {
+     "speaker": "Interviewer",
+     "text": "Why do you know so much about birds?"
+    },
+    {
+     "speaker": "Wang Chen",
+     "text": "Because I love bird-watching. It is my hobby."
+    },
+    {
+     "speaker": "Interviewer",
+     "text": "What do you like about bird-watching?"
+    },
+    {
+     "speaker": "Wang Chen",
+     "text": "My dad takes me to watch birds every summer. I read books about birds, too. It helps me learn more about nature!"
+    }
+   ]
+  },
+  "wordsAudio": "/audio/7/unit2/vocab.mp3",
+  "speaking": {
+   "title": "口语活动 · Work in pairs. Write about your hobby",
+   "url": "/audio/7/unit2/speaking.mp3"
+  }
+ }
+}

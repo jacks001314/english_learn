@@ -1,0 +1,626 @@
+{
+ "book": "七年级上册",
+ "section": {
+  "section": "Unit 6",
+  "kind": "Unit",
+  "title": "Fantastic friends",
+  "titleZh": "了不起的朋友",
+  "topic": "人与自然：鸽子观察日志、渡渡鸟的灭绝与人类的责任",
+  "goals": [
+   "用现在进行时谈论动物正在做的事",
+   "用时间顺序和连接词组织观察日志",
+   "说明人类行为对动物的影响并呼吁保护动物"
+  ],
+  "grammar": {
+   "topic": "现在进行时（the present continuous tense）",
+   "summary": "现在进行时表示说话时正在进行的动作，构成为 be (am/is/are) + 动词-ing。",
+   "points": [
+    {
+     "title": "现在进行时的构成",
+     "detail": "be 随人称变化，后接动词的 -ing 形式。",
+     "examples": [
+      "I am watching pigeons in the park now.",
+      "Tony is eating a delicious ice cream.",
+      "We are playing football."
+     ]
+    },
+    {
+     "title": "动词-ing 的变化规则",
+     "detail": "一般直接加 -ing（watching）；以不发音的 e 结尾去 e 加 -ing（make → making）；重读闭音节且末尾只有一个辅音字母时双写该字母再加 -ing（put → putting、cut → cutting）。",
+     "examples": [
+      "One beaver is cutting a tree with its teeth.",
+      "The other two are putting the sticks in the river."
+     ]
+    },
+    {
+     "title": "否定句与一般疑问句",
+     "detail": "否定式在 be 后加 not（isn't / aren't）；一般疑问句把 be 提到句首。",
+     "examples": [
+      "He is not (isn't) listening to music.",
+      "Are they sweeping the floor? Yes, they are. / No, they aren't."
+     ]
+    },
+    {
+     "title": "特殊疑问句",
+     "detail": "询问对方正在做什么用 What are you doing?；还可与 What / Where / Who 等疑问词连用。",
+     "examples": [
+      "What are you doing?",
+      "Look! The rabbit is jumping one metre high!"
+     ]
+    }
+   ],
+   "examples": [
+    "I am watching pigeons in the park now.",
+    "Look! One beaver is cutting a tree with its teeth.",
+    "Are the boys making lanterns? No, they aren't."
+   ]
+  },
+  "words": [
+   {
+    "word": "penguin",
+    "phonetic": "ˈpeŋɡwɪn",
+    "pos": "n.",
+    "meaning": "企鹅",
+    "page": 96
+   },
+   {
+    "word": "pigeon",
+    "phonetic": "ˈpɪdʒɪn",
+    "pos": "n.",
+    "meaning": "鸽子",
+    "page": 96
+   },
+   {
+    "word": "surprise",
+    "phonetic": "səˈpraɪz",
+    "pos": "n.",
+    "meaning": "意想不到的事",
+    "page": 96
+   },
+   {
+    "word": "knock",
+    "phonetic": "nɒk",
+    "pos": "v.",
+    "meaning": "碰撞；碰倒，撞倒",
+    "page": 96
+   },
+   {
+    "word": "knock around",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "（在某处）悠闲地度过",
+    "page": 96
+   },
+   {
+    "word": "droppings",
+    "phonetic": "ˈdrɒpɪŋz",
+    "pos": "n.",
+    "meaning": "（兽或鸟的）粪",
+    "page": 96
+   },
+   {
+    "word": "boring",
+    "phonetic": "ˈbɔːrɪŋ",
+    "pos": "adj.",
+    "meaning": "无趣的，无聊的，乏味的",
+    "page": 96
+   },
+   {
+    "word": "feed",
+    "phonetic": "fiːd",
+    "pos": "v.",
+    "meaning": "喂养，饲养，给……食物",
+    "page": 96
+   },
+   {
+    "word": "madly",
+    "phonetic": "ˈmædli",
+    "pos": "adv.",
+    "meaning": "发狂地；无法控制地",
+    "page": 96
+   },
+   {
+    "word": "scary",
+    "phonetic": "ˈskeəri",
+    "pos": "adj.",
+    "meaning": "可怕的，骇人的，恐怖的",
+    "page": 96
+   },
+   {
+    "word": "research",
+    "phonetic": "rɪˈsɜːtʃ",
+    "pos": "n.",
+    "meaning": "研究，调查",
+    "page": 97
+   },
+   {
+    "word": "recognise",
+    "phonetic": "ˈrekəɡnaɪz",
+    "pos": "v.",
+    "meaning": "认出；认识；辨认出",
+    "page": 97
+   },
+   {
+    "word": "themselves",
+    "phonetic": "ðəmˈselvz",
+    "pos": "pron.",
+    "meaning": "它们自己；他们自己；她们自己",
+    "page": 97
+   },
+   {
+    "word": "mirror",
+    "phonetic": "ˈmɪrə",
+    "pos": "n.",
+    "meaning": "镜子",
+    "page": 97
+   },
+   {
+    "word": "itself",
+    "phonetic": "ɪtˈself",
+    "pos": "pron.",
+    "meaning": "自己，自身",
+    "page": 97
+   },
+   {
+    "word": "maybe",
+    "phonetic": "ˈmeɪbi",
+    "pos": "adv.",
+    "meaning": "也许，大概，可能",
+    "page": 97
+   },
+   {
+    "word": "several",
+    "phonetic": "ˈsevrəl",
+    "pos": "det.",
+    "meaning": "几个，数个，一些",
+    "page": 97
+   },
+   {
+    "word": "kilometre",
+    "phonetic": "ˈkɪləˌmiːtə",
+    "pos": "n.",
+    "meaning": "千米，公里",
+    "page": 97
+   },
+   {
+    "word": "lost",
+    "phonetic": "lɒst",
+    "pos": "adj.",
+    "meaning": "迷路的",
+    "page": 97
+   },
+   {
+    "word": "get lost",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "迷路",
+    "page": 97
+   },
+   {
+    "word": "speed",
+    "phonetic": "spiːd",
+    "pos": "n.",
+    "meaning": "速度，速率",
+    "page": 97
+   },
+   {
+    "word": "amazing",
+    "phonetic": "əˈmeɪzɪŋ",
+    "pos": "adj.",
+    "meaning": "惊人的，了不起的",
+    "page": 97
+   },
+   {
+    "word": "enough",
+    "phonetic": "ɪˈnʌf",
+    "pos": "pron.",
+    "meaning": "足够",
+    "page": 97
+   },
+   {
+    "word": "beaver",
+    "phonetic": "ˈbiːvə",
+    "pos": "n.",
+    "meaning": "河狸，海狸",
+    "page": 99
+   },
+   {
+    "word": "wolf",
+    "phonetic": "wʊlf",
+    "pos": "n.",
+    "meaning": "狼",
+    "page": 99
+   },
+   {
+    "word": "engineer",
+    "phonetic": "ˌendʒɪˈnɪə",
+    "pos": "n.",
+    "meaning": "工程师；设计师",
+    "page": 99
+   },
+   {
+    "word": "hero",
+    "phonetic": "ˈhɪərəʊ",
+    "pos": "n.",
+    "meaning": "英雄",
+    "page": 101
+   },
+   {
+    "word": "earthquake",
+    "phonetic": "ˈɜːθkweɪk",
+    "pos": "n.",
+    "meaning": "地震",
+    "page": 102
+   },
+   {
+    "word": "missing",
+    "phonetic": "ˈmɪsɪŋ",
+    "pos": "adj.",
+    "meaning": "找不到的",
+    "page": 102
+   },
+   {
+    "word": "save",
+    "phonetic": "seɪv",
+    "pos": "v.",
+    "meaning": "救，拯救，挽救",
+    "page": 102
+   },
+   {
+    "word": "dead",
+    "phonetic": "ded",
+    "pos": "adj.",
+    "meaning": "死的，去世的",
+    "page": 104
+   },
+   {
+    "word": "dodo",
+    "phonetic": "ˈdəʊdəʊ",
+    "pos": "n.",
+    "meaning": "渡渡鸟",
+    "page": 105
+   },
+   {
+    "word": "as dead as a dodo",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "彻底死亡",
+    "page": 104
+   },
+   {
+    "word": "character",
+    "phonetic": "ˈkærəktə",
+    "pos": "n.",
+    "meaning": "（书、剧本、电影中的）人物，角色",
+    "page": 104
+   },
+   {
+    "word": "museum",
+    "phonetic": "mjuːˈziːəm",
+    "pos": "n.",
+    "meaning": "博物馆，博物院",
+    "page": 104
+   },
+   {
+    "word": "island",
+    "phonetic": "ˈaɪlənd",
+    "pos": "n.",
+    "meaning": "岛，岛屿",
+    "page": 104
+   },
+   {
+    "word": "ocean",
+    "phonetic": "ˈəʊʃən",
+    "pos": "n.",
+    "meaning": "海洋，大海",
+    "page": 104
+   },
+   {
+    "word": "plenty",
+    "phonetic": "ˈplenti",
+    "pos": "pron.",
+    "meaning": "丰富，充足，众多，大量",
+    "page": 104
+   },
+   {
+    "word": "friendly",
+    "phonetic": "ˈfrendli",
+    "pos": "adj.",
+    "meaning": "友好的，友善的",
+    "page": 104
+   },
+   {
+    "word": "peaceful",
+    "phonetic": "ˈpiːsfəl",
+    "pos": "adj.",
+    "meaning": "和平的，非暴力的",
+    "page": 104
+   },
+   {
+    "word": "arrive",
+    "phonetic": "əˈraɪv",
+    "pos": "v.",
+    "meaning": "到达，抵达",
+    "page": 105
+   },
+   {
+    "word": "forest",
+    "phonetic": "ˈfɒrɪst",
+    "pos": "n.",
+    "meaning": "森林，林区",
+    "page": 105
+   },
+   {
+    "word": "hunt",
+    "phonetic": "hʌnt",
+    "pos": "v.",
+    "meaning": "打猎；猎杀",
+    "page": 105
+   },
+   {
+    "word": "die",
+    "phonetic": "daɪ",
+    "pos": "v.",
+    "meaning": "死去；死亡",
+    "page": 105
+   },
+   {
+    "word": "die out",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "消失；绝迹，灭绝",
+    "page": 105
+   },
+   {
+    "word": "full",
+    "phonetic": "fʊl",
+    "pos": "adj.",
+    "meaning": "满的；满是……的",
+    "page": 105
+   },
+   {
+    "word": "fantastic",
+    "phonetic": "fænˈtæstɪk",
+    "pos": "adj.",
+    "meaning": "极好的，吸引人的，有趣的",
+    "page": 105
+   },
+   {
+    "word": "as happy as a clam",
+    "phonetic": "",
+    "pos": "",
+    "meaning": "非常高兴的，相当满足的",
+    "page": 105
+   }
+  ],
+  "phrases": [
+   {
+    "phrase": "knock around",
+    "meaning": "（在某处）闲逛，消磨时光"
+   },
+   {
+    "phrase": "here and there",
+    "meaning": "到处，各处"
+   },
+   {
+    "phrase": "had better",
+    "meaning": "最好（做某事）"
+   },
+   {
+    "phrase": "be wrong about",
+    "meaning": "对……判断错误"
+   },
+   {
+    "phrase": "as a result",
+    "meaning": "结果，因此"
+   },
+   {
+    "phrase": "die out",
+    "meaning": "灭绝，消失"
+   },
+   {
+    "phrase": "as happy as a clam",
+    "meaning": "非常高兴的，相当满足的"
+   },
+   {
+    "phrase": "as dead as a dodo",
+    "meaning": "彻底死亡；不再使用"
+   },
+   {
+    "phrase": "a sense of smell",
+    "meaning": "嗅觉"
+   },
+   {
+    "phrase": "work as",
+    "meaning": "作为……工作"
+   },
+   {
+    "phrase": "hold up",
+    "meaning": "举起，抬起"
+   },
+   {
+    "phrase": "not only ... but also ...",
+    "meaning": "不仅……而且……"
+   },
+   {
+    "phrase": "provide sb with sth",
+    "meaning": "为某人提供某物"
+   },
+   {
+    "phrase": "act as",
+    "meaning": "充当，担任"
+   }
+  ],
+  "patterns": [
+   {
+    "pattern": "It looks like ... / It is a ... / It can ... / It eats ...",
+    "meaning": "描述动物的外形、习性与能力",
+    "examples": [
+     "It looks like a real beaver!",
+     "It can fly several thousand kilometres.",
+     "It eats fish."
+    ]
+   },
+   {
+    "pattern": "It has long / big ... / People call it ...",
+    "meaning": "它有长长的/大大的……/人们称它为……",
+    "examples": [
+     "It has a good sense of smell.",
+     "People call it a hero."
+    ]
+   },
+   {
+    "pattern": "It is amazing / clever / ... / How surprising / amazing!",
+    "meaning": "表达惊叹",
+    "examples": [
+     "Well, pigeons aren't boring or scary. They are AMAZING!",
+     "How amazing!"
+    ]
+   },
+   {
+    "pattern": "... not only ... but also ...",
+    "meaning": "不仅……而且……",
+    "examples": [
+     "Pigeons can not only fly fast but also find their way home."
+    ]
+   },
+   {
+    "pattern": "How does ... do that? / ... provide ... with ...",
+    "meaning": "……是怎么做到的？/……为……提供……",
+    "examples": [
+     "How does the dodo do that?",
+     "Plants provide us with food and oxygen."
+    ]
+   },
+   {
+    "pattern": "What a(n) ... ! / How ... !",
+    "meaning": "感叹句",
+    "examples": [
+     "What a clever boy he is!",
+     "How lovely the flower is!"
+    ]
+   }
+  ],
+  "notes": [
+   {
+    "title": "knock around 闲逛，消磨时光",
+    "body": "They just knock around — for the whole morning! knock around 意为“闲逛、消磨时光”，这里强调鸽子就这样飞来飞去过了整整一上午。"
+   },
+   {
+    "title": "here and there 到处",
+    "body": "They leave droppings here and there. here and there 意为“到处，各处”。又如：There are flowers here and there in the city."
+   },
+   {
+    "title": "had better 最好",
+    "body": "I had better go and watch them again. had better 意为“最好”（had 可缩略为 'd），后接动词原形，用于提出建议。又如：You had better go now if you want to take the bus."
+   },
+   {
+    "title": "be wrong about 搞错",
+    "body": "Maybe I was wrong about pigeons. be wrong about 意为“对……判断错误”。又如：I was wrong about the new worker."
+   },
+   {
+    "title": "as a result 与 die out",
+    "body": "As a result, we soon died out. as a result 意为“结果，因此”；die out 意为“灭绝，消失”。又如：This animal died out millions of years ago."
+   },
+   {
+    "title": "两个英语习语：as happy as a clam / as dead as a dodo",
+    "body": "as happy as a clam 省略了 at high water（涨潮），比喻像涨潮时的蛤一样快乐，意为“非常高兴的，相当满足的”；as dead as a dodo 源自渡渡鸟的灭绝，意为“彻底死亡；已经失效”。课文用它们呼吁人们保护动物：Make them as happy as a clam, not as dead as a dodo."
+   },
+   {
+    "title": "what 与 how 引导的感叹句",
+    "body": "what 强调名词，结构为 What (a/an) + 形容词 + 名词 + 主语 + 谓语！how 强调程度，结构为 How + 形容词/副词 + 主语 + 谓语！例如：What a clever boy he is! / How lovely the flower is!"
+   }
+  ],
+  "article": {
+   "reading": {
+    "title": "Pigeon surprise",
+    "kind": "blog",
+    "source": "Unit 6 Understanding ideas（Henry's View）",
+    "paragraphs": [
+     "Day 1  We are studying birds for Bird Week at school. Some lucky kids got penguins. But I have to write about... pigeons!",
+     "Day 2  I am watching pigeons in the park now. They just knock around — for the whole morning! They leave droppings here and there. Pigeons are BORING and DIRTY!",
+     "Day 2  A girl is feeding them. Argh! The birds are flying madly to her. They are SCARY!",
+     "Day 3  I am doing some online research. Pigeons can recognise themselves in mirrors. How surprising! Are they so clever? I had better go and watch them again...",
+     "Day 4  I am back at the park again. Oh! That pigeon is looking at itself in the water! Maybe I was wrong about pigeons.",
+     "Day 5  I am reading in the library now. Oh, there are over 200 kinds of pigeons. Some can fly several thousand kilometres and do not get lost. They can also fly at speeds of over 100 km per hour. That is as fast as my dad's car!",
+     "Day 5  Well, pigeons aren't boring or scary. They are AMAZING — I just didn't know enough about them!"
+    ],
+    "audio": "/audio/7/unit6/reading.mp3"
+   },
+   "extra": [
+    {
+     "title": "As dead as a dodo",
+     "kind": "story",
+     "paragraphs": [
+      "1 Are you looking at me? Do you know me? I am a dodo! You may think I am just a character in Alice's Adventures in Wonderland. Actually, there used to be thousands of us — for real. But now you can only see us in museums.",
+      "2 We lived on an island in the Indian Ocean. In the happy old days, there was plenty of food to eat. All the other animals were friendly. What a peaceful and safe life!",
+      "3 However, in 1598, humans arrived. They cut down the trees and our lovely forest was gone. They hunted us because we were slow and couldn't fly. What's more, their pigs, cats and dogs ate our eggs. As a result, we soon died out.",
+      "4 So today we are standing in museums around the world. When you see us, please remember our sad story. The world is full of fantastic animals. Please try your best to help them. Make them as happy as a clam, not as dead as a dodo."
+     ],
+     "audio": "/audio/7/unit6/writing.mp3"
+    }
+   ],
+   "dialogues": []
+  },
+  "listening": {
+   "title": "Animal Stars：搜救犬 Bingjie",
+   "tracks": [
+    {
+     "title": "Listen to the radio programme. What is it about?",
+     "url": "/audio/7/unit6/listening-1.mp3"
+    },
+    {
+     "title": "Listen again and complete the webpage for Bingjie",
+     "url": "/audio/7/unit6/listening-2.mp3"
+    },
+    {
+     "title": "Listen to the interview and complete the notes",
+     "url": "/audio/7/unit6/listening-3.mp3"
+    }
+   ],
+   "phonetics": {
+    "title": "语音练习 · Phonetics in use",
+    "url": "/audio/7/unit6/phonetics.mp3"
+   },
+   "tasks": [
+    "听录音，记录 Bingjie 的工作与事迹",
+    "注意主持人如何提问以获取信息（asking questions to find out information）"
+   ],
+   "script": [
+    {
+     "speaker": "Narrator",
+     "text": "Welcome to Animal Stars. Today's animal star is a special dog. Bingjie. He was a smart dog and worked with firemen. Bingjie had a good sense of smell. He worked after earthquakes and helped find missing people. Over the years, he saved many lives. He did a great job after the 2008 Wenchuan earthquake. He helped to find 13 people. Bingjie died on 2 October 2021, at the age of 14. He was a hero."
+    },
+    {
+     "speaker": "Host",
+     "text": "Mr Ouyang Honghong, welcome. You worked with Bingjie for years. Do you remember your first meeting?"
+    },
+    {
+     "speaker": "Ouyang",
+     "text": "Yes. I first met Bingjie in 2007. He just ran up to me to say hello. Then we became best friends!"
+    },
+    {
+     "speaker": "Host",
+     "text": "That is lovely! Well, Bingjie is most famous for his work in Wenchuan. Can you tell us something about that?"
+    },
+    {
+     "speaker": "Ouyang",
+     "text": "Bingjie worked very hard. He got hurt, but he didn't stop. On the second day, he found a six-year-old girl. She was the first person our team found."
+    },
+    {
+     "speaker": "Host",
+     "text": "Bingjie is a real hero! What do you want to say to him now?"
+    },
+    {
+     "speaker": "Ouyang",
+     "text": "Bingjie, I want to hug you again. I miss you so much. You are always my friend."
+    },
+    {
+     "speaker": "Host",
+     "text": "We all miss him. Thank you for sharing, Mr Ouyang."
+    }
+   ]
+  },
+  "wordsAudio": "/audio/7/unit6/vocab.mp3"
+ }
+}

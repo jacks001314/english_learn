@@ -596,7 +596,8 @@ func (c *Controller) ImportArticles(ctx iris.Context) {
 
 func (c *Controller) Words(ctx iris.Context) {
 	page, _ := strconv.Atoi(ctx.URLParamDefault("page", "1"))
-	_ = ctx.JSON(c.scoped(ctx).Words(WordFilter{Level: ctx.URLParamDefault("level", "primary"), Query: ctx.URLParam("q"), Topic: ctx.URLParam("topic"), Grade: ctx.URLParam("grade"), Unit: ctx.URLParam("unit"), Letter: ctx.URLParam("letter"), PartOfSpeech: ctx.URLParam("pos"), Sort: ctx.URLParam("sort"), Page: page}))
+	seed, _ := strconv.Atoi(ctx.URLParamDefault("seed", "0"))
+	_ = ctx.JSON(c.scoped(ctx).Words(WordFilter{Level: ctx.URLParamDefault("level", "primary"), Query: ctx.URLParam("q"), Topic: ctx.URLParam("topic"), Grade: ctx.URLParam("grade"), Unit: ctx.URLParam("unit"), Letter: ctx.URLParam("letter"), PartOfSpeech: ctx.URLParam("pos"), Sort: ctx.URLParam("sort"), Seed: seed, Page: page}))
 }
 
 func (c *Controller) WordFacets(ctx iris.Context) {
