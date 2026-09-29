@@ -1,0 +1,38 @@
+{
+  "base": "http://127.0.0.1:8099",
+  "user": "p4check",
+  "account": "复用已有账号 p4check",
+  "width": 1440,
+  "results": [
+    {
+      "name": "S1 登录成功",
+      "ok": true,
+      "detail": "POST /api/auth/login → 200；GET /api/auth/me → 200:[object Promise]"
+    },
+    {
+      "name": "S2 课程页入口进入对应语法专题",
+      "ok": true,
+      "detail": "课程语法「可数名词与冠词；基数词；be 动词；一般将来时（be going to）」→ #grammar/g-future-tense，专题标题「一般将来时」（IA 别名映射）"
+    },
+    {
+      "name": "S2b 课程页语法区渲染取样",
+      "ok": true,
+      "detail": "{\"detail\":{\"box\":[630,76],\"padding\":\"26px\",\"border\":\"1px solid\",\"radius\":\"18px\",\"background\":\"rgb(255, 255, 255)\",\"shadow\":\"rgba(23, 61, 46, 0.05) 0px 10px 30px 0px\",\"display\":\"block\",\"fontSize\":\"13px\",\"color\":\"rgb(23, 35, 31)\"},\"ico\":{\"box\":[16,16],\"padding\":\"0px\",\"border\":\"0px none\",\"radius\":\"50%\",\"background\":\"rgba(0, 0, 0, 0)\",\"shadow\":\"none\",\"display\":\"flex\",\"fontSize\":\"10px\",\"color\":\"rgb(23, 107, 77)\"},\"label\":{\"box\":[47,14],\"padding\":\"0px\",\"border\":\"0px none\",\"radius\":\"0px\",\"background\":\"rgba(0, 0, 0, 0)\",\"shadow\":\"none\",\"display\":\"inline\",\"fontSize\":\"10px\",\"color\":\"rgb(23, 107, 77)\"},\"secDot\":null}"
+    },
+    {
+      "name": "S3 智能学习台入口进入语法专题",
+      "ok": true,
+      "detail": "推荐项「名词词法 · 0/15 题0%」→ #grammar/g-nouns，页面标题「名词」"
+    },
+    {
+      "name": "S4 深链刷新回到同一节",
+      "ok": true,
+      "detail": "hash=#grammar/g-pronouns/lecture-3 展开=true TOC高亮=lecture-3 scrollTop=1838 锚点视口位置=14/1000"
+    },
+    {
+      "name": "S5 全流程无 JS 异常",
+      "ok": true,
+      "detail": "Runtime.exceptionThrown/console.error 计数 = 0"
+    }
+  ]
+}

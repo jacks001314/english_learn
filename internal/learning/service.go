@@ -3,7 +3,6 @@ package learning
 import (
 	"encoding/json"
 	"fmt"
-	"math/rand"
 	"sort"
 	"strings"
 	"time"
@@ -86,7 +85,7 @@ func (s *Service) learnedProgress() map[string]Progress {
 func (s *Service) WordFacets(level string) WordFacets {
 	topics, grades, units := map[string]bool{}, map[string]bool{}, map[string]bool{}
 	letters, parts := map[string]int{}, map[string]int{}
-	for _, item := range wordsByLevel(level) {
+	for _, item := range wordsForScope(level) {
 		if !publicContentStatus(item.Status) {
 			continue
 		}
@@ -227,113 +226,6 @@ func sortedKeys(values map[string]bool) []string {
 func (s *Service) Word(level, id string) (Word, bool) {
 	item, ok := findWord(level, id)
 	return item, ok && publicContentStatus(item.Status)
-}
-
-func (s *Service) Quiz(level, requested, quizType string) (Quiz, error) {
-	all := make([]Word, 0)
-	for _, item := range wordsByLevel(level) {
-		if publicContentStatus(item.Status) {
-			all = append(all, item)
-		}
-	}
-	var base Word
-	if requested = normalizeID(requested); requested != "" {
-		var ok bool
-		base, ok = findWord(level, requested)
-		if !ok || !publicContentStatus(base.Status) {
-			return Quiz{}, fmt.Errorf("word not found")
-		}
-	}
-	if len(all) < 4 {
-		return Quiz{}, fmt.Errorf("not enough words")
-	}
-	if requested == "" {
-		base = all[rand.Intn(len(all))]
-	}
-	if quizType != "zh-en" && quizType != "listen" && quizType != "spelling" && quizType != "cloze" {
-		quizType = "en-zh"
-	}
-	if quizType == "cloze" && requested == "" {
-		eligible := make([]Word, 0)
-		for _, item := range all {
-			if item.Example != "" && containsWord(item.Example, item.Word) {
-				eligible = append(eligible, item)
-			}
-		}
-		if len(eligible) < 4 {
-			return Quiz{}, fmt.Errorf("not enough words with examples")
-		}
-		all = eligible
-		base = all[rand.Intn(len(all))]
-	}
-	answer := base.Meaning
-	prompt := base.Word
-	if quizType == "zh-en" || quizType == "listen" || quizType == "spelling" || quizType == "cloze" {
-		answer, prompt = base.Word, base.Meaning
-	}
-	if quizType == "listen" {
-		prompt = "听发音，选择正确单词"
-	}
-	if quizType == "spelling" {
-		return Quiz{Word: base, Type: quizType, Prompt: base.Meaning, Answer: base.Word, Options: []string{}}, nil
-	}
-	if quizType == "cloze" {
-		prompt = replaceWord(base.Example, base.Word, "____")
-	}
-	options := []string{answer}
-	for len(options) < 4 {
-		candidateWord := all[rand.Intn(len(all))]
-		candidate := candidateWord.Meaning
-		if quizType == "zh-en" || quizType == "listen" || quizType == "cloze" {
-			candidate = candidateWord.Word
-		}
-		if candidate != "" && !contains(options, candidate) {
-			options = append(options, candidate)
-		}
-	}
-	rand.Shuffle(len(options), func(i, j int) { options[i], options[j] = options[j], options[i] })
-	return Quiz{Word: base, Options: options, Type: quizType, Prompt: prompt, Answer: answer}, nil
-}
-
-func containsWord(sentence, word string) bool {
-	return strings.Contains(strings.ToLower(sentence), strings.ToLower(word))
-}
-
-func replaceWord(sentence, word, replacement string) string {
-	index := strings.Index(strings.ToLower(sentence), strings.ToLower(word))
-	if index < 0 {
-		return sentence
-	}
-	return sentence[:index] + replacement + sentence[index+len(word):]
-}
-
-func (s *Service) AnswerQuiz(answer QuizAnswer, now time.Time) (QuizFeedback, error) {
-	word, ok := findWord(answer.Level, answer.WordID)
-	if !ok || !publicContentStatus(word.Status) {
-		return QuizFeedback{}, fmt.Errorf("word not found")
-	}
-	expected := word.Meaning
-	if answer.Type == "zh-en" || answer.Type == "listen" || answer.Type == "spelling" || answer.Type == "cloze" {
-		expected = word.Word
-	}
-	correct := strings.EqualFold(strings.TrimSpace(answer.Answer), strings.TrimSpace(expected))
-	result := QuizResult{}
-	progress := Progress{Seen: 1, QuizResults: map[string]QuizResult{answer.Type: result}}
-	if correct {
-		progress.Correct, progress.Mastered, result.Correct = 1, true, 1
-	} else {
-		progress.Wrong, result.Wrong = 1, 1
-	}
-	progress.QuizResults[answer.Type] = result
-	saved, err := s.SaveProgress(answer.Level, answer.WordID, progress, now)
-	if err != nil {
-		return QuizFeedback{}, err
-	}
-	message := "回答正确"
-	if !correct {
-		message = "正确答案是：" + expected
-	}
-	return QuizFeedback{Correct: correct, Answer: expected, Message: message, Progress: saved}, nil
 }
 
 func contains(values []string, target string) bool {

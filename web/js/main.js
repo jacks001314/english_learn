@@ -2,6 +2,7 @@ import { api, postJSON } from './api.js';
 import { speak } from './speech.js?v=20260905-ipa-r3';
 import HomeView from './components/HomeView.js';
 import LearnView from './components/LearnView.js?v=20260926-pos-r1';
+import MeaningPracticeView from './components/MeaningPracticeView.js?v=20260930-meaning-r1';
 import QuizView from './components/QuizView.js';
 import ReportView from './components/ReportView.js';
 import MistakesView from './components/MistakesView.js';
@@ -22,24 +23,33 @@ import AgentAdminView from './components/AgentAdminView.js';
 import ContentFactoryView from './components/ContentFactoryView.js';
 import HomeworkView from './components/HomeworkView.js';
 import HomeworkAdminView from './components/HomeworkAdminView.js?v=20260727-adaptive-r1';
-import SmartLearningView from './components/SmartLearningView.js?v=20260927-yufan-r1';
+import SmartLearningView from './components/SmartLearningView.js?v=20260928-grammar-p3-r4';
 import CourseView from './components/CourseView.js?v=20260927-audio-r8';
 import PhoneticsView from './components/PhoneticsView.js?v=20260905-ipa-r5';
-import GrammarView from './components/GrammarView.js?v=20260927-yufan-r1';
+import GrammarView from './components/GrammarView.js?v=20260928-grammar-p3-r4';
 import TongbuView from './components/TongbuView.js?v=20260926-tongbu-r2';
+import { resolveTopicId } from './grammar/index.js?v=20260928-grammar-p3-r4';
 
 const { createApp } = Vue;
-const knownViews = new Set(['home','smart','learn','categories','course','grammar','phonetics','reading','exams','tongbu','quiz','review','homework','report','mistakes','settings','security','content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
+const knownViews = new Set(['home','smart','learn','meaning-en-zh','meaning-zh-en','meaning-listen','categories','course','grammar','phonetics','reading','exams','tongbu','quiz','review','homework','report','mistakes','settings','security','content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
 const adminViews = new Set(['content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
-const viewFromLocation = () => {
+// hash 形如 #<view> 或 #<view>/<arg1>/<arg2>（例如 #grammar/g-pronouns/lecture-3）
+const locationParts = () => {
   const value = window.location.hash.replace(/^#\/?/, '');
-  return knownViews.has(value) ? value : 'home';
+  const [view, ...args] = value.split('/').filter(Boolean);
+  return { view: knownViews.has(view) ? view : 'home', args };
 };
-const learningViews = new Set(['smart', 'learn', 'quiz', 'review', 'reading', 'exams']);
+const viewFromLocation = () => locationParts().view;
+// 生成跳转 hash：当前 view 已在目标 view 上时保留参数（避免点侧栏把专题上下文冲掉）
+const hashFor = (view) => {
+  const cur = locationParts();
+  return cur.view === view && cur.args.length ? '#' + view + '/' + cur.args.join('/') : '#' + view;
+};
+const learningViews = new Set(['smart', 'learn', 'meaning-en-zh', 'meaning-zh-en', 'meaning-listen', 'quiz', 'review', 'reading', 'exams']);
 const freshQuizSession = () => ({ answered: 0, correct: 0, byType: {}, history: [] });
 
 createApp({
-  components: { HomeView, SmartLearningView, CourseView, GrammarView, PhoneticsView, LearnView, QuizView, ReportView, MistakesView, ReviewView, SettingsView, CategoryView, ContentStatusView, ReadingView, AuthView, AdminView, SecurityView, AdminOverview, ContentWorkbench, ExamView, ExamWorkbench, AgentAssistant, AgentAdminView, ContentFactoryView, HomeworkView, HomeworkAdminView, TongbuView },
+  components: { HomeView, SmartLearningView, CourseView, GrammarView, PhoneticsView, LearnView, MeaningPracticeView, QuizView, ReportView, MistakesView, ReviewView, SettingsView, CategoryView, ContentStatusView, ReadingView, AuthView, AdminView, SecurityView, AdminOverview, ContentWorkbench, ExamView, ExamWorkbench, AgentAssistant, AgentAdminView, ContentFactoryView, HomeworkView, HomeworkAdminView, TongbuView },
   data: () => ({
     activeView: viewFromLocation(), workspaceMode: adminViews.has(viewFromLocation()) ? 'admin' : 'learn', level: 'primary', query: '', topic: '', grade: '', unit: '', letter: '', partOfSpeech: '', wordSort: 'word-asc', wordSortSeed: 0, page: 1, size: 12, total: 0,
     facets: { topics: [], grades: [], units: [] },
@@ -50,7 +60,7 @@ createApp({
     mistakes: [], reviews: [], reviewSummary: { total: 0, completed: 0, goal: 10 }, reviewBusy: false,
     settings: { dailyReviewGoal: 10 }, settingsBusy: false, contentStatus: {files:[],complete:false}, error: '', currentUser: null, authChecked: false,
     sidebarCollapsed: false, mobileSidebarOpen: false, examInProgress: false,
-    learningSession: null, selectedWord: null, continuousLearning: false, mistakeFocusWord: null, readingTargetArticleId: '', grammarTargetId: ''
+    learningSession: null, selectedWord: null, continuousLearning: false, mistakeFocusWord: null, readingTargetArticleId: '', grammarTargetId: viewFromLocation() === 'grammar' ? (locationParts().args[0] || '') : ''
   }),
   computed: {
     pages() { return Math.max(1, Math.ceil(this.total / this.size)); },
@@ -131,6 +141,7 @@ createApp({
       }
       if (view === 'grammar') {
         this.grammarTargetId = target?.contentId || '';
+        this.grammarTargetId = resolveTopicId(this.grammarTargetId) || this.grammarTargetId;
       }
       if (view === 'quiz' && target?.word) {
         this.startWordQuiz(target.word);
@@ -302,6 +313,10 @@ createApp({
         this.quizCorrectAnswer = '';
       }
     },
+    // 词义练习页自己提交答案，这里只负责刷新全局统计与掌握状态。
+    async afterPracticeAnswer() {
+      await this.run(async () => { await Promise.all([this.loadStats(), this.loadProgress()]); });
+    },
     resetQuizSession() {
       this.quizSession = freshQuizSession();
       this.quizSelectedAnswer = ''; this.quizCorrectAnswer = ''; this.quizHint = ''; this.quizAnswered = false; this.quizResumed = false;
@@ -349,6 +364,15 @@ createApp({
       this.workspaceMode = mode;
       this.selectView(mode === 'admin' ? 'admin' : 'home');
     },
+    onOpenGrammar(topic) {
+      const id = resolveTopicId(topic);
+      this.grammarTargetId = id || '';
+      this.selectView('grammar');
+    },
+    openGrammar() {
+      this.grammarTargetId = '';
+      this.selectView('grammar');
+    },
     selectView(view, options = {}) {
       if (!knownViews.has(view)) view = 'home';
       if (this.currentUser?.mustChangePassword && view !== 'security') {
@@ -361,7 +385,7 @@ createApp({
       this.activeView = view;
       this.workspaceMode = adminViews.has(view) ? 'admin' : 'learn';
       this.mobileSidebarOpen = false;
-      if (!options.fromHistory && window.location.hash !== `#${view}`) history.pushState({ view }, '', `#${view}`);
+      if (!options.fromHistory && window.location.hash !== hashFor(view)) history.pushState({ view }, '', hashFor(view));
       if (view === 'home') this.loadHomeData();
       if (view === 'learn' || view === 'categories') { this.loadFacets(); this.loadWords(); }
       if (learningViews.has(view)) this.recordLearningSession(view);
@@ -373,9 +397,10 @@ createApp({
       if (view === 'content') this.loadContentStatus();
     },
     handlePopState() {
-      const view = viewFromLocation();
+      const { view, args } = locationParts();
+      if (view === 'grammar') this.grammarTargetId = args[0] || '';
       if (!this.canLeaveView(view)) {
-        history.pushState({ view: this.activeView }, '', `#${this.activeView}`);
+        history.pushState({ view: this.activeView }, '', hashFor(this.activeView));
         return;
       }
       this.selectView(view, { fromHistory: true });
@@ -384,7 +409,7 @@ createApp({
       this.currentUser = user;
       this.restoreLearningState();
       const view = user.mustChangePassword ? 'security' : 'home';
-      history.replaceState({ view }, '', `#${view}`);
+      history.replaceState({ view }, '', hashFor(view));
       this.selectView(view, { fromHistory: true });
     },
     passwordChanged() {
@@ -405,7 +430,7 @@ createApp({
         if (adminViews.has(view) && this.currentUser.role !== 'admin') view = 'home';
         this.activeView = view;
         this.workspaceMode = adminViews.has(view) ? 'admin' : 'learn';
-        history.replaceState({ view }, '', `#${view}`);
+        history.replaceState({ view }, '', hashFor(view));
       } catch (_) { this.currentUser=null; }
       this.authChecked=true;
     }
@@ -434,9 +459,12 @@ createApp({
             <button :class="{active:activeView==='homework'}" @click="selectView('homework')" title="我的作业"><span class="nav-icon">HW</span><span class="nav-label">我的作业</span></button>
           <div class="nav-group-label">学习与练习</div>
             <button :class="{active:activeView==='learn'}" @click="selectView('learn')" title="单词学习"><span class="nav-icon">Aa</span><span class="nav-label">单词学习</span></button>
+            <button :class="{active:activeView==='meaning-en-zh'}" @click="selectView('meaning-en-zh')" title="看词选义"><span class="nav-icon">EZ</span><span class="nav-label">看词选义</span></button>
+            <button :class="{active:activeView==='meaning-zh-en'}" @click="selectView('meaning-zh-en')" title="看义选词"><span class="nav-icon">CE</span><span class="nav-label">看义选词</span></button>
+            <button :class="{active:activeView==='meaning-listen'}" @click="selectView('meaning-listen')" title="听音选义"><span class="nav-icon">LA</span><span class="nav-label">听音选义</span></button>
             <button :class="{active:activeView==='categories'}" @click="selectView('categories')" title="分类词库"><span class="nav-icon">DB</span><span class="nav-label">分类词库</span></button>
             <button :class="{active:activeView==='course'}" @click="selectView('course')" title="课程学习"><span class="nav-icon">CO</span><span class="nav-label">课程学习</span></button>
-            <button :class="{active:activeView==='grammar'}" @click="selectView('grammar')" title="语法专题"><span class="nav-icon">GR</span><span class="nav-label">语法专题</span></button>
+            <button :class="{active:activeView==='grammar'}" @click="openGrammar()" title="语法专题"><span class="nav-icon">GR</span><span class="nav-label">语法专题</span></button>
             <button :class="{active:activeView==='phonetics'}" @click="selectView('phonetics')" title="国际音标"><span class="nav-icon">PH</span><span class="nav-label">国际音标</span></button>
             <button :class="{active:activeView==='quiz'}" @click="selectView('quiz')" title="单词测验"><span class="nav-icon">Q</span><span class="nav-label">单词测验</span></button>
             <button :class="{active:activeView==='reading'}" @click="selectView('reading')" title="英语阅读"><span class="nav-icon">R</span><span class="nav-label">英语阅读</span></button>
@@ -470,8 +498,11 @@ createApp({
       <home-view v-if="activeView==='home'" :user="currentUser" :stats="stats" :report="report" :review-summary="reviewSummary" :session="learningSession" @navigate="handleNavigate" />
       <smart-learning-view v-else-if="activeView==='smart'" :user-id="currentUser.id" @navigate="handleNavigate" />
       <learn-view v-else-if="activeView==='learn'" v-model:level="level" v-model:query="query" v-model:topic="topic" v-model:grade="grade" v-model:unit="unit" :sort="wordSort" :letter="letter" :part-of-speech="partOfSpeech" :facets="facets" :words="words" :total="total" :page="page" :pages="pages" :mastered-ids="masteredIds" :selected-word="selectedWord" :selected-progress="selectedWordProgress" :continuous-mode="continuousLearning" @update:sort="setWordSort" @search="search" @clear-category="clearCategory" @page="changePage" @speak="speak" @master="markWord" @open="openWord" @close="closeWord" @continuous="setContinuousLearning" @practice="startWordQuiz" />
+      <meaning-practice-view v-else-if="activeView==='meaning-en-zh'" mode="en-zh" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-zh-en'" mode="zh-en" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-listen'" mode="en-zh" audio-only @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
       <category-view v-else-if="activeView==='categories'" :facets="facets" :level="level" @level="level=$event" @select="selectCategory" />
-      <course-view v-else-if="activeView==='course'" @open-grammar="selectView('grammar')" />
+      <course-view v-else-if="activeView==='course'" @open-grammar="onOpenGrammar" />
       <grammar-view v-else-if="activeView==='grammar'" :user-id="currentUser.id" :target-topic-id="grammarTargetId" />
       <phonetics-view v-else-if="activeView==='phonetics'" />
       <reading-view v-else-if="activeView==='reading'" :user-id="currentUser.id" :target-article-id="readingTargetArticleId" @speak="speak" />
@@ -493,7 +524,8 @@ createApp({
       <content-status-view v-else-if="activeView==='content'" :status="contentStatus" @refresh="loadContentStatus" />
         </main>
         <agent-assistant :mode="activeView==='reading'?'reading':activeView==='exams'?'exam':activeView==='mistakes'?'mistake':activeView==='learn'?'word':'general'" :context="{view:activeView,level,query,topic}" />
-        <footer>坚持一点点，进步看得见。</footer>
       </div>
-    </div>`
-}).mount('#app');
+    </div>
+    <div v-else class="boot-placeholder">正在加载学习数据……</div>
+  `,
+});

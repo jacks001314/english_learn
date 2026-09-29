@@ -102,7 +102,7 @@ extras: {
 | yufan/数词 | g-numerals | 已有专题，补充 |
 | yufan/总论 | g-overview | 新专题 |
 | yufan/代词 | g-pronouns | 已有专题，补充 |
-| yufan/直接引语与间接引语 | g-object-clause | 已有专题，补充 |
+| yufan/直接引语与间接引语 | g-reported-speech | 2026-09-27 起为独立专题（此前挂在 g-object-clause 下，导航中不可见） |
 | yufan/形容词 | g-adj-adv | 已有专题，补充 |
 | yufan/副词 | g-adj-adv | 已有专题，补充 |
 | yufan/倒装句 | g-inversion | 新专题 |
@@ -170,3 +170,76 @@ extras: {
 `yufan-ds/` 是**按需生成的读图镜像**，不随项目交付、不提交、不预置（避免半量镜像造成误判）：
 需要时在 project 根目录跑 `python scripts/yufan-prepare-images.py`（全量约 40 秒，输出 ~53MB），
 用完可删。聚合页面与 `build-yufan-lectures.mjs` 都不依赖它，只依赖 `yufan/` 原图与 `web/js/grammar/yufan/*.js`。
+
+## 8. 前端集成与按需加载（2026-09-27 起，当前 `?v=20260928-yufan-r5`）
+
+### 8.1 数据分层（三层）
+1. **`manifest.js`（自动生成，禁止手工编辑）**：全部讲义的元数据 ——
+   `title / sourceDirs / imagesRead / summary / intro / notes / extras / newTopic 字段`，
+   外加 `sectionCount`（节数），**不含 sections**。
+   生成方式：`node scripts/build-yufan-lectures.mjs`。
+2. **`index.js`（入口，手写）**：把元数据聚合成 `lectureByTopic`（首屏 `sections` 为空数组）、
+   `yufanPatches`、`yufanNewTopics`，并导出 `loadLecture(topicId)` / `isLectureLoaded(topicId)`。
+3. **`<slug>.js`（作者交付物，含 sections）**：只在用户选中该专题时被 `import()` 拉取。
+
+### 8.2 体积与实测
+- 25 个讲义模块共 **865,364 B**；其中 **sections 约占 80%**（其余 20% 是元数据）。
+- 改造前首屏要加载 25 个模块 + index.js ≈ **872 KB**；
+  改造后首屏只需 `manifest.js`（145,612 B）+ `index.js`（8,332 B）≈ **154 KB**，**5.66×**。
+- headless Chrome 实测（真实挂载 GrammarView）：
+  - 挂载同步帧：讲义标题已在，**`.gd-lec-section` = 0**，显示「讲义正文加载中…」，**0 个模块 chunk** 被请求；
+  - 加载后：只请求当前专题的 chunk（单文件专题 1 个，`g-adj-adv` 为 2 个：adjectives + adverbs）；
+  - 切换专题只新增该专题的 chunk；渲染结果与改造前逐项一致（例：`g-verbs-overview` 8 节 / 11 表 / 30 例句）。
+- 单个 chunk 体积 20,674–54,931 B（20–54 KB），故默认不做悬停即预取、只在悬停 160 ms 后预取，避免鼠标扫过侧栏触发全量下载。
+
+### 8.3 新增/修改讲义文件时
+照旧新增 `<slug>.js` 即可，然后**必须**运行 `node scripts/build-yufan-lectures.mjs`
+（它会校验契约、重建 `manifest.js`、核对版本号并输出覆盖率报告）。
+`--check` 模式下若报 `yufan/manifest.js 与当前讲义数据不同步`，说明有人改了讲义但没重跑脚本。
+
+### 8.4 版本号约定
+`manifest.js` 的 `YUFAN_EAGER_V`、`yufan/index.js` 里 `from "./manifest.js?v=..."` 的字面量、
+以及脚本里的 `ASSET_V` 三者必须一致（不一致脚本直接报 error）。
+改讲义内容或 manifest 结构时：改脚本 `ASSET_V` → 重跑脚本 → 同步提升
+`web/js/grammar/index.js`、`web/js/components/GrammarView.js`、`web/js/main.js`、`web/index.html` 的 `?v=`。
+
+### 8.5 失败必须可见
+chunk 加载失败时详情页显示「讲义正文加载失败（原因）+ 重试」按钮，**不得**静默显示空讲义。
+（已用 404 注入实测：错误提示与重试按钮均正常出现。）
+
+## 9. 2026-09-27 信息架构调整（r3）
+
+- **直接引语与间接引语拆出**：`reported-speech.js` 的 `topicId` 由 `g-object-clause` 改为
+  `g-reported-speech`；专题定义写在 `web/js/grammar/topics.js`，导航归组写在 `web/js/grammar/ia.js`。
+  改动讲义数据的 `topicId` 后必须重跑 `node scripts/build-yufan-lectures.mjs`（manifest 已随之重建为 r3）。
+- **导航分组与讲义 `category` 解耦**：`build-yufan-lectures.mjs` 仍只校验旧的四类
+  （词法/句法/动词/复合句），页面上的五组（入门总览/词法/动词/句法/复合句）由 `ia.js` 负责，
+  两者用 `legacyCategoryToGroup` 衔接，所以 content 流水线的契约没有变化。
+- **新增自检**：`node scripts/check-grammar-ia.mjs` 校验"每个专题都能落到分组、别名规则能覆盖课程语法名、
+  拆出的专题在导航中可达"；`scripts/grammar-preview.mjs` 用无头 Chrome 对 GrammarView 截图（视觉回归基线）。
+
+## 10. 2026-09-28 内容去重（r4）
+
+- **速查卡与讲义表格的关系**：讲义文件里既能写 `sections`（讲义正文），也能写 `forms` / `contrasts`（速查卡）。
+  两者若描述同一张表，页面上会同时出现在「速用速查」与「讲义精讲」两个分区 —— 属于重复内容。
+- **判定口径**：`node scripts/check-grammar-duplication.mjs` 把速查卡与讲义表格/文字/例句做归一化比对
+  （去空格标点、全半角统一、字面包含），相似度 ≥0.8 记一处并给出位置。
+  **整卡被讲义覆盖才删**（删重复侧、保留讲义正文）；部分覆盖的卡保留；`forms` 公式卡保留。
+- **本批已清理 5 张**：`nouns.js`（名词作定语 vs 形容词作定语）、`prepositions.js`（有无定冠词 the 的词组辨义）、
+  `conjunctions.js`（not only...but also / as well as / both...and）、`past-simple.js`（一般现在时 vs 一般过去时、
+  be 动词过去时句型）。因此 `ASSET_V` 提升为 `20260928-yufan-r4` 并重建 `manifest.js`。
+- **新增/修改讲义后**：先跑去重体检，再跑 `node scripts/build-yufan-lectures.mjs`（错误 0 / 警告 0 才算过）。
+## 11. 2026-09-28 新增讲义类型：自撰讲义（`authored: true`）
+
+- **背景**：有些语法点在教材语法聚焦里有、仓库里却没有对应扫描件（例如九年级上册 Module 10/11 的定语从句），
+  这时按教材语法项目**自撰**讲义正文，而不是让该专题空着（对应方案 §15 / P3）。
+- **契约**：`authored: true` 的条目必须
+  1. `sourceDirs: []` —— 非扫描件，不得声明图片目录；
+  2. `imagesRead: 0`；
+  3. `sourceNote: "<内容依据>"` —— 说明依据哪本教材/哪些模块整理。
+  `scripts/build-yufan-lectures.mjs` 会据此校验：声明了 `authored` 却带 `sourceDirs`、`imagesRead > 0` 或缺 `sourceNote` 直接报 error。
+  其余校验（`sections` 非空、块类型合规、`topicId`/`title` 必填）与扫描件讲义完全一致。
+- **页面表现**：讲义头由 `GrammarView.lectureSourceLabel` 渲染 —— 扫描件显示「教材图片整理 · <图片目录>」，
+  自撰讲义显示 `sourceNote`。该字段由 `yufan/index.js` 聚合进 `lecture` 元数据（首屏只多几十字节）。
+- **现有自撰讲义**：`attributive-clause.js`（`g-attributive-clause` 定语从句，7 节，依据外研版九上 Module 10/11）。
+- **版本号**：自撰讲义也算讲义内容变更，按 §8.4 流程提升 `ASSET_V`（本次 r4 → r5）。

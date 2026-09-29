@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-27T14:30:23.477Z",
+  "generatedAt": "2026-09-28T02:39:22.230Z",
   "imagesOnDisk": 417,
-  "lectureFiles": 25,
-  "topicsCovered": 24,
+  "lectureFiles": 26,
+  "topicsCovered": 25,
   "imagesReadReported": 417,
   "coverage": [
     {
@@ -259,5 +259,9 @@
     }
   ],
   "errors": [],
-  "warnings": []
+  "warnings": [],
+  "eagerBytes": 152782,
+  "manifestBytes": 144320,
+  "fullLectureBytes": 873760,
+  "eagerRatio": 5.72
 }

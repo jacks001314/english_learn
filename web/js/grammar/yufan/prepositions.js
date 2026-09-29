@@ -972,16 +972,6 @@ export default [
           ],
         },
         {
-          title: "有无定冠词 the 的词组辨义",
-          head: ["词组（无 the）", "含义", "词组（有 the）", "含义"],
-          rows: [
-            ["at table", "在进餐", "at the table", "在桌旁"],
-            ["in hospital", "在医院（住院）", "in the hospital", "在医院（工作或探望……）"],
-            ["in / at church", "在做礼拜", "in / at the church", "在教堂里"],
-            ["in prison", "在监狱（服刑）", "in the prison", "在监狱（工作或探望……）"],
-          ],
-        },
-        {
           title: "方位介词 in / on / to",
           head: ["介词", "含义", "例句"],
           rows: [

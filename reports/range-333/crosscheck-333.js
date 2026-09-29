@@ -1,0 +1,10 @@
+const fs = require("fs"), crypto = require("crypto");
+let p = 1n; for (let i = 168n; i <= 333n; i++) p *= i;
+const s = p.toString();
+const py = fs.readFileSync("reports/range-333/range-333.out.txt", "utf8");
+const pyVal = py.split("#VALUE ")[1].split("\n")[0].trim();
+console.log("NODE_DIGITS", s.length);
+console.log("NODE_SHA256", crypto.createHash("sha256").update(Buffer.from(s,"ascii")).digest("hex"));
+console.log("NODE_MOD1000003", (p % 1000003n).toString());
+console.log("NODE_TAIL12", s.slice(-12));
+console.log("VALUES_MATCH", s === pyVal);

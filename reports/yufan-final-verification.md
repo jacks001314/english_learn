@@ -116,3 +116,18 @@
 
 ### 9.4 异常澄清：`g-past-continuous` / `g-imperatives` 不是新增专题
 早前用「排除已知旧 topicId」枚举新专题时多出这两个 id，疑为越权写入。经查**证伪**：二者是**任务开始前就存在**的旧专题，位于 `web/js/grammar/topics.js`（第 399 行 `g-past-continuous`、第 895 行 `g-imperatives`），并同时出现在 `adapted.js / authored.js / exams-other.js / exercises.js`；`topics.js` 修改时间 20:08:42 = 基线快照时间，**本次未改动**。属枚举脚本口径问题，交付无异常。
+
+---
+
+## 10. 追加改造：讲义按需加载（2026-09-27，v=20260927-yufan-r2）
+
+用户反馈「讲义 JS ≈873 KB 全量加载太大」，已完成懒加载改造，**数据与渲染均无回归**：
+
+- 首屏讲义 JS：**871,897 B → 153,944 B（5.66×，−82.3%）**；sections（占 79.9%）改为选中专题时 `import()`。
+- 计数不变：`grammarTopics=29` / `grammarExercises=137` / `lectureByTopic=24` / `sections=210` / `imagesRead=417`。
+- headless Chrome 断言：挂载瞬间 **0 个模块 chunk 请求**、`.gd-lec-section=0`、显示加载占位；
+  选中后仅拉该专题 chunk（`g-adj-adv` 为 2 个）；渲染数值与改造前逐项一致；注入 404 时显示错误 + 重试（不静默降级）。
+- `loadLecture()` 结果与「直接 import 各模块再拼接」**逐字节一致 24/24**；构建幂等（sha256 稳定）；`--check` 退出码 0。
+- 25 个讲义数据文件一字未改；`manifest.js` 为脚本生成物，禁止手工编辑。
+
+完整报告见 `reports/yufan-lazy-loading.md`；契约同步更新在 `web/js/grammar/yufan/README.md` §8。

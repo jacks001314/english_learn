@@ -1,12 +1,18 @@
-﻿export async function api(url, options = {}) {
+export async function api(url, options = {}) {
   const response = await fetch(url, options);
   if (!response.ok) {
     let message = `请求失败（${response.status}）`;
+    let code = '';
     try {
       const body = await response.json();
       message = body.error || message;
+      code = body.code || '';
     } catch (_) {}
-    throw new Error(message);
+    // status/code 让调用方区分“词太少”“未登录”等情形，而不是去解析提示文案。
+    const error = new Error(message);
+    error.status = response.status;
+    error.code = code;
+    throw error;
   }
   return response.json();
 }

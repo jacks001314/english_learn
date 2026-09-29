@@ -1,5 +1,5 @@
 import { api } from "../api.js";
-import { sortedTopics, exercisesByTopic, loadGrammarProgress, topicMastery } from "../grammar/index.js?v=20260927-yufan-r1";
+import { sortedTopics, exercisesByTopic, loadGrammarProgress, topicMastery, groupLabel } from "../grammar/index.js?v=20260928-grammar-p3-r4";
 
 export default {
   emits: ["navigate"],
@@ -37,7 +37,8 @@ export default {
       const items = sortedTopics.map((topic) => {
         const list = exercisesByTopic[topic.id] || [];
         const m = topicMastery(progress, topic.id, list.length);
-        return { id: topic.id, title: topic.title, category: topic.category, total: list.length, done: m.done, percent: m.percent };
+        // 分组名走 IA（五组），不再用 topics.js 旧的四分类字段
+        return { id: topic.id, title: topic.title, category: groupLabel(topic.group), total: list.length, done: m.done, percent: m.percent };
       });
       const pending = items
         .filter((i) => i.percent < 100)

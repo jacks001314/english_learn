@@ -716,15 +716,6 @@ export default [
             ["I don't like either A or B. = I like neither A nor B.", "两者都不喜欢", "I like neither coffee nor tea."],
           ],
         },
-        {
-          title: "not only...but also / as well as / both...and",
-          head: ["词组", "含义", "例句"],
-          rows: [
-            ["not only...but also", "不但……而且……（重点在 but also 之后）", "This book is not only interesting but (also) instructive."],
-            ["as well as", "又，不但……而且……（重点在 as well as 之前）", "This book is instructive as well as interesting."],
-            ["both...and", "既……又……", "This book is both interesting and instructive."],
-          ],
-        },
       ],
       pitfalls: [
         "not only...but also 作主语时谓语随 but also 后的主语而定；as well as 作主语时谓语随其前面的主语而定（Not only Mr Lin but also his parents are... / Mr Lin as well as his parents is...）。",

@@ -1,0 +1,401 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>语法模块重设计 · 线框示意</title>
+<style>
+:root{
+  --green:#176b4d; --green-dark:#0d4f39; --ink:#17231f; --muted:#6d7b75;
+  --line:#dfe8e2; --bg:#f4f8f6; --card:#fff; --blue:#2563eb; --amber:#b45309; --red:#c0392b;
+  --r:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font:14px/1.65 "Microsoft YaHei","PingFang SC",system-ui,sans-serif}
+.app{display:flex;min-height:100vh}
+/* ---------- 站点主侧栏（示意，不可交互） ---------- */
+.site-nav{width:196px;flex:0 0 196px;background:#12362a;color:#dff0e8;padding:14px 10px;display:flex;flex-direction:column;gap:4px}
+.site-brand{display:flex;gap:8px;align-items:center;padding:6px 8px 14px}
+.site-brand b{width:30px;height:30px;border-radius:9px;background:#2f9e6b;color:#fff;display:grid;place-items:center;font-size:12px}
+.site-brand span{font-size:13px;font-weight:700;color:#fff}
+.site-nav .gl{font-size:10px;letter-spacing:1.4px;color:#8fbfa9;margin:10px 8px 4px}
+.site-nav a{display:block;padding:7px 9px;border-radius:9px;color:#cfe6db;text-decoration:none;font-size:12.5px}
+.site-nav a.on{background:#d8f36a;color:#12362a;font-weight:800}
+/* ---------- 页面 ---------- */
+.page{flex:1;min-width:0;padding:18px 22px 60px;max-width:1420px;margin:0 auto}
+.crumb{font-size:12px;color:var(--muted);margin-bottom:6px}
+.crumb b{color:var(--green-dark)}
+.zone{border:1px dashed #b9cfc4;border-radius:var(--r);padding:14px 16px;margin:0 0 14px;position:relative;background:var(--card)}
+.zone::before{content:attr(data-zone);position:absolute;top:-9px;left:12px;background:var(--bg);padding:0 6px;font-size:10px;letter-spacing:1px;color:#7f9a8f;font-weight:800}
+.zhead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px;justify-content:space-between}
+h1{margin:2px 0 4px;font-size:26px;letter-spacing:-.4px}
+.h1meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:700;border:1px solid var(--line);background:#f7faf8;color:#40604f}
+.chip.g{background:#e7f5ee;border-color:#bfe3d2;color:var(--green-dark)}
+.chip.b{background:#eaf1ff;border-color:#c9daff;color:#1d4ed8}
+.chip.a{background:#fdf3e2;border-color:#f0dcb6;color:var(--amber)}
+.sum{color:#4c5f57;margin:6px 0 10px;max-width:820px}
+.metrics{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.metrics div{font-size:12px;color:var(--muted)}
+.metrics div b{display:block;font-size:17px;color:var(--ink)}
+button{font:inherit;cursor:pointer}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 13px;font-size:12.5px;font-weight:700;color:#33513f}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+.btn.tiny{padding:3px 8px;font-size:11.5px;font-weight:600}
+.layout{display:grid;grid-template-columns:264px minmax(0,1fr) 196px;gap:16px;align-items:start}
+/* ---------- 二级导航 ---------- */
+.tree{position:sticky;top:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);display:flex;flex-direction:column;max-height:calc(100vh - 30px);overflow:hidden}
+.tree-head{padding:10px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.cats{display:flex;flex-wrap:wrap;gap:5px}
+.cats button{border:1px solid transparent;background:#f1f6f3;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#4a6b5c}
+.cats button.on{background:#12362a;color:#fff}
+.tools{display:flex;gap:6px}
+.tools input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:6px 9px;font:inherit;font-size:12.5px}
+.tools select{border:1px solid var(--line);border-radius:9px;font-size:12px;padding:6px 6px;background:#fff;color:#33513f}
+.tree-list{overflow:auto;padding:8px;display:flex;flex-direction:column;gap:2px}
+.grp{margin:2px 0 6px}
+.grp>header{display:flex;align-items:center;gap:6px;padding:5px 7px;font-size:11.5px;font-weight:850;color:#5c7a6b;letter-spacing:.4px;cursor:pointer}
+.grp>header i{font-style:normal;transition:.15s}
+.grp.closed>header i{transform:rotate(-90deg)}
+.grp>header em{font-style:normal;margin-left:auto;font-weight:600;color:#93aca1;font-size:10.5px}
+.grp.closed .grp-body{display:none}
+.sub{font-size:10.5px;color:#8aa79a;padding:6px 8px 2px;font-weight:800;letter-spacing:.6px}
+.item{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:transparent;border-radius:10px;padding:7px 8px;position:relative;color:var(--ink)}
+.item:hover{background:#f2f7f4}
+.item.on{background:#e9f4ee;font-weight:800}
+.item.on::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:3px;background:var(--green)}
+.item .nm{flex:1;min-width:0;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item .st{flex:0 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:52%}
+.item .st{font-size:10.5px;font-weight:700;color:var(--muted);text-align:right;line-height:1.25}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px;background:#cbd9d2}
+.dot.learn{background:var(--blue)} .dot.done{background:var(--green)} .dot.lec{background:#a3b8ae}
+.ring{width:16px;height:16px;flex:0 0 16px;border-radius:50%;background:conic-gradient(var(--green) var(--p),#e3ece7 0)}
+.tree-foot{border-top:1px solid var(--line);padding:9px 10px;background:#fafdfb}
+.tree-foot .card{border:1px solid var(--line);border-radius:11px;padding:8px 10px;display:flex;align-items:center;gap:8px}
+.tree-foot b{font-size:12.5px} .tree-foot small{display:block;color:var(--muted);font-size:11px}
+/* ---------- 内容区 ---------- */
+.content{display:flex;flex-direction:column;gap:14px;min-width:0}
+.block{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:14px 16px}
+.block>h3{margin:0 0 10px;font-size:15px;display:flex;align-items:center;gap:8px}
+.block>h3::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+.block>h3 em{font-style:normal;margin-left:auto;font-size:11.5px;color:var(--muted);font-weight:600}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.form{border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:#fbfdfc}
+.form b{display:block;font-size:12.5px;margin-bottom:5px}
+.form code{display:block;background:#eef4f1;border-radius:7px;padding:6px 8px;font-size:12px;color:#1f4636;word-break:break-word}
+.form small{display:block;color:var(--muted);margin-top:5px;font-size:11.5px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+thead th{background:#f6faf8;font-size:11.5px;color:#4a6b5c;position:sticky;top:0}
+.acc{border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:8px}
+.acc>header{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;font-weight:700;font-size:13px;background:#fbfdfc}
+.acc>header i{font-style:normal;color:#7f9a8f;transition:.15s}
+.acc.open>header i{transform:rotate(90deg)}
+.acc .body{display:none;padding:4px 14px 12px;border-top:1px solid var(--line)}
+.acc.open .body{display:block}
+.pill{font-size:10.5px;font-weight:800;border-radius:999px;padding:1px 7px;background:#eef4f1;color:#4a6b5c}
+.pill.tip{background:#eaf1ff;color:#1d4ed8} .pill.risk{background:#fdf3e2;color:var(--amber)}
+ul.plain{margin:6px 0;padding-left:18px} ul.plain li{margin:3px 0}
+.ex{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:12.5px}
+.ex.ok b{color:var(--green)} .ex.no b{color:var(--red)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card-a{border:1px solid #f0dcb6;background:#fffaf1;border-radius:11px;padding:10px 12px}
+.card-b{border:1px solid #c9daff;background:#f5f8ff;border-radius:11px;padding:10px 12px}
+.mem{display:flex;flex-wrap:wrap;gap:6px}
+.mem span{background:#12362a;color:#dff0e8;border-radius:999px;padding:3px 10px;font-size:11.5px}
+.q{border:1px solid var(--line);border-radius:11px;padding:11px 12px;margin-bottom:9px}
+.q .qh{display:flex;gap:8px;align-items:center;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
+.opts{display:grid;gap:6px;margin-top:8px}
+.opt{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 10px;text-align:left;font-size:12.5px}
+.opt.ok{border-color:#bfe3d2;background:#eef8f2;font-weight:700}
+/* ---------- 页内 TOC ---------- */
+.toc{position:sticky;top:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:10px 8px;max-height:calc(100vh - 30px);overflow:auto}
+.toc h4{margin:0 0 6px;padding:0 8px;font-size:11px;letter-spacing:1.2px;color:#8aa79a}
+.toc a{display:block;padding:5px 9px;border-radius:8px;color:#41604f;text-decoration:none;font-size:12px;border-left:2px solid transparent}
+.toc a.h2{font-weight:800;color:var(--ink)}
+.toc a.on{background:#e9f4ee;border-left-color:var(--green);font-weight:800}
+.toc a.sub2{padding-left:20px;font-size:11.5px;color:#6d7b75}
+.foot-nav{display:flex;justify-content:space-between;gap:10px}
+.note{font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:1240px){.layout{grid-template-columns:250px minmax(0,1fr)}.toc{display:none}}
+@media(max-width:960px){.site-nav{display:none}.layout{grid-template-columns:minmax(0,1fr)}.tree{position:static;max-height:none}}
+@media(max-width:620px){.page{padding:12px}.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="site-nav">
+    <div class="site-brand"><b>LB</b><span>Lingo Bloom</span></div>
+    <div class="gl">今日</div>
+    <a>我的作业</a>
+    <div class="gl">学习与练习</div>
+    <a>单词学习</a><a>分类词库</a><a>课程学习</a><a class="on">语法专题</a><a>国际音标</a><a>英语阅读</a>
+    <div class="gl">我的</div>
+    <a>学习报告</a><a>错题本</a>
+  </nav>
+
+  <div class="page">
+    <p class="note" style="background:#fff8e6;border:1px solid #f0dcb6;border-radius:10px;padding:7px 12px;margin:0 0 12px">线框示意（方案 v1）· 数据取自当前仓库实测：29 个专题 / 137 题 / 24 份讲义（210 节）· 虚线框 A–G 为提案中的页面分区 · 本文件仅用于评审，不是最终视觉</p>
+    <!-- A 专题头 -->
+    <section class="zone" data-zone="A · 专题头">
+      <div class="crumb">语法专题 / <b>词法</b> / 代词</div>
+      <div class="zhead">
+        <div>
+          <div class="h1meta">
+            <h1>代词</h1>
+            <span class="chip">难度 ★☆☆☆☆</span>
+            <span class="chip g">近 5 年考 5 次</span>
+          </div>
+          <p class="sum">用代词代替名词，避免重复。核心是分清「人称代词主格/宾格」和「形容词性/名词性物主代词」。</p>
+          <div class="metrics">
+            <div><b>13</b>讲义节数</div>
+            <div><b>5</b>真题（北京 5）</div>
+            <div><b>3/5</b>已掌握</div>
+            <div><b>7、九年级下册 M2</b>对应教材</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-direction:column;align-items:flex-end">
+          <button class="btn primary">开始练习 ▸</button>
+          <button class="btn tiny">题目来源与说明 ⓘ</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="layout">
+      <!-- 二级导航 -->
+      <aside class="tree">
+        <div class="tree-head">
+          <div class="cats" id="cats"></div>
+          <div class="tools">
+            <input id="q" placeholder="搜索专题 / 知识点…">
+            <select id="filter">
+              <option value="all">全部</option>
+              <option value="ex">有真题</option>
+              <option value="lec">有讲义</option>
+              <option value="todo">未掌握</option>
+            </select>
+          </div>
+        </div>
+        <div class="tree-list" id="tree"></div>
+        <div class="tree-foot">
+          <div class="card">
+            <span class="ring" style="--p:60%"></span>
+            <span><b>继续上次</b><small>现在完成时 · 3/5 题</small></span>
+            <button class="btn tiny" style="margin-left:auto">继续 →</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <!-- B 速查 -->
+        <section class="block" id="quick">
+          <h3>速用速查 <em>3 分钟复习 · 结构公式 + 对比表</em></h3>
+          <div class="grid2">
+            <div class="form"><b>人称代词 · 主格</b><code>I / you / he / she / it / we / they</code><small>作句子主语。</small></div>
+            <div class="form"><b>人称代词 · 宾格</b><code>me / you / him / her / it / us / them</code><small>作动词或介词的宾语。</small></div>
+            <div class="form"><b>形容词性物主代词</b><code>my / your / his / her / its / our / their + 名词</code><small>后面必须跟名词。</small></div>
+            <div class="form"><b>名词性物主代词</b><code>mine / yours / his / hers / its / ours / theirs</code><small>后面不再跟名词。</small></div>
+          </div>
+          <div style="margin-top:12px">
+            <table>
+              <thead><tr><th>人称</th><th>数</th><th>主格</th><th>所有格</th><th>宾格</th></tr></thead>
+              <tbody>
+                <tr><td>第一人称</td><td>单数</td><td><b>I</b></td><td>my</td><td>me</td></tr>
+                <tr><td>第一人称</td><td>复数</td><td><b>we</b></td><td>our</td><td>us</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- C 讲义精讲 -->
+        <section class="block" id="lecture">
+          <h3>讲义精讲 <em>教材图片整理 · yufan/代词 · 共 13 节</em>
+            <button class="btn tiny" style="margin-left:8px">展开全部</button></h3>
+          <div class="acc open">
+            <header onclick="this.parentNode.classList.toggle('open')"><i>▸</i>一、代词概说与分类<span class="pill" style="margin-left:auto">第 1 节</span></header>
+            <div class="body">
+              <p>代词是代替名词的一种词类，多数代词具有名词和形容词的功能。第二次提到一些名词时，一般用代词代替。</p>
+              <ul class="plain">
+                <li><b>David</b> bought a skateboard. — He is playing on <b>it</b> now.</li>
+                <li>按意义、特征与作用分为：人称、物主、指示、反身、相互、不定、疑问和关系代词。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc open">
+            <header onclick="this.parentNode.classList.toggle('open')"><i>▸</i>二、人称代词：变化表与基本用法<span class="pill tip" style="margin-left:6px">表格</span><span class="pill" style="margin-left:auto">第 2 节</span></header>
+            <div class="body">
+              <table><thead><tr><th>人称</th><th>数</th><th>主格</th><th>所有格</th><th>宾格</th></tr></thead>
+                <tbody><tr><td>第三人称</td><td>单数</td><td><b>he / she</b></td><td>his / her</td><td>him / her</td></tr></tbody></table>
+            </div>
+          </div>
+          <div class="acc">
+            <header onclick="this.parentNode.classList.toggle('open')"><i>▸</i>三、物主代词与反身代词<span class="pill" style="margin-left:auto">第 3 节</span></header>
+            <div class="body"><p>形容词性物主代词后必须跟名词；名词性物主代词独立使用。</p></div>
+          </div>
+          <p class="note">其余 10 节默认折叠，按需展开（避免一次渲染 13 节长滚动）。</p>
+        </section>
+
+        <!-- D 用法要点 -->
+        <section class="block" id="points">
+          <h3>用法要点 <em>7 条</em></h3>
+          <div class="grid2">
+            <div class="form">
+              <b>主格作主语，宾格作宾语</b>
+              <small>主语位置用主格；动词、介词后面用宾格。</small>
+              <div class="ex ok"><b>✓</b><span>My friends and I like sports. We often play basketball.</span></div>
+              <div class="ex no"><b>✕</b><span>My friends and me like sports.</span></div>
+            </div>
+            <div class="form">
+              <b>形容词性物主代词后必须接名词</b>
+              <small>表示“……的”，一定要带上被修饰的名词。</small>
+              <div class="ex ok"><b>✓</b><span>My sister enjoys singing and her favorite subject is music.</span></div>
+              <div class="ex no"><b>✕</b><span>This book is her.（“这本书是她的”应用 hers）</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- E 易错与考法 -->
+        <section class="block" id="pitfalls">
+          <h3>易错与考法 <em>易错 10 · 考法 1</em></h3>
+          <div class="two">
+            <div class="card-a"><b>易错点</b>
+              <ul class="plain">
+                <li>并列主语中 I 要放在后面：My friends and I。</li>
+                <li>its 与 it's 要区分：its 是“它的”，it's = it is。</li>
+              </ul>
+            </div>
+            <div class="card-b"><b>中考提示</b>
+              <ul class="plain"><li>北京中考单项填空几乎每年 1 题，主要考形容词性物主代词和主格——看主语、看后面有没有名词两步即可判断。</li></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- F 记忆卡 / 教材例句 -->
+        <section class="block" id="memory">
+          <h3>记忆卡与教材例句 <em>默认折叠</em></h3>
+          <div class="acc">
+            <header onclick="this.parentNode.classList.toggle('open')"><i>▸</i>记忆卡（8 张）<span class="pill" style="margin-left:auto">考前速记</span></header>
+            <div class="body"><div class="mem"><span>主格作主，宾格作宾。</span><span>有名词用形容词性，没名词用名词性。</span></div></div>
+          </div>
+          <div class="acc">
+            <header onclick="this.parentNode.classList.toggle('open')"><i>▸</i>教材例句（对应 七年级上册 Unit 1 A new start）</header>
+            <div class="body"><ul class="plain"><li>Mr Wang is coming. I can't wait to see <b>him</b>. — 王老师来了，我迫不及待想见他。</li></ul></div>
+          </div>
+        </section>
+
+        <!-- G 练习 -->
+        <section class="block" id="practice">
+          <h3>专项练习 <em>北京中考真题 5 道 · 已答 2/5</em>
+            <button class="btn tiny" style="margin-left:8px">重做本专题</button></h3>
+          <div class="q">
+            <div class="qh"><b>北京中考真题</b><span>2022 · 单项填空第 1 题</span><span class="pill">考点：人称代词主格</span></div>
+            <p>My sister is good at singing, and ______ wants to be a singer.</p>
+            <div class="opts">
+              <button class="opt" onclick="pick(this,false)">A. he</button>
+              <button class="opt" onclick="pick(this,true)">B. she</button>
+              <button class="opt" onclick="pick(this,false)">C. it</button>
+            </div>
+          </div>
+          <div class="q">
+            <div class="qh"><b>外地中考真题</b><span>按来源分组的题组（替换现有“混合 + 逐题 badge”）</span></div>
+            <p class="note">点击上方选项可看到即时判定与解析（示意）。</p>
+          </div>
+        </section>
+
+        <div class="foot-nav">
+          <button class="btn">← 上一专题：名词</button>
+          <button class="btn">下一专题：冠词 →</button>
+        </div>
+      </main>
+
+      <!-- 页内 TOC -->
+      <aside class="toc" id="toc">
+        <h4>本节目录</h4>
+        <a href="#quick" class="h2" data-t="quick">速用速查</a>
+        <a href="#lecture" class="h2" data-t="lecture">讲义精讲 · 13 节</a>
+        <a href="#lecture" class="sub2">一、代词概说与分类</a>
+        <a href="#lecture" class="sub2">二、人称代词变化表</a>
+        <a href="#lecture" class="sub2">三、物主代词与反身代词</a>
+        <a href="#points" class="h2" data-t="points">用法要点</a>
+        <a href="#pitfalls" class="h2" data-t="pitfalls">易错与考法</a>
+        <a href="#memory" class="h2" data-t="memory">记忆卡与教材例句</a>
+        <a href="#practice" class="h2" data-t="practice">专项练习 · 5</a>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = {"groups":[{"key":"start","label":"入门总览","hint":"先看这 4 篇，建立全局框架","items":[{"id":"g-overview","title":"语法总论","diff":1,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":13,"done":0,"state":"lecture-only","note":""},{"id":"g-sentence-members","title":"句子的成分和基本句型","diff":3,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":9,"done":0,"state":"lecture-only","note":""},{"id":"g-sentence-types","title":"句子的种类","diff":3,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":6,"done":0,"state":"lecture-only","note":""},{"id":"g-verbs-overview","title":"动词概说","diff":2,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":8,"done":0,"state":"lecture-only","note":""}]},{"key":"morph","label":"词法","hint":"词的分类与用法","items":[{"id":"g-nouns","title":"名词","diff":3,"ex":15,"bj":0,"other":10,"adapted":3,"authored":2,"sec":11,"done":14,"state":"normal","note":""},{"id":"g-pronouns","title":"代词","diff":1,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":13,"done":3,"state":"normal","note":""},{"id":"g-articles","title":"冠词","diff":2,"ex":13,"bj":0,"other":8,"adapted":3,"authored":2,"sec":11,"done":9,"state":"normal","note":""},{"id":"g-numerals","title":"数词","diff":3,"ex":15,"bj":0,"other":8,"adapted":3,"authored":4,"sec":12,"done":1,"state":"normal","note":""},{"id":"g-adj-adv","title":"形容词与副词","diff":3,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":15,"done":5,"state":"normal","note":""},{"id":"g-prepositions","title":"介词（时间与地点）","diff":2,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":7,"done":0,"state":"normal","note":""},{"id":"g-conjunctions","title":"连词","diff":2,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":8,"done":2,"state":"normal","note":""}]},{"key":"verb","label":"动词","hint":"时态 · 语态 · 情态 · 非谓语","items":[{"sub":"时态"},{"id":"g-present-simple","title":"一般现在时","diff":1,"ex":3,"bj":3,"other":0,"adapted":0,"authored":0,"sec":7,"done":1,"state":"normal","note":""},{"id":"g-present-continuous","title":"现在进行时","diff":2,"ex":3,"bj":3,"other":0,"adapted":0,"authored":0,"sec":8,"done":2,"state":"normal","note":""},{"id":"g-past-simple","title":"一般过去时","diff":2,"ex":4,"bj":4,"other":0,"adapted":0,"authored":0,"sec":7,"done":0,"state":"normal","note":""},{"id":"g-past-continuous","title":"过去进行时","diff":3,"ex":3,"bj":3,"other":0,"adapted":0,"authored":0,"sec":0,"done":2,"state":"ex-only","note":""},{"id":"g-future-tense","title":"动词的将来时","diff":3,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":6,"done":0,"state":"lecture-only","note":""},{"id":"g-present-perfect","title":"现在完成时","diff":4,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":7,"done":1,"state":"normal","note":""},{"sub":"语态"},{"id":"g-passive-voice","title":"被动语态","diff":4,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":7,"done":0,"state":"normal","note":""},{"sub":"情态"},{"id":"g-modal-verbs","title":"情态动词","diff":3,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":8,"done":4,"state":"normal","note":""},{"sub":"非谓语"},{"id":"g-nonfinite-verbs","title":"非谓语动词","diff":4,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":8,"done":0,"state":"lecture-only","note":""}]},{"key":"syntax","label":"句法","hint":"句子层面的结构","items":[{"id":"g-there-be","title":"There be 句型","diff":1,"ex":6,"bj":0,"other":0,"adapted":3,"authored":3,"sec":0,"done":4,"state":"ex-only","note":""},{"id":"g-questions","title":"疑问句与疑问词","diff":2,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":8,"done":2,"state":"normal","note":""},{"id":"g-imperatives","title":"祈使句与感叹句","diff":2,"ex":14,"bj":0,"other":8,"adapted":3,"authored":3,"sec":0,"done":2,"state":"ex-only","note":""},{"id":"g-sentence-structure","title":"句子的结构","diff":5,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":8,"done":0,"state":"lecture-only","note":""},{"id":"g-agreement","title":"主谓一致","diff":4,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":8,"done":0,"state":"lecture-only","note":""},{"id":"g-inversion","title":"倒装句","diff":4,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":6,"done":0,"state":"lecture-only","note":""}]},{"key":"clause","label":"复合句","hint":"","items":[{"id":"g-object-clause","title":"宾语从句","diff":4,"ex":5,"bj":5,"other":0,"adapted":0,"authored":0,"sec":9,"done":5,"state":"normal","note":""},{"id":"g-reported-speech","title":"直接引语与间接引语","diff":3,"ex":0,"bj":0,"other":0,"adapted":0,"authored":0,"sec":15,"done":0,"state":"lecture-only","note":"T3"},{"id":"g-adverbial-clause","title":"状语从句","diff":4,"ex":14,"bj":0,"other":8,"adapted":3,"authored":3,"sec":0,"done":13,"state":"ex-only","note":""},{"id":"g-if-clause","title":"if 条件状语从句","diff":3,"ex":2,"bj":2,"other":0,"adapted":0,"authored":0,"sec":0,"done":1,"state":"ex-only","note":""}]}],"stats":{"topics":29,"exercises":137,"bj":60,"other":42,"adapted":18,"authored":17}};
+const statusText = (it) => {
+  if (it.state === 'lecture-only') return '讲义' + it.sec + '节 · 仅讲义';
+  if (it.state === 'ex-only') return '真题' + it.ex + '道 · 待补讲义';
+  if (it.state === 'empty') return '待建设';
+  return it.ex + '题 · ' + it.done + '/' + it.ex;
+};
+const statusClass = (it) => it.state === 'lecture-only' ? 'lec' : (it.done === it.ex && it.ex ? 'done' : (it.done ? 'learn' : ''));
+let cat = 'all', kw = '', filt = 'all';
+const cats = document.getElementById('cats');
+cats.innerHTML = '<button data-c="all" class="on">全部</button>' + DATA.groups.map(g =>
+  '<button data-c="' + g.key + '">' + g.label + ' <span style="opacity:.6">' + g.items.filter(x => x.id).length + '</span></button>').join('');
+
+function render() {
+  const tree = document.getElementById('tree');
+  let html = '';
+  for (const g of DATA.groups) {
+    if (cat !== 'all' && cat !== g.key) continue;
+    const items = g.items.filter(it => {
+      if (!it.id) return true;
+      if (kw && !(it.title + it.id).toLowerCase().includes(kw)) return false;
+      if (filt === 'ex' && !it.ex) return false;
+      if (filt === 'lec' && !it.sec) return false;
+      if (filt === 'todo' && (!it.ex || it.done >= it.ex)) return false;
+      return true;
+    });
+    if (!items.some(x => x.id)) continue;
+    html += '<div class="grp" data-g="' + g.key + '"><header onclick="this.parentNode.classList.toggle(\'closed\')">'
+      + '<i>▾</i>' + g.label + '<em>' + items.filter(x => x.id).length + '</em></header><div class="grp-body">';
+    for (const it of items) {
+      if (!it.id) { html += '<div class="sub">' + it.sub + '</div>'; continue; }
+      const cls = statusClass(it);
+      const ring = it.state === 'normal' ? '<span class="ring" style="--p:' + Math.round(it.done / it.ex * 100) + '%"></span>' : '<span class="dot ' + cls + '"></span>';
+      const on = it.id === 'g-pronouns' ? ' on' : '';
+      html += '<button class="item' + on + '" aria-current="' + (on ? 'true' : 'false') + '">' + ring
+        + '<span class="nm">' + it.title + '</span><span class="st">' + statusText(it) + '</span></button>';
+    }
+    html += '</div></div>';
+  }
+  tree.innerHTML = html || '<p class="note" style="padding:10px">没有匹配的专题</p>';
+}
+cats.onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
+  cat = b.dataset.c; [...cats.children].forEach(x => x.classList.toggle('on', x === b)); render(); };
+document.getElementById('q').oninput = (e) => { kw = e.target.value.trim().toLowerCase(); render(); };
+document.getElementById('filter').onchange = (e) => { filt = e.target.value; render(); };
+render();
+
+function pick(el, ok) {
+  el.classList.add(ok ? 'ok' : 'bad');
+  el.style.borderColor = ok ? '#bfe3d2' : '#f3c9c4';
+  el.style.background = ok ? '#eef8f2' : '#fdf3f2';
+  el.parentNode.querySelectorAll('.opt').forEach(o => o.disabled = true);
+}
+// TOC scroll-spy
+const links = [...document.querySelectorAll('#toc a[data-t]')];
+const obs = new IntersectionObserver((es) => {
+  es.forEach(en => { if (!en.isIntersecting) return;
+    links.forEach(a => a.classList.toggle('on', a.dataset.t === en.target.id)); });
+}, { rootMargin: '-20% 0px -70% 0px' });
+document.querySelectorAll('.content .block').forEach(b => obs.observe(b));
+</script>
+<script>
+if (location.search.includes("probe")) {
+  const p = document.createElement("div");
+  p.id = "probe";
+  const wide = [...document.querySelectorAll("body *")].filter(e => e.getBoundingClientRect().right > document.documentElement.clientWidth + 1).slice(0, 8).map(e => e.tagName + "." + e.className);
+  p.textContent = "PROBE_OK clientWidth=" + document.documentElement.clientWidth + " scrollWidth=" + document.documentElement.scrollWidth + " overflow=" + JSON.stringify(wide);
+  document.body.appendChild(p);
+}
+</script>
+</body>
+</html>
+

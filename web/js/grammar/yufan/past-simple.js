@@ -464,31 +464,11 @@ export default [
       ],
       contrasts: [
         {
-          title: "一般现在时 vs 一般过去时（以 go 为例）",
-          head: ["句型", "一般现在时", "一般过去时"],
-          rows: [
-            ["肯定句", "I go.... / He goes....", "I went.... / He went...."],
-            ["否定句", "I don't go.... / He doesn't go....", "I didn't go.... / He didn't go...."],
-            ["一般疑问句", "Do you go...? / Does he go...?", "Did you go...? / Did he go...?"],
-            ["特殊疑问句", "疑问词 + do you...? / does he...?", "疑问词 + did you...? / did he...?"],
-          ],
-        },
-        {
           title: "used to vs would",
           head: ["对比项", "used to", "would"],
           rows: [
             ["含义", "过去常做而现在已终止的动作，强调与现在的关系", "只说明过去的动作习惯，和现在没关系"],
             ["时间状语", "不必带时间状语", "要带时间状语，如 He would drink a lot when he was young."],
-          ],
-        },
-        {
-          title: "be 动词过去时句型（以 he 为主语）",
-          head: ["句型", "一般现在时", "一般过去时"],
-          rows: [
-            ["肯定句", "He is...", "He was..."],
-            ["否定句", "He isn't...", "He wasn't..."],
-            ["一般疑问句", "Is he...?", "Was he...?"],
-            ["特殊疑问句", "疑问词 + is he...?", "疑问词 + was he...?"],
           ],
         },
       ],

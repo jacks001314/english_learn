@@ -1,0 +1,9 @@
+{
+  "value_len": 1135,
+  "trailing_zeros": 124,
+  "sha256_of_decimal_string": "8ab743a9d9beae5b6c35739a1e6729a4139e353a681671cd7ffb60573001008b",
+  "sha256_of_file_bytes_with_newline": "2964f0fea23b45ac4cb6fcb3bbd367d1b6fc646cc4787889dbc90b35efbf2930",
+  "head20": "12201368259911100687",
+  "tail20": "00000000000000000000",
+  "note": "canonical single-line value; copy from this file, never retype"
+}

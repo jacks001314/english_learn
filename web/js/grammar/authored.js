@@ -83,6 +83,23 @@ const raw = [
     stem: "He was ________ first person to arrive at the finish line.",
     options: ["a", "an", "the", "/"],
     explanation: "考查定冠词。序数词前一般用 the。故选 C。" },
+  // ===== 定语从句（九年级上册 Module 10/11 语法聚焦；北京中考单项填空不直接考查，自编补齐）=====
+  { id: "auth-attr-which", topicId: "g-attributive-clause", point: "关系代词指物（which）", answer: "B", difficulty: 2,
+    stem: "The photo ________ we liked best was taken by Zhao Min.",
+    options: ["who", "which", "whose", "whom"],
+    explanation: "考查定语从句的关系代词。先行词 the photo 指物，关系代词在从句中作 liked 的宾语，用 which（that 也可以）。故选 B。" },
+  { id: "auth-attr-who", topicId: "g-attributive-clause", point: "关系代词指人（who）", answer: "C", difficulty: 2,
+    stem: "He's the boy ________ won the photo competition last year.",
+    options: ["which", "whose", "who", "whom"],
+    explanation: "考查定语从句的关系代词。先行词 the boy 指人，关系代词在从句中作主语，用 who（不能用 which；whom 只作宾语；whose 表示所属）。故选 C。" },
+  { id: "auth-attr-only-that", topicId: "g-attributive-clause", point: "只能用 that 的情形", answer: "C", difficulty: 3,
+    stem: "This is the only museum ________ I have visited in Beijing.",
+    options: ["which", "who", "that", "what"],
+    explanation: "考查定语从句的关系代词。先行词 museum 被 the only 修饰时，关系代词只能用 that；what 不能引导定语从句。故选 C。" },
+  { id: "auth-attr-agreement", topicId: "g-attributive-clause", point: "关系代词作主语时的主谓一致", answer: "C", difficulty: 3,
+    stem: "I have some photos that ________ taken in Australia last year.",
+    options: ["was", "is", "were", "has"],
+    explanation: "考查定语从句中的主谓一致。关系代词 that 代替先行词 photos（复数），在从句中作主语，谓语用复数 were。故选 C。" },
 ];
 
 export const authoredExercises = raw.map((item) => ({

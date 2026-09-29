@@ -431,16 +431,6 @@ export default [
       ],
       contrasts: [
         {
-          title: "名词作定语 vs 形容词作定语",
-          head: ["名词作定语", "形容词作定语"],
-          rows: [
-            ["colour TV 彩电", "colourful flowers 五颜六色的花"],
-            ["gold chain 金链子", "golden fish 金鱼"],
-            ["history lesson 历史课", "historical film 历史题材的影片"],
-            ["rain drops 雨点", "rainy season 多雨的季节"],
-          ],
-        },
-        {
           title: "修饰可数名词复数与不可数名词的词",
           head: ["修饰可数名词复数", "修饰不可数名词"],
           rows: [

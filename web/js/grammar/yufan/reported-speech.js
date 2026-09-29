@@ -1,12 +1,13 @@
 // web/js/grammar/yufan/reported-speech.js
 // 来源：yufan/直接引语与间接引语（教材第二十三章扫描件 15 张，微信图片_20260927174857_629_66.jpg ~ 微信图片_20260927175147_643_66.jpg 的压缩镜像 yufan-ds/直接引语与间接引语）
 // 由 yufan 图片讲义整理，供 GrammarView「语法专题」页面渲染。
-// g-object-clause（宾语从句）是 topics.js 中已有专题，本文件按契约只写增量补充（sections + extras），不复述已有内容。
+// g-reported-speech（直接引语与间接引语）是 topics.js 中的独立专题（2026-09-27 从 g-object-clause 拆出），
+// 本文件按契约只写增量补充（sections + extras），专题定义在 topics.js，导航归组在 ia.js。
 // 自检：import('file:///.../reported-speech.js')
 
 export default [
   {
-    topicId: "g-object-clause",
+    topicId: "g-reported-speech",
     newTopic: false,
     title: "直接引语与间接引语",
     sourceDirs: ["yufan/直接引语与间接引语"],

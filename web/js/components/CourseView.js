@@ -345,7 +345,7 @@ export default {
                   </div>
                 </div>
                 <div v-else class="course-empty">本模块暂无语法要点</div>
-                <button class="grammar-jump" @click="$emit('open-grammar')">前往「语法专题」系统学习结构、用法与真题 →</button>
+                <button class="grammar-jump" @click="$emit('open-grammar', (section.grammar && section.grammar.topic) || '')">前往「语法专题」系统学习结构、用法与真题 →</button>
               </div>
 
               <div v-if="tab === 'notes'" class="course-pane">

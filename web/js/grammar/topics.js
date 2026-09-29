@@ -682,6 +682,23 @@ export const grammarTopics = [
     ],
   },
 
+  {
+    id: "g-reported-speech",
+    title: "直接引语与间接引语",
+    short: "间接引语",
+    category: "复合句",
+    difficulty: 4,
+    summary: "把别人的话转述出来要用间接引语：去掉逗号、冒号与引号，调整人称、时态、时间地点状语和指示代词，再按陈述句、疑问句、祈使句、感叹句四类句型分别改造。",
+    forms: [],
+    points: [],
+    contrasts: [],
+    pitfalls: [],
+    examTips: [],
+    memoryCard: [],
+    textbookLinks: [],
+    spreadNote: "讲义来源：教材第二十三章扫描件整理（yufan/直接引语与间接引语）；北京卷单项填空近年未单独考查本知识点，相关考点常与宾语从句合并出现。",
+  },
+
   // ===== 以下专题北京中考单项填空不直接考查，内容依据教材语法项目 + 教材例句 + 自编练习 =====
   {
     id: "g-nouns",
@@ -1000,6 +1017,91 @@ export const grammarTopics = [
       { en: "We waited until the flag rose.", zh: "我们一直等到国旗升起。", source: "外研版九年级上册 Module 2" },
       { en: "Though it was hard, she never gave up.", zh: "虽然很艰难，但她从未放弃。", source: "外研版九年级上册 Module 3" },
       { en: "He worked so hard that he succeeded.", zh: "他如此努力，以至于成功了。", source: "外研版九年级上册 Module 3" },
+    ],
+  },
+  {
+    id: "g-attributive-clause",
+    title: "定语从句",
+    short: "定语从句",
+    category: "复合句",
+    difficulty: 4,
+    summary: "定语从句放在名词或代词后面，像形容词一样修饰它。先行词指人用 who/that，指物用 which/that；关系代词在从句中作宾语时常可省略，作主语时不能省略。对应外研版九年级上册 Module 10、Module 11 的语法聚焦。",
+    forms: [
+      { name: "指物：that / which", pattern: "先行词（物）+ that/which + 从句", note: "I have some photos that I took in Australia last year." },
+      { name: "指人：who / that", pattern: "先行词（人）+ who/that + 从句", note: "He's the boy who won the photo competition last year!" },
+      { name: "作宾语时可省略", pattern: "先行词 + (that/which/who) + 主语 + 谓语", note: "The photo (which) we liked best was taken by Zhao Min." },
+      { name: "只能用 that", pattern: "先行词被 the only / 序数词 / 最高级 / all / every / no 修饰，或先行词是不定代词", note: "This is the only museum that I have visited in Beijing." },
+    ],
+    points: [
+      {
+        title: "关系代词由先行词决定",
+        desc: "先行词指人用 who（也可用 that），指物用 which（也可用 that）；that 指人、指物都可以。",
+        good: [
+          "He's the boy who won the photo competition last year!",
+          "The photo which we liked best was taken by Zhao Min.",
+          "The game that they like most is Australian football.",
+        ],
+        bad: ["He's the boy which won the photo competition last year."],
+      },
+      {
+        title: "关系代词作宾语时可以省略",
+        desc: "关系代词在从句中作宾语时，去掉它句子依然完整；作主语时不能省略。",
+        good: [
+          "I have some photos (that) I took in Australia last year.",
+          "The photo (which) we liked best was taken by Zhao Min.",
+        ],
+        bad: ["The boy won the photo competition last year is my friend.（作主语不能省）"],
+      },
+      {
+        title: "关系代词作主语时，从句谓语与先行词一致",
+        desc: "从句的谓语动词要和先行词的人称、数保持一致。",
+        good: [
+          "I have some photos that were taken in Australia last year.",
+          "He's the boy who wins the photo competition every year.",
+        ],
+        bad: ["I have some photos that was taken in Australia last year."],
+      },
+      {
+        title: "只能用 that 的几种情况",
+        desc: "先行词是不定代词（all、everything、nothing 等），或被 the only、the very、序数词、最高级修饰时，关系代词用 that。",
+        good: ["This is the only museum that I have visited in Beijing.", "Everything that he said was true."],
+        bad: ["This is the only museum which I have visited in Beijing."],
+      },
+    ],
+    contrasts: [
+      {
+        title: "定语从句 vs 宾语从句",
+        head: ["从句", "在句中做什么", "例子"],
+        rows: [
+          ["定语从句", "修饰前面的名词或代词（先行词）", "I have photos that I took in Australia."],
+          ["宾语从句", "作主句动词的宾语", "I know that he took photos in Australia."],
+        ],
+      },
+    ],
+    pitfalls: [
+      "从句中不能再用被修饰的那个名词：× the photos that I took them in Australia.",
+      "关系代词作从句主语时不能省略：× The boy won the prize is my friend.",
+      "先行词被 the only、序数词、最高级修饰，或先行词是不定代词时，用 that 不用 which。",
+      "介词提到关系代词前面时不能用 that：the city in which I live（不是 in that I live）。",
+    ],
+    examTips: [
+      "北京中考单项填空不直接考查定语从句，但它在完形、阅读语篇里出现频率很高，读懂从句才能读懂长句。",
+      "做题三步：先找先行词 → 看指人还是指物 → 看从句里缺主语还是缺宾语（缺主语必须用关系代词，缺宾语可以省略）。",
+    ],
+    memoryCard: [
+      "指人 who，指物 which，人和物都能用 that。",
+      "作宾语可省略，作主语不能省。",
+      "the only / 序数词 / 最高级 / 不定代词后面只用 that。",
+    ],
+    textbookLinks: [
+      { book: "九年级上册", section: "Module 10", title: "Australia" },
+      { book: "九年级上册", section: "Module 11", title: "Photos" },
+    ],
+    textbookExamples: [
+      { en: "I have some photos that I took in Australia last year.", zh: "我有一些去年在澳大利亚拍的照片。", source: "外研版九年级上册 Module 10" },
+      { en: "The game that they like most is Australian football.", zh: "他们最喜欢的运动是澳式足球。", source: "外研版九年级上册 Module 10" },
+      { en: "He's the boy who won the photo competition last year!", zh: "他就是去年赢得摄影比赛的那个男孩！", source: "外研版九年级上册 Module 11" },
+      { en: "The photo which we liked best was taken by Zhao Min.", zh: "我们最喜欢的那张照片是赵敏拍的。", source: "外研版九年级上册 Module 11" },
     ],
   },
 ];

@@ -1,42 +1,18 @@
-// yufan 教材讲义聚合入口
+// yufan 教材讲义聚合入口（首屏只加载元数据，sections 按需拉取）
 // ---------------------------------------------------------------------------
-// 本目录下每个 <slug>.js 都 `export default` 一个数组，元素形如：
-//   { topicId, newTopic, title, sourceDirs, imagesRead, summary, intro,
-//     sections: [...], extras: {...}, category, difficulty, forms, points, ... }
-// 契约见同目录 README.md。
+// 数据分三层：
+//   1) manifest.js —— 由 scripts/build-yufan-lectures.mjs 生成，含全部讲义的元数据
+//      （title / sourceDirs / imagesRead / summary / intro / notes / extras /
+//      newTopic 字段），**不含 sections**（sections 约占全量体积 80%）。
+//   2) 本文件 —— 把元数据聚合成 topicId -> 讲义 / 增量补充，并登记每个专题的
+//      sections 落在哪些 <slug>.js，供 loadLecture() 按需 import()。
+//   3) <slug>.js —— 单个教材目录的原始讲义（含 sections），仅在选中该专题时加载。
 //
-// MODULES 列表由合并脚本重建（按 slug 字母序）。新增/删除讲义文件后请同步这里。
-// 本文件不做任何 IO，也不依赖 topics.js，避免循环引用。
+// 契约见同目录 README.md。新增/修改讲义后请运行：
+//   node scripts/build-yufan-lectures.mjs
+// 由脚本重建 manifest.js 并校验；本文件不做 IO，也不依赖 topics.js，避免循环引用。
 // ---------------------------------------------------------------------------
-
-// === BEGIN AUTO-GENERATED MODULES ===
-import adjectives from "./adjectives.js";
-import adverbs from "./adverbs.js";
-import agreement from "./agreement.js";
-import articles from "./articles.js";
-import conjunctions from "./conjunctions.js";
-import futureTense from "./future-tense.js";
-import inversion from "./inversion.js";
-import modalVerbs from "./modal-verbs.js";
-import nonfiniteVerbs from "./nonfinite-verbs.js";
-import nouns from "./nouns.js";
-import numerals from "./numerals.js";
-import overview from "./overview.js";
-import passiveVoice from "./passive-voice.js";
-import pastSimple from "./past-simple.js";
-import perfectTense from "./perfect-tense.js";
-import prepositions from "./prepositions.js";
-import presentContinuous from "./present-continuous.js";
-import presentSimple from "./present-simple.js";
-import pronouns from "./pronouns.js";
-import questions from "./questions.js";
-import reportedSpeech from "./reported-speech.js";
-import sentenceMembers from "./sentence-members.js";
-import sentenceStructure from "./sentence-structure.js";
-import sentenceTypes from "./sentence-types.js";
-import verbsOverview from "./verbs-overview.js";
-const MODULES = [adjectives, adverbs, agreement, articles, conjunctions, futureTense, inversion, modalVerbs, nonfiniteVerbs, nouns, numerals, overview, passiveVoice, pastSimple, perfectTense, prepositions, presentContinuous, presentSimple, pronouns, questions, reportedSpeech, sentenceMembers, sentenceStructure, sentenceTypes, verbsOverview];
-// === END AUTO-GENERATED MODULES ===
+import { YUFAN_EAGER_V, YUFAN_MODULES, YUFAN_ITEMS } from "./manifest.js?v=20260928-yufan-r5";
 
 const ARRAY_FIELDS = ["forms", "points", "contrasts", "pitfalls", "examTips", "memoryCard"];
 
@@ -61,23 +37,38 @@ function mergeArray(base, add, field) {
   return list;
 }
 
+// 元数据条目（不含 sections）。manifest 里按模块顺序扁平存放，这里按同样顺序拼回，
+// 同时登记「每个 topicId 的 sections 分别由哪些文件提供」，保证拼接顺序稳定。
 export const yufanLectures = [];
-for (const mod of MODULES) {
-  for (const item of (mod || [])) if (item && item.topicId) yufanLectures.push(item);
+const filesByTopic = new Map();
+{
+  let cursor = 0;
+  for (const mod of YUFAN_MODULES) {
+    const items = YUFAN_ITEMS.slice(cursor, cursor + mod.count);
+    cursor += mod.count;
+    for (const item of items) {
+      if (!item || !item.topicId) continue;
+      yufanLectures.push(item);
+      const list = filesByTopic.get(item.topicId) || [];
+      if (!list.includes(mod.file)) list.push(mod.file);
+      filesByTopic.set(item.topicId, list);
+    }
+  }
 }
 
 const byTopic = new Map();
 for (const item of yufanLectures) {
   const cur = byTopic.get(item.topicId) || {
-    topicId: item.topicId, sections: [], sourceDirs: [], imagesRead: 0, extras: {}, notes: [],
+    topicId: item.topicId, sectionsTotal: 0, sourceDirs: [], imagesRead: 0, sourceNote: "", extras: {}, notes: [],
     summary: "", intro: "", meta: null,
   };
-  cur.sections = cur.sections.concat(item.sections || []);
+  cur.sectionsTotal += item.sectionCount || 0;
   for (const dir of item.sourceDirs || []) if (!cur.sourceDirs.includes(dir)) cur.sourceDirs.push(dir);
   cur.imagesRead += item.imagesRead || 0;
   if (Array.isArray(item.notes)) cur.notes = cur.notes.concat(item.notes);
   if (item.summary && !cur.summary) cur.summary = item.summary;
   if (item.intro && !cur.intro) cur.intro = item.intro;
+  if (item.sourceNote && !cur.sourceNote) cur.sourceNote = item.sourceNote;
   const extraSource = [item.extras, item.newTopic ? item : null];
   for (const src of extraSource) {
     if (!src) continue;
@@ -91,14 +82,14 @@ for (const item of yufanLectures) {
   byTopic.set(item.topicId, cur);
 }
 
-// topicId -> 讲义（sections 已按多份讲义拼接）
+// topicId -> 讲义元数据（sections 首屏为空数组，选中该专题后由 loadLecture() 注入）
 export const lectureByTopic = {};
 // topicId -> 对 topics.js 现有专题的增量补充
 export const yufanPatches = {};
 // yufan 新增的专题（topics.js 中原本没有）
 export const yufanNewTopics = [];
-// 讲义覆盖统计，供报告与自检
-export const yufanStats = { topics: 0, newTopics: 0, imagesRead: 0, sections: 0, files: MODULES.length };
+// 讲义覆盖统计，供报告与自检（sections 为总量，非首屏加载量）
+export const yufanStats = { topics: 0, newTopics: 0, imagesRead: 0, sections: 0, files: YUFAN_MODULES.length };
 
 for (const [topicId, agg] of byTopic) {
   const lecture = {
@@ -108,13 +99,17 @@ for (const [topicId, agg] of byTopic) {
     imagesRead: agg.imagesRead,
     summary: agg.summary,
     intro: agg.intro,
-    sections: agg.sections,
+    sourceNote: agg.sourceNote || "",
+    sections: [],
+    sectionsTotal: agg.sectionsTotal,
+    sectionsLoaded: agg.sectionsTotal === 0,
+    lazy: agg.sectionsTotal > 0,
     notes: agg.notes,
   };
   lectureByTopic[topicId] = lecture;
   yufanStats.topics += 1;
   yufanStats.imagesRead += agg.imagesRead;
-  yufanStats.sections += agg.sections.length;
+  yufanStats.sections += agg.sectionsTotal;
 
   if (Object.keys(agg.extras).length) yufanPatches[topicId] = agg.extras;
 
@@ -158,3 +153,64 @@ export function attachYufan(topic) {
   }
   return next;
 }
+
+// ---------------------------------------------------------------------------
+// sections 按需加载
+// ---------------------------------------------------------------------------
+
+/** 某个专题的讲义是否已经（或本来就）带 sections。 */
+export function isLectureLoaded(topicId) {
+  const lecture = lectureByTopic[topicId];
+  return !lecture || !lecture.lazy;
+}
+
+/** 该专题有讲义吗（不论 sections 是否已加载）。 */
+export function hasLecture(topicId) {
+  return !!lectureByTopic[topicId];
+}
+
+/** 该专题 sections 所在的文件清单（相对本目录），用于自检与调试。 */
+export function lectureFiles(topicId) {
+  return (filesByTopic.get(topicId) || []).slice();
+}
+
+const lectureCache = new Map();
+
+/**
+ * 按需拉取某专题的 sections（浏览器会缓存已加载过的 chunk）。
+ * 同一专题并发调用只发一次请求；失败会清缓存以便重试。
+ * 返回 sections 数组（调用方负责写回 lecture.sections 以触发渲染）。
+ */
+export async function loadLecture(topicId) {
+  const lecture = lectureByTopic[topicId];
+  if (!lecture) return [];
+  if (!lecture.lazy && lecture.sectionsLoaded) return lecture.sections;
+  if (lectureCache.has(topicId)) return lectureCache.get(topicId);
+
+  const task = (async () => {
+    const files = filesByTopic.get(topicId) || [];
+    const sections = [];
+    for (const file of files) {
+      const mod = await import("./" + file + "?v=" + YUFAN_EAGER_V);
+      for (const item of mod.default || []) {
+        if (!item || item.topicId !== topicId) continue;
+        for (const sec of item.sections || []) sections.push(sec);
+      }
+    }
+    lecture.sections = sections;
+    lecture.sectionsLoaded = true;
+    lecture.lazy = false;
+    return sections;
+  })();
+
+  lectureCache.set(topicId, task);
+  try {
+    return await task;
+  } catch (err) {
+    lectureCache.delete(topicId);
+    throw err;
+  }
+}
+
+/** 首屏真正带上的体积参考：模块清单（供自检脚本核对）。 */
+export const yufanModuleFiles = YUFAN_MODULES.map((m) => m.file);

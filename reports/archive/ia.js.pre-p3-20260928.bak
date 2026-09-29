@@ -1,0 +1,177 @@
+// 语法专题 · 信息架构（IA）单一事实源
+// ---------------------------------------------------------------------------
+// 为什么单独一个文件：topics.js 是「专题内容」，本文件是「专题怎么组织」。
+// 分组/顺序/别名属于导航层信息，集中在这里可以一处修改、一处回滚，
+// 也避免去改 topics.js 里 30 个专题对象。
+//
+// 与 yufan 讲义流水线的契约：scripts/build-yufan-lectures.mjs 里
+// newTopic 的 category 仍只允许 ["词法","句法","动词","复合句"]（旧四类），
+// 这里通过 legacyCategoryToGroup 把旧类映射到新五组，不改动该契约。
+// ---------------------------------------------------------------------------
+
+/** 导航分组（顺序即页面展示顺序）。 */
+export const grammarGroups = [
+  { key: "start", label: "入门总览", hint: "先看这 4 篇，建立全局框架" },
+  { key: "morph", label: "词法", hint: "词类：形式、变化与用法" },
+  { key: "verb", label: "动词", hint: "时态 · 语态 · 情态 · 非谓语" },
+  { key: "syntax", label: "句法", hint: "句子成分、句型与特殊结构" },
+  { key: "clause", label: "复合句", hint: "从句与引语" },
+];
+
+/** 组内小节（只在需要时出现；顺序即展示顺序）。 */
+export const grammarSubGroups = {
+  verb: ["时态", "语态", "情态", "非谓语"],
+};
+
+/** 旧分类 → 新分组（用于 yufan 新增专题等没有显式登记的情况）。 */
+export const legacyCategoryToGroup = {
+  词法: "morph",
+  句法: "syntax",
+  动词: "verb",
+  复合句: "clause",
+};
+
+/**
+ * 专题在导航中的位置。
+ * group 必填；order 是组内学习顺序（不是难度）；title 可选，用于修正名称。
+ */
+export const topicIA = {
+  // 入门总览：先建立"句子由什么组成、有哪些种类、动词是什么"的框架
+  "g-overview": { group: "start", order: 1, title: "语法总论" },
+  "g-sentence-members": { group: "start", order: 2 },
+  "g-sentence-types": { group: "start", order: 3 },
+  "g-verbs-overview": { group: "start", order: 4 },
+
+  // 词法
+  "g-nouns": { group: "morph", order: 1, title: "名词" },
+  "g-pronouns": { group: "morph", order: 2 },
+  "g-articles": { group: "morph", order: 3 },
+  "g-numerals": { group: "morph", order: 4 },
+  "g-adj-adv": { group: "morph", order: 5, title: "形容词与副词（比较等级）" },
+  "g-prepositions": { group: "morph", order: 6, title: "介词（时间与地点）" },
+  "g-conjunctions": { group: "morph", order: 7 },
+
+  // 动词：时态 → 语态 → 情态 → 非谓语
+  "g-present-simple": { group: "verb", order: 1, subGroup: "时态" },
+  "g-present-continuous": { group: "verb", order: 2, subGroup: "时态" },
+  "g-past-simple": { group: "verb", order: 3, subGroup: "时态" },
+  "g-past-continuous": { group: "verb", order: 4, subGroup: "时态" },
+  "g-future-tense": { group: "verb", order: 5, subGroup: "时态", title: "一般将来时" },
+  "g-present-perfect": { group: "verb", order: 6, subGroup: "时态" },
+  "g-passive-voice": { group: "verb", order: 7, subGroup: "语态" },
+  "g-modal-verbs": { group: "verb", order: 8, subGroup: "情态" },
+  "g-nonfinite-verbs": { group: "verb", order: 9, subGroup: "非谓语" },
+
+  // 句法
+  "g-there-be": { group: "syntax", order: 1 },
+  "g-questions": { group: "syntax", order: 2 },
+  "g-imperatives": { group: "syntax", order: 3 },
+  "g-sentence-structure": { group: "syntax", order: 4 },
+  "g-agreement": { group: "syntax", order: 5, title: "主谓一致" },
+  "g-inversion": { group: "syntax", order: 6 },
+
+  // 复合句
+  "g-object-clause": { group: "clause", order: 1 },
+  "g-reported-speech": { group: "clause", order: 2, title: "直接引语与间接引语" },
+  "g-adverbial-clause": { group: "clause", order: 3 },
+  "g-if-clause": { group: "clause", order: 4, title: "if 条件状语从句" },
+};
+
+export const groupIndex = (key) => {
+  const i = grammarGroups.findIndex((g) => g.key === key);
+  return i < 0 ? grammarGroups.length : i;
+};
+
+export const subGroupIndex = (groupKey, sub) => {
+  const list = grammarSubGroups[groupKey] || [];
+  const i = list.indexOf(sub);
+  return i < 0 ? list.length : i;
+};
+
+/** 专题最终归组：显式登记优先，其次按旧 category 映射，最后落到句法。 */
+export function resolveGroup(topic) {
+  const ia = topicIA[topic.id];
+  if (ia && ia.group) return ia.group;
+  return legacyCategoryToGroup[topic.category] || "syntax";
+}
+
+export function resolveOrder(topic) {
+  const ia = topicIA[topic.id];
+  return ia && Number.isFinite(ia.order) ? ia.order : 99;
+}
+
+export function resolveSubGroup(topic, groupKey) {
+  const ia = topicIA[topic.id];
+  if (ia && ia.subGroup) return ia.subGroup;
+  if (Number.isFinite(topic.subGroupIndex)) return topic.subGroupIndex;
+  return groupKey === "verb" ? "其他" : "";
+}
+
+export function resolveTitle(topic) {
+  const ia = topicIA[topic.id];
+  return (ia && ia.title) || topic.title;
+}
+
+export const groupLabel = (key) => {
+  const g = grammarGroups.find((x) => x.key === key);
+  return g ? g.label : key;
+};
+
+/**
+ * 课程模块（section.grammar.topic，如「一般将来时(be going to)；情态动词」）
+ * → 语法专题 id。按数组顺序取第一条命中的规则，因此把更具体的写在前面。
+ * 无命中返回 ""，调用方应回落到默认专题。
+ */
+export const topicAliasRules = [
+  // 直接引语与间接引语（曾经挂在宾语从句下，现已拆成独立专题）
+  { keywords: ["直接引语", "间接引语"], topic: "g-reported-speech" },
+  // if 条件从句要写在“状语从句”前：“if 条件状语从句”同时含两个关键词
+  { keywords: ["if 条件", "if条件", "条件句"], topic: "g-if-clause" },
+  { keywords: ["宾语从句"], topic: "g-object-clause" },
+  { keywords: ["状语从句"], topic: "g-adverbial-clause" },
+  { keywords: ["被动语态"], topic: "g-passive-voice" },
+  { keywords: ["过去进行时"], topic: "g-past-continuous" },
+  { keywords: ["现在进行时"], topic: "g-present-continuous" },
+  { keywords: ["现在完成时"], topic: "g-present-perfect" },
+  { keywords: ["be going to", "一般将来时"], topic: "g-future-tense" },
+  { keywords: ["一般现在时", "be 动词"], topic: "g-present-simple" },
+  { keywords: ["六种时态", "时态综合", "时态复习", "时态"], topic: "g-verbs-overview" },
+  { keywords: ["情态动词", "should"], topic: "g-modal-verbs" },
+  { keywords: ["不定式"], topic: "g-nonfinite-verbs" },
+  { keywords: ["系动词"], topic: "g-verbs-overview" },
+  { keywords: ["祈使句"], topic: "g-imperatives" },
+  { keywords: ["基本句型", "句子成分"], topic: "g-sentence-members" },
+  { keywords: ["句子的种类", "句子种类"], topic: "g-sentence-types" },
+  { keywords: ["There be", "there be"], topic: "g-there-be" },
+  { keywords: ["疑问句"], topic: "g-questions" },
+  { keywords: ["主谓一致"], topic: "g-agreement" },
+  { keywords: ["倒装"], topic: "g-inversion" },
+  { keywords: ["代词"], topic: "g-pronouns" },
+  { keywords: ["名词"], topic: "g-nouns" },
+  { keywords: ["冠词"], topic: "g-articles" },
+  { keywords: ["数词", "大数字"], topic: "g-numerals" },
+  { keywords: ["比较级", "最高级", "形容词", "副词"], topic: "g-adj-adv" },
+  { keywords: ["介词"], topic: "g-prepositions" },
+  { keywords: ["连词"], topic: "g-conjunctions" },
+];
+
+/**
+ * 把任意字符串（课程模块的语法名、URL 片段、专题 id、专题标题）解析成专题 id。
+ * 命中顺序：已知 id → 标题精确匹配 → 别名关键词（数组顺序）→ 标题包含关系 → 空串。
+ * titlesById：Map<标题, 专题 id>；传入后先按标题精确匹配，避免“if 条件状语从句”被“状语从句”关键词抢走。
+ */
+export function matchTopicId(text, knownIds, titlesById) {
+  const raw = String(text || "").trim();
+  if (!raw) return "";
+  if (knownIds && knownIds.has(raw)) return raw;
+  if (titlesById && titlesById.get(raw)) return titlesById.get(raw);
+  for (const rule of topicAliasRules) {
+    if (rule.keywords.some((k) => raw.includes(k))) return rule.topic;
+  }
+  if (titlesById) {
+    for (const [title, id] of titlesById) {
+      if (title.includes(raw) || raw.includes(title)) return id;
+    }
+  }
+  return "";
+}
