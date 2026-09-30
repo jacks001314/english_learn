@@ -1,6 +1,8 @@
 // 词义练习：看词选义（英→中）、看义选词（中→英）、听音选义（发音→中）。
 // 三个页面共用这个组件，只通过 mode / audioOnly 区分出题与展示方式。
-const ROUND_SIZE = 10;
+// 练习覆盖当前筛选命中的全部单词：按页取题（默认每页 12 题），翻页即可把
+// 整个年级、主题或词性下的单词练完，而不是随机抽十题。
+const PAGE_SIZE = 12;
 
 const POS_LABELS = {
   noun: '名词',
@@ -20,7 +22,8 @@ const POS_LABELS = {
   other: '其他',
 };
 
-const freshSession = () => ({ answered: 0, correct: 0, history: [] });
+// 一个单词在一次练习里只对应一个 key（学段 + 词条 ID），用来跨页保留作答状态。
+const wordKey = (word) => `${word?.level || ''}:${String(word?.id || '').toLowerCase()}`;
 
 export default {
   props: {
@@ -34,44 +37,29 @@ export default {
       grade: '',
       topic: '',
       partOfSpeech: '',
+      sortKey: 'word-asc',
+      seed: 0,
       facets: { grades: [], topics: [], partsOfSpeech: [] },
       scopeTotal: 0,
-      matchTotal: 0,
-      quiz: null,
+      total: 0,
+      pages: 1,
+      page: 1,
+      pageSize: PAGE_SIZE,
+      items: [],
+      index: 0,
+      answers: {},
+      jumpPage: 1,
       loading: false,
       ready: false,
       error: '',
-      answered: false,
-      selectedAnswer: '',
-      correctAnswer: '',
-      feedbackCorrect: false,
-      hint: '',
-      session: freshSession(),
     };
   },
   computed: {
-    roundSize() {
-      return ROUND_SIZE;
+    questionType() {
+      return this.mode === 'zh-en' ? 'zh-en' : 'en-zh';
     },
-    finished() {
-      return this.session.answered >= ROUND_SIZE;
-    },
-    accuracy() {
-      return Math.round((this.session.correct * 100) / Math.max(1, this.session.answered));
-    },
-    advice() {
-      if (this.accuracy >= 90) return '词义掌握得很稳，可以换成反向练习或听音选义继续巩固。';
-      if (this.accuracy >= 70) return '大部分意思都认对了，把本组错词再读一遍例句就更牢了。';
-      return '先到单词学习页读一遍这些词的例句，再回来练一组。';
-    },
-    wrongItems() {
-      const seen = new Set();
-      return (this.session.history || []).filter((item) => {
-        const key = `${item.word?.level}:${item.word?.id}`;
-        if (item.correct || !item.word || seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
+    activeMode() {
+      return this.audioOnly ? 'listen' : this.mode === 'zh-en' ? 'zh-en' : 'en-zh';
     },
     title() {
       if (this.audioOnly) return '听音选义';
@@ -89,11 +77,66 @@ export default {
         { id: 'listen', label: '听音选义', view: 'meaning-listen' },
       ];
     },
-    activeMode() {
-      return this.audioOnly ? 'listen' : this.mode === 'zh-en' ? 'zh-en' : 'en-zh';
+    current() {
+      return this.items[this.index] || null;
     },
-    questionType() {
-      return this.mode === 'zh-en' ? 'zh-en' : 'en-zh';
+    currentKey() {
+      return this.current ? wordKey(this.current.word) : '';
+    },
+    currentAnswer() {
+      return this.currentKey ? this.answers[this.currentKey] || null : null;
+    },
+    answered() {
+      return !!this.currentAnswer;
+    },
+    selectedAnswer() {
+      return this.currentAnswer ? this.currentAnswer.selected : '';
+    },
+    correctAnswer() {
+      return this.currentAnswer ? this.currentAnswer.answer : '';
+    },
+    feedbackCorrect() {
+      return !!this.currentAnswer && this.currentAnswer.correct;
+    },
+    hint() {
+      return this.currentAnswer ? this.currentAnswer.hint : '';
+    },
+    positionLabel() {
+      return (this.page - 1) * this.pageSize + this.index + 1;
+    },
+    pageDots() {
+      return this.items.map((item, position) => {
+        const entry = this.answers[wordKey(item.word)];
+        return { position, key: wordKey(item.word), className: entry ? (entry.correct ? 'correct' : 'wrong') : '' };
+      });
+    },
+    answeredCount() {
+      return Object.keys(this.answers).length;
+    },
+    correctCount() {
+      return Object.values(this.answers).filter((entry) => entry.correct).length;
+    },
+    accuracy() {
+      return Math.round((this.correctCount * 100) / Math.max(1, this.answeredCount));
+    },
+    pageAnswered() {
+      return this.items.filter((item) => this.answers[wordKey(item.word)]).length;
+    },
+    finishedAll() {
+      return this.total > 0 && this.answeredCount >= this.total;
+    },
+    wrongItems() {
+      const seen = new Set();
+      return Object.values(this.answers).filter((entry) => {
+        if (entry.correct || seen.has(entry.key)) return false;
+        seen.add(entry.key);
+        return true;
+      });
+    },
+    advice() {
+      if (this.accuracy >= 90) return '词义掌握得很稳，可以换成反向练习或听音选义继续巩固。';
+      if (this.accuracy >= 70) return '大部分意思都认对了，把错词再读一遍例句就更牢了。';
+      return '先到单词学习页读一遍这些词的例句，再回来练一遍。';
     },
     filterLabel() {
       return [
@@ -105,16 +148,28 @@ export default {
         .filter(Boolean)
         .join(' · ');
     },
-    showWordText() {
-      return !this.audioOnly && this.questionType === 'en-zh';
+    isFirstQuestion() {
+      return this.page <= 1 && this.index <= 0;
+    },
+    isLastQuestion() {
+      return this.page >= this.pages && this.index >= this.items.length - 1;
+    },
+    nextLabel() {
+      if (this.index < this.items.length - 1) return '下一题';
+      return this.page < this.pages ? '下一页' : '最后一题';
     },
   },
   watch: {
+    // 换范围会清空年级/主题/词性（每个学段的标签不同），并重新从第 1 页开始。
     scope() {
       this.grade = '';
       this.topic = '';
       this.partOfSpeech = '';
-      this.refresh();
+      this.answers = {};
+      this.loadPage(1);
+    },
+    page() {
+      this.jumpPage = this.page;
     },
   },
   mounted() {
@@ -139,7 +194,7 @@ export default {
     },
     describeError(error) {
       if (error?.status === 422 || /not enough/i.test(error?.message || '')) {
-        return '当前筛选下可练习的单词太少（至少需要 4 个），请放宽年级、主题或词性筛选。';
+        return '当前筛选下没有可练习的单词，请放宽年级、主题或词性筛选。';
       }
       if (error?.status === 404) return '这个单词已经不在词库中了，换一题试试。';
       return error?.message || '加载失败，请稍后重试。';
@@ -150,16 +205,12 @@ export default {
       const pages = await Promise.all(levels.map((level) => window.fetch(`/api/word-facets?level=${level}`).then((response) => response.json())));
       const topics = new Set();
       const grades = new Set();
-      const letters = new Map();
-      const parts = new Map();
       let total = 0;
+      const parts = new Map();
       pages.forEach((page) => {
         (page.topics || []).forEach((item) => topics.add(item));
         (page.grades || []).forEach((item) => grades.add(item));
-        (page.letters || []).forEach((item) => {
-          letters.set(item.value, (letters.get(item.value) || 0) + item.count);
-          total += item.count;
-        });
+        (page.letters || []).forEach((item) => { total += item.count; });
         (page.partsOfSpeech || []).forEach((item) => {
           const current = parts.get(item.value) || { value: item.value, label: item.label, count: 0 };
           current.count += item.count;
@@ -173,31 +224,16 @@ export default {
       };
       this.scopeTotal = total;
     },
-    // 当前筛选实际命中多少词，用来提示“范围是否太窄”。
-    async loadMatchTotal() {
-      const levels = this.scope === 'all' ? ['primary', 'middle'] : [this.scope];
-      const params = new URLSearchParams({ page: 1, topic: this.topic, grade: this.grade, pos: this.partOfSpeech });
-      const pages = await Promise.all(
-        levels.map((level) => {
-          const scoped = new URLSearchParams(params);
-          scoped.set('level', level);
-          return window.fetch(`/api/words?${scoped}`).then((response) => response.json());
-        }),
-      );
-      this.matchTotal = pages.reduce((sum, page) => sum + (page.total || 0), 0);
-    },
     async refresh() {
       await this.run(async () => {
-        await Promise.all([this.loadFacets(), this.loadMatchTotal()]);
-        await this.loadQuiz();
+        await this.loadFacets();
+        await this.loadPage(1);
       });
     },
+    // 换筛选条件会换掉整套题目，所以清空作答记录。
     async applyFilters() {
-      await this.run(async () => {
-        await this.loadMatchTotal();
-        this.session = freshSession();
-        await this.loadQuiz();
-      });
+      this.answers = {};
+      await this.loadPage(1);
     },
     async clearFilters() {
       this.grade = '';
@@ -205,15 +241,39 @@ export default {
       this.partOfSpeech = '';
       await this.applyFilters();
     },
-    async loadQuiz() {
+    // 只换顺序时保留已作答状态，方便回头复习错词。
+    async setSort(value) {
+      if (value === 'random' && this.sortKey !== 'random') this.seed = Math.floor(Math.random() * 1000000000);
+      await this.loadPage(1);
+    },
+    async shuffle() {
+      this.sortKey = 'random';
+      this.seed = Math.floor(Math.random() * 1000000000);
+      await this.loadPage(1);
+    },
+    async restartPractice() {
+      this.answers = {};
+      await this.loadPage(1);
+    },
+    firstUnansweredIndex() {
+      const position = this.items.findIndex((item) => !this.answers[wordKey(item.word)]);
+      return position < 0 ? 0 : position;
+    },
+    async loadPage(target, options = {}) {
+      const wanted = Math.max(1, Number(target) || 1);
       this.loading = true;
-      this.answered = false;
-      this.selectedAnswer = '';
-      this.correctAnswer = '';
-      this.feedbackCorrect = false;
-      this.hint = '';
       try {
-        const params = new URLSearchParams({ level: this.scope, type: this.questionType, topic: this.topic, grade: this.grade, pos: this.partOfSpeech });
+        const params = new URLSearchParams({
+          level: this.scope,
+          type: this.questionType,
+          topic: this.topic,
+          grade: this.grade,
+          pos: this.partOfSpeech,
+          sort: this.sortKey,
+          size: String(this.pageSize),
+          page: String(wanted),
+        });
+        if (this.sortKey === 'random') params.set('seed', String(this.seed));
         const response = await window.fetch(`/api/meaning-quiz?${params}`);
         if (!response.ok) {
           const body = await response.json().catch(() => ({}));
@@ -221,12 +281,24 @@ export default {
           error.status = response.status;
           throw error;
         }
-        this.quiz = await response.json();
+        const set = await response.json();
+        this.items = Array.isArray(set.items) ? set.items : [];
+        this.total = set.total || 0;
+        this.pages = Math.max(1, set.pages || 1);
+        this.page = set.page || wanted;
+        this.pageSize = set.size || PAGE_SIZE;
+        this.jumpPage = this.page;
+        const last = this.items.length ? this.items.length - 1 : 0;
+        this.index = options.position === 'last' ? last : this.firstUnansweredIndex();
         this.ready = true;
         this.error = '';
-        if (this.audioOnly || this.questionType === 'en-zh') this.$emit('speak', this.quiz.word.word);
+        this.speakCurrent();
       } catch (error) {
-        this.quiz = null;
+        this.items = [];
+        this.index = 0;
+        this.total = 0;
+        this.pages = 1;
+        this.page = 1;
         this.ready = true;
         this.error = this.describeError(error);
       } finally {
@@ -234,54 +306,62 @@ export default {
       }
     },
     async answer(option) {
-      if (this.answered || !this.quiz) return;
-      this.answered = true;
-      this.selectedAnswer = String(option);
+      if (this.answered || !this.current) return;
+      const item = this.current;
+      const key = this.currentKey;
       try {
         const response = await window.fetch('/api/quiz/answer', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            level: this.quiz.word.level,
-            wordId: this.quiz.word.id,
-            type: this.quiz.type,
+            level: item.word.level,
+            wordId: item.word.id,
+            type: item.type,
             answer: option,
           }),
         });
         const feedback = await response.json();
         if (!response.ok) throw new Error(feedback.error || '提交答案失败');
-        this.feedbackCorrect = !!feedback.correct;
-        this.correctAnswer = String(feedback.answer || '');
-        this.hint = feedback.correct ? '回答正确，继续保持！' : feedback.message;
-        this.session.answered += 1;
-        if (feedback.correct) this.session.correct += 1;
-        this.session.history = [
-          ...(this.session.history || []),
-          {
-            word: this.quiz.word,
-            type: this.quiz.type,
-            prompt: this.quiz.prompt,
-            selectedAnswer: String(option),
-            correctAnswer: String(feedback.answer || ''),
+        this.answers = {
+          ...this.answers,
+          [key]: {
+            key,
+            word: item.word,
+            prompt: item.prompt,
+            type: item.type,
+            selected: String(option),
+            answer: String(feedback.answer || ''),
             correct: !!feedback.correct,
+            hint: feedback.correct ? '回答正确，继续保持！' : feedback.message,
           },
-        ];
+        };
         this.$emit('answered');
       } catch (error) {
-        this.answered = false;
-        this.selectedAnswer = '';
-        this.correctAnswer = '';
         this.error = error.message || '提交答案失败，请重试。';
       }
     },
-    next() {
-      if (!this.answered) return;
-      if (this.finished) return;
-      this.loadQuiz();
+    speakCurrent() {
+      if (this.current && (this.audioOnly || this.questionType === 'en-zh')) this.$emit('speak', this.current.word.word);
     },
-    restart() {
-      this.session = freshSession();
-      this.loadQuiz();
+    previous() {
+      if (this.index > 0) {
+        this.index -= 1;
+        this.speakCurrent();
+        return;
+      }
+      if (this.page > 1) this.loadPage(this.page - 1, { position: 'last' });
+    },
+    next() {
+      if (this.index < this.items.length - 1) {
+        this.index += 1;
+        this.speakCurrent();
+        return;
+      }
+      if (this.page < this.pages) this.loadPage(this.page + 1);
+    },
+    gotoQuestion(position) {
+      this.index = position;
+      this.speakCurrent();
     },
     optionClass(option) {
       if (!this.answered) return {};
@@ -290,14 +370,13 @@ export default {
         wrong: !this.feedbackCorrect && option === this.selectedAnswer,
       };
     },
-    optionKey(index) {
-      return String(index + 1);
-    },
     openWord(word) {
       this.$emit('navigate', { view: 'learn', word, level: word?.level });
     },
     handleKeydown(event) {
       if (event.ctrlKey || event.metaKey || event.altKey || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName)) return;
+      if (event.key === 'ArrowLeft') { event.preventDefault(); this.previous(); return; }
+      if (event.key === 'ArrowRight') { event.preventDefault(); this.next(); return; }
       if (this.answered) {
         if (event.key === 'Enter') {
           event.preventDefault();
@@ -306,9 +385,9 @@ export default {
         return;
       }
       const index = Number(event.key) - 1;
-      if (this.quiz?.options?.[index]) {
+      if (this.current?.options?.[index]) {
         event.preventDefault();
-        this.answer(this.quiz.options[index]);
+        this.answer(this.current.options[index]);
       }
     },
   },
@@ -320,7 +399,7 @@ export default {
           <h2>{{ title }}</h2>
           <p class="meaning-intro">{{ subtitle }}</p>
         </div>
-        <strong>可练习 {{ matchTotal }} / {{ scopeTotal }} 个单词</strong>
+        <strong>可练习 {{ total }} / {{ scopeTotal }} 个单词</strong>
       </div>
 
       <div class="meaning-modes" role="tablist" aria-label="练习方式">
@@ -335,7 +414,7 @@ export default {
       </div>
 
       <div class="toolbar meaning-filters">
-        <select v-model="scope" aria-label="练习范围" @change="refresh()">
+        <select v-model="scope" aria-label="练习范围">
           <option value="all">全部范围（小学 + 初中）</option>
           <option value="primary">小学英语</option>
           <option value="middle">初中英语</option>
@@ -352,96 +431,132 @@ export default {
           <option value="">全部词性</option>
           <option v-for="item in facets.partsOfSpeech" :key="item.value" :value="item.value">{{ item.label }}（{{ item.count }}）</option>
         </select>
-        <button @click="applyFilters()">换一题</button>
+        <select v-model="sortKey" aria-label="题目顺序" @change="setSort(sortKey)">
+          <option value="word-asc">字母顺序 A→Z</option>
+          <option value="word-desc">字母顺序 Z→A</option>
+          <option value="random">随机顺序</option>
+        </select>
+        <button @click="shuffle()">打乱顺序</button>
         <button @click="clearFilters()">清除筛选</button>
       </div>
-      <p class="meaning-filter-summary">当前范围：<strong>{{ filterLabel }}</strong> · 命中 {{ matchTotal }} 个单词</p>
+      <p class="meaning-filter-summary">当前范围：<strong>{{ filterLabel }}</strong> · 命中 {{ total }} 个单词，每页 {{ pageSize }} 题，共 {{ pages }} 页</p>
 
-      <div class="meaning-progress" aria-label="本组练习进度">
+      <div class="meaning-progress" aria-label="练习进度">
         <div>
-          <span v-for="index in roundSize" :key="index" :class="{done:index<=session.answered,current:index===session.answered+1}">{{ index }}</span>
+          <span v-for="dot in pageDots" :key="dot.key" :class="[dot.className,{current:dot.position===index}]">{{ dot.position + 1 }}</span>
         </div>
-        <small>{{ session.answered }} / {{ roundSize }} · 答对 {{ session.correct }}</small>
+        <small>本页 {{ pageAnswered }} / {{ items.length }} · 已练 {{ answeredCount }} / {{ total }} · 答对 {{ correctCount }}（{{ accuracy }}%）</small>
+        <div class="meaning-actions">
+          <button @click="restartPractice()">清空作答</button>
+        </div>
       </div>
 
       <div v-if="error" class="meaning-error" role="alert">{{ error }}</div>
 
-      <div v-if="finished" class="meaning-result">
+      <div v-if="finishedAll" class="meaning-result">
         <section class="meaning-card">
-          <div class="tag">本组完成</div>
+          <div class="tag">全部完成</div>
           <h2>{{ accuracy }}%</h2>
-          <p>答对 {{ session.correct }} / {{ session.answered }} 题</p>
+          <p>答对 {{ correctCount }} / {{ answeredCount }} 题</p>
           <p class="meaning-advice">{{ advice }}</p>
           <div class="meaning-result-actions">
-            <button class="primary" @click="restart()">再练一组</button>
+            <button class="primary" @click="restartPractice()">再练一遍</button>
             <button @click="$emit('navigate',{view:'mistakes'})">打开错题本</button>
             <button @click="$emit('navigate',{view:'learn'})">去单词学习</button>
           </div>
         </section>
         <aside class="meaning-review">
-          <header><span>本组错词</span><b>{{ wrongItems.length }} 个</b></header>
+          <header><span>错词</span><b>{{ wrongItems.length }} 个</b></header>
           <div v-if="wrongItems.length">
-            <button v-for="item in wrongItems" :key="item.word.level+':'+item.word.id" @click="openWord(item.word)">
+            <button v-for="item in wrongItems" :key="item.key" @click="openWord(item.word)">
               <span><b>{{ item.word.word }}</b><small>{{ item.word.meaning }}</small></span><em>查看 →</em>
             </button>
           </div>
-          <p v-else>本组全部答对，不需要额外复习。</p>
+          <p v-else>全部答对，不需要额外复习。</p>
         </aside>
       </div>
 
-      <div v-else-if="quiz" class="meaning-card">
-        <div class="meaning-counter">第 {{ session.answered + 1 }} / {{ roundSize }} 题</div>
-        <div class="tag">{{ audioOnly ? '听发音，选汉语意思' : questionType === 'zh-en' ? '看汉语意思，选英文单词' : '看英文单词，选汉语意思' }}</div>
+      <template v-else>
+        <div class="meaning-layout">
+          <div v-if="current" class="meaning-card">
+            <div class="meaning-counter">第 {{ positionLabel }} / {{ total }} 题</div>
+            <div class="tag">{{ audioOnly ? '听发音，选汉语意思' : questionType === 'zh-en' ? '看汉语意思，选英文单词' : '看英文单词，选汉语意思' }}</div>
 
-        <template v-if="audioOnly">
-          <button class="meaning-audio" @click="$emit('speak',quiz.word.word)">▶ 播放发音</button>
-        </template>
-        <template v-else-if="questionType === 'zh-en'">
-          <h2 class="meaning-prompt">{{ quiz.prompt }}</h2>
-        </template>
-        <template v-else>
-          <h2 class="meaning-prompt">{{ quiz.word.word }}</h2>
-          <p class="meaning-phonetic">{{ quiz.word.phonetic || '暂无音标' }}</p>
-          <button class="sound" @click="$emit('speak',quiz.word.word)">▶ 听一听</button>
-        </template>
+            <template v-if="audioOnly">
+              <button class="meaning-audio" @click="$emit('speak',current.word.word)">▶ 播放发音</button>
+            </template>
+            <template v-else-if="questionType === 'zh-en'">
+              <h2 class="meaning-prompt">{{ current.prompt }}</h2>
+            </template>
+            <template v-else>
+              <h2 class="meaning-prompt">{{ current.word.word }}</h2>
+              <p class="meaning-phonetic">{{ current.word.phonetic || '暂无音标' }}</p>
+              <button class="sound" @click="$emit('speak',current.word.word)">▶ 听一听</button>
+            </template>
 
-        <div class="options meaning-options">
-          <button
-            v-for="(option,index) in quiz.options"
-            :key="option"
-            :class="optionClass(option)"
-            :disabled="answered"
-            @click="answer(option)"
-          ><kbd>{{ optionKey(index) }}</kbd><span>{{ option }}</span><i v-if="answered&&option===correctAnswer">正确</i><i v-else-if="answered&&!feedbackCorrect&&option===selectedAnswer">你的答案</i></button>
+            <div class="options meaning-options">
+              <button
+                v-for="(option,position) in current.options"
+                :key="option"
+                :class="optionClass(option)"
+                :disabled="answered"
+                @click="answer(option)"
+              ><kbd>{{ position + 1 }}</kbd><span>{{ option }}</span><i v-if="answered&&option===correctAnswer">正确</i><i v-else-if="answered&&!feedbackCorrect&&option===selectedAnswer">你的答案</i></button>
+            </div>
+
+            <div v-if="answered" class="meaning-feedback" :class="feedbackCorrect?'is-correct':'is-wrong'" aria-live="polite">
+              <b>{{ feedbackCorrect ? '回答正确' : '再巩固一下' }}</b>
+              <span>{{ hint }}</span>
+            </div>
+            <p v-else class="meaning-keyboard-tip">按数字键 1-4 选择答案，← → 翻题</p>
+
+            <section v-if="answered" class="meaning-word-detail">
+              <div>
+                <strong>{{ current.word.word }}</strong>
+                <span>{{ current.word.phonetic || '暂无音标' }}</span>
+                <button class="sound" @click="$emit('speak',current.word.word)">▶</button>
+              </div>
+              <p>{{ current.word.meaning }}<em v-if="current.word.pos">（{{ current.word.pos }}）</em></p>
+              <p v-if="current.word.example" class="meaning-example">{{ current.word.example }}</p>
+              <small v-if="current.word.exampleTranslation">{{ current.word.exampleTranslation }}</small>
+              <div class="meaning-word-tags">
+                <span v-if="current.word.grade">{{ current.word.grade }}</span>
+                <span v-if="current.word.topic">{{ current.word.topic }}</span>
+                <span>{{ current.word.level === 'middle' ? '初中词汇' : '小学词汇' }}</span>
+              </div>
+            </section>
+
+            <div class="meaning-question-nav">
+              <button :disabled="isFirstQuestion" @click="previous()">← 上一题</button>
+              <button :disabled="isLastQuestion" @click="next()">{{ nextLabel }} →</button>
+            </div>
+            <p v-if="pageAnswered >= items.length && page < pages" class="meaning-status">本页已完成，继续“下一页”接着练。</p>
+          </div>
+
+          <aside class="meaning-review">
+            <header><span>错词</span><b>{{ wrongItems.length }} 个</b></header>
+            <div v-if="wrongItems.length">
+              <button v-for="item in wrongItems" :key="item.key" @click="openWord(item.word)">
+                <span><b>{{ item.word.word }}</b><small>{{ item.word.meaning }} · 你的答案：{{ item.selected }}</small></span><em>查看 →</em>
+              </button>
+            </div>
+            <p v-else>还没有错词，继续保持。</p>
+            <p class="meaning-status">已练 {{ answeredCount }} / {{ total }} 词 · 答对 {{ correctCount }} 题</p>
+          </aside>
         </div>
 
-        <div v-if="answered" class="meaning-feedback" :class="feedbackCorrect?'is-correct':'is-wrong'" aria-live="polite">
-          <b>{{ feedbackCorrect ? '回答正确' : '再巩固一下' }}</b>
-          <span>{{ hint }}</span>
+        <div v-if="pages > 1" class="pager meaning-pager">
+          <button :disabled="page <= 1" @click="loadPage(1)">首页</button>
+          <button :disabled="page <= 1" @click="loadPage(page - 1)">上一页</button>
+          <span>第 {{ page }} / {{ pages }} 页</span>
+          <button :disabled="page >= pages" @click="loadPage(page + 1)">下一页</button>
+          <button :disabled="page >= pages" @click="loadPage(pages)">末页</button>
+          <label class="meaning-jump">跳到 <input type="number" min="1" :max="pages" v-model.number="jumpPage" @keyup.enter="loadPage(jumpPage)"> 页</label>
         </div>
-        <p v-else class="meaning-keyboard-tip">按数字键 1-4 选择答案</p>
+      </template>
 
-        <section v-if="answered" class="meaning-word-detail">
-          <div>
-            <strong>{{ quiz.word.word }}</strong>
-            <span>{{ quiz.word.phonetic || '暂无音标' }}</span>
-            <button class="sound" @click="$emit('speak',quiz.word.word)">▶</button>
-          </div>
-          <p>{{ quiz.word.meaning }}<em v-if="quiz.word.pos">（{{ quiz.word.pos }}）</em></p>
-          <p v-if="quiz.word.example" class="meaning-example">{{ quiz.word.example }}</p>
-          <small v-if="quiz.word.exampleTranslation">{{ quiz.word.exampleTranslation }}</small>
-          <div class="meaning-word-tags">
-            <span v-if="quiz.word.grade">{{ quiz.word.grade }}</span>
-            <span v-if="quiz.word.topic">{{ quiz.word.topic }}</span>
-            <span>{{ quiz.word.level === 'middle' ? '初中词汇' : '小学词汇' }}</span>
-          </div>
-        </section>
-
-        <button class="primary meaning-next" :disabled="!answered" @click="next()">下一题 <kbd>Enter</kbd> →</button>
-      </div>
-
-      <div v-else-if="ready" class="empty">当前筛选下暂时没有可练习的单词，试着换一个主题或词性。</div>
-      <div v-else class="empty">正在准备题目……</div>
+      <div v-if="ready && !current && !error" class="empty">当前筛选下暂时没有可练习的单词，试着换一个主题或词性。</div>
+      <div v-if="!ready" class="empty">正在准备题目……</div>
     </section>
   `,
 };

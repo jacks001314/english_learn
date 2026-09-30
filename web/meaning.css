@@ -8,16 +8,23 @@
 .meaning-modes button{padding:11px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#4d5c55;font-weight:700;cursor:pointer}
 .meaning-modes button.active{border-color:var(--green);background:var(--green);color:#fff}
 .meaning-filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.meaning-filters select{flex:1 1 150px;min-width:130px}
+.meaning-filters select{flex:1 1 130px;min-width:120px}
+.meaning-filters button{padding:11px 16px}
 .meaning-filter-summary{margin:-4px 0 0;color:var(--muted);font-size:13px}
 .meaning-filter-summary strong{color:var(--green-dark)}
 .meaning-progress{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:#fff}
 .meaning-progress>div{display:flex;gap:6px;flex-wrap:wrap}
 .meaning-progress span{width:27px;height:27px;display:grid;place-items:center;border-radius:8px;background:#eef4ef;color:#6d7b75;font-size:11px;font-weight:700}
-.meaning-progress span.done{background:var(--lime);color:#173f31}
+.meaning-progress span.correct{background:var(--lime);color:#173f31}
+.meaning-progress span.wrong{background:#ffe3dc;color:#923f2d}
 .meaning-progress span.current{color:var(--green-dark);box-shadow:inset 0 0 0 2px var(--green)}
 .meaning-progress small{color:var(--muted)}
+.meaning-actions{display:flex;gap:8px;flex-wrap:wrap}
+.meaning-actions button{padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#4d5c55;font-weight:700;cursor:pointer}
 .meaning-error{padding:12px 16px;border-radius:12px;background:#fff0ec;color:#984831;font-size:14px}
+.meaning-pager{flex-wrap:wrap;gap:10px;padding:4px 0}
+.meaning-jump{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:13px}
+.meaning-jump input{width:76px;min-height:38px;border:1px solid var(--line);border-radius:9px;background:#f8faf7;color:var(--ink);text-align:center;font-size:14px}
 .meaning-card{width:100%;max-width:760px;margin:0 auto;padding:34px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow);text-align:center}
 .meaning-counter{color:var(--muted);font-size:12px;letter-spacing:1px}
 .meaning-prompt{margin:16px 0 6px;color:var(--green-dark);font-size:clamp(26px,3.6vw,44px);line-height:1.25;word-break:break-word}
@@ -31,6 +38,9 @@
 .meaning-feedback.is-correct{background:#eaf7f0;color:#176347}
 .meaning-feedback.is-wrong{background:#fff0ec;color:#984831}
 .meaning-keyboard-tip{min-height:44px;margin:14px 0;color:#8a9791;font-size:12px}
+.meaning-question-nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.meaning-question-nav button{padding:11px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#4d5c55;font-weight:700;cursor:pointer}
+.meaning-status{margin:12px 0 0;color:var(--muted);font-size:12px}
 .meaning-word-detail{margin:16px 0 0;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:#f8faf7;text-align:left}
 .meaning-word-detail>div{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .meaning-word-detail strong{color:var(--green-dark);font-size:21px}
@@ -41,8 +51,7 @@
 .meaning-example{font-style:italic;color:#3f5a4e}
 .meaning-word-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
 .meaning-word-tags span{padding:4px 9px;border-radius:999px;background:#e8f0eb;color:var(--green-dark);font-size:11px}
-.meaning-next{margin-top:18px}
-.meaning-result{display:grid;gap:16px;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.meaning-result,.meaning-layout{display:grid;gap:16px;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}
 .meaning-advice{color:var(--muted);font-size:13px}
 .meaning-result-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
 .meaning-review{padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}
@@ -54,7 +63,8 @@
 .meaning-review button em{color:var(--green);font-size:12px;font-style:normal;white-space:nowrap}
 .meaning-review p{margin:0;color:var(--muted);font-size:13px}
 @media (max-width:900px){
-  .meaning-result{grid-template-columns:1fr}
+  .meaning-result,.meaning-layout{grid-template-columns:1fr}
   .meaning-card{padding:22px}
   .meaning-filters select{flex:1 1 100%}
+  .meaning-jump{width:100%;justify-content:center}
 }

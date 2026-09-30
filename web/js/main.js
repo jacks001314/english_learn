@@ -524,8 +524,9 @@ createApp({
       <content-status-view v-else-if="activeView==='content'" :status="contentStatus" @refresh="loadContentStatus" />
         </main>
         <agent-assistant :mode="activeView==='reading'?'reading':activeView==='exams'?'exam':activeView==='mistakes'?'mistake':activeView==='learn'?'word':'general'" :context="{view:activeView,level,query,topic}" />
+        <footer>坚持一点点，进步看得见。</footer>
       </div>
     </div>
     <div v-else class="boot-placeholder">正在加载学习数据……</div>
   `,
-});
+}).mount('#app');

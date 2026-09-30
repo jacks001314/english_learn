@@ -27,6 +27,14 @@ const (
 	quizTypeCloze    = "cloze"
 )
 
+// Paging of the 词义练习 pages. Unlike the classic quiz (one random question at
+// a time) the meaning pages walk through every word that matches the filter,
+// so the page size stays small enough for one sitting.
+const (
+	quizPageSizeDefault = 12
+	quizPageSizeMax     = 60
+)
+
 // QuizFilter describes the pool a question is drawn from. Level accepts
 // "primary", "middle" or "all"; the remaining fields narrow the pool to a
 // single grade, topic, unit, first letter or part of speech.
@@ -39,6 +47,20 @@ type QuizFilter struct {
 	Unit         string
 	Letter       string
 	PartOfSpeech string
+}
+
+// QuizSet is one page of 词义练习 questions. Every word matching the filter is
+// part of the set exactly once, ordered by QuizSet.Sort, so a learner can work
+// through a whole grade, topic or word class instead of a random sample.
+type QuizSet struct {
+	Level string `json:"level"`
+	Type  string `json:"type"`
+	Sort  string `json:"sort"`
+	Page  int    `json:"page"`
+	Size  int    `json:"size"`
+	Total int    `json:"total"`
+	Pages int    `json:"pages"`
+	Items []Quiz `json:"items"`
 }
 
 // Quiz keeps the single-stage signature used by the classic quiz page, which
@@ -110,6 +132,104 @@ func (s *Service) FilteredQuiz(filter QuizFilter) (Quiz, error) {
 		base = candidates[rand.Intn(len(candidates))]
 	}
 
+	return buildQuizQuestion(base, quizType, distractors), nil
+}
+
+// FilteredQuizSet builds one page of questions covering the words that match
+// the filter. The order is stable (same filter + sort + seed always yields the
+// same sequence) so pages never overlap and re-opening a page shows the same
+// questions. The last page may hold fewer than size items.
+func (s *Service) FilteredQuizSet(filter QuizFilter, page, size int, sortKey string, seed int) (QuizSet, error) {
+	quizType := normalizeQuizType(filter.Type)
+	if size <= 0 {
+		size = quizPageSizeDefault
+	}
+	if size > quizPageSizeMax {
+		size = quizPageSizeMax
+	}
+
+	scoped := make([]Word, 0)
+	for _, item := range wordsForScope(filter.Level) {
+		if publicContentStatus(item.Status) {
+			scoped = append(scoped, item)
+		}
+	}
+	if len(scoped) < 4 {
+		return QuizSet{}, fmt.Errorf("not enough words")
+	}
+	pool := make([]Word, 0, len(scoped))
+	for _, item := range scoped {
+		if matchWordMetadata(item, filter) {
+			pool = append(pool, item)
+		}
+	}
+	distractors := pool
+	if len(distractors) < 4 {
+		distractors = scoped
+	}
+	if quizType == quizTypeCloze {
+		pool = clozeEligible(pool)
+		eligible := clozeEligible(distractors)
+		if len(eligible) < 4 {
+			eligible = clozeEligible(scoped)
+		}
+		if len(eligible) < 4 {
+			return QuizSet{}, fmt.Errorf("not enough words with examples")
+		}
+		distractors = eligible
+	}
+	if len(pool) == 0 {
+		// A filter combination without a single word: the page turns this into
+		// a "放宽筛选条件" hint instead of an error screen.
+		return QuizSet{}, fmt.Errorf("not enough words")
+	}
+
+	var progress map[string]Progress
+	if sortKey == sortSmart {
+		progress = s.learnedProgress()
+	}
+	if sortKey == "" {
+		sortKey = sortWordAsc
+	}
+	sortWords(pool, sortKey, seed, progress)
+
+	total := len(pool)
+	pages := (total + size - 1) / size
+	if page < 1 {
+		page = 1
+	}
+	if page > pages {
+		page = pages
+	}
+	start := (page - 1) * size
+	end := start + size
+	if end > total {
+		end = total
+	}
+	items := make([]Quiz, 0, end-start)
+	for _, base := range pool[start:end] {
+		items = append(items, buildQuizQuestion(base, quizType, distractors))
+	}
+	level := filter.Level
+	if level == "" {
+		level = "primary"
+	}
+	return QuizSet{
+		Level: level,
+		Type:  quizType,
+		Sort:  sortKey,
+		Page:  page,
+		Size:  size,
+		Total: total,
+		Pages: pages,
+		Items: items,
+	}, nil
+}
+
+// buildQuizQuestion renders one multiple-choice question for a fixed word.
+// Distractors are drawn from the given pool, so callers decide whether wrong
+// options stay inside the filter or fall back to the whole school stage.
+func buildQuizQuestion(base Word, quizType string, distractors []Word) Quiz {
 	answer, prompt := base.Meaning, base.Word
 	if answersWithWord(quizType) {
 		answer, prompt = base.Word, base.Meaning
@@ -120,7 +240,7 @@ func (s *Service) FilteredQuiz(filter QuizFilter) (Quiz, error) {
 	case quizTypeListenZh:
 		prompt = "听发音，选择汉语意思"
 	case quizTypeSpelling:
-		return Quiz{Word: base, Type: quizType, Prompt: base.Meaning, Answer: base.Word, Options: []string{}}, nil
+		return Quiz{Word: base, Type: quizType, Prompt: base.Meaning, Answer: base.Word, Options: []string{}}
 	case quizTypeCloze:
 		prompt = replaceWord(base.Example, base.Word, "____")
 	}
@@ -140,7 +260,7 @@ func (s *Service) FilteredQuiz(filter QuizFilter) (Quiz, error) {
 		}
 	}
 	rand.Shuffle(len(options), func(i, j int) { options[i], options[j] = options[j], options[i] })
-	return Quiz{Word: base, Options: options, Type: quizType, Prompt: prompt, Answer: answer}, nil
+	return Quiz{Word: base, Options: options, Type: quizType, Prompt: prompt, Answer: answer}
 }
 
 // AnswerQuiz grades one answer and stores it as learning progress. The
