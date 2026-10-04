@@ -3,6 +3,11 @@
 // 练习覆盖当前筛选命中的全部单词：按页取题（默认每页 12 题），翻页即可把
 // 整个年级、主题或词性下的单词练完，而不是随机抽十题。
 const PAGE_SIZE = 12;
+// 侧栏错词清单只渲染最近的一批，避免长时间练习后一次性生成上千个按钮拖慢页面。
+const WRONG_LIST_LIMIT = 60;
+// 练习进度按“用户 + 练习方式”保存在浏览器本地，刷新或切换页面后可以接着练。
+const PRACTICE_STATE_VERSION = 1;
+const PRACTICE_STATE_PREFIX = 'english-learn-meaning-practice-v1';
 
 const POS_LABELS = {
   noun: '名词',
@@ -29,6 +34,7 @@ export default {
   props: {
     mode: { type: String, default: 'en-zh' },
     audioOnly: { type: Boolean, default: false },
+    userId: { type: String, default: '' },
   },
   emits: ['speak', 'navigate', 'answered'],
   data() {
@@ -48,8 +54,15 @@ export default {
       items: [],
       index: 0,
       answers: {},
+      wrongList: [],
+      answeredTotal: 0,
+      correctTotal: 0,
       jumpPage: 1,
       loading: false,
+      desiredPage: 0,
+      restoring: false,
+      saveTimer: null,
+      boundStorageKey: '',
       ready: false,
       error: '',
     };
@@ -101,8 +114,11 @@ export default {
     hint() {
       return this.currentAnswer ? this.currentAnswer.hint : '';
     },
+    currentPage() {
+      return this.desiredPage || this.page;
+    },
     positionLabel() {
-      return (this.page - 1) * this.pageSize + this.index + 1;
+      return (this.currentPage - 1) * this.pageSize + this.index + 1;
     },
     pageDots() {
       return this.items.map((item, position) => {
@@ -110,11 +126,12 @@ export default {
         return { position, key: wordKey(item.word), className: entry ? (entry.correct ? 'correct' : 'wrong') : '' };
       });
     },
+    // 计数与错词清单在作答时增量维护，渲染成本不随练习量增长。
     answeredCount() {
-      return Object.keys(this.answers).length;
+      return this.answeredTotal;
     },
     correctCount() {
-      return Object.values(this.answers).filter((entry) => entry.correct).length;
+      return this.correctTotal;
     },
     accuracy() {
       return Math.round((this.correctCount * 100) / Math.max(1, this.answeredCount));
@@ -125,13 +142,14 @@ export default {
     finishedAll() {
       return this.total > 0 && this.answeredCount >= this.total;
     },
-    wrongItems() {
-      const seen = new Set();
-      return Object.values(this.answers).filter((entry) => {
-        if (entry.correct || seen.has(entry.key)) return false;
-        seen.add(entry.key);
-        return true;
-      });
+    visibleWrongItems() {
+      return this.wrongList.slice(0, WRONG_LIST_LIMIT);
+    },
+    hiddenWrongCount() {
+      return Math.max(0, this.wrongList.length - WRONG_LIST_LIMIT);
+    },
+    wrongListLimit() {
+      return WRONG_LIST_LIMIT;
     },
     advice() {
       if (this.accuracy >= 90) return '词义掌握得很稳，可以换成反向练习或听音选义继续巩固。';
@@ -149,35 +167,33 @@ export default {
         .join(' · ');
     },
     isFirstQuestion() {
-      return this.page <= 1 && this.index <= 0;
+      return this.currentPage <= 1 && this.index <= 0;
     },
     isLastQuestion() {
-      return this.page >= this.pages && this.index >= this.items.length - 1;
+      return this.currentPage >= this.pages && this.index >= this.items.length - 1;
     },
     nextLabel() {
       if (this.index < this.items.length - 1) return '下一题';
-      return this.page < this.pages ? '下一页' : '最后一题';
+      return this.currentPage < this.pages ? '下一页' : '最后一题';
     },
   },
   watch: {
     // 换范围会清空年级/主题/词性（每个学段的标签不同），并重新从第 1 页开始。
-    scope() {
-      this.grade = '';
-      this.topic = '';
-      this.partOfSpeech = '';
-      this.answers = {};
-      this.loadPage(1);
-    },
     page() {
-      this.jumpPage = this.page;
+      this.jumpPage = this.currentPage;
+    },
+    // 三个练习页共用同一个组件实例，切方式时要换一套进度。
+    activeMode() {
+      this.switchMode();
     },
   },
   mounted() {
     window.addEventListener('keydown', this.handleKeydown);
-    this.refresh();
+    this.restoreSession();
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeydown);
+    this.flushSession();
   },
   methods: {
     partOfSpeechLabel(value) {
@@ -229,10 +245,18 @@ export default {
         await this.loadFacets();
         await this.loadPage(1);
       });
+      this.persistSession();
     },
     // 换筛选条件会换掉整套题目，所以清空作答记录。
+    // 换范围会清空年级/主题/词性（每个学段的标签不同），并重新从第 1 页开始。
+    async changeScope() {
+      this.grade = '';
+      this.topic = '';
+      this.partOfSpeech = '';
+      await this.applyFilters();
+    },
     async applyFilters() {
-      this.answers = {};
+      this.resetAnswers();
       await this.loadPage(1);
     },
     async clearFilters() {
@@ -252,58 +276,240 @@ export default {
       await this.loadPage(1);
     },
     async restartPractice() {
-      this.answers = {};
+      this.resetAnswers();
       await this.loadPage(1);
+    },
+    // 作答只做一次 O(1) 写入；过去用对象展开重建整份记录，练习到几千词会明显卡顿。
+    recordAnswer(entry) {
+      const previous = this.answers[entry.key];
+      if (previous) {
+        this.answeredTotal -= 1;
+        if (previous.correct) {
+          this.correctTotal -= 1;
+        } else {
+          this.wrongList = this.wrongList.filter((item) => item.key !== entry.key);
+        }
+      }
+      this.answers[entry.key] = entry;
+      this.answeredTotal += 1;
+      if (entry.correct) {
+        this.correctTotal += 1;
+      } else {
+        this.wrongList.push(entry);
+      }
+      this.persistSession();
+    },
+    resetAnswers() {
+      this.answers = {};
+      this.wrongList = [];
+      this.answeredTotal = 0;
+      this.correctTotal = 0;
+    },
+    storageKey() {
+      return `${PRACTICE_STATE_PREFIX}:${this.userId || 'anonymous'}:${this.activeMode}`;
+    },
+    // 只记录重绘清单需要的字段，控制本地存储体积。
+    packedAnswers() {
+      return Object.values(this.answers).map((entry) => ({
+        k: entry.key,
+        c: entry.correct ? 1 : 0,
+        s: entry.selected,
+        a: entry.answer,
+        p: entry.prompt,
+        ty: entry.type,
+        w: entry.word
+          ? {
+              id: entry.word.id,
+              level: entry.word.level,
+              word: entry.word.word,
+              meaning: entry.word.meaning,
+              phonetic: entry.word.phonetic,
+              pos: entry.word.pos,
+              grade: entry.word.grade,
+              topic: entry.word.topic,
+            }
+          : null,
+      }));
+    },
+    sessionSnapshot(entries) {
+      return {
+        v: PRACTICE_STATE_VERSION,
+        updatedAt: Date.now(),
+        scope: this.scope,
+        grade: this.grade,
+        topic: this.topic,
+        partOfSpeech: this.partOfSpeech,
+        sortKey: this.sortKey,
+        seed: this.seed,
+        page: this.currentPage,
+        answers: entries,
+      };
+    },
+    persistSession() {
+      if (this.restoring || !this.boundStorageKey) return;
+      if (this.saveTimer) window.clearTimeout(this.saveTimer);
+      this.saveTimer = window.setTimeout(() => {
+        this.saveTimer = null;
+        this.writeSession();
+      }, 400);
+    },
+    writeSession() {
+      let entries = this.packedAnswers();
+      // 超出浏览器存储配额时丢弃最早的记录，保证最近的练习一定保存得下。
+      for (let attempt = 0; attempt < 5; attempt += 1) {
+        try {
+          window.localStorage.setItem(this.boundStorageKey, JSON.stringify(this.sessionSnapshot(entries)));
+          return;
+        } catch (_) {
+          if (entries.length <= 200) return;
+          entries = entries.slice(Math.ceil(entries.length / 2));
+        }
+      }
+    },
+    flushSession() {
+      if (this.saveTimer) {
+        window.clearTimeout(this.saveTimer);
+        this.saveTimer = null;
+      }
+      if (this.boundStorageKey) this.writeSession();
+    },
+    readSession(key) {
+      let saved = null;
+      try {
+        saved = JSON.parse(window.localStorage.getItem(key) || 'null');
+      } catch (_) {
+        return null;
+      }
+      if (!saved || saved.v !== PRACTICE_STATE_VERSION) return null;
+      if (!Array.isArray(saved.answers) || !saved.answers.length) return null;
+      return saved;
+    },
+    async switchMode() {
+      this.flushSession();
+      this.resetAnswers();
+      this.items = [];
+      this.index = 0;
+      this.total = 0;
+      this.pages = 1;
+      this.page = 1;
+      this.desiredPage = 0;
+      this.ready = false;
+      await this.restoreSession();
+    },
+    restoreSession() {
+      this.boundStorageKey = this.storageKey();
+      const saved = this.readSession(this.boundStorageKey);
+      if (!saved) {
+        this.refresh();
+        return;
+      }
+      this.restoring = true;
+      try {
+        this.scope = saved.scope || 'all';
+        this.grade = saved.grade || '';
+        this.topic = saved.topic || '';
+        this.partOfSpeech = saved.partOfSpeech || '';
+        this.sortKey = saved.sortKey || 'word-asc';
+        this.seed = Number(saved.seed) || 0;
+        this.resetAnswers();
+        saved.answers.forEach((item) => {
+          const word = item.w || {};
+          const key = item.k || wordKey(word);
+          if (!key) return;
+          this.recordAnswer({
+            key,
+            word,
+            prompt: item.p || '',
+            type: item.ty || this.questionType,
+            selected: item.s || '',
+            answer: item.a || '',
+            correct: !!item.c,
+            hint: item.c ? '回答正确，继续保持！' : `正确答案是：${item.a || ''}`,
+          });
+        });
+      } finally {
+        this.restoring = false;
+      }
+      const targetPage = Number(saved.page) || 1;
+      this.run(async () => {
+        await this.loadFacets();
+        await this.loadPage(targetPage);
+      });
     },
     firstUnansweredIndex() {
       const position = this.items.findIndex((item) => !this.answers[wordKey(item.word)]);
       return position < 0 ? 0 : position;
     },
+    clampPage(target) {
+      // 只兜下界：首次加载时 pages 仍是 1，按上界收敛会把恢复的页码压回第 1 页，
+      // 真正的越界由服务端收敛到末页（已有分页测试覆盖）。
+      return Math.max(1, Number(target) || 1);
+    },
+    async fetchSet(page) {
+      const params = new URLSearchParams({
+        level: this.scope,
+        type: this.questionType,
+        topic: this.topic,
+        grade: this.grade,
+        pos: this.partOfSpeech,
+        sort: this.sortKey,
+        size: String(this.pageSize),
+        page: String(page),
+      });
+      if (this.sortKey === 'random') params.set('seed', String(this.seed));
+      const response = await window.fetch(`/api/meaning-quiz?${params}`);
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        const error = new Error(body.error || `请求失败（${response.status}）`);
+        error.status = response.status;
+        throw error;
+      }
+      return response.json();
+    },
+    // 翻页请求串行执行：加载期间再次点击只更新目标页，点击不会被丢掉，也不会并发打爆接口。
     async loadPage(target, options = {}) {
-      const wanted = Math.max(1, Number(target) || 1);
+      this.desiredPage = this.clampPage(target);
+      if (this.loading) return;
       this.loading = true;
+      let position = options.position;
       try {
-        const params = new URLSearchParams({
-          level: this.scope,
-          type: this.questionType,
-          topic: this.topic,
-          grade: this.grade,
-          pos: this.partOfSpeech,
-          sort: this.sortKey,
-          size: String(this.pageSize),
-          page: String(wanted),
-        });
-        if (this.sortKey === 'random') params.set('seed', String(this.seed));
-        const response = await window.fetch(`/api/meaning-quiz?${params}`);
-        if (!response.ok) {
-          const body = await response.json().catch(() => ({}));
-          const error = new Error(body.error || `请求失败（${response.status}）`);
-          error.status = response.status;
-          throw error;
+        for (let guard = 0; guard < 64; guard += 1) {
+          const going = this.desiredPage;
+          const set = await this.fetchSet(going);
+          this.applySet(set, going, position);
+          position = undefined;
+          if (this.desiredPage === going) break;
         }
-        const set = await response.json();
-        this.items = Array.isArray(set.items) ? set.items : [];
-        this.total = set.total || 0;
-        this.pages = Math.max(1, set.pages || 1);
-        this.page = set.page || wanted;
-        this.pageSize = set.size || PAGE_SIZE;
-        this.jumpPage = this.page;
-        const last = this.items.length ? this.items.length - 1 : 0;
-        this.index = options.position === 'last' ? last : this.firstUnansweredIndex();
-        this.ready = true;
-        this.error = '';
-        this.speakCurrent();
       } catch (error) {
-        this.items = [];
-        this.index = 0;
-        this.total = 0;
-        this.pages = 1;
-        this.page = 1;
-        this.ready = true;
-        this.error = this.describeError(error);
+        this.applyLoadError(error);
       } finally {
         this.loading = false;
+        this.desiredPage = 0;
+        this.persistSession();
       }
+    },
+    applySet(set, wanted, position) {
+      this.items = Array.isArray(set.items) ? set.items : [];
+      this.total = set.total || 0;
+      this.pages = Math.max(1, set.pages || 1);
+      this.page = set.page || wanted;
+      this.pageSize = set.size || PAGE_SIZE;
+      this.jumpPage = this.page;
+      const last = this.items.length ? this.items.length - 1 : 0;
+      this.index = position === 'last' ? last : this.firstUnansweredIndex();
+      this.ready = true;
+      this.error = '';
+      this.speakCurrent();
+    },
+    applyLoadError(error) {
+      this.items = [];
+      this.index = 0;
+      this.total = 0;
+      this.pages = 1;
+      this.page = 1;
+      this.desiredPage = 0;
+      this.ready = true;
+      this.error = this.describeError(error);
     },
     async answer(option) {
       if (this.answered || !this.current) return;
@@ -322,19 +528,16 @@ export default {
         });
         const feedback = await response.json();
         if (!response.ok) throw new Error(feedback.error || '提交答案失败');
-        this.answers = {
-          ...this.answers,
-          [key]: {
-            key,
-            word: item.word,
-            prompt: item.prompt,
-            type: item.type,
-            selected: String(option),
-            answer: String(feedback.answer || ''),
-            correct: !!feedback.correct,
-            hint: feedback.correct ? '回答正确，继续保持！' : feedback.message,
-          },
-        };
+        this.recordAnswer({
+          key,
+          word: item.word,
+          prompt: item.prompt,
+          type: item.type,
+          selected: String(option),
+          answer: String(feedback.answer || ''),
+          correct: !!feedback.correct,
+          hint: feedback.correct ? '回答正确，继续保持！' : feedback.message,
+        });
         this.$emit('answered');
       } catch (error) {
         this.error = error.message || '提交答案失败，请重试。';
@@ -349,7 +552,7 @@ export default {
         this.speakCurrent();
         return;
       }
-      if (this.page > 1) this.loadPage(this.page - 1, { position: 'last' });
+      if (this.currentPage > 1) this.loadPage(this.currentPage - 1, { position: 'last' });
     },
     next() {
       if (this.index < this.items.length - 1) {
@@ -357,7 +560,7 @@ export default {
         this.speakCurrent();
         return;
       }
-      if (this.page < this.pages) this.loadPage(this.page + 1);
+      if (this.currentPage < this.pages) this.loadPage(this.currentPage + 1);
     },
     gotoQuestion(position) {
       this.index = position;
@@ -414,7 +617,7 @@ export default {
       </div>
 
       <div class="toolbar meaning-filters">
-        <select v-model="scope" aria-label="练习范围">
+        <select v-model="scope" aria-label="练习范围" @change="changeScope()">
           <option value="all">全部范围（小学 + 初中）</option>
           <option value="primary">小学英语</option>
           <option value="middle">初中英语</option>
@@ -466,11 +669,12 @@ export default {
           </div>
         </section>
         <aside class="meaning-review">
-          <header><span>错词</span><b>{{ wrongItems.length }} 个</b></header>
-          <div v-if="wrongItems.length">
-            <button v-for="item in wrongItems" :key="item.key" @click="openWord(item.word)">
+          <header><span>错词</span><b>{{ wrongList.length }} 个</b></header>
+          <div v-if="wrongList.length">
+            <button v-for="item in visibleWrongItems" :key="item.key" @click="openWord(item.word)">
               <span><b>{{ item.word.word }}</b><small>{{ item.word.meaning }}</small></span><em>查看 →</em>
             </button>
+            <p v-if="hiddenWrongCount" class="meaning-status">只显示最近 {{ wrongListLimit }} 个错词，其余 {{ hiddenWrongCount }} 个已记录在案。</p>
           </div>
           <p v-else>全部答对，不需要额外复习。</p>
         </aside>
@@ -530,15 +734,16 @@ export default {
               <button :disabled="isFirstQuestion" @click="previous()">← 上一题</button>
               <button :disabled="isLastQuestion" @click="next()">{{ nextLabel }} →</button>
             </div>
-            <p v-if="pageAnswered >= items.length && page < pages" class="meaning-status">本页已完成，继续“下一页”接着练。</p>
+            <p v-if="pageAnswered >= items.length && currentPage < pages" class="meaning-status">本页已完成，继续“下一页”接着练。</p>
           </div>
 
           <aside class="meaning-review">
-            <header><span>错词</span><b>{{ wrongItems.length }} 个</b></header>
-            <div v-if="wrongItems.length">
-              <button v-for="item in wrongItems" :key="item.key" @click="openWord(item.word)">
+            <header><span>错词</span><b>{{ wrongList.length }} 个</b></header>
+            <div v-if="wrongList.length">
+              <button v-for="item in visibleWrongItems" :key="item.key" @click="openWord(item.word)">
                 <span><b>{{ item.word.word }}</b><small>{{ item.word.meaning }} · 你的答案：{{ item.selected }}</small></span><em>查看 →</em>
               </button>
+              <p v-if="hiddenWrongCount" class="meaning-status">只显示最近 {{ wrongListLimit }} 个错词，其余 {{ hiddenWrongCount }} 个已记录在案。</p>
             </div>
             <p v-else>还没有错词，继续保持。</p>
             <p class="meaning-status">已练 {{ answeredCount }} / {{ total }} 词 · 答对 {{ correctCount }} 题</p>
@@ -546,11 +751,11 @@ export default {
         </div>
 
         <div v-if="pages > 1" class="pager meaning-pager">
-          <button :disabled="page <= 1" @click="loadPage(1)">首页</button>
-          <button :disabled="page <= 1" @click="loadPage(page - 1)">上一页</button>
-          <span>第 {{ page }} / {{ pages }} 页</span>
-          <button :disabled="page >= pages" @click="loadPage(page + 1)">下一页</button>
-          <button :disabled="page >= pages" @click="loadPage(pages)">末页</button>
+          <button :disabled="currentPage <= 1" @click="loadPage(1)">首页</button>
+          <button :disabled="currentPage <= 1" @click="loadPage(currentPage - 1)">上一页</button>
+          <span>第 {{ currentPage }} / {{ pages }} 页<i v-if="loading" class="meaning-loading">加载中…</i></span>
+          <button :disabled="currentPage >= pages" @click="loadPage(currentPage + 1)">下一页</button>
+          <button :disabled="currentPage >= pages" @click="loadPage(pages)">末页</button>
           <label class="meaning-jump">跳到 <input type="number" min="1" :max="pages" v-model.number="jumpPage" @keyup.enter="loadPage(jumpPage)"> 页</label>
         </div>
       </template>

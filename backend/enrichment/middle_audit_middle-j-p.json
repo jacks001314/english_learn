@@ -1,0 +1,274 @@
+[
+  {
+    "id": "japanese",
+    "meaning": "日本的,日本人的；日本人，日语"
+  },
+  {
+    "id": "jean",
+    "meaning": "琼（女名）"
+  },
+  {
+    "id": "jerry",
+    "meaning": "杰里（男名）；杰丽（女名）"
+  },
+  {
+    "id": "joke",
+    "meaning": "笑话；玩笑；说笑话；开玩笑"
+  },
+  {
+    "id": "knowledge",
+    "meaning": "知识；学问"
+  },
+  {
+    "id": "lab",
+    "meaning": "实验室"
+  },
+  {
+    "id": "lantern",
+    "meaning": "灯笼"
+  },
+  {
+    "id": "laugh",
+    "meaning": "发笑；笑；嘲笑；笑声；笑料"
+  },
+  {
+    "id": "leader",
+    "meaning": "领导；领袖"
+  },
+  {
+    "id": "leave",
+    "meaning": "离开；（过去式 left）"
+  },
+  {
+    "id": "let's",
+    "meaning": "让我们……（let us 的缩写形式）"
+  },
+  {
+    "id": "litter",
+    "meaning": "乱扔；垃圾；废弃物"
+  },
+  {
+    "id": "lively",
+    "meaning": "生气勃勃的；（色彩）鲜艳的"
+  },
+  {
+    "id": "local",
+    "meaning": "当地的；本地的"
+  },
+  {
+    "id": "lock",
+    "meaning": "锁上；锁住"
+  },
+  {
+    "id": "look up to",
+    "meaning": "钦佩"
+  },
+  {
+    "id": "loud",
+    "meaning": "大声的；大声地；响亮地"
+  },
+  {
+    "id": "low",
+    "meaning": "减少的；低的；矮的"
+  },
+  {
+    "id": "mail",
+    "meaning": "邮寄；发电子邮件；邮件"
+  },
+  {
+    "id": "mall",
+    "meaning": "商场；购物中心"
+  },
+  {
+    "id": "master",
+    "meaning": "能手；主人；掌握"
+  },
+  {
+    "id": "material",
+    "meaning": "材料；原料"
+  },
+  {
+    "id": "may",
+    "meaning": "可以;可能;也许"
+  },
+  {
+    "id": "moving",
+    "meaning": "活动的；移动的；动人的"
+  },
+  {
+    "id": "must",
+    "meaning": "必须,应当"
+  },
+  {
+    "id": "mystery",
+    "meaning": "奥秘；神秘事物"
+  },
+  {
+    "id": "neither",
+    "meaning": "二者都不；也不"
+  },
+  {
+    "id": "nine",
+    "meaning": "九"
+  },
+  {
+    "id": "ninth",
+    "meaning": "第九(的)"
+  },
+  {
+    "id": "no",
+    "meaning": "数字；号码（number 的缩写形式）"
+  },
+  {
+    "id": "no matter",
+    "meaning": "不论；无论"
+  },
+  {
+    "id": "noise",
+    "meaning": "声音；噪音"
+  },
+  {
+    "id": "not only … but also",
+    "meaning": "不但……，而且"
+  },
+  {
+    "id": "note",
+    "meaning": "笔记；记录；注意；指出"
+  },
+  {
+    "id": "novel",
+    "meaning": "（长篇）小说"
+  },
+  {
+    "id": "off",
+    "meaning": "离开（某处）；从…去掉"
+  },
+  {
+    "id": "online",
+    "meaning": "在线的；在线地"
+  },
+  {
+    "id": "outside",
+    "meaning": "在外面；外面的"
+  },
+  {
+    "id": "over",
+    "meaning": "超过；多于；在…上方"
+  },
+  {
+    "id": "overcome",
+    "meaning": "克服；战胜（过去式 overcame，过去分词 overcome）"
+  },
+  {
+    "id": "overnight",
+    "meaning": "一夜之间；在夜间"
+  },
+  {
+    "id": "pal",
+    "meaning": "朋友；伙伴"
+  },
+  {
+    "id": "pardon",
+    "meaning": "请再说一遍"
+  },
+  {
+    "id": "partner",
+    "meaning": "搭档；同伴"
+  },
+  {
+    "id": "patient",
+    "meaning": "有耐心的；病人"
+  },
+  {
+    "id": "pattern",
+    "meaning": "模式；方式"
+  },
+  {
+    "id": "paula",
+    "meaning": "葆拉（女名）"
+  },
+  {
+    "id": "pay attention to",
+    "meaning": "注意；关注"
+  },
+  {
+    "id": "pear",
+    "meaning": "梨"
+  },
+  {
+    "id": "peel",
+    "meaning": "剥落；削皮"
+  },
+  {
+    "id": "period",
+    "meaning": "一段时间；时期"
+  },
+  {
+    "id": "physics",
+    "meaning": "物理；物理学"
+  },
+  {
+    "id": "picnic",
+    "meaning": "野餐"
+  },
+  {
+    "id": "pink",
+    "meaning": "粉红色的；粉红色"
+  },
+  {
+    "id": "plan",
+    "meaning": "计划；方法；打算；计划"
+  },
+  {
+    "id": "plastic",
+    "meaning": "塑料的；塑料；塑胶"
+  },
+  {
+    "id": "policeman",
+    "meaning": "男警察"
+  },
+  {
+    "id": "pool",
+    "meaning": "游泳池"
+  },
+  {
+    "id": "position",
+    "meaning": "位置；地方"
+  },
+  {
+    "id": "potato",
+    "meaning": "马铃薯;土豆"
+  },
+  {
+    "id": "pretty",
+    "meaning": "相当地；漂亮的"
+  },
+  {
+    "id": "prevent",
+    "meaning": "阻止；阻挠"
+  },
+  {
+    "id": "price",
+    "meaning": "价格"
+  },
+  {
+    "id": "product",
+    "meaning": "产品；制品"
+  },
+  {
+    "id": "professional",
+    "meaning": "职业的；专业的"
+  },
+  {
+    "id": "pronounce",
+    "meaning": "发音"
+  },
+  {
+    "id": "punish",
+    "meaning": "处罚；惩罚"
+  },
+  {
+    "id": "purpose",
+    "meaning": "目的；目标"
+  }
+]

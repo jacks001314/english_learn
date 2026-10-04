@@ -1,0 +1,74 @@
+[
+  {
+    "source": "chuzhong/vocab/八年级上册.json",
+    "section_index": 7,
+    "index_in_section": 5,
+    "section": "Module 7",
+    "word": "ssh",
+    "field": "word",
+    "old": "ssh",
+    "new": "sh",
+    "reason": "词形拼写错误：教材/词典通行词形为 sh（int. 嘘），音标 /ʃ/ 亦对应 sh；ssh 系多余字母重复（E6）",
+    "confidence": "medium"
+  },
+  {
+    "source": "chuzhong/vocab/八年级上册.json",
+    "section_index": 8,
+    "index_in_section": 20,
+    "section": "Module 8",
+    "word": "worse",
+    "field": "meaning",
+    "old": "更坏，更差，更糟；更糟的是（bad和badlly的比较级）",
+    "new": "更坏，更差，更糟；更糟的是（bad和badly的比较级）",
+    "reason": "释义内英文拼写错误 badlly→badly（E6）",
+    "confidence": "high"
+  },
+  {
+    "source": "chuzhong/vocab/九年级上册.json",
+    "section_index": 1,
+    "index_in_section": 2,
+    "section": "Module 1",
+    "word": "natural",
+    "field": "meaning",
+    "old": "大自然",
+    "new": "自然的；天然的",
+    "reason": "释义与词形不对应：natural 是形容词，'大自然' 是名词 nature 的释义（E7）",
+    "confidence": "high"
+  },
+  {
+    "source": "chuzhong/vocab/九年级上册.json",
+    "section_index": 2,
+    "index_in_section": 33,
+    "section": "Module 2",
+    "word": "parade",
+    "field": "meaning",
+    "old": "（庆祝）旅行",
+    "new": "（庆祝）游行",
+    "reason": "释义与词形不对应：parade 意为'（庆祝）游行'，原释义'（庆祝）旅行'混入 travel 的释义（E7）",
+    "confidence": "high"
+  },
+  {
+    "source": "chuzhong/vocab/九年级上册.json",
+    "section_index": 8,
+    "index_in_section": 23,
+    "section": "Module 8",
+    "word": "sportsperson",
+    "field": "meaning",
+    "old": "亚洲的；亚洲人的",
+    "new": "运动员",
+    "reason": "释义与词形不对应：sportsperson 意为'运动员'，原释义'亚洲的；亚洲人的'是相邻词条 Asian 的释义（E7）",
+    "confidence": "high"
+  },
+  {
+    "source": "chuzhong/vocab/九年级上册.json",
+    "section_index": 12,
+    "index_in_section": 6,
+    "section": "Module 12",
+    "word": "crop",
+    "field": "phonetic",
+    "old": "ˈenəmi",
+    "new": "krɒp",
+    "reason": "音标与词不符：'ˈenəmi' 是相邻前一条 enemy 的音标，串行污染（E2）",
+    "confidence": "high"
+  }
+]

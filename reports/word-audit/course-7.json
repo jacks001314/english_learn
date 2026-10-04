@@ -1,0 +1,28 @@
+[
+  {
+    "source": "chuzhong/vocab/七年级下册.json",
+    "book": "七年级下册",
+    "section_index": 2,
+    "index_in_section": 49,
+    "section": "Unit 2",
+    "word": "surferboard",
+    "field": "word",
+    "old": "surferboard",
+    "new": "surfboard",
+    "reason": "词形拼写错误：英文无 surferboard 一词，音标 ˈsɜːfbɔːd 与释义「冲浪板」均对应 surfboard（E6）",
+    "confidence": "high"
+  },
+  {
+    "source": "chuzhong/vocab/七年级上册.json",
+    "book": "七年级上册",
+    "section_index": 5,
+    "index_in_section": 14,
+    "section": "Unit 5",
+    "word": "product",
+    "field": "meaning",
+    "old": "产品；制品；成果；n.(自然过程或化学反应的生成物",
+    "new": "产品；制品；成果",
+    "reason": "释义尾部残留未闭合的词性片段「n.(自然过程或化学反应的生成物」（括号不配对、义项残缺），应清理（E3/E5）",
+    "confidence": "medium"
+  }
+]

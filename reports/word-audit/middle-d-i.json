@@ -1,0 +1,722 @@
+[
+  {
+    "id": "dead",
+    "index": 640,
+    "field": "meaning",
+    "old": "死的；失去生命的 p.14",
+    "new": "死的；失去生命的",
+    "reason": "释义残留教材页码 p.14（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "deal with",
+    "index": 643,
+    "field": "meaning",
+    "old": "对 付; 应付",
+    "new": "对付; 应付",
+    "reason": "释义中文部分含空白噪声「对 付」，去除空格（E3）",
+    "confidence": "medium"
+  },
+  {
+    "id": "deer",
+    "index": 652,
+    "field": "meaning",
+    "old": "(pl.deer) n 鹿",
+    "new": "(pl.deer) 鹿",
+    "reason": "释义残留词性标记 n（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "degree",
+    "index": 653,
+    "field": "meaning",
+    "old": "（.大学）学位",
+    "new": "（大学）学位",
+    "reason": "释义含残留标点「.」（E3/E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "delicious",
+    "index": 655,
+    "field": "meaning",
+    "old": "可口的.美味 的",
+    "new": "可口的；美味的",
+    "reason": "释义含残留标点「.」与多余空格（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "direct",
+    "index": 684,
+    "field": "meaning",
+    "old": "直接的；直率的p.22",
+    "new": "直接的；直率的",
+    "reason": "释义残留教材页码 p.22（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "discover",
+    "index": 695,
+    "field": "meaning",
+    "old": "发现；发觉 p.3",
+    "new": "发现；发觉",
+    "reason": "释义残留教材页码 p.3（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "dish",
+    "index": 700,
+    "field": "meaning",
+    "old": "碟；盘dishes",
+    "new": "碟；盘",
+    "reason": "释义末尾串入相邻词条 dishes（E2）",
+    "confidence": "high"
+  },
+  {
+    "id": "dislike",
+    "index": 701,
+    "field": "meaning",
+    "old": "不喜欢；厌恶 n.不喜爱；厌恶；反感",
+    "new": "不喜欢；厌恶",
+    "reason": "释义残留词性标记 n.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "divide ... into",
+    "index": 707,
+    "field": "meaning",
+    "old": "把⋯⋯分开 p.46",
+    "new": "把⋯⋯分开",
+    "reason": "释义残留教材页码 p.46（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "do",
+    "index": 708,
+    "field": "meaning",
+    "old": "v. &v. 用于否定句疑问句；做；干",
+    "new": "用于否定句疑问句；做；干",
+    "reason": "释义残留词性标记 v. &v.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "doubt",
+    "index": 726,
+    "field": "meaning",
+    "old": "疑惑；疑问 v. 怀疑",
+    "new": "疑惑；疑问；怀疑",
+    "reason": "释义残留词性标记 v.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "down",
+    "index": 727,
+    "field": "meaning",
+    "old": "ad. v.（坐躺倒）下",
+    "new": "（坐躺倒）下",
+    "reason": "释义残留词性标记 ad. v.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "drum",
+    "index": 745,
+    "field": "meaning",
+    "old": "喇叭",
+    "new": "鼓",
+    "reason": "释义与词形不对应：drum 意为「鼓」而非「喇叭」（E7）",
+    "confidence": "high"
+  },
+  {
+    "id": "early",
+    "index": 760,
+    "field": "meaning",
+    "old": "早的(地)初期",
+    "new": "早的(地)；初期的",
+    "reason": "释义义项粘连、缺少分隔（E3）",
+    "confidence": "medium"
+  },
+  {
+    "id": "earthquake",
+    "index": 763,
+    "field": "meaning",
+    "old": "地震 p.44",
+    "new": "地震",
+    "reason": "释义残留教材页码 p.44（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "east",
+    "index": 765,
+    "field": "meaning",
+    "old": "东方的adv. 向东； n.东方 p.20",
+    "new": "东方的；向东；东方",
+    "reason": "释义残留词性标记与页码 p.20（E1/E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "eight",
+    "index": 776,
+    "field": "meaning",
+    "old": "um. 八",
+    "new": "八",
+    "reason": "释义残留词性标记 um.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "eighteen",
+    "index": 777,
+    "field": "meaning",
+    "old": "um. 十八",
+    "new": "十八",
+    "reason": "释义残留词性标记 um.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "eighteenth",
+    "index": 778,
+    "field": "meaning",
+    "old": "um 第十八",
+    "new": "第十八",
+    "reason": "释义残留词性标记 um（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "eighth",
+    "index": 779,
+    "field": "meaning",
+    "old": "um. 第八",
+    "new": "第八",
+    "reason": "释义残留词性标记 um.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "elder",
+    "index": 784,
+    "field": "meaning",
+    "old": "年级较长的",
+    "new": "年纪较长的",
+    "reason": "释义错别字：年级→年纪（E7）",
+    "confidence": "medium"
+  },
+  {
+    "id": "electronic",
+    "index": 786,
+    "field": "meaning",
+    "old": "a. 电子(设备)的",
+    "new": "电子(设备)的",
+    "reason": "释义残留词性标记 a.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "eleven",
+    "index": 788,
+    "field": "meaning",
+    "old": "um. 十一",
+    "new": "十一",
+    "reason": "释义残留词性标记 um.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "embarrassing",
+    "index": 791,
+    "field": "meaning",
+    "old": "a. 使人害羞的",
+    "new": "使人害羞的",
+    "reason": "释义残留词性标记 a.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "emily",
+    "index": 792,
+    "field": "meaning",
+    "old": "埃米莉（女名） p.28",
+    "new": "埃米莉（女名）",
+    "reason": "释义残留教材页码 p.28（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "enemy",
+    "index": 798,
+    "field": "meaning",
+    "old": "敌人；仇人 p.62",
+    "new": "敌人；仇人",
+    "reason": "释义残留教材页码 p.62（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "energy",
+    "index": 799,
+    "field": "meaning",
+    "old": "精力；力量 p.62",
+    "new": "精力；力量",
+    "reason": "释义残留教材页码 p.62（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "english",
+    "index": 802,
+    "field": "meaning",
+    "old": "英语adj. 英格兰的；英语的",
+    "new": "英语；英格兰的；英语的",
+    "reason": "释义残留词性标记 adj.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "enough",
+    "index": 809,
+    "field": "meaning",
+    "old": "足够的adv.足够地；充分地",
+    "new": "足够的；足够地；充分地",
+    "reason": "释义残留词性标记 adv.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "even though",
+    "index": 819,
+    "field": "meaning",
+    "old": "虽然；即使 p.35",
+    "new": "虽然；即使",
+    "reason": "释义残留教材页码 p.35（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "examine",
+    "index": 835,
+    "field": "meaning",
+    "old": "（.仔细地）检查；检验",
+    "new": "（仔细地）检查；检验",
+    "reason": "释义含残留标点「.」（E3/E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "except",
+    "index": 838,
+    "field": "meaning",
+    "old": "除……之外 conj. 除了；只是",
+    "new": "除……之外；除了；只是",
+    "reason": "释义残留词性标记 conj.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "experience",
+    "index": 850,
+    "field": "meaning",
+    "old": "信任；经历",
+    "new": "经验；经历",
+    "reason": "释义与词形不对应：experience 意为「经验」而非「信任」（E7）",
+    "confidence": "high"
+  },
+  {
+    "id": "express",
+    "index": 855,
+    "field": "meaning",
+    "old": "表示；表达 p.62",
+    "new": "表示；表达",
+    "reason": "释义残留教材页码 p.62（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "expression",
+    "index": 856,
+    "field": "meaning",
+    "old": "表达（方式）；表示 p.3",
+    "new": "表达（方式）；表示",
+    "reason": "释义残留教材页码 p.3（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "faithfully",
+    "index": 865,
+    "field": "meaning",
+    "old": "忠实地；忠诚地p.24",
+    "new": "忠实地；忠诚地",
+    "reason": "释义残留教材页码 p.24（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "fall in love with",
+    "index": 871,
+    "field": "meaning",
+    "old": "爱上；与⋯⋯相爱 p.3",
+    "new": "爱上；与⋯⋯相爱",
+    "reason": "释义残留教材页码 p.3（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "fascinating",
+    "index": 890,
+    "field": "meaning",
+    "old": "a.迷人的；有吸引力的p.21",
+    "new": "迷人的；有吸引力的",
+    "reason": "释义残留词性标记 a. 与页码 p.21（E1/E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "few",
+    "index": 909,
+    "field": "meaning",
+    "old": "很少的；n.少量",
+    "new": "很少的；少量",
+    "reason": "释义残留词性标记 n.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "fifteen",
+    "index": 913,
+    "field": "meaning",
+    "old": "um. 十五",
+    "new": "十五",
+    "reason": "释义残留词性标记 um.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "fifth",
+    "index": 914,
+    "field": "meaning",
+    "old": "um & adj 第五(的)",
+    "new": "第五(的)",
+    "reason": "释义残留词性标记 um & adj（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "fifty",
+    "index": 915,
+    "field": "meaning",
+    "old": "um 五十",
+    "new": "五十",
+    "reason": "释义残留词性标记 um（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "fin",
+    "index": 919,
+    "field": "meaning",
+    "old": "（.鱼）鳍",
+    "new": "（鱼）鳍",
+    "reason": "释义含残留标点「.」（E3/E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "first",
+    "index": 930,
+    "field": "meaning",
+    "old": "um & adv 第一,首先,最初",
+    "new": "第一,首先,最初",
+    "reason": "释义残留词性标记 um & adv（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "five",
+    "index": 937,
+    "field": "meaning",
+    "old": "um 五",
+    "new": "五",
+    "reason": "释义残留词性标记 um（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "fool",
+    "index": 954,
+    "field": "meaning",
+    "old": "蠢人；傻瓜 v. 愚弄adj. 愚蠢的",
+    "new": "蠢人；傻瓜；愚弄；愚蠢的",
+    "reason": "释义残留词性标记 v./adj.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "fork",
+    "index": 967,
+    "field": "meaning",
+    "old": "餐叉，叉子p.33",
+    "new": "餐叉，叉子",
+    "reason": "释义残留教材页码 p.33（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "forty",
+    "index": 969,
+    "field": "meaning",
+    "old": "um四十",
+    "new": "四十",
+    "reason": "释义残留词性标记 um（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "four",
+    "index": 973,
+    "field": "meaning",
+    "old": "um. 四",
+    "new": "四",
+    "reason": "释义残留词性标记 um.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "fourteen",
+    "index": 974,
+    "field": "meaning",
+    "old": "um 十四",
+    "new": "十四",
+    "reason": "释义残留词性标记 um（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "france",
+    "index": 977,
+    "field": "meaning",
+    "old": "/fr{ns/ 法国 p.35",
+    "new": "法国",
+    "reason": "释义混入音标文本 /fr{ns/ 与页码 p.35（E2/E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "fridge",
+    "index": 984,
+    "field": "meaning",
+    "old": "冰箱 p.44",
+    "new": "冰箱",
+    "reason": "释义残留教材页码 p.44（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "fun",
+    "index": 1001,
+    "field": "meaning",
+    "old": "有趣的；使人快乐的n.乐趣；快乐",
+    "new": "有趣的；使人快乐的；乐趣；快乐",
+    "reason": "释义残留词性标记 n.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "garden",
+    "index": 1005,
+    "field": "meaning",
+    "old": "花园；园子 p.11",
+    "new": "花园；园子",
+    "reason": "释义残留教材页码 p.11（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "general",
+    "index": 1008,
+    "field": "meaning",
+    "old": "a. 普遍的；常规的；总的；将军",
+    "new": "普遍的；常规的；总的；将军",
+    "reason": "释义残留词性标记 a.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "germany",
+    "index": 1013,
+    "field": "meaning",
+    "old": "德国 p.36",
+    "new": "德国",
+    "reason": "释义残留教材页码 p.36（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "get...back",
+    "index": 1033,
+    "field": "meaning",
+    "old": "退还；送 回去；取 回",
+    "new": "退还；送回去；取回",
+    "reason": "释义中文部分含空白噪声「送 回去」「取 回」（E3）",
+    "confidence": "medium"
+  },
+  {
+    "id": "glass",
+    "index": 1048,
+    "field": "meaning",
+    "old": "玻璃 p.33",
+    "new": "玻璃",
+    "reason": "释义残留教材页码 p.33（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "grammar",
+    "index": 1087,
+    "field": "meaning",
+    "old": "语法 p.3",
+    "new": "语法",
+    "reason": "释义残留教材页码 p.3（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "grandmother",
+    "index": 1091,
+    "field": "meaning",
+    "old": "（外）祖母；奶奶grandfather /'grænfa:ðə/ n. (外)祖父；爷爷",
+    "new": "（外）祖母；奶奶",
+    "reason": "释义串入相邻词条 grandfather 的音标与释义（E2）",
+    "confidence": "high"
+  },
+  {
+    "id": "grandpa",
+    "index": 1092,
+    "field": "meaning",
+    "old": "（外）祖父；爷爷；外公mom /mɔm/, /ma:m/ n. (=mum)妈妈",
+    "new": "（外）祖父；爷爷；外公",
+    "reason": "释义串入相邻词条 mom 的音标与释义（E2）",
+    "confidence": "high"
+  },
+  {
+    "id": "grass",
+    "index": 1096,
+    "field": "meaning",
+    "old": "草；草地 P.34",
+    "new": "草；草地",
+    "reason": "释义残留教材页码 P.34（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "grey",
+    "index": 1102,
+    "field": "meaning",
+    "old": "a. 阴沉的；昏暗的；灰色的",
+    "new": "阴沉的；昏暗的；灰色的",
+    "reason": "释义残留词性标记 a.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "guard",
+    "index": 1108,
+    "field": "meaning",
+    "old": "警卫；看守v. 守卫；保卫",
+    "new": "警卫；看守；守卫；保卫",
+    "reason": "释义残留词性标记 v.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "halfway",
+    "index": 1119,
+    "field": "meaning",
+    "old": "中途的adv.半路地",
+    "new": "中途的；半路地",
+    "reason": "释义残留词性标记 adv.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "halloween",
+    "index": 1121,
+    "field": "meaning",
+    "old": "万圣节前夕 p.13",
+    "new": "万圣节前夕",
+    "reason": "释义残留教材页码 p.13（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "handbag",
+    "index": 1127,
+    "field": "meaning",
+    "old": "小手提包p.35",
+    "new": "小手提包",
+    "reason": "释义残留教材页码 p.35（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "happen",
+    "index": 1131,
+    "field": "meaning",
+    "old": "i.发生；碰巧；出现；偶遇",
+    "new": "发生；碰巧；出现；偶遇",
+    "reason": "释义残留词性标记 i.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "haunted",
+    "index": 1146,
+    "field": "meaning",
+    "old": "a. 有鬼魂出没的",
+    "new": "有鬼魂出没的",
+    "reason": "释义残留词性标记 a.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "have a try",
+    "index": 1161,
+    "field": "meaning",
+    "old": "尝试；努力；射击",
+    "new": "尝试；试一试",
+    "reason": "释义含无关义项「射击」，与 have a try 不对应（E7）",
+    "confidence": "medium"
+  },
+  {
+    "id": "hey",
+    "index": 1196,
+    "field": "meaning",
+    "old": "嘿;喂(唤起注意.表示惊讶或询问)",
+    "new": "嘿;喂(唤起注意，表示惊讶或询问)",
+    "reason": "释义中文夹用英文句点作停顿（E3）",
+    "confidence": "medium"
+  },
+  {
+    "id": "honor",
+    "index": 1225,
+    "field": "meaning",
+    "old": "(= honour) 尊重；表示敬意 n. 荣幸",
+    "new": "(= honour) 尊重；表示敬意；荣幸",
+    "reason": "释义残留词性标记 v./n.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "hope",
+    "index": 1226,
+    "field": "meaning",
+    "old": "希望；期望；盼望n.希望",
+    "new": "希望；期望；盼望",
+    "reason": "释义末尾残留词性标记 n.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "hundred",
+    "index": 1254,
+    "field": "meaning",
+    "old": "um 百",
+    "new": "百",
+    "reason": "释义残留词性标记 um（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "hundreds of",
+    "index": 1255,
+    "field": "meaning",
+    "old": "许多 ；大量； 成百上千",
+    "new": "许多；大量；成百上千",
+    "reason": "释义中文分号前后含多余空格（E3）",
+    "confidence": "medium"
+  },
+  {
+    "id": "increase",
+    "index": 1302,
+    "field": "meaning",
+    "old": "增加；增长 p.5",
+    "new": "增加；增长",
+    "reason": "释义残留教材页码 p.5（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "intelligent",
+    "index": 1318,
+    "field": "meaning",
+    "old": "a. 有才智的；聪明的",
+    "new": "有才智的；聪明的",
+    "reason": "释义残留词性标记 a.（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "introduction",
+    "index": 1327,
+    "field": "meaning",
+    "old": "介绍 p.32",
+    "new": "介绍",
+    "reason": "释义残留教材页码 p.32（E1）",
+    "confidence": "high"
+  },
+  {
+    "id": "italian",
+    "index": 1338,
+    "field": "meaning",
+    "old": "a. 意大利\\人的；n. 意大利人\\语",
+    "new": "意大利的；意大利人；意大利语",
+    "reason": "释义含排版转义残留「\\」与词性标记 a./n.（E9/E3）",
+    "confidence": "medium"
+  }
+]

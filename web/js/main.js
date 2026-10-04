@@ -2,7 +2,7 @@ import { api, postJSON } from './api.js';
 import { speak } from './speech.js?v=20260905-ipa-r3';
 import HomeView from './components/HomeView.js';
 import LearnView from './components/LearnView.js?v=20260926-pos-r1';
-import MeaningPracticeView from './components/MeaningPracticeView.js?v=20260930-meaning-r1';
+import MeaningPracticeView from './components/MeaningPracticeView.js?v=20261001-meaning-r2';
 import QuizView from './components/QuizView.js';
 import ReportView from './components/ReportView.js';
 import MistakesView from './components/MistakesView.js';
@@ -498,9 +498,9 @@ createApp({
       <home-view v-if="activeView==='home'" :user="currentUser" :stats="stats" :report="report" :review-summary="reviewSummary" :session="learningSession" @navigate="handleNavigate" />
       <smart-learning-view v-else-if="activeView==='smart'" :user-id="currentUser.id" @navigate="handleNavigate" />
       <learn-view v-else-if="activeView==='learn'" v-model:level="level" v-model:query="query" v-model:topic="topic" v-model:grade="grade" v-model:unit="unit" :sort="wordSort" :letter="letter" :part-of-speech="partOfSpeech" :facets="facets" :words="words" :total="total" :page="page" :pages="pages" :mastered-ids="masteredIds" :selected-word="selectedWord" :selected-progress="selectedWordProgress" :continuous-mode="continuousLearning" @update:sort="setWordSort" @search="search" @clear-category="clearCategory" @page="changePage" @speak="speak" @master="markWord" @open="openWord" @close="closeWord" @continuous="setContinuousLearning" @practice="startWordQuiz" />
-      <meaning-practice-view v-else-if="activeView==='meaning-en-zh'" mode="en-zh" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
-      <meaning-practice-view v-else-if="activeView==='meaning-zh-en'" mode="zh-en" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
-      <meaning-practice-view v-else-if="activeView==='meaning-listen'" mode="en-zh" audio-only @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-en-zh'" :user-id="currentUser.id" mode="en-zh" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-zh-en'" :user-id="currentUser.id" mode="zh-en" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-listen'" :user-id="currentUser.id" mode="en-zh" audio-only @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
       <category-view v-else-if="activeView==='categories'" :facets="facets" :level="level" @level="level=$event" @select="selectCategory" />
       <course-view v-else-if="activeView==='course'" @open-grammar="onOpenGrammar" />
       <grammar-view v-else-if="activeView==='grammar'" :user-id="currentUser.id" :target-topic-id="grammarTargetId" />

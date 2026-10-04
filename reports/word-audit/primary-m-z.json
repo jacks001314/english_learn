@@ -1,0 +1,263 @@
+[
+  {
+    "id": "magazine",
+    "index": 655,
+    "field": "meaning",
+    "old": "报纸 阅读杂志",
+    "new": "杂志",
+    "reason": "释义残留相邻词条 newspaper/read a magazine 的内容（报纸 阅读），与词形不符（E2）",
+    "confidence": "high"
+  },
+  {
+    "id": "make",
+    "index": 656,
+    "field": "meaning",
+    "old": "a snowman 堆雪人",
+    "new": "做；制作",
+    "reason": "释义混入相邻词条 make a snowman 的英文残片 a snowman，中文亦错位（E2/E7）",
+    "confidence": "medium"
+  },
+  {
+    "id": "maths",
+    "index": 669,
+    "field": "meaning",
+    "old": "test 数学测试",
+    "new": "数学",
+    "reason": "释义混入相邻词条 test 的英文残片（E2）",
+    "confidence": "high"
+  },
+  {
+    "id": "mice",
+    "index": 680,
+    "field": "meaning",
+    "old": "（mouse的复数）",
+    "new": "老鼠（mouse的复数）",
+    "reason": "释义只有变形说明、没有中文释义（E4）",
+    "confidence": "medium"
+  },
+  {
+    "id": "name",
+    "index": 721,
+    "field": "meaning",
+    "old": "名字名字",
+    "new": "名字",
+    "reason": "释义重复残留“名字名字”（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "own",
+    "index": 783,
+    "field": "meaning",
+    "old": "a. 自己的",
+    "new": "自己的",
+    "reason": "释义残留词性标记 a. （E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "pack",
+    "index": 787,
+    "field": "meaning",
+    "old": "收拾 \\(行李）",
+    "new": "收拾（行李）",
+    "reason": "释义含排版转义残留 \\( 与不闭合括号（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "pay",
+    "index": 801,
+    "field": "meaning",
+    "old": "注意",
+    "new": "付钱；支付",
+    "reason": "词义错位，把短语 pay attention to 的释义“注意”串入 pay（E7）",
+    "confidence": "medium"
+  },
+  {
+    "id": "put on",
+    "index": 871,
+    "field": "meaning",
+    "old": "穿上. put on 动词,表示穿上衣服的动词,强调动作",
+    "new": "穿上",
+    "reason": "释义混入词性/讲解说明文字（E2）",
+    "confidence": "high"
+  },
+  {
+    "id": "reading",
+    "index": 885,
+    "field": "meaning",
+    "old": "a book 正在看书",
+    "new": "正在看书",
+    "reason": "释义混入相邻词条 a book 的英文残片（E2）",
+    "confidence": "high"
+  },
+  {
+    "id": "salty",
+    "index": 916,
+    "field": "meaning",
+    "old": "a. 咸的",
+    "new": "咸的",
+    "reason": "释义残留词性标记 a. （E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "seventh",
+    "index": 949,
+    "field": "meaning",
+    "old": "\\(7th\\) 第七",
+    "new": "第七",
+    "reason": "释义含排版转义残留 \\(7th\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "sing",
+    "index": 978,
+    "field": "meaning",
+    "old": "（过去式sang[sæŋ ]）",
+    "new": "唱歌（过去式sang[sæŋ]）",
+    "reason": "释义只有变形/音标说明、没有中文释义（E4）",
+    "confidence": "medium"
+  },
+  {
+    "id": "sixth",
+    "index": 987,
+    "field": "meaning",
+    "old": "\\(6th\\) 第六",
+    "new": "第六",
+    "reason": "释义含排版转义残留 \\(6th\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "straight",
+    "index": 1056,
+    "field": "meaning",
+    "old": "1. 笔直的;挺直的2、成直线地",
+    "new": "笔直的;挺直的;成直线地",
+    "reason": "释义残留编号噪声 1. 与 2、（E3）",
+    "confidence": "medium"
+  },
+  {
+    "id": "super",
+    "index": 1075,
+    "field": "meaning",
+    "old": "太棒了太",
+    "new": "太棒了",
+    "reason": "释义尾部重复残留“太”（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "swim",
+    "index": 1082,
+    "field": "meaning",
+    "old": "（过去式swam[ swæm]）",
+    "new": "游泳（过去式swam[swæm]）",
+    "reason": "释义只有变形/音标说明、没有中文释义（E4）",
+    "confidence": "medium"
+  },
+  {
+    "id": "take",
+    "index": 1089,
+    "field": "meaning",
+    "old": "（过去式took[tʊk]）",
+    "new": "拿；取（过去式took[tʊk]）",
+    "reason": "释义只有变形/音标说明、没有中文释义（E4）",
+    "confidence": "medium"
+  },
+  {
+    "id": "tenth",
+    "index": 1117,
+    "field": "meaning",
+    "old": "\\(10th\\) 第十",
+    "new": "第十",
+    "reason": "释义含排版转义残留 \\(10th\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "there",
+    "index": 1132,
+    "field": "meaning",
+    "old": "\\(表示存在或发生\\)",
+    "new": "（表示存在或发生）",
+    "reason": "释义含排版转义残留 \\(...\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "third",
+    "index": 1141,
+    "field": "meaning",
+    "old": "a. 第三的",
+    "new": "第三的",
+    "reason": "释义残留词性标记 a. （E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "thirtieth",
+    "index": 1145,
+    "field": "meaning",
+    "old": "\\(30th\\) 第三十",
+    "new": "第三十",
+    "reason": "释义含排版转义残留 \\(30th\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "twenty",
+    "index": 1205,
+    "field": "meaning",
+    "old": "二十一",
+    "new": "二十",
+    "reason": "词义错位：twenty 应为“二十”而非“二十一”（E7）",
+    "confidence": "high"
+  },
+  {
+    "id": "twenty-first",
+    "index": 1206,
+    "field": "meaning",
+    "old": "\\(21st\\) 第二十一",
+    "new": "第二十一",
+    "reason": "释义含排版转义残留 \\(21st\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "twenty-second",
+    "index": 1208,
+    "field": "meaning",
+    "old": "\\(22nd\\) 第二十二",
+    "new": "第二十二",
+    "reason": "释义含排版转义残留 \\(22nd\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "twenty-third",
+    "index": 1209,
+    "field": "meaning",
+    "old": "\\(23rd\\) 第二十三",
+    "new": "第二十三",
+    "reason": "释义含排版转义残留 \\(23rd\\)（E9）",
+    "confidence": "high"
+  },
+  {
+    "id": "uncle",
+    "index": 1216,
+    "field": "meaning",
+    "old": "叔叔，舅舅，婕夫",
+    "new": "叔叔；舅舅；姨夫",
+    "reason": "中文错别字“婕夫”应为“姨夫”（E7）",
+    "confidence": "high"
+  },
+  {
+    "id": "wash the clothes",
+    "index": 1248,
+    "field": "meaning",
+    "old": "洗衣服. .洗衣服",
+    "new": "洗衣服",
+    "reason": "释义重复残留“洗衣服. .洗衣服”（E3）",
+    "confidence": "high"
+  },
+  {
+    "id": "zoo",
+    "index": 1331,
+    "field": "meaning",
+    "old": "动物园动物园",
+    "new": "动物园",
+    "reason": "释义重复残留“动物园动物园”（E3）",
+    "confidence": "high"
+  }
+]

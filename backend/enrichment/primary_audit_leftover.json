@@ -1,0 +1,62 @@
+[
+  {
+    "id": "(fri.)",
+    "word": "Fri."
+  },
+  {
+    "id": "(mon.)",
+    "word": "Mon."
+  },
+  {
+    "id": "(sat.)",
+    "word": "Sat."
+  },
+  {
+    "id": "(sun.)",
+    "word": "Sun."
+  },
+  {
+    "id": "(thu.)",
+    "word": "Thu."
+  },
+  {
+    "id": "(tue.)",
+    "word": "Tue."
+  },
+  {
+    "id": "miss",
+    "meaning": "小姐"
+  },
+  {
+    "id": "mr",
+    "meaning": "先生"
+  },
+  {
+    "id": "north",
+    "meaning": "北方；向北方"
+  },
+  {
+    "id": "off",
+    "meaning": "距；离；离开"
+  },
+  {
+    "id": "put away the clothes",
+    "meaning": "收拾衣服"
+  },
+  {
+    "id": "shelf",
+    "meaning": "书架"
+  },
+  {
+    "id": "sweater",
+    "meaning": "毛衣"
+  },
+  {
+    "id": "these",
+    "meaning": "这些"
+  },
+  {
+    "id": "those",
+    "meaning": "那些"
+  }
+]

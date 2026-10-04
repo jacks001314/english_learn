@@ -1,0 +1,13 @@
+[
+  { "id": "aren't", "meaning": "不是（are not 的缩写形式）" },
+  { "id": "can't", "meaning": "不能；不会（can not 的缩写形式）" },
+  { "id": "children", "meaning": "孩子们（child 的复数形式）" },
+  { "id": "don't", "meaning": "不；不要（do not 的缩写形式）" },
+  { "id": "goes", "meaning": "去；走（go 的第三人称单数现在时）" },
+  { "id": "i'll", "meaning": "我将；我会（I will 的缩写形式）" },
+  { "id": "i'm i am", "meaning": "我是（I am 的缩写形式）" },
+  { "id": "isn't", "meaning": "不是（is not 的缩写形式）" },
+  { "id": "it's", "meaning": "它是；这是（it is 的缩写形式）" },
+  { "id": "there's", "meaning": "有（there is 的缩写形式）" },
+  { "id": "what's", "meaning": "是什么（what is 的缩写形式）" }
+]

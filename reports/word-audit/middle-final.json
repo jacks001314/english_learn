@@ -1,0 +1,83 @@
+[
+  {
+    "id": "around",
+    "index": 141,
+    "field": "word",
+    "old": "around",
+    "new": "around the world",
+    "reason": "E2 释义串入 around the world 的释义；全库无该短语条目，恢复短语词形（id 不变）",
+    "confidence": "medium"
+  },
+  {
+    "id": "around",
+    "index": 141,
+    "field": "meaning",
+    "old": "the world世界各地",
+    "new": "世界各地",
+    "reason": "与 word 修正配套（与 middle-a-c 取值一致）",
+    "confidence": "medium"
+  },
+  {
+    "id": "crow",
+    "index": 612,
+    "field": "meaning",
+    "old": "拥挤",
+    "new": "乌鸦；（公鸡）打鸣；啼叫",
+    "reason": "E7 源释义「拥挤」属 crowded；本词条例句为「一只乌鸦落在旧墙上」，需补回中心义「乌鸦」",
+    "confidence": "high"
+  },
+  {
+    "id": "crow",
+    "index": 612,
+    "field": "pos",
+    "old": "v",
+    "new": "n. & v.",
+    "reason": "与释义配套：乌鸦（n.）+ 打鸣；啼叫（v.）",
+    "confidence": "high"
+  },
+  {
+    "id": "broke",
+    "index": 360,
+    "field": "meaning",
+    "old": "(动词break[breik]的过去时)折断;打破",
+    "new": "(动词 break 的过去时)折断；打破",
+    "reason": "E3/E5 释义内残留音标碎片 [breik] 与英文拼写 break",
+    "confidence": "high"
+  },
+  {
+    "id": "cross",
+    "index": 610,
+    "field": "meaning",
+    "old": "十字形(物),十字记号 v穿过,越过",
+    "new": "十字形（物）；十字记号；穿过，越过",
+    "reason": "E3 释义内残留词性片段「v」",
+    "confidence": "high"
+  },
+  {
+    "id": "differently",
+    "index": 675,
+    "field": "meaning",
+    "old": "不同的",
+    "new": "不同地",
+    "reason": "E7 「的/地」误用：differently 是副词，应为「不同地」",
+    "confidence": "high"
+  },
+  {
+    "id": "eighteenth",
+    "index": 778,
+    "field": "pos",
+    "old": "n",
+    "new": "num",
+    "reason": "E8 词性不一致：同库其它序数词（eighth/fifth/ninth/second/third/twelfth/twentieth）均为 num",
+    "confidence": "high"
+  },
+  {
+    "id": "scrooge",
+    "index": 2195,
+    "field": "meaning",
+    "old": "斯克鲁奇n.（非正式）吝啬鬼",
+    "new": "斯克鲁奇；（非正式）吝啬鬼",
+    "reason": "E3 释义中残留词性片段「n.」",
+    "confidence": "high"
+  }
+]

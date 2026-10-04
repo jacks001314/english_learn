@@ -1,0 +1,137 @@
+[
+  {
+    "id": "(fri.)",
+    "index": 1,
+    "field": "word",
+    "old": "(Fri.)",
+    "new": "Fri.",
+    "reason": "词形被圆括号包裹的星期缩写噪声（E5），去括号保留缩写点",
+    "confidence": "medium"
+  },
+  {
+    "id": "(mon.)",
+    "index": 2,
+    "field": "word",
+    "old": "(Mon.)",
+    "new": "Mon.",
+    "reason": "词形被圆括号包裹的星期缩写噪声（E5），去括号保留缩写点",
+    "confidence": "medium"
+  },
+  {
+    "id": "(sat.)",
+    "index": 3,
+    "field": "word",
+    "old": "(Sat.)",
+    "new": "Sat.",
+    "reason": "词形被圆括号包裹的星期缩写噪声（E5），去括号保留缩写点",
+    "confidence": "medium"
+  },
+  {
+    "id": "(sun.)",
+    "index": 4,
+    "field": "word",
+    "old": "(Sun.)",
+    "new": "Sun.",
+    "reason": "词形被圆括号包裹的星期缩写噪声（E5），去括号保留缩写点",
+    "confidence": "medium"
+  },
+  {
+    "id": "(thu.)",
+    "index": 5,
+    "field": "word",
+    "old": "(Thu.)",
+    "new": "Thu.",
+    "reason": "词形被圆括号包裹的星期缩写噪声（E5），去括号保留缩写点",
+    "confidence": "medium"
+  },
+  {
+    "id": "(tue.)",
+    "index": 6,
+    "field": "word",
+    "old": "(Tue.)",
+    "new": "Tue.",
+    "reason": "词形被圆括号包裹的星期缩写噪声（E5），去括号保留缩写点",
+    "confidence": "medium"
+  },
+  {
+    "id": "miss",
+    "index": 688,
+    "field": "meaning",
+    "old": "小姐.",
+    "new": "小姐",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "mr",
+    "index": 706,
+    "field": "meaning",
+    "old": "先生.",
+    "new": "先生",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "north",
+    "index": 749,
+    "field": "meaning",
+    "old": "北方；向北方.",
+    "new": "北方；向北方",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "off",
+    "index": 763,
+    "field": "meaning",
+    "old": "距；离；离开.",
+    "new": "距；离；离开",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "put away the clothes",
+    "index": 870,
+    "field": "meaning",
+    "old": "收拾衣服.",
+    "new": "收拾衣服",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "shelf",
+    "index": 959,
+    "field": "meaning",
+    "old": "书架.",
+    "new": "书架",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "sweater",
+    "index": 1079,
+    "field": "meaning",
+    "old": "毛衣 .",
+    "new": "毛衣",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "these",
+    "index": 1133,
+    "field": "meaning",
+    "old": "这些.",
+    "new": "这些",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  },
+  {
+    "id": "those",
+    "index": 1154,
+    "field": "meaning",
+    "old": "那些.",
+    "new": "那些",
+    "reason": "释义尾部残留 ASCII 句点/空格噪声（E5），仅删除尾部句点与首尾空格",
+    "confidence": "high"
+  }
+]

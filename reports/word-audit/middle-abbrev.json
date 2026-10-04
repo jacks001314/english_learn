@@ -1,0 +1,13 @@
+[
+  { "id": "aren't", "index": 136, "field": "meaning", "old": "are not 的缩写形式", "new": "不是（are not 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "can't", "index": 404, "field": "meaning", "old": "can not 的缩写形式", "new": "不能；不会（can not 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "children", "index": 474, "field": "meaning", "old": "child的复数形式", "new": "孩子们（child 的复数形式）", "reason": "补全变形词条的中文词义（E9）", "confidence": "high" },
+  { "id": "don't", "index": 722, "field": "meaning", "old": "do not 的缩写形式", "new": "不；不要（do not 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "goes", "index": 1072, "field": "meaning", "old": "go的单数第三人称现在时", "new": "去；走（go 的第三人称单数现在时）", "reason": "补全变形词条的中文词义（E9）", "confidence": "high" },
+  { "id": "i'll", "index": 1262, "field": "meaning", "old": "I will 的缩写形式", "new": "我将；我会（I will 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "i'm i am", "index": 1263, "field": "meaning", "old": "I am的缩写", "new": "我是（I am 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "isn't", "index": 1335, "field": "meaning", "old": "is not 的缩写形式", "new": "不是（is not 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "it's", "index": 1337, "field": "meaning", "old": "it is 的缩写形式", "new": "它是；这是（it is 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "there's", "index": 2581, "field": "meaning", "old": "there is 的缩写形式", "new": "有（there is 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" },
+  { "id": "what's", "index": 2806, "field": "meaning", "old": "what is 的缩写形式", "new": "是什么（what is 的缩写形式）", "reason": "补全缩写词条的中文词义（E9）", "confidence": "high" }
+]

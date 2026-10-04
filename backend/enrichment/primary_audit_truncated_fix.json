@@ -1,0 +1,16 @@
+[
+  { "id": "a", "meaning": "一（用于单数可数名词前）" },
+  { "id": "art", "meaning": "美术；艺术" },
+  { "id": "be", "meaning": "是；成为" },
+  { "id": "dining", "meaning": "用餐；进餐" },
+  { "id": "doing", "meaning": "做；干" },
+  { "id": "easter", "meaning": "复活节" },
+  { "id": "eating", "meaning": "吃" },
+  { "id": "had", "meaning": "have 的过去式；有" },
+  { "id": "keep", "meaning": "保持；保有" },
+  { "id": "kung", "meaning": "功夫；武术" },
+  { "id": "labour", "word": "labour", "meaning": "劳动；劳工" },
+  { "id": "listening", "meaning": "听；倾听" },
+  { "id": "living", "meaning": "生活；居住" },
+  { "id": "reading", "meaning": "阅读；读书" }
+]

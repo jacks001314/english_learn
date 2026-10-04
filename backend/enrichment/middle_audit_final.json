@@ -1,0 +1,32 @@
+[
+  {
+    "id": "around",
+    "word": "around the world",
+    "meaning": "世界各地"
+  },
+  {
+    "id": "broke",
+    "meaning": "(动词 break 的过去时)折断；打破"
+  },
+  {
+    "id": "cross",
+    "meaning": "十字形（物）；十字记号；穿过，越过"
+  },
+  {
+    "id": "crow",
+    "meaning": "乌鸦；（公鸡）打鸣；啼叫",
+    "pos": "n. & v."
+  },
+  {
+    "id": "differently",
+    "meaning": "不同地"
+  },
+  {
+    "id": "eighteenth",
+    "pos": "num"
+  },
+  {
+    "id": "scrooge",
+    "meaning": "斯克鲁奇；（非正式）吝啬鬼"
+  }
+]

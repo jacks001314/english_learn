@@ -1,0 +1,338 @@
+[
+  {
+    "id": "quick",
+    "meaning": "快的；迅速的"
+  },
+  {
+    "id": "quickly",
+    "meaning": "很快地"
+  },
+  {
+    "id": "read",
+    "pos": "v."
+  },
+  {
+    "id": "receive",
+    "meaning": "接受；收到"
+  },
+  {
+    "id": "repeat",
+    "meaning": "重复；重做"
+  },
+  {
+    "id": "request",
+    "meaning": "要求；请求"
+  },
+  {
+    "id": "restroom",
+    "meaning": "（美）洗手间；公共厕所"
+  },
+  {
+    "id": "review",
+    "meaning": "回顾；复习"
+  },
+  {
+    "id": "rush",
+    "meaning": "仓促；急促"
+  },
+  {
+    "id": "second",
+    "meaning": "第二(的)"
+  },
+  {
+    "id": "secret",
+    "meaning": "秘密；秘密的"
+  },
+  {
+    "id": "seem",
+    "meaning": "似乎；好像"
+  },
+  {
+    "id": "senior",
+    "meaning": "级别（或地位）高的"
+  },
+  {
+    "id": "sense",
+    "meaning": "感觉到；意识到；感觉；意识"
+  },
+  {
+    "id": "sentence",
+    "meaning": "句子"
+  },
+  {
+    "id": "seven",
+    "meaning": "七"
+  },
+  {
+    "id": "several",
+    "pos": "adj."
+  },
+  {
+    "id": "share",
+    "meaning": "分享，共享；分配；共有"
+  },
+  {
+    "id": "shelf",
+    "meaning": "架子；搁板"
+  },
+  {
+    "id": "should",
+    "meaning": "(shall的过去式)将,会,应该"
+  },
+  {
+    "id": "show",
+    "meaning": "演出,展览；给...看,出示"
+  },
+  {
+    "id": "shower",
+    "meaning": "淋浴;淋浴器（间）"
+  },
+  {
+    "id": "six",
+    "meaning": "六"
+  },
+  {
+    "id": "sleepy",
+    "meaning": "困倦的；瞌睡的"
+  },
+  {
+    "id": "snow",
+    "meaning": "下雪；雪"
+  },
+  {
+    "id": "something",
+    "meaning": "某事(物)；某东西"
+  },
+  {
+    "id": "sour",
+    "meaning": "酸的；有酸味的"
+  },
+  {
+    "id": "south",
+    "pos": "n & adj"
+  },
+  {
+    "id": "speed",
+    "meaning": "速度；加速"
+  },
+  {
+    "id": "spider",
+    "meaning": "蜘蛛"
+  },
+  {
+    "id": "state",
+    "meaning": "州"
+  },
+  {
+    "id": "still",
+    "meaning": "还；仍然"
+  },
+  {
+    "id": "stranger",
+    "meaning": "陌生人"
+  },
+  {
+    "id": "study",
+    "meaning": "学习；研究"
+  },
+  {
+    "id": "sure",
+    "meaning": "的确，一定；确信的,肯定的"
+  },
+  {
+    "id": "swing",
+    "meaning": "摇摆；秋千；摇摆；旋转"
+  },
+  {
+    "id": "t-shirt",
+    "meaning": "短袖无领汗衫,T恤(衫)"
+  },
+  {
+    "id": "talk",
+    "meaning": "说话；谈话"
+  },
+  {
+    "id": "taste",
+    "meaning": "有…的味道；品尝；味道"
+  },
+  {
+    "id": "tell",
+    "meaning": "告诉,讲述,吩咐"
+  },
+  {
+    "id": "ten",
+    "meaning": "十"
+  },
+  {
+    "id": "think",
+    "pos": "v."
+  },
+  {
+    "id": "third",
+    "meaning": "第三的"
+  },
+  {
+    "id": "thirsty",
+    "meaning": "口渴的；渴望的"
+  },
+  {
+    "id": "thirteen",
+    "meaning": "十三"
+  },
+  {
+    "id": "thirty",
+    "meaning": "三十"
+  },
+  {
+    "id": "thousand",
+    "meaning": "一千"
+  },
+  {
+    "id": "three",
+    "meaning": "三"
+  },
+  {
+    "id": "tie",
+    "meaning": "领带；捆；束"
+  },
+  {
+    "id": "to",
+    "meaning": "(表示方向)到,向；动词不定式符号"
+  },
+  {
+    "id": "today",
+    "meaning": "在今天"
+  },
+  {
+    "id": "tomorrow",
+    "meaning": "在明天"
+  },
+  {
+    "id": "total",
+    "meaning": "总数；合计；总的；全体的"
+  },
+  {
+    "id": "touch",
+    "meaning": "触摸；感动"
+  },
+  {
+    "id": "train",
+    "meaning": "火车"
+  },
+  {
+    "id": "trip",
+    "meaning": "旅行；旅程；绊倒"
+  },
+  {
+    "id": "twelfth",
+    "meaning": "第十二(的)"
+  },
+  {
+    "id": "twelve",
+    "meaning": "十二"
+  },
+  {
+    "id": "twentieth",
+    "meaning": "第二十"
+  },
+  {
+    "id": "twenty",
+    "meaning": "二十"
+  },
+  {
+    "id": "twenty-first",
+    "meaning": "第二十一"
+  },
+  {
+    "id": "two",
+    "meaning": "二"
+  },
+  {
+    "id": "uncle",
+    "meaning": "舅父；叔父；伯父；姑父；姨父"
+  },
+  {
+    "id": "usa n",
+    "word": "USA"
+  },
+  {
+    "id": "usually",
+    "meaning": "通常"
+  },
+  {
+    "id": "valuable",
+    "meaning": "很有用的；宝贵的"
+  },
+  {
+    "id": "value",
+    "meaning": "重视；珍视；价值"
+  },
+  {
+    "id": "victor",
+    "meaning": "维克托（男名）"
+  },
+  {
+    "id": "victory",
+    "meaning": "胜利；成功"
+  },
+  {
+    "id": "warn",
+    "meaning": "警告；告诫"
+  },
+  {
+    "id": "was",
+    "meaning": "是（be(am,is,are)的过去式）"
+  },
+  {
+    "id": "washroom",
+    "meaning": "洗手间；厕所"
+  },
+  {
+    "id": "went",
+    "meaning": "去（动词go的过去式）"
+  },
+  {
+    "id": "were",
+    "meaning": "是（be(are)的过去式）"
+  },
+  {
+    "id": "west",
+    "meaning": "向西；朝西；向西的；西部的；西；西方"
+  },
+  {
+    "id": "will",
+    "meaning": "将,会,要"
+  },
+  {
+    "id": "win",
+    "meaning": "赢；赢得；获胜；获得；胜利"
+  },
+  {
+    "id": "wisely",
+    "meaning": "明智地；聪明地"
+  },
+  {
+    "id": "without doubt",
+    "meaning": "毫无疑问；的确"
+  },
+  {
+    "id": "wolf",
+    "meaning": "狼"
+  },
+  {
+    "id": "women",
+    "meaning": "妇女（woman的复数形式）"
+  },
+  {
+    "id": "wood",
+    "meaning": "树木，木材"
+  },
+  {
+    "id": "yes",
+    "meaning": "(用于肯定回答)是,是的"
+  },
+  {
+    "id": "zero",
+    "meaning": "零"
+  }
+]
