@@ -1937,26 +1937,13 @@
     "word": "as soon as",
     "phonetic": "/əz su:n əz/",
     "pos": "conj. phr.",
-    "meaning": "一…就…，尽快",
+    "meaning": "一……就……；尽快",
     "letter": "A",
     "example": "Call me as soon as you get home.",
     "exampleTranslation": "你一到家就给我打电话。",
     "topic": "通信",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "as soon as conj",
-    "word": "as soon as",
-    "phonetic": "/əz su:n əz/",
-    "pos": "conj. phr.",
-    "meaning": "一……就……",
-    "letter": "A",
-    "example": "As soon as the bell rings, the students leave.",
-    "exampleTranslation": "铃一响，学生们就离开。",
-    "topic": "基础表达",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "as soon as possible",
@@ -4037,7 +4024,7 @@
     "word": "blow",
     "phonetic": "/bləʊ/",
     "pos": "v",
-    "meaning": "吹",
+    "meaning": "吹；吹动",
     "letter": "B",
     "example": "The wind blew the leaves across the road.",
     "exampleTranslation": "风把树叶吹过马路。",
@@ -4057,19 +4044,6 @@
     "topic": "节日",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "blow(blew",
-    "word": "blow",
-    "phonetic": "/blu:/",
-    "pos": "v",
-    "meaning": "吹；吹动",
-    "letter": "B",
-    "example": "The wind blew the leaves across the path.",
-    "exampleTranslation": "风把树叶吹过小路。",
-    "topic": "自然",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "blue",
@@ -6413,7 +6387,7 @@
     "word": "clean",
     "phonetic": "/kli:n/",
     "pos": "v",
-    "meaning": "把...弄干净,擦干净",
+    "meaning": "打扫；弄干净；干净的",
     "letter": "C",
     "example": "Please clean the board before the next lesson.",
     "exampleTranslation": "下一节课前请擦干净黑板。",
@@ -6433,19 +6407,6 @@
     "topic": "学校",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "clean.",
-    "word": "clean",
-    "phonetic": "/kliːn/",
-    "pos": "v.",
-    "meaning": "打扫；弄干净；干净的",
-    "letter": "C",
-    "example": "The kitchen is clean after we washed the floor.",
-    "exampleTranslation": "我们拖地后厨房很干净。",
-    "topic": "家务",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "cleaner",
@@ -8112,24 +8073,11 @@
     "unit": "词条清洗"
   },
   {
-    "id": "dan.ce",
-    "word": "dance",
-    "phonetic": "/dɑːns/",
-    "pos": "v.",
-    "meaning": "跳舞；舞蹈",
-    "letter": "D",
-    "example": "They dance together at the school festival.",
-    "exampleTranslation": "他们在学校节日活动中一起跳舞。",
-    "topic": "艺术",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "dance",
     "word": "dance",
     "phonetic": "/dɑ:ns/",
     "pos": "v",
-    "meaning": "跳舞",
+    "meaning": "跳舞；舞蹈",
     "letter": "D",
     "example": "They danced at the school concert.",
     "exampleTranslation": "他们在学校音乐会上跳舞。",
@@ -9473,24 +9421,11 @@
     "unit": "扩展词汇"
   },
   {
-    "id": "drin.k",
-    "word": "drink",
-    "phonetic": "/drɪŋk/",
-    "pos": "v.",
-    "meaning": "喝；饮料",
-    "letter": "D",
-    "example": "Please drink enough water after exercise.",
-    "exampleTranslation": "锻炼后请喝足够的水。",
-    "topic": "健康",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "drink",
     "word": "drink",
     "phonetic": "/driŋk/",
     "pos": "n \u0026 v",
-    "meaning": "饮料 喝",
+    "meaning": "饮料；喝",
     "letter": "D",
     "example": "Water is the healthiest drink.",
     "exampleTranslation": "水是最健康的饮料。",
@@ -10520,32 +10455,6 @@
     "topic": "基础表达",
     "grade": "八年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "even though conj",
-    "word": "even though",
-    "phonetic": "/'iːvn ðəu/",
-    "pos": "conj. phr.",
-    "meaning": "即使；虽然",
-    "letter": "E",
-    "example": "Even though the task was hard, we finished it.",
-    "exampleTranslation": "即使任务很难，我们也完成了。",
-    "topic": "基础表达",
-    "grade": "八年级",
-    "unit": "词条清洗"
-  },
-  {
-    "id": "even though（=even if）",
-    "word": "even though",
-    "phonetic": "/'iːvn ðəu 'iːvn if/",
-    "pos": "conj. phr.",
-    "meaning": "即使；虽然",
-    "letter": "E",
-    "example": "Even though you are tired, take a short walk.",
-    "exampleTranslation": "即使你累了，也可以短暂散步。",
-    "topic": "基础表达",
-    "grade": "八年级",
-    "unit": "词条清洗"
   },
   {
     "id": "evening",
@@ -14282,24 +14191,11 @@
     "exampleTranslation": "我吃了半个蛋糕。"
   },
   {
-    "id": "half-way adv",
-    "word": "halfway",
-    "phonetic": "/hɑːf weɪ/",
-    "pos": "adv",
-    "meaning": "在途中；半路上",
-    "letter": "H",
-    "example": "We stopped halfway up the hill for a rest.",
-    "exampleTranslation": "我们爬到半山腰时停下来休息。",
-    "topic": "旅行",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "halfway",
     "word": "halfway",
     "phonetic": "/ˌhæf'weɪ/",
     "pos": "adv",
-    "meaning": "中途的；半路地",
+    "meaning": "中途的；半路地；在途中；半路上",
     "letter": "H",
     "example": "We stopped halfway up the mountain.",
     "exampleTranslation": "我们在半山腰停了下来。",
@@ -14514,23 +14410,10 @@
     "word": "hard-working",
     "phonetic": "/hɑːd'wɜːkɪŋ/",
     "pos": "adj.",
-    "meaning": "勤勉的；努力工作的",
+    "meaning": "勤勉的；努力工作的；勤奋的；用功的",
     "letter": "H",
     "example": "Lina is a hard-working student.",
     "exampleTranslation": "莉娜是一名勤奋的学生。"
-  },
-  {
-    "id": "hard-working adj",
-    "word": "hard-working",
-    "phonetic": "/hɑːd'wɜːkɪŋ/",
-    "pos": "adj",
-    "meaning": "勤奋的；用功的",
-    "letter": "H",
-    "example": "The hard-working student reviews every evening.",
-    "exampleTranslation": "这名勤奋的学生每天晚上复习。",
-    "topic": "学习",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "hardly",
@@ -14680,19 +14563,6 @@
     "exampleTranslation": "我因为感冒待在家里。"
   },
   {
-    "id": "have a cold phr. (",
-    "word": "have a cold",
-    "phonetic": "/kəuld/",
-    "pos": "v. phr.",
-    "meaning": "感冒",
-    "letter": "H",
-    "example": "I have a cold and need to stay home.",
-    "exampleTranslation": "我感冒了，需要待在家里。",
-    "topic": "健康",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "have a cough phr. (",
     "word": "have a cough",
     "phonetic": "/hæv ə kɔf/",
@@ -14736,7 +14606,7 @@
     "word": "have a good time",
     "phonetic": "/hæv ə gud taim/",
     "pos": "phr.",
-    "meaning": "过得愉快",
+    "meaning": "过得愉快；玩得愉快",
     "letter": "H",
     "example": "We had a good time at the picnic.",
     "exampleTranslation": "我们在野餐中玩得很开心。",
@@ -14754,19 +14624,6 @@
     "example": "Have a good time at the concert!",
     "exampleTranslation": "祝你在音乐会上玩得开心！",
     "topic": "社交",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
-    "id": "have a good time=enjoy oneself=have fun(doing sth.)",
-    "word": "have a good time",
-    "phonetic": "/hæv ə ɡʊd taɪm ɪnˈdʒɔɪ wʌnˈself hæv fʌn ˈduːɪŋ ˈsʌmθɪŋ/",
-    "pos": "v. phr.",
-    "meaning": "玩得愉快",
-    "letter": "H",
-    "example": "We had a good time playing games together.",
-    "exampleTranslation": "我们一起玩游戏很开心。",
-    "topic": "活动",
     "grade": "七年级",
     "unit": "词条清洗"
   },
@@ -15007,7 +14864,7 @@
     "word": "hear",
     "phonetic": "/hiə/",
     "pos": "v",
-    "meaning": "听见,听说",
+    "meaning": "听见；听说；听到",
     "letter": "H",
     "example": "Can you hear the birds outside?",
     "exampleTranslation": "你能听见外面的鸟叫吗？"
@@ -15024,19 +14881,6 @@
     "topic": "科技",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "hear(heard）",
-    "word": "hear",
-    "phonetic": "/hɪə/",
-    "pos": "v",
-    "meaning": "听到；听见",
-    "letter": "H",
-    "example": "I heard someone call my name.",
-    "exampleTranslation": "我听见有人叫我的名字。",
-    "topic": "基础表达",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "heart",
@@ -15321,19 +15165,6 @@
     "topic": "教育",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "high school n",
-    "word": "high school",
-    "phonetic": "/hai sku:l/",
-    "pos": "n. phr.",
-    "meaning": "中学",
-    "letter": "H",
-    "example": "The high school has a large library.",
-    "exampleTranslation": "这所中学有一个大图书馆。",
-    "topic": "教育",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "hike",
@@ -15816,19 +15647,6 @@
     "topic": "基础表达",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "how are you？",
-    "word": "How are you?",
-    "phonetic": "/hau ɑ: ju:/",
-    "pos": "phr.",
-    "meaning": "你好吗？",
-    "letter": "H",
-    "example": "How are you today, Grandma?",
-    "exampleTranslation": "奶奶，你今天好吗？",
-    "topic": "基础表达",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "how do you do ?",
@@ -17347,19 +17165,6 @@
     "exampleTranslation": "你想加入我们吗？"
   },
   {
-    "id": "join.",
-    "word": "join",
-    "phonetic": "/dʒɒɪn/",
-    "pos": "v.",
-    "meaning": "参加；加入",
-    "letter": "J",
-    "example": "Would you like to join our reading club?",
-    "exampleTranslation": "你愿意加入我们的阅读社团吗？",
-    "topic": "学校",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "joke",
     "word": "joke",
     "phonetic": "/dʒəʊk/",
@@ -18473,26 +18278,13 @@
     "word": "lend",
     "phonetic": "/lend/",
     "pos": "v.",
-    "meaning": "借给，借出",
+    "meaning": "借给；借出",
     "letter": "L",
     "example": "Could you lend me your dictionary?",
     "exampleTranslation": "你能把词典借给我吗？",
     "topic": "学校",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "lend(lent",
-    "word": "lend",
-    "phonetic": "/lent/",
-    "pos": "v",
-    "meaning": "借给；借出",
-    "letter": "L",
-    "example": "She lent me her bicycle yesterday.",
-    "exampleTranslation": "她昨天把自行车借给了我。",
-    "topic": "生活",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "less",
@@ -18568,19 +18360,6 @@
     "topic": "基础表达",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "let's = let us",
-    "word": "let's",
-    "phonetic": "/lets let ʌs/",
-    "pos": "v",
-    "meaning": "让我们……",
-    "letter": "L",
-    "example": "Let's clean the park together.",
-    "exampleTranslation": "让我们一起清理公园。",
-    "topic": "基础表达",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "let's go",
@@ -18913,39 +18692,13 @@
     "word": "living room",
     "phonetic": "/'lɪvɪŋ ru:m/",
     "pos": "n. phr.",
-    "meaning": "客厅",
+    "meaning": "客厅；起居室",
     "letter": "L",
     "example": "Our family watches films in the living room.",
     "exampleTranslation": "我们全家在客厅看电影。",
     "topic": "家居",
     "grade": "七年级",
     "unit": "核心词汇"
-  },
-  {
-    "id": "living room n",
-    "word": "living room",
-    "phonetic": "/'lɪvɪŋ ru:m/",
-    "pos": "n. phr.",
-    "meaning": "起居室；客厅",
-    "letter": "L",
-    "example": "The family watched television in the living room.",
-    "exampleTranslation": "一家人在客厅看电视。",
-    "topic": "家居",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
-    "id": "living-room n",
-    "word": "living room",
-    "phonetic": "/lɪvɪŋ ru:m/",
-    "pos": "n. phr.",
-    "meaning": "起居室；客厅",
-    "letter": "L",
-    "example": "A large sofa stands in the living room.",
-    "exampleTranslation": "客厅里放着一张大沙发。",
-    "topic": "家居",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "local",
@@ -20512,19 +20265,6 @@
     "topic": "教育",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "middle school n",
-    "word": "middle school",
-    "phonetic": "/'midl sku:l/",
-    "pos": "n. phr.",
-    "meaning": "中学",
-    "letter": "M",
-    "example": "The middle school is beside the sports centre.",
-    "exampleTranslation": "这所中学在体育中心旁边。",
-    "topic": "教育",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "midfield",
@@ -22190,23 +21930,10 @@
     "word": "nothing",
     "phonetic": "/'nʌθiŋ/",
     "pos": "pron",
-    "meaning": "没有什么,没有东西",
+    "meaning": "没有什么；没有东西；什么也没有",
     "letter": "N",
     "example": "There is nothing in the empty bag.",
     "exampleTranslation": "空袋子里什么也没有。"
-  },
-  {
-    "id": "nothing(=not…anything)",
-    "word": "nothing",
-    "phonetic": "/'nʌθɪŋ/",
-    "pos": "pron.",
-    "meaning": "什么也没有",
-    "letter": "N",
-    "example": "There is nothing in the box.",
-    "exampleTranslation": "盒子里什么也没有。",
-    "topic": "基础表达",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "notice",
@@ -22314,23 +22041,10 @@
     "word": "o'clock",
     "phonetic": "/ə'klɔk/",
     "pos": "adv",
-    "meaning": "…点钟",
+    "meaning": "…点钟（用于整点）",
     "letter": "O",
     "example": "We eat lunch at twelve o'clock.",
     "exampleTranslation": "我们十二点吃午饭。"
-  },
-  {
-    "id": "o'clock (=of the clock) ad. v",
-    "word": "o'clock",
-    "phonetic": "/ə'klɔk ɔv, əv ði; ðə klɔk æd/",
-    "pos": "adv",
-    "meaning": "点钟（用于整点）",
-    "letter": "O",
-    "example": "The lesson starts at nine o'clock.",
-    "exampleTranslation": "课程九点整开始。",
-    "topic": "时间",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "object",
@@ -22510,23 +22224,10 @@
     "word": "OK",
     "phonetic": "/əu'kei/",
     "pos": "interj.\u0026 adv.",
-    "meaning": "好；可以",
+    "meaning": "好；可以；行",
     "letter": "O",
     "example": "It is OK to ask for help.",
     "exampleTranslation": "寻求帮助是可以的。"
-  },
-  {
-    "id": "ok adv (",
-    "word": "OK",
-    "phonetic": "/əu'kei/",
-    "pos": "int",
-    "meaning": "好；行；可以",
-    "letter": "O",
-    "example": "OK, we can start the lesson now.",
-    "exampleTranslation": "好的，我们现在可以开始上课了。",
-    "topic": "基础表达",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "old",
@@ -22556,7 +22257,7 @@
     "word": "on",
     "phonetic": "/ɔn/",
     "pos": "prep.",
-    "meaning": "在.......上",
+    "meaning": "在……上面",
     "letter": "O",
     "example": "The report is on the teacher's desk.",
     "exampleTranslation": "报告在老师的书桌上。",
@@ -23289,19 +22990,6 @@
     "unit": "扩展词汇"
   },
   {
-    "id": "pain.t",
-    "word": "paint",
-    "phonetic": "/peɪnt/",
-    "pos": "v.",
-    "meaning": "画画；油漆",
-    "letter": "P",
-    "example": "We painted the classroom wall blue.",
-    "exampleTranslation": "我们把教室墙壁刷成了蓝色。",
-    "topic": "艺术",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "painful",
     "word": "painful",
     "phonetic": "/'peinfəl/",
@@ -23319,7 +23007,7 @@
     "word": "paint",
     "phonetic": "/peint/",
     "pos": "v.",
-    "meaning": "用颜料画；刷漆",
+    "meaning": "用颜料画；刷漆；画画；油漆",
     "letter": "P",
     "example": "We paint a picture of the sea.",
     "exampleTranslation": "我们画了一幅大海的画。"
@@ -23754,26 +23442,13 @@
     "word": "pay",
     "phonetic": "/peɪ/",
     "pos": "v",
-    "meaning": "付费",
+    "meaning": "付费；付钱；支付",
     "letter": "P",
     "example": "You can pay for the tickets online.",
     "exampleTranslation": "你可以在线支付票款。",
     "topic": "购物",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "pay (paid",
-    "word": "pay",
-    "phonetic": "/peid/",
-    "pos": "v",
-    "meaning": "付钱；支付",
-    "letter": "P",
-    "example": "I paid for the ticket online.",
-    "exampleTranslation": "我在网上支付了票钱。",
-    "topic": "购物",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "pay attention to",
@@ -23918,19 +23593,6 @@
     "letter": "P",
     "example": "My eraser is in the pencil box.",
     "exampleTranslation": "我的橡皮在铅笔盒里。"
-  },
-  {
-    "id": "pencil-box n",
-    "word": "pencil box",
-    "phonetic": "/'pensl bɔks/",
-    "pos": "n. phr.",
-    "meaning": "铅笔盒",
-    "letter": "P",
-    "example": "My pencil box is in the desk.",
-    "exampleTranslation": "我的铅笔盒在课桌里。",
-    "topic": "学校",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "penguin",
@@ -24954,19 +24616,6 @@
     "exampleTranslation": "我在邮局寄了信。"
   },
   {
-    "id": "post office n",
-    "word": "post office",
-    "phonetic": "/pəʊst ˈɒfɪs/",
-    "pos": "n. phr.",
-    "meaning": "邮局",
-    "letter": "P",
-    "example": "The post office closes at five.",
-    "exampleTranslation": "邮局五点关门。",
-    "topic": "场所",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "postal",
     "word": "postal",
     "phonetic": "/'pəustəl/",
@@ -25140,19 +24789,6 @@
     "exampleTranslation": "词根prehend表示抓住。",
     "topic": "词源",
     "grade": "九年级",
-    "unit": "词条清洗"
-  },
-  {
-    "id": "prep.",
-    "word": "on",
-    "phonetic": "/ˌprepəˈzɪʃən/",
-    "pos": "prep",
-    "meaning": "在……上面",
-    "letter": "P",
-    "example": "The book is on the desk.",
-    "exampleTranslation": "书在桌子上。",
-    "topic": "方位",
-    "grade": "七年级",
     "unit": "词条清洗"
   },
   {
@@ -25783,23 +25419,10 @@
     "word": "put on",
     "phonetic": "/put ɔn/",
     "pos": "phr.",
-    "meaning": "穿上(衣服等),戴上(帽子等)",
+    "meaning": "穿上（衣服等）；戴上（帽子等）；上演；播放",
     "letter": "P",
     "example": "Put on your coat before going outside.",
     "exampleTranslation": "出门前穿上外套。"
-  },
-  {
-    "id": "put on phr. (",
-    "word": "put on",
-    "phonetic": "/put ɔn/",
-    "pos": "v. phr.",
-    "meaning": "上演；播放",
-    "letter": "P",
-    "example": "The drama club will put on a play.",
-    "exampleTranslation": "戏剧社将上演一部戏。",
-    "topic": "艺术",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "put up",
@@ -28516,26 +28139,13 @@
     "word": "shoot",
     "phonetic": "/ʃu:t/",
     "pos": "v.",
-    "meaning": "投篮，射击，发射",
+    "meaning": "投篮；射击；发射",
     "letter": "S",
     "example": "He shot the ball into the basket.",
     "exampleTranslation": "他把球投进篮筐。",
     "topic": "运动",
     "grade": "七年级",
     "unit": "扩展词汇"
-  },
-  {
-    "id": "shoot(shot",
-    "word": "shoot",
-    "phonetic": "/ʃɔt/",
-    "pos": "v",
-    "meaning": "射击；投篮",
-    "letter": "S",
-    "example": "She shot the ball from the edge of the court.",
-    "exampleTranslation": "她从球场边缘投篮。",
-    "topic": "运动",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "shop",
@@ -28884,19 +28494,6 @@
     "unit": "词汇复习"
   },
   {
-    "id": "sin.g",
-    "word": "sing",
-    "phonetic": "/sɪŋ/",
-    "pos": "v.",
-    "meaning": "唱；唱歌",
-    "letter": "S",
-    "example": "The whole class sang together at the school festival.",
-    "exampleTranslation": "全班在校园节上一起唱歌。",
-    "topic": "艺术",
-    "grade": "初中",
-    "unit": "词条清洗"
-  },
-  {
     "id": "since",
     "word": "since",
     "phonetic": "/sins/",
@@ -28914,7 +28511,7 @@
     "word": "sing",
     "phonetic": "/siŋ/",
     "pos": "v",
-    "meaning": "唱,唱歌",
+    "meaning": "唱；唱歌",
     "letter": "S",
     "example": "They sing together in the music room.",
     "exampleTranslation": "他们在音乐教室一起唱歌。"
@@ -29898,7 +29495,7 @@
     "word": "speak",
     "phonetic": "/spi:k/",
     "pos": "v",
-    "meaning": "讲,说",
+    "meaning": "讲；说；说话",
     "letter": "S",
     "example": "Can you speak more slowly?",
     "exampleTranslation": "你能说慢一点吗？"
@@ -29915,19 +29512,6 @@
     "topic": "交流",
     "grade": "初中",
     "unit": "词汇复习"
-  },
-  {
-    "id": "speak spiːk]",
-    "word": "speak",
-    "phonetic": "/spiːk/",
-    "pos": "v.",
-    "meaning": "说；说话",
-    "letter": "S",
-    "example": "Could you speak more slowly, please?",
-    "exampleTranslation": "请你说慢一点好吗？",
-    "topic": "交流",
-    "grade": "初中",
-    "unit": "词条清洗"
   },
   {
     "id": "speaker",
@@ -30979,19 +30563,6 @@
     "exampleTranslation": "今天阳光明亮。"
   },
   {
-    "id": "sun shine",
-    "word": "sunshine",
-    "phonetic": "/sʌn ʃain/",
-    "pos": "n",
-    "meaning": "阳光",
-    "letter": "S",
-    "example": "Warm sunshine filled the classroom through the windows.",
-    "exampleTranslation": "温暖的阳光透过窗户洒满教室。",
-    "topic": "自然",
-    "grade": "初中",
-    "unit": "词条清洗"
-  },
-  {
     "id": "sunburned",
     "word": "sunburned",
     "phonetic": "/ˈsʌnbɜ:nd/",
@@ -31042,7 +30613,7 @@
     "word": "sunshine",
     "phonetic": "/'sʌnʃain/",
     "pos": "n",
-    "meaning": "日光,阳光",
+    "meaning": "日光；阳光",
     "letter": "S",
     "example": "The children played outside in the warm sunshine.",
     "exampleTranslation": "孩子们在温暖的阳光下在外面玩耍。",
@@ -31470,20 +31041,10 @@
     "word": "take off",
     "phonetic": "/teik ɒf/",
     "pos": "phr.",
-    "meaning": "脱下(衣,帽,鞋等)",
+    "meaning": "脱下（衣、帽、鞋等）；（飞机等）起飞；匆忙离开",
     "letter": "T",
     "example": "Please take off your wet coat at the door.",
     "exampleTranslation": "请在门口脱下湿外套。"
-  },
-  {
-    "id": "take off （",
-    "word": "take off",
-    "phonetic": "/teik ɒf/",
-    "pos": "v. phr.",
-    "meaning": "（飞机等）起飞；匆忙离开",
-    "letter": "T",
-    "example": "Our plane took off ten minutes late.",
-    "exampleTranslation": "我们的飞机晚了十分钟起飞。"
   },
   {
     "id": "take one's order",
@@ -31934,20 +31495,10 @@
     "word": "telephone",
     "phonetic": "/'telifəun/",
     "pos": "v",
-    "meaning": "打电话给(某人)",
+    "meaning": "电话；电话机；打电话给（某人）",
     "letter": "T",
     "example": "Please telephone me when you arrive at the station.",
     "exampleTranslation": "你到车站后请给我打电话。"
-  },
-  {
-    "id": "telephone(phone",
-    "word": "telephone",
-    "phonetic": "/fəun/",
-    "pos": "n",
-    "meaning": "电话；电话机",
-    "letter": "T",
-    "example": "The telephone rang while we were having dinner.",
-    "exampleTranslation": "我们吃晚饭时电话响了。"
   },
   {
     "id": "television",
@@ -34719,19 +34270,6 @@
     "exampleTranslation": "我们周末在公园玩。"
   },
   {
-    "id": "weekend.",
-    "word": "weekend",
-    "phonetic": "/wiːk'end/",
-    "pos": "n.",
-    "meaning": "周末",
-    "letter": "W",
-    "example": "We often visit Grandma at the weekend.",
-    "exampleTranslation": "我们经常在周末看望奶奶。",
-    "topic": "时间",
-    "grade": "七年级",
-    "unit": "词条清洗"
-  },
-  {
     "id": "weigh",
     "word": "weigh",
     "phonetic": "/wei/",
@@ -34871,19 +34409,6 @@
     "letter": "W",
     "example": "What is your favorite food?",
     "exampleTranslation": "你最喜欢的食物是什么？"
-  },
-  {
-    "id": "what about...? phr. (",
-    "word": "What about...?",
-    "phonetic": "/hwɔt ə'baut/",
-    "pos": "phr.",
-    "meaning": "……怎么样？",
-    "letter": "W",
-    "example": "What about meeting at the library?",
-    "exampleTranslation": "在图书馆见面怎么样？",
-    "topic": "基础表达",
-    "grade": "七年级",
-    "unit": "词条清洗"
   },
   {
     "id": "what about...?(",

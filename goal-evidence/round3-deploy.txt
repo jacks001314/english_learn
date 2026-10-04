@@ -1,0 +1,34 @@
+第三轮（练习来源筛选）部署与版本一致性核验 —— 2026-10-04
+
+[部署命令]
+powershell -ExecutionPolicy Bypass -File .\scripts\deploy.ps1 -SkipAudioSync
+
+[部署日志 .tmp/deploy-run6.log 尾部]
+Deployment completed.
+Service: english-learn
+Remote root: /opt/english-learn
+Deployed version: 20261004-201343
+
+[远端核验] plink root@www.gbw3bao.com
+$ cat /opt/english-learn/VERSION
+20261004-201343
+$ systemctl is-active english-learn
+active
+$ ls -1 /opt/english-learn/backups | tail -3
+english_learn-20261004-200250.db
+english_learn-20261004-200612.db
+english_learn-20261004-201343.db
+$ ls -l /opt/english-learn/web/js/components/MeaningPracticeView.js
+-rw-rw-rw- 1 root root 35918 2026-10-04 20:13 .../MeaningPracticeView.js
+$ sha256sum /opt/english-learn/web/js/components/MeaningPracticeView.js
+678e47f359eb127b6b5660da060190ea70655a262d684f595dcf882d7f10358b  ...
+
+[本地同一文件]
+local sha256: 678E47F359EB127B6B5660DA060190EA70655A262D684F595DCF882D7F10358B
+size: 35918 bytes
+=> 本地与线上 sha256 完全一致，线上跑的就是本轮源码。
+
+[公网核验]
+GET http://www.gbw3bao.com/api/health -> HTTP 200 {"status":"ok"}
+GET http://www.gbw3bao.com/ 内引用版本号: 20261004-auto-next, 20261004-practice-source-r1
+页面实际加载: http://www.gbw3bao.com/js/main.js?v=20261004-practice-source-r1

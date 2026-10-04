@@ -1,0 +1,104 @@
+第七轮证据 · 部署与线上验证（plan.md 第 42 项）
+================================================
+生成时间：2026-10-04 21:10:44（Asia/Hong_Kong）
+线上：www.gbw3bao.com（nginx → systemd english-learn → /opt/english-learn，:8081）。
+线上 VERSION：20261004-210501；服务启动日志显示 primary words=1361（含新增 30 条），
+公网静态资源已带新版本号，匿名访问受保护接口仍 401。
+注：本轮为验证线上渲染注册了临时账号 verify-r7（详见汇报中的待清理清单）。
+
+一、部署（本轮已执行，命令与结尾输出）
+$ powershell -ExecutionPolicy Bypass -File .\scripts\deploy.ps1 -SkipAudioSync
+  ==> Cross-compile server for linux/amd64
+  Packaged runtime config: config.json
+  Packaged textbook audio: 54 file(s), 26 MB
+  ==> Create deployment archive
+  Staging package ready: .tmp/deploy/english-learn-linux-amd64.tar.gz
+  Checking SSH connection to root@www.gbw3bao.com ...
+  {"status":"ok"}
+  audio http 200, 381166 bytes
+  Deployment completed.  Service: english-learn  Remote root: /opt/english-learn  Deployed version: 20261004-210501
+
+二、服务器端实况（plink 只读探测）
+$ powershell> python -X utf8 .tmp\ssh_probe.py
+=== version (exit 0) ===
+20261004-210501
+=== word-count (exit 0) ===
+1361
+=== new-words (exit 0) ===
+['by subway', 'bought gifts', 'turn left', 'science museum', 'went swimming', 'marker', 'yuan', 'unhealthy']
+=== primary-js (exit 0) ===
+-rw-rw-rw- 1 root root 31583 Oct  4 21:01 /opt/english-learn/web/js/grammar/primary.js
+16
+=== logs (exit 0) ===
+
+=== index-refs (exit 0) ===
+main.js?v=20261004-primary-grammar-r1
+grammar.css?v=20261004-primary-grammar-r1
+=== backups (exit 0) ===
+english-learn-20261004-205025.tar.gz
+english-learn-20261004-205155.tar.gz
+english-learn-20261004-210501.tar.gz
+english_learn-20261004-205025.db
+english_learn-20261004-205155.db
+english_learn-20261004-210501.db
+
+[exit 0]
+
+三、systemd 结构化日志（json 格式，启动时载入的词条数）
+$ powershell> python -X utf8 .tmp\journal_probe.py
+Oct 04 20:52:25 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2856199]: {"time":"2026-10-04T20:52:25.813898384+08:00","level":"INFO","msg":"loaded word dataset","dataset":"middle","words":2895,"path":"/opt/english-learn/backend/middle_school.json"}
+Oct 04 20:52:27 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2856199]: {"time":"2026-10-04T20:52:27.310594556+08:00","level":"INFO","msg":"Application started. Press CTRL+C to shut down.","component":"iris"}
+Oct 04 21:05:31 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2857481]: {"time":"2026-10-04T21:05:31.889629415+08:00","level":"INFO","msg":"loaded word dataset","dataset":"primary","words":1361,"path":"/opt/english-learn/backend/primary_school.json"}
+Oct 04 21:05:31 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2857481]: {"time":"2026-10-04T21:05:31.924114583+08:00","level":"INFO","msg":"loaded word dataset","dataset":"middle","words":2895,"path":"/opt/english-learn/backend/middle_school.json"}
+Oct 04 21:05:33 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2857481]: {"time":"2026-10-04T21:05:33.429268963+08:00","level":"INFO","msg":"Application started. Press CTRL+C to shut down.","component":"iris"}
+
+[exit 0]
+
+四、公网静态资源与守卫接口
+$ powershell> python -X utf8 .tmp\online_probe2.py
+/api/health                      200 len=16      contains(ok)=True
+/index.html                      200 len=3233    contains(main.js?v=20261004-primary-grammar-r1)=True
+/js/grammar/primary.js           200 len=31583   contains(p-be-verb)=True
+/grammar.css                     200 len=23836   contains(.gr2-item.st-card)=True
+/js/components/GrammarView.js    200 len=40040   contains(isCardTopic)=True
+/api/admin/backups               401 (匿名应 401)
+/api/words?level=primary&size=1  401 (匿名应 401)
+
+[exit 0]
+
+五、公网登录态词条 API（verify-r7 账号）
+$ powershell> python -X utf8 .tmp\online_words2.py
+login 200 verify-r7
+q=turn left      200 total 4 [('left', '左边的', '四年级', '方向'), ('turn', '转弯', '四年级', '方向'), ('turn', '转弯；转向', '四年级', '方位'), ('turn left', '向左转', '六年级', '交通')]
+q=bought gifts   200 total 1 [('bought gifts', '买礼物', '六年级', '购物')]
+q=by subway      200 total 1 [('by subway', '乘地铁', '六年级', '交通')]
+q=unhealthy      200 total 1 [('unhealthy', '不健康的', '六年级', '健康')]
+q=yuan           200 total 1 [('yuan', '元（人民币）', '五年级', '购物')]
+detail science museum 200 {"word": "science museum", "phonetic": "/ˈsaɪəns mjuˈziːəm/", "pos": "n. phr.", "meaning": "科学博物馆", "topic": "地点", "grade": "六年级", "unit": "核心词汇", "example": "The science museum is next to the bookstore.", "exampleTranslation": "科学博物馆在书店旁边。"}
+
+[exit 0]
+
+六、公网真实浏览器端到端（headless Chrome，17 项）
+$ powershell> node scripts/e2e-primary-grammar.mjs --base http://www.gbw3bao.com --user verify-r7 --password Verify!2026r7 --shots tmp/online-primary-grammar --out reports/e2e-primary-grammar-online.json
+✓ S1 登录成功：POST /api/auth/login → 200（复用账号）
+✓ S2 导航出现「小学基础」分组：导航分组=["小学基础","入门总览","词法","动词","句法","复合句"]
+✓ S2 知识卡数量为 15：小学基础组条目数=15
+✓ S2 分组顺序：小学基础在最前：第一个分组=小学基础
+✓ S2 状态标记为知识卡：状态=知识卡
+✓ S2 指标区改为知识卡口径：指标=["用法要点:3","正误例句:14","易错提醒:3","记忆卡:2"]
+✓ S2 速查/要点/易错/记忆卡四块渲染：块={"quick":"1","points":"1","pitfalls":"1","memory":"1","lecture":"0","practice":"0"}
+✓ S2 讲义与专项练习隐藏：lecture=0 practice=0
+✓ S2 无「开始练习」按钮：按钮存在=false
+✓ S2 速查卡与正误例句有内容：公式=4 好例=8 错例=6
+✓ S2 记忆卡有内容：记忆卡=["我用 am，你用 are，is 连着他她它。","单数 is，复数 are。"]
+✓ S2 目录不含讲义/专项练习：目录=["速用速查","用法要点 · 3","易错与考法","记忆卡与教材例句"]
+✓ S3 切卡后是小学知识卡：标题=现在进行时 分组=小学基础
+✓ S3 卡片正文是小学内容（be + ing）：nav 计数=知识卡 · 3 个要点
+✓ S4 g-there-be 仍是初中专题：分组=句法 状态=待补讲义 练习=专项练习 共 6 题 · 已答 0/6语篇原句改编3 题第 1 题北京市中考英语
+✓ S4 p-there-be 是小学知识卡：分组=小学基础 状态=知识卡
+✓ S5 全流程无 JS 异常：exceptionThrown/console.error 计数 = 0
+
+结果：17/17 通过
+截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\online-primary-grammar
+
+[exit 0]

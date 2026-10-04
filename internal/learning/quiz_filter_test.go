@@ -29,10 +29,11 @@ func quizDatasets() map[string][]Word {
 // speech, so a 名词 drill must only offer 名词 and 主题筛选 must stay inside the
 // chosen topic.
 func TestFilteredQuizHonoursMetadataFilters(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	service := NewService()
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	service := NewService(store)
 	for _, filter := range []QuizFilter{
 		{Level: "primary", Type: "en-zh", Topic: "运动"},
 		{Level: "primary", Type: "zh-en", PartOfSpeech: "noun"},
@@ -60,10 +61,11 @@ func TestFilteredQuizHonoursMetadataFilters(t *testing.T) {
 }
 
 func TestFilteredQuizScopeAllSpansBothStages(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	service := NewService()
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	service := NewService(store)
 	seen := map[string]bool{}
 	for attempt := 0; attempt < 60; attempt++ {
 		quiz, err := service.FilteredQuiz(QuizFilter{Level: "all", Type: "en-zh"})
@@ -80,10 +82,11 @@ func TestFilteredQuizScopeAllSpansBothStages(t *testing.T) {
 // A topic with fewer than four words must still produce a four-option question
 // instead of failing, and the answer must come from the filtered pool.
 func TestFilteredQuizWidensDistractorsForNarrowFilters(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	quiz, err := NewService().FilteredQuiz(QuizFilter{Level: "primary", Type: "en-zh", Topic: "学习用品"})
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	quiz, err := NewService(store).FilteredQuiz(QuizFilter{Level: "primary", Type: "en-zh", Topic: "学习用品"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -96,21 +99,23 @@ func TestFilteredQuizWidensDistractorsForNarrowFilters(t *testing.T) {
 }
 
 func TestFilteredQuizRejectsPoolsBelowFourWords(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = map[string][]Word{"primary": {{ID: "apple", Word: "apple", Meaning: "苹果"}}}
-	if _, err := NewService().FilteredQuiz(QuizFilter{Level: "primary", Type: "en-zh"}); err == nil {
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = map[string][]Word{"primary": {{ID: "apple", Word: "apple", Meaning: "苹果"}}}
+	if _, err := NewService(store).FilteredQuiz(QuizFilter{Level: "primary", Type: "en-zh"}); err == nil {
 		t.Fatal("a pool of one word must not produce a question")
 	}
 }
 
 func TestWordFacetsMergesEveryStage(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	primary := NewService().WordFacets("primary")
-	middle := NewService().WordFacets("middle")
-	merged := NewService().WordFacets("all")
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	primary := NewService(store).WordFacets("primary")
+	middle := NewService(store).WordFacets("middle")
+	merged := NewService(store).WordFacets("all")
 	if len(merged.Topics) != 5 || len(merged.Grades) != 2 {
 		t.Fatalf("unexpected merged facets: %+v", merged)
 	}
@@ -121,7 +126,7 @@ func TestWordFacetsMergesEveryStage(t *testing.T) {
 	for _, letter := range merged.Letters {
 		total += letter.Count
 	}
-	if total != len(datasets["primary"])+len(datasets["middle"]) {
+	if total != len(store.datasets["primary"])+len(store.datasets["middle"]) {
 		t.Fatalf("letter counts do not cover both stages: %+v", merged.Letters)
 	}
 	if len(merged.PartsOfSpeech) < 4 {
@@ -132,8 +137,9 @@ func TestWordFacetsMergesEveryStage(t *testing.T) {
 // 看词选义 grades against the Chinese meaning, 看义选词 against the English
 // word; both write the answer into the shared quiz progress of their type.
 func TestAnswerQuizGradesEachDirection(t *testing.T) {
-	oldDB, oldIndex := db, wordIndex
-	t.Cleanup(func() { db, wordIndex = oldDB, oldIndex })
+	store := &Store{}
+	oldDB, oldIndex := store.db, store.wordIndex
+	t.Cleanup(func() { store.db, store.wordIndex = oldDB, oldIndex })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "quiz.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -142,10 +148,10 @@ func TestAnswerQuizGradesEachDirection(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	db = database
-	wordIndex = map[string]Word{"primary:apple": {ID: "apple", Word: "apple", Meaning: "苹果", Level: "primary", Status: "published"}}
+	store.db = database
+	store.wordIndex = map[string]Word{"primary:apple": {ID: "apple", Word: "apple", Meaning: "苹果", Level: "primary", Status: "published"}}
 	now := time.Date(2026, 9, 30, 10, 0, 0, 0, time.Local)
-	service := NewService()
+	service := NewService(store)
 
 	feedback, err := service.AnswerQuiz(QuizAnswer{Level: "primary", WordID: "apple", Type: "en-zh", Answer: "苹果"}, now)
 	if err != nil || !feedback.Correct || feedback.Answer != "苹果" {

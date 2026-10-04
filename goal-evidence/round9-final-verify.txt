@@ -1,0 +1,92 @@
+第 9 轮最终复验（continuation turn #8）：目标「完成以上计划内容编码测试」逐条核对
+生成时间（本地）: 2026-10-04T21:54:28
+
+== A. 计划清单：无未完成项 ==
+本地 plan.md 与 Master 同版本（Master etag=c360625e6b5e45c0，size=16951，与本地逐字节一致；无 pending-write）
+未勾选条目数 = 0，已勾选条目数 = 58
+第 85 项（本轮完成项）:- [x] 消除包级可变数据库状态，改为 Repository 实例注入，提升并发安全与可测试性。（**已完成**：`internal/learning` 的 `db` / `datasets` / `wordIndex` 三个包级变量已删除，改为新增的 `internal/learning/store.go` 里的 `Store` 实例持有；`run.go` 用 `openStore(cfg) (*Store, error)` 建唯一 ...
+
+== B. 交付物确实在 Master 上 ==
+- internal/learning/store.go（新增，671 字节，etag=7038ec7720859ad0）
+- internal/learning 其余 58 个文件（project_dir_sync 59/59 成功，476217 字节）
+- goal-evidence/round9-store-refactor.txt、goal-evidence/round9-deploy-online.txt
+- docs/online-verify/README.md（新增「第九轮」章节）、scripts/e2e-report-flow.mjs（S6 抖动修复）、plan.md
+
+== C. 质量门禁（本轮重新执行）==
+$ gofmt -l internal cmd   -> exit=0
+（无输出 = 干净）
+
+$ go build ./...   -> exit=0
+（无输出 = 干净）
+
+$ go vet ./...   -> exit=0
+（无输出 = 干净）
+
+$ go test ./... -count=1   -> exit=0
+?   	english_learn/cmd/autofill	[no test files]
+?   	english_learn/cmd/cleanupcontent	[no test files]
+?   	english_learn/cmd/contentaudit	[no test files]
+?   	english_learn/cmd/contenttasks	[no test files]
+?   	english_learn/cmd/enrichwords	[no test files]
+?   	english_learn/cmd/expandvocab	[no test files]
+?   	english_learn/cmd/learnctl	[no test files]
+?   	english_learn/cmd/mergedb	[no test files]
+?   	english_learn/cmd/reusecontent	[no test files]
+?   	english_learn/cmd/server	[no test files]
+?   	english_learn/cmd/synccontent	[no test files]
+?   	english_learn/cmd/wordcheck	[no test files]
+ok  	english_learn/internal/autofill	0.022s
+ok  	english_learn/internal/contentaudit	0.030s
+ok  	english_learn/internal/contenttasks	0.032s
+ok  	english_learn/internal/enrichment	0.040s
+ok  	english_learn/internal/learning	6.164s
+ok  	english_learn/internal/vocabulary	0.034s
+ok  	english_learn/internal/wordcheck	0.041s
+
+== D. 端到端（本地 :8099，全新数据库）==
+===== e2e-practice-flow（本地 :8099，全新库） (exit=0) =====
+OK   S1 注册并登录：账号 e2e-practice-mutvtpyf → register:200
+OK   S2 练习来源选项：实际 [["","全部单词"],["mistakes","我的错题"],["unmastered","学过但没掌握"]]
+OK   S2 基线计数：全部单词 → 可练习 4590 / 4590 个单词
+OK   S3 制造 2 道错题：[{"id":"a","word":"a","correct":false,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 我的错题计数：筛选后 → 可练习 2 / 4590 个单词
+OK   S3 出的题目来自错词：第 1 题是「a」，错词集合 ["a","a cold"]
+OK   S4 点到正确答案：题号 第 1 / 2 题，正确答案「一（用于单数可数名词前）」
+OK   S4 答对自动下一题（没点下一题按钮）：题号 第 1 / 2 题 → 第 2 / 2 题，反馈「」
+OK   S5 订正后错题清空：{"statuses":[200,200],"total":0}
+OK   S5 页面无 JS 报错：0 个异常
+
+==> 练习流程端到端：10 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\e2e-practice
+
+===== e2e-report-flow --require-admin（本地 :8099） (exit=0) =====
+OK   S1 注册并登录：账号 e2e-report-mutvtse9 → {"status":200,"id":"b826ec33-346c-48a7-a800-b8edf41afa39","role":"student"}
+OK   S2 制造一题答对一题答错：[{"id":"a","word":"a","correct":true,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 学习报告含学习日历（42 格）：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S3 正确率与复习完成率均已展示：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S4 学生访问家长报告被 403 拒绝：{"status":403}
+OK   S5 家长/教师（管理员）会话就绪：{"step":"done","status":200,"rotated":true}
+OK   S6 报告页可选中目标学习者：selected
+OK   S6 只读报告指标齐备：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 正确率 50%：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 只读报告含学习日历：格子 42 · 活跃 1
+OK   S6 薄弱词表列出答错的词：["a cold小学感冒0 / 12026-10-05"]
+OK   S6 报告接口口径一致：{"status":200,"accuracy":50,"correct":1,"wrong":1,"weakest":1,"days":42,"activeDays":1}
+OK   S7 页面无 JS 报错：0 个异常
+
+==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\e2e-report
+
+== E. 线上状态（本轮重新探测）==
+GET /api/health                                => 200 {"status":"ok"} 
+GET /index.html                                => 200（main.js?v=20261004-primary-grammar-r1）
+GET /api/words（匿名）                             => 401 {"error":"请先登录"} 
+POST /api/auth/register（临时账号 verify-r9-3kcov4） => 200 {"user":{"id":"a7771f4e-baae-4a01-8c5d-ec0754ce47f7","username":"verify-r9-3kcov4","displayName":"第九
+GET /api/words?q=subway（登录态）                   => 200 {"items":[{"id":"by subway","word":"by subway","phonetic":"/baɪ ˈsʌbweɪ/","pos":"adv. phr.","meaning":"乘地铁","letter":"B","level":"primary","example":"She goes to work by subway.","exampleTranslation":
+GET /api/words/on?level=middle                 => 200 {"id":"on","word":"on","phonetic":"/ɔn/","pos":"prep.","meaning":"在……上面","letter":"O","level":"middle","example":"The report is on the teacher's desk.","exampleTranslation":"报告在老师的书桌上。","topic":"位置","
+GET /api/meaning-quiz（登录态）                     => 200 {"level":"primary","type":"en-zh","sort":"word-asc","page":1,"size":12,"total":1538,"pages":129,"items":[{"word":{"id":"
+GET /api/admin/users（学生）                       => 403 {"error":"需要管理员权限"} 
+POST /api/auth/login admin/Admin123!（已知被改）     => 401 {"error":"用户名或密码错误"}
+
+VERSION=20261004-214555，systemd english-learn = active
+

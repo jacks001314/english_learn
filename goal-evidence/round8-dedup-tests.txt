@@ -1,0 +1,146 @@
+==============================================================================
+R8-1 重复项盘点：词形相同、ID 不同的真实数据缺陷
+==============================================================================
+$ python .tmp/dedupplan2.py
+primary : 16 组重复（含 1 组 3 条），需要把被删条目的释义并入保留条目的有 9 组
+middle  : 35 组重复（含 2 组 3 条），需要合并释义的有 24 组
+待删条目合计：primary 17 + middle 37 = 54，与 cmd/wordcheck 的 54 条 duplicate_word 警告一一对应
+
+==============================================================================
+R8-2 在临时副本上重放同步（第一次：删掉 54 条重复项）
+==============================================================================
+$ go run ./cmd/synccontent -root .tmp/evidence-r8
+synced primary_dedup_merges.json 9 records
+retired primary_dedup_retire.json 17 records (0 already absent)
+synced middle_dedup_merges.json 24 records
+retired middle_dedup_retire.json 37 records (0 already absent)
+
+==============================================================================
+R8-3 幂等性：同一副本连跑两次同步
+==============================================================================
+$ go run ./cmd/synccontent -root .tmp/evidence-r8   # 第二次
+synced primary_dedup_merges.json 9 records
+retired primary_dedup_retire.json 0 records (17 already absent)
+synced middle_dedup_merges.json 24 records
+retired middle_dedup_retire.json 0 records (37 already absent)
+
+第一次后 primary sha1 = 11afe05882f4278dd2ef3e941e1ed84c3e5e57fb
+第二次后 primary sha1 = 11afe05882f4278dd2ef3e941e1ed84c3e5e57fb
+第一次后 middle  sha1 = ec91e0a562b66be25122396dce43b1f33ba84dcd
+第二次后 middle  sha1 = ec91e0a562b66be25122396dce43b1f33ba84dcd
+结果：逐字节一致（第二次是纯 no-op）
+
+==============================================================================
+R8-4 对齐前后逐字段比对（.tmp/pre-dedup vs backend，用 retire 的 replacedBy 解析保留条目）
+==============================================================================
+$
+ 
+p
+y
+t
+h
+o
+n
+ 
+.
+t
+m
+p
+/
+d
+i
+f
+f
+d
+e
+d
+u
+p
+2
+.
+p
+y
+== primary: before=1361 after=1344 removed=17 added=0
+   removed ids (17): ['fɑ:ðə ] (', 'no. problem', 'ship：', 'subway：', 't-shirt t', "teacher's", 'teacher,s desk', 'teacher,s-office', "teachers'", 'the', 'then：', 'tomoto', 'traffic：', 'train：', 'tried', 'turn：', 'work.']
+   added ids: []
+   除 meaning 外的字段漂移: {}
+   meaning 更新（9 条）: {"grandfather": ["（外）祖父", "祖父；外祖父"], "ship": ["（大）船；轮船", "船；轮船；舰"], "teacher's desk": ["讲台", "讲台；教师的桌子"], "then": ["然后,接着", "然后；接着"], "tired": ["疲倦的", "疲倦的；疲劳的；累的"], "tomato": ["西红柿", "西红柿；番茄"], "traffic": ["交通", "交通；来往车辆"], "turn": ["转弯", "转弯；转向"], "work": ["工作", "工作；劳动"]}
+   被删条目的保留条目均存在且音标/例句齐全: 是
+   被删条目是否携带 senses（会丢分义）: 无
+
+== middle: before=2895 after=2858 removed=37 added=0
+   removed ids (37): ['as soon as conj', 'blow(blew', 'clean.', 'dan.ce', 'drin.k', 'even though conj', 'even though（=even if）', 'half-way adv', 'hard-working adj', 'have a cold phr. (', 'have a good time=enjoy oneself=have fun(doing sth.)', 'hear(heard）', 'high school n', 'how are you？', 'join.', 'lend(lent', "let's = let us", 'living room n', 'living-room n', 'middle school n', 'nothing(=not…anything)', "o'clock (=of the clock) ad. v", 'ok adv (', 'pain.t', 'pay (paid', 'pencil-box n', 'post office n', 'prep.', 'put on phr. (', 'shoot(shot', 'sin.g', 'speak spiːk]', 'sun shine', 'take off （', 'telephone(phone', 'weekend.', 'what about...? phr. (']
+   added ids: []
+   除 meaning 外的字段漂移: {}
+   meaning 更新（24 条）: {"as soon as": ["一…就…，尽快", "一……就……；尽快"], "blow": ["吹", "吹；吹动"], "clean": ["把...弄干净,擦干净", "打扫；弄干净；干净的"], "dance": ["跳舞", "跳舞；舞蹈"], "drink": ["饮料 喝", "饮料；喝"], "halfway": ["中途的；半路地", "中途的；半路地；在途中；半路上"], "hard-working": ["勤勉的；努力工作的", "勤勉的；努力工作的；勤奋的；用功的"], "have a good time": ["过得愉快", "过得愉快；玩得愉快"], "hear": ["听见,听说", "听见；听说；听到"], "lend": ["借给，借出", "借给；借出"], "living room": ["客厅", "客厅；起居室"], "nothing": ["没有什么,没有东西", "没有什么；没有东西；什么也没有"], "o'clock": ["…点钟", "…点钟（用于整点）"], "ok": ["好；可以", "好；可以；行"], "on": ["在.......上", "在……上面"], "paint": ["用颜料画；刷漆", "用颜料画；刷漆；画画；油漆"], "pay": ["付费", "付费；付钱；支付"], "put on": ["穿上(衣服等),戴上(帽子等)", "穿上（衣服等）；戴上（帽子等）；上演；播放"], "shoot": ["投篮，射击，发射", "投篮；射击；发射"], "sing": ["唱,唱歌", "唱；唱歌"], "speak": ["讲,说", "讲；说；说话"], "sunshine": ["日光,阳光", "日光；阳光"], "take off": ["脱下(衣,帽,鞋等)", "脱下（衣、帽、鞋等）；（飞机等）起飞；匆忙离开"], "telephone": ["打电话给(某人)", "电话；电话机；打电话给（某人）"]}
+   被删条目的保留条目均存在且音标/例句齐全: 是
+   被删条目是否携带 senses（会丢分义）: 无
+
+==============================================================================
+R8-5 go test ./... -count=1
+==============================================================================
+?   	english_learn/cmd/autofill	[no test files]
+?   	english_learn/cmd/cleanupcontent	[no test files]
+?   	english_learn/cmd/contentaudit	[no test files]
+?   	english_learn/cmd/contenttasks	[no test files]
+?   	english_learn/cmd/enrichwords	[no test files]
+?   	english_learn/cmd/expandvocab	[no test files]
+?   	english_learn/cmd/learnctl	[no test files]
+?   	english_learn/cmd/mergedb	[no test files]
+?   	english_learn/cmd/reusecontent	[no test files]
+?   	english_learn/cmd/server	[no test files]
+?   	english_learn/cmd/synccontent	[no test files]
+?   	english_learn/cmd/wordcheck	[no test files]
+ok  	english_learn/internal/autofill	0.022s
+ok  	english_learn/internal/contentaudit	0.030s
+ok  	english_learn/internal/contenttasks	0.034s
+ok  	english_learn/internal/enrichment	0.038s
+ok  	english_learn/internal/learning	7.480s
+ok  	english_learn/internal/vocabulary	0.029s
+ok  	english_learn/internal/wordcheck	0.038s
+
+==============================================================================
+R8-6 go run ./cmd/wordcheck（scripts/ci.ps1 现在默认 -fail-on=warning）
+==============================================================================
+# 词库质量报告
+
+本报告由 `go run ./cmd/wordcheck` 自动生成。错误应优先修复，警告需要人工复核。
+
+## 汇总
+
+| 文件 | 词条数 | 错误 | 警告 |
+| --- | ---: | ---: | ---: |
+| `backend/primary_school.json` | 1344 | 0 | 0 |
+| `backend/middle_school.json` | 2858 | 0 | 0 |
+
+## 问题明细
+
+未发现问题。
+
+==============================================================================
+R8-7 go run ./cmd/contentaudit
+==============================================================================
+backend/primary_school.json: words=1344 missing_phonetic=0 missing_audio=1344 missing_examples=0 multi_sense=80 senses_without_examples=0 template_examples=0
+backend/middle_school.json: words=2858 missing_phonetic=0 missing_audio=2858 missing_examples=0 multi_sense=30 senses_without_examples=0 template_examples=0
+
+==============================================================================
+R8-8 完整门禁：scripts/ci.ps1 -E2EBase http://127.0.0.1:8099
+==============================================================================
+==> Lingo Bloom CI 质量门禁
+    root: C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project
+[PASS] Go - gofmt -l internal cmd : 格式干净
+[PASS] Go - go vet ./...
+[PASS] Go - go test ./... -count=1 : ok  	english_learn/internal/wordcheck	0.037s
+[PASS] Go - go run ./cmd/wordcheck（warning 级阻断） : word quality report written to reports/word-quality.md
+[PASS] Go - go run ./cmd/contentaudit : backend/middle_school.json: words=2858 missing_phonetic=0 missing_audio=2858 missing_examples=0 multi_sense=30 senses_without_examples=0 template_examples=0
+[PASS] Frontend - node --check（51 个文件） : 全部通过
+[PASS] Frontend - check-nav-hash.mjs : ✅ 主侧栏 hash 解析自检通过
+[PASS] Frontend - check-grammar-ia.mjs : ✅ 信息架构自检通过
+[PASS] Frontend - check-grammar-duplication.mjs :   g-nouns / g-prepositions / g-conjunctions 各 1 张、g-past-simple 2 张）；单卡 forms 公式卡与部分覆盖卡保留。
+[PASS] E2E - e2e-practice-flow.mjs :     截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\.tmp\e2e-ci
+[PASS] E2E - e2e-primary-grammar.mjs : 截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\.tmp\e2e-ci-primary-grammar
+[PASS] E2E - e2e-grammar-entry.mjs : 结果：7/7 通过
+
+==> 结果：12 步通过 / 0 步失败
+所有质量门禁通过。
+

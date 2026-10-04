@@ -1,0 +1,35 @@
+# 线上 UI 端到端（Chrome，http://www.gbw3bao.com，账号 autoquiz-live）
+
+## 1. 流式渲染（MutationObserver 记录回答气泡文本长度）
+修复后：updates = 35，lengths = [21,76,80,89,98,104,116,132,135,162,168,174,185,200,217,222,236,242,251,261,284,300,317,324,331,367,370,382,393,408,411,415,422,427,449]
+首 8 条：21@12446ms, 76@12510ms, 80@12529ms, 89@12542ms, 98@12553ms, 104@12566ms, 116@12597ms, 132@12606ms
+修复前：同一测法只有 1–2 次长度变化（7 -> 609），文字在结束时一次性出现。
+
+## 2. 主动轻提示
+连错：
+  shownAfterOneWrong = false
+  presentAfterTwoWrong = true
+  title = 连错两题了
+  detail = 停下来一分钟，让助教把这两个词的差别讲清楚，再继续练。
+  buttons = [讲讲我错在哪, 去错题本, 知道了]
+  hiddenAfterDismiss = true
+  style = {position: fixed, right: 22px, bottom: 82px, zIndex: 59, borderLeft: rgb(49,92,221)}
+连对：
+  shownBeforeFive = false ; fifthReturned = correct-streak
+  title = 连对五题，状态不错 ; buttons = [出 3 道同类题, 看学习报告, 知道了]
+冷却：同类提示冷却期内再次触发返回 null，DOM 不再出现。
+（noteReviewEntered 对本次测试账号返回 null，因为该账号今日到期词为 0，未在线上触发该分支。）
+
+## 3. 上下文总线单例（修复验证）
+sameStoreObjectAcrossUrls = true
+（修复前：main.js 用 ?v= 引入、组件用裸路径引入，浏览器加载成两个模块实例，
+  实测“往裸路径的 store 写 milestone，组件完全不渲染”。）
+
+## 4. 变式练习（quickAction=drill，线上真实模型）
+itemCount = 3
+item1: q=bit           options=[一点儿,小片 / 吃完,吃光 / 充满....的 / 少量(的),一点]  answer=一点儿,小片
+item2: q=one(large)bowl of  options=[充满....的 / 一（大）碗 / 少量(的),一点 / 吃完,吃光] answer=一（大）碗
+item3: q=be full (of)  options=[少量(的),一点 / 充满....的 / 一（大）碗 / 吃完,吃光] answer=充满....的
+→ 每题 4 个选项互不重复，且包含正确答案（修复了此前「感冒」与「感冒;伤风」同时作选项的问题）
+focus = 学生把表示“少量、一点”的 a bit (of) 与其他含 of 的数量/状态短语混在一起…
+→ focus 引用了学生实际混淆点，证明页面上下文已送达服务端

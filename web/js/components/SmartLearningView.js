@@ -1,5 +1,5 @@
 import { api } from "../api.js";
-import { sortedTopics, exercisesByTopic, loadGrammarProgress, topicMastery, groupLabel } from "../grammar/index.js?v=20260928-grammar-p3-r4";
+import { sortedTopics, exercisesByTopic, loadGrammarProgress, topicMastery, groupLabel } from "../grammar/index.js?v=20261004-primary-grammar-r1";
 
 export default {
   emits: ["navigate"],

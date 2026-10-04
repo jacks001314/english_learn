@@ -10,8 +10,9 @@ import (
 )
 
 func TestArticlesAreStoredAndReadFromDatabase(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "articles.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -20,27 +21,27 @@ func TestArticlesAreStoredAndReadFromDatabase(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	db = database
+	store.db = database
 
 	items := []Article{{
 		ID: "ai-teacher", Title: "Can AI Be a Good Teacher?", ChineseTitle: "人工智能能成为好老师吗？",
 		Grade: "八年级", Topic: "人工智能", Paragraphs: []ArticleParagraph{{English: "AI can help.", Chinese: "人工智能可以提供帮助。"}},
 	}}
-	if err := upsertArticles(items); err != nil {
+	if err := store.upsertArticles(items); err != nil {
 		t.Fatal(err)
 	}
-	if err := upsertArticles(items); err != nil {
+	if err := store.upsertArticles(items); err != nil {
 		t.Fatal(err)
 	}
 
-	all, err := readArticles()
+	all, err := store.readArticles()
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(all) != 1 || all[0].Topic != "人工智能" || len(all[0].Paragraphs) != 1 {
 		t.Fatalf("unexpected articles: %+v", all)
 	}
-	item, ok, err := readArticle("AI-TEACHER")
+	item, ok, err := store.readArticle("AI-TEACHER")
 	if err != nil || !ok || item.ChineseTitle == "" {
 		t.Fatalf("unexpected article: %+v, ok=%v, err=%v", item, ok, err)
 	}
@@ -51,8 +52,9 @@ func TestArticlesAreStoredAndReadFromDatabase(t *testing.T) {
 }
 
 func TestImportArticleFileSeedsDatabase(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "seed.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -66,7 +68,8 @@ func TestImportArticleFileSeedsDatabase(t *testing.T) {
 	if err := os.WriteFile(path, raw, 0600); err != nil {
 		t.Fatal(err)
 	}
-	if err := importArticleFile(database, path); err != nil {
+	store.db = database
+	if err := store.importArticleFile(path); err != nil {
 		t.Fatal(err)
 	}
 	stats, err := contentLibraryStats(database)
@@ -76,8 +79,9 @@ func TestImportArticleFileSeedsDatabase(t *testing.T) {
 }
 
 func TestUpsertArticlesValidatesRequiredFields(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "invalid.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -86,8 +90,8 @@ func TestUpsertArticlesValidatesRequiredFields(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	db = database
-	if err := upsertArticles([]Article{{ID: "missing-title"}}); err == nil {
+	store.db = database
+	if err := store.upsertArticles([]Article{{ID: "missing-title"}}); err == nil {
 		t.Fatal("expected validation error")
 	}
 }

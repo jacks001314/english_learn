@@ -1,0 +1,89 @@
+==============================================================================
+R8-9 部署
+==============================================================================
+命令： powershell -ExecutionPolicy Bypass -File .\scripts\deploy.ps1 -SkipAudioSync
+结果： Deployment completed. / Service: english-learn / Remote root: /opt/english-learn / Deployed version: 20261004-212330
+线上 VERSION = 20261004-212330
+服务时间 = Sun 2026-10-04 21:24:17 CST（active）
+
+==============================================================================
+R8-10 线上词库 = 去重后数据
+==============================================================================
+primary=1344 middle=2858
+sampled retired ids still present: []
+on      = 在……上面
+take off= 脱下（衣、帽、鞋等）；（飞机等）起飞；匆忙离开
+telephone= 电话；电话机；打电话给（某人）
+
+==============================================================================
+R8-11 服务启动日志（journalctl -u english-learn）
+==============================================================================
+Oct 04 21:24:18 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2859648]: {"time":"2026-10-04T21:24:18.033172787+08:00","level":"INFO","msg":"loaded word dataset","dataset":"middle","words":2858,"path":"/opt/english-learn/backend/middle_school.json"}
+Oct 04 21:24:19 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2859648]: {"time":"2026-10-04T21:24:19.075878074+08:00","level":"INFO","msg":"english-learn listening","addr":":8081","db":"/opt/english-learn/english_learn.db","backupsDir":"/opt/english-learn/backups","logLevel":"info","logFormat":"json"}
+Oct 04 21:24:19 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2859648]: {"time":"2026-10-04T21:24:19.078715017+08:00","level":"INFO","msg":"Now listening on:","component":"iris"}
+
+==============================================================================
+R8-12 部署一致性：本地 SHA1 = 线上 SHA1
+==============================================================================
+backend/primary_school.json                          local=11afe05882f4278dd2ef3e941e1ed84c3e5e57fb online=11afe05882f4278dd2ef3e941e1ed84c3e5e57fb 一致
+backend/middle_school.json                           local=ec91e0a562b66be25122396dce43b1f33ba84dcd online=ec91e0a562b66be25122396dce43b1f33ba84dcd 一致
+backend/enrichment/primary_dedup_merges.json         local=ab6307cd583d129ffd2aaded48b75ac38d6d9f26 online=ab6307cd583d129ffd2aaded48b75ac38d6d9f26 一致
+backend/enrichment/primary_dedup_retire.json         local=1146d5d882b855514eeb8503066fadb048c9cd53 online=1146d5d882b855514eeb8503066fadb048c9cd53 一致
+backend/enrichment/middle_dedup_merges.json          local=25799e39ac044c7824a212041ac9d76ff08cbb78 online=25799e39ac044c7824a212041ac9d76ff08cbb78 一致
+backend/enrichment/middle_dedup_retire.json          local=caf63453279206acee62d48a582bc7051dd63e89 online=caf63453279206acee62d48a582bc7051dd63e89 一致
+README.md                                            local=33865d6a5aa572cc63089931641dda09c989dd7d online=33865d6a5aa572cc63089931641dda09c989dd7d 一致
+
+（scripts/ci.ps1、plan.md、internal/**、cmd/**、reports/** 不在部署包内：服务器只接收二进制、web/、backend/、config.json、README.md）
+
+==============================================================================
+R8-13 公网静态与守卫接口
+==============================================================================
+/api/health                        -> 200 (16 bytes)
+/index.html                        -> 200 (3159 bytes)
+/js/main.js                        -> 200 (36693 bytes)
+/grammar.css                       -> 200 (23208 bytes)
+/js/components/GrammarView.js      -> 200 (37752 bytes)
+/api/words（匿名）                     -> 401 （鉴权守卫）
+
+==============================================================================
+R8-14 公网登录态：重复条目 404、保留条目释义为合并后结果
+==============================================================================
+登录 verify-r8 -> 200
+GET /api/words?q=subway             -> 200 total=2 ids=['by subway', 'subway']
+GET /api/words?q=tomato             -> 200 total=3 ids=['garden', 'soup', 'tomato']
+GET /api/words?q=teachers' office   -> 200 total=1 ids=['teachers']
+GET /api/words?q=on                 -> 200 total=289 ids=['afternoon', 'air-conditioner', 'answer the phone', 'ant', 'any', 'art']
+GET /api/words/work.        -> 404 {"error":"word not found"} 
+GET /api/words/tried        -> 404 {"error":"word not found"} 
+GET /api/words/subway：      -> 404 {"error":"word not found"} 
+GET /api/words/prep.        -> 404 {"error":"word not found"} 
+GET /api/words/no. problem  -> 404 {"error":"word not found"} 
+GET /api/words/on?level=middle -> 200 {"id":"on","word":"on","phonetic":"/ɔn/","pos":"prep.","meaning":"在……上面","letter":"O","level":"middle","example":"The report is on the teach
+
+==============================================================================
+R8-15 公网 headless Chrome 端到端
+==============================================================================
+✓ S1 登录成功：POST /api/auth/login → 200（复用账号）
+✓ S2 导航出现「小学基础」分组：导航分组=["小学基础","入门总览","词法","动词","句法","复合句"]
+✓ S2 知识卡数量为 15：小学基础组条目数=15
+✓ S2 分组顺序：小学基础在最前：第一个分组=小学基础
+✓ S2 状态标记为知识卡：状态=知识卡
+✓ S2 指标区改为知识卡口径：指标=["用法要点:3","正误例句:14","易错提醒:3","记忆卡:2"]
+✓ S2 速查/要点/易错/记忆卡四块渲染：块={"quick":"1","points":"1","pitfalls":"1","memory":"1","lecture":"0","practice":"0"}
+✓ S2 讲义与专项练习隐藏：lecture=0 practice=0
+✓ S2 无「开始练习」按钮：按钮存在=false
+✓ S2 速查卡与正误例句有内容：公式=4 好例=8 错例=6
+✓ S2 记忆卡有内容：记忆卡=["我用 am，你用 are，is 连着他她它。","单数 is，复数 are。"]
+✓ S2 目录不含讲义/专项练习：目录=["速用速查","用法要点 · 3","易错与考法","记忆卡与教材例句"]
+✓ S3 切卡后是小学知识卡：标题=现在进行时 分组=小学基础
+✓ S3 卡片正文是小学内容（be + ing）：nav 计数=知识卡 · 3 个要点
+✓ S4 g-there-be 仍是初中专题：分组=句法 状态=待补讲义 练习=专项练习 共 6 题 · 已答 0/6语篇原句改编3 题第 1 题北京市中考英语
+✓ S4 p-there-be 是小学知识卡：分组=小学基础 状态=知识卡
+✓ S5 全流程无 JS 异常：exceptionThrown/console.error 计数 = 0
+
+结果：17/17 通过
+截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\online-r8-primary-grammar
+
+
+附：node scripts/e2e-practice-flow.mjs --base http://www.gbw3bao.com  ->  10 通过 / 0 失败（含 S4「答对自动下一题（没点下一题按钮）」；截图 tmp/online-r8-practice/）
+

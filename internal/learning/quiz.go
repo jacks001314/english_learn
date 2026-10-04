@@ -16,6 +16,82 @@ import (
 // pages additionally accept "all" so a learner can drill the whole library.
 const quizScopeAll = "all"
 
+// 练习来源：默认（空）只按单词元数据筛选，其余取值再按学习记录收窄。
+const (
+	quizSourceAll        = ""
+	quizSourceMistakes   = "mistakes"
+	quizSourceUnmastered = "unmastered"
+)
+
+// normalizeQuizSource folds the spellings the pages may send onto the two
+// supported sources; anything unrecognised means "no source filter".
+func normalizeQuizSource(source string) string {
+	switch strings.ToLower(strings.TrimSpace(source)) {
+	case quizSourceMistakes, "mistake", "wrong":
+		return quizSourceMistakes
+	case quizSourceUnmastered, "unmastered-words", "unmastered_words":
+		return quizSourceUnmastered
+	default:
+		return quizSourceAll
+	}
+}
+
+// filterWordsBySource keeps only the words that match the learner's own record.
+// progress is keyed by progressKey(level, word); a word the learner has never
+// touched matches neither source.
+func filterWordsBySource(items []Word, source string, progress map[string]Progress) []Word {
+	source = normalizeQuizSource(source)
+	if source == quizSourceAll {
+		return items
+	}
+	matched := make([]Word, 0, len(items))
+	for _, item := range items {
+		record, seen := progress[progressKey(item.Level, item.ID)]
+		if !seen {
+			continue
+		}
+		switch source {
+		case quizSourceMistakes:
+			if record.Wrong <= 0 || record.Resolved {
+				continue
+			}
+		case quizSourceUnmastered:
+			// “学过但没掌握”：只要留下过学习记录且还没掌握就算。
+			// 一个词没有记录时连 seen=false，上一步已经排除了。
+			if record.Mastered {
+				continue
+			}
+		default:
+			continue
+		}
+		matched = append(matched, item)
+	}
+	return matched
+}
+
+// sourceEmptyError explains an empty pool instead of showing every source the
+// same "not enough words". All variants keep the "not enough words" prefix so
+// the practice page still turns them into its "放宽筛选条件" hint (HTTP 422).
+func sourceEmptyError(source string) error {
+	switch normalizeQuizSource(source) {
+	case quizSourceMistakes:
+		return fmt.Errorf("not enough words：错题本里暂时没有可练的单词")
+	case quizSourceUnmastered:
+		return fmt.Errorf("not enough words：还没有学过但未掌握的词")
+	}
+	return fmt.Errorf("not enough words")
+}
+
+// applySource narrows an already metadata-filtered pool by learning record. The
+// record is only read when a source is actually requested, so the classic
+// practice keeps its previous behaviour and its tests.
+func (s *Service) applySource(source string, items []Word) []Word {
+	if normalizeQuizSource(source) == quizSourceAll {
+		return items
+	}
+	return filterWordsBySource(items, source, s.learnedProgress())
+}
+
 // Question modes. "en-zh" and "listen-zh" ask for the Chinese meaning, the
 // other modes ask for the English word.
 const (
@@ -47,6 +123,10 @@ type QuizFilter struct {
 	Unit         string
 	Letter       string
 	PartOfSpeech string
+	// Source narrows the pool to the words this learner actually needs to work
+	// on, using their own record instead of word metadata: "mistakes" = 错题，
+	// "unmastered" = 学过但未掌握。空值（或 "all"）保持原来的纯元数据筛选。
+	Source string
 }
 
 // QuizSet is one page of 词义练习 questions. Every word matching the filter is
@@ -78,7 +158,7 @@ func (s *Service) FilteredQuiz(filter QuizFilter) (Quiz, error) {
 	var base Word
 	hasBase := false
 	if requested := normalizeID(filter.WordID); requested != "" {
-		item, ok := findWordInScope(filter.Level, requested)
+		item, ok := s.store.findWordInScope(filter.Level, requested)
 		if !ok || !publicContentStatus(item.Status) {
 			return Quiz{}, fmt.Errorf("word not found")
 		}
@@ -86,7 +166,7 @@ func (s *Service) FilteredQuiz(filter QuizFilter) (Quiz, error) {
 	}
 
 	scoped := make([]Word, 0)
-	for _, item := range wordsForScope(filter.Level) {
+	for _, item := range s.store.wordsForScope(filter.Level) {
 		if publicContentStatus(item.Status) {
 			scoped = append(scoped, item)
 		}
@@ -100,6 +180,7 @@ func (s *Service) FilteredQuiz(filter QuizFilter) (Quiz, error) {
 			pool = append(pool, item)
 		}
 	}
+	pool = s.applySource(filter.Source, pool)
 	// Distractors prefer the filtered pool so a 词性 or 主题 drill stays inside
 	// the same word class, but a narrow filter must never break the practice:
 	// fall back to the whole scope when fewer than four words match.
@@ -127,7 +208,7 @@ func (s *Service) FilteredQuiz(filter QuizFilter) (Quiz, error) {
 			candidates = distractors
 		}
 		if len(candidates) == 0 {
-			return Quiz{}, fmt.Errorf("not enough words")
+			return Quiz{}, sourceEmptyError(filter.Source)
 		}
 		base = candidates[rand.Intn(len(candidates))]
 	}
@@ -149,7 +230,7 @@ func (s *Service) FilteredQuizSet(filter QuizFilter, page, size int, sortKey str
 	}
 
 	scoped := make([]Word, 0)
-	for _, item := range wordsForScope(filter.Level) {
+	for _, item := range s.store.wordsForScope(filter.Level) {
 		if publicContentStatus(item.Status) {
 			scoped = append(scoped, item)
 		}
@@ -163,6 +244,7 @@ func (s *Service) FilteredQuizSet(filter QuizFilter, page, size int, sortKey str
 			pool = append(pool, item)
 		}
 	}
+	pool = s.applySource(filter.Source, pool)
 	distractors := pool
 	if len(distractors) < 4 {
 		distractors = scoped
@@ -181,7 +263,7 @@ func (s *Service) FilteredQuizSet(filter QuizFilter, page, size int, sortKey str
 	if len(pool) == 0 {
 		// A filter combination without a single word: the page turns this into
 		// a "放宽筛选条件" hint instead of an error screen.
-		return QuizSet{}, fmt.Errorf("not enough words")
+		return QuizSet{}, sourceEmptyError(filter.Source)
 	}
 
 	var progress map[string]Progress
@@ -267,7 +349,7 @@ func buildQuizQuestion(base Word, quizType string, distractors []Word) Quiz {
 // expected answer is the Chinese meaning for "en-zh"/"listen-zh" and the
 // English word for every other mode.
 func (s *Service) AnswerQuiz(answer QuizAnswer, now time.Time) (QuizFeedback, error) {
-	word, ok := findWord(answer.Level, answer.WordID)
+	word, ok := s.store.findWord(answer.Level, answer.WordID)
 	if !ok || !publicContentStatus(word.Status) {
 		return QuizFeedback{}, fmt.Errorf("word not found")
 	}
@@ -325,22 +407,22 @@ func isQuizScopeAll(level string) bool {
 // wordsForScope returns the words of one school stage, or of the whole library
 // when the scope is "all". The facets endpoint reuses it so the practice
 // filters of 全部范围 stay in sync with the question pool.
-func wordsForScope(level string) []Word {
+func (s *Store) wordsForScope(level string) []Word {
 	if !isQuizScopeAll(level) {
-		return datasets[normalizeLevel(level)]
+		return s.datasets[normalizeLevel(level)]
 	}
-	merged := make([]Word, 0, len(datasets["primary"])+len(datasets["middle"]))
-	merged = append(merged, datasets["primary"]...)
-	return append(merged, datasets["middle"]...)
+	merged := make([]Word, 0, len(s.datasets["primary"])+len(s.datasets["middle"]))
+	merged = append(merged, s.datasets["primary"]...)
+	return append(merged, s.datasets["middle"]...)
 }
 
 // findWordInScope looks a word up across every stage of the practice scope.
-func findWordInScope(level, id string) (Word, bool) {
+func (s *Store) findWordInScope(level, id string) (Word, bool) {
 	if !isQuizScopeAll(level) {
-		return findWord(level, id)
+		return s.findWord(level, id)
 	}
 	for _, candidate := range []string{"primary", "middle"} {
-		if item, ok := findWord(candidate, id); ok {
+		if item, ok := s.findWord(candidate, id); ok {
 			return item, true
 		}
 	}

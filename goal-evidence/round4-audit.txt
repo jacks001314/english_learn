@@ -1,0 +1,26 @@
+第四轮：计划审计与本地镜像缺口修复 —— 2026-10-04
+
+[发现] 本地镜像不完整，导致上一轮对「计划里已完成项」的判断基于残缺的代码树。
+用 project_list 直接查 Master 后发现：
+
+  cmd/        Master 有 15 个子命令，本地只取回了 cmd/server
+              （含 wordcheck / contentaudit / enrichwords / synccontent / contenttasks / autofill …）
+  internal/   缺少 autofill / contentaudit / contenttasks / enrichment / wordcheck 五个包
+
+已用 project_fetch 补齐：cmd/ 9 个文件、internal/ 10 个文件。
+补齐后 `go vet ./...`、`go test ./...` 从 5 个包失败变成全绿（6 个有测试的包全通过），
+`cmd/wordcheck`、`cmd/contentaudit` 也能真正跑起来并被接进 CI。
+
+[结论] 「词库校验工具 / 质量报告 / 按级别阻断」这三项（plan.md P1 数据质量）是真实存在的，
+只是本地没有取回对应代码；本轮已把它们纳入 CI 并实测通过。
+
+[本轮结束时 plan.md 的未完成项（9 条）]
+- 继续扩充高频核心词，并增加基础语法知识卡（内容量工作）
+- 增加学生档案，学习进度键升级为「用户 + 学段 + 词汇」（键已含用户+学段+词汇，待核对「档案」定义）
+- 增加每日目标、连续学习天数和学习日历（前两项 P0 已完成，学习日历缺）
+- 提供家长/教师只读报告：学习量、正确率、薄弱词和复习完成率（复习完成率缺）
+- 设计旧数据到默认学生档案的迁移方案（migrateLegacyProgress + 测试已存在，待核对范围）
+- 消除包级可变数据库状态，改为 Repository 实例注入（重构，未开始）
+- 增加配置文件、结构化日志、数据库备份与恢复（未开始）
+- 补齐缺失音标和分义例句后启用严格发布门禁（音标/例句已 0 缺失，剩 54 条词库警告）
+- 增加文章库导入、查询和阅读页面（/api/articles + 导入 + 阅读页已存在，待核对）

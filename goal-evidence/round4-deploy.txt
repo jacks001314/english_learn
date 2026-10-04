@@ -1,0 +1,82 @@
+第四轮：部署脚本修复与线上恢复（plan.md 第 88 项）—— 2026-10-04
+
+[背景]
+本轮给 deploy.ps1 增加「发布包归档到 releases/」步骤，使代码回滚真正可执行。
+第一次带着新步骤部署（版本 20261004-202509）时，新增的「清理超过 5 个旧发布包」命令
+因为 PowerShell 里 \" 转义在远端 bash 变成不配对的引号而失败：
+
+  bash: -c: line 1: unexpected EOF while looking for matching `"'
+  Remote command failed: ls -1t '/opt/english-learn/releases' | tail -n +6 | while read -r f; do rm -f \
+
+该失败发生在「解包完成之后、systemctl restart 之前」，因此线上服务处于 inactive。
+
+[恢复与修复]
+1) 先恢复服务：
+   $ plink ... "systemctl restart english-learn; sleep 2; systemctl is-active english-learn; curl -fsS http://127.0.0.1:8081/api/health"
+   active
+   {"status":"ok"}
+2) 把清理命令改成不含双引号的写法（xargs 形式）：
+   Invoke-Remote $plink "ls -1t '$RemoteRoot/releases' | tail -n +6 | xargs -r -I{} rm -f '$RemoteRoot/releases/{}'"
+3) 重跑部署验证全流程通过。
+
+[修复后的完整部署输出]
+==> Cross-compile server for linux/amd64
+Packaged textbook audio: 54 file(s), 26 MB
+
+==> Create deployment archive
+Staging package ready: C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\.tmp\deploy\english-learn-linux-amd64.tar.gz
+Checking SSH connection to root@www.gbw3bao.com ...
+
+
+
+
+
+
+
+
+
+{"status":"ok"}
+
+audio http 200, 381166 bytes
+
+
+Deployment completed.
+Service: english-learn
+Remote root: /opt/english-learn
+Deployed version: 20261004-202557
+
+[线上核验（版本 20261004-202557）]
+VERSION   = 20261004-202557
+systemctl = active
+releases  = english-learn-20261004-202509.tar.gz / english-learn-20261004-202557.tar.gz   （归档生效）
+backups   = english_learn-20261004-201343.db / -202509.db / -202557.db                    （每次部署前自动备份）
+/opt/english-learn/api/health = {"status":"ok"}
+公网 GET http://www.gbw3bao.com/api/health = 200 {"status":"ok"}
+
+[原始远端输出]
+20261004-202557
+---
+active
+---
+english-learn-20261004-202509.tar.gz
+english-learn-20261004-202557.tar.gz
+---
+english_learn-20261004-201343.db
+english_learn-20261004-202509.db
+english_learn-20261004-202557.db
+---
+{"status":"ok"}
+
+[第一次失败的部署日志尾部（节选）]
+ 
+:String) [], RuntimeException
+    + FullyQualifiedErrorId : Remote command failed: ls -1t '/opt/english-learn/releases' | tail -n +6 | while read -r 
+    f; do rm -f \
+plink.exe : bash: -c: line 1: unexpected EOF while looking for matching `"'
+    At C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\scrip 
+   ts\de
+ploy.ps1:76 char:19
++ ...   $output = & $Plink -batch -hostkey $HostKeyFingerprint -pw $Passwor ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: -c: line ...or matching `"':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError

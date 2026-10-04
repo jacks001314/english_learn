@@ -57,10 +57,10 @@ func hasContentVersions(tx *bolt.Tx, contentType, level, id string) bool {
 	return key != nil && strings.HasPrefix(string(key), prefix)
 }
 
-func listContentVersions(contentType, level, id string) ([]ContentVersion, error) {
+func (s *Store) listContentVersions(contentType, level, id string) ([]ContentVersion, error) {
 	items := []ContentVersion{}
 	prefix := contentVersionPrefix(contentType, level, id)
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		cursor := tx.Bucket([]byte(contentVersionsBucket)).Cursor()
 		for key, value := cursor.Seek([]byte(prefix)); key != nil && strings.HasPrefix(string(key), prefix); key, value = cursor.Next() {
 			var item ContentVersion
@@ -75,10 +75,10 @@ func listContentVersions(contentType, level, id string) ([]ContentVersion, error
 	return items, err
 }
 
-func getContentVersion(contentType, level, id string, version int) (ContentVersion, bool, error) {
+func (s *Store) getContentVersion(contentType, level, id string, version int) (ContentVersion, bool, error) {
 	var item ContentVersion
 	found := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		raw := tx.Bucket([]byte(contentVersionsBucket)).Get([]byte(contentVersionKey(contentType, level, id, version)))
 		if raw == nil {
 			return nil
@@ -89,7 +89,7 @@ func getContentVersion(contentType, level, id string, version int) (ContentVersi
 	return item, found, err
 }
 
-func saveManagedWordVersioned(level string, item Word, editor, action string) (Word, error) {
+func (s *Store) saveManagedWordVersioned(level string, item Word, editor, action string) (Word, error) {
 	level = normalizeLevel(level)
 	if strings.TrimSpace(item.ID) == "" {
 		item.ID = normalizeID(item.Word)
@@ -104,9 +104,9 @@ func saveManagedWordVersioned(level string, item Word, editor, action string) (W
 	item.Level = level
 	item.UpdatedAt = time.Now().Format(time.RFC3339)
 	item.UpdatedBy = editor
-	current, exists := findWord(level, item.ID)
+	current, exists := s.findWord(level, item.ID)
 	raw, _ := json.Marshal(item)
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := s.db.Update(func(tx *bolt.Tx) error {
 		if exists && !hasContentVersions(tx, "word", level, item.ID) {
 			baseline, _ := json.Marshal(current)
 			if err := recordContentVersion(tx, "word", level, item.ID, current.Status, "baseline", firstNonEmpty(current.UpdatedBy, "system"), baseline); err != nil {
@@ -123,14 +123,14 @@ func saveManagedWordVersioned(level string, item Word, editor, action string) (W
 	if err != nil {
 		return item, err
 	}
-	mergeWord(item)
-	if err := importContentLibrary(db); err != nil {
+	s.mergeWord(item)
+	if err := s.importContentLibrary(s.db); err != nil {
 		return item, err
 	}
 	return item, nil
 }
 
-func saveArticleVersioned(item Article, editor, action string) (Article, error) {
+func (s *Store) saveArticleVersioned(item Article, editor, action string) (Article, error) {
 	item.ID = normalizeID(item.ID)
 	if item.ID == "" || strings.TrimSpace(item.Title) == "" {
 		return item, fmt.Errorf("文章 ID 和英文标题不能为空")
@@ -140,12 +140,12 @@ func saveArticleVersioned(item Article, editor, action string) (Article, error) 
 	}
 	item.UpdatedAt = time.Now().Format(time.RFC3339)
 	item.UpdatedBy = editor
-	current, exists, err := readArticle(item.ID)
+	current, exists, err := s.readArticle(item.ID)
 	if err != nil {
 		return item, err
 	}
 	raw, _ := json.Marshal(item)
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = s.db.Update(func(tx *bolt.Tx) error {
 		if exists && !hasContentVersions(tx, "article", "", item.ID) {
 			baseline, _ := json.Marshal(current)
 			if err := recordContentVersion(tx, "article", "", item.ID, current.Status, "baseline", firstNonEmpty(current.UpdatedBy, "system"), baseline); err != nil {
@@ -161,8 +161,8 @@ func saveArticleVersioned(item Article, editor, action string) (Article, error) 
 	return item, err
 }
 
-func restoreContentVersion(contentType, level, id string, version int, editor string) (any, error) {
-	item, found, err := getContentVersion(contentType, level, id, version)
+func (s *Store) restoreContentVersion(contentType, level, id string, version int, editor string) (any, error) {
+	item, found, err := s.getContentVersion(contentType, level, id, version)
 	if err != nil {
 		return nil, err
 	}
@@ -177,7 +177,7 @@ func restoreContentVersion(contentType, level, id string, version int, editor st
 		}
 		word.ID = normalizeID(id)
 		word.Status = firstNonEmpty(word.Status, "published")
-		return saveManagedWordVersioned(level, word, editor, "rollback")
+		return s.saveManagedWordVersioned(level, word, editor, "rollback")
 	case "article":
 		var article Article
 		if err := json.Unmarshal(item.Snapshot, &article); err != nil {
@@ -185,7 +185,7 @@ func restoreContentVersion(contentType, level, id string, version int, editor st
 		}
 		article.ID = normalizeID(id)
 		article.Status = firstNonEmpty(article.Status, "published")
-		return saveArticleVersioned(article, editor, "rollback")
+		return s.saveArticleVersioned(article, editor, "rollback")
 	default:
 		return nil, fmt.Errorf("不支持的内容类型")
 	}

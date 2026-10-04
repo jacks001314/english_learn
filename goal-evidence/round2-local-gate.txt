@@ -1,0 +1,19 @@
+# 本地质量门禁（最终提交前的代码状态）
+
+gofmt -l internal cmd   -> （无输出）
+go build ./...          -> exit=0
+go vet ./...            -> exit=0
+go test ./... -count=1  -> ?   english_learn/cmd/server  [no test files]
+                           ok  english_learn/internal/learning  1.069s
+
+新增/相关测试（go test ./internal/learning -run 'Stream|CodexConfig|AgentSlot|Concurrency' -v 全部 PASS）：
+  TestStreamCodexRunForwardsDeltas
+  TestStreamCodexRunStopsWhenEmitterFails
+  TestStreamCodexRunSurfacesModelErrors
+  TestAgentSlotGateLimitsConcurrency
+  TestAgentConcurrencyLimitDefaultsAndClamps
+  TestCodexConfigOptionsEnableStreamingOnlyWhenEmitting
+另：TestDrillOptionOverlapRules / TestBuildDrillQuestionDropsOverlappingOptions /
+    TestBuildDrillQuestionAlwaysFillsFourOptions / tutor_memory 3 项均 PASS。
+node --check 通过：learningContext.js / main.js / AgentAssistant.js / DrillView.js /
+    ExamView.js / MeaningPracticeView.js / MistakesView.js / QuizView.js / ReadingView.js

@@ -3,6 +3,7 @@ package learning
 import (
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
@@ -48,80 +49,67 @@ const (
 	contentSchemaVersion          = 3
 )
 
-var db *bolt.DB
-var datasets = map[string][]Word{}
-var wordIndex = map[string]Word{}
-
-func openStore(root string) error {
+// openStore 打开（或创建）数据库与词库，返回进程内唯一的 Store 实例。
+// 任一初始化步骤失败都会关闭已打开的数据库并把错误返回给调用方。
+func openStore(cfg Config) (*Store, error) {
+	root := cfg.Root
+	s := &Store{datasets: map[string][]Word{}, wordIndex: map[string]Word{}}
 	if err := initAgentDirectories(root); err != nil {
-		return err
+		return nil, err
 	}
-	deferStartFactory := func() { startFactoryRunner(root) }
-	datasets = map[string][]Word{}
-	wordIndex = map[string]Word{}
-	if err := loadDataset(filepath.Join(root, "backend", "primary_school.json"), "primary"); err != nil {
-		return err
+	if err := s.loadDataset(filepath.Join(root, "backend", "primary_school.json"), "primary"); err != nil {
+		return nil, err
 	}
-	if err := loadDataset(filepath.Join(root, "backend", "middle_school.json"), "middle"); err != nil {
-		return err
+	if err := s.loadDataset(filepath.Join(root, "backend", "middle_school.json"), "middle"); err != nil {
+		return nil, err
 	}
-	if err := loadCountries(root); err != nil {
-		return err
+	if err := s.loadCountries(root); err != nil {
+		return nil, err
 	}
-	var err error
-	db, err = bolt.Open(filepath.Join(root, "english_learn.db"), 0600, nil)
+	database, err := bolt.Open(cfg.DatabasePath, 0600, nil)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	if err := initDB(db); err != nil {
-		db.Close()
-		return err
+	s.db = database
+	if err := initDB(database); err != nil {
+		database.Close()
+		return nil, err
 	}
-	if err := seedAdmin(); err != nil {
-		db.Close()
-		return err
+	if err := s.seedAdmin(); err != nil {
+		database.Close()
+		return nil, err
 	}
-	if err := loadManagedWords(db); err != nil {
-		db.Close()
-		return err
+	if err := s.loadManagedWords(database); err != nil {
+		database.Close()
+		return nil, err
 	}
-	if err := loadDeletedWords(db); err != nil {
-		db.Close()
-		return err
+	if err := s.loadDeletedWords(database); err != nil {
+		database.Close()
+		return nil, err
 	}
-	if err := migrateLegacyProgress(db); err != nil {
-		db.Close()
-		return err
+	if err := s.migrateLegacyProgress(database); err != nil {
+		database.Close()
+		return nil, err
 	}
-	if err := importContentLibrary(db); err != nil {
-		db.Close()
-		return err
+	if err := s.importContentLibrary(database); err != nil {
+		database.Close()
+		return nil, err
 	}
-	if err := importArticleFile(db, filepath.Join(root, "backend", "articles.json")); err != nil {
-		db.Close()
-		return err
+	if err := s.importArticleFile(filepath.Join(root, "backend", "articles.json")); err != nil {
+		database.Close()
+		return nil, err
 	}
-	if err := importExamFile(db, filepath.Join(root, "backend", "exams.json")); err != nil {
-		db.Close()
-		return err
+	for _, name := range []string{"exams.json", "exam_sources.json", "exams_2024.json", "exams_2025.json"} {
+		if err := s.importExamFile(database, filepath.Join(root, "backend", name)); err != nil {
+			database.Close()
+			return nil, err
+		}
 	}
-	if err := importExamFile(db, filepath.Join(root, "backend", "exam_sources.json")); err != nil {
-		db.Close()
-		return err
-	}
-	if err := importExamFile(db, filepath.Join(root, "backend", "exams_2024.json")); err != nil {
-		db.Close()
-		return err
-	}
-	if err := importExamFile(db, filepath.Join(root, "backend", "exams_2025.json")); err != nil {
-		db.Close()
-		return err
-	}
-	deferStartFactory()
-	return nil
+	s.startFactoryRunner(root)
+	return s, nil
 }
 
-func importArticleFile(database *bolt.DB, path string) error {
+func (s *Store) importArticleFile(path string) error {
 	raw, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -136,14 +124,11 @@ func importArticleFile(database *bolt.DB, path string) error {
 	if len(items) == 0 {
 		return nil
 	}
-	old := db
-	db = database
-	defer func() { db = old }()
-	return upsertSeedArticles(items)
+	return s.upsertSeedArticles(items)
 }
 
-func upsertSeedArticles(items []Article) error {
-	return db.Update(func(tx *bolt.Tx) error {
+func (s *Store) upsertSeedArticles(items []Article) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
 		articles := tx.Bucket([]byte(articlesBucket))
 		deleted := tx.Bucket([]byte(deletedArticlesBucket))
 		for _, item := range items {
@@ -159,13 +144,6 @@ func upsertSeedArticles(items []Article) error {
 		}
 		return nil
 	})
-}
-
-func closeStore() error {
-	if db == nil {
-		return nil
-	}
-	return db.Close()
 }
 
 func initDB(database *bolt.DB) error {
@@ -205,10 +183,10 @@ func scopedKey(userID, key string) string {
 	return userID + "|" + key
 }
 
-func readDailyReviewGoal(userIDs ...string) (int, error) {
+func (s *Store) readDailyReviewGoal(userIDs ...string) (int, error) {
 	goal := 10
 	key := scopedKey(firstString(userIDs), dailyGoalKey)
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		raw := tx.Bucket([]byte(settingsBucket)).Get([]byte(key))
 		if raw == nil {
 			return nil
@@ -218,16 +196,16 @@ func readDailyReviewGoal(userIDs ...string) (int, error) {
 	return goal, err
 }
 
-func saveDailyReviewGoal(goal int, userIDs ...string) error {
+func (s *Store) saveDailyReviewGoal(goal int, userIDs ...string) error {
 	encoded, err := json.Marshal(goal)
 	if err != nil {
 		return err
 	}
 	key := scopedKey(firstString(userIDs), dailyGoalKey)
-	return db.Update(func(tx *bolt.Tx) error { return tx.Bucket([]byte(settingsBucket)).Put([]byte(key), encoded) })
+	return s.db.Update(func(tx *bolt.Tx) error { return tx.Bucket([]byte(settingsBucket)).Put([]byte(key), encoded) })
 }
 
-func loadDataset(path, key string) error {
+func (s *Store) loadDataset(path, key string) error {
 	raw, err := os.ReadFile(path)
 	if err != nil {
 		return err
@@ -238,10 +216,10 @@ func loadDataset(path, key string) error {
 	}
 	for i := range list {
 		list[i].Level = key
-		wordIndex[progressKey(key, list[i].ID)] = list[i]
+		s.wordIndex[progressKey(key, list[i].ID)] = list[i]
 	}
-	datasets[key] = list
-	fmt.Printf("loaded %s: %d words\n", key, len(list))
+	s.datasets[key] = list
+	slog.Info("loaded word dataset", "dataset", key, "words", len(list), "path", path)
 	return nil
 }
 
@@ -256,17 +234,17 @@ func normalizeLevel(level string) string {
 
 func progressKey(level, id string) string { return normalizeLevel(level) + ":" + normalizeID(id) }
 
-func findWord(level, id string) (Word, bool) {
-	item, ok := wordIndex[progressKey(level, id)]
+func (s *Store) findWord(level, id string) (Word, bool) {
+	item, ok := s.wordIndex[progressKey(level, id)]
 	return item, ok
 }
 
-func wordsByLevel(level string) []Word { return datasets[normalizeLevel(level)] }
+func (s *Store) wordsByLevel(level string) []Word { return s.datasets[normalizeLevel(level)] }
 
-func upsertManagedWords(level string, items []Word) (int, error) {
+func (s *Store) upsertManagedWords(level string, items []Word) (int, error) {
 	level = normalizeLevel(level)
 	count := 0
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := s.db.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(managedWordsBucket))
 		for _, item := range items {
 			if strings.TrimSpace(item.ID) == "" {
@@ -281,79 +259,79 @@ func upsertManagedWords(level string, items []Word) (int, error) {
 			if err := putJSON(bucket, key, item); err != nil {
 				return err
 			}
-			mergeWord(item)
+			s.mergeWord(item)
 			count++
 		}
 		return nil
 	})
 	if err == nil {
-		err = importContentLibrary(db)
+		err = s.importContentLibrary(s.db)
 	}
 	return count, err
 }
-func deleteManagedWord(level, id string) error {
+func (s *Store) deleteManagedWord(level, id string) error {
 	level = normalizeLevel(level)
 	key := progressKey(level, id)
-	return db.Update(func(tx *bolt.Tx) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
 		if err := tx.Bucket([]byte(deletedWordsBucket)).Put([]byte(key), []byte("1")); err != nil {
 			return err
 		}
 		_ = tx.Bucket([]byte(managedWordsBucket)).Delete([]byte(key))
-		removeWord(level, id)
+		s.removeWord(level, id)
 		return nil
 	})
 }
-func removeWord(level, id string) {
+func (s *Store) removeWord(level, id string) {
 	key := progressKey(level, id)
-	delete(wordIndex, key)
-	items := datasets[level]
+	delete(s.wordIndex, key)
+	items := s.datasets[level]
 	out := items[:0]
 	for _, w := range items {
 		if normalizeID(w.ID) != normalizeID(id) {
 			out = append(out, w)
 		}
 	}
-	datasets[level] = out
+	s.datasets[level] = out
 }
-func loadDeletedWords(database *bolt.DB) error {
+func (s *Store) loadDeletedWords(database *bolt.DB) error {
 	return database.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(deletedWordsBucket)).ForEach(func(k, _ []byte) error {
 			parts := strings.SplitN(string(k), ":", 2)
 			if len(parts) == 2 {
-				removeWord(parts[0], parts[1])
+				s.removeWord(parts[0], parts[1])
 			}
 			return nil
 		})
 	})
 }
-func mergeWord(item Word) {
+func (s *Store) mergeWord(item Word) {
 	level := normalizeLevel(item.Level)
 	item.Level = level
 	key := progressKey(level, item.ID)
-	wordIndex[key] = item
-	for i := range datasets[level] {
-		if normalizeID(datasets[level][i].ID) == normalizeID(item.ID) {
-			datasets[level][i] = item
+	s.wordIndex[key] = item
+	for i := range s.datasets[level] {
+		if normalizeID(s.datasets[level][i].ID) == normalizeID(item.ID) {
+			s.datasets[level][i] = item
 			return
 		}
 	}
-	datasets[level] = append(datasets[level], item)
+	s.datasets[level] = append(s.datasets[level], item)
 }
-func loadManagedWords(database *bolt.DB) error {
+func (s *Store) loadManagedWords(database *bolt.DB) error {
 	return database.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(managedWordsBucket)).ForEach(func(_, v []byte) error {
 			var item Word
 			if err := json.Unmarshal(v, &item); err != nil {
 				return err
 			}
-			mergeWord(item)
+			s.mergeWord(item)
 			return nil
 		})
 	})
 }
 
-func upsertArticles(items []Article) error {
-	return db.Update(func(tx *bolt.Tx) error {
+func (s *Store) upsertArticles(items []Article) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(articlesBucket))
 		for _, item := range items {
 			item.ID = normalizeID(item.ID)
@@ -369,9 +347,9 @@ func upsertArticles(items []Article) error {
 	})
 }
 
-func deleteArticle(id string) error {
+func (s *Store) deleteArticle(id string) error {
 	id = normalizeID(id)
-	return db.Update(func(tx *bolt.Tx) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
 		if err := tx.Bucket([]byte(deletedArticlesBucket)).Put([]byte(id), []byte("1")); err != nil {
 			return err
 		}
@@ -379,9 +357,9 @@ func deleteArticle(id string) error {
 	})
 }
 
-func readArticles() ([]Article, error) {
+func (s *Store) readArticles() ([]Article, error) {
 	items := make([]Article, 0)
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(articlesBucket)).ForEach(func(_, value []byte) error {
 			var item Article
 			if err := json.Unmarshal(value, &item); err != nil {
@@ -397,9 +375,9 @@ func readArticles() ([]Article, error) {
 	return items, err
 }
 
-func readAllArticles() ([]Article, error) {
+func (s *Store) readAllArticles() ([]Article, error) {
 	items := []Article{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(articlesBucket)).ForEach(func(_, v []byte) error {
 			var item Article
 			if err := json.Unmarshal(v, &item); err != nil {
@@ -412,10 +390,10 @@ func readAllArticles() ([]Article, error) {
 	return items, err
 }
 
-func readArticle(id string) (Article, bool, error) {
+func (s *Store) readArticle(id string) (Article, bool, error) {
 	var item Article
 	found := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		raw := tx.Bucket([]byte(articlesBucket)).Get([]byte(normalizeID(id)))
 		if raw == nil {
 			return nil
@@ -426,14 +404,14 @@ func readArticle(id string) (Article, bool, error) {
 	return item, found, err
 }
 
-func readProgress(userIDs ...string) (map[string]Progress, error) {
+func (s *Store) readProgress(userIDs ...string) (map[string]Progress, error) {
 	items := map[string]Progress{}
 	userID := firstString(userIDs)
 	prefix := ""
 	if userID != "" {
 		prefix = userID + "|"
 	}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(progressBucket)).ForEach(func(key, value []byte) error {
 			visible := string(key)
 			if prefix != "" {
@@ -455,7 +433,7 @@ func readProgress(userIDs ...string) (map[string]Progress, error) {
 	return items, err
 }
 
-func migrateLegacyProgress(database *bolt.DB) error {
+func (s *Store) migrateLegacyProgress(database *bolt.DB) error {
 	type move struct{ oldKey, newKey, value []byte }
 	return database.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(progressBucket))
@@ -465,7 +443,7 @@ func migrateLegacyProgress(database *bolt.DB) error {
 				return nil
 			}
 			level := "primary"
-			if _, ok := findWord(level, string(key)); !ok {
+			if _, ok := s.findWord(level, string(key)); !ok {
 				level = "middle"
 			}
 			moves = append(moves, move{append([]byte(nil), key...), []byte(progressKey(level, string(key))), append([]byte(nil), value...)})

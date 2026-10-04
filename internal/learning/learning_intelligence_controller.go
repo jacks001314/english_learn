@@ -52,7 +52,7 @@ func (c *Controller) CompleteSmartLearningTask(ctx iris.Context) {
 func (c *Controller) LearningEvents(ctx iris.Context) {
 	limit, _ := strconv.Atoi(ctx.URLParamDefault("limit", "20"))
 	service := c.scoped(ctx)
-	items, err := recentLearningEvents(service.userID, limit)
+	items, err := c.store.recentLearningEvents(service.userID, limit)
 	if err != nil {
 		writeError(ctx, http.StatusInternalServerError, "读取学习活动失败")
 		return

@@ -401,3 +401,8 @@ html,body,#app,.app-shell,.app-content{max-width:100%;overflow-x:clip}
 @media(max-width:1250px) and (min-width:901px){
   .word-study-layout.has-detail{grid-template-columns:minmax(0,1fr) 320px}.word-study-layout.has-detail .grid{grid-template-columns:1fr}.mistake-filters{grid-template-columns:repeat(3,minmax(0,1fr))}.mistake-filters input{grid-column:span 2}.quiz-result-layout{grid-template-columns:minmax(0,620px) 250px}
 }
+/* 答对自动下一题：开关与待跳转提示（单词测验页） */
+.quiz-auto-next{display:flex;align-items:center;gap:7px;padding:8px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;color:#4d5c55;font-size:12px;font-weight:700;cursor:pointer}
+.quiz-auto-next.active{border-color:var(--green);background:#eaf7f0;color:var(--green-dark)}
+.quiz-auto-next input{width:15px;height:15px;margin:0;accent-color:var(--green);cursor:pointer}
+.quiz-auto-note{color:var(--green);font-size:12px;font-style:normal;white-space:nowrap}

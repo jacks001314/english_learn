@@ -1,3 +1,5 @@
+import { publishContext, askAssistant } from '../learningContext.js?v=20261004-practice-source-r1';
+
 const typeNames = {
   "en-zh": "英译中",
   "zh-en": "中译英",
@@ -79,6 +81,22 @@ export default {
     },
   },
   methods: {
+    // AI 归因：把这条错题交给助教。上下文里只放定位信息，
+    // “错过几次、哪种题型薄弱”由服务端从学习记录读取（见 agent_context.go）。
+    analyze(item) {
+      const types = Object.keys(item.progress.quizResults || {});
+      publishContext({
+        view: 'mistakes',
+        scene: 'mistake',
+        quizType: types[0] || 'en-zh',
+        level: item.word.level,
+        wordId: item.word.id,
+        spelling: item.word.word,
+        phonetic: item.word.phonetic || '',
+        prompt: item.word.meaning,
+      });
+      askAssistant('', { quickAction: 'explain', label: `归因：${item.word.word}` });
+    },
     typeName(type) {
       return typeNames[type] || type;
     },
@@ -130,6 +148,7 @@ export default {
             <div class="mistake-actions">
               <button title="播放发音" @click="$emit('speak', item.word.word)">▶</button>
               <button @click="$emit('navigate',{view:'learn',word:item.word,level:item.word.level})">学习详情</button>
+              <button @click="analyze(item)">AI 归因</button>
               <button @click="$emit('navigate',{view:'quiz',word:item.word,level:item.word.level})">专项测验</button>
               <button class="primary" @click="$emit('resolve', item.word)">已掌握</button>
             </div>

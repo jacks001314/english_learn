@@ -2,14 +2,16 @@
 //
 // 数据分层（2026-09-27 起）：
 //   topics.js        —— 专题正文（速查卡/用法要点/易错/记忆卡）+ 专题清单
+//   primary.js       —— 小学基础语法知识卡（kind: card，无真题与讲义）
 //   ia.js            —— 信息架构（分组、组内顺序、小节、标题修正、别名匹配）
 //   yufan/*          —— 教材图片讲义（sections 按需 import），见 ./yufan/README.md
 //   exercises.js     —— 真题与自编练习
 // 本文件把三者合成可直接渲染的 grammarTopics / sortedTopics / groupTopics。
 //
 // 讲义正文（sections）体积约占全量 80%，首屏不加：选中专题后由 loadLecture(topicId) 按需 import()。
-import { grammarTopics as baseGrammarTopics } from "./topics.js?v=20260928-grammar-p3-r4";
-import { grammarExercises, exercisesByTopic, examYears, examExercises, otherExamExercises, adaptedExercises, authoredOnly } from "./exercises.js?v=20260928-grammar-p3-r4";
+import { grammarTopics as baseGrammarTopics } from "./topics.js?v=20261004-primary-grammar-r1";
+import { primaryGrammarCards } from "./primary.js?v=20261004-primary-grammar-r1";
+import { grammarExercises, exercisesByTopic, examYears, examExercises, otherExamExercises, adaptedExercises, authoredOnly } from "./exercises.js?v=20261004-primary-grammar-r1";
 import { attachYufan, yufanNewTopics, lectureByTopic, yufanStats, loadLecture, isLectureLoaded } from "./yufan/index.js?v=20260928-yufan-r5";
 import {
   grammarGroups,
@@ -22,7 +24,7 @@ import {
   resolveSubGroup,
   resolveTitle,
   matchTopicId,
-} from "./ia.js?v=20260928-grammar-p3-r4";
+} from "./ia.js?v=20261004-primary-grammar-r1";
 
 const baseIds = new Set(baseGrammarTopics.map((t) => t.id));
 
@@ -41,7 +43,11 @@ function withIA(topic) {
 export const grammarTopics = [
   ...baseGrammarTopics.map(attachYufan),
   ...yufanNewTopics.filter((t) => !baseIds.has(t.id)),
+  ...primaryGrammarCards,
 ].map(withIA);
+
+/** 知识卡专题（小学基础）：有讲解无真题，渲染层据此隐藏讲义与练习两块。 */
+export const isCardTopic = (topic) => !!topic && topic.kind === "card";
 
 export const topicsById = Object.fromEntries(grammarTopics.map((t) => [t.id, t]));
 
@@ -115,6 +121,10 @@ export function topicState(topic, mastery) {
   const hasEx = counts.total > 0;
   const hasLecture = lectureSectionsOf(topic && topic.id) > 0;
   if (!hasEx) {
+    if (isCardTopic(topic)) {
+      const points = (topic.points || []).length;
+      return { key: "card", label: "知识卡", detail: `${points} 个用法要点` };
+    }
     if (hasLecture) return { key: "lecture-only", label: "仅讲义", detail: `讲义 ${lectureSectionsOf(topic.id)} 节` };
     return { key: "empty", label: "待建设", detail: "内容建设中" };
   }
@@ -127,8 +137,20 @@ export function topicState(topic, mastery) {
   return { key: "new", label: "未开始", detail: `${counts.total} 题 · ${suffix}` };
 }
 
-/** 标题 → 专题 id（专题标题在整个模块内唯一）。 */
-const TITLES_BY_ID = new Map(grammarTopics.map((t) => [t.title, t.id]));
+/**
+ * 标题 → 专题 id。
+ * 知识卡与初中专题存在同名标题（如「现在进行时」「There be 句型」），
+ * 这里让非知识卡先登记、知识卡只补空缺，保证既有的标题深链与教材语法名解析仍指向初中专题。
+ */
+const TITLES_BY_ID = new Map();
+for (const topic of grammarTopics) {
+  if (isCardTopic(topic)) continue;
+  if (!TITLES_BY_ID.has(topic.title)) TITLES_BY_ID.set(topic.title, topic.id);
+}
+for (const topic of grammarTopics) {
+  if (!isCardTopic(topic)) continue;
+  if (!TITLES_BY_ID.has(topic.title)) TITLES_BY_ID.set(topic.title, topic.id);
+}
 
 /** 把 id / 课程里的中文语法名 / 专题标题 / hash 片段解析成专题 id（不认识就返回空串）。 */
 export function resolveTopicId(value) {

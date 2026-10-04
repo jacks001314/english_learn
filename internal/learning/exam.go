@@ -12,7 +12,7 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-func importExamFile(database *bolt.DB, path string) error {
+func (s *Store) importExamFile(database *bolt.DB, path string) error {
 	raw, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -24,11 +24,11 @@ func importExamFile(database *bolt.DB, path string) error {
 	if err := json.Unmarshal(raw, &items); err != nil {
 		return err
 	}
-	old := db
-	db = database
-	defer func() { db = old }()
+	old := s.db
+	s.db = database
+	defer func() { s.db = old }()
 	for _, item := range items {
-		if current, ok, _ := examPaper(item.ID); ok {
+		if current, ok, _ := s.examPaper(item.ID); ok {
 			// Seed files may first publish a verified source shell and later add
 			// fully reviewed questions. Upgrade that shell without overwriting
 			// administrator-edited structured papers.
@@ -36,14 +36,14 @@ func importExamFile(database *bolt.DB, path string) error {
 				continue
 			}
 		}
-		if _, err := saveExamPaper(item, "seed"); err != nil {
+		if _, err := s.saveExamPaper(item, "seed"); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func saveExamPaper(item ExamPaper, editor string) (ExamPaper, error) {
+func (s *Store) saveExamPaper(item ExamPaper, editor string) (ExamPaper, error) {
 	item.ID = normalizeID(item.ID)
 	if item.ID == "" {
 		return item, fmt.Errorf("试卷 ID 不能为空")
@@ -134,24 +134,24 @@ func saveExamPaper(item ExamPaper, editor string) (ExamPaper, error) {
 	if item.Status == "published" && len(item.Sections) > 0 && item.DurationMinutes <= 0 {
 		return item, fmt.Errorf("在线试卷的考试时长必须大于 0 分钟")
 	}
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := s.db.Update(func(tx *bolt.Tx) error {
 		_ = tx.Bucket([]byte(deletedExamsBucket)).Delete([]byte(item.ID))
 		return putJSON(tx.Bucket([]byte(examPapersBucket)), item.ID, item)
 	})
 	return item, err
 }
-func deleteExamPaper(id string) error {
+func (s *Store) deleteExamPaper(id string) error {
 	id = normalizeID(id)
-	return db.Update(func(tx *bolt.Tx) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
 		if err := tx.Bucket([]byte(deletedExamsBucket)).Put([]byte(id), []byte("1")); err != nil {
 			return err
 		}
 		return tx.Bucket([]byte(examPapersBucket)).Delete([]byte(id))
 	})
 }
-func examPapers(includeDraft bool) ([]ExamPaper, error) {
+func (s *Store) examPapers(includeDraft bool) ([]ExamPaper, error) {
 	items := []ExamPaper{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(examPapersBucket)).ForEach(func(_, v []byte) error {
 			var item ExamPaper
 			if err := json.Unmarshal(v, &item); err != nil {
@@ -172,10 +172,10 @@ func examPapers(includeDraft bool) ([]ExamPaper, error) {
 	})
 	return items, err
 }
-func examPaper(id string) (ExamPaper, bool, error) {
+func (s *Store) examPaper(id string) (ExamPaper, bool, error) {
 	var item ExamPaper
 	ok := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(examPapersBucket)).Get([]byte(normalizeID(id)))
 		if v == nil {
 			return nil
@@ -185,8 +185,8 @@ func examPaper(id string) (ExamPaper, bool, error) {
 	})
 	return item, ok, err
 }
-func submitExam(user User, in ExamSubmission) (ExamAttempt, error) {
-	paper, ok, err := examPaper(in.PaperID)
+func (s *Store) submitExam(user User, in ExamSubmission) (ExamAttempt, error) {
+	paper, ok, err := s.examPaper(in.PaperID)
 	if err != nil || !ok {
 		return ExamAttempt{}, fmt.Errorf("试卷不存在")
 	}
@@ -218,7 +218,7 @@ func submitExam(user User, in ExamSubmission) (ExamAttempt, error) {
 	if totalObjective > 0 {
 		attempt.Accuracy = correctCount * 100 / totalObjective
 	}
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = s.db.Update(func(tx *bolt.Tx) error {
 		if err := putJSON(tx.Bucket([]byte(examAttemptsBucket)), scopedKey(user.ID, attempt.ID), attempt); err != nil {
 			return err
 		}
@@ -234,10 +234,10 @@ func checkExamAnswer(q ExamQuestion, answer any) (bool, bool) {
 	actual := strings.TrimSpace(strings.ToLower(fmt.Sprint(answer)))
 	return expected == actual, true
 }
-func userExamAttempts(userID string) ([]ExamAttempt, error) {
+func (s *Store) userExamAttempts(userID string) ([]ExamAttempt, error) {
 	items := []ExamAttempt{}
 	prefix := userID + "|"
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(examAttemptsBucket)).ForEach(func(k, v []byte) error {
 			if !strings.HasPrefix(string(k), prefix) {
 				return nil

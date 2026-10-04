@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-func importContentLibrary(database *bolt.DB) error {
+func (s *Store) importContentLibrary(database *bolt.DB) error {
 	return database.Update(func(tx *bolt.Tx) error {
 		words := tx.Bucket([]byte(wordsBucket))
 		pronunciations := tx.Bucket([]byte(pronunciationsBucket))
 		examples := tx.Bucket([]byte(examplesBucket))
-		for level, items := range datasets {
+		for level, items := range s.datasets {
 			for _, item := range items {
 				wordID := progressKey(level, item.ID)
 				senses := []WordSense{}

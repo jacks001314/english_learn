@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$HostName = "www.gbw3bao.com",
     [string]$UserName = "root",
@@ -171,10 +171,15 @@ try {
             $env:GOARCH = "amd64"
             $env:CGO_ENABLED = "0"
             go build -buildvcs=false -trimpath -ldflags "-s -w" -o (Join-Path $stagingPath "english-learn") ./cmd/server
+            # 运维工具：备份 / 校验 / 恢复数据库，详见 docs/deploy.md「数据库备份与恢复」。
+            go build -buildvcs=false -trimpath -ldflags "-s -w" -o (Join-Path $stagingPath "learnctl") ./cmd/learnctl
         }
     } else {
         if (-not (Test-Path -LiteralPath (Join-Path $stagingPath "english-learn"))) {
             throw "SkipBuild was set but $stagingPath\english-learn does not exist. Build once first or remove -SkipBuild."
+        }
+        if (-not (Test-Path -LiteralPath (Join-Path $stagingPath "learnctl"))) {
+            throw "SkipBuild was set but $stagingPath\learnctl does not exist. Build once first or remove -SkipBuild."
         }
     }
 
@@ -182,6 +187,16 @@ try {
     Copy-Item -LiteralPath (Join-Path $projectRoot "backend") -Destination $stagingPath -Recurse
     Copy-Item -LiteralPath (Join-Path $projectRoot "chuzhong") -Destination $stagingPath -Recurse
     Copy-Item -LiteralPath (Join-Path $projectRoot "README.md") -Destination $stagingPath
+
+    # 可选运行配置：存在 config.json 就一起发布，服务启动时按它解析监听地址/数据库/日志。
+    # 详见 docs/deploy.md「运行配置与结构化日志」。
+    $archiveItems = @("english-learn", "learnctl", "web", "backend", "chuzhong", "README.md", "VERSION")
+    $configFile = Join-Path $projectRoot "config.json"
+    if (Test-Path -LiteralPath $configFile) {
+        Copy-Item -LiteralPath $configFile -Destination $stagingPath
+        $archiveItems += "config.json"
+        Write-Host "Packaged runtime config: config.json" -ForegroundColor Green
+    }
 
     $stagedAudio = Join-Path $stagingPath "web/audio/7"
     if (-not (Test-Path -LiteralPath $stagedAudio -PathType Container)) {
@@ -221,7 +236,7 @@ WantedBy=multi-user.target
 
     $archivePath = Join-Path $stagingPath "english-learn-linux-amd64.tar.gz"
     Invoke-Step "Create deployment archive" {
-        New-DeploymentArchive $stagingPath $archivePath @("english-learn", "web", "backend", "chuzhong", "README.md", "VERSION")
+        New-DeploymentArchive $stagingPath $archivePath $archiveItems
     }
 
     Write-Host "Staging package ready: $archivePath" -ForegroundColor Green
@@ -235,7 +250,7 @@ WantedBy=multi-user.target
     Test-RemoteConnection $plink
 
     Invoke-Remote $plink "command -v tar >/dev/null 2>&1 && command -v systemctl >/dev/null 2>&1 || (echo 'tar/systemctl are required on the remote host' >&2; exit 1)"
-    Invoke-Remote $plink "mkdir -p '$RemoteRoot' '$RemoteRoot/backups'"
+    Invoke-Remote $plink "mkdir -p '$RemoteRoot' '$RemoteRoot/backups' '$RemoteRoot/releases'"
 
     Invoke-Remote $plink "if [ -f '$RemoteRoot/english_learn.db' ]; then cp -a '$RemoteRoot/english_learn.db' '$RemoteRoot/backups/english_learn-$version.db'; fi"
 
@@ -246,7 +261,11 @@ WantedBy=multi-user.target
         Invoke-Remote $plink "systemctl stop '$ServiceName' 2>/dev/null || true"
     }
 
-    Invoke-Remote $plink "rm -rf '$RemoteRoot/web' '$RemoteRoot/backend' '$RemoteRoot/chuzhong' && rm -f '$RemoteRoot/english-learn' && tar -xzf '$RemoteRoot/english-learn-linux-amd64.tar.gz' -C '$RemoteRoot' && chmod +x '$RemoteRoot/english-learn'"
+    Invoke-Remote $plink "rm -rf '$RemoteRoot/web' '$RemoteRoot/backend' '$RemoteRoot/chuzhong' && rm -f '$RemoteRoot/english-learn' '$RemoteRoot/learnctl' && tar -xzf '$RemoteRoot/english-learn-linux-amd64.tar.gz' -C '$RemoteRoot' && chmod +x '$RemoteRoot/english-learn' '$RemoteRoot/learnctl'"
+    # 保留本次发布包，回滚时可以直接解回来（见 docs/deploy.md「版本升级与回滚」）。
+    Invoke-Remote $plink "cp -f '$RemoteRoot/english-learn-linux-amd64.tar.gz' '$RemoteRoot/releases/english-learn-$version.tar.gz'"
+    # 只保留最近 5 个发布包，避免磁盘无限增长。
+    Invoke-Remote $plink "ls -1t '$RemoteRoot/releases' | tail -n +6 | xargs -r -I{} rm -f '$RemoteRoot/releases/{}'"
     Invoke-Remote $plink "systemctl daemon-reload && systemctl enable '$ServiceName' 2>/dev/null || true"
 
     if (-not $SkipRestart) {

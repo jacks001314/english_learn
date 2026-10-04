@@ -20,14 +20,17 @@ import (
 const agentConfigKey = "default"
 
 type AgentConfig struct {
-	Engine               string `json:"engine"`
-	Enabled              bool   `json:"enabled"`
-	ProviderID           string `json:"providerId"`
-	Model                string `json:"model"`
-	BaseURL              string `json:"baseUrl,omitempty"`
-	APIKey               string `json:"apiKey,omitempty"`
-	SystemPrompt         string `json:"systemPrompt"`
-	TimeoutSeconds       int    `json:"timeoutSeconds"`
+	Engine         string `json:"engine"`
+	Enabled        bool   `json:"enabled"`
+	ProviderID     string `json:"providerId"`
+	Model          string `json:"model"`
+	BaseURL        string `json:"baseUrl,omitempty"`
+	APIKey         string `json:"apiKey,omitempty"`
+	SystemPrompt   string `json:"systemPrompt"`
+	TimeoutSeconds int    `json:"timeoutSeconds"`
+	// MaxConcurrentRuns caps how many model calls may run at the same time.
+	// Deterministic actions (加入今日复习、词库兜底出题) never wait on it.
+	MaxConcurrentRuns    int    `json:"maxConcurrentRuns,omitempty"`
 	MaxPromptChars       int    `json:"maxPromptChars"`
 	UpdatedAt            string `json:"updatedAt,omitempty"`
 	UpdatedBy            string `json:"updatedBy,omitempty"`
@@ -40,21 +43,35 @@ type AgentConfig struct {
 }
 
 type AgentChatRequest struct {
-	Message  string         `json:"message"`
-	ThreadID string         `json:"threadId,omitempty"`
-	Mode     string         `json:"mode,omitempty"`
-	Context  map[string]any `json:"context,omitempty"`
+	Message     string         `json:"message"`
+	ThreadID    string         `json:"threadId,omitempty"`
+	Mode        string         `json:"mode,omitempty"`
+	QuickAction string         `json:"quickAction,omitempty"`
+	Context     map[string]any `json:"context,omitempty"`
 }
 
 type AgentChatResponse struct {
-	Message      string `json:"message"`
-	ThreadID     string `json:"threadId"`
-	Model        string `json:"model,omitempty"`
-	ProviderID   string `json:"providerId,omitempty"`
-	Engine       string `json:"engine,omitempty"`
-	InputTokens  int64  `json:"inputTokens,omitempty"`
-	OutputTokens int64  `json:"outputTokens,omitempty"`
-	DurationMS   int64  `json:"durationMs"`
+	Message      string         `json:"message"`
+	ThreadID     string         `json:"threadId"`
+	Model        string         `json:"model,omitempty"`
+	ProviderID   string         `json:"providerId,omitempty"`
+	Engine       string         `json:"engine,omitempty"`
+	InputTokens  int64          `json:"inputTokens,omitempty"`
+	OutputTokens int64          `json:"outputTokens,omitempty"`
+	DurationMS   int64          `json:"durationMs"`
+	Actions      []AgentAction  `json:"actions,omitempty"`
+	Drill        *AgentDrill    `json:"drill,omitempty"`
+	Snapshot     *AgentSnapshot `json:"snapshot,omitempty"`
+}
+
+// AgentAction reports what the assistant did on the page (for example queuing
+// the current word for review). The front end shows the result next to the
+// question; nothing is applied silently.
+type AgentAction struct {
+	Type    string         `json:"type"`
+	Status  string         `json:"status"`
+	Message string         `json:"message,omitempty"`
+	Payload map[string]any `json:"payload,omitempty"`
 }
 
 type AgentAudit struct {
@@ -72,7 +89,49 @@ type AgentAudit struct {
 	CreatedAt   string `json:"createdAt"`
 }
 
-var agentMu sync.Mutex
+// 模型调用的并发闸门。
+//
+// 早期实现用一个全局互斥锁把整个 /api/agent/chat 串起来：一个学生等模型回话时，
+// 另一个学生点“加入今日复习”这种纯本地动作也要排队。现在只有真正调用模型的那段
+// 代码受闸门限制，容量由后台配置（MaxConcurrentRuns，默认 2）控制。
+const (
+	agentDefaultConcurrency = 2
+	agentMaxConcurrency     = 8
+)
+
+var (
+	agentGateMu    sync.Mutex
+	agentGateSlots = make(chan struct{}, agentDefaultConcurrency)
+)
+
+// agentConcurrencyLimit resolves the configured model-call capacity.
+func agentConcurrencyLimit(cfg AgentConfig) int {
+	limit := cfg.MaxConcurrentRuns
+	if limit <= 0 {
+		limit = agentDefaultConcurrency
+	}
+	if limit > agentMaxConcurrency {
+		limit = agentMaxConcurrency
+	}
+	return limit
+}
+
+// acquireAgentSlot waits for a free model slot, or gives up when the request is
+// cancelled. The returned function must be called exactly once.
+func acquireAgentSlot(ctx context.Context, limit int) (func(), error) {
+	agentGateMu.Lock()
+	if cap(agentGateSlots) != limit {
+		agentGateSlots = make(chan struct{}, limit)
+	}
+	slots := agentGateSlots
+	agentGateMu.Unlock()
+	select {
+	case slots <- struct{}{}:
+		return func() { <-slots }, nil
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	}
+}
 
 func defaultAgentConfig() AgentConfig {
 	return AgentConfig{
@@ -82,9 +141,9 @@ func defaultAgentConfig() AgentConfig {
 	}
 }
 
-func loadAgentConfig(revealSecret bool) (AgentConfig, error) {
+func (s *Store) loadAgentConfig(revealSecret bool) (AgentConfig, error) {
 	cfg := defaultAgentConfig()
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		raw := tx.Bucket([]byte(agentConfigBucket)).Get([]byte(agentConfigKey))
 		if raw == nil {
 			return nil
@@ -106,8 +165,8 @@ func loadAgentConfig(revealSecret bool) (AgentConfig, error) {
 	return cfg, nil
 }
 
-func saveAgentConfig(in AgentConfig, editor User) (AgentConfig, error) {
-	current, err := loadAgentConfig(true)
+func (s *Store) saveAgentConfig(in AgentConfig, editor User) (AgentConfig, error) {
+	current, err := s.loadAgentConfig(true)
 	if err != nil {
 		return in, err
 	}
@@ -151,7 +210,7 @@ func saveAgentConfig(in AgentConfig, editor User) (AgentConfig, error) {
 	in.UpdatedBy = editor.Username
 	in.APIKeyConfigured = strings.TrimSpace(in.APIKey) != ""
 	in.ClaudeAuthConfigured = strings.TrimSpace(in.ClaudeAuthToken) != ""
-	err = db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(agentConfigBucket)), agentConfigKey, in) })
+	err = s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(agentConfigBucket)), agentConfigKey, in) })
 	if err != nil {
 		return in, err
 	}
@@ -161,42 +220,145 @@ func saveAgentConfig(in AgentConfig, editor User) (AgentConfig, error) {
 	return out, nil
 }
 
-func runAgent(ctx context.Context, root string, user User, in AgentChatRequest) (AgentChatResponse, error) {
-	cfg, err := loadAgentConfig(true)
+func (s *Store) runAgent(ctx context.Context, root string, user User, in AgentChatRequest) (AgentChatResponse, error) {
+	return s.runAgentWith(ctx, root, user, in, nil)
+}
+
+// runAgentWith is the single implementation behind both the JSON endpoint and
+// the SSE endpoint. When emit is non-nil the reply is streamed token by token;
+// emit may return an error (a disconnected client) which aborts the run.
+func (s *Store) runAgentWith(ctx context.Context, root string, user User, in AgentChatRequest, emit agentEmitter) (AgentChatResponse, error) {
+	cfg, err := s.loadAgentConfig(true)
 	if err != nil {
 		return AgentChatResponse{}, err
 	}
+	quick := agentQuickActionName(in.QuickAction)
+	message := strings.TrimSpace(in.Message)
+	if message == "" && quick == "" {
+		return AgentChatResponse{}, agentRequestError("请输入问题")
+	}
+	if len([]rune(message)) > cfg.MaxPromptChars {
+		return AgentChatResponse{}, agentRequestError("问题过长，最多允许 %d 个字符", cfg.MaxPromptChars)
+	}
+
+	started := time.Now()
+	// The snapshot is only built when the page actually sent context. The
+	// homework grader and the admin connection test call runAgent without any
+	// page state and must keep their original, minimal prompt.
+	var snapshot AgentSnapshot
+	hasSnapshot := len(in.Context) > 0
+	if hasSnapshot {
+		snapshot = s.buildAgentSnapshot(user, in, started)
+	}
+
+	switch quick {
+	case agentQuickAddReview:
+		action, err := s.agentQueueReviewAction(user, snapshot, started)
+		if err != nil {
+			return AgentChatResponse{}, err
+		}
+		return AgentChatResponse{
+			Message: action.Message, ThreadID: in.ThreadID, Engine: "local-action",
+			DurationMS: time.Since(started).Milliseconds(),
+			Actions:    []AgentAction{action}, Snapshot: agentSnapshotPtr(snapshot, hasSnapshot),
+		}, nil
+	case agentQuickDrill:
+		if !cfg.Enabled {
+			return AgentChatResponse{}, errors.New("智能学习助手尚未启用")
+		}
+		drill, err := s.buildAgentDrill(ctx, root, cfg, user, in, started)
+		if err != nil {
+			return AgentChatResponse{}, err
+		}
+		note := drill.Note
+		if drill.Focus != "" {
+			note = drill.Focus + "\n\n" + note
+		}
+		return AgentChatResponse{
+			Message: note, ThreadID: in.ThreadID, Engine: cfg.Engine, Model: cfg.Model,
+			DurationMS: time.Since(started).Milliseconds(), Drill: drill,
+			Snapshot: agentSnapshotPtr(snapshot, hasSnapshot),
+		}, nil
+	}
+
 	if !cfg.Enabled {
 		return AgentChatResponse{}, errors.New("智能学习助手尚未启用")
 	}
-	message := strings.TrimSpace(in.Message)
 	if message == "" {
-		return AgentChatResponse{}, errors.New("请输入问题")
+		message = agentDefaultMessage(quick, snapshot)
 	}
-	if len([]rune(message)) > cfg.MaxPromptChars {
-		return AgentChatResponse{}, fmt.Errorf("问题过长，最多允许 %d 个字符", cfg.MaxPromptChars)
+	if message == "" {
+		return AgentChatResponse{}, agentRequestError("请输入问题")
 	}
-	prompt := buildLearningPrompt(message, in.Mode, in.Context)
+	snapshotText := ""
+	if hasSnapshot {
+		snapshotText = renderAgentSnapshot(snapshot)
+	}
+	prompt := buildLearningPrompt(message, in.Mode, snapshotText)
+	// A scene-aware brief is only appended when we know the scene; the homework
+	// grader keeps the administrator's plain system prompt. cfg is a value copy,
+	// so this cannot leak back into the stored configuration.
+	if hasSnapshot {
+		cfg.SystemPrompt = agentInstructions(cfg, snapshot.Scene)
+	}
 	timeoutCtx, cancel := context.WithTimeout(ctx, time.Duration(cfg.TimeoutSeconds)*time.Second)
 	defer cancel()
+	var out AgentChatResponse
 	if cfg.Engine == "claude-code" {
-		return runClaudeAgent(timeoutCtx, root, cfg, prompt, in.ThreadID)
+		// Claude 引擎没有暴露增量的回调，命中片段一次性返回。
+		out, err = runClaudeAgent(timeoutCtx, root, cfg, prompt, in.ThreadID)
+		if err == nil && emit != nil && strings.TrimSpace(out.Message) != "" {
+			err = emit(out.Message)
+		}
+	} else {
+		out, err = runCodexAgent(timeoutCtx, root, cfg, prompt, in.ThreadID, emit)
 	}
-	return runCodexAgent(timeoutCtx, root, cfg, prompt, in.ThreadID)
+	if err != nil {
+		return AgentChatResponse{}, err
+	}
+	out.Snapshot = agentSnapshotPtr(snapshot, hasSnapshot)
+	if hasSnapshot && strings.TrimSpace(out.Message) != "" {
+		// 记忆沉淀：把这次讲解压缩成一条助教笔记，下次遇到同一个词可以直接接着讲。
+		// 失败不影响回答本身，所以只记日志意义的错误。
+		if _, noteErr := s.recordTutorNote(user.ID, snapshot, message, out.Message, started); noteErr != nil {
+			_ = noteErr
+		}
+	}
+	return out, nil
 }
 
-func runCodexAgent(ctx context.Context, root string, cfg AgentConfig, prompt, threadID string) (AgentChatResponse, error) {
-	client, err := core.NewFromConfig(ctx, &core.ConfigOptions{
+// codexConfigOptions builds the codex-core client configuration. Streaming has to
+// be requested when the client is created: codex-core only asks the provider for
+// SSE chunks when the agent runner's Stream flag is set, so a client built
+// without it reports just the final event and the SSE endpoint would have
+// nothing to forward.
+func codexConfigOptions(root string, cfg AgentConfig, stream bool) *core.ConfigOptions {
+	return &core.ConfigOptions{
 		CodexHome: filepath.Join(root, ".agent"), CWD: root, APIKey: cfg.APIKey,
 		ProviderID: cfg.ProviderID, Model: cfg.Model, BaseURL: cfg.BaseURL,
+		Stream:  stream,
 		Persist: true, SessionRoot: filepath.Join(root, ".agent", "sessions"),
 		Tools: &core.ToolOptions{Preset: core.ToolsNone},
-	})
+	}
+}
+
+func runCodexAgent(ctx context.Context, root string, cfg AgentConfig, prompt, threadID string, emit agentEmitter) (AgentChatResponse, error) {
+	client, err := core.NewFromConfig(ctx, codexConfigOptions(root, cfg, emit != nil))
 	if err != nil {
 		return AgentChatResponse{}, err
 	}
 	defer client.Close()
-	req := &core.Request{Prompt: prompt, Instructions: cfg.SystemPrompt}
+	req := &core.Request{Prompt: prompt, Instructions: cfg.SystemPrompt, ThreadID: threadID}
+	// Only the model call itself takes a slot; everything else in the request
+	// (page context, review queueing, library fallback) runs unthrottled.
+	release, err := acquireAgentSlot(ctx, agentConcurrencyLimit(cfg))
+	if err != nil {
+		return AgentChatResponse{}, err
+	}
+	defer release()
+	if emit != nil {
+		return streamCodexRun(ctx, client, req, emit)
+	}
 	var result *core.Result
 	if strings.TrimSpace(threadID) == "" {
 		result, err = client.Run(ctx, req)
@@ -210,6 +372,11 @@ func runCodexAgent(ctx context.Context, root string, cfg AgentConfig, prompt, th
 }
 
 func runClaudeAgent(ctx context.Context, root string, cfg AgentConfig, prompt, threadID string) (AgentChatResponse, error) {
+	release, err := acquireAgentSlot(ctx, agentConcurrencyLimit(cfg))
+	if err != nil {
+		return AgentChatResponse{}, err
+	}
+	defer release()
 	options := []claudeagent.Option{
 		claudeagent.WithSystemPrompt(cfg.SystemPrompt), claudeagent.WithModel(cfg.ClaudeModel),
 		claudeagent.WithMaxTurns(1), claudeagent.WithPermissionMode(claudeagent.PermissionModePlan),
@@ -279,27 +446,86 @@ func runClaudeAgent(ctx context.Context, root string, cfg AgentConfig, prompt, t
 	return AgentChatResponse{Message: answer, ThreadID: sessionID, Model: cfg.ClaudeModel, ProviderID: "anthropic", Engine: "claude-code", DurationMS: time.Since(started).Milliseconds()}, nil
 }
 
-func buildLearningPrompt(message, mode string, values map[string]any) string {
-	labels := map[string]string{"general": "综合学习", "word": "单词学习", "reading": "文章阅读", "exam": "考试讲解", "writing": "作文辅导", "mistake": "错题分析"}
+func buildLearningPrompt(message, mode, snapshotText string) string {
+	labels := map[string]string{
+		"general": "综合学习", "word": "单词学习", "meaning": "词义练习", "quiz": "单词测验",
+		"spelling": "拼写练习", "reading": "文章阅读", "exam": "考试讲解", "writing": "作文辅导",
+		"mistake": "错题分析", "homework": "作业批改",
+	}
 	label := labels[mode]
 	if label == "" {
 		label = labels["general"]
 	}
-	var contextText string
-	if len(values) > 0 {
-		if raw, err := json.Marshal(values); err == nil {
-			contextText = string(raw)
-		}
+	var b strings.Builder
+	b.WriteString("学习场景：" + label + "\n")
+	if strings.TrimSpace(snapshotText) == "" {
+		b.WriteString("页面上下文：学生当前没有打开具体练习页面。\n")
+	} else {
+		// 学习记录来自平台数据库，页面自报的字段只用来定位，数值以服务端为准。
+		b.WriteString("学习记录（来自平台数据库，请以此为准）：\n" + snapshotText + "\n")
 	}
-	return fmt.Sprintf("学习场景：%s\n页面上下文：%s\n学生问题：%s", label, contextText, message)
+	b.WriteString("学生问题：" + message)
+	return b.String()
 }
 
-func writeAgentAudit(user User, in AgentChatRequest, out AgentChatResponse, runErr error, started time.Time) {
+// agentSnapshotPtr returns nil when the page sent no context, so the response
+// never claims to have read a snapshot that was not built.
+func agentSnapshotPtr(snapshot AgentSnapshot, ok bool) *AgentSnapshot {
+	if !ok {
+		return nil
+	}
+	return &snapshot
+}
+
+// agentQueueReviewAction puts the word on screen into today's review queue.
+// It is deterministic on purpose: the learner asked for it explicitly, so no
+// model call is involved and the answer is immediate.
+func (s *Store) agentQueueReviewAction(user User, snapshot AgentSnapshot, now time.Time) (AgentAction, error) {
+	item := snapshot.Current
+	if item == nil || item.Spelling == "" {
+		return AgentAction{}, agentRequestError("页面没有提供要加入复习的单词")
+	}
+	saved, err := NewService(s, user.ID).QueueReview(item.Level, item.WordID, now)
+	if err != nil {
+		return AgentAction{}, agentRequestError("加入复习失败：%s", err.Error())
+	}
+	message := fmt.Sprintf("已把「%s」加入今日复习，打开「今日复习」就能看到它。", item.Spelling)
+	if saved.ReviewCount > 0 {
+		message = fmt.Sprintf("已把「%s」加入今日复习（累计复习 %d 次），打开「今日复习」就能看到它。", item.Spelling, saved.ReviewCount)
+	}
+	return AgentAction{
+		Type: "add-review", Status: "ok", Message: message,
+		Payload: map[string]any{"level": item.Level, "wordId": item.WordID, "spelling": item.Spelling, "nextReview": saved.NextReview},
+	}, nil
+}
+
+// runTextAgent runs one prompt through the configured engine and returns the
+// raw text. It backs the structured helpers (drill planning) that need a JSON
+// answer instead of a chat turn; the caller supplies the instructions.
+func runTextAgent(ctx context.Context, root string, cfg AgentConfig, prompt, instructions string) (string, error) {
+	// cfg is a value copy, so overriding the system prompt here cannot leak
+	// into the administrator's stored configuration.
+	cfg.SystemPrompt = instructions
+	if cfg.Engine == "claude-code" {
+		out, err := runClaudeAgent(ctx, root, cfg, prompt, "")
+		if err != nil {
+			return "", err
+		}
+		return out.Message, nil
+	}
+	out, err := runCodexAgent(ctx, root, cfg, prompt, "", nil)
+	if err != nil {
+		return "", err
+	}
+	return out.Message, nil
+}
+
+func (s *Store) writeAgentAudit(user User, in AgentChatRequest, out AgentChatResponse, runErr error, started time.Time) {
 	item := AgentAudit{ID: uuid.NewString(), UserID: user.ID, Username: user.Username, Mode: in.Mode, Engine: out.Engine, ThreadID: out.ThreadID, PromptChars: len([]rune(in.Message)), Model: out.Model, Success: runErr == nil, DurationMS: time.Since(started).Milliseconds(), CreatedAt: time.Now().Format(time.RFC3339)}
 	if runErr != nil {
 		item.Error = runErr.Error()
 	}
-	_ = db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(agentAuditBucket)), item.ID, item) })
+	_ = s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(agentAuditBucket)), item.ID, item) })
 }
 
 func initAgentDirectories(root string) error {

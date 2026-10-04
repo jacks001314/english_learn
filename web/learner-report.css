@@ -1,0 +1,44 @@
+/* 学习日历 + 家长/教师只读报告（plan.md P1「多用户与学习目标」第 47/48 项）。 */
+
+/* 学习报告顶部指标由 2 格扩到 4 格，按可用宽度自动换行。 */
+.report-streak{grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr))}
+
+.report-calendar{margin:0 0 22px}
+.report-calendar>header,
+.learner-report-panel-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 0 10px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+.report-calendar>header span{color:var(--green);font-size:9px;font-weight:850;letter-spacing:1.3px}
+.report-calendar>header h3{margin:2px 0 0;font-size:17px}
+.report-calendar>header small,
+.learner-report-panel-head small{color:var(--muted);font-size:10px}
+
+.calendar-weekdays,
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.calendar-weekdays{margin-bottom:6px}
+.calendar-weekdays i{font-style:normal;font-size:11px;text-align:center;color:#7a8a83}
+.calendar-pad{visibility:hidden}
+.calendar-cell{position:relative;display:flex;align-items:center;justify-content:center;min-height:30px;padding:4px;border:1px solid #e4eae6;border-radius:9px;background:#f2f5f3;color:#61706a;font-size:12px}
+.calendar-cell.active{border-color:#a9d8c3;background:#cdebdd;color:#123d30;font-weight:700}
+.calendar-cell.practice{box-shadow:inset 0 0 0 2px #7fc3a2}
+
+/* 家长 / 教师只读报告 */
+.learner-report{display:grid;gap:16px}
+.learner-report-empty{margin:0;padding:18px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:13px;text-align:center}
+.learner-report-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:12px;align-items:end;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#f8faf9}
+.learner-report-controls label{display:grid;gap:5px;color:#4d5c55;font-size:11px;font-weight:750}
+.learner-report-controls select{min-height:36px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font-size:13px}
+.learner-report-controls>small{color:var(--muted);font-size:10px}
+.learner-report-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:12px}
+.learner-report-metrics>div{display:grid;gap:3px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.learner-report-metrics b{color:var(--ink);font-size:22px}
+.learner-report-metrics span{color:#4f6259;font-size:11px}
+.learner-report-metrics small{color:var(--muted);font-size:10px}
+.learner-report article.admin-panel{margin:0}
+.learner-report-panel-head h3{margin:0;font-size:16px}
+.learner-report-panel-head h3 small{color:var(--muted);font-size:11px;font-weight:400}
+
+@media(max-width:720px){
+  .report-calendar>header,
+  .learner-report-panel-head{align-items:flex-start;flex-direction:column;gap:6px}
+  .calendar-grid{gap:4px}
+  .calendar-cell{min-height:26px;border-radius:7px;font-size:11px}
+}

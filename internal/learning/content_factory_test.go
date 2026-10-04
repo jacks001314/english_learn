@@ -12,8 +12,9 @@ import (
 )
 
 func TestFactoryDraftRequiresExplicitPublish(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "factory.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -22,31 +23,32 @@ func TestFactoryDraftRequiresExplicitPublish(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	db = database
+	store.db = database
 	article := Article{ID: "factory-article", Title: "Reviewed Article", Status: "draft", Paragraphs: []ArticleParagraph{{English: "A useful learning article."}}}
 	raw, _ := json.Marshal(article)
 	draft := FactoryDraft{ID: "draft-1", TaskID: "task-1", ContentType: "article", RawJSON: raw, ExtractedText: "A useful learning article.", ReviewStatus: "pending", Version: 1}
-	if err := db.Update(func(tx *bolt.Tx) error {
+	if err := store.db.Update(func(tx *bolt.Tx) error {
 		return putJSON(tx.Bucket([]byte(contentFactoryDraftsBucket)), draft.ID, draft)
 	}); err != nil {
 		t.Fatal(err)
 	}
-	items, _ := readArticles()
+	items, _ := store.readArticles()
 	if len(items) != 0 {
 		t.Fatalf("unpublished factory draft leaked: %+v", items)
 	}
-	if err := publishFactoryDraft(draft.ID, User{Username: "admin"}); err != nil {
+	if err := store.publishFactoryDraft(draft.ID, User{Username: "admin"}); err != nil {
 		t.Fatal(err)
 	}
-	items, _ = readArticles()
+	items, _ = store.readArticles()
 	if len(items) != 1 || items[0].ID != article.ID {
 		t.Fatalf("published article missing: %+v", items)
 	}
 }
 
 func TestFactoryPublishUpdatesTaskAndDraftStatus(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "factory-status.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -55,11 +57,11 @@ func TestFactoryPublishUpdatesTaskAndDraftStatus(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	db = database
+	store.db = database
 	raw, _ := json.Marshal(Article{ID: "status-article", Title: "Status", Status: "draft"})
 	task := FactoryTask{ID: "task-status", Status: "review", CurrentStep: "等待审核"}
 	draft := FactoryDraft{ID: "draft-status", TaskID: task.ID, ContentType: "article", RawJSON: raw, ReviewStatus: "pending"}
-	if err := db.Update(func(tx *bolt.Tx) error {
+	if err := store.db.Update(func(tx *bolt.Tx) error {
 		if err := putJSON(tx.Bucket([]byte(contentFactoryTasksBucket)), task.ID, task); err != nil {
 			return err
 		}
@@ -67,11 +69,11 @@ func TestFactoryPublishUpdatesTaskAndDraftStatus(t *testing.T) {
 	}); err != nil {
 		t.Fatal(err)
 	}
-	if err := publishFactoryDraft(draft.ID, User{Username: "admin"}); err != nil {
+	if err := store.publishFactoryDraft(draft.ID, User{Username: "admin"}); err != nil {
 		t.Fatal(err)
 	}
-	gotTask, _, _ := getFactoryTask(task.ID)
-	gotDraft, _, _ := getFactoryDraft(draft.ID)
+	gotTask, _, _ := store.getFactoryTask(task.ID)
+	gotDraft, _, _ := store.getFactoryDraft(draft.ID)
 	if gotTask.Status != "published" || gotDraft.ReviewStatus != "published" {
 		t.Fatalf("status not updated task=%+v draft=%+v", gotTask, gotDraft)
 	}
@@ -126,7 +128,8 @@ func TestExtractDOCXAsset(t *testing.T) {
 }
 
 func TestDownloadFactoryURLBlocksLocalhost(t *testing.T) {
-	if _, err := downloadFactoryURL(t.TempDir(), "http://127.0.0.1/private"); err == nil {
+	store := &Store{}
+	if _, err := store.downloadFactoryURL(t.TempDir(), "http://127.0.0.1/private"); err == nil {
 		t.Fatal("localhost must be blocked")
 	}
 }

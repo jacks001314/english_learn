@@ -4,44 +4,40 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"path/filepath"
 
 	"english_learn/internal/learning"
 )
 
 func main() {
-	address := flag.String("addr", ":8080", "HTTP listen address")
+	address := flag.String("addr", "", "HTTP listen address; overrides config/env (default :8080)")
 	flag.Parse()
-	root, err := findProjectRoot()
+
+	root, err := learning.FindProjectRoot("")
 	if err != nil {
-		panic(err)
+		fmt.Fprintln(os.Stderr, "error:", err)
+		os.Exit(1)
 	}
-	if err := learning.Run(root, *address); err != nil {
-		panic(err)
+	cfg, err := learning.LoadConfig(root)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "error:", err)
+		os.Exit(1)
+	}
+	if flagWasSet("addr") {
+		cfg.Address = *address
+	}
+	if err := learning.RunWithConfig(cfg); err != nil {
+		fmt.Fprintln(os.Stderr, "error:", err)
+		os.Exit(1)
 	}
 }
 
-func findProjectRoot() (string, error) {
-	if configured := os.Getenv("ENGLISH_LEARN_ROOT"); configured != "" {
-		return filepath.Abs(configured)
-	}
-	current, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
-	for {
-		if fileExists(filepath.Join(current, "backend", "primary_school.json")) && fileExists(filepath.Join(current, "web", "index.html")) {
-			return current, nil
+// flagWasSet 判断某个命令行参数是否被显式传入（用于实现“参数 > 配置 > 默认值”的优先级）。
+func flagWasSet(name string) bool {
+	found := false
+	flag.Visit(func(f *flag.Flag) {
+		if f.Name == name {
+			found = true
 		}
-		parent := filepath.Dir(current)
-		if parent == current {
-			return "", fmt.Errorf("project root not found; set ENGLISH_LEARN_ROOT")
-		}
-		current = parent
-	}
-}
-
-func fileExists(path string) bool {
-	info, err := os.Stat(path)
-	return err == nil && !info.IsDir()
+	})
+	return found
 }

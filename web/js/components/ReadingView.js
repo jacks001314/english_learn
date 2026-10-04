@@ -2,6 +2,7 @@ import { articles } from "../articleData.js";
 import { hotTopicArticles } from "../hotTopicArticles.js";
 import { expandedArticles } from "../expandedArticles.js";
 import { api, postJSON } from "../api.js";
+import { publishContext, askAssistant } from "../learningContext.js?v=20261004-practice-source-r1";
 
 const progressStorageKey = "english-learn-reading-progress-v1";
 
@@ -146,6 +147,19 @@ export default {
     clearTimeout(this.toastTimer);
   },
   methods: {
+    // 逐句解析：只把当前段落和文章位置交给助教，不整篇上传。
+    askParagraph(index, paragraph) {
+      publishContext({
+        view: 'reading',
+        scene: 'reading',
+        articleId: this.selected.id,
+        articleTitle: this.selected.title,
+        paragraph: index + 1,
+        paragraphs: this.selected.paragraphs.length,
+        sentence: paragraph.en,
+      });
+      askAssistant('', { quickAction: 'explain-sentence', label: `解析第 ${index + 1} 段` });
+    },
     openTargetArticle(id) {
       if (!id || !this.articles.some((article) => article.id === id)) return;
       this.select(id);
@@ -372,6 +386,7 @@ export default {
                 <p v-if="mode==='study'||(showTranslation&&mode==='read')" class="chinese-text">{{ paragraph.zh }}</p>
                 <div v-if="mode!=='recite'" class="paragraph-tools">
                   <button @click="playParagraph(index,paragraph.en)">{{ activeParagraph===index ? '重听本段' : '听本段' }}</button>
+                  <button @click="askParagraph(index,paragraph)">逐句解析</button>
                 </div>
               </div>
             </section>

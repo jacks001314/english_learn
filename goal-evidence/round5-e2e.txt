@@ -1,0 +1,18 @@
+# R5 前端端到端（scripts/e2e-report-flow.mjs）输出
+
+OK   S1 注册并登录：账号 e2e-report-mutt5fq7 → {"status":200,"id":"88fd57d3-1432-4539-8301-6a2b9d85a170","role":"student"}
+OK   S2 制造一题答对一题答错：[{"id":"a","word":"a","correct":true,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 学习报告含学习日历（42 格）：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S3 正确率与复习完成率均已展示：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S4 学生访问家长报告被 403 拒绝：{"status":403}
+OK   S5 家长/教师（管理员）会话就绪：{"step":"done","status":200,"rotated":false}
+OK   S6 报告页可选中目标学习者：selected
+OK   S6 只读报告指标齐备：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 正确率 50%：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 只读报告含学习日历：格子 42 · 活跃 1
+OK   S6 薄弱词表列出答错的词：["a cold小学感冒0 / 12026-10-05"]
+OK   S6 报告接口口径一致：{"status":200,"accuracy":50,"correct":1,"wrong":1,"weakest":1,"days":42,"activeDays":1}
+OK   S7 页面无 JS 报错：0 个异常
+
+==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\e2e-report

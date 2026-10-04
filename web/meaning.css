@@ -69,3 +69,8 @@
   .meaning-filters select{flex:1 1 100%}
   .meaning-jump{width:100%;justify-content:center}
 }
+/* 答对自动下一题：开关与待跳转提示（词义练习页） */
+.meaning-auto-next{display:flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#4d5c55;font-weight:700;cursor:pointer}
+.meaning-auto-next.active{border-color:var(--green);background:#eaf7f0;color:var(--green-dark)}
+.meaning-auto-next input{width:16px;height:16px;margin:0;accent-color:var(--green);cursor:pointer}
+.meaning-auto-note{color:var(--green);font-size:12px;font-style:normal;white-space:nowrap}

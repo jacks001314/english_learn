@@ -20,10 +20,11 @@ func quizKeys(items []Quiz) string {
 // 词义练习页要覆盖筛选命中的全部单词，所以分页必须无重复、无遗漏，并且同一
 // 请求重复调用得到同一顺序（翻页不能换题）。
 func TestFilteredQuizSetCoversEveryMatchedWord(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	service := NewService()
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	service := NewService(store)
 
 	first, err := service.FilteredQuizSet(QuizFilter{Level: "all", Type: "en-zh"}, 1, 3, "", 0)
 	if err != nil {
@@ -82,10 +83,11 @@ func TestFilteredQuizSetCoversEveryMatchedWord(t *testing.T) {
 
 // 页码越界收敛到有效页，每页题数按默认值与上限收敛。
 func TestFilteredQuizSetClampsPageAndSize(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	service := NewService()
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	service := NewService(store)
 
 	last, err := service.FilteredQuizSet(QuizFilter{Level: "all", Type: "zh-en"}, 99, 3, "", 0)
 	if err != nil {
@@ -115,11 +117,12 @@ func TestFilteredQuizSetClampsPageAndSize(t *testing.T) {
 // 年级筛选后页内单词都来自该年级；命中词不足四个时干扰项回退到整个学段，
 // 保证仍然给出四选一。
 func TestFilteredQuizSetKeepsFilterAndWidensOptions(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
 	filter := QuizFilter{Level: "primary", Type: "en-zh", Grade: "三年级"}
-	set, err := NewService().FilteredQuizSet(filter, 1, 12, "", 0)
+	set, err := NewService(store).FilteredQuizSet(filter, 1, 12, "", 0)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -138,10 +141,11 @@ func TestFilteredQuizSetKeepsFilterAndWidensOptions(t *testing.T) {
 
 // random 排序由 seed 决定：同一 seed 翻页稳定，换 seed 会换一批题。
 func TestFilteredQuizSetRandomOrderUsesSeed(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	service := NewService()
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	service := NewService(store)
 	filter := QuizFilter{Level: "all", Type: "en-zh"}
 
 	first, err := service.FilteredQuizSet(filter, 1, 8, sortRandom, 7)
@@ -169,10 +173,11 @@ func TestFilteredQuizSetRandomOrderUsesSeed(t *testing.T) {
 
 // 筛选组合命中 0 词时返回错误，页面据此提示放宽筛选条件。
 func TestFilteredQuizSetReportsEmptyPool(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = quizDatasets()
-	if _, err := NewService().FilteredQuizSet(QuizFilter{Level: "primary", Type: "en-zh", Topic: "不存在的主题"}, 1, 12, "", 0); err == nil {
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = quizDatasets()
+	if _, err := NewService(store).FilteredQuizSet(QuizFilter{Level: "primary", Type: "en-zh", Topic: "不存在的主题"}, 1, 12, "", 0); err == nil {
 		t.Fatal("a filter without matches must not produce a question")
 	}
 }

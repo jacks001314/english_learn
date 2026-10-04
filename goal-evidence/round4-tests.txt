@@ -1,0 +1,55 @@
+第四轮：接口集成测试与前端核心流程测试（plan.md 第 84 项）—— 2026-10-04
+
+[新增 internal/learning/http_integration_test.go，接口层集成测试]
+$ go test ./internal/learning -run HTTPIntegration -v -count=1
+=== go test -run HTTPIntegration -v ===
+=== RUN   TestHTTPIntegrationAuthAndGuards
+--- PASS: TestHTTPIntegrationAuthAndGuards (0.26s)
+=== RUN   TestHTTPIntegrationMeaningQuizSourceFilter
+--- PASS: TestHTTPIntegrationMeaningQuizSourceFilter (0.11s)
+=== RUN   TestHTTPIntegrationProgressAndMistakes
+--- PASS: TestHTTPIntegrationProgressAndMistakes (0.06s)
+=== RUN   TestHTTPIntegrationWordLibrary
+--- PASS: TestHTTPIntegrationWordLibrary (0.05s)
+PASS
+ok  	english_learn/internal/learning	0.580s
+
+[新增 scripts/e2e-practice-flow.mjs，前端核心流程端到端（headless Chrome + CDP）]
+$ node scripts/e2e-practice-flow.mjs --base http://127.0.0.1:8099 --shots .tmp/e2e-practice
+OK   S1 注册并登录：账号 e2e-practice-mutsm25w → register:200
+OK   S2 练习来源选项：实际 [["","全部单词"],["mistakes","我的错题"],["unmastered","学过但没掌握"]]
+OK   S2 基线计数：全部单词 → 可练习 4614 / 4614 个单词
+OK   S3 制造 2 道错题：[{"id":"a","word":"a","correct":false,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 我的错题计数：筛选后 → 可练习 2 / 4614 个单词
+OK   S3 出的题目来自错词：第 1 题是「a」，错词集合 ["a","a cold"]
+OK   S4 点到正确答案：题号 第 1 / 2 题，正确答案「一（用于单数可数名词前）」
+OK   S4 答对自动下一题（没点下一题按钮）：题号 第 1 / 2 题 → 第 2 / 2 题，反馈「」
+OK   S5 订正后错题清空：{"statuses":[200,200],"total":0}
+OK   S5 页面无 JS 报错：0 个异常
+
+==> 练习流程端到端：10 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\.tmp\e2e-practice
+
+EXITCODE=0
+
+[补齐本地镜像后的全量门禁]
+$ gofmt -l internal cmd ; go vet ./... ; go test ./... -count=1
+=== gofmt -l internal cmd ===
+=== go vet ./... ===
+=== go test ./... -count=1 ===
+?   	english_learn/cmd/autofill	[no test files]
+?   	english_learn/cmd/cleanupcontent	[no test files]
+?   	english_learn/cmd/contentaudit	[no test files]
+?   	english_learn/cmd/contenttasks	[no test files]
+?   	english_learn/cmd/enrichwords	[no test files]
+?   	english_learn/cmd/mergedb	[no test files]
+?   	english_learn/cmd/reusecontent	[no test files]
+?   	english_learn/cmd/server	[no test files]
+?   	english_learn/cmd/synccontent	[no test files]
+?   	english_learn/cmd/wordcheck	[no test files]
+ok  	english_learn/internal/autofill	0.034s
+ok  	english_learn/internal/contentaudit	0.032s
+ok  	english_learn/internal/contenttasks	0.039s
+ok  	english_learn/internal/enrichment	0.035s
+ok  	english_learn/internal/learning	1.464s
+ok  	english_learn/internal/wordcheck	0.021s

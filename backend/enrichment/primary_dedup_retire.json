@@ -1,0 +1,19 @@
+[
+{"id":"fɑ:ðə ] (","replacedBy":"grandfather","reason":"id 尾部被截断，词形重复"},
+{"id":"no. problem","replacedBy":"no problem","reason":"同一短语，id 多出句点"},
+{"id":"ship：","replacedBy":"ship","reason":"id 尾部混入全角冒号，词形重复"},
+{"id":"subway：","replacedBy":"subway","reason":"id 尾部混入全角冒号，词形重复"},
+{"id":"t-shirt t","replacedBy":"t-shirt","reason":"id 尾部混入音标残留，词形重复"},
+{"id":"teacher's","replacedBy":"teacher's desk","reason":"词形与保留词条重复（合并释义后用 replaceBy 指向）"},
+{"id":"teacher,s desk","replacedBy":"teacher's desk","reason":"撇号误写成逗号"},
+{"id":"teacher,s-office","replacedBy":"teacher's office","reason":"撇号误写成逗号"},
+{"id":"teachers'","replacedBy":"teachers","reason":"id 仅差右侧撇号"},
+{"id":"the","replacedBy":"the great wall","reason":"id 被截断，词形为 the Great Wall"},
+{"id":"then：","replacedBy":"then","reason":"id 尾部混入全角冒号，词形重复"},
+{"id":"tried","replacedBy":"tired","reason":"id 拼写错误（tried → tired）"},
+{"id":"tomoto","replacedBy":"tomato","reason":"id 拼写错误（tomoto → tomato）"},
+{"id":"traffic：","replacedBy":"traffic","reason":"id 尾部混入全角冒号，词形重复"},
+{"id":"train：","replacedBy":"train","reason":"id 尾部混入全角冒号，词形重复"},
+{"id":"turn：","replacedBy":"turn","reason":"id 尾部混入全角冒号，词形重复"},
+{"id":"work.","replacedBy":"work","reason":"id 尾部混入句点，词形重复"}
+]

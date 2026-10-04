@@ -1,0 +1,79 @@
+# R6 证据：运行配置 + 结构化日志 + 数据库备份/恢复（本地门禁）
+
+生成时间：2026-10-04 20:55（本地 Windows，项目根目录）
+本轮改动：`internal/learning/{config,logging,backup,root,backup_controller}.go`、
+`{config,logging,backup,backup_http}_test.go`、`cmd/learnctl`、
+`cmd/server/main.go`、`app.go`、`run.go`、`repository.go`、`controller.go`、`router.go`、
+`config.json`、`config.example.json`、`scripts/deploy.ps1`、`docs/deploy.md`、`plan.md`。
+
+## 1) gofmt + go vet
+
+    $ gofmt -l internal cmd
+    （无输出 = 格式干净）
+    $ go vet ./...
+    （无输出）
+
+## 2) go test ./... -count=1
+
+    ok  	english_learn/internal/autofill	0.025s
+    ok  	english_learn/internal/contentaudit	0.030s
+    ok  	english_learn/internal/contenttasks	0.030s
+    ok  	english_learn/internal/enrichment	0.032s
+    ok  	english_learn/internal/learning	5.818s
+    ok  	english_learn/internal/wordcheck	0.021s
+
+新增用例（-run 过滤后逐条）：
+
+    --- PASS: TestHTTPIntegrationAdminBackupEndpoints (0.29s)    匿名 401 / 学生 403 / 管理员 200 + 备份落盘且通过一致性检查
+    --- PASS: TestOfflineBackupAndRestoreRoundTrip (0.01s)        离线备份 → 改库 → 恢复 → 旧库另存，值回到备份时刻
+    --- PASS: TestOnlineBackupSnapshotsOpenDatabase (0.01s)       在线快照（包级 db + Tx.WriteTo）
+    --- PASS: TestOnlineBackupRequiresOpenDatabase (0.00s)
+    --- PASS: TestOpenDatabaseReadOnlyReportsLockedFile (1.97s)   被独占时返回 ErrDatabaseLocked
+    --- PASS: TestRestoreRejectsLockedTarget (1.97s)              目标库被占用时恢复中止且文件字节不变
+    --- PASS: TestDefaultConfigKeepsHistoricalDefaults (0.00s)
+    --- PASS: TestLoadConfigLayersFileThenEnvironment (0.00s)     优先级：默认值 < config.json < 环境变量
+    --- PASS: TestLoadConfigWithoutFileFallsBackToDefaults (0.00s)
+    --- PASS: TestLoadConfigRejectsInvalidLogSettings (0.00s)     logLevel/logFormat 非法即报错
+    --- PASS: TestLoadConfigRejectsBrokenJSON (0.00s)
+    --- PASS: TestFindProjectRootWalksUpFromSubdirectory (0.00s)
+    --- PASS: TestFindProjectRootHonoursEnvironmentOverride (0.00s)
+    --- PASS: TestParseLogLevel (0.00s)
+    --- PASS: TestNewAppLoggerWritesJSONAndHonoursLevel (0.00s)   json 编码 + 级别过滤
+    --- PASS: TestNewAppLoggerTextFormat (0.00s)
+
+## 3) scripts/ci.ps1 -E2EBase http://127.0.0.1:8098
+
+    ==> Lingo Bloom CI 质量门禁
+        root: ...\workspaces\agents\syntropy-446b1dc3\project
+    [PASS] Go - gofmt -l internal cmd : 格式干净
+    [PASS] Go - go vet ./...
+    [PASS] Go - go test ./... -count=1 : ok  	english_learn/internal/wordcheck	0.019s
+    [PASS] Go - go run ./cmd/wordcheck（error 级阻断） : word quality report written to reports/word-quality.md
+    [PASS] Go - go run ./cmd/contentaudit : backend/middle_school.json: words=2895 missing_phonetic=0 missing_audio=2895 missing_examples=0 multi_sense=30 senses_without_examples=0 template_examples=0
+    [PASS] Frontend - node --check（42 个文件） : 全部通过
+    [PASS] Frontend - check-nav-hash.mjs : ✅ 主侧栏 hash 解析自检通过
+    [PASS] Frontend - check-grammar-ia.mjs : ✅ 信息架构自检通过
+    [PASS] Frontend - check-grammar-duplication.mjs : ...
+    [PASS] E2E - e2e-practice-flow.mjs : 截图目录 ...\.tmp\e2e-ci
+
+    ==> 结果：10 步通过 / 0 步失败
+    所有质量门禁通过。
+
+## 4) 回归：学习报告端到端（重构后仍 13/13）
+
+    $ node scripts/e2e-report-flow.mjs --base http://127.0.0.1:8098 --require-admin --shots .tmp/e2e-report-admin
+    OK   S1 注册并登录：账号 e2e-report-muttiztc → {"status":200,...,"role":"student"}
+    OK   S2 制造一题答对一题答错：[{"id":"a","word":"a","correct":true,"status":200},{"id":"a cold",...,"correct":false,"status":200}]
+    OK   S3 学习报告含学习日历（42 格）：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+    OK   S3 正确率与复习完成率均已展示：{"cells":42,"active":1,...}
+    OK   S4 学生访问家长报告被 403 拒绝：{"status":403}
+    OK   S5 家长/教师（管理员）会话就绪：{"step":"done","status":200,"rotated":true}
+    OK   S6 报告页可选中目标学习者：selected
+    OK   S6 只读报告指标齐备：[...]
+    OK   S6 正确率 50%：[...]
+    OK   S6 只读报告含学习日历：格子 42 · 活跃 1
+    OK   S6 薄弱词表列出答错的词：["a cold小学感冒0 / 12026-10-05"]
+    OK   S6 报告接口口径一致：{"status":200,"accuracy":50,"correct":1,"wrong":1,"weakest":1,"days":42,"activeDays":1}
+    OK   S7 页面无 JS 报错：0 个异常
+
+    ==> 学习日历 / 家长报告端到端：13 通过 / 0 失败

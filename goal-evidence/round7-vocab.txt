@@ -1,0 +1,78 @@
+第七轮证据 · 词库扩充（plan.md 第 42 项）
+================================================
+生成时间：2026-10-04 21:09:06（Asia/Hong_Kong）
+新增 30 条小学高频缺口词（六年级交通/职业/爱好/过去式短语、五年级比较级与文具等），
+由 cmd/expandvocab + internal/vocabulary 幂等合并：先按 ID 与英文词形双重去重，
+再整批校验字段（缺音标/释义/例句/字母分类即拒绝，不写半截数据），输出格式与既有词库逐字节一致。
+本文件为「从上一轮末状态重放」的真实命令输出（回放前 sha256[:32]=a107b06bb0967da0c3e0a3a16d8f2d98）。
+
+回放前：primary_school.json 条数（已恢复到上一轮末状态）
+$ powershell> python -X utf8 -c "import json;print(len(json.load(open('backend/primary_school.json',encoding='utf-8'))))"
+1331
+
+[exit 0]
+
+$ powershell> .\.tmp\expandvocab.exe -dataset backend\primary_school.json -additions backend\enrichment\primary_grade6_words.json -dry-run
+would add 30 records to backend\primary_school.json (total 1361)
+
+[exit 0]
+
+$ powershell> .\.tmp\expandvocab.exe -dataset backend\primary_school.json -additions backend\enrichment\primary_grade6_words.json
+added 30 records to backend\primary_school.json (total 1361)
+
+[exit 0]
+
+$ powershell> .\.tmp\expandvocab.exe -dataset backend\primary_school.json -additions backend\enrichment\primary_grade6_words.json
+added 0 records to backend\primary_school.json (total 1361)
+skipped 30 existing: [ate fresh food bought gifts by plane by ship by subway by taxi by train cook chinese food dancer do more exercise do word puzzles factory worker glue go straight half price happier hurt my foot last weekend marker others rode a horse science museum space travel surprised turn left turn right unhealthy went swimming worse yuan]
+
+[exit 0]
+
+$ powershell> python -X utf8 -c "import json;print('final count', len(json.load(open('backend/primary_school.json',encoding='utf-8'))))"
+final count 1361
+
+[exit 0]
+
+$ powershell> go test ./internal/vocabulary/ -count=1 -v
+=== RUN   TestExpandAppendsNewWords
+--- PASS: TestExpandAppendsNewWords (0.01s)
+=== RUN   TestExpandEscapesAmpersandLikeGoEncoder
+--- PASS: TestExpandEscapesAmpersandLikeGoEncoder (0.00s)
+=== RUN   TestExpandSkipsExistingByIDOrWord
+--- PASS: TestExpandSkipsExistingByIDOrWord (0.00s)
+=== RUN   TestExpandRejectsIncompleteCandidateWithoutWriting
+--- PASS: TestExpandRejectsIncompleteCandidateWithoutWriting (0.00s)
+=== RUN   TestExpandRejectsDuplicateCandidates
+--- PASS: TestExpandRejectsDuplicateCandidates (0.00s)
+=== RUN   TestExpandIsIdempotent
+--- PASS: TestExpandIsIdempotent (0.00s)
+=== RUN   TestExpandDryRunDoesNotWrite
+--- PASS: TestExpandDryRunDoesNotWrite (0.00s)
+PASS
+ok  	english_learn/internal/vocabulary	0.055s
+
+[exit 0]
+
+$ powershell> go run ./cmd/wordcheck 2>&1 | Select-Object -Last 3
+- ⚠️ `backend/primary_school.json` 第 1195 条 `turn：`：与第 1194 条英文词形重复（`duplicate_word`）
+- ⚠️ `backend/primary_school.json` 第 1305 条 `work.`：与第 1304 条英文词形重复（`duplicate_word`）
+
+
+[exit 0]
+
+$ powershell> go run ./cmd/wordcheck -format json | python -X utf8 -c "import json,sys;r=json.load(sys.stdin);print('files',[(f['path'],f['words'],f['errors'],f['warnings']) for f in r['files']]);print('issueCounts',r['issueCounts'])"
+files [('backend/primary_school.json', 1361, 0, 17), ('backend/middle_school.json', 2895, 0, 37)]
+issueCounts {'duplicate_word': 54}
+
+[exit 0]
+
+$ powershell> go run ./cmd/contentaudit
+backend/primary_school.json: words=1361 missing_phonetic=0 missing_audio=1361 missing_examples=0 multi_sense=80 senses_without_examples=0 template_examples=0
+backend/middle_school.json: words=2895 missing_phonetic=0 missing_audio=2895 missing_examples=0 multi_sense=30 senses_without_examples=0 template_examples=0
+
+[exit 0]
+
+$ powershell> python -X utf8 .tmp\fmtcheck2.py
+round-trip identical: True count 1361
+
+[exit 0]

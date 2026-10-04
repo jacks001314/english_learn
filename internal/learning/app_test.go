@@ -60,14 +60,15 @@ func TestProgressKeySeparatesLevels(t *testing.T) {
 }
 
 func TestWordsFiltersContentMetadataAndSearch(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = map[string][]Word{"primary": {
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = map[string][]Word{"primary": {
 		{ID: "apple", Word: "apple", Meaning: "苹果", Example: "I eat an apple.", Topic: "食物", Grade: "三年级", Unit: "Unit 1"},
 		{ID: "book", Word: "book", Meaning: "书", Topic: "学习用品", Grade: "三年级", Unit: "Unit 2"},
 		{ID: "cat", Word: "cat", Meaning: "猫", Topic: "动物", Grade: "四年级", Unit: "Unit 1"},
 	}}
-	service := NewService()
+	service := NewService(store)
 	page := service.Words(WordFilter{Level: "primary", Topic: "食物", Grade: "三年级", Page: 1})
 	if page.Total != 1 || page.Items[0].ID != "apple" {
 		t.Fatalf("unexpected metadata filter: %+v", page)
@@ -83,14 +84,15 @@ func TestWordsFiltersContentMetadataAndSearch(t *testing.T) {
 }
 
 func TestWordsFiltersLetterAndPartOfSpeech(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = map[string][]Word{"primary": {
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = map[string][]Word{"primary": {
 		{ID: "apple", Word: "apple", Pos: "n.", Letter: "A"},
 		{ID: "ask", Word: "ask", Pos: "v.", Letter: "A"},
 		{ID: "book", Word: "book", Pos: "n.", Letter: "B"},
 	}}
-	service := NewService()
+	service := NewService(store)
 	page := service.Words(WordFilter{Level: "primary", Letter: "A", PartOfSpeech: "verb", Page: 1})
 	if page.Total != 1 || page.Items[0].ID != "ask" {
 		t.Fatalf("unexpected category filter: %+v", page)
@@ -102,11 +104,12 @@ func TestWordsFiltersLetterAndPartOfSpeech(t *testing.T) {
 }
 
 func TestWordsSortsAlphabetically(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = map[string][]Word{"primary": {{ID: "cat", Word: "cat"}, {ID: "apple", Word: "Apple"}, {ID: "book", Word: "book"}}}
-	asc := NewService().Words(WordFilter{Level: "primary", Sort: "word-asc", Page: 1})
-	desc := NewService().Words(WordFilter{Level: "primary", Sort: "word-desc", Page: 1})
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = map[string][]Word{"primary": {{ID: "cat", Word: "cat"}, {ID: "apple", Word: "Apple"}, {ID: "book", Word: "book"}}}
+	asc := NewService(store).Words(WordFilter{Level: "primary", Sort: "word-asc", Page: 1})
+	desc := NewService(store).Words(WordFilter{Level: "primary", Sort: "word-desc", Page: 1})
 	if asc.Items[0].ID != "apple" || desc.Items[0].ID != "cat" {
 		t.Fatalf("unexpected sorting: asc=%+v desc=%+v", asc.Items, desc.Items)
 	}
@@ -125,8 +128,9 @@ func TestPartOfSpeechRecognition(t *testing.T) {
 }
 
 func TestLoadCountriesAddsBothLevels(t *testing.T) {
-	oldDatasets, oldIndex := datasets, wordIndex
-	t.Cleanup(func() { datasets, wordIndex = oldDatasets, oldIndex })
+	store := &Store{}
+	oldDatasets, oldIndex := store.datasets, store.wordIndex
+	t.Cleanup(func() { store.datasets, store.wordIndex = oldDatasets, oldIndex })
 	root := t.TempDir()
 	if err := os.MkdirAll(filepath.Join(root, "backend"), 0700); err != nil {
 		t.Fatal(err)
@@ -134,28 +138,29 @@ func TestLoadCountriesAddsBothLevels(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(root, "backend", "countries.txt"), []byte("中国|China\n日本|Japan\n"), 0600); err != nil {
 		t.Fatal(err)
 	}
-	datasets = map[string][]Word{"primary": {}, "middle": {}}
-	wordIndex = map[string]Word{}
-	if err := loadCountries(root); err != nil {
+	store.datasets = map[string][]Word{"primary": {}, "middle": {}}
+	store.wordIndex = map[string]Word{}
+	if err := store.loadCountries(root); err != nil {
 		t.Fatal(err)
 	}
-	if len(datasets["primary"]) != 2 || len(datasets["middle"]) != 2 {
-		t.Fatalf("unexpected country counts: %+v", datasets)
+	if len(store.datasets["primary"]) != 2 || len(store.datasets["middle"]) != 2 {
+		t.Fatalf("unexpected country counts: %+v", store.datasets)
 	}
-	if word, ok := findWord("primary", "country-china"); !ok || word.Topic != "国家" || word.Meaning != "中国" {
+	if word, ok := store.findWord("primary", "country-china"); !ok || word.Topic != "国家" || word.Meaning != "中国" {
 		t.Fatalf("unexpected country word: %+v %v", word, ok)
 	}
 }
 
 func TestQuizSupportsChineseToEnglish(t *testing.T) {
-	oldDatasets, oldIndex := datasets, wordIndex
-	t.Cleanup(func() { datasets, wordIndex = oldDatasets, oldIndex })
-	datasets = map[string][]Word{"primary": {
+	store := &Store{}
+	oldDatasets, oldIndex := store.datasets, store.wordIndex
+	t.Cleanup(func() { store.datasets, store.wordIndex = oldDatasets, oldIndex })
+	store.datasets = map[string][]Word{"primary": {
 		{ID: "apple", Word: "apple", Meaning: "苹果"}, {ID: "book", Word: "book", Meaning: "书"},
 		{ID: "cat", Word: "cat", Meaning: "猫"}, {ID: "dog", Word: "dog", Meaning: "狗"},
 	}}
-	wordIndex = map[string]Word{"primary:apple": datasets["primary"][0]}
-	quiz, err := NewService().Quiz("primary", "apple", "zh-en")
+	store.wordIndex = map[string]Word{"primary:apple": store.datasets["primary"][0]}
+	quiz, err := NewService(store).Quiz("primary", "apple", "zh-en")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -165,31 +170,33 @@ func TestQuizSupportsChineseToEnglish(t *testing.T) {
 }
 
 func TestQuizSupportsListeningAndSpelling(t *testing.T) {
-	oldDatasets, oldIndex := datasets, wordIndex
-	t.Cleanup(func() { datasets, wordIndex = oldDatasets, oldIndex })
-	datasets = map[string][]Word{"primary": {{ID: "apple", Word: "apple", Meaning: "苹果"}, {ID: "book", Word: "book", Meaning: "书"}, {ID: "cat", Word: "cat", Meaning: "猫"}, {ID: "dog", Word: "dog", Meaning: "狗"}}}
-	wordIndex = map[string]Word{"primary:apple": datasets["primary"][0]}
-	listen, err := NewService().Quiz("primary", "apple", "listen")
+	store := &Store{}
+	oldDatasets, oldIndex := store.datasets, store.wordIndex
+	t.Cleanup(func() { store.datasets, store.wordIndex = oldDatasets, oldIndex })
+	store.datasets = map[string][]Word{"primary": {{ID: "apple", Word: "apple", Meaning: "苹果"}, {ID: "book", Word: "book", Meaning: "书"}, {ID: "cat", Word: "cat", Meaning: "猫"}, {ID: "dog", Word: "dog", Meaning: "狗"}}}
+	store.wordIndex = map[string]Word{"primary:apple": store.datasets["primary"][0]}
+	listen, err := NewService(store).Quiz("primary", "apple", "listen")
 	if err != nil || listen.Answer != "apple" || len(listen.Options) != 4 {
 		t.Fatalf("unexpected listening quiz: %+v %v", listen, err)
 	}
-	spelling, err := NewService().Quiz("primary", "apple", "spelling")
+	spelling, err := NewService(store).Quiz("primary", "apple", "spelling")
 	if err != nil || spelling.Prompt != "苹果" || spelling.Answer != "apple" || len(spelling.Options) != 0 {
 		t.Fatalf("unexpected spelling quiz: %+v %v", spelling, err)
 	}
 }
 
 func TestQuizSupportsExampleCloze(t *testing.T) {
-	oldDatasets, oldIndex := datasets, wordIndex
-	t.Cleanup(func() { datasets, wordIndex = oldDatasets, oldIndex })
-	datasets = map[string][]Word{"primary": {
+	store := &Store{}
+	oldDatasets, oldIndex := store.datasets, store.wordIndex
+	t.Cleanup(func() { store.datasets, store.wordIndex = oldDatasets, oldIndex })
+	store.datasets = map[string][]Word{"primary": {
 		{ID: "apple", Word: "apple", Meaning: "苹果", Example: "I eat an Apple every day."},
 		{ID: "book", Word: "book", Meaning: "书", Example: "This book is new."},
 		{ID: "cat", Word: "cat", Meaning: "猫", Example: "The cat is small."},
 		{ID: "dog", Word: "dog", Meaning: "狗", Example: "The dog can run."},
 	}}
-	wordIndex = map[string]Word{"primary:apple": datasets["primary"][0]}
-	quiz, err := NewService().Quiz("primary", "apple", "cloze")
+	store.wordIndex = map[string]Word{"primary:apple": store.datasets["primary"][0]}
+	quiz, err := NewService(store).Quiz("primary", "apple", "cloze")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -199,28 +206,29 @@ func TestQuizSupportsExampleCloze(t *testing.T) {
 }
 
 func TestUpdateProgressAccumulatesAndSchedulesReview(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	var err error
-	db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
+	store.db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { db.Close() })
-	if err := initDB(db); err != nil {
+	t.Cleanup(func() { store.db.Close() })
+	if err := initDB(store.db); err != nil {
 		t.Fatal(err)
 	}
 
 	now := time.Date(2026, 7, 19, 10, 0, 0, 0, time.UTC)
 	key := progressKey("primary", "apple")
-	first, err := UpdateProgress(key, Progress{Seen: 1, Wrong: 1}, now)
+	first, err := store.UpdateProgress(key, Progress{Seen: 1, Wrong: 1}, now)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if first.Wrong != 1 || first.Resolved {
 		t.Fatalf("unexpected first progress: %+v", first)
 	}
-	second, err := UpdateProgress(key, Progress{Seen: 1, Correct: 1, Mastered: true}, now.Add(time.Hour))
+	second, err := store.UpdateProgress(key, Progress{Seen: 1, Correct: 1, Mastered: true}, now.Add(time.Hour))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -237,35 +245,36 @@ func TestUpdateProgressAccumulatesAndSchedulesReview(t *testing.T) {
 }
 
 func TestReviewProgressGrowsAndResetsInterval(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	var err error
-	db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
+	store.db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { db.Close() })
-	if err := initDB(db); err != nil {
+	t.Cleanup(func() { store.db.Close() })
+	if err := initDB(store.db); err != nil {
 		t.Fatal(err)
 	}
 
 	now := time.Date(2026, 7, 19, 10, 0, 0, 0, time.UTC)
 	key := progressKey("primary", "apple")
-	first, err := UpdateProgress(key, Progress{Seen: 1, Correct: 1, Mastered: true, Review: true}, now)
+	first, err := store.UpdateProgress(key, Progress{Seen: 1, Correct: 1, Mastered: true, Review: true}, now)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if first.ReviewCount != 1 || first.ReviewStreak != 1 || first.IntervalDays != 1 {
 		t.Fatalf("unexpected first review: %+v", first)
 	}
-	second, err := UpdateProgress(key, Progress{Seen: 1, Correct: 1, Mastered: true, Review: true}, now.Add(24*time.Hour))
+	second, err := store.UpdateProgress(key, Progress{Seen: 1, Correct: 1, Mastered: true, Review: true}, now.Add(24*time.Hour))
 	if err != nil {
 		t.Fatal(err)
 	}
 	if second.ReviewCount != 2 || second.ReviewStreak != 2 || second.IntervalDays != 3 {
 		t.Fatalf("unexpected second review: %+v", second)
 	}
-	failed, err := UpdateProgress(key, Progress{Seen: 1, Wrong: 1, Review: true}, now.Add(48*time.Hour))
+	failed, err := store.UpdateProgress(key, Progress{Seen: 1, Wrong: 1, Review: true}, now.Add(48*time.Hour))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -275,24 +284,25 @@ func TestReviewProgressGrowsAndResetsInterval(t *testing.T) {
 }
 
 func TestUpdateProgressAccumulatesQuizResults(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	var err error
-	db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
+	store.db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { db.Close() })
-	if err := initDB(db); err != nil {
+	t.Cleanup(func() { store.db.Close() })
+	if err := initDB(store.db); err != nil {
 		t.Fatal(err)
 	}
 	key := "primary:apple"
 	now := time.Date(2026, 7, 19, 10, 0, 0, 0, time.UTC)
-	_, err = UpdateProgress(key, Progress{Correct: 1, QuizResults: map[string]QuizResult{"en-zh": {Correct: 1}}}, now)
+	_, err = store.UpdateProgress(key, Progress{Correct: 1, QuizResults: map[string]QuizResult{"en-zh": {Correct: 1}}}, now)
 	if err != nil {
 		t.Fatal(err)
 	}
-	saved, err := UpdateProgress(key, Progress{Wrong: 1, QuizResults: map[string]QuizResult{"en-zh": {Wrong: 1}, "zh-en": {Wrong: 1}}}, now.Add(time.Hour))
+	saved, err := store.UpdateProgress(key, Progress{Wrong: 1, QuizResults: map[string]QuizResult{"en-zh": {Wrong: 1}, "zh-en": {Wrong: 1}}}, now.Add(time.Hour))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -302,9 +312,10 @@ func TestUpdateProgressAccumulatesQuizResults(t *testing.T) {
 }
 
 func TestMigrateLegacyProgress(t *testing.T) {
-	oldIndex := wordIndex
-	t.Cleanup(func() { wordIndex = oldIndex })
-	wordIndex = map[string]Word{progressKey("primary", "apple"): {ID: "apple", Level: "primary"}}
+	store := &Store{}
+	oldIndex := store.wordIndex
+	t.Cleanup(func() { store.wordIndex = oldIndex })
+	store.wordIndex = map[string]Word{progressKey("primary", "apple"): {ID: "apple", Level: "primary"}}
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -319,7 +330,7 @@ func TestMigrateLegacyProgress(t *testing.T) {
 	}); err != nil {
 		t.Fatal(err)
 	}
-	if err := migrateLegacyProgress(database); err != nil {
+	if err := store.migrateLegacyProgress(database); err != nil {
 		t.Fatal(err)
 	}
 	if err := database.View(func(tx *bolt.Tx) error {
@@ -366,9 +377,10 @@ func TestInitDBCreatesContentLibraryBuckets(t *testing.T) {
 }
 
 func TestImportContentLibraryIsIdempotent(t *testing.T) {
-	oldDatasets := datasets
-	t.Cleanup(func() { datasets = oldDatasets })
-	datasets = map[string][]Word{"primary": {{ID: "apple", Word: "apple", Meaning: "苹果", Phonetic: "/æpl/", Example: "I eat an apple.", ExampleTranslation: "我吃一个苹果。"}}}
+	store := &Store{}
+	oldDatasets := store.datasets
+	t.Cleanup(func() { store.datasets = oldDatasets })
+	store.datasets = map[string][]Word{"primary": {{ID: "apple", Word: "apple", Meaning: "苹果", Phonetic: "/æpl/", Example: "I eat an apple.", ExampleTranslation: "我吃一个苹果。"}}}
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "content.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -377,10 +389,10 @@ func TestImportContentLibraryIsIdempotent(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	if err := importContentLibrary(database); err != nil {
+	if err := store.importContentLibrary(database); err != nil {
 		t.Fatal(err)
 	}
-	if err := importContentLibrary(database); err != nil {
+	if err := store.importContentLibrary(database); err != nil {
 		t.Fatal(err)
 	}
 	stats, err := contentLibraryStats(database)
@@ -393,9 +405,10 @@ func TestImportContentLibraryIsIdempotent(t *testing.T) {
 }
 
 func TestImportContentLibraryImportsSenseExamples(t *testing.T) {
-	old := datasets
-	t.Cleanup(func() { datasets = old })
-	datasets = map[string][]Word{"primary": {{
+	store := &Store{}
+	old := store.datasets
+	t.Cleanup(func() { store.datasets = old })
+	store.datasets = map[string][]Word{"primary": {{
 		ID: "light", Word: "light", Meaning: "光；轻的",
 		Senses: []WordSenseContent{
 			{ID: "noun", Meaning: "光", Example: "Turn on the light.", ExampleTranslation: "打开灯。"},
@@ -410,7 +423,7 @@ func TestImportContentLibraryImportsSenseExamples(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	if err := importContentLibrary(database); err != nil {
+	if err := store.importContentLibrary(database); err != nil {
 		t.Fatal(err)
 	}
 	stats, err := contentLibraryStats(database)
@@ -423,24 +436,25 @@ func TestImportContentLibraryImportsSenseExamples(t *testing.T) {
 }
 
 func TestTodayReviewFiltersLevelAndDueDate(t *testing.T) {
-	oldDB, oldIndex := db, wordIndex
-	t.Cleanup(func() { db, wordIndex = oldDB, oldIndex })
+	store := &Store{}
+	oldDB, oldIndex := store.db, store.wordIndex
+	t.Cleanup(func() { store.db, store.wordIndex = oldDB, oldIndex })
 	var err error
-	db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
+	store.db, err = bolt.Open(filepath.Join(t.TempDir(), "test.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { db.Close() })
-	if err := initDB(db); err != nil {
+	t.Cleanup(func() { store.db.Close() })
+	if err := initDB(store.db); err != nil {
 		t.Fatal(err)
 	}
-	wordIndex = map[string]Word{
+	store.wordIndex = map[string]Word{
 		"primary:apple": {ID: "apple", Word: "apple", Level: "primary"},
 		"middle:apple":  {ID: "apple", Word: "apple", Level: "middle"},
 		"primary:book":  {ID: "book", Word: "book", Level: "primary"},
 	}
 	now := time.Date(2026, 7, 19, 10, 0, 0, 0, time.UTC)
-	if err := db.Update(func(tx *bolt.Tx) error {
+	if err := store.db.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(progressBucket))
 		for key, progress := range map[string]Progress{
 			"primary:apple": {NextReview: now.Add(-time.Hour).Format(time.RFC3339)},
@@ -457,7 +471,7 @@ func TestTodayReviewFiltersLevelAndDueDate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	queue, err := NewService().TodayReview("primary", now)
+	queue, err := NewService(store).TodayReview("primary", now)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -467,7 +481,7 @@ func TestTodayReviewFiltersLevelAndDueDate(t *testing.T) {
 	if queue.Completed != 1 || queue.Total != 1 || queue.Goal != 10 {
 		t.Fatalf("unexpected review summary: %+v", queue)
 	}
-	all, err := NewService().TodayReview("", now)
+	all, err := NewService(store).TodayReview("", now)
 	if err != nil || len(all.Items) != 2 {
 		t.Fatalf("unexpected all reviews: %+v, err=%v", all, err)
 	}

@@ -8,21 +8,22 @@ import (
 )
 
 func TestAdminHomeworkOverviewCountsRealWorkflowState(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	database := openTestDB(t)
 	defer database.Close()
-	db = database
+	store.db = database
 
 	now := time.Date(2026, 7, 27, 12, 0, 0, 0, time.Local)
-	active, err := saveHomework(Homework{
+	active, err := store.saveHomework(Homework{
 		ID: "active", Title: "Active homework", Status: "published",
 		DueAt: now.Add(24 * time.Hour).Format(time.RFC3339), AssigneeIDs: []string{"student-1", "student-2"},
 	}, User{Username: "admin"})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := saveHomework(Homework{
+	if _, err := store.saveHomework(Homework{
 		ID: "overdue", Title: "Overdue homework", Status: "published",
 		DueAt: now.Add(-24 * time.Hour).Format(time.RFC3339), AssigneeIDs: []string{"student-3"},
 	}, User{Username: "admin"}); err != nil {
@@ -33,7 +34,7 @@ func TestAdminHomeworkOverviewCountsRealWorkflowState(t *testing.T) {
 		{ID: "s1", HomeworkID: active.ID, UserID: "student-1", Status: "submitted"},
 		{ID: "s2", HomeworkID: active.ID, UserID: "student-2", Status: "graded", Grade: HomeworkGrade{Status: "confirmed"}},
 	}
-	if err := db.Update(func(tx *bolt.Tx) error {
+	if err := store.db.Update(func(tx *bolt.Tx) error {
 		for _, submission := range submissions {
 			if err := putJSON(tx.Bucket([]byte(homeworkSubmissionsBucket)), scopedKey(submission.UserID, submission.HomeworkID), submission); err != nil {
 				return err
@@ -44,7 +45,7 @@ func TestAdminHomeworkOverviewCountsRealWorkflowState(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	items, summary, err := adminHomeworkOverview(now)
+	items, summary, err := store.adminHomeworkOverview(now)
 	if err != nil {
 		t.Fatal(err)
 	}

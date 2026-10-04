@@ -24,8 +24,8 @@ func clampScore(value int) int {
 	return value
 }
 
-func wordMastery(key string, progress Progress, now time.Time) (KnowledgeMastery, bool) {
-	word, ok := wordIndex[key]
+func (s *Store) wordMastery(key string, progress Progress, now time.Time) (KnowledgeMastery, bool) {
+	word, ok := s.wordIndex[key]
 	if !ok || !publicContentStatus(word.Status) {
 		return KnowledgeMastery{}, false
 	}
@@ -95,7 +95,11 @@ func quizTypeLabel(value string) string {
 
 func (s *Service) LearningProfile(level string, now time.Time) (LearningProfile, error) {
 	level = normalizeLevel(level)
-	progress, err := readProgress(s.userID)
+	progress, err := s.store.readProgress(s.userID)
+	if err != nil {
+		return LearningProfile{}, err
+	}
+	notes, err := s.store.tutorNotesForUser(s.userID)
 	if err != nil {
 		return LearningProfile{}, err
 	}
@@ -104,7 +108,7 @@ func (s *Service) LearningProfile(level string, now time.Time) (LearningProfile,
 	type topicAggregate struct{ score, confidence, practiced, weak int }
 	topics := map[string]*topicAggregate{}
 	coverage := map[string]int{}
-	for _, word := range wordsByLevel(level) {
+	for _, word := range s.store.wordsByLevel(level) {
 		if publicContentStatus(word.Status) && strings.TrimSpace(word.Topic) != "" {
 			coverage[word.Topic]++
 		}
@@ -113,9 +117,16 @@ func (s *Service) LearningProfile(level string, now time.Time) (LearningProfile,
 		if !strings.HasPrefix(key, level+":") {
 			continue
 		}
-		item, ok := wordMastery(key, value, now)
+		item, ok := s.store.wordMastery(key, value, now)
 		if !ok {
 			continue
+		}
+		if note, hasNote := notes[key]; hasNote && strings.TrimSpace(note.Summary) != "" {
+			item.TutorNote = note.Summary
+			item.TutorNoteAt = note.UpdatedAt
+			if !contains(item.Tags, "助教已讲解") {
+				item.Tags = append(item.Tags, "助教已讲解")
+			}
 		}
 		items = append(items, item)
 		profile.Practiced++
@@ -183,7 +194,7 @@ func (s *Service) LearningProfile(level string, now time.Time) (LearningProfile,
 		}
 		return profile.Dimensions[i].Weak > profile.Dimensions[j].Weak
 	})
-	profile.RecentEvents, _ = recentLearningEvents(s.userID, 10)
+	profile.RecentEvents, _ = s.store.recentLearningEvents(s.userID, 10)
 	return profile, nil
 }
 
@@ -232,13 +243,13 @@ func recordProgressLearningEvent(tx *bolt.Tx, userID, key string, incoming Progr
 	return recordLearningEventTx(tx, LearningEvent{UserID: userID, Type: eventType, ContentType: "word", ContentID: parts[1], Level: parts[0], Correct: incoming.Correct, Wrong: incoming.Wrong, Source: source, Details: details, CreatedAt: now.Format(time.RFC3339Nano)})
 }
 
-func recentLearningEvents(userID string, limit int) ([]LearningEvent, error) {
+func (s *Store) recentLearningEvents(userID string, limit int) ([]LearningEvent, error) {
 	if limit < 1 || limit > 100 {
 		limit = 20
 	}
 	items := []LearningEvent{}
 	prefix := userID + "|"
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(learningEventsBucket)).ForEach(func(key, value []byte) error {
 			if !strings.HasPrefix(string(key), prefix) {
 				return nil
@@ -274,7 +285,7 @@ func (s *Service) SmartLearningPlan(level string, targetMinutes int, now time.Ti
 	if !regenerate {
 		var existing SmartLearningPlan
 		found := false
-		err := db.View(func(tx *bolt.Tx) error {
+		err := s.store.db.View(func(tx *bolt.Tx) error {
 			raw := tx.Bucket([]byte(learningPlansBucket)).Get([]byte(key))
 			if raw == nil {
 				return nil
@@ -290,16 +301,16 @@ func (s *Service) SmartLearningPlan(level string, targetMinutes int, now time.Ti
 	if err != nil {
 		return SmartLearningPlan{}, err
 	}
-	progress, err := readProgress(s.userID)
+	progress, err := s.store.readProgress(s.userID)
 	if err != nil {
 		return SmartLearningPlan{}, err
 	}
-	plan := buildSmartLearningPlan(s.userID, level, targetMinutes, profile, progress, now)
-	err = db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(learningPlansBucket)), key, plan) })
+	plan := s.store.buildSmartLearningPlan(s.userID, level, targetMinutes, profile, progress, now)
+	err = s.store.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(learningPlansBucket)), key, plan) })
 	return plan, err
 }
 
-func buildSmartLearningPlan(userID, level string, targetMinutes int, profile LearningProfile, progress map[string]Progress, now time.Time) SmartLearningPlan {
+func (s *Store) buildSmartLearningPlan(userID, level string, targetMinutes int, profile LearningProfile, progress map[string]Progress, now time.Time) SmartLearningPlan {
 	plan := SmartLearningPlan{ID: uuid.NewString(), UserID: userID, Date: now.Format("2006-01-02"), Level: level, TargetMinutes: targetMinutes, Focus: []string{}, Tasks: []SmartPlanTask{}, GeneratedAt: now.Format(time.RFC3339), UpdatedAt: now.Format(time.RFC3339)}
 	type candidate struct{ task SmartPlanTask }
 	candidates := []candidate{}
@@ -315,7 +326,7 @@ func buildSmartLearningPlan(userID, level string, targetMinutes int, profile Lea
 		add("mistakes", "修复薄弱词汇", "先查看错误原因，再完成一轮针对性练习。", fmt.Sprintf("画像识别出 %d 个不稳定知识点", profile.Weak), 6, min(profile.Weak, 6), LearningPlanAction{View: "mistakes", Level: level, Word: word})
 	}
 	var unseen *Word
-	for _, word := range wordsByLevel(level) {
+	for _, word := range s.wordsByLevel(level) {
 		if !recommendedWordCandidate(word) {
 			continue
 		}
@@ -334,7 +345,7 @@ func buildSmartLearningPlan(userID, level string, targetMinutes int, profile Lea
 	}
 	add("quiz", "完成针对性小测", "用一组短测验证今天的掌握情况。", quizReason(profile, quizWord), 8, 10, LearningPlanAction{View: "quiz", Level: level, Word: quizWord})
 	if targetMinutes >= 25 {
-		if article, ok := planArticleForLevel(level); ok {
+		if article, ok := s.planArticleForLevel(level); ok {
 			add("reading", "完成一篇分级阅读", article.Title, "在词汇练习后加入语境输入，提升迁移能力", max(6, article.Minutes), 1, LearningPlanAction{View: "reading", Level: level, ContentID: article.ID})
 		}
 	}
@@ -372,8 +383,8 @@ func buildSmartLearningPlan(userID, level string, targetMinutes int, profile Lea
 	return plan
 }
 
-func planArticleForLevel(level string) (Article, bool) {
-	articles, err := readArticles()
+func (s *Store) planArticleForLevel(level string) (Article, bool) {
+	articles, err := s.readArticles()
 	if err != nil {
 		return Article{}, false
 	}
@@ -419,10 +430,33 @@ func firstMasteryWord(items []KnowledgeMastery) *Word {
 }
 
 func quizReason(profile LearningProfile, word *Word) string {
+	if word != nil {
+		if note := masteryTutorNote(profile, word); note != "" {
+			return "助教上次讲过 “" + word.Word + "”： " + truncateRunes(note, 60) + " —— 用小测验证是否真的记住"
+		}
+	}
 	if word != nil && profile.Practiced > 0 {
 		return "根据薄弱词汇 “" + word.Word + "” 优先生成练习"
 	}
 	return "用短测建立第一份真实能力证据"
+}
+
+// masteryTutorNote finds the assistant note the profile kept for one word.
+func masteryTutorNote(profile LearningProfile, word *Word) string {
+	if word == nil {
+		return ""
+	}
+	for _, item := range profile.Weakest {
+		if item.Word != nil && item.Word.ID == word.ID && item.Word.Level == word.Level {
+			return item.TutorNote
+		}
+	}
+	for _, item := range profile.Strongest {
+		if item.Word != nil && item.Word.ID == word.ID && item.Word.Level == word.Level {
+			return item.TutorNote
+		}
+	}
+	return ""
 }
 
 func refreshPlanTotals(plan *SmartLearningPlan) {
@@ -472,7 +506,7 @@ func completePlanTaskTx(tx *bolt.Tx, userID, level, taskID, taskType string, now
 
 func (s *Service) CompleteSmartPlanTask(level, taskID string, now time.Time) (SmartLearningPlan, error) {
 	var plan SmartLearningPlan
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := s.store.db.Update(func(tx *bolt.Tx) error {
 		var changed bool
 		var err error
 		plan, changed, err = completePlanTaskTx(tx, s.userID, level, taskID, "", now)

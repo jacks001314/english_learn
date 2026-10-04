@@ -418,6 +418,7 @@
 .gr2-item.st-exonly .gr2-item-meta { color: var(--gr2-blue); }
 .gr2-item.st-empty .gr2-item-meta { color: #a4b3ac; }
 .gr2-item.st-done .gr2-item-meta { color: var(--gr2-green); }
+.gr2-item.st-card .gr2-item-meta { color: #8d6fb0; }
 .gr2-ring {
   flex: 0 0 14px;
   width: 14px;

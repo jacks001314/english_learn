@@ -8,35 +8,36 @@ import (
 )
 
 func TestLearningProfileAndSmartPlanCloseTheLoop(t *testing.T) {
-	oldDB, oldData, oldIndex := db, datasets, wordIndex
-	t.Cleanup(func() { db, datasets, wordIndex = oldDB, oldData, oldIndex })
+	store := &Store{}
+	oldDB, oldData, oldIndex := store.db, store.datasets, store.wordIndex
+	t.Cleanup(func() { store.db, store.datasets, store.wordIndex = oldDB, oldData, oldIndex })
 	database := openTestDB(t)
 	defer database.Close()
-	db = database
+	store.db = database
 	words := []Word{
 		{ID: "apple", Word: "apple", Meaning: "苹果", Level: "primary", Topic: "食物", Status: "published"},
 		{ID: "book", Word: "book", Meaning: "书", Level: "primary", Topic: "学习", Status: "published"},
 		{ID: "cloud", Word: "cloud", Meaning: "云", Level: "primary", Topic: "自然", Status: "published"},
 		{ID: "dream", Word: "dream", Meaning: "梦想", Level: "primary", Topic: "成长", Status: "published"},
 	}
-	datasets = map[string][]Word{"primary": words, "middle": {}}
-	wordIndex = map[string]Word{}
+	store.datasets = map[string][]Word{"primary": words, "middle": {}}
+	store.wordIndex = map[string]Word{}
 	for _, word := range words {
-		wordIndex[progressKey(word.Level, word.ID)] = word
+		store.wordIndex[progressKey(word.Level, word.ID)] = word
 	}
-	if err := upsertArticles([]Article{{ID: "daily-reading", Title: "A Short Reading", Status: "published", Minutes: 6, Paragraphs: []ArticleParagraph{{English: "Read every day.", Chinese: "每天阅读。"}}}}); err != nil {
+	if err := store.upsertArticles([]Article{{ID: "daily-reading", Title: "A Short Reading", Status: "published", Minutes: 6, Paragraphs: []ArticleParagraph{{English: "Read every day.", Chinese: "每天阅读。"}}}}); err != nil {
 		t.Fatal(err)
 	}
 
 	now := time.Date(2026, 7, 27, 9, 0, 0, 0, time.Local)
-	if _, err := UpdateProgress(progressKey("primary", "apple"), Progress{Seen: 1, Wrong: 2}, now.Add(-48*time.Hour), "student-1"); err != nil {
+	if _, err := store.UpdateProgress(progressKey("primary", "apple"), Progress{Seen: 1, Wrong: 2}, now.Add(-48*time.Hour), "student-1"); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := UpdateProgress(progressKey("primary", "book"), Progress{Seen: 1, Correct: 4, Mastered: true}, now.Add(-24*time.Hour), "student-1"); err != nil {
+	if _, err := store.UpdateProgress(progressKey("primary", "book"), Progress{Seen: 1, Correct: 4, Mastered: true}, now.Add(-24*time.Hour), "student-1"); err != nil {
 		t.Fatal(err)
 	}
 
-	service := NewService("student-1")
+	service := NewService(store, "student-1")
 	profile, err := service.LearningProfile("primary", now)
 	if err != nil {
 		t.Fatal(err)
@@ -67,7 +68,7 @@ func TestLearningProfileAndSmartPlanCloseTheLoop(t *testing.T) {
 	}
 
 	quizTask := planTask(plan, "quiz")
-	if _, err := UpdateProgress(progressKey("primary", "apple"), Progress{Correct: 1, QuizResults: map[string]QuizResult{"en-zh": {Correct: 1}}}, now.Add(time.Minute), "student-1"); err != nil {
+	if _, err := store.UpdateProgress(progressKey("primary", "apple"), Progress{Correct: 1, QuizResults: map[string]QuizResult{"en-zh": {Correct: 1}}}, now.Add(time.Minute), "student-1"); err != nil {
 		t.Fatal(err)
 	}
 	afterQuiz, err := service.SmartLearningPlan("primary", 30, now.Add(time.Minute), false)
@@ -83,7 +84,7 @@ func TestLearningProfileAndSmartPlanCloseTheLoop(t *testing.T) {
 	if err != nil || !planTask(completed, "mistakes").Completed || completed.CompletedTasks != 2 {
 		t.Fatalf("manual task completion failed: %+v %v", completed, err)
 	}
-	events, err := recentLearningEvents("student-1", 20)
+	events, err := store.recentLearningEvents("student-1", 20)
 	if err != nil || len(events) < 4 || events[0].Type != "plan_task_completed" {
 		t.Fatalf("completion event missing: %+v %v", events, err)
 	}
@@ -108,13 +109,14 @@ func planTask(plan SmartLearningPlan, taskType string) SmartPlanTask {
 }
 
 func TestLearningEventsAreUserIsolated(t *testing.T) {
-	oldDB := db
-	t.Cleanup(func() { db = oldDB })
+	store := &Store{}
+	oldDB := store.db
+	t.Cleanup(func() { store.db = oldDB })
 	database := openTestDB(t)
 	defer database.Close()
-	db = database
+	store.db = database
 	now := time.Date(2026, 7, 27, 10, 0, 0, 0, time.Local)
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := store.db.Update(func(tx *bolt.Tx) error {
 		if err := recordLearningEventTx(tx, LearningEvent{UserID: "a", Type: "quiz_answer", CreatedAt: now.Format(time.RFC3339Nano)}); err != nil {
 			return err
 		}
@@ -123,7 +125,7 @@ func TestLearningEventsAreUserIsolated(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	items, err := recentLearningEvents("a", 10)
+	items, err := store.recentLearningEvents("a", 10)
 	if err != nil || len(items) != 1 || items[0].UserID != "a" {
 		t.Fatalf("event isolation failed: %+v %v", items, err)
 	}

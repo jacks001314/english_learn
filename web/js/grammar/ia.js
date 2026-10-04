@@ -6,11 +6,12 @@
 //
 // 与 yufan 讲义流水线的契约：scripts/build-yufan-lectures.mjs 里
 // newTopic 的 category 仍只允许 ["词法","句法","动词","复合句"]（旧四类），
-// 这里通过 legacyCategoryToGroup 把旧类映射到新五组，不改动该契约。
+// 这里通过 legacyCategoryToGroup 把旧类映射到导航分组，不改动该契约。
 // ---------------------------------------------------------------------------
 
 /** 导航分组（顺序即页面展示顺序）。 */
 export const grammarGroups = [
+  { key: "primary", label: "小学基础", hint: "小学阶段必备的基础语法知识卡，先看为先" },
   { key: "start", label: "入门总览", hint: "先看这 4 篇，建立全局框架" },
   { key: "morph", label: "词法", hint: "词类：形式、变化与用法" },
   { key: "verb", label: "动词", hint: "时态 · 语态 · 情态 · 非谓语" },
@@ -36,6 +37,23 @@ export const legacyCategoryToGroup = {
  * group 必填；order 是组内学习顺序（不是难度）；title 可选，用于修正名称。
  */
 export const topicIA = {
+
+  // 小学基础知识卡（无真题与讲义，kind: card）
+  "p-be-verb": { group: "primary", order: 1, title: "be 动词（am / is / are）" },
+  "p-personal-pronoun": { group: "primary", order: 2, title: "人称代词与物主代词" },
+  "p-noun-plural": { group: "primary", order: 3, title: "名词单复数" },
+  "p-article": { group: "primary", order: 4, title: "冠词 a / an / the" },
+  "p-demonstrative": { group: "primary", order: 5, title: "this / that / these / those" },
+  "p-present-simple": { group: "primary", order: 6, title: "一般现在时与第三人称单数" },
+  "p-present-continuous": { group: "primary", order: 7, title: "现在进行时" },
+  "p-there-be": { group: "primary", order: 8, title: "There be 句型" },
+  "p-can": { group: "primary", order: 9, title: "情态动词 can" },
+  "p-past-simple-intro": { group: "primary", order: 10, title: "一般过去时初步" },
+  "p-comparative": { group: "primary", order: 11, title: "形容词比较级初步" },
+  "p-preposition-place": { group: "primary", order: 12, title: "方位介词 in / on / under / behind" },
+  "p-wh-question": { group: "primary", order: 13, title: "疑问词与特殊疑问句" },
+  "p-imperative": { group: "primary", order: 14, title: "祈使句与 Let's" },
+  "p-possessive": { group: "primary", order: 15, title: "名词所有格（'s 的用法）" },
   // 入门总览：先建立"句子由什么组成、有哪些种类、动词是什么"的框架
   "g-overview": { group: "start", order: 1, title: "语法总论" },
   "g-sentence-members": { group: "start", order: 2 },

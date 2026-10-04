@@ -83,7 +83,7 @@ type AdminHomeworkSummary struct {
 	PendingGrading int `json:"pendingGrading"`
 }
 
-func saveHomework(h Homework, user User) (Homework, error) {
+func (s *Store) saveHomework(h Homework, user User) (Homework, error) {
 	h.ID = normalizeID(h.ID)
 	if h.ID == "" {
 		h.ID = uuid.NewString()
@@ -108,13 +108,13 @@ func saveHomework(h Homework, user User) (Homework, error) {
 			h.Questions[i].ID = fmt.Sprintf("q%d", i+1)
 		}
 	}
-	err := db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(homeworksBucket)), h.ID, h) })
+	err := s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(homeworksBucket)), h.ID, h) })
 	return h, err
 }
-func homeworkByID(id string) (Homework, bool, error) {
+func (s *Store) homeworkByID(id string) (Homework, bool, error) {
 	var h Homework
 	ok := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(homeworksBucket)).Get([]byte(id))
 		if v == nil {
 			return nil
@@ -124,9 +124,9 @@ func homeworkByID(id string) (Homework, bool, error) {
 	})
 	return h, ok, err
 }
-func allHomeworks() ([]Homework, error) {
+func (s *Store) allHomeworks() ([]Homework, error) {
 	out := []Homework{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(homeworksBucket)).ForEach(func(_, v []byte) error {
 			var h Homework
 			if err := json.Unmarshal(v, &h); err != nil {
@@ -140,15 +140,15 @@ func allHomeworks() ([]Homework, error) {
 	return out, err
 }
 
-func adminHomeworkOverview(now time.Time) ([]AdminHomeworkItem, AdminHomeworkSummary, error) {
-	homeworks, err := allHomeworks()
+func (s *Store) adminHomeworkOverview(now time.Time) ([]AdminHomeworkItem, AdminHomeworkSummary, error) {
+	homeworks, err := s.allHomeworks()
 	if err != nil {
 		return nil, AdminHomeworkSummary{}, err
 	}
 	items := make([]AdminHomeworkItem, 0, len(homeworks))
 	summary := AdminHomeworkSummary{Assignments: len(homeworks)}
 	for _, homework := range homeworks {
-		submissions, err := listHomeworkSubmissions(homework.ID)
+		submissions, err := s.listHomeworkSubmissions(homework.ID)
 		if err != nil {
 			return nil, AdminHomeworkSummary{}, err
 		}
@@ -182,8 +182,8 @@ func homeworkIsOverdue(homework Homework, now time.Time) bool {
 	}
 	return false
 }
-func assignedHomeworks(userID string) ([]Homework, error) {
-	all, err := allHomeworks()
+func (s *Store) assignedHomeworks(userID string) ([]Homework, error) {
+	all, err := s.allHomeworks()
 	if err != nil {
 		return nil, err
 	}
@@ -198,11 +198,11 @@ func assignedHomeworks(userID string) ([]Homework, error) {
 	}
 	return out, nil
 }
-func submissionFor(homeworkID, userID string) (HomeworkSubmission, bool, error) {
+func (st *Store) submissionFor(homeworkID, userID string) (HomeworkSubmission, bool, error) {
 	key := scopedKey(userID, homeworkID)
 	var s HomeworkSubmission
 	ok := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := st.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(homeworkSubmissionsBucket)).Get([]byte(key))
 		if v == nil {
 			return nil
@@ -212,9 +212,9 @@ func submissionFor(homeworkID, userID string) (HomeworkSubmission, bool, error) 
 	})
 	return s, ok, err
 }
-func listHomeworkSubmissions(homeworkID string) ([]HomeworkSubmission, error) {
+func (st *Store) listHomeworkSubmissions(homeworkID string) ([]HomeworkSubmission, error) {
 	out := []HomeworkSubmission{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := st.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(homeworkSubmissionsBucket)).ForEach(func(_, v []byte) error {
 			var s HomeworkSubmission
 			if json.Unmarshal(v, &s) == nil && s.HomeworkID == homeworkID {
@@ -255,8 +255,8 @@ func saveHomeworkAttachment(root string, user User, header *multipart.FileHeader
 	}
 	return HomeworkAttachment{ID: id, Name: filepath.Base(header.Filename), MIMEType: header.Header.Get("Content-Type"), Size: n, Path: path}, nil
 }
-func submitHomework(root string, user User, homeworkID string, answers map[string]any, notes string, files []*multipart.FileHeader) (HomeworkSubmission, error) {
-	h, ok, err := homeworkByID(homeworkID)
+func (st *Store) submitHomework(root string, user User, homeworkID string, answers map[string]any, notes string, files []*multipart.FileHeader) (HomeworkSubmission, error) {
+	h, ok, err := st.homeworkByID(homeworkID)
 	if err != nil || !ok {
 		return HomeworkSubmission{}, errors.New("作业不存在")
 	}
@@ -277,7 +277,7 @@ func submitHomework(root string, user User, homeworkID string, answers map[strin
 		}
 		attachments = append(attachments, a)
 	}
-	s, exists, _ := submissionFor(homeworkID, user.ID)
+	s, exists, _ := st.submissionFor(homeworkID, user.ID)
 	if !exists {
 		s = HomeworkSubmission{ID: uuid.NewString(), HomeworkID: homeworkID, UserID: user.ID, StudentName: user.DisplayName}
 	}
@@ -286,43 +286,43 @@ func submitHomework(root string, user User, homeworkID string, answers map[strin
 	s.Attachments = append(s.Attachments, attachments...)
 	s.Status = "submitted"
 	s.SubmittedAt = time.Now().Format(time.RFC3339)
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = st.db.Update(func(tx *bolt.Tx) error {
 		return putJSON(tx.Bucket([]byte(homeworkSubmissionsBucket)), scopedKey(user.ID, homeworkID), s)
 	})
 	return s, err
 }
-func gradeHomeworkWithAgent(ctx context.Context, root string, h Homework, s HomeworkSubmission) (HomeworkSubmission, error) {
-	prompt := fmt.Sprintf("请批改以下英语作业。作业要求：%s\n题目：%s\n学生答案：%s\n请用中文给出总分建议、逐项反馈和3条改进建议。", h.Requirements, mustJSON(h.Questions), mustJSON(s.Answers))
-	out, err := runAgent(ctx, root, User{ID: "admin", Username: "homework-grader"}, AgentChatRequest{Message: prompt, Mode: "homework"})
+func (s *Store) gradeHomeworkWithAgent(ctx context.Context, root string, h Homework, submission HomeworkSubmission) (HomeworkSubmission, error) {
+	prompt := fmt.Sprintf("请批改以下英语作业。作业要求：%s\n题目：%s\n学生答案：%s\n请用中文给出总分建议、逐项反馈和3条改进建议。", h.Requirements, mustJSON(h.Questions), mustJSON(submission.Answers))
+	out, err := s.runAgent(ctx, root, User{ID: "admin", Username: "homework-grader"}, AgentChatRequest{Message: prompt, Mode: "homework"})
 	if err != nil {
-		return s, err
+		return submission, err
 	}
 	max := 0.0
 	score := 0.0
 	for _, q := range h.Questions {
 		max += q.Score
-		if q.Answer != nil && strings.EqualFold(strings.TrimSpace(fmt.Sprint(q.Answer)), strings.TrimSpace(fmt.Sprint(s.Answers[q.ID]))) {
+		if q.Answer != nil && strings.EqualFold(strings.TrimSpace(fmt.Sprint(q.Answer)), strings.TrimSpace(fmt.Sprint(submission.Answers[q.ID]))) {
 			score += q.Score
 		}
 	}
-	s.Grade = HomeworkGrade{Score: score, MaxScore: max, Feedback: out.Message, Suggestions: []string{}, Status: "ai_draft", GradedBy: out.Engine, GradedAt: time.Now().Format(time.RFC3339)}
-	s.Status = "graded"
-	err = db.Update(func(tx *bolt.Tx) error {
-		return putJSON(tx.Bucket([]byte(homeworkSubmissionsBucket)), scopedKey(s.UserID, s.HomeworkID), s)
+	submission.Grade = HomeworkGrade{Score: score, MaxScore: max, Feedback: out.Message, Suggestions: []string{}, Status: "ai_draft", GradedBy: out.Engine, GradedAt: time.Now().Format(time.RFC3339)}
+	submission.Status = "graded"
+	err = s.db.Update(func(tx *bolt.Tx) error {
+		return putJSON(tx.Bucket([]byte(homeworkSubmissionsBucket)), scopedKey(submission.UserID, submission.HomeworkID), submission)
 	})
-	return s, err
+	return submission, err
 }
-func confirmHomeworkGrade(s HomeworkSubmission, user User) (HomeworkSubmission, error) {
-	old, ok, err := submissionFor(s.HomeworkID, s.UserID)
+func (s *Store) confirmHomeworkGrade(submission HomeworkSubmission, user User) (HomeworkSubmission, error) {
+	old, ok, err := s.submissionFor(submission.HomeworkID, submission.UserID)
 	if err != nil || !ok {
-		return s, errors.New("提交不存在")
+		return submission, errors.New("提交不存在")
 	}
-	old.Grade = s.Grade
+	old.Grade = submission.Grade
 	old.Grade.Status = "confirmed"
 	old.Grade.GradedBy = user.Username
 	old.Grade.GradedAt = time.Now().Format(time.RFC3339)
 	old.Status = "graded"
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = s.db.Update(func(tx *bolt.Tx) error {
 		return putJSON(tx.Bucket([]byte(homeworkSubmissionsBucket)), scopedKey(old.UserID, old.HomeworkID), old)
 	})
 	return old, err

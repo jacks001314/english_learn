@@ -1,0 +1,16 @@
+# R5 CI 门禁输出
+
+==> Lingo Bloom CI 质量门禁
+    root: C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project
+[PASS] Go - gofmt -l internal cmd : 格式干净
+[PASS] Go - go vet ./...
+[PASS] Go - go test ./... -count=1 : ok  	english_learn/internal/wordcheck	0.018s
+[PASS] Go - go run ./cmd/wordcheck（error 级阻断） : word quality report written to reports/word-quality.md
+[PASS] Go - go run ./cmd/contentaudit : backend/middle_school.json: words=2895 missing_phonetic=0 missing_audio=2895 missing_examples=0 multi_sense=30 senses_without_examples=0 template_examples=0
+[PASS] Frontend - node --check（42 个文件） : 全部通过
+[PASS] Frontend - check-nav-hash.mjs : ✅ 主侧栏 hash 解析自检通过
+[PASS] Frontend - check-grammar-ia.mjs : ✅ 信息架构自检通过
+[PASS] Frontend - check-grammar-duplication.mjs :   g-nouns / g-prepositions / g-conjunctions 各 1 张、g-past-simple 2 张）；单卡 forms 公式卡与部分覆盖卡保留。
+
+==> 结果：9 步通过 / 0 步失败
+所有质量门禁通过。

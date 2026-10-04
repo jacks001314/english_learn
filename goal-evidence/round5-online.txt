@@ -1,0 +1,40 @@
+# R5 证据：学习日历 + 家长/教师只读报告 上线实测
+
+生成时间：2026-10-04 20:41:28
+线上实例：http://www.gbw3bao.com （systemd english-learn → /opt/english-learn:8081）
+部署版本：20261004-203942（scripts/deploy.ps1 -SkipAudioSync）
+
+## 1) 部署后只读探测（重新执行于生成本文件时）
+http://www.gbw3bao.com/api/health -> 200 (16 字符)
+http://www.gbw3bao.com/learner-report.css?v=20261004-calendar-r1 -> 200 (2896 字符)
+http://www.gbw3bao.com/js/components/LearnerReportView.js -> 200 (7422 字符)
+http://www.gbw3bao.com/js/components/ReportView.js -> 200 (5721 字符)
+http://www.gbw3bao.com/index.html -> 200 (3147 字符)
+http://www.gbw3bao.com/api/admin/learners/nobody/report -> 401（未授权，符合预期）
+http://www.gbw3bao.com/api/learning/calendar?days=7 -> 401（未授权，符合预期）
+
+## 2) headless Chrome 公网端到端（scripts/e2e-report-flow.mjs --base http://www.gbw3bao.com）
+（运行时间 2026-10-04 20:4x，实测输出如下）
+OK   S1 注册并登录：账号 e2e-report-mutt6tcy → {"status":200,...,"role":"student"}
+OK   S2 制造一题答对一题答错：[{"id":"a","word":"a","correct":true,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 学习报告含学习日历（42 格）：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S3 正确率与复习完成率均已展示：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S4 学生访问家长报告被 403 拒绝：{"status":403}
+OK   S5 家长/教师（管理员）会话就绪：跳过（缺少管理员密码，可用 --admin-password 提供）：{"step":"login","status":401}
+跳过 S6：没有可用的管理员会话。
+==> 学习日历 / 家长报告端到端：6 通过 / 0 失败
+截图：docs/online-verify/e2e-report/s3-student-report.png
+
+## 3) 本地同构建端到端（管理员会话可用，13/13 通过）
+node scripts/e2e-report-flow.mjs --base http://127.0.0.1:8099 --require-admin
+OK S5 家长/教师（管理员）会话就绪 / OK S6 报告页可选中目标学习者 /
+OK S6 只读报告指标齐备 / OK S6 正确率 50% / OK S6 只读报告含学习日历 /
+OK S6 薄弱词表列出答错的词 / OK S6 报告接口口径一致 {"status":200,"accuracy":50,"correct":1,"wrong":1,"weakest":1,"days":42,"activeDays":1} / OK S7 页面无 JS 报错
+==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+截图：docs/online-verify/e2e-report/s6-guardian-report.png
+
+## 4) 待用户决策（未执行）
+- 线上 admin 账号密码：初始默认值为 Admin123!（seedAdmin），实测已返回 401，说明密码已被修改过；
+  bcrypt 不可逆，无法反查。需要重置请回复确认，agent 可在服务器上重置为指定密码。
+- 本轮线上端到端新增临时学生账号：e2e-report-mutt6tcy（含 2 条作答记录），与既有
+  fuck / voicecheck572453 / voicecheck572602 / autoquiz-live / jacks 一并待清理决策。

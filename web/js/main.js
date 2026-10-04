@@ -2,37 +2,40 @@ import { api, postJSON } from './api.js';
 import { speak } from './speech.js?v=20260905-ipa-r3';
 import HomeView from './components/HomeView.js';
 import LearnView from './components/LearnView.js?v=20260926-pos-r1';
-import MeaningPracticeView from './components/MeaningPracticeView.js?v=20261001-meaning-r2';
-import QuizView from './components/QuizView.js';
+import MeaningPracticeView from './components/MeaningPracticeView.js?v=20261004-practice-source-r1';
+import QuizView from './components/QuizView.js?v=20261004-practice-source-r1';
 import ReportView from './components/ReportView.js';
-import MistakesView from './components/MistakesView.js';
+import MistakesView from './components/MistakesView.js?v=20261004-practice-source-r1';
 import ReviewView from './components/ReviewView.js';
 import SettingsView from './components/SettingsView.js';
 import CategoryView from './components/CategoryView.js';
 import ContentStatusView from './components/ContentStatusView.js';
-import ReadingView from './components/ReadingView.js?v=20260727-smart-learning-r3';
+import ReadingView from './components/ReadingView.js?v=20261004-practice-source-r1';
 import AuthView from './components/AuthView.js';
 import AdminView from './components/AdminView.js';
 import SecurityView from './components/SecurityView.js';
 import AdminOverview from './components/AdminOverview.js';
+import LearnerReportView from './components/LearnerReportView.js';
 import ContentWorkbench from './components/ContentWorkbench.js?v=20260727-content-lifecycle-r3';
-import ExamView from './components/ExamView.js';
+import ExamView from './components/ExamView.js?v=20261004-practice-source-r1';
 import ExamWorkbench from './components/ExamWorkbench.js';
-import AgentAssistant from './components/AgentAssistant.js';
+import AgentAssistant from './components/AgentAssistant.js?v=20261004-practice-source-r1';
 import AgentAdminView from './components/AgentAdminView.js';
+import DrillView from './components/DrillView.js?v=20261004-practice-source-r1';
+import assistant, { clearContextForView, noteAnswer, noteReviewEntered, setDrill } from './learningContext.js?v=20261004-practice-source-r1';
 import ContentFactoryView from './components/ContentFactoryView.js';
 import HomeworkView from './components/HomeworkView.js';
 import HomeworkAdminView from './components/HomeworkAdminView.js?v=20260727-adaptive-r1';
-import SmartLearningView from './components/SmartLearningView.js?v=20260928-grammar-p3-r4';
+import SmartLearningView from './components/SmartLearningView.js?v=20261004-primary-grammar-r1';
 import CourseView from './components/CourseView.js?v=20260927-audio-r8';
 import PhoneticsView from './components/PhoneticsView.js?v=20260905-ipa-r5';
-import GrammarView from './components/GrammarView.js?v=20260928-grammar-p3-r4';
+import GrammarView from './components/GrammarView.js?v=20261004-primary-grammar-r1';
 import TongbuView from './components/TongbuView.js?v=20260926-tongbu-r2';
-import { resolveTopicId } from './grammar/index.js?v=20260928-grammar-p3-r4';
+import { resolveTopicId } from './grammar/index.js?v=20261004-primary-grammar-r1';
 
 const { createApp } = Vue;
-const knownViews = new Set(['home','smart','learn','meaning-en-zh','meaning-zh-en','meaning-listen','categories','course','grammar','phonetics','reading','exams','tongbu','quiz','review','homework','report','mistakes','settings','security','content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
-const adminViews = new Set(['content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin']);
+const knownViews = new Set(['home','smart','learn','meaning-en-zh','meaning-zh-en','meaning-listen','categories','course','grammar','phonetics','reading','exams','tongbu','quiz','review','homework','report','reports','mistakes','settings','security','content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin','drill']);
+const adminViews = new Set(['content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin','reports']);
 // hash 形如 #<view> 或 #<view>/<arg1>/<arg2>（例如 #grammar/g-pronouns/lecture-3）
 const locationParts = () => {
   const value = window.location.hash.replace(/^#\/?/, '');
@@ -49,20 +52,21 @@ const learningViews = new Set(['smart', 'learn', 'meaning-en-zh', 'meaning-zh-en
 const freshQuizSession = () => ({ answered: 0, correct: 0, byType: {}, history: [] });
 
 createApp({
-  components: { HomeView, SmartLearningView, CourseView, GrammarView, PhoneticsView, LearnView, MeaningPracticeView, QuizView, ReportView, MistakesView, ReviewView, SettingsView, CategoryView, ContentStatusView, ReadingView, AuthView, AdminView, SecurityView, AdminOverview, ContentWorkbench, ExamView, ExamWorkbench, AgentAssistant, AgentAdminView, ContentFactoryView, HomeworkView, HomeworkAdminView, TongbuView },
+  components: { HomeView, SmartLearningView, CourseView, GrammarView, PhoneticsView, LearnView, MeaningPracticeView, QuizView, ReportView, MistakesView, ReviewView, SettingsView, CategoryView, ContentStatusView, ReadingView, AuthView, AdminView, SecurityView, AdminOverview, ContentWorkbench, ExamView, ExamWorkbench, AgentAssistant, AgentAdminView, ContentFactoryView, HomeworkView, HomeworkAdminView, TongbuView, DrillView, LearnerReportView },
   data: () => ({
     activeView: viewFromLocation(), workspaceMode: adminViews.has(viewFromLocation()) ? 'admin' : 'learn', level: 'primary', query: '', topic: '', grade: '', unit: '', letter: '', partOfSpeech: '', wordSort: 'word-asc', wordSortSeed: 0, page: 1, size: 12, total: 0,
     facets: { topics: [], grades: [], units: [] },
     words: [], stats: { seen: 0, mastered: 0, accuracy: 0, mistakes: 0 },
     progress: {}, quiz: null, quizType: 'en-zh', quizHint: '', quizAnswered: false, quizSelectedAnswer: '', quizCorrectAnswer: '',
     quizSession: freshQuizSession(), quizFeedbackCorrect: false, quizResumed: false, quizTargetWordId: '',
-    report: { todayLearned: 0, todayPractices: 0, reviewDue: 0, mistakes: 0, recent: [], weakest: [] },
+    report: { todayLearned: 0, todayPractices: 0, todayGoal: 10, streakDays: 0, correct: 0, wrong: 0, accuracy: 0, reviewDue: 0, reviewCompleted: 0, reviewCompletionRate: 0, mistakes: 0, recent: [], weakest: [], calendar: { days: [] } },
     mistakes: [], reviews: [], reviewSummary: { total: 0, completed: 0, goal: 10 }, reviewBusy: false,
     settings: { dailyReviewGoal: 10 }, settingsBusy: false, contentStatus: {files:[],complete:false}, error: '', currentUser: null, authChecked: false,
     sidebarCollapsed: false, mobileSidebarOpen: false, examInProgress: false,
     learningSession: null, selectedWord: null, continuousLearning: false, mistakeFocusWord: null, readingTargetArticleId: '', grammarTargetId: viewFromLocation() === 'grammar' ? (locationParts().args[0] || '') : ''
   }),
   computed: {
+    drillSession() { return assistant.drill; },
     pages() { return Math.max(1, Math.ceil(this.total / this.size)); },
     masteredIds() {
       return new Set(Object.entries(this.progress).filter(([, value]) => value.mastered).map(([key]) => key));
@@ -77,6 +81,23 @@ createApp({
   },
   methods: {
     speak,
+    // 助教按场景给不同的讲解策略：练习页优先用总线上报的场景，其余按当前视图推断。
+    assistantMode() {
+      const scene = assistant.context?.scene;
+      if (scene) return scene;
+      if (this.activeView === 'reading') return 'reading';
+      if (this.activeView === 'exams') return 'exam';
+      if (this.activeView === 'mistakes') return 'mistake';
+      if (this.activeView === 'quiz') return 'quiz';
+      if (String(this.activeView).indexOf('meaning-') === 0) return 'meaning';
+      if (this.activeView === 'learn') return 'word';
+      return 'general';
+    },
+    // 助教生成的变式练习直接进练习页，而不是让学生复制粘贴。
+    startDrill(drill) {
+      setDrill(drill);
+      this.selectView('drill');
+    },
     async run(task) {
       this.error = '';
       try { await task(); } catch (error) { this.error = error.message || '操作失败，请稍后重试'; }
@@ -289,6 +310,7 @@ createApp({
         const feedback = await postJSON('/api/quiz/answer', { level: this.quiz.word.level, wordId: this.quiz.word.id, type: this.quiz.type, answer: option });
         this.quizHint = feedback.correct ? '太棒了，回答正确！' : feedback.message;
         this.quizFeedbackCorrect = feedback.correct;
+        noteAnswer(!!feedback.correct);
         this.quizCorrectAnswer = String(feedback.answer || '');
         this.quizSession.answered++;
         if (feedback.correct) this.quizSession.correct++;
@@ -329,6 +351,8 @@ createApp({
       const data = await api(`/api/review/today?level=${this.level}`);
       this.reviews = data.items;
       this.reviewSummary = { total: data.total, completed: data.completed, goal: data.goal };
+      // 进入今日复习时给一次轻提示（助教可以帮着挑重点）。
+      if (this.activeView === 'review') noteReviewEntered(data.total);
     }); },
     async loadSettings() { await this.run(async () => { this.settings = await api('/api/settings'); }); },
     async loadContentStatus() { await this.run(async () => { this.contentStatus = await api('/api/content-status'); }); },
@@ -383,6 +407,7 @@ createApp({
       if (!this.canLeaveView(view)) return;
       if (view === 'mistakes' && !options.preserveMistakeFocus) this.mistakeFocusWord = null;
       this.activeView = view;
+      clearContextForView(view);
       this.workspaceMode = adminViews.has(view) ? 'admin' : 'learn';
       this.mobileSidebarOpen = false;
       if (!options.fromHistory && window.location.hash !== hashFor(view)) history.pushState({ view }, '', hashFor(view));
@@ -480,6 +505,7 @@ createApp({
           <div class="nav-group-label">平台</div>
             <button :class="{active:activeView==='admin'}" @click="selectView('admin')" title="用户与概览"><span class="nav-icon">AD</span><span class="nav-label">用户与概览</span></button>
             <button :class="{active:activeView==='content'}" @click="selectView('content')" title="内容状态"><span class="nav-icon">CS</span><span class="nav-label">内容状态</span></button>
+            <button :class="{active:activeView==='reports'}" @click="selectView('reports')" title="家长/教师只读报告"><span class="nav-icon">LR</span><span class="nav-label">学习报告</span></button>
           <div class="nav-group-label">内容生产</div>
             <button :class="{active:activeView==='workbench'}" @click="selectView('workbench')" title="内容工作台"><span class="nav-icon">ST</span><span class="nav-label">内容工作台</span></button>
             <button :class="{active:activeView==='exam-workbench'}" @click="selectView('exam-workbench')" title="可视化组卷"><span class="nav-icon">EX</span><span class="nav-label">组卷工作台</span></button>
@@ -521,9 +547,11 @@ createApp({
       <homework-view v-else-if="activeView==='homework'" />
       <homework-admin-view v-else-if="activeView==='homework-admin'" />
       <security-view v-else-if="activeView==='security'" :required="currentUser.mustChangePassword" @changed="passwordChanged" />
-      <content-status-view v-else-if="activeView==='content'" :status="contentStatus" @refresh="loadContentStatus" />
+      <drill-view v-else-if="activeView==='drill'" :drill="drillSession" @navigate="handleNavigate" @speak="speak" />
+        <content-status-view v-else-if="activeView==='content'" :status="contentStatus" @refresh="loadContentStatus" />
+        <learner-report-view v-else-if="activeView==='reports'" />
         </main>
-        <agent-assistant :mode="activeView==='reading'?'reading':activeView==='exams'?'exam':activeView==='mistakes'?'mistake':activeView==='learn'?'word':'general'" :context="{view:activeView,level,query,topic}" />
+        <agent-assistant :mode="assistantMode()" @open-drill="startDrill" @navigate="handleNavigate" />
         <footer>坚持一点点，进步看得见。</footer>
       </div>
     </div>

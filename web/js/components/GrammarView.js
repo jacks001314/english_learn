@@ -22,7 +22,8 @@ import {
   resolveTopicId,
   topicPosition,
   loadLecture,
-} from "../grammar/index.js?v=20260928-grammar-p3-r4";
+  isCardTopic,
+} from "../grammar/index.js?v=20261004-primary-grammar-r1";
 
 const letters = ["A", "B", "C", "D", "E", "F"];
 const ORIGIN_ORDER = ["exam", "exam-other", "adapted", "authored"];
@@ -75,6 +76,15 @@ export default {
     },
     selectedState() {
       return this.selected ? topicState(this.selected, this.selectedMastery) : { key: "empty", label: "" };
+    },
+    /** 小学基础知识卡：只讲要点，没有讲义与真题。 */
+    isCardSelected() {
+      return isCardTopic(this.selected);
+    },
+    /** 知识卡的例句总数（好例 + 错例）。 */
+    cardExampleCount() {
+      if (!this.selected) return 0;
+      return (this.selected.points || []).reduce((n, p) => n + (p.good || []).length + (p.bad || []).length, 0);
     },
     groupOfSelected() {
       const g = this.groups.find((x) => x.key === (this.selected && this.selected.group));
@@ -172,7 +182,7 @@ export default {
       if (!t) return [];
       const items = [];
       if ((t.forms || []).length || (t.contrasts || []).length) items.push({ anchor: "quick", label: "速用速查", level: "lv1" });
-      if (t.lecture) {
+      if (t.lecture && !isCardTopic(t)) {
         items.push({ anchor: "lecture", label: "讲义精讲 · " + this.lectureSections + " 节", level: "lv1" });
         this.lectureSectionsList.forEach((sec, i) => {
           items.push({ anchor: "lecture-" + i, label: sec.heading, level: "lv2" });
@@ -181,7 +191,7 @@ export default {
       if ((t.points || []).length) items.push({ anchor: "points", label: "用法要点 · " + t.points.length, level: "lv1" });
       if ((t.pitfalls || []).length || (t.examTips || []).length) items.push({ anchor: "pitfalls", label: "易错与考法", level: "lv1" });
       if ((t.memoryCard || []).length || (t.textbookExamples || []).length) items.push({ anchor: "memory", label: "记忆卡与教材例句", level: "lv1" });
-      items.push({ anchor: "practice", label: "专项练习 · " + this.counts.total, level: "lv1" });
+      if (!isCardTopic(t)) items.push({ anchor: "practice", label: "专项练习 · " + this.counts.total, level: "lv1" });
       return items;
     },
     sourceNote() {
@@ -243,6 +253,7 @@ export default {
     itemMeta(topic) {
       const total = (exerciseCounts[topic.id] || {}).total || 0;
       const lec = this.lectureOf(topic);
+      if (!total && isCardTopic(topic)) return "知识卡 · " + ((topic.points || []).length) + " 个要点";
       if (!total) return lec ? "讲义 " + lec.sectionsTotal + " 节 · 仅讲义" : "内容建设中";
       if (!lec) return "真题 " + total + " 道 · 待补讲义";
       const m = this.masteryOf(topic.id);
@@ -250,6 +261,7 @@ export default {
     },
     stateClass(topic) {
       const total = (exerciseCounts[topic.id] || {}).total || 0;
+      if (!total && isCardTopic(topic)) return "st-card";
       if (!total) return this.lectureOf(topic) ? "st-lecture" : "st-empty";
       if (!this.lectureOf(topic)) return "st-exonly";
       const m = this.masteryOf(topic.id);
@@ -560,7 +572,13 @@ export default {
             <span class="gr2-chip is-state">{{ selectedState.label }}</span>
           </div>
           <p class="gr2-sum">{{ selected.summary }}</p>
-          <div class="gr2-metrics">
+          <div v-if="isCardSelected" class="gr2-metrics">
+            <div><b>{{ (selected.points || []).length }}</b><span>用法要点</span></div>
+            <div><b>{{ cardExampleCount }}</b><span>正误例句</span></div>
+            <div><b>{{ (selected.pitfalls || []).length }}</b><span>易错提醒</span></div>
+            <div><b>{{ (selected.memoryCard || []).length }}</b><span>记忆卡</span></div>
+          </div>
+          <div v-else class="gr2-metrics">
             <div><b>{{ lectureSections }}</b><span>讲义节数</span></div>
             <div><b>{{ counts.total }}</b><span>练习题（北京 {{ counts.exam }}）</span></div>
             <div><b>{{ selectedMastery.done }}/{{ selectedMastery.total || counts.total }}</b><span>已掌握</span></div>
@@ -568,10 +586,10 @@ export default {
           </div>
         </div>
         <div class="gr2-head-actions">
-          <button type="button" class="gr2-btn primary" :disabled="!counts.total" @click="jumpTo('practice')">
+          <button v-if="!isCardSelected" type="button" class="gr2-btn primary" :disabled="!counts.total" @click="jumpTo('practice')">
             {{ counts.total ? "开始练习" : "暂无练习题" }}
           </button>
-          <button type="button" class="gr2-btn ghost" :aria-expanded="noteOpen ? 'true' : 'false'" @click="noteOpen = !noteOpen">
+          <button v-if="!isCardSelected" type="button" class="gr2-btn ghost" :aria-expanded="noteOpen ? 'true' : 'false'" @click="noteOpen = !noteOpen">
             题目来源与说明
           </button>
           <div class="gr2-mini" role="status">
@@ -687,7 +705,7 @@ export default {
             </div>
           </section>
 
-          <section id="lecture" data-anchor class="gr2-block">
+          <section v-if="!isCardSelected" id="lecture" data-anchor class="gr2-block">
             <h2>
               <span class="gr2-dot"></span>讲义精讲
               <em v-if="selected.lecture">{{ lectureSourceLabel }} · 共 {{ lectureSections }} 节</em>
@@ -802,7 +820,7 @@ export default {
             </ul>
           </section>
 
-          <section id="practice" data-anchor class="gr2-block">
+          <section v-if="!isCardSelected" id="practice" data-anchor class="gr2-block">
             <h2>
               <span class="gr2-dot"></span>专项练习
               <em v-if="counts.total">共 {{ counts.total }} 题 · 已答 {{ selectedMastery.done }}/{{ selectedMastery.total }}</em>

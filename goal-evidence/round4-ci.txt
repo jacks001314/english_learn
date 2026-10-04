@@ -1,0 +1,38 @@
+第四轮：CI 质量门禁（plan.md 第 87 项）—— 2026-10-04
+
+[scripts/ci.ps1 全量运行输出（含 -E2EBase）]
+==> Lingo Bloom CI 质量门禁
+    root: C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project
+[PASS] Go - gofmt -l internal cmd : 格式干净
+[PASS] Go - go vet ./...
+[PASS] Go - go test ./... -count=1 : ok  	english_learn/internal/wordcheck	0.031s
+[PASS] Go - go run ./cmd/wordcheck（error 级阻断） : word quality report written to reports/word-quality.md
+[PASS] Go - go run ./cmd/contentaudit : backend/middle_school.json: words=2895 missing_phonetic=0 missing_audio=2895 missing_examples=0 multi_sense=30 senses_without_examples=0 template_examples=0
+[PASS] Frontend - node --check（41 个文件） : 全部通过
+[PASS] Frontend - check-nav-hash.mjs : ✅ 主侧栏 hash 解析自检通过
+[PASS] Frontend - check-grammar-ia.mjs : ✅ 信息架构自检通过
+[PASS] Frontend - check-grammar-duplication.mjs :   g-nouns / g-prepositions / g-conjunctions 各 1 张、g-past-simple 2 张）；单卡 forms 公式卡与部分覆盖卡保留。
+[PASS] E2E - e2e-practice-flow.mjs :     截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\.tmp\e2e-ci
+
+==> 结果：10 步通过 / 0 步失败
+所有质量门禁通过。
+
+EXITCODE=0
+
+[脚本语法自检]
+OK   scripts/deploy.ps1
+OK   scripts/ci.ps1
+OK   scripts/install.ps1
+OK   scripts/upgrade-current.ps1
+OK   scripts/build.ps1
+
+[词库校验与完整性审计的原始输出]
+$ go run ./cmd/wordcheck -output reports/word-quality.md
+word quality report written to reports/word-quality.md      (exit 0)
+  backend/primary_school.json  1331 词  0 错误 / 17 警告
+  backend/middle_school.json   2895 词  0 错误 / 37 警告
+$ go run ./cmd/wordcheck -fail-on=warning -format=json -output reports/word-quality.json
+exit status 2        <- 有警告即失败，说明「按警告级别阻断」的开关真实可用
+$ go run ./cmd/contentaudit -output reports/content-completeness.json       (exit 0)
+  backend/primary_school.json: words=1331 missing_phonetic=0 missing_audio=1331 missing_examples=0 multi_sense=80 senses_without_examples=0
+  backend/middle_school.json:  words=2895 missing_phonetic=0 missing_audio=2895 missing_examples=0 multi_sense=30 senses_without_examples=0

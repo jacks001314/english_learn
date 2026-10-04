@@ -52,8 +52,8 @@ func decodeUser(v []byte) (User, error) {
 }
 func putUser(bucket *bolt.Bucket, u User) error { return putJSON(bucket, u.ID, encodeUser(u)) }
 
-func seedAdmin() error {
-	return db.Update(func(tx *bolt.Tx) error {
+func (s *Store) seedAdmin() error {
+	return s.db.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(usersBucket))
 		if bucket.Stats().KeyN > 0 {
 			return nil
@@ -69,7 +69,7 @@ func seedAdmin() error {
 
 func normalizeUsername(v string) string { return strings.ToLower(strings.TrimSpace(v)) }
 
-func createUser(req AuthRequest) (User, error) {
+func (s *Store) createUser(req AuthRequest) (User, error) {
 	req.Username = normalizeUsername(req.Username)
 	req.DisplayName = strings.TrimSpace(req.DisplayName)
 	if len(req.Username) < 3 || len(req.Username) > 32 {
@@ -86,7 +86,7 @@ func createUser(req AuthRequest) (User, error) {
 		return User{}, err
 	}
 	u := User{ID: uuid.NewString(), Username: req.Username, DisplayName: req.DisplayName, Role: "student", Active: true, CreatedAt: time.Now().Format(time.RFC3339), PasswordHash: string(hash)}
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = s.db.Update(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte(usersBucket))
 		c := b.Cursor()
 		for _, v := c.First(); v != nil; _, v = c.Next() {
@@ -100,9 +100,9 @@ func createUser(req AuthRequest) (User, error) {
 	return u, err
 }
 
-func authenticate(username, password string) (User, error) {
+func (s *Store) authenticate(username, password string) (User, error) {
 	var found User
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(usersBucket)).ForEach(func(_, v []byte) error {
 			u, decodeErr := decodeUser(v)
 			if decodeErr == nil && u.Username == normalizeUsername(username) {
@@ -122,26 +122,26 @@ func authenticate(username, password string) (User, error) {
 	}
 	found.MustChangePassword = found.MustChangePassword || usesInitialAdminPassword(found)
 	found.LastLoginAt = time.Now().Format(time.RFC3339)
-	_ = db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), found) })
+	_ = s.db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), found) })
 	return found, nil
 }
 
-func newSession(userID string) (string, error) {
+func (s *Store) newSession(userID string) (string, error) {
 	b := make([]byte, 32)
 	if _, err := rand.Read(b); err != nil {
 		return "", err
 	}
 	token := hex.EncodeToString(b)
 	record := sessionRecord{UserID: userID, ExpiresAt: time.Now().Add(30 * 24 * time.Hour).Format(time.RFC3339)}
-	return token, db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(sessionsBucket)), token, record) })
+	return token, s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(sessionsBucket)), token, record) })
 }
-func deleteSession(token string) error {
-	return db.Update(func(tx *bolt.Tx) error { return tx.Bucket([]byte(sessionsBucket)).Delete([]byte(token)) })
+func (s *Store) deleteSession(token string) error {
+	return s.db.Update(func(tx *bolt.Tx) error { return tx.Bucket([]byte(sessionsBucket)).Delete([]byte(token)) })
 }
-func userByID(id string) (User, bool, error) {
+func (s *Store) userByID(id string) (User, bool, error) {
 	var u User
 	ok := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(usersBucket)).Get([]byte(id))
 		if v == nil {
 			return nil
@@ -153,23 +153,23 @@ func userByID(id string) (User, bool, error) {
 	})
 	return u, ok, err
 }
-func userFromToken(token string) (User, bool) {
-	var s sessionRecord
-	err := db.View(func(tx *bolt.Tx) error {
+func (s *Store) userFromToken(token string) (User, bool) {
+	var rec sessionRecord
+	err := s.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(sessionsBucket)).Get([]byte(token))
 		if v == nil {
 			return fmt.Errorf("missing")
 		}
-		return json.Unmarshal(v, &s)
+		return json.Unmarshal(v, &rec)
 	})
 	if err != nil {
 		return User{}, false
 	}
-	expires, _ := time.Parse(time.RFC3339, s.ExpiresAt)
+	expires, _ := time.Parse(time.RFC3339, rec.ExpiresAt)
 	if expires.Before(time.Now()) {
 		return User{}, false
 	}
-	u, ok, _ := userByID(s.UserID)
+	u, ok, _ := s.userByID(rec.UserID)
 	if ok {
 		u.MustChangePassword = u.MustChangePassword || usesInitialAdminPassword(u)
 	}
@@ -179,23 +179,23 @@ func userFromToken(token string) (User, bool) {
 func usesInitialAdminPassword(user User) bool {
 	return user.Role == "admin" && bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(initialAdminPassword)) == nil
 }
-func currentUser(ctx iris.Context) (User, bool) {
+func (s *Store) currentUser(ctx iris.Context) (User, bool) {
 	token := ctx.GetCookie(sessionCookie)
 	if token == "" {
 		return User{}, false
 	}
-	return userFromToken(token)
+	return s.userFromToken(token)
 }
-func requireAuth(ctx iris.Context) {
-	if u, ok := currentUser(ctx); ok {
+func (s *Store) requireAuth(ctx iris.Context) {
+	if u, ok := s.currentUser(ctx); ok {
 		ctx.Values().Set("user", u)
 		ctx.Next()
 		return
 	}
 	writeError(ctx, 401, "请先登录")
 }
-func requireAdmin(ctx iris.Context) {
-	u, ok := currentUser(ctx)
+func (s *Store) requireAdmin(ctx iris.Context) {
+	u, ok := s.currentUser(ctx)
 	if !ok {
 		writeError(ctx, 401, "请先登录")
 		return
@@ -207,9 +207,9 @@ func requireAdmin(ctx iris.Context) {
 	ctx.Values().Set("user", u)
 	ctx.Next()
 }
-func allUsers() ([]User, error) {
+func (s *Store) allUsers() ([]User, error) {
 	items := []User{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(usersBucket)).ForEach(func(_, v []byte) error {
 			u, err := decodeUser(v)
 			if err != nil {
@@ -222,8 +222,8 @@ func allUsers() ([]User, error) {
 	sort.Slice(items, func(i, j int) bool { return items[i].CreatedAt > items[j].CreatedAt })
 	return items, err
 }
-func updateUser(id string, in UserUpdate) (User, error) {
-	u, ok, err := userByID(id)
+func (s *Store) updateUser(id string, in UserUpdate) (User, error) {
+	u, ok, err := s.userByID(id)
 	if err != nil || !ok {
 		return User{}, fmt.Errorf("用户不存在")
 	}
@@ -232,7 +232,7 @@ func updateUser(id string, in UserUpdate) (User, error) {
 	}
 	if in.Role == "admin" || in.Role == "student" {
 		if u.Role == "admin" && in.Role != "admin" {
-			users, _ := allUsers()
+			users, _ := s.allUsers()
 			admins := 0
 			for _, x := range users {
 				if x.Role == "admin" && x.Active {
@@ -247,7 +247,7 @@ func updateUser(id string, in UserUpdate) (User, error) {
 	}
 	if in.Active != nil {
 		if u.Role == "admin" && u.Active && !*in.Active {
-			users, _ := allUsers()
+			users, _ := s.allUsers()
 			admins := 0
 			for _, x := range users {
 				if x.Role == "admin" && x.Active {
@@ -260,15 +260,15 @@ func updateUser(id string, in UserUpdate) (User, error) {
 		}
 		u.Active = *in.Active
 	}
-	err = db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), u) })
+	err = s.db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), u) })
 	return u, err
 }
 
-func adminResetPassword(id, password string) error {
+func (s *Store) adminResetPassword(id, password string) error {
 	if len(password) < 8 {
 		return fmt.Errorf("新密码至少需要 8 个字符")
 	}
-	u, ok, err := userByID(id)
+	u, ok, err := s.userByID(id)
 	if err != nil || !ok {
 		return fmt.Errorf("用户不存在")
 	}
@@ -277,10 +277,10 @@ func adminResetPassword(id, password string) error {
 		return err
 	}
 	u.PasswordHash = string(hash)
-	return db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), u) })
+	return s.db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), u) })
 }
 
-func changePassword(user User, in PasswordChange) error {
+func (s *Store) changePassword(user User, in PasswordChange) error {
 	if len(in.NewPassword) < 8 {
 		return fmt.Errorf("新密码至少需要 8 个字符")
 	}
@@ -293,16 +293,16 @@ func changePassword(user User, in PasswordChange) error {
 	}
 	user.PasswordHash = string(hash)
 	user.MustChangePassword = false
-	return db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), user) })
+	return s.db.Update(func(tx *bolt.Tx) error { return putUser(tx.Bucket([]byte(usersBucket)), user) })
 }
 
-func writeAudit(user User, action, detail string) error {
+func (s *Store) writeAudit(user User, action, detail string) error {
 	item := AuditLog{ID: uuid.NewString(), UserID: user.ID, Username: user.Username, Action: action, Detail: detail, CreatedAt: time.Now().Format(time.RFC3339)}
-	return db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(auditLogsBucket)), item.ID, item) })
+	return s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(auditLogsBucket)), item.ID, item) })
 }
-func recentAudits() ([]AuditLog, error) {
+func (s *Store) recentAudits() ([]AuditLog, error) {
 	items := []AuditLog{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(auditLogsBucket)).ForEach(func(_, v []byte) error {
 			var x AuditLog
 			if err := json.Unmarshal(v, &x); err != nil {
@@ -318,9 +318,9 @@ func recentAudits() ([]AuditLog, error) {
 	}
 	return items, err
 }
-func platformStats() (PlatformStats, error) {
-	result := PlatformStats{Words: len(datasets["primary"]) + len(datasets["middle"])}
-	users, err := allUsers()
+func (s *Store) platformStats() (PlatformStats, error) {
+	result := PlatformStats{Words: len(s.datasets["primary"]) + len(s.datasets["middle"])}
+	users, err := s.allUsers()
 	if err != nil {
 		return result, err
 	}
@@ -333,16 +333,16 @@ func platformStats() (PlatformStats, error) {
 			result.Admins++
 		}
 	}
-	content, err := contentLibraryStats(db)
+	content, err := contentLibraryStats(s.db)
 	if err != nil {
 		return result, err
 	}
 	result.Articles = content.Articles
-	err = db.View(func(tx *bolt.Tx) error { result.Sessions = tx.Bucket([]byte(sessionsBucket)).Stats().KeyN; return nil })
+	err = s.db.View(func(tx *bolt.Tx) error { result.Sessions = tx.Bucket([]byte(sessionsBucket)).Stats().KeyN; return nil })
 	return result, err
 }
 
-func saveArticleProgress(userID string, in ArticleProgress) (ArticleProgress, error) {
+func (s *Store) saveArticleProgress(userID string, in ArticleProgress) (ArticleProgress, error) {
 	if strings.TrimSpace(in.ArticleID) == "" {
 		return in, fmt.Errorf("article id required")
 	}
@@ -350,10 +350,10 @@ func saveArticleProgress(userID string, in ArticleProgress) (ArticleProgress, er
 	in.UpdatedAt = now.Format(time.RFC3339)
 	key := scopedKey(userID, normalizeID(in.ArticleID))
 	planLevel := "middle"
-	if article, ok, _ := readArticle(in.ArticleID); ok && articleMatchesLevel(article, "primary") {
+	if article, ok, _ := s.readArticle(in.ArticleID); ok && articleMatchesLevel(article, "primary") {
 		planLevel = "primary"
 	}
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := s.db.Update(func(tx *bolt.Tx) error {
 		if err := putJSON(tx.Bucket([]byte(articleProgressBucket)), key, in); err != nil {
 			return err
 		}
@@ -367,10 +367,10 @@ func saveArticleProgress(userID string, in ArticleProgress) (ArticleProgress, er
 	})
 	return in, err
 }
-func readArticleProgress(userID string) (map[string]ArticleProgress, error) {
+func (s *Store) readArticleProgress(userID string) (map[string]ArticleProgress, error) {
 	result := map[string]ArticleProgress{}
 	prefix := userID + "|"
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(articleProgressBucket)).ForEach(func(k, v []byte) error {
 			key := string(k)
 			if !strings.HasPrefix(key, prefix) {

@@ -8,7 +8,7 @@ import (
 )
 
 func (c *Controller) AdminHomeworks(ctx iris.Context) {
-	items, summary, err := adminHomeworkOverview(time.Now())
+	items, summary, err := c.store.adminHomeworkOverview(time.Now())
 	if err != nil {
 		writeError(ctx, 500, "读取作业失败")
 		return
@@ -16,22 +16,22 @@ func (c *Controller) AdminHomeworks(ctx iris.Context) {
 	_ = ctx.JSON(iris.Map{"items": items, "summary": summary})
 }
 func (c *Controller) AdminSaveHomework(ctx iris.Context) {
-	u, _ := currentUser(ctx)
+	u, _ := c.store.currentUser(ctx)
 	var h Homework
 	if ctx.ReadJSON(&h) != nil {
 		writeError(ctx, 400, "作业格式错误")
 		return
 	}
-	out, err := saveHomework(h, u)
+	out, err := c.store.saveHomework(h, u)
 	if err != nil {
 		writeError(ctx, 400, err.Error())
 		return
 	}
-	_ = writeAudit(u, "save_homework", out.ID)
+	_ = c.store.writeAudit(u, "save_homework", out.ID)
 	_ = ctx.JSON(out)
 }
 func (c *Controller) AdminHomeworkSubmissions(ctx iris.Context) {
-	items, err := listHomeworkSubmissions(ctx.Params().Get("id"))
+	items, err := c.store.listHomeworkSubmissions(ctx.Params().Get("id"))
 	if err != nil {
 		writeError(ctx, 500, "读取提交失败")
 		return
@@ -39,17 +39,17 @@ func (c *Controller) AdminHomeworkSubmissions(ctx iris.Context) {
 	_ = ctx.JSON(iris.Map{"items": items})
 }
 func (c *Controller) AdminAIGradeHomework(ctx iris.Context) {
-	h, ok, _ := homeworkByID(ctx.Params().Get("id"))
+	h, ok, _ := c.store.homeworkByID(ctx.Params().Get("id"))
 	if !ok {
 		writeError(ctx, 404, "作业不存在")
 		return
 	}
-	s, ok, _ := submissionFor(h.ID, ctx.Params().Get("userId"))
+	s, ok, _ := c.store.submissionFor(h.ID, ctx.Params().Get("userId"))
 	if !ok {
 		writeError(ctx, 404, "提交不存在")
 		return
 	}
-	out, err := gradeHomeworkWithAgent(ctx.Request().Context(), c.root, h, s)
+	out, err := c.store.gradeHomeworkWithAgent(ctx.Request().Context(), c.root, h, s)
 	if err != nil {
 		writeError(ctx, 502, err.Error())
 		return
@@ -57,7 +57,7 @@ func (c *Controller) AdminAIGradeHomework(ctx iris.Context) {
 	_ = ctx.JSON(out)
 }
 func (c *Controller) AdminConfirmHomeworkGrade(ctx iris.Context) {
-	u, _ := currentUser(ctx)
+	u, _ := c.store.currentUser(ctx)
 	var s HomeworkSubmission
 	if ctx.ReadJSON(&s) != nil {
 		writeError(ctx, 400, "批改格式错误")
@@ -65,7 +65,7 @@ func (c *Controller) AdminConfirmHomeworkGrade(ctx iris.Context) {
 	}
 	s.HomeworkID = ctx.Params().Get("id")
 	s.UserID = ctx.Params().Get("userId")
-	out, err := confirmHomeworkGrade(s, u)
+	out, err := c.store.confirmHomeworkGrade(s, u)
 	if err != nil {
 		writeError(ctx, 400, err.Error())
 		return
@@ -73,8 +73,8 @@ func (c *Controller) AdminConfirmHomeworkGrade(ctx iris.Context) {
 	_ = ctx.JSON(out)
 }
 func (c *Controller) MyHomeworks(ctx iris.Context) {
-	u, _ := currentUser(ctx)
-	items, err := assignedHomeworks(u.ID)
+	u, _ := c.store.currentUser(ctx)
+	items, err := c.store.assignedHomeworks(u.ID)
 	if err != nil {
 		writeError(ctx, 500, "读取作业失败")
 		return
@@ -85,7 +85,7 @@ func (c *Controller) MyHomeworks(ctx iris.Context) {
 	}
 	rows := []row{}
 	for _, h := range items {
-		s, ok, _ := submissionFor(h.ID, u.ID)
+		s, ok, _ := c.store.submissionFor(h.ID, u.ID)
 		var p *HomeworkSubmission
 		if ok {
 			p = &s
@@ -95,7 +95,7 @@ func (c *Controller) MyHomeworks(ctx iris.Context) {
 	_ = ctx.JSON(iris.Map{"items": rows})
 }
 func (c *Controller) SubmitHomework(ctx iris.Context) {
-	u, _ := currentUser(ctx)
+	u, _ := c.store.currentUser(ctx)
 	if err := ctx.Request().ParseMultipartForm(32 << 20); err != nil {
 		writeError(ctx, 400, "提交格式错误")
 		return
@@ -111,7 +111,7 @@ func (c *Controller) SubmitHomework(ctx iris.Context) {
 	if ctx.Request().MultipartForm != nil {
 		files = ctx.Request().MultipartForm.File["files"]
 	}
-	out, err := submitHomework(c.root, u, ctx.Params().Get("id"), answers, ctx.FormValue("notes"), files)
+	out, err := c.store.submitHomework(c.root, u, ctx.Params().Get("id"), answers, ctx.FormValue("notes"), files)
 	if err != nil {
 		writeError(ctx, 400, err.Error())
 		return

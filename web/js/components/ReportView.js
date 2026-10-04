@@ -13,14 +13,55 @@ const ItemRow = {
   `,
 };
 
+const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
+
 export default {
   components: { ItemRow },
   props: { report: Object },
   emits: ["refresh", "navigate"],
   computed: {
     todayCompletion() {
-      const activity = this.report.todayLearned + this.report.todayPractices;
-      return Math.min(100, Math.round((activity * 100) / Math.max(1, this.report.todayGoal || 10)));
+      const report = this.report || {};
+      const activity = (report.todayLearned || 0) + (report.todayPractices || 0);
+      return Math.min(100, Math.round((activity * 100) / Math.max(1, report.todayGoal || 10)));
+    },
+    calendar() {
+      const calendar = this.report && this.report.calendar;
+      return calendar && Array.isArray(calendar.days)
+        ? calendar
+        : { days: [], activeDays: 0, currentStreak: 0, longestStreak: 0, totalPractices: 0 };
+    },
+    // 给每格补上「几号」，避免模板里调用全局对象。
+    calendarCells() {
+      return this.calendar.days.map((day) => ({ ...day, label: Number(day.date.slice(8, 10)) }));
+    },
+    // 首格前面补空位，让列正好对应星期几。
+    calendarOffset() {
+      const first = this.calendarCells[0];
+      return first ? first.weekday : 0;
+    },
+    accuracyText() {
+      const report = this.report || {};
+      const correct = Number(report.correct) || 0;
+      const wrong = Number(report.wrong) || 0;
+      if (correct + wrong === 0) return "--";
+      return `${Math.round((correct * 100) / (correct + wrong))}%`;
+    },
+    reviewText() {
+      const report = this.report || {};
+      const completed = Number(report.reviewCompleted) || 0;
+      const due = Number(report.reviewDue) || 0;
+      if (completed + due === 0) return "--";
+      return `${Number(report.reviewCompletionRate) || 0}%`;
+    },
+    reviewHint() {
+      const report = this.report || {};
+      return `今日已复习 ${report.reviewCompleted || 0} · 仍到期 ${report.reviewDue || 0}`;
+    },
+  },
+  methods: {
+    dayTitle(day) {
+      return `${day.date}（周${WEEKDAYS[day.weekday]}）：学习 ${day.learned} 词 · 练习 ${day.practices} 题（对 ${day.correct} / 错 ${day.wrong}） · 复习 ${day.reviewed} 词`;
     },
   },
   template: `
@@ -39,7 +80,26 @@ export default {
 
         <section class="report-streak">
           <div><span>连续学习</span><b>{{ report.streakDays || 0 }} 天</b><small>稳定积累比一次学很多更有效</small></div>
-          <div class="report-goal"><span>今日活动</span><b>{{ report.todayLearned + report.todayPractices }} / {{ report.todayGoal || 10 }}</b><div><i :style="{width:todayCompletion+'%'}"></i></div></div>
+          <div><span>练习正确率</span><b>{{ accuracyText }}</b><small>对 {{ report.correct || 0 }} · 错 {{ report.wrong || 0 }}</small></div>
+          <div><span>复习完成率</span><b>{{ reviewText }}</b><small>{{ reviewHint }}</small></div>
+          <div class="report-goal"><span>今日活动</span><b>{{ (report.todayLearned||0) + (report.todayPractices||0) }} / {{ report.todayGoal || 10 }}</b><div><i :style="{width:todayCompletion+'%'}"></i></div></div>
+        </section>
+
+        <section class="report-calendar">
+          <header>
+            <div><span>CALENDAR</span><h3>学习日历</h3></div>
+            <small>最近 {{ calendarCells.length }} 天 · 活跃 {{ calendar.activeDays }} 天 · 当前连续 {{ calendar.currentStreak }} 天 · 最长连续 {{ calendar.longestStreak }} 天 · 共练习 {{ calendar.totalPractices }} 题</small>
+          </header>
+          <div class="calendar-weekdays"><i v-for="label in ['日','一','二','三','四','五','六']" :key="label">{{ label }}</i></div>
+          <div class="calendar-grid">
+            <span v-for="n in calendarOffset" :key="'pad-'+n" class="calendar-pad"></span>
+            <span
+              v-for="day in calendarCells"
+              :key="day.date"
+              :class="['calendar-cell', {active:day.active, practice:day.practices>0}]"
+              :title="dayTitle(day)"
+            ><b>{{ day.label }}</b></span>
+          </div>
         </section>
 
         <div class="report-columns">

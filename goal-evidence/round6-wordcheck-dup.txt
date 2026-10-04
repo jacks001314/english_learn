@@ -1,0 +1,189 @@
+# R6 证据：cmd/wordcheck 的 54 条 duplicate_word 警告全量归因（plan.md 第 93 项）
+
+生成时间：2026-10-04 21:0x
+方法：直接读 backend/primary_school.json 与 backend/middle_school.json，
+按 `word` 字段小写去空白做「英文词形」重复检测（与 internal/wordcheck/check.go 的判据一致），
+逐对打印首现/重复的下标、Word/Pos/ID/释义，用于判断是「检查器误报」还是「词库真的重复」。
+
+结论：54 条警告 = primary 17 对 + middle 37 对，**全部是同词形重复的真实数据**，
+不是检查器误报（检查器只按 `word` 归一化比较，未做词头/词性/释义区分）。三类情况：
+
+1. 同词不同词性/释义（可能是教材不同单元的两个学习条目）：
+   如 `work` v. 工作 / `work.` v. 工作；劳动；`turn` v 转弯 / `turn：` v. 转弯；转向。
+2. 同词同义但 ID 不同（几乎可以确定是合并教材时留下的重复条目）：
+   如 `no problem` / `no. problem`（释义完全一致）、`T-shirt` / `t-shirt t`、
+   `the Great Wall`（id 分别是 `the` / `the great wall`）、`teachers'`（id 分别是 `teachers'` / `teachers'`）。
+3. 明显的数据缺陷（ID 或词形被教材页眉/音标污染）：
+   `grandfather` 首现条目的 id 是 `fɑ:ðə ] (`、`ship：`、`subway：`、`train：`、`traffic：`、
+   `then：`、`prep.`、`tomato` vs `tomoto`（拼写错误）、`tired` vs `tried`（拼写错误）、
+   `teacher,s desk` / `teacher,s-office`（撇号写成逗号）、`blow(blew` / `hear(heard）` / `lend(lent` 等。
+
+因此「打开 -StrictWords」前需要一次**词库内容决策**（删掉/合并重复条目，还是把同词不同义视为合法学习条目），
+这是内容改动，会影响学生学习到的词条，本轮没有擅自改动，留待用户确认后按上表逐条处理。
+
+附录：全量 54 对（脚本原始输出）
+
+﻿==================== backend/primary_school.json words: 1331 raw dup pairs: 17
+    420 vs   461 word='grandfather'/'grandfather' pos='n.'/'n' same_pos=False same_meaning=False
+        A id='fɑ:ðə ] (' meaning='祖父；外祖父'
+        B id='grandfather' meaning='（外）祖父'
+    743 vs   744 word='no problem'/'no problem' pos='phr.'/'phr.' same_pos=True same_meaning=True
+        A id='no problem' meaning='没问题'
+        B id='no. problem' meaning='没问题'
+    961 vs   962 word='ship'/'ship' pos='n'/'n.' same_pos=False same_meaning=False
+        A id='ship' meaning='（大）船；轮船'
+        B id='ship：' meaning='船；舰'
+   1068 vs  1069 word='subway'/'subway' pos='n'/'n.' same_pos=False same_meaning=True
+        A id='subway' meaning='地铁'
+        B id='subway：' meaning='地铁'
+   1085 vs  1086 word='T-shirt'/'T-shirt' pos='n'/'n' same_pos=True same_meaning=True
+        A id='t-shirt' meaning='T恤衫'
+        B id='t-shirt t' meaning='T恤衫'
+   1107 vs  1108 word="teacher's desk"/"teacher's desk" pos='n. phr.'/'n. phr.' same_pos=True same_meaning=False
+        A id="teacher's" meaning='讲台；教师的桌子'
+        B id="teacher's desk" meaning='讲台'
+   1107 vs  1110 word="teacher's desk"/"teacher's desk" pos='n. phr.'/'n. phr.' same_pos=True same_meaning=True
+        A id="teacher's" meaning='讲台；教师的桌子'
+        B id='teacher,s desk' meaning='讲台；教师的桌子'
+   1109 vs  1111 word="teacher's office"/"teacher's office" pos='n. phr.'/'n. phr.' same_pos=True same_meaning=True
+        A id="teacher's office" meaning='教师办公室'
+        B id='teacher,s-office' meaning='教师办公室'
+   1112 vs  1113 word="teachers' office"/"teachers' office" pos='n. phr.'/'n. phr.' same_pos=True same_meaning=True
+        A id='teachers' meaning='教师办公室'
+        B id="teachers'" meaning='教师办公室'
+   1124 vs  1125 word='the Great Wall'/'the Great Wall' pos='n. phr.'/'n. phr.' same_pos=True same_meaning=True
+        A id='the' meaning='长城'
+        B id='the great wall' meaning='长城'
+   1130 vs  1131 word='then'/'then' pos='adv'/'adv.' same_pos=False same_meaning=False
+        A id='then' meaning='然后,接着'
+        B id='then：' meaning='然后；接着'
+   1166 vs  1168 word='tomato'/'tomato' pos='n'/'n.' same_pos=False same_meaning=False
+        A id='tomato' meaning='西红柿'
+        B id='tomoto' meaning='西红柿；番茄'
+   1178 vs  1182 word='traffic'/'traffic' pos='n'/'n.' same_pos=False same_meaning=False
+        A id='traffic' meaning='交通'
+        B id='traffic：' meaning='交通；来往车辆'
+   1183 vs  1184 word='train'/'train' pos='n'/'n.' same_pos=False same_meaning=True
+        A id='train' meaning='火车'
+        B id='train：' meaning='火车'
+   1161 vs  1188 word='tired'/'tired' pos='adj'/'adj.' same_pos=False same_meaning=False
+        A id='tired' meaning='疲倦的'
+        B id='tried' meaning='疲劳的；累的'
+   1194 vs  1195 word='turn'/'turn' pos='v'/'v.' same_pos=False same_meaning=False
+        A id='turn' meaning='转弯'
+        B id='turn：' meaning='转弯；转向'
+   1304 vs  1305 word='work'/'work' pos='v'/'v' same_pos=True same_meaning=False
+        A id='work' meaning='工作'
+        B id='work.' meaning='工作；劳动'
+==================== backend/middle_school.json words: 2895 raw dup pairs: 37
+    152 vs   153 word='as soon as'/'as soon as' pos='conj. phr.'/'conj. phr.' same_pos=True same_meaning=False
+        A id='as soon as' meaning='一…就…，尽快'
+        B id='as soon as conj' meaning='一……就……'
+    312 vs   314 word='blow'/'blow' pos='v'/'v' same_pos=True same_meaning=False
+        A id='blow' meaning='吹'
+        B id='blow(blew' meaning='吹；吹动'
+    495 vs   497 word='clean'/'clean' pos='v'/'v.' same_pos=False same_meaning=False
+        A id='clean' meaning='把...弄干净,擦干净'
+        B id='clean.' meaning='打扫；弄干净；干净的'
+    630 vs   631 word='dance'/'dance' pos='v.'/'v' same_pos=False same_meaning=False
+        A id='dan.ce' meaning='跳舞；舞蹈'
+        B id='dance' meaning='跳舞'
+    737 vs   738 word='drink'/'drink' pos='v.'/'n & v' same_pos=False same_meaning=False
+        A id='drin.k' meaning='喝；饮料'
+        B id='drink' meaning='饮料 喝'
+    819 vs   820 word='even though'/'even though' pos='conj. phr.'/'conj. phr.' same_pos=True same_meaning=False
+        A id='even though' meaning='虽然；即使'
+        B id='even though conj' meaning='即使；虽然'
+    819 vs   821 word='even though'/'even though' pos='conj. phr.'/'conj. phr.' same_pos=True same_meaning=False
+        A id='even though' meaning='虽然；即使'
+        B id='even though（=even if）' meaning='即使；虽然'
+   1118 vs  1119 word='halfway'/'halfway' pos='adv'/'adv' same_pos=True same_meaning=False
+        A id='half-way adv' meaning='在途中；半路上'
+        B id='halfway' meaning='中途的；半路地'
+   1136 vs  1137 word='hard-working'/'hard-working' pos='adj.'/'adj' same_pos=False same_meaning=False
+        A id='hard-working' meaning='勤勉的；努力工作的'
+        B id='hard-working adj' meaning='勤奋的；用功的'
+   1149 vs  1150 word='have a cold'/'have a cold' pos='v. phr.'/'v. phr.' same_pos=True same_meaning=True
+        A id='have a cold' meaning='感冒'
+        B id='have a cold phr. (' meaning='感冒'
+   1154 vs  1156 word='have a good time'/'have a good time' pos='phr.'/'v. phr.' same_pos=False same_meaning=False
+        A id='have a good time' meaning='过得愉快'
+        B id='have a good time=enjoy oneself=have fun(doing sth.)' meaning='玩得愉快'
+   1176 vs  1178 word='hear'/'hear' pos='v'/'v' same_pos=True same_meaning=False
+        A id='hear' meaning='听见,听说'
+        B id='hear(heard）' meaning='听到；听见'
+   1201 vs  1202 word='high school'/'high school' pos='n. phr.'/'n. phr.' same_pos=True same_meaning=True
+        A id='high school' meaning='中学'
+        B id='high school n' meaning='中学'
+   1240 vs  1241 word='How are you?'/'How are you?' pos='phr.'/'phr.' same_pos=True same_meaning=True
+        A id='how are you?' meaning='你好吗？'
+        B id='how are you？' meaning='你好吗？'
+   1362 vs  1363 word='join'/'join' pos='v'/'v.' same_pos=False same_meaning=False
+        A id='join' meaning='加入；参加'
+        B id='join.' meaning='参加；加入'
+   1453 vs  1454 word='lend'/'lend' pos='v.'/'v' same_pos=False same_meaning=False
+        A id='lend' meaning='借给，借出'
+        B id='lend(lent' meaning='借给；借出'
+   1460 vs  1461 word="let's"/"let's" pos='v'/'v' same_pos=True same_meaning=False
+        A id="let's" meaning='让我们……（let us 的缩写形式）'
+        B id="let's = let us" meaning='让我们……'
+   1488 vs  1489 word='living room'/'living room' pos='n. phr.'/'n. phr.' same_pos=True same_meaning=False
+        A id='living room' meaning='客厅'
+        B id='living room n' meaning='起居室；客厅'
+   1488 vs  1490 word='living room'/'living room' pos='n. phr.'/'n. phr.' same_pos=True same_meaning=False
+        A id='living room' meaning='客厅'
+        B id='living-room n' meaning='起居室；客厅'
+   1614 vs  1615 word='middle school'/'middle school' pos='n. phr.'/'n. phr.' same_pos=True same_meaning=False
+        A id='middle school' meaning='中学；初中'
+        B id='middle school n' meaning='中学'
+   1749 vs  1750 word='nothing'/'nothing' pos='pron'/'pron.' same_pos=False same_meaning=False
+        A id='nothing' meaning='没有什么,没有东西'
+        B id='nothing(=not…anything)' meaning='什么也没有'
+   1759 vs  1760 word="o'clock"/"o'clock" pos='adv'/'adv' same_pos=True same_meaning=False
+        A id="o'clock" meaning='…点钟'
+        B id="o'clock (=of the clock) ad. v" meaning='点钟（用于整点）'
+   1775 vs  1776 word='OK'/'OK' pos='interj.& adv.'/'int' same_pos=False same_meaning=False
+        A id='ok' meaning='好；可以'
+        B id='ok adv (' meaning='好；行；可以'
+   1838 vs  1840 word='paint'/'paint' pos='v.'/'v.' same_pos=True same_meaning=False
+        A id='pain.t' meaning='画画；油漆'
+        B id='paint' meaning='用颜料画；刷漆'
+   1874 vs  1875 word='pay'/'pay' pos='v'/'v' same_pos=True same_meaning=False
+        A id='pay' meaning='付费'
+        B id='pay (paid' meaning='付钱；支付'
+   1887 vs  1888 word='pencil box'/'pencil box' pos='n. phr.'/'n. phr.' same_pos=True same_meaning=False
+        A id='pencil box' meaning='铅笔盒；文具盒'
+        B id='pencil-box n' meaning='铅笔盒'
+   1968 vs  1969 word='post office'/'post office' pos='n. phr.'/'n. phr.' same_pos=True same_meaning=True
+        A id='post office' meaning='邮局'
+        B id='post office n' meaning='邮局'
+   1779 vs  1984 word='on'/'on' pos='prep.'/'prep' same_pos=False same_meaning=False
+        A id='on' meaning='在.......上'
+        B id='prep.' meaning='在……上面'
+   2035 vs  2036 word='put on'/'put on' pos='phr.'/'v. phr.' same_pos=False same_meaning=False
+        A id='put on' meaning='穿上(衣服等),戴上(帽子等)'
+        B id='put on phr. (' meaning='上演；播放'
+   2249 vs  2250 word='shoot'/'shoot' pos='v.'/'v' same_pos=False same_meaning=False
+        A id='shoot' meaning='投篮，射击，发射'
+        B id='shoot(shot' meaning='射击；投篮'
+   2279 vs  2281 word='sing'/'sing' pos='v.'/'v' same_pos=False same_meaning=False
+        A id='sin.g' meaning='唱；唱歌'
+        B id='sing' meaning='唱,唱歌'
+   2362 vs  2364 word='speak'/'speak' pos='v'/'v.' same_pos=False same_meaning=False
+        A id='speak' meaning='讲,说'
+        B id='speak spiːk]' meaning='说；说话'
+   2445 vs  2450 word='sunshine'/'sunshine' pos='n'/'n' same_pos=True same_meaning=False
+        A id='sun shine' meaning='阳光'
+        B id='sunshine' meaning='日光,阳光'
+   2488 vs  2489 word='take off'/'take off' pos='phr.'/'v. phr.' same_pos=False same_meaning=False
+        A id='take off' meaning='脱下(衣,帽,鞋等)'
+        B id='take off （' meaning='（飞机等）起飞；匆忙离开'
+   2533 vs  2534 word='telephone'/'telephone' pos='v'/'n' same_pos=False same_meaning=False
+        A id='telephone' meaning='打电话给(某人)'
+        B id='telephone(phone' meaning='电话；电话机'
+   2790 vs  2791 word='weekend'/'weekend' pos='n'/'n.' same_pos=False same_meaning=True
+        A id='weekend' meaning='周末'
+        B id='weekend.' meaning='周末'
+   2804 vs  2805 word='What about...?'/'What about...?' pos='phr.'/'phr.' same_pos=True same_meaning=True
+        A id='what about...? phr. (' meaning='……怎么样？'
+        B id='what about...?(' meaning='……怎么样？'

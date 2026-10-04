@@ -3,26 +3,27 @@ package learning
 import "testing"
 
 func TestWordsAppliesExtendedSorts(t *testing.T) {
-	oldDatasets, oldIndex := datasets, wordIndex
-	t.Cleanup(func() { datasets, wordIndex = oldDatasets, oldIndex })
-	datasets = map[string][]Word{"primary": {
+	store := &Store{}
+	oldDatasets, oldIndex := store.datasets, store.wordIndex
+	t.Cleanup(func() { store.datasets, store.wordIndex = oldDatasets, oldIndex })
+	store.datasets = map[string][]Word{"primary": {
 		{ID: "zoo", Word: "zoo", Level: "primary", Grade: "五年级", Unit: "扩展词汇"},
 		{ID: "cat", Word: "cat", Level: "primary", Grade: "三年级", Unit: "核心词汇"},
 		{ID: "ox", Word: "ox", Level: "primary", Grade: "三年级", Unit: "核心词汇"},
 	}}
 
-	byUnit := NewService().Words(WordFilter{Level: "primary", Sort: sortUnit, Page: 1})
+	byUnit := NewService(store).Words(WordFilter{Level: "primary", Sort: sortUnit, Page: 1})
 	if got := wordIDs(byUnit.Items); got[0] != "cat" || got[1] != "ox" || got[2] != "zoo" {
 		t.Fatalf("unit sort through Words = %v", got)
 	}
 
-	byLength := NewService().Words(WordFilter{Level: "primary", Sort: sortLengthAsc, Page: 1})
+	byLength := NewService(store).Words(WordFilter{Level: "primary", Sort: sortLengthAsc, Page: 1})
 	if got := wordIDs(byLength.Items); got[0] != "ox" || got[2] != "zoo" {
 		t.Fatalf("length sort through Words = %v", got)
 	}
 
-	shuffled := NewService().Words(WordFilter{Level: "primary", Sort: sortRandom, Seed: 7, Page: 1})
-	again := NewService().Words(WordFilter{Level: "primary", Sort: sortRandom, Seed: 7, Page: 1})
+	shuffled := NewService(store).Words(WordFilter{Level: "primary", Sort: sortRandom, Seed: 7, Page: 1})
+	again := NewService(store).Words(WordFilter{Level: "primary", Sort: sortRandom, Seed: 7, Page: 1})
 	if byUnit.Total != 3 || len(shuffled.Items) != 3 {
 		t.Fatalf("unexpected page: total=%d items=%d", byUnit.Total, len(shuffled.Items))
 	}

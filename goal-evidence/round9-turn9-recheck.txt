@@ -1,0 +1,83 @@
+第 9 轮收尾复验（continuation turn #9）：目标「完成以上计划内容编码测试」
+生成时间（本地）: 2026-10-04T21:57:54
+
+== A. 计划清单：无未完成项 ==
+plan.md 已勾选 = 58，未勾选 = 0（Master etag=c360625e6b5e45c0, size=16951）
+
+== B. 关键交付物在 Master 上且未漂移 ==
+- plan.md                 etag=c360625e6b5e45c0  size=16951
+- internal/learning/store.go etag=7038ec7720859ad0  size=671（第 85 项新增的 Store 实例）
+- scripts/e2e-report-flow.mjs 本轮用 base_etag=5a4bcbf6d498bcd1 重新同步成功
+  （本地 16435 字节，含 S6“学习者下拉框等目标学生出现后再取值”修复；Master 新 etag=de2b1fa4f589a138）
+
+== C. 质量门禁（本轮 turn#9 重新执行，本机）==
+﻿=== 2026-10-04T21:55:53.5686824+08:00 turn#9 ===
+## gofmt -l internal cmd
+## go build ./...
+## go vet ./...
+## go test ./... -count=1
+?   	english_learn/cmd/autofill	[no test files]
+?   	english_learn/cmd/cleanupcontent	[no test files]
+?   	english_learn/cmd/contentaudit	[no test files]
+?   	english_learn/cmd/contenttasks	[no test files]
+?   	english_learn/cmd/enrichwords	[no test files]
+?   	english_learn/cmd/expandvocab	[no test files]
+?   	english_learn/cmd/learnctl	[no test files]
+?   	english_learn/cmd/mergedb	[no test files]
+?   	english_learn/cmd/reusecontent	[no test files]
+?   	english_learn/cmd/server	[no test files]
+?   	english_learn/cmd/synccontent	[no test files]
+?   	english_learn/cmd/wordcheck	[no test files]
+ok  	english_learn/internal/autofill	0.032s
+ok  	english_learn/internal/contentaudit	0.026s
+ok  	english_learn/internal/contenttasks	0.030s
+ok  	english_learn/internal/enrichment	0.036s
+ok  	english_learn/internal/learning	6.127s
+ok  	english_learn/internal/vocabulary	0.035s
+ok  	english_learn/internal/wordcheck	0.041s
+
+== D. 公网接口实测（本轮 turn#9 重新探测，http://www.gbw3bao.com）==
+GET /api/health                                => 200 {"status":"ok"} 
+GET /index.html                                => 200（main.js?v=20261004-primary-grammar-r1）
+GET /api/words（匿名）                             => 401 {"error":"请先登录"} 
+POST /api/auth/register（临时账号 verify-r9-83nced） => 200 {"user":{"id":"ea5f38ad-00ac-41a6-b478-cdd649c9e4b7","username":"verify-r9-83nced","displayName":"第九
+GET /api/words?q=subway（登录态）                   => 200 {"items":[{"id":"by subway","word":"by subway","phonetic":"/baɪ ˈsʌbweɪ/","pos":"adv. phr.","meaning":"乘地铁","letter":"B","level":"primary","example":"She goes to work by subway.","exampleTranslation":
+GET /api/words/on?level=middle                 => 200 {"id":"on","word":"on","phonetic":"/ɔn/","pos":"prep.","meaning":"在……上面","letter":"O","level":"middle","example":"The report is on the teacher's desk.","exampleTranslation":"报告在老师的书桌上。","topic":"位置","
+GET /api/meaning-quiz（登录态）                     => 200 {"level":"primary","type":"en-zh","sort":"word-asc","page":1,"size":12,"total":1538,"pages":129,"items":[{"word":{"id":"
+GET /api/admin/users（学生）                       => 403 {"error":"需要管理员权限"} 
+POST /api/auth/login admin/Admin123!（已知被改）     => 401 {"error":"用户名或密码错误"}
+
+== E. 线上部署实测（本轮 turn#9 重新探测，39.96.207.218）==
+== 线上部署探测（第九轮：Store 实例注入）==
+$ cat /opt/english-learn/VERSION
+20261004-214555
+
+$ systemctl is-active english-learn; systemctl show english-learn -p ActiveEnterTimestamp --value
+active
+Sun 2026-10-04 21:46:26 CST
+
+$ ls -l --time-style=long-iso /opt/english-learn/english-learn
+-rwxrwxrwx 1 root root 38695074 2026-10-04 21:45 /opt/english-learn/english-learn
+
+$ sha256sum /opt/english-learn/english-learn
+f4a45b9cf776ef393d9dcad01c92098453e37417c577a580f1a2d9b7524b3d80  /opt/english-learn/english-learn
+
+$ journalctl -u english-learn -n 40 --no-pager | grep -E 'loaded word dataset|listening|Application started' | tail -6
+Oct 04 21:24:19 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2859648]: {"time":"2026-10-04T21:24:19.075878074+08:00","level":"INFO","msg":"english-learn listening","addr":":8081","db":"/opt/english-learn/english_learn.db","backupsDir":"/opt/english-learn/backups","logLevel":"info","logFormat":"json"}
+Oct 04 21:24:19 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2859648]: {"time":"2026-10-04T21:24:19.078715017+08:00","level":"INFO","msg":"Now listening on:","component":"iris"}
+Oct 04 21:46:26 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:26.785091432+08:00","level":"INFO","msg":"loaded word dataset","dataset":"primary","words":1344,"path":"/opt/english-learn/backend/primary_school.json"}
+Oct 04 21:46:26 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:26.814399086+08:00","level":"INFO","msg":"loaded word dataset","dataset":"middle","words":2858,"path":"/opt/english-learn/backend/middle_school.json"}
+Oct 04 21:46:28 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:28.320849962+08:00","level":"INFO","msg":"english-learn listening","addr":":8081","db":"/opt/english-learn/english_learn.db","backupsDir":"/opt/english-learn/backups","logLevel":"info","logFormat":"json"}
+Oct 04 21:46:28 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:28.323719042+08:00","level":"INFO","msg":"Now listening on:","component":"iris"}
+
+$ journalctl -u english-learn -n 200 --no-pager | grep -ci 'panic' 
+panic 行数: 1
+
+== F. 未决问题（需用户授权，未擅自处理）==
+1) 线上 admin 口令：POST /api/auth/login admin/Admin123! 仍 401（口令已被改过，bcrypt 不可逆），
+   在线备份的“正向恢复演练”缺少管理员身份，需用户给出新口令或授权重置。
+2) 线上测试账号清理：fuck / voicecheck* / autoquiz-live / jacks / e2e-* / verify-r7~r9-*（含本轮新增 verify-r9-83nced），
+   删除属数据变更，需用户确认。
+3) scripts/e2e-report-flow.mjs 的 Master 侧冲突记录在重新同步后仍显示，但 Master 与本地内容一致（均为修复版），
+   属镜像账目残留，不影响交付。
+

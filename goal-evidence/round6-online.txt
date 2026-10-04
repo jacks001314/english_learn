@@ -1,0 +1,84 @@
+# R6 证据：部署上线 + 公网/服务器实测
+
+生成时间：2026-10-04 20:56（部署时间 20:51:55）
+线上实例：http://www.gbw3bao.com （systemd english-learn → /opt/english-learn:8081）
+部署命令：`powershell -ExecutionPolicy Bypass -File .\scripts\deploy.ps1 -SkipAudioSync`
+部署版本：**20261004-205155**（前一次 20261004-205025）
+
+部署脚本输出摘要：
+
+    ==> Cross-compile server for linux/amd64
+    Packaged runtime config: config.json
+    Packaged textbook audio: 54 file(s), 26 MB
+    ==> Create deployment archive
+    Checking SSH connection to root@www.gbw3bao.com ...
+    {"status":"ok"}
+    audio http 200, 381166 bytes
+    Deployment completed.  Deployed version: 20261004-205155
+
+## 1) 服务器侧（plink，root@www.gbw3bao.com）
+
+    $ cat /opt/english-learn/VERSION
+    20261004-205155
+
+    $ cat /opt/english-learn/config.json
+    {
+      "logLevel": "info",
+      "logFormat": "json",
+      "backupsDir": "backups"
+    }
+
+    $ curl -fsS http://127.0.0.1:8081/api/health
+    {"status":"ok"}
+
+    $ curl -s -o /dev/null -w 'backups=%{http_code}\n' http://127.0.0.1:8081/api/admin/backups
+    backups=401           # 新增接口的鉴权守卫生效
+
+## 2) 服务器侧结构化日志（journalctl，config.json 的 logFormat=json 生效）
+
+    Oct 04 20:50:51 english-learn[2855239]: {"time":"2026-10-04T20:50:51.546517533+08:00","level":"INFO","msg":"loaded word dataset","dataset":"primary","words":1331,"path":"/opt/english-learn/backend/primary_school.json"}
+    Oct 04 20:50:51 english-learn[2855239]: {"time":"...","level":"INFO","msg":"loaded word dataset","dataset":"middle","words":2895,"path":"/opt/english-learn/backend/middle_school.json"}
+    Oct 04 20:50:52 english-learn[2855239]: {"time":"...","level":"INFO","msg":"english-learn listening","addr":":8081","db":"/opt/english-learn/english_learn.db","backupsDir":"/opt/english-learn/backups","logLevel":"info","logFormat":"json"}
+    Oct 04 20:50:52 english-learn[2855239]: {"time":"...","level":"INFO","msg":"Iris Version: 12.2.11","component":"iris"}
+    Oct 04 20:50:52 english-learn[2855239]: {"time":"...","level":"INFO","msg":"Now listening on:","component":"iris"}
+    Oct 04 20:50:52 english-learn[2855239]: {"time":"...","level":"INFO","msg":"> Local:    http://localhost:8081","component":"iris"}
+    Oct 04 20:50:52 english-learn[2855239]: {"time":"...","level":"INFO","msg":"Application started. Press CTRL+C to shut down.","component":"iris"}
+
+（上面是 205025 那次启动；205155 部署后重启，日志格式一致。）
+
+## 3) 服务器侧 learnctl（随本次部署一起发布的 Linux 二进制）
+
+    $ ./learnctl config --root /opt/english-learn
+    {
+      "Root": "/opt/english-learn",
+      "Address": ":8080",
+      "DatabasePath": "/opt/english-learn/english_learn.db",
+      "BackupsDir": "/opt/english-learn/backups",
+      "LogLevel": "info",
+      "LogFormat": "json"          # 来自 /opt/english-learn/config.json
+    }
+
+    $ ./learnctl list --root /opt/english-learn
+    name                                                     size  createdAt
+    english_learn-20261004-205155.db                    33136.0KB  2026-10-04T20:50:52+08:00
+    english_learn-20261004-205025.db                    33136.0KB  2026-10-04T20:40:30+08:00
+    ... （共 25 个备份，部署脚本每次发布自动 cp -a 生成）
+
+    $ ./learnctl verify --file /opt/english-learn/backups/english_learn-20261004-205155.db
+    ok: ... is a consistent BoltDB file          # bbolt 页级一致性检查通过
+
+    $ ./learnctl backup --root /opt/english-learn
+    error: database file is locked by a running server; stop the service or use the admin backup API (/opt/english-learn/english_learn.db)
+
+    $ ./learnctl backup --online --base http://127.0.0.1:8081 --username admin --password nope
+    error: login failed: HTTP 401        # 在线通道打通，凭据错误被正确拒绝
+
+（生产管理员口令未知，未做线上在线备份的正向调用；正向链路由本地 8098 实例 + HTTP 集成测试覆盖。）
+
+## 4) 公网只读探测（本机）
+
+    http://www.gbw3bao.com/api/health -> 200 len=16
+    http://www.gbw3bao.com/ -> 200 len=3221
+    http://www.gbw3bao.com/js/main.js -> 200 len=37865
+    http://www.gbw3bao.com/api/admin/backups -> 401
+    http://www.gbw3bao.com/api/auth/me -> 401

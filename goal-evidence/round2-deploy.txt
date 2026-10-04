@@ -1,0 +1,32 @@
+# 第二轮部署记录（实际执行输出）
+[2026-10-04 19:51:13] powershell -ExecutionPolicy Bypass -File .\scripts\deploy.ps1 -SkipAudioSync
+  ==> Cross-compile server for linux/amd64
+  Packaged textbook audio: 54 file(s), 26 MB
+  Staging package ready: ...\.tmp\deploy\english-learn-linux-amd64.tar.gz
+  Checking SSH connection to root@www.gbw3bao.com ...
+  {"status":"ok"}
+  audio http 200, 381166 bytes
+  Deployment completed.  Deployed version: 20261004-195113
+[19:53:24] 同上 -> Deployed version: 20261004-195324   （修复 codex-core Stream:true 后重部署）
+[20:02:50] 同上 -> Deployed version: 20261004-200250   （修复上下文总线模块分裂后重部署）
+[20:06:12] 同上 -> Deployed version: 20261004-200612   （修复 Vue 响应式追加后重部署，最终线上版本）
+
+# 线上状态（最后一次检查）
+systemctl is-active english-learn -> active
+cat /opt/english-learn/VERSION      -> 20261004-200612
+curl http://127.0.0.1:8081/api/health -> {"status":"ok"}
+curl /audio/7/unit1/vocab.mp3       -> http 200, 381166 bytes
+ls /opt/english-learn/backups/      -> english_learn-20261004-193446.db / -195113.db / -195324.db / -200250.db / -200612.db
+
+# 部署一致性：web 文件本地 SHA1 == 线上 SHA1（11/11 一致）
+17b6d444a1fc0e6bb9d6fe2f0bd4616eacc2001d  web/index.html
+d92dde06df1f269750caeab80a28c40488f5be2c  web/agent.css
+da1643b52547c7c4867c56db1dbdde057c3f81d6  web/js/main.js
+423455b21dcf58474f8e4c9602eee9d54e3360ac  web/js/learningContext.js
+5bf26ab04e69007adac01b9dd1ed35032195ed0c  web/js/components/AgentAssistant.js
+26743a1311d9b4ddcc45231d6f6f1ec8ffb4a8a7  web/js/components/DrillView.js
+5c3a8478b2109ad4b50f29da3a91856093f8ac4f  web/js/components/ExamView.js
+b3fe596ecc6515b5ef4976f327dcfa198cceca53  web/js/components/MeaningPracticeView.js
+1db37e478cd9020250b53b244b56aab4abe3fb78  web/js/components/MistakesView.js
+c67e17ba554d839821a6072911ea03575b139b39  web/js/components/QuizView.js
+03af7864f618ef83c0e5a9315835ec8ec92ceea4  web/js/components/ReadingView.js

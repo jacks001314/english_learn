@@ -1,0 +1,45 @@
+# R5 证据：学习日历 + 家长/教师只读报告（plan.md P1「多用户与学习目标」第 47/48 项）
+
+生成时间：2026-10-04 20:39:24
+仓库根：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project
+
+## 1) go test ./...（全量）
+?   	english_learn/cmd/autofill	[no test files]
+?   	english_learn/cmd/cleanupcontent	[no test files]
+?   	english_learn/cmd/contentaudit	[no test files]
+?   	english_learn/cmd/contenttasks	[no test files]
+?   	english_learn/cmd/enrichwords	[no test files]
+?   	english_learn/cmd/mergedb	[no test files]
+?   	english_learn/cmd/reusecontent	[no test files]
+?   	english_learn/cmd/server	[no test files]
+?   	english_learn/cmd/synccontent	[no test files]
+?   	english_learn/cmd/wordcheck	[no test files]
+ok  	english_learn/internal/autofill	0.028s
+ok  	english_learn/internal/contentaudit	0.024s
+ok  	english_learn/internal/contenttasks	0.026s
+ok  	english_learn/internal/enrichment	0.034s
+ok  	english_learn/internal/learning	1.895s
+ok  	english_learn/internal/wordcheck	0.026s
+
+## 2) go test ./internal/learning/ -run 'TestLearningCalendar|TestBuildLearnerReport|TestHTTPIntegrationLearnerReport' -v
+=== RUN   TestHTTPIntegrationLearnerReportAndCalendar
+--- PASS: TestHTTPIntegrationLearnerReportAndCalendar (0.38s)
+=== RUN   TestLearningCalendarMergesProgressAndEvents
+--- PASS: TestLearningCalendarMergesProgressAndEvents (0.01s)
+=== RUN   TestBuildLearnerReportSummarizesForGuardians
+--- PASS: TestBuildLearnerReportSummarizesForGuardians (0.06s)
+PASS
+ok  	english_learn/internal/learning	0.551s
+
+## 3) 新增/修改的实现文件
+internal/learning/learner_report.go            新增：ActivityDay / LearningCalendar / LearnerReport、buildLearningCalendar、learningEventsSince、activityDays、streakFromDays、BuildLearnerReport、GET /api/learning/calendar、GET /api/admin/learners/{id}/report
+internal/learning/learner_report_test.go       新增单测：日历归并/连续天数、报告聚合口径、学段过滤
+internal/learning/learner_report_http_test.go  新增接口测试：权限守卫（学生 403 / 管理员 200）、报告与日历口径、404
+internal/learning/model.go                     Dashboard 增加 correct/wrong/accuracy/reviewCompleted/reviewCompletionRate/calendar
+internal/learning/service.go                   Dashboard 内嵌日历 + 连续天数改为基于全部活跃日；正确率/复习完成率口径
+internal/learning/router.go                    注册 /api/learning/calendar 与 /api/admin/learners/{id}/report
+web/js/components/ReportView.js                我的学习报告：正确率、复习完成率、学习日历（42 格，按星期对齐）
+web/js/components/LearnerReportView.js         新增家长/教师只读报告页
+web/learner-report.css                         新增样式（日历 + 只读报告）
+web/js/main.js                                 注册 reports 视图/导航/数据默认值
+web/index.html                                 引入 learner-report.css，main.js 版本号升级

@@ -1,0 +1,22 @@
+第三轮（练习来源筛选）线上 API 实测 —— 2026-10-04
+方式：在已登录的线上页面里做同源 fetch（credentials: include），真实登录态，目标 http://www.gbw3bao.com
+账号：autoquiz-live
+
+[结果矩阵]
+baseline            ?level=all&page=1&size=12                          -> 200 total=4614
+source=mistakes     +&source=mistakes                                  -> 200 total=2  words=[a bit, a bit (of)]
+source=unmastered   +&source=unmastered                                -> 200 total=2  words=[a bit, a bit (of)]
+source+grade        +&source=mistakes&grade=七年级                     -> 200 total=2  words=[a bit, a bit (of)]
+source=bogus        +&source=bogus                                     -> 200 total=4614（未知取值=不过滤）
+level=primary       ?level=primary&source=mistakes                     -> 422 "not enough words：错题本里暂时没有可练的单词"
+对照 GET /api/mistakes                                                 -> 200 2 条 [a bit, a bit (of)]
+
+[结论]
+1. source=mistakes 的词集合与 /api/mistakes 完全一致（2/2）。
+2. source 与 grade 等元数据筛选可叠加。
+3. 未知 source 值退化为不过滤，与老客户端兼容。
+4. level 默认 primary，错词都在 middle，因此漏传 level=all 会得到 422 与正确的中文提示（这是预期行为，不是缺陷）。
+5. 实测过程中把 -sist- 答对后，错题数由 3 降到 2，说明来源筛选读的是实时学习记录而不是缓存。
+
+[原始输出]
+[{"name":"baseline","status":200,"total":4614,"words":["-sist-","100-metre race","a","a","a bit","a bit (of)","a bottle of","a cold","a couple of","a few","a few","a glass of"],"itemKeys":["word","options","type","prompt","answer"]},{"name":"mistakes","status":200,"total":2,"words":["a bit","a bit (of)"]},{"name":"unmastered","status":200,"total":2,"words":["a bit","a bit (of)"]},{"name":"mistakes+grade7","status":200,"total":2,"words":["a bit","a bit (of)"]},{"name":"bogus","status":200,"total":4614},{"name":"mistakes+primaryLevel","status":422,"error":"not enough words：错题本里暂时没有可练的单词","words":null},{"name":"/api/mistakes","status":200,"total":2,"words":["a bit","a bit (of)"]}]

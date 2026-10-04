@@ -162,14 +162,22 @@ type ReviewQueue struct {
 }
 
 type Dashboard struct {
-	TodayLearned   int            `json:"todayLearned"`
-	TodayPractices int            `json:"todayPractices"`
-	TodayGoal      int            `json:"todayGoal"`
-	StreakDays     int            `json:"streakDays"`
-	ReviewDue      int            `json:"reviewDue"`
-	Mistakes       int            `json:"mistakes"`
-	Recent         []LearningItem `json:"recent"`
-	Weakest        []LearningItem `json:"weakest"`
+	TodayLearned   int `json:"todayLearned"`
+	TodayPractices int `json:"todayPractices"`
+	TodayGoal      int `json:"todayGoal"`
+	StreakDays     int `json:"streakDays"`
+	ReviewDue      int `json:"reviewDue"`
+	Mistakes       int `json:"mistakes"`
+	// 以下字段供学习报告展示「正确率 / 复习完成率」，与家长报告口径一致。
+	Correct              int            `json:"correct"`
+	Wrong                int            `json:"wrong"`
+	Accuracy             int            `json:"accuracy"`
+	ReviewCompleted      int            `json:"reviewCompleted"`
+	ReviewCompletionRate int            `json:"reviewCompletionRate"`
+	Recent               []LearningItem `json:"recent"`
+	Weakest              []LearningItem `json:"weakest"`
+	// Calendar 是最近 42 天的学习日历（plan.md P1 第 47 项）。
+	Calendar LearningCalendar `json:"calendar"`
 }
 
 type LearningEvent struct {
@@ -202,6 +210,10 @@ type KnowledgeMastery struct {
 	LastActivity string   `json:"lastActivity,omitempty"`
 	NextReview   string   `json:"nextReview,omitempty"`
 	Word         *Word    `json:"word,omitempty"`
+	// TutorNote carries the assistant's last explanation for this word, so the
+	// learning profile and the plan can build on what was already taught.
+	TutorNote   string `json:"tutorNote,omitempty"`
+	TutorNoteAt string `json:"tutorNoteAt,omitempty"`
 }
 
 type MasteryDimension struct {

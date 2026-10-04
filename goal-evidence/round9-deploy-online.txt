@@ -1,0 +1,96 @@
+第 9 轮证据（线上）：Store 实例注入重构已部署并验证（plan.md 第 85 项）
+生成时间（本地）: 2026-10-04T21:51:59
+部署命令: powershell -ExecutionPolicy Bypass -File .\scripts\deploy.ps1 -SkipAudioSync
+部署版本: 20261004-214555
+
+== 1. 公网接口实测（http://www.gbw3bao.com）==
+GET /api/health                                => 200 {"status":"ok"} 
+GET /index.html                                => 200（main.js?v=20261004-primary-grammar-r1）
+GET /api/words（匿名）                             => 401 {"error":"请先登录"} 
+POST /api/auth/register（临时账号 verify-r9-g3iqu7） => 200 {"user":{"id":"a97bf286-842d-4da1-9da0-1884e5961e8a","username":"verify-r9-g3iqu7","displayName":"第九
+GET /api/words?q=subway（登录态）                   => 200 {"items":[{"id":"by subway","word":"by subway","phonetic":"/baɪ ˈsʌbweɪ/","pos":"adv. phr.","meaning":"乘地铁","letter":"B","level":"primary","example":"She goes to work by subway.","exampleTranslation":
+GET /api/words/on?level=middle                 => 200 {"id":"on","word":"on","phonetic":"/ɔn/","pos":"prep.","meaning":"在……上面","letter":"O","level":"middle","example":"The report is on the teacher's desk.","exampleTranslation":"报告在老师的书桌上。","topic":"位置","
+GET /api/meaning-quiz（登录态）                     => 200 {"level":"primary","type":"en-zh","sort":"word-asc","page":1,"size":12,"total":1538,"pages":129,"items":[{"word":{"id":"
+GET /api/admin/users（学生）                       => 403 {"error":"需要管理员权限"} 
+POST /api/auth/login admin/Admin123!（已知被改）     => 401 {"error":"用户名或密码错误"}
+
+== 2. 服务器侧探测（plink root@www.gbw3bao.com）==
+== 线上部署探测（第九轮：Store 实例注入）==
+$ cat /opt/english-learn/VERSION
+20261004-214555
+
+$ systemctl is-active english-learn; systemctl show english-learn -p ActiveEnterTimestamp --value
+active
+Sun 2026-10-04 21:46:26 CST
+
+$ ls -l --time-style=long-iso /opt/english-learn/english-learn
+-rwxrwxrwx 1 root root 38695074 2026-10-04 21:45 /opt/english-learn/english-learn
+
+$ sha256sum /opt/english-learn/english-learn
+f4a45b9cf776ef393d9dcad01c92098453e37417c577a580f1a2d9b7524b3d80  /opt/english-learn/english-learn
+
+$ journalctl -u english-learn -n 40 --no-pager | grep -E 'loaded word dataset|listening|Application started' | tail -6
+Oct 04 21:24:19 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2859648]: {"time":"2026-10-04T21:24:19.075878074+08:00","level":"INFO","msg":"english-learn listening","addr":":8081","db":"/opt/english-learn/english_learn.db","backupsDir":"/opt/english-learn/backups","logLevel":"info","logFormat":"json"}
+Oct 04 21:24:19 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2859648]: {"time":"2026-10-04T21:24:19.078715017+08:00","level":"INFO","msg":"Now listening on:","component":"iris"}
+Oct 04 21:46:26 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:26.785091432+08:00","level":"INFO","msg":"loaded word dataset","dataset":"primary","words":1344,"path":"/opt/english-learn/backend/primary_school.json"}
+Oct 04 21:46:26 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:26.814399086+08:00","level":"INFO","msg":"loaded word dataset","dataset":"middle","words":2858,"path":"/opt/english-learn/backend/middle_school.json"}
+Oct 04 21:46:28 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:28.320849962+08:00","level":"INFO","msg":"english-learn listening","addr":":8081","db":"/opt/english-learn/english_learn.db","backupsDir":"/opt/english-learn/backups","logLevel":"info","logFormat":"json"}
+Oct 04 21:46:28 iZ2ze2hmnkdi8sgtsphkbfZ english-learn[2861670]: {"time":"2026-10-04T21:46:28.323719042+08:00","level":"INFO","msg":"Now listening on:","component":"iris"}
+
+$ journalctl -u english-learn -n 200 --no-pager | grep -ci 'panic' 
+panic 行数: 1
+
+（补充）journalctl 中唯一匹配 panic 的行属于 2026-09-05 的旧记录：
+  Sep 05 08:38:52 english-learn[2147987]: panic: listen tcp :8080: bind: address already in use
+今日重启计数: Application started 15 次（含本次 21:46:26）。
+
+== 3. 公网端到端（headless Chrome）==
+===== e2e-practice-flow（线上） (exit=0) =====
+OK   S1 注册并登录：账号 e2e-practice-mutvo18i → register:200
+OK   S2 练习来源选项：实际 [["","全部单词"],["mistakes","我的错题"],["unmastered","学过但没掌握"]]
+OK   S2 基线计数：全部单词 → 可练习 4590 / 4590 个单词
+OK   S3 制造 2 道错题：[{"id":"a","word":"a","correct":false,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 我的错题计数：筛选后 → 可练习 2 / 4590 个单词
+OK   S3 出的题目来自错词：第 1 题是「a」，错词集合 ["a","a cold"]
+OK   S4 点到正确答案：题号 第 1 / 2 题，正确答案「一（用于单数可数名词前）」
+OK   S4 答对自动下一题（没点下一题按钮）：题号 第 1 / 2 题 → 第 2 / 2 题，反馈「」
+OK   S5 订正后错题清空：{"statuses":[200,200],"total":0}
+OK   S5 页面无 JS 报错：0 个异常
+
+==> 练习流程端到端：10 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\online-r9-practice
+
+===== e2e-primary-grammar（线上） (exit=0) =====
+✓ S1 登录成功：POST /api/auth/login → 200（注册 p6check）
+✓ S2 导航出现「小学基础」分组：导航分组=["小学基础","入门总览","词法","动词","句法","复合句"]
+✓ S2 知识卡数量为 15：小学基础组条目数=15
+✓ S2 分组顺序：小学基础在最前：第一个分组=小学基础
+✓ S2 状态标记为知识卡：状态=知识卡
+✓ S2 指标区改为知识卡口径：指标=["用法要点:3","正误例句:14","易错提醒:3","记忆卡:2"]
+✓ S2 速查/要点/易错/记忆卡四块渲染：块={"quick":"1","points":"1","pitfalls":"1","memory":"1","lecture":"0","practice":"0"}
+✓ S2 讲义与专项练习隐藏：lecture=0 practice=0
+✓ S2 无「开始练习」按钮：按钮存在=false
+✓ S2 速查卡与正误例句有内容：公式=4 好例=8 错例=6
+✓ S2 记忆卡有内容：记忆卡=["我用 am，你用 are，is 连着他她它。","单数 is，复数 are。"]
+✓ S2 目录不含讲义/专项练习：目录=["速用速查","用法要点 · 3","易错与考法","记忆卡与教材例句"]
+✓ S3 切卡后是小学知识卡：标题=现在进行时 分组=小学基础
+✓ S3 卡片正文是小学内容（be + ing）：nav 计数=知识卡 · 3 个要点
+✓ S4 g-there-be 仍是初中专题：分组=句法 状态=待补讲义 练习=专项练习 共 6 题 · 已答 0/6语篇原句改编3 题第 1 题北京市中考英语
+✓ S4 p-there-be 是小学知识卡：分组=小学基础 状态=知识卡
+✓ S5 全流程无 JS 异常：exceptionThrown/console.error 计数 = 0
+
+结果：17/17 通过
+截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\online-r9-primary-grammar
+
+===== e2e-grammar-entry（线上） (exit=0) =====
+✓ S1 登录成功：POST /api/auth/login → 200；GET /api/auth/me → 200:[object Promise]
+✓ S2 课程页入口进入对应语法专题：课程语法「可数名词与冠词；基数词；be 动词；一般将来时（be going to）」→ #grammar/g-future-tense，专题标题「一般将来时」（IA 别名映射）
+✓ S2c 定语从句课程语法名 → 新专题 g-attributive-clause：课程页只有 7 个版块（工作区真实教材仅七年级上册），改用页面内 resolveTopicId 校验：「定语从句(that/which)」「定语从句(who/which)」→ g-attributive-clause,g-attributive-clause
+   · 课程页扫描：模块总数 7，有语法入口 7 个，其中实际跳转校验 1 个
+✓ S2b 课程页语法区渲染取样：{"detail":{"box":[630,76],"padding":"26px","border":"1px solid","radius":"18px","background":"rgb(255, 255, 255)","shadow":"rgba(23, 61, 46, 0.05) 0px 10px 30px 0px","display":"block","fontSize":"13px","color":"rgb(23, 35, 31)"},"ico":{"box":[16,16],"padding":"0px","border":"0px none","radius":"50%","background":"rgba(0, 0, 0, 0)","shadow":"none","display":"flex","fontSize":"10px","color":"rgb(23, 107, 77)"},"label":{"box":[47,14],"padding":"0px","border":"0px none","radius":"0px","background":"rgba(0, 0, 0, 0)","shadow":"none","display":"inline","fontSize":"10px","color":"rgb(23, 107, 77)"},"secDot":null}
+✓ S3 智能学习台入口进入语法专题：推荐项「名词词法 · 0/15 题0%」→ #grammar/g-nouns，页面标题「名词」
+✓ S4 深链刷新回到同一节：hash=#grammar/g-pronouns/lecture-3 展开=true TOC高亮=lecture-3 scrollTop=1838 锚点视口位置=14/1000
+✓ S5 全流程无 JS 异常：Runtime.exceptionThrown/console.error 计数 = 0
+
+账号：注册 p4check；服务：http://www.gbw3bao.com；截图目录：tmp\online-r9-grammar
+结果：7/7 通过

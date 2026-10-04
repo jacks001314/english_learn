@@ -1,0 +1,90 @@
+第七轮证据 · 小学基础语法知识卡（plan.md 第 42 项）
+================================================
+生成时间：2026-10-04 21:09:06（Asia/Hong_Kong）
+新增 web/js/grammar/primary.js（15 张知识卡），ia.js 新增「小学基础」分组并排在导航首位，
+GrammarView 对 kind: card 只渲染速查/要点/易错/记忆卡（隐藏讲义、专项练习、题目来源与 TOC 练习项），
+标题映射改为「非知识卡优先」，保证 #grammar/现在进行时、#grammar/g-there-be 仍指向初中专题。
+
+$ powershell> node --check web/js/grammar/primary.js; node --check web/js/grammar/index.js; node --check web/js/grammar/ia.js; node --check web/js/components/GrammarView.js; node --check web/js/main.js; echo "all syntax ok"
+all syntax ok
+
+[exit 0]
+
+$ powershell> node -e "import(process.cwd().replace(/\\/g,'/').replace(/^/,'file:///')+'/web/js/grammar/primary.js').then(m=>console.log('cards',m.primaryGrammarCards.length, m.primaryGrammarCards.map(c=>c.id).join(",")))"
+[eval]:1
+import(process.cwd().replace(/\\/g,'/').replace(/^/,'file:///')+'/web/js/grammar/primary.js').then(m=>console.log('cards',m.primaryGrammarCards.length, m.primaryGrammarCards.map(c=>c.id).join(,)))
+                                                                                                                                                                                                ^
+Expression expected
+
+SyntaxError: Unexpected token ','
+    at makeContextifyScript (node:internal/vm:194:14)
+    at compileScript (node:internal/process/execution:388:10)
+    at evalTypeScript (node:internal/process/execution:260:22)
+    at node:internal/main/eval_string:71:3
+
+Node.js v24.15.0
+
+[exit 1]
+
+$ powershell> node scripts/check-grammar-ia.mjs 2>&1 | Select-Object -First 20
+分组结构：
+  小学基础（15） — 小学阶段必备的基础语法知识卡，先看为先
+      be 动词（am / is / are）｜知识卡｜讲义 0 节｜题 0
+      人称代词与物主代词｜知识卡｜讲义 0 节｜题 0
+      名词单复数｜知识卡｜讲义 0 节｜题 0
+      冠词 a / an / the｜知识卡｜讲义 0 节｜题 0
+      this / that / these / those｜知识卡｜讲义 0 节｜题 0
+      一般现在时与第三人称单数｜知识卡｜讲义 0 节｜题 0
+      现在进行时｜知识卡｜讲义 0 节｜题 0
+      There be 句型｜知识卡｜讲义 0 节｜题 0
+      情态动词 can｜知识卡｜讲义 0 节｜题 0
+      一般过去时初步｜知识卡｜讲义 0 节｜题 0
+      形容词比较级初步｜知识卡｜讲义 0 节｜题 0
+      方位介词 in / on / under / behind｜知识卡｜讲义 0 节｜题 0
+      疑问词与特殊疑问句｜知识卡｜讲义 0 节｜题 0
+      祈使句与 Let's｜知识卡｜讲义 0 节｜题 0
+      名词所有格（'s 的用法）｜知识卡｜讲义 0 节｜题 0
+  入门总览（4） — 先看这 4 篇，建立全局框架
+      语法总论｜仅讲义｜讲义 13 节｜题 0
+      句子的成分和基本句型｜仅讲义｜讲义 9 节｜题 0
+
+[exit 1]
+
+$ powershell> node scripts/check-grammar-ia.mjs 2>&1 | Select-Object -Last 6
+专题数：46｜分组数：6｜课程模块语法名：54，未命中 0
+
+备注：
+  - loadLecture(g-reported-speech) -> 9 节（懒加载路径可用）
+
+✅ 信息架构自检通过
+
+[exit 0]
+
+$ powershell> node scripts/check-nav-hash.mjs 2>&1 | Select-Object -Last 3
+  ✓ 切到其它模块不带语法参数｜实际 "#home"｜期望 "#home"
+
+✅ 主侧栏 hash 解析自检通过
+
+[exit 0]
+
+$ powershell> node scripts/check-grammar-duplication.mjs 2>&1 | Select-Object -Last 5
+  未命中 介词（时间与地点）（g-prepositions）：0 处
+  命中 形容词与副词（比较等级）（g-adj-adv）：4 处 → forms[5]、forms[6]、forms[7]、contrasts[2].rows[3]
+
+结论：本脚本只做体检，不修改文件。判定口径：整卡被讲义覆盖才删（2026-09-28 批次已清理 5 张：
+  g-nouns / g-prepositions / g-conjunctions 各 1 张、g-past-simple 2 张）；单卡 forms 公式卡与部分覆盖卡保留。
+
+[exit 0]
+
+$ powershell> node .tmp/resolvetest.mjs
+现在进行时 -> g-present-continuous | verb/现在进行时
+There be 句型 -> g-there-be | syntax/There be 句型
+一般现在时 -> g-present-simple | verb/一般现在时
+祈使句与感叹句 -> g-imperatives | syntax/祈使句与感叹句
+冠词 -> g-articles | morph/冠词
+代词 -> g-pronouns | morph/代词
+名词单复数 -> p-noun-plural | primary/名词单复数
+be 动词（am / is / are） -> p-be-verb | primary/be 动词（am / is / are）
+course units 54 resolved to primary cards 0
+
+[exit 0]

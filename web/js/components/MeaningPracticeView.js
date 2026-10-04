@@ -2,7 +2,16 @@
 // 三个页面共用这个组件，只通过 mode / audioOnly 区分出题与展示方式。
 // 练习覆盖当前筛选命中的全部单词：按页取题（默认每页 12 题），翻页即可把
 // 整个年级、主题或词性下的单词练完，而不是随机抽十题。
+import { publishContext, askAssistant, noteAnswer } from '../learningContext.js?v=20261004-agent-stream-r3';
+
+// 反馈条上的“不懂，讲讲”按钮：文案在页面里，问题本身由服务端按场景生成。
+const ASK_LABELS = { explain: '讲讲这道题', 'explain-wrong': '不懂，讲讲', compare: '易混词对比', drill: '出同类题', 'add-review': '加入今日复习' };
+
 const PAGE_SIZE = 12;
+// 答对后自动进入下一题：等待时间够看清“回答正确”和词义卡，又不拖慢连续练习。
+const AUTO_NEXT_DELAY_MS = 750;
+// “答对自动下一题”开关按浏览器本地保存，词义练习与单词测验共用同一个设置。
+const AUTO_NEXT_STORAGE_KEY = 'english-learn-auto-next-v1';
 // 侧栏错词清单只渲染最近的一批，避免长时间练习后一次性生成上千个按钮拖慢页面。
 const WRONG_LIST_LIMIT = 60;
 // 练习进度按“用户 + 练习方式”保存在浏览器本地，刷新或切换页面后可以接着练。
@@ -43,6 +52,7 @@ export default {
       grade: '',
       topic: '',
       partOfSpeech: '',
+      source: '',
       sortKey: 'word-asc',
       seed: 0,
       facets: { grades: [], topics: [], partsOfSpeech: [] },
@@ -65,6 +75,9 @@ export default {
       boundStorageKey: '',
       ready: false,
       error: '',
+      autoNext: true,
+      autoNextTimer: null,
+      autoNextPending: false,
     };
   },
   computed: {
@@ -116,6 +129,9 @@ export default {
     },
     currentPage() {
       return this.desiredPage || this.page;
+    },
+    viewId() {
+      return { 'en-zh': 'meaning-en-zh', 'zh-en': 'meaning-zh-en', listen: 'meaning-listen' }[this.activeMode] || 'meaning-en-zh';
     },
     positionLabel() {
       return (this.currentPage - 1) * this.pageSize + this.index + 1;
@@ -176,6 +192,12 @@ export default {
       if (this.index < this.items.length - 1) return '下一题';
       return this.currentPage < this.pages ? '下一页' : '最后一题';
     },
+    // 自动前进的提示文案：页内是下一题，页末是下一页，最后一题不再提示。
+    autoNextNote() {
+      if (this.index < this.items.length - 1) return '正在进入下一题…';
+      if (this.currentPage < this.pages) return '正在进入下一页…';
+      return '';
+    },
   },
   watch: {
     // 换范围会清空年级/主题/词性（每个学段的标签不同），并重新从第 1 页开始。
@@ -189,16 +211,93 @@ export default {
   },
   mounted() {
     window.addEventListener('keydown', this.handleKeydown);
+    this.restoreAutoNext();
     this.restoreSession();
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeydown);
+    this.cancelAutoNext();
     this.flushSession();
   },
   methods: {
+    // 把“我正在做哪道题”发布到学习上下文总线。只上报定位信息（wordId/level），
+    // 释义与正确答案仍由服务端从词库读取。
+    publishContext() {
+      const item = this.current;
+      if (!item || !item.word) return;
+      const entry = this.currentAnswer;
+      publishContext({
+        view: this.viewId,
+        scene: 'meaning',
+        quizType: this.questionType,
+        level: this.scope,
+        wordId: item.word.id,
+        spelling: item.word.word,
+        phonetic: item.word.phonetic || '',
+        options: item.options || [],
+        prompt: item.prompt || '',
+        correctAnswer: entry ? entry.answer : item.answer || '',
+        selectedAnswer: entry ? entry.selected : '',
+        correct: entry ? !!entry.correct : undefined,
+        wrongTimes: entry && !entry.correct ? 1 : 0,
+        position: this.positionLabel,
+        total: this.total,
+        page: this.currentPage,
+        pages: this.pages,
+        pageSize: this.pageSize,
+        answered: this.answeredCount,
+        sessionCorrect: this.correctCount,
+        scope: this.filterLabel,
+        topic: this.topic,
+      });
+    },
+    // 页内提问入口：先取消待跳转，否则讲解会被自动前进切到下一题。
+    ask(quickAction) {
+      this.cancelAutoNext();
+      askAssistant('', { quickAction, label: ASK_LABELS[quickAction] || '问问助教' });
+    },
     partOfSpeechLabel(value) {
       const facet = (this.facets.partsOfSpeech || []).find((item) => item.value === value);
       return facet?.label || POS_LABELS[value] || value;
+    },
+    // “答对自动下一题”：默认开启，可在练习卡上关闭。开关状态和等待中的定时器都在这里维护，
+    // 任何手动翻题、换页、清空作答或离开页面都会先取消待跳转，避免连点或跳错题。
+    restoreAutoNext() {
+      try {
+        const saved = window.localStorage.getItem(AUTO_NEXT_STORAGE_KEY);
+        if (saved === '0') this.autoNext = false;
+        else if (saved === '1') this.autoNext = true;
+      } catch (_) {
+        // 无痕模式读不到本地存储时保持默认开启。
+      }
+    },
+    setAutoNext(value) {
+      this.autoNext = !!value;
+      try {
+        window.localStorage.setItem(AUTO_NEXT_STORAGE_KEY, this.autoNext ? '1' : '0');
+      } catch (_) {
+        // 存不下就只在本次会话里生效。
+      }
+      if (!this.autoNext) this.cancelAutoNext();
+    },
+    cancelAutoNext() {
+      this.autoNextPending = false;
+      if (!this.autoNextTimer) return;
+      window.clearTimeout(this.autoNextTimer);
+      this.autoNextTimer = null;
+    },
+    scheduleAutoNext() {
+      this.cancelAutoNext();
+      if (!this.autoNext) return;
+      const key = this.currentKey;
+      this.autoNextPending = true;
+      this.autoNextTimer = window.setTimeout(() => {
+        this.autoNextTimer = null;
+        this.autoNextPending = false;
+        // 等待期间用户可能手动翻题、换页或清空作答，只有当前仍是刚才答对的那道题才前进。
+        if (!this.autoNext || this.finishedAll || this.currentKey !== key || !this.feedbackCorrect) return;
+        this.next();
+      }, AUTO_NEXT_DELAY_MS);
     },
     async run(task) {
       this.error = '';
@@ -263,6 +362,7 @@ export default {
       this.grade = '';
       this.topic = '';
       this.partOfSpeech = '';
+      this.source = '';
       await this.applyFilters();
     },
     // 只换顺序时保留已作答状态，方便回头复习错词。
@@ -300,6 +400,7 @@ export default {
       this.persistSession();
     },
     resetAnswers() {
+      this.cancelAutoNext();
       this.answers = {};
       this.wrongList = [];
       this.answeredTotal = 0;
@@ -339,6 +440,7 @@ export default {
         grade: this.grade,
         topic: this.topic,
         partOfSpeech: this.partOfSpeech,
+        source: this.source,
         sortKey: this.sortKey,
         seed: this.seed,
         page: this.currentPage,
@@ -409,6 +511,7 @@ export default {
         this.grade = saved.grade || '';
         this.topic = saved.topic || '';
         this.partOfSpeech = saved.partOfSpeech || '';
+        this.source = saved.source || '';
         this.sortKey = saved.sortKey || 'word-asc';
         this.seed = Number(saved.seed) || 0;
         this.resetAnswers();
@@ -452,6 +555,7 @@ export default {
         topic: this.topic,
         grade: this.grade,
         pos: this.partOfSpeech,
+        source: this.source,
         sort: this.sortKey,
         size: String(this.pageSize),
         page: String(page),
@@ -468,6 +572,7 @@ export default {
     },
     // 翻页请求串行执行：加载期间再次点击只更新目标页，点击不会被丢掉，也不会并发打爆接口。
     async loadPage(target, options = {}) {
+      this.cancelAutoNext();
       this.desiredPage = this.clampPage(target);
       if (this.loading) return;
       this.loading = true;
@@ -500,6 +605,7 @@ export default {
       this.ready = true;
       this.error = '';
       this.speakCurrent();
+      this.publishContext();
     },
     applyLoadError(error) {
       this.items = [];
@@ -539,6 +645,11 @@ export default {
           hint: feedback.correct ? '回答正确，继续保持！' : feedback.message,
         });
         this.$emit('answered');
+        this.publishContext();
+        // 连错/连对的轻提示：由上下文总线判断是否需要提醒，页面不做决策。
+        noteAnswer(!!feedback.correct);
+        // 只有判分为正确的题目自动前进；答错时保留讲解，等用户手动翻题。
+        if (feedback.correct) this.scheduleAutoNext();
       } catch (error) {
         this.error = error.message || '提交答案失败，请重试。';
       }
@@ -547,24 +658,30 @@ export default {
       if (this.current && (this.audioOnly || this.questionType === 'en-zh')) this.$emit('speak', this.current.word.word);
     },
     previous() {
+      this.cancelAutoNext();
       if (this.index > 0) {
         this.index -= 1;
         this.speakCurrent();
+        this.publishContext();
         return;
       }
       if (this.currentPage > 1) this.loadPage(this.currentPage - 1, { position: 'last' });
     },
     next() {
+      this.cancelAutoNext();
       if (this.index < this.items.length - 1) {
         this.index += 1;
         this.speakCurrent();
+        this.publishContext();
         return;
       }
       if (this.currentPage < this.pages) this.loadPage(this.currentPage + 1);
     },
     gotoQuestion(position) {
+      this.cancelAutoNext();
       this.index = position;
       this.speakCurrent();
+      this.publishContext();
     },
     optionClass(option) {
       if (!this.answered) return {};
@@ -617,6 +734,11 @@ export default {
       </div>
 
       <div class="toolbar meaning-filters">
+        <select v-model="source" aria-label="练习来源" @change="applyFilters()">
+          <option value="">全部单词</option>
+          <option value="mistakes">我的错题</option>
+          <option value="unmastered">学过但没掌握</option>
+        </select>
         <select v-model="scope" aria-label="练习范围" @change="changeScope()">
           <option value="all">全部范围（小学 + 初中）</option>
           <option value="primary">小学英语</option>
@@ -650,6 +772,10 @@ export default {
         </div>
         <small>本页 {{ pageAnswered }} / {{ items.length }} · 已练 {{ answeredCount }} / {{ total }} · 答对 {{ correctCount }}（{{ accuracy }}%）</small>
         <div class="meaning-actions">
+          <label class="meaning-auto-next" :class="{active:autoNext}" title="答对后自动进入下一题；答错时停留原题，看完讲解再手动继续">
+            <input type="checkbox" :checked="autoNext" @change="setAutoNext($event.target.checked)">
+            答对自动下一题
+          </label>
           <button @click="restartPractice()">清空作答</button>
         </div>
       </div>
@@ -711,6 +837,11 @@ export default {
             <div v-if="answered" class="meaning-feedback" :class="feedbackCorrect?'is-correct':'is-wrong'" aria-live="polite">
               <b>{{ feedbackCorrect ? '回答正确' : '再巩固一下' }}</b>
               <span>{{ hint }}</span>
+              <em v-if="autoNextPending" class="meaning-auto-note">{{ autoNextNote }}</em>
+              <div class="meaning-ask">
+                <button class="primary" @click="ask(feedbackCorrect ? 'explain' : 'explain-wrong')">{{ feedbackCorrect ? '讲讲这道题' : '不懂，讲讲' }}</button>
+                <button @click="ask('drill')">出同类题</button>
+              </div>
             </div>
             <p v-else class="meaning-keyboard-tip">按数字键 1-4 选择答案，← → 翻题</p>
 

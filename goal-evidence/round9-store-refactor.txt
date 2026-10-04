@@ -1,0 +1,228 @@
+第 9 轮证据：消除包级可变数据库状态（plan.md 第 85 项）→ Store 实例注入
+生成时间（本地）: 2026-10-04T21:50:39
+
+== 1. 结论 ==
+internal/learning 包内不再存在包级可变数据库状态：db / datasets / wordIndex 三个包级变量被删除，
+改为 Store 实例（internal/learning/store.go）持有，由 run.go 创建后经 newAppWithConfig → Controller / Service 注入。
+
+== 2. 残留包级状态检查 ==
+规则：排除 `s.db` / `st.db` / `c.store.db` 形式的字段访问、注释行、Store 结构体字段定义；
+剩下 6 处全部是 Store 结构体/复合字面量的字段名，不构成包级变量。
+agent_context.go:82: // from wordIndex.
+backup.go:112: // 旧库会先另存为 <db>.pre-restore-<时间戳>，再用临时文件 + rename 原子替换。
+repository.go:56: s := &Store{datasets: map[string][]Word{}, wordIndex: map[string]Word{}}
+run.go:38: "db", cfg.DatabasePath,
+store.go:10: db        *bolt.DB
+store.go:11: datasets  map[string][]Word
+store.go:12: wordIndex map[string]Word
+
+对照：重构前（.tmp/backup-r10-learning/repository.go:52-54）
+  var db *bolt.DB
+  var datasets = map[string][]Word{}
+  var wordIndex = map[string]Word{}
+
+== 3. 新增 Store 实例（internal/learning/store.go 全文）==
+package learning
+
+import (
+	bolt "go.etcd.io/bbolt"
+)
+
+// Store 是进程内的数据访问实例：持有 BoltDB 句柄与内存中的词库视图。
+// 所有持久化与词库读写都经由该实例完成，包内不再存在可变的包级数据库状态。
+type Store struct {
+	db        *bolt.DB
+	datasets  map[string][]Word
+	wordIndex map[string]Word
+}
+
+// DB 暴露底层 BoltDB 句柄，供备份等只读/管理场景使用。
+func (s *Store) DB() *bolt.DB { return s.db }
+
+// Close 关闭底层数据库；对 nil 实例与未打开的实例都返回 nil。
+func (s *Store) Close() error {
+	if s == nil || s.db == nil {
+		return nil
+	}
+	return s.db.Close()
+}
+
+== 4. 逐文件 diffstat（base = .tmp/backup-r10-learning，重构前快照）==
+Store 实例注入重构 —— 逐文件 diffstat（internal/learning，base=.tmp/backup-r10-learning）
+新增文件: store.go
+删除文件: （无）
+改动文件数: 47 / 未改动: 11
+总 +1213 / -1158 行
+
+file                                            +      -
+repository.go                                 117    141
+content_factory.go                            114    112
+app_test.go                                   117    103
+controller.go                                 109    108
+auth.go                                        59     59
+agent_context_test.go                          51     40
+auth_test.go                                   40     36
+homework.go                                    38     38
+service.go                                     40     36
+quiz_filter_test.go                            34     28
+content_versions_test.go                       30     27
+exam_test.go                                   30     26
+agent_context.go                               26     26
+content_factory_controller.go                  26     26
+learner_report.go                              23     23
+quiz_paging_test.go                            25     20
+learner_report_test.go                         22     20
+exam.go                                        19     19
+learning_intelligence.go                       19     19
+tutor_memory_test.go                           20     17
+learning_intelligence_test.go                  19     17
+content_management_test.go                     18     17
+agent.go                                       17     17
+publishing_test.go                             18     16
+content_factory_test.go                        18     15
+articles_test.go                               18     14
+content_versions.go                            16     16
+http_integration_test.go                       17     15
+homework_controller.go                         15     15
+quiz.go                                        13     13
+agent_controller.go                            11     11
+backup_test.go                                 11      9
+tutor_memory.go                                 9      9
+homework_test.go                                8      7
+word_sort_test.go                               8      7
+quiz_source_test.go                             7      6
+app.go                                          6      6
+countries.go                                    4      4
+run.go                                          4      3
+agent_stream.go                                 3      3
+backup.go                                       3      3
+backup_controller.go                            3      3
+router.go                                       3      3
+content_import.go                               2      2
+backup_http_test.go                             1      1
+learner_report_http_test.go                     1      1
+learning_intelligence_controller.go             1      1
+
+== 5. 质量门禁（重构后本地）==
+$ go version   -> exit=0
+go version go1.26.5 windows/amd64
+
+$ gofmt -l internal cmd   -> exit=0
+（无输出 = 干净）
+
+$ go build ./...   -> exit=0
+（无输出 = 干净）
+
+$ go vet ./...   -> exit=0
+（无输出 = 干净）
+
+$ go test ./... -count=1   -> exit=0
+?   	english_learn/cmd/autofill	[no test files]
+?   	english_learn/cmd/cleanupcontent	[no test files]
+?   	english_learn/cmd/contentaudit	[no test files]
+?   	english_learn/cmd/contenttasks	[no test files]
+?   	english_learn/cmd/enrichwords	[no test files]
+?   	english_learn/cmd/expandvocab	[no test files]
+?   	english_learn/cmd/learnctl	[no test files]
+?   	english_learn/cmd/mergedb	[no test files]
+?   	english_learn/cmd/reusecontent	[no test files]
+?   	english_learn/cmd/server	[no test files]
+?   	english_learn/cmd/synccontent	[no test files]
+?   	english_learn/cmd/wordcheck	[no test files]
+ok  	english_learn/internal/autofill	0.023s
+ok  	english_learn/internal/contentaudit	0.025s
+ok  	english_learn/internal/contenttasks	0.023s
+ok  	english_learn/internal/enrichment	0.032s
+ok  	english_learn/internal/learning	8.011s
+ok  	english_learn/internal/vocabulary	0.039s
+ok  	english_learn/internal/wordcheck	0.051s
+
+$ go test -race ./internal/learning -count=1   -> exit=0
+ok  	english_learn/internal/learning	57.032s
+
+== 6. CI 门禁 + e2e 练习流（重构后本地服务 :8099）==
+== CI 门禁（重构后）==
+\$ powershell -ExecutionPolicy Bypass -File .\\scripts\\ci.ps1 -E2EBase http://127.0.0.1:8099
+==> Lingo Bloom CI 质量门禁
+    root: C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project
+[PASS] Go - gofmt -l internal cmd : 格式干净
+[PASS] Go - go vet ./...
+[PASS] Go - go test ./... -count=1 : ok  	english_learn/internal/wordcheck	0.039s
+[PASS] Go - go run ./cmd/wordcheck（warning 级阻断） : word quality report written to reports/word-quality.md
+[PASS] Go - go run ./cmd/contentaudit : backend/middle_school.json: words=2858 missing_phonetic=0 missing_audio=2858 missing_examples=0 multi_sense=30 senses_without_examples=0 template_examples=0
+[PASS] Frontend - node --check（51 个文件） : 全部通过
+[PASS] Frontend - check-nav-hash.mjs : ✅ 主侧栏 hash 解析自检通过
+[PASS] Frontend - check-grammar-ia.mjs : ✅ 信息架构自检通过
+[PASS] Frontend - check-grammar-duplication.mjs :   g-nouns / g-prepositions / g-conjunctions 各 1 张、g-past-simple 2 张）；单卡 forms 公式卡与部分覆盖卡保留。
+[PASS] E2E - e2e-practice-flow.mjs :     截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\.tmp\e2e-ci
+[PASS] E2E - e2e-primary-grammar.mjs : 截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\.tmp\e2e-ci-primary-grammar
+[PASS] E2E - e2e-grammar-entry.mjs : 结果：7/7 通过
+
+==> 结果：12 步通过 / 0 步失败
+所有质量门禁通过。
+
+
+== e2e-practice-flow（重构后，含 S4 答对自动下一题）==
+\$ node scripts/e2e-practice-flow.mjs --base http://127.0.0.1:8099
+OK   S1 注册并登录：账号 e2e-practice-mutvgyud → register:200
+OK   S2 练习来源选项：实际 [["","全部单词"],["mistakes","我的错题"],["unmastered","学过但没掌握"]]
+OK   S2 基线计数：全部单词 → 可练习 4590 / 4590 个单词
+OK   S3 制造 2 道错题：[{"id":"a","word":"a","correct":false,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 我的错题计数：筛选后 → 可练习 2 / 4590 个单词
+OK   S3 出的题目来自错词：第 1 题是「a」，错词集合 ["a","a cold"]
+OK   S4 点到正确答案：题号 第 1 / 2 题，正确答案「一（用于单数可数名词前）」
+OK   S4 答对自动下一题（没点下一题按钮）：题号 第 1 / 2 题 → 第 2 / 2 题，反馈「」
+OK   S5 订正后错题清空：{"statuses":[200,200],"total":0}
+OK   S5 页面无 JS 报错：0 个异常
+
+==> 练习流程端到端：10 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\e2e-practice
+
+== 7. e2e-report-flow 的 A/B 对照与稳定性 ==
+e2e-report-flow --require-admin 的 A/B 对照：证明 S6「报告页可选中目标学习者」失败与本次重构无关
+两次都是全新数据库、同一份前端资源、同一个 Chrome；S6 检查在选择框选项异步加载完成前就取值，属于既有偶发竞态（S6 之后的检查都带 waitFor，全部通过）。
+
+===== A. 重构后（Store 实例注入，.tmp/server-e2e.exe） =====
+exit=0
+OK   S1 注册并登录：账号 e2e-report-mutvha67 → {"status":200,"id":"aa58e61a-8bf3-4c8c-b27d-4e2d6bc2dacc","role":"student"}
+OK   S2 制造一题答对一题答错：[{"id":"a","word":"a","correct":true,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 学习报告含学习日历（42 格）：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S3 正确率与复习完成率均已展示：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S4 学生访问家长报告被 403 拒绝：{"status":403}
+OK   S5 家长/教师（管理员）会话就绪：{"step":"done","status":200,"rotated":true}
+OK   S6 报告页可选中目标学习者：selected
+OK   S6 只读报告指标齐备：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 正确率 50%：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 只读报告含学习日历：格子 42 · 活跃 1
+OK   S6 薄弱词表列出答错的词：["a cold小学感冒0 / 12026-10-05"]
+OK   S6 报告接口口径一致：{"status":200,"accuracy":50,"correct":1,"wrong":1,"weakest":1,"days":42,"activeDays":1}
+OK   S7 页面无 JS 报错：0 个异常
+
+==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\e2e-report
+
+
+===== B. 重构前（包级变量版，.tmp/server-before.exe） =====
+exit=0
+OK   S1 注册并登录：账号 e2e-report-mutvhf0k → {"status":200,"id":"9c9c7be8-d921-4b88-b71d-479c0c5fbcda","role":"student"}
+OK   S2 制造一题答对一题答错：[{"id":"a","word":"a","correct":true,"status":200},{"id":"a cold","word":"a cold","correct":false,"status":200}]
+OK   S3 学习报告含学习日历（42 格）：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S3 正确率与复习完成率均已展示：{"cells":42,"active":1,"hasAccuracy":true,"hasReview":true,"accuracy50":true}
+OK   S4 学生访问家长报告被 403 拒绝：{"status":403}
+OK   S5 家长/教师（管理员）会话就绪：{"step":"done","status":200,"rotated":true}
+OK   S6 报告页可选中目标学习者：selected
+OK   S6 只读报告指标齐备：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 正确率 50%：["2学过的词","1已掌握","2累计练习","50%正确率（对 1 / 错 1）","--复习完成率今日已复习 0 · 仍到期 0 · 目标 10","1 天连续学习（活跃 1 天）","2今日学习词数","2今日练习题数"]
+OK   S6 只读报告含学习日历：格子 42 · 活跃 1
+OK   S6 薄弱词表列出答错的词：["a cold小学感冒0 / 12026-10-05"]
+OK   S6 报告接口口径一致：{"status":200,"accuracy":50,"correct":1,"wrong":1,"weakest":1,"days":42,"activeDays":1}
+OK   S7 页面无 JS 报错：0 个异常
+
+==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+    截图目录：C:\Users\huoga\.syntropy-run-396867a13d5c2c6512cce517ee17a922\workspaces\agents\syntropy-446b1dc3\project\tmp\e2e-report
+
+-- S6 抖动修复后同库连跑 3 次 --
+run 1: OK   S6 报告页可选中目标学习者：selected | ==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+run 2: OK   S6 报告页可选中目标学习者：selected | ==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+run 3: OK   S6 报告页可选中目标学习者：selected | ==> 学习日历 / 家长报告端到端：13 通过 / 0 失败
+

@@ -11,10 +11,14 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-type Service struct{ userID string }
+type Service struct {
+	store  *Store
+	userID string
+}
 
-func NewService(userIDs ...string) *Service {
-	s := &Service{}
+// NewService 绑定一个 Store 与可选的用户 ID，返回当前请求范围内的服务实例。
+func NewService(store *Store, userIDs ...string) *Service {
+	s := &Service{store: store}
 	if len(userIDs) > 0 {
 		s.userID = userIDs[0]
 	}
@@ -28,7 +32,7 @@ func (s *Service) Words(filter WordFilter) WordPage {
 	const size = 12
 	query := strings.ToLower(strings.TrimSpace(filter.Query))
 	matched := make([]Word, 0)
-	for _, item := range wordsByLevel(filter.Level) {
+	for _, item := range s.store.wordsByLevel(filter.Level) {
 		if item.Status == "draft" || item.Status == "archived" {
 			continue
 		}
@@ -72,10 +76,10 @@ func (s *Service) Words(filter WordFilter) WordPage {
 // sorting. A missing store or a read failure simply falls back to no progress,
 // which keeps the word list usable in tests and during startup.
 func (s *Service) learnedProgress() map[string]Progress {
-	if db == nil {
+	if s.store.db == nil {
 		return nil
 	}
-	items, err := readProgress(s.userID)
+	items, err := s.store.readProgress(s.userID)
 	if err != nil {
 		return nil
 	}
@@ -85,7 +89,7 @@ func (s *Service) learnedProgress() map[string]Progress {
 func (s *Service) WordFacets(level string) WordFacets {
 	topics, grades, units := map[string]bool{}, map[string]bool{}, map[string]bool{}
 	letters, parts := map[string]int{}, map[string]int{}
-	for _, item := range wordsForScope(level) {
+	for _, item := range s.store.wordsForScope(level) {
 		if !publicContentStatus(item.Status) {
 			continue
 		}
@@ -224,7 +228,7 @@ func sortedKeys(values map[string]bool) []string {
 }
 
 func (s *Service) Word(level, id string) (Word, bool) {
-	item, ok := findWord(level, id)
+	item, ok := s.store.findWord(level, id)
 	return item, ok && publicContentStatus(item.Status)
 }
 
@@ -239,17 +243,17 @@ func contains(values []string, target string) bool {
 
 func (s *Service) SaveProgress(level, id string, incoming Progress, now time.Time) (Progress, error) {
 	key := progressKey(level, id)
-	word, ok := wordIndex[key]
+	word, ok := s.store.wordIndex[key]
 	if !ok || !publicContentStatus(word.Status) {
 		return Progress{}, fmt.Errorf("word not found")
 	}
-	return UpdateProgress(key, incoming, now, s.userID)
+	return s.store.UpdateProgress(key, incoming, now, s.userID)
 }
 
-func UpdateProgress(id string, incoming Progress, now time.Time, userIDs ...string) (Progress, error) {
+func (s *Store) UpdateProgress(id string, incoming Progress, now time.Time, userIDs ...string) (Progress, error) {
 	storageID := scopedKey(firstString(userIDs), id)
 	var saved Progress
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := s.db.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(progressBucket))
 		if raw := bucket.Get([]byte(storageID)); raw != nil {
 			if err := json.Unmarshal(raw, &saved); err != nil {
@@ -356,10 +360,10 @@ func intervalDays(now, next time.Time) int {
 	return days
 }
 
-func (s *Service) Progress() (map[string]Progress, error) { return readProgress(s.userID) }
+func (s *Service) Progress() (map[string]Progress, error) { return s.store.readProgress(s.userID) }
 
 func (s *Service) Stats() (Stats, error) {
-	progress, err := readProgress(s.userID)
+	progress, err := s.store.readProgress(s.userID)
 	if err != nil {
 		return Stats{}, err
 	}
@@ -368,7 +372,7 @@ func (s *Service) Stats() (Stats, error) {
 	if correct+wrong > 0 {
 		accuracy = correct * 100 / (correct + wrong)
 	}
-	return Stats{Total: len(datasets["primary"]) + len(datasets["middle"]), Seen: seen, Mastered: mastered, Accuracy: accuracy, Mistakes: mistakes}, nil
+	return Stats{Total: len(s.store.datasets["primary"]) + len(s.store.datasets["middle"]), Seen: seen, Mastered: mastered, Accuracy: accuracy, Mistakes: mistakes}, nil
 }
 
 func summarize(items map[string]Progress) (seen, mastered, correct, wrong, mistakes int) {
@@ -387,7 +391,7 @@ func summarize(items map[string]Progress) (seen, mastered, correct, wrong, mista
 }
 
 func (s *Service) Mistakes() ([]LearningItem, error) {
-	progress, err := readProgress(s.userID)
+	progress, err := s.store.readProgress(s.userID)
 	if err != nil {
 		return nil, err
 	}
@@ -396,7 +400,7 @@ func (s *Service) Mistakes() ([]LearningItem, error) {
 		if p.Wrong == 0 || p.Resolved {
 			continue
 		}
-		if item, ok := wordIndex[id]; ok {
+		if item, ok := s.store.wordIndex[id]; ok {
 			items = append(items, LearningItem{Word: item, Progress: p})
 		}
 	}
@@ -411,11 +415,11 @@ func (s *Service) Mistakes() ([]LearningItem, error) {
 
 func (s *Service) ResolveMistake(level, id string, now time.Time) (Progress, error) {
 	key := progressKey(level, id)
-	if _, ok := wordIndex[key]; !ok {
+	if _, ok := s.store.wordIndex[key]; !ok {
 		return Progress{}, fmt.Errorf("word not found")
 	}
 	var saved Progress
-	err := db.Update(func(tx *bolt.Tx) error {
+	err := s.store.db.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(progressBucket))
 		storageKey := scopedKey(s.userID, key)
 		raw := bucket.Get([]byte(storageKey))
@@ -443,8 +447,44 @@ func (s *Service) ResolveMistake(level, id string, now time.Time) (Progress, err
 	return saved, err
 }
 
+// QueueReview puts one word into today's review queue by setting its next
+// review time to now, so 今日复习 shows it immediately. Mastery, the review
+// streak and the counters are deliberately left alone: the learner asked to
+// see the word again, not to have it re-graded.
+func (s *Service) QueueReview(level, id string, now time.Time) (Progress, error) {
+	key := progressKey(level, id)
+	if _, ok := s.store.wordIndex[key]; !ok {
+		return Progress{}, fmt.Errorf("word not found")
+	}
+	var saved Progress
+	err := s.store.db.Update(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket([]byte(progressBucket))
+		storageKey := scopedKey(s.userID, key)
+		if raw := bucket.Get([]byte(storageKey)); raw != nil {
+			if err := json.Unmarshal(raw, &saved); err != nil {
+				return err
+			}
+		}
+		saved.NextReview = now.Format(time.RFC3339)
+		saved.IntervalDays = 0
+		encoded, err := json.Marshal(saved)
+		if err != nil {
+			return err
+		}
+		if err := bucket.Put([]byte(storageKey), encoded); err != nil {
+			return err
+		}
+		return recordLearningEventTx(tx, LearningEvent{
+			UserID: s.userID, Type: "review_queued", ContentType: "word",
+			ContentID: normalizeID(id), Level: normalizeLevel(level), Source: "agent",
+			CreatedAt: now.Format(time.RFC3339Nano),
+		})
+	})
+	return saved, err
+}
+
 func (s *Service) TodayReview(level string, now time.Time) (ReviewQueue, error) {
-	progress, err := readProgress(s.userID)
+	progress, err := s.store.readProgress(s.userID)
 	if err != nil {
 		return ReviewQueue{}, err
 	}
@@ -462,12 +502,12 @@ func (s *Service) TodayReview(level string, now time.Time) (ReviewQueue, error) 
 		if err != nil || due.After(now) {
 			continue
 		}
-		if item, ok := wordIndex[id]; ok {
+		if item, ok := s.store.wordIndex[id]; ok {
 			items = append(items, LearningItem{Word: item, Progress: p})
 		}
 	}
 	sort.Slice(items, func(i, j int) bool { return items[i].Progress.NextReview < items[j].Progress.NextReview })
-	goal, err := readDailyReviewGoal(s.userID)
+	goal, err := s.store.readDailyReviewGoal(s.userID)
 	if err != nil {
 		return ReviewQueue{}, err
 	}
@@ -475,7 +515,7 @@ func (s *Service) TodayReview(level string, now time.Time) (ReviewQueue, error) 
 }
 
 func (s *Service) Settings() (LearningSettings, error) {
-	goal, err := readDailyReviewGoal(s.userID)
+	goal, err := s.store.readDailyReviewGoal(s.userID)
 	return LearningSettings{DailyReviewGoal: goal}, err
 }
 
@@ -483,35 +523,50 @@ func (s *Service) SaveSettings(settings LearningSettings) (LearningSettings, err
 	if settings.DailyReviewGoal < 1 || settings.DailyReviewGoal > 100 {
 		return LearningSettings{}, fmt.Errorf("daily review goal must be between 1 and 100")
 	}
-	if err := saveDailyReviewGoal(settings.DailyReviewGoal, s.userID); err != nil {
+	if err := s.store.saveDailyReviewGoal(settings.DailyReviewGoal, s.userID); err != nil {
 		return LearningSettings{}, err
 	}
 	return settings, nil
 }
 
 func (s *Service) Dashboard(now time.Time) (Dashboard, error) {
-	progress, err := readProgress(s.userID)
+	progress, err := s.store.readProgress(s.userID)
 	if err != nil {
 		return Dashboard{}, err
 	}
-	goal, err := readDailyReviewGoal(s.userID)
+	goal, err := s.store.readDailyReviewGoal(s.userID)
 	if err != nil {
 		return Dashboard{}, err
 	}
-	return buildDashboard(progress, now, goal), nil
+	report := s.store.buildDashboard(progress, now, goal)
+	calendar, err := s.store.buildLearningCalendar(progress, s.userID, now, defaultCalendarDays)
+	if err != nil {
+		return Dashboard{}, err
+	}
+	report.Calendar = calendar
+	// 连续天数用「全部历史活跃日」计算，日历窗口只负责展示。
+	if days, err := s.store.activityDays(progress, s.userID); err == nil {
+		report.StreakDays = streakFromDays(days, now)
+	}
+	return report, nil
 }
 
-func buildDashboard(progress map[string]Progress, now time.Time, goal int) Dashboard {
+func (s *Store) buildDashboard(progress map[string]Progress, now time.Time, goal int) Dashboard {
 	report := Dashboard{TodayGoal: goal, Recent: []LearningItem{}, Weakest: []LearningItem{}}
 	today := now.Format("2006-01-02")
 	all := make([]LearningItem, 0, len(progress))
 	for id, p := range progress {
-		item, ok := wordIndex[id]
+		item, ok := s.wordIndex[id]
 		if !ok {
 			continue
 		}
 		learning := LearningItem{Word: item, Progress: p}
 		all = append(all, learning)
+		report.Correct += p.Correct
+		report.Wrong += p.Wrong
+		if strings.HasPrefix(p.LastReviewed, today) {
+			report.ReviewCompleted++
+		}
 		if strings.HasPrefix(p.LastSeen, today) {
 			report.TodayLearned++
 			report.TodayPractices += p.Correct + p.Wrong
@@ -542,14 +597,21 @@ func buildDashboard(progress map[string]Progress, now time.Time, goal int) Dashb
 	}
 	report.Weakest = takeItems(filtered, 6)
 	report.StreakDays = learningStreak(progress, now)
+	report.Accuracy = completionPercent(report.Correct, report.Correct+report.Wrong)
+	if denom := report.ReviewCompleted + report.ReviewDue; denom > 0 {
+		report.ReviewCompletionRate = completionPercent(report.ReviewCompleted, denom)
+	}
 	return report
 }
 
 func learningStreak(progress map[string]Progress, now time.Time) int {
 	days := map[string]bool{}
 	for _, item := range progress {
-		if len(item.LastSeen) >= 10 {
-			days[item.LastSeen[:10]] = true
+		// 只学习、或只做复习的日子都算「来过」，因此两个时间戳都要看。
+		for _, stamp := range []string{item.LastSeen, item.LastReviewed} {
+			if day := dayStamp(stamp); day != "" {
+				days[day] = true
+			}
 		}
 	}
 	streak := 0

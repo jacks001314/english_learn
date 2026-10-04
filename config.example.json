@@ -1,0 +1,7 @@
+{
+  "addr": ":8081",
+  "dbPath": "english_learn.db",
+  "backupsDir": "backups",
+  "logLevel": "info",
+  "logFormat": "json"
+}

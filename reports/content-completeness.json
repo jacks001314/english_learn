@@ -2,9 +2,9 @@
   "files": [
     {
       "file": "backend/primary_school.json",
-      "words": 1331,
+      "words": 1344,
       "missingPhonetic": 0,
-      "missingAudio": 1331,
+      "missingAudio": 1344,
       "missingAudioSource": 0,
       "missingExamples": 0,
       "multipleSenses": 80,
@@ -13,9 +13,9 @@
     },
     {
       "file": "backend/middle_school.json",
-      "words": 2895,
+      "words": 2858,
       "missingPhonetic": 0,
-      "missingAudio": 2895,
+      "missingAudio": 2858,
       "missingAudioSource": 0,
       "missingExamples": 0,
       "multipleSenses": 30,

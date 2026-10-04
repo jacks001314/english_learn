@@ -1,0 +1,7 @@
+# 变式题干扰项互斥：线上与单元测试
+线上（2026-10-04 20:1x，见 round2-ui.txt 第 4 节）：3 题 × 4 选项互不重复，含正确答案。
+单元测试（internal/learning/agent_context_test.go）：
+  TestDrillOptionOverlapRules
+  TestBuildDrillQuestionDropsOverlappingOptions
+  TestBuildDrillQuestionAlwaysFillsFourOptions
+修复前缺陷：线上曾出现「感冒」与「感冒;伤风」同时作为选项（docs/online-verify/README.md 第一轮第 4 节记录）。

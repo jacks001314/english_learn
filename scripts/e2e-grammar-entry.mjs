@@ -22,7 +22,9 @@ const argOf = (n, d) => { const i = args.indexOf("--" + n); return i >= 0 && arg
 const BASE = argOf("base", "http://127.0.0.1:8099").replace(/\/$/, "");
 const USER = argOf("user", "p4check");
 const PASS = argOf("password", "P4check!2026");
-const SHOTS = path.join(ROOT, argOf("shots", "tmp/e2e-shots"));
+const SHOTS_ARG = argOf("shots", "tmp/e2e-shots");
+// --shots 既接受相对路径（相对仓库根）也接受绝对路径，避免 CI 传绝对路径时被重复拼接。
+const SHOTS = path.isAbsolute(SHOTS_ARG) ? SHOTS_ARG : path.join(ROOT, SHOTS_ARG);
 const SCAN_MAX = Number(argOf("scan", "96"));
 const OUT = path.join(ROOT, argOf("out", "reports/e2e-grammar-entry-20260928.json"));
 const PROFILE = path.join(ROOT, "tmp", "e2e-profile");

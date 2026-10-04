@@ -1,0 +1,4 @@
+# R5 部署记录
+
+每次部署会自动备份线上 english_learn.db 到 backups/english_learn-20261004-203942.db。
+20261004-203942

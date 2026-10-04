@@ -148,7 +148,7 @@ var factoryRunner = struct {
 	started bool
 }{}
 
-func saveFactoryUpload(root string, header *multipart.FileHeader) (FactoryFile, error) {
+func (s *Store) saveFactoryUpload(root string, header *multipart.FileHeader) (FactoryFile, error) {
 	if header.Size <= 0 || header.Size > 30<<20 {
 		return FactoryFile{}, errors.New("文件大小必须在 30MB 以内")
 	}
@@ -182,19 +182,19 @@ func saveFactoryUpload(root string, header *multipart.FileHeader) (FactoryFile, 
 		return FactoryFile{}, errors.New("文件超过 30MB")
 	}
 	sha := strings.ToUpper(hex.EncodeToString(h.Sum(nil)))
-	if duplicate, _ := factoryAssetBySHA(sha); duplicate.ID != "" {
+	if duplicate, _ := s.factoryAssetBySHA(sha); duplicate.ID != "" {
 		_ = os.Remove(path)
 		return duplicate, nil
 	}
 	asset := FactoryFile{ID: id, Name: filepath.Base(header.Filename), MIMEType: header.Header.Get("Content-Type"), Size: n, SHA256: sha, StoragePath: path, Kind: "upload"}
-	_ = db.Update(func(tx *bolt.Tx) error {
+	_ = s.db.Update(func(tx *bolt.Tx) error {
 		return putJSON(tx.Bucket([]byte(contentFactoryAssetsBucket)), asset.ID, asset)
 	})
 	return asset, nil
 }
-func factoryAssetBySHA(sha string) (FactoryFile, error) {
+func (s *Store) factoryAssetBySHA(sha string) (FactoryFile, error) {
 	var found FactoryFile
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(contentFactoryAssetsBucket)).ForEach(func(_, v []byte) error {
 			var x FactoryFile
 			if err := json.Unmarshal(v, &x); err != nil {
@@ -209,14 +209,14 @@ func factoryAssetBySHA(sha string) (FactoryFile, error) {
 	return found, err
 }
 
-func createFactoryTask(in FactoryTaskInput, files []FactoryFile, user User) (FactoryTask, error) {
+func (s *Store) createFactoryTask(in FactoryTaskInput, files []FactoryFile, user User) (FactoryTask, error) {
 	if in.Type != "article" && in.Type != "exam" {
 		return FactoryTask{}, errors.New("任务类型必须是 article 或 exam")
 	}
 	if len(files) == 0 && len(in.SourceURLs) == 0 {
 		return FactoryTask{}, errors.New("请上传文件或提供来源 URL")
 	}
-	cfg, _ := loadAgentConfig(false)
+	cfg, _ := s.loadAgentConfig(false)
 	engine := in.Engine
 	if engine == "" {
 		engine = cfg.Engine
@@ -227,15 +227,15 @@ func createFactoryTask(in FactoryTaskInput, files []FactoryFile, user User) (Fac
 	}
 	now := time.Now().Format(time.RFC3339)
 	task := FactoryTask{ID: uuid.NewString(), Type: in.Type, Title: in.Title, Status: "queued", Engine: engine, Model: model, SourceURLs: in.SourceURLs, Files: files, Progress: 0, CurrentStep: "等待处理", Warnings: []ValidationIssue{}, CreatedBy: user.Username, CreatedAt: now, UpdatedAt: now}
-	err := db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryTasksBucket)), task.ID, task) })
+	err := s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryTasksBucket)), task.ID, task) })
 	if err == nil {
-		appendFactoryEvent(task.ID, "info", "queued", "任务已进入处理队列", 0)
+		s.appendFactoryEvent(task.ID, "info", "queued", "任务已进入处理队列", 0)
 		enqueueFactoryTask(task.ID)
 	}
 	return task, err
 }
 
-func startFactoryRunner(root string) {
+func (s *Store) startFactoryRunner(root string) {
 	factoryRunner.Lock()
 	defer factoryRunner.Unlock()
 	if factoryRunner.started {
@@ -244,13 +244,13 @@ func startFactoryRunner(root string) {
 	factoryRunner.root, factoryRunner.queue, factoryRunner.started = root, make(chan string, 64), true
 	go func() {
 		for id := range factoryRunner.queue {
-			if err := processFactoryTask(factoryRunner.root, id); err != nil {
-				markFactoryTaskFailed(id, err)
+			if err := s.processFactoryTask(factoryRunner.root, id); err != nil {
+				s.markFactoryTaskFailed(id, err)
 			}
 		}
 	}()
-	go factoryScheduleLoop(root)
-	if tasks, err := listFactoryTasks(); err == nil {
+	go s.factoryScheduleLoop(root)
+	if tasks, err := s.listFactoryTasks(); err == nil {
 		for _, t := range tasks {
 			if t.Status == "queued" || t.Status == "processing" {
 				factoryRunner.queue <- t.ID
@@ -270,13 +270,13 @@ func enqueueFactoryTask(id string) {
 		}
 	}
 }
-func appendFactoryEvent(taskID, level, step, message string, progress int) {
+func (s *Store) appendFactoryEvent(taskID, level, step, message string, progress int) {
 	e := FactoryEvent{ID: uuid.NewString(), TaskID: taskID, Level: level, Step: step, Message: message, Progress: progress, CreatedAt: time.Now().Format(time.RFC3339)}
-	_ = db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryEventsBucket)), e.ID, e) })
+	_ = s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryEventsBucket)), e.ID, e) })
 }
-func listFactoryEvents(taskID string) ([]FactoryEvent, error) {
+func (s *Store) listFactoryEvents(taskID string) ([]FactoryEvent, error) {
 	out := []FactoryEvent{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(contentFactoryEventsBucket)).ForEach(func(_, v []byte) error {
 			var e FactoryEvent
 			if err := json.Unmarshal(v, &e); err != nil {
@@ -291,24 +291,24 @@ func listFactoryEvents(taskID string) ([]FactoryEvent, error) {
 	sort.Slice(out, func(i, j int) bool { return out[i].CreatedAt < out[j].CreatedAt })
 	return out, err
 }
-func updateFactoryTask(task FactoryTask) error {
+func (s *Store) updateFactoryTask(task FactoryTask) error {
 	task.UpdatedAt = time.Now().Format(time.RFC3339)
-	return db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryTasksBucket)), task.ID, task) })
+	return s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryTasksBucket)), task.ID, task) })
 }
-func markFactoryTaskFailed(id string, runErr error) {
-	task, ok, _ := getFactoryTask(id)
+func (s *Store) markFactoryTaskFailed(id string, runErr error) {
+	task, ok, _ := s.getFactoryTask(id)
 	if !ok {
 		return
 	}
 	task.Status = "failed"
 	task.Error = runErr.Error()
 	task.CurrentStep = "处理失败"
-	_ = updateFactoryTask(task)
-	appendFactoryEvent(id, "error", "failed", runErr.Error(), task.Progress)
+	_ = s.updateFactoryTask(task)
+	s.appendFactoryEvent(id, "error", "failed", runErr.Error(), task.Progress)
 }
-func listFactoryTasks() ([]FactoryTask, error) {
+func (s *Store) listFactoryTasks() ([]FactoryTask, error) {
 	items := []FactoryTask{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(contentFactoryTasksBucket)).ForEach(func(_, v []byte) error {
 			var x FactoryTask
 			if err := json.Unmarshal(v, &x); err != nil {
@@ -321,10 +321,10 @@ func listFactoryTasks() ([]FactoryTask, error) {
 	sort.Slice(items, func(i, j int) bool { return items[i].CreatedAt > items[j].CreatedAt })
 	return items, err
 }
-func getFactoryTask(id string) (FactoryTask, bool, error) {
+func (s *Store) getFactoryTask(id string) (FactoryTask, bool, error) {
 	var x FactoryTask
 	ok := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(contentFactoryTasksBucket)).Get([]byte(id))
 		if v == nil {
 			return nil
@@ -334,10 +334,10 @@ func getFactoryTask(id string) (FactoryTask, bool, error) {
 	})
 	return x, ok, err
 }
-func getFactoryDraft(id string) (FactoryDraft, bool, error) {
+func (s *Store) getFactoryDraft(id string) (FactoryDraft, bool, error) {
 	var x FactoryDraft
 	ok := false
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(contentFactoryDraftsBucket)).Get([]byte(id))
 		if v == nil {
 			return nil
@@ -348,8 +348,8 @@ func getFactoryDraft(id string) (FactoryDraft, bool, error) {
 	return x, ok, err
 }
 
-func processFactoryTask(root, id string) error {
-	task, ok, err := getFactoryTask(id)
+func (s *Store) processFactoryTask(root, id string) error {
+	task, ok, err := s.getFactoryTask(id)
 	if err != nil || !ok {
 		return errors.New("任务不存在")
 	}
@@ -357,13 +357,13 @@ func processFactoryTask(root, id string) error {
 		return nil
 	}
 	task.Status, task.Progress, task.CurrentStep, task.Attempts = "processing", 5, "准备素材", task.Attempts+1
-	_ = updateFactoryTask(task)
-	appendFactoryEvent(task.ID, "info", "prepare", "开始处理素材", 5)
+	_ = s.updateFactoryTask(task)
+	s.appendFactoryEvent(task.ID, "info", "prepare", "开始处理素材", 5)
 	for _, sourceURL := range task.SourceURLs {
-		asset, e := downloadFactoryURL(root, sourceURL)
+		asset, e := s.downloadFactoryURL(root, sourceURL)
 		if e != nil {
 			task.Warnings = append(task.Warnings, ValidationIssue{Level: "warning", Code: "download_failed", Message: sourceURL + ": " + e.Error()})
-			appendFactoryEvent(task.ID, "warning", "download", e.Error(), 10)
+			s.appendFactoryEvent(task.ID, "warning", "download", e.Error(), 10)
 			continue
 		}
 		task.Files = append(task.Files, asset)
@@ -371,12 +371,12 @@ func processFactoryTask(root, id string) error {
 	if len(task.Files) == 0 {
 		task.Status = "failed"
 		task.Error = "没有可处理的素材"
-		_ = updateFactoryTask(task)
+		_ = s.updateFactoryTask(task)
 		return errors.New(task.Error)
 	}
 	task.Progress, task.CurrentStep = 20, "提取文档与媒体内容"
-	_ = updateFactoryTask(task)
-	appendFactoryEvent(task.ID, "info", "extract", "正在提取文本和页面", 20)
+	_ = s.updateFactoryTask(task)
+	s.appendFactoryEvent(task.ID, "info", "extract", "正在提取文本和页面", 20)
 	var texts []string
 	for i := range task.Files {
 		text, warnings := extractFactoryAsset(root, &task.Files[i])
@@ -391,8 +391,8 @@ func processFactoryTask(root, id string) error {
 		}
 	}
 	if needsVision {
-		appendFactoryEvent(task.ID, "info", "vision", "正在进行多模态页面识别", 45)
-		if visual, e := visionExtractFactoryAssets(root, task); e == nil && strings.TrimSpace(visual) != "" {
+		s.appendFactoryEvent(task.ID, "info", "vision", "正在进行多模态页面识别", 45)
+		if visual, e := s.visionExtractFactoryAssets(root, task); e == nil && strings.TrimSpace(visual) != "" {
 			if extracted != "" {
 				extracted += "\n\n"
 			}
@@ -403,9 +403,9 @@ func processFactoryTask(root, id string) error {
 		}
 	}
 	task.Progress, task.CurrentStep = 60, "智能体结构化"
-	_ = updateFactoryTask(task)
-	appendFactoryEvent(task.ID, "info", "structure", "智能体正在生成严格 JSON 草稿", 60)
-	raw, notes, confidence, agentErr := structureFactoryContent(root, task, extracted)
+	_ = s.updateFactoryTask(task)
+	s.appendFactoryEvent(task.ID, "info", "structure", "智能体正在生成严格 JSON 草稿", 60)
+	raw, notes, confidence, agentErr := s.structureFactoryContent(root, task, extracted)
 	if agentErr != nil {
 		task.Warnings = append(task.Warnings, ValidationIssue{Level: "warning", Code: "agent_failed", Message: agentErr.Error()})
 		raw = fallbackFactoryDraft(task, extracted)
@@ -424,13 +424,13 @@ func processFactoryTask(root, id string) error {
 	task.CurrentStep = "等待管理员审核"
 	task.CompletedAt = time.Now().Format(time.RFC3339)
 	task.UpdatedAt = time.Now().Format(time.RFC3339)
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = s.db.Update(func(tx *bolt.Tx) error {
 		if err := putJSON(tx.Bucket([]byte(contentFactoryDraftsBucket)), draft.ID, draft); err != nil {
 			return err
 		}
 		return putJSON(tx.Bucket([]byte(contentFactoryTasksBucket)), task.ID, task)
 	})
-	appendFactoryEvent(task.ID, "info", "review", "草稿已生成，等待审核", 100)
+	s.appendFactoryEvent(task.ID, "info", "review", "草稿已生成，等待审核", 100)
 	return err
 }
 func validateFactoryDraft(d FactoryDraft) []ValidationIssue {
@@ -488,7 +488,7 @@ func validateFactoryDraft(d FactoryDraft) []ValidationIssue {
 	return issues
 }
 
-func downloadFactoryURL(root, rawURL string) (FactoryFile, error) {
+func (s *Store) downloadFactoryURL(root, rawURL string) (FactoryFile, error) {
 	u, err := url.Parse(strings.TrimSpace(rawURL))
 	if err != nil || !(u.Scheme == "http" || u.Scheme == "https") {
 		return FactoryFile{}, errors.New("仅支持 HTTP/HTTPS 地址")
@@ -551,7 +551,7 @@ func downloadFactoryURL(root, rawURL string) (FactoryFile, error) {
 		return FactoryFile{}, errors.New("下载文件超过 30MB")
 	}
 	asset := FactoryFile{ID: id, Name: name, MIMEType: ct, Size: n, SHA256: strings.ToUpper(hex.EncodeToString(h.Sum(nil))), StoragePath: path, SourceURL: u.String(), Kind: "download"}
-	_ = db.Update(func(tx *bolt.Tx) error {
+	_ = s.db.Update(func(tx *bolt.Tx) error {
 		return putJSON(tx.Bucket([]byte(contentFactoryAssetsBucket)), asset.ID, asset)
 	})
 	return asset, nil
@@ -701,8 +701,8 @@ func extractImageAsset(f *FactoryFile) (string, []ValidationIssue) {
 	return "", []ValidationIssue{{Level: "warning", Code: "vision_required", Message: "本机未安装 Tesseract，将由支持视觉的智能体识别图片"}}
 }
 
-func visionExtractFactoryAssets(root string, task FactoryTask) (string, error) {
-	cfg, err := loadAgentConfig(true)
+func (s *Store) visionExtractFactoryAssets(root string, task FactoryTask) (string, error) {
+	cfg, err := s.loadAgentConfig(true)
 	if err != nil || !cfg.Enabled {
 		return "", errors.New("视觉识别需要启用 Codex Core 智能体")
 	}
@@ -786,7 +786,7 @@ func extractMediaAsset(f *FactoryFile) (string, []ValidationIssue) {
 	return fmt.Sprintf("[媒体素材：%s，时长 %.1f 秒。需要配置语音转写服务生成全文。]", f.Name, seconds), []ValidationIssue{{Level: "warning", Code: "transcription_required", Message: "媒体已读取；安装 whisper 或 whisper-cli 后可自动转写"}}
 }
 
-func factoryCapabilities() FactoryCapabilities {
+func (s *Store) factoryCapabilities() FactoryCapabilities {
 	_, pdfTextErr := exec.LookPath("pdftotext")
 	_, pdfRenderErr := exec.LookPath("pdftoppm")
 	_, ocrErr := exec.LookPath("tesseract")
@@ -796,31 +796,33 @@ func factoryCapabilities() FactoryCapabilities {
 		_, whisperErr = exec.LookPath("whisper-cli")
 	}
 	_, claudeErr := exec.LookPath("claude")
-	cfg, _ := loadAgentConfig(false)
+	cfg, _ := s.loadAgentConfig(false)
 	return FactoryCapabilities{PDFText: pdfTextErr == nil, PDFRender: pdfRenderErr == nil, OCR: ocrErr == nil, MediaProbe: probeErr == nil, Transcription: whisperErr == nil, CodexVision: cfg.Enabled && cfg.APIKeyConfigured, ClaudeCLI: claudeErr == nil}
 }
 
-func saveFactorySchedule(s FactorySchedule, user User) (FactorySchedule, error) {
-	if s.ID == "" {
-		s.ID = uuid.NewString()
+func (s *Store) saveFactorySchedule(schedule FactorySchedule, user User) (FactorySchedule, error) {
+	if schedule.ID == "" {
+		schedule.ID = uuid.NewString()
 	}
-	if s.IntervalHours < 1 {
-		s.IntervalHours = 24
+	if schedule.IntervalHours < 1 {
+		schedule.IntervalHours = 24
 	}
-	if s.Type != "article" && s.Type != "exam" {
-		return s, errors.New("计划类型无效")
+	if schedule.Type != "article" && schedule.Type != "exam" {
+		return schedule, errors.New("计划类型无效")
 	}
-	if len(s.SourceURLs) == 0 {
-		return s, errors.New("至少需要一个来源网址")
+	if len(schedule.SourceURLs) == 0 {
+		return schedule, errors.New("至少需要一个来源网址")
 	}
-	s.CreatedBy = user.Username
-	s.NextRunAt = time.Now().Add(time.Duration(s.IntervalHours) * time.Hour).Format(time.RFC3339)
-	err := db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactorySchedulesBucket)), s.ID, s) })
-	return s, err
+	schedule.CreatedBy = user.Username
+	schedule.NextRunAt = time.Now().Add(time.Duration(schedule.IntervalHours) * time.Hour).Format(time.RFC3339)
+	err := s.db.Update(func(tx *bolt.Tx) error {
+		return putJSON(tx.Bucket([]byte(contentFactorySchedulesBucket)), schedule.ID, schedule)
+	})
+	return schedule, err
 }
-func listFactorySchedules() ([]FactorySchedule, error) {
+func (st *Store) listFactorySchedules() ([]FactorySchedule, error) {
 	out := []FactorySchedule{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := st.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(contentFactorySchedulesBucket)).ForEach(func(_, v []byte) error {
 			var s FactorySchedule
 			if err := json.Unmarshal(v, &s); err != nil {
@@ -832,33 +834,33 @@ func listFactorySchedules() ([]FactorySchedule, error) {
 	})
 	return out, err
 }
-func factoryScheduleLoop(root string) {
+func (st *Store) factoryScheduleLoop(root string) {
 	ticker := time.NewTicker(time.Minute)
 	defer ticker.Stop()
 	for range ticker.C {
-		items, _ := listFactorySchedules()
+		items, _ := st.listFactorySchedules()
 		now := time.Now()
 		for _, s := range items {
 			next, _ := time.Parse(time.RFC3339, s.NextRunAt)
 			if !s.Enabled || now.Before(next) {
 				continue
 			}
-			task, err := createFactoryTask(FactoryTaskInput{Type: s.Type, Title: s.Name + " " + now.Format("2006-01-02"), SourceURLs: s.SourceURLs, Engine: s.Engine}, nil, User{Username: s.CreatedBy})
+			task, err := st.createFactoryTask(FactoryTaskInput{Type: s.Type, Title: s.Name + " " + now.Format("2006-01-02"), SourceURLs: s.SourceURLs, Engine: s.Engine}, nil, User{Username: s.CreatedBy})
 			if err == nil {
 				_ = task
 				s.LastRunAt = now.Format(time.RFC3339)
 				s.NextRunAt = now.Add(time.Duration(s.IntervalHours) * time.Hour).Format(time.RFC3339)
-				_ = db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactorySchedulesBucket)), s.ID, s) })
+				_ = st.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactorySchedulesBucket)), s.ID, s) })
 			}
 		}
 	}
 }
 
-func structureFactoryContent(root string, task FactoryTask, extracted string) (json.RawMessage, string, float64, error) {
+func (s *Store) structureFactoryContent(root string, task FactoryTask, extracted string) (json.RawMessage, string, float64, error) {
 	if strings.TrimSpace(extracted) == "" {
 		return fallbackFactoryDraft(task, extracted), "没有可供结构化的文本", .2, nil
 	}
-	cfg, err := loadAgentConfig(true)
+	cfg, err := s.loadAgentConfig(true)
 	if err != nil {
 		return nil, "", 0, err
 	}
@@ -882,7 +884,7 @@ func structureFactoryContent(root string, task FactoryTask, extracted string) (j
 	if engine == "claude-code" {
 		result, err = runClaudeAgent(ctx, root, cfg, prompt, "")
 	} else {
-		result, err = runCodexAgent(ctx, root, cfg, prompt, "")
+		result, err = runCodexAgent(ctx, root, cfg, prompt, "", nil)
 	}
 	if err != nil {
 		return nil, "", 0, err
@@ -926,8 +928,8 @@ func fallbackFactoryDraft(task FactoryTask, extracted string) json.RawMessage {
 	raw, _ := json.Marshal(x)
 	return raw
 }
-func updateFactoryDraft(d FactoryDraft, user User) (FactoryDraft, error) {
-	old, ok, err := getFactoryDraft(d.ID)
+func (s *Store) updateFactoryDraft(d FactoryDraft, user User) (FactoryDraft, error) {
+	old, ok, err := s.getFactoryDraft(d.ID)
 	if err != nil || !ok {
 		return d, errors.New("草稿不存在")
 	}
@@ -936,7 +938,7 @@ func updateFactoryDraft(d FactoryDraft, user User) (FactoryDraft, error) {
 	d.Version = old.Version + 1
 	d.UpdatedAt = time.Now().Format(time.RFC3339)
 	d.Validation = validateFactoryDraft(d)
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = s.db.Update(func(tx *bolt.Tx) error {
 		if err := putJSON(tx.Bucket([]byte(contentFactoryVersionsBucket)), fmt.Sprintf("%s|%06d", old.ID, old.Version), old); err != nil {
 			return err
 		}
@@ -944,8 +946,8 @@ func updateFactoryDraft(d FactoryDraft, user User) (FactoryDraft, error) {
 	})
 	return d, err
 }
-func publishFactoryDraft(id string, user User) error {
-	d, ok, err := getFactoryDraft(id)
+func (s *Store) publishFactoryDraft(id string, user User) error {
+	d, ok, err := s.getFactoryDraft(id)
 	if err != nil || !ok {
 		return errors.New("草稿不存在")
 	}
@@ -962,10 +964,10 @@ func publishFactoryDraft(id string, user User) error {
 		}
 		x.Status = "published"
 		batch.ContentID = x.ID
-		if old, ok, _ := readArticle(x.ID); ok {
+		if old, ok, _ := s.readArticle(x.ID); ok {
 			batch.Snapshot, _ = json.Marshal(old)
 		}
-		if _, err := saveArticleVersioned(x, user.Username, "publish"); err != nil {
+		if _, err := s.saveArticleVersioned(x, user.Username, "publish"); err != nil {
 			return err
 		}
 	} else {
@@ -975,24 +977,24 @@ func publishFactoryDraft(id string, user User) error {
 		}
 		x.Status = "published"
 		batch.ContentID = x.ID
-		if old, ok, _ := examPaper(x.ID); ok {
+		if old, ok, _ := s.examPaper(x.ID); ok {
 			batch.Snapshot, _ = json.Marshal(old)
 		}
-		if _, err := saveExamPaper(x, user.Username); err != nil {
+		if _, err := s.saveExamPaper(x, user.Username); err != nil {
 			return err
 		}
 	}
 	d.ReviewStatus = "published"
 	d.ReviewedBy = user.Username
 	d.UpdatedAt = time.Now().Format(time.RFC3339)
-	task, taskOK, _ := getFactoryTask(d.TaskID)
+	task, taskOK, _ := s.getFactoryTask(d.TaskID)
 	if taskOK {
 		task.Status = "published"
 		task.Progress = 100
 		task.CurrentStep = "已审核发布"
 		task.UpdatedAt = d.UpdatedAt
 	}
-	return db.Update(func(tx *bolt.Tx) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
 		if err := putJSON(tx.Bucket([]byte(contentFactoryBatchesBucket)), batch.ID, batch); err != nil {
 			return err
 		}
@@ -1006,9 +1008,9 @@ func publishFactoryDraft(id string, user User) error {
 	})
 }
 
-func listFactoryBatches() ([]FactoryBatch, error) {
+func (s *Store) listFactoryBatches() ([]FactoryBatch, error) {
 	out := []FactoryBatch{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		return tx.Bucket([]byte(contentFactoryBatchesBucket)).ForEach(func(_, v []byte) error {
 			var x FactoryBatch
 			if err := json.Unmarshal(v, &x); err != nil {
@@ -1021,9 +1023,9 @@ func listFactoryBatches() ([]FactoryBatch, error) {
 	sort.Slice(out, func(i, j int) bool { return out[i].PublishedAt > out[j].PublishedAt })
 	return out, err
 }
-func rollbackFactoryBatch(id string, user User) error {
+func (s *Store) rollbackFactoryBatch(id string, user User) error {
 	var b FactoryBatch
-	err := db.View(func(tx *bolt.Tx) error {
+	err := s.db.View(func(tx *bolt.Tx) error {
 		v := tx.Bucket([]byte(contentFactoryBatchesBucket)).Get([]byte(id))
 		if v == nil {
 			return errors.New("导入批次不存在")
@@ -1044,7 +1046,7 @@ func rollbackFactoryBatch(id string, user User) error {
 		if err := json.Unmarshal(b.Snapshot, &x); err != nil {
 			return err
 		}
-		if err := upsertArticles([]Article{x}); err != nil {
+		if err := s.upsertArticles([]Article{x}); err != nil {
 			return err
 		}
 	} else {
@@ -1052,17 +1054,17 @@ func rollbackFactoryBatch(id string, user User) error {
 		if err := json.Unmarshal(b.Snapshot, &x); err != nil {
 			return err
 		}
-		if _, err := saveExamPaper(x, user.Username); err != nil {
+		if _, err := s.saveExamPaper(x, user.Username); err != nil {
 			return err
 		}
 	}
 	b.RolledBackAt = time.Now().Format(time.RFC3339)
 	b.RolledBackBy = user.Username
-	return db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryBatchesBucket)), b.ID, b) })
+	return s.db.Update(func(tx *bolt.Tx) error { return putJSON(tx.Bucket([]byte(contentFactoryBatchesBucket)), b.ID, b) })
 }
-func factoryStats() (map[string]int, error) {
+func (s *Store) factoryStats() (map[string]int, error) {
 	stats := map[string]int{"tasks": 0, "queued": 0, "processing": 0, "review": 0, "failed": 0, "published": 0}
-	tasks, err := listFactoryTasks()
+	tasks, err := s.listFactoryTasks()
 	if err != nil {
 		return stats, err
 	}
@@ -1070,12 +1072,12 @@ func factoryStats() (map[string]int, error) {
 	for _, t := range tasks {
 		stats[t.Status]++
 	}
-	batches, _ := listFactoryBatches()
+	batches, _ := s.listFactoryBatches()
 	stats["published"] = len(batches)
 	return stats, nil
 }
-func retryFactoryTask(id string) error {
-	t, ok, err := getFactoryTask(id)
+func (s *Store) retryFactoryTask(id string) error {
+	t, ok, err := s.getFactoryTask(id)
 	if err != nil || !ok {
 		return errors.New("任务不存在")
 	}
@@ -1086,10 +1088,10 @@ func retryFactoryTask(id string) error {
 	t.Progress = 0
 	t.Error = ""
 	t.CurrentStep = "等待重试"
-	if err := updateFactoryTask(t); err != nil {
+	if err := s.updateFactoryTask(t); err != nil {
 		return err
 	}
-	appendFactoryEvent(id, "info", "retry", "管理员重新提交任务", 0)
+	s.appendFactoryEvent(id, "info", "retry", "管理员重新提交任务", 0)
 	enqueueFactoryTask(id)
 	return nil
 }

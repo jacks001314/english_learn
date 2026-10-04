@@ -23,8 +23,9 @@ func openTestDB(t *testing.T) *bolt.DB {
 }
 
 func TestExamPublishingScoringAndUserIsolation(t *testing.T) {
-	old := db
-	t.Cleanup(func() { db = old })
+	store := &Store{}
+	old := store.db
+	t.Cleanup(func() { store.db = old })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "exam.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -33,38 +34,39 @@ func TestExamPublishingScoringAndUserIsolation(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	db = database
+	store.db = database
 	draft := ExamPaper{ID: "draft", Title: "Draft", Status: "draft"}
-	if _, err := saveExamPaper(draft, "admin"); err != nil {
+	if _, err := store.saveExamPaper(draft, "admin"); err != nil {
 		t.Fatal(err)
 	}
 	paper := ExamPaper{ID: "paper", Title: "Test Paper", Status: "published", DurationMinutes: 30, TotalScore: 10, Sections: []ExamSection{{Title: "Questions", Questions: []ExamQuestion{{ID: "q1", Type: "choice", Prompt: "Choose B", Options: []string{"A", "B"}, Answer: "B", Score: 4}, {ID: "q2", Type: "fill", Prompt: "Complete", Answer: "better", Score: 3}, {ID: "q3", Type: "writing", Prompt: "Write", Answer: "rubric", Score: 3}}}}}
-	if _, err := saveExamPaper(paper, "admin"); err != nil {
+	if _, err := store.saveExamPaper(paper, "admin"); err != nil {
 		t.Fatal(err)
 	}
-	public, _ := examPapers(false)
-	all, _ := examPapers(true)
+	public, _ := store.examPapers(false)
+	all, _ := store.examPapers(true)
 	if len(public) != 1 || len(all) != 2 {
 		t.Fatalf("visibility public=%d all=%d", len(public), len(all))
 	}
 	user := User{ID: "student"}
-	attempt, err := submitExam(user, ExamSubmission{PaperID: "paper", StartedAt: time.Now().Add(-time.Minute).Format(time.RFC3339), Answers: map[string]any{"q1": "B", "q2": "wrong", "q3": "essay text"}})
+	attempt, err := store.submitExam(user, ExamSubmission{PaperID: "paper", StartedAt: time.Now().Add(-time.Minute).Format(time.RFC3339), Answers: map[string]any{"q1": "B", "q2": "wrong", "q3": "essay text"}})
 	if err != nil {
 		t.Fatal(err)
 	}
 	if attempt.Score != 4 || attempt.TotalScore != 10 || attempt.Accuracy != 50 {
 		t.Fatalf("unexpected score: %+v", attempt)
 	}
-	mine, _ := userExamAttempts("student")
-	other, _ := userExamAttempts("other")
+	mine, _ := store.userExamAttempts("student")
+	other, _ := store.userExamAttempts("other")
 	if len(mine) != 1 || len(other) != 0 {
 		t.Fatal("exam attempts leaked between users")
 	}
 }
 
 func TestImportExamFileIsIdempotent(t *testing.T) {
-	old := db
-	t.Cleanup(func() { db = old })
+	store := &Store{}
+	old := store.db
+	t.Cleanup(func() { store.db = old })
 	database, err := bolt.Open(filepath.Join(t.TempDir(), "seed.db"), 0600, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -73,26 +75,27 @@ func TestImportExamFileIsIdempotent(t *testing.T) {
 	if err := initDB(database); err != nil {
 		t.Fatal(err)
 	}
-	db = database
+	store.db = database
 	path := filepath.Join("..", "..", "backend", "exams.json")
-	if err := importExamFile(database, path); err != nil {
+	if err := store.importExamFile(database, path); err != nil {
 		t.Fatal(err)
 	}
-	if err := importExamFile(database, path); err != nil {
+	if err := store.importExamFile(database, path); err != nil {
 		t.Fatal(err)
 	}
-	items, err := examPapers(true)
+	items, err := store.examPapers(true)
 	if err != nil || len(items) < 1 {
 		t.Fatalf("unexpected seeded exams: %d %v", len(items), err)
 	}
 }
 
 func TestSeedUpgradesVerifiedSourceShell(t *testing.T) {
+	store := &Store{}
 	database := openTestDB(t)
 	defer database.Close()
-	db = database
+	store.db = database
 	shell := ExamPaper{ID: "upgrade-paper", Title: "Source shell", Status: "published", AttachmentURL: "https://example.test/paper.pdf"}
-	if _, err := saveExamPaper(shell, "seed"); err != nil {
+	if _, err := store.saveExamPaper(shell, "seed"); err != nil {
 		t.Fatal(err)
 	}
 	path := filepath.Join(t.TempDir(), "paper.json")
@@ -100,21 +103,22 @@ func TestSeedUpgradesVerifiedSourceShell(t *testing.T) {
 	if err := os.WriteFile(path, []byte(raw), 0600); err != nil {
 		t.Fatal(err)
 	}
-	if err := importExamFile(database, path); err != nil {
+	if err := store.importExamFile(database, path); err != nil {
 		t.Fatal(err)
 	}
-	got, ok, err := examPaper("upgrade-paper")
+	got, ok, err := store.examPaper("upgrade-paper")
 	if err != nil || !ok || len(got.Sections) != 1 || got.Title != "Structured" {
 		t.Fatalf("shell was not upgraded: %#v %v", got, err)
 	}
 }
 
 func TestPublishedExamValidationAndCalculatedScore(t *testing.T) {
-	old := db
-	t.Cleanup(func() { db = old })
+	store := &Store{}
+	old := store.db
+	t.Cleanup(func() { store.db = old })
 	database := openTestDB(t)
 	defer database.Close()
-	db = database
+	store.db = database
 
 	invalid := ExamPaper{
 		ID: "invalid-paper", Title: "Invalid", Status: "published", DurationMinutes: 30,
@@ -122,7 +126,7 @@ func TestPublishedExamValidationAndCalculatedScore(t *testing.T) {
 			ID: "q1", Type: "choice", Prompt: "Choose", Options: []string{"only one"}, Answer: "B", Score: 2,
 		}}}},
 	}
-	if _, err := saveExamPaper(invalid, "admin"); err == nil {
+	if _, err := store.saveExamPaper(invalid, "admin"); err == nil {
 		t.Fatal("expected invalid published choice question to be rejected")
 	}
 
@@ -133,7 +137,7 @@ func TestPublishedExamValidationAndCalculatedScore(t *testing.T) {
 	valid.Sections[0].Questions = append(valid.Sections[0].Questions, ExamQuestion{
 		ID: "q2", Type: "fill", Prompt: "Complete", Answer: "answer", Score: 3,
 	})
-	saved, err := saveExamPaper(valid, "admin")
+	saved, err := store.saveExamPaper(valid, "admin")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -143,7 +147,7 @@ func TestPublishedExamValidationAndCalculatedScore(t *testing.T) {
 
 	valid.ID = "duplicate-paper"
 	valid.Sections[0].Questions[1].ID = "q1"
-	if _, err := saveExamPaper(valid, "admin"); err == nil {
+	if _, err := store.saveExamPaper(valid, "admin"); err == nil {
 		t.Fatal("expected duplicate question IDs to be rejected")
 	}
 }

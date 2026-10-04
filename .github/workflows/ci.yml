@@ -1,0 +1,37 @@
+name: CI
+
+# plan.md「P2：工程质量与交付」：格式检查 / 静态检查 / 测试 / 词库严格校验（warning 级阻断）/ 前端自检。
+# 仓库目前是本地工作副本（没有 .git），推送到 GitHub 后这个工作流即可直接生效；
+# 本地等价命令：powershell -ExecutionPolicy Bypass -File .\scripts\ci.ps1
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.x"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 质量门禁（gofmt / go vet / go test / 词库严格校验 / 前端自检）
+        shell: pwsh
+        run: ./scripts/ci.ps1
+
+      - name: 失败时上传端到端截图
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-artifacts
+          path: .tmp/e2e-ci
+          if-no-files-found: ignore

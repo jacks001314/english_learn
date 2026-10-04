@@ -1,6 +1,7 @@
 package learning
 
 import (
+	"errors"
 	"strings"
 	"time"
 
@@ -8,7 +9,7 @@ import (
 )
 
 func (c *Controller) AgentStatus(ctx iris.Context) {
-	cfg, err := loadAgentConfig(false)
+	cfg, err := c.store.loadAgentConfig(false)
 	if err != nil {
 		writeError(ctx, 500, "读取智能体状态失败")
 		return
@@ -21,18 +22,24 @@ func (c *Controller) AgentStatus(ctx iris.Context) {
 }
 
 func (c *Controller) AgentChat(ctx iris.Context) {
-	user, _ := currentUser(ctx)
+	user, _ := c.store.currentUser(ctx)
 	var in AgentChatRequest
 	if ctx.ReadJSON(&in) != nil {
 		writeError(ctx, 400, "请求格式错误")
 		return
 	}
 	started := time.Now()
-	agentMu.Lock()
-	out, err := runAgent(ctx.Request().Context(), c.root, user, in)
-	agentMu.Unlock()
-	writeAgentAudit(user, in, out, err, started)
+	// Model calls are limited by the concurrency gate inside runAgent; the
+	// request itself is never serialised.
+	out, err := c.store.runAgent(ctx.Request().Context(), c.root, user, in)
+	c.store.writeAgentAudit(user, in, out, err, started)
 	if err != nil {
+		// A missing word or a missing page context is the caller's problem, not
+		// a model outage; the practice page shows the reason verbatim.
+		if errors.Is(err, errAgentRequest) {
+			writeError(ctx, 400, strings.TrimPrefix(err.Error(), errAgentRequest.Error()+": "))
+			return
+		}
 		writeError(ctx, 502, "智能助手调用失败："+err.Error())
 		return
 	}
@@ -40,7 +47,7 @@ func (c *Controller) AgentChat(ctx iris.Context) {
 }
 
 func (c *Controller) AdminAgentConfig(ctx iris.Context) {
-	cfg, err := loadAgentConfig(false)
+	cfg, err := c.store.loadAgentConfig(false)
 	if err != nil {
 		writeError(ctx, 500, "读取智能体配置失败")
 		return
@@ -49,7 +56,7 @@ func (c *Controller) AdminAgentConfig(ctx iris.Context) {
 }
 
 func (c *Controller) AdminSaveAgentConfig(ctx iris.Context) {
-	user, _ := currentUser(ctx)
+	user, _ := c.store.currentUser(ctx)
 	var in AgentConfig
 	if ctx.ReadJSON(&in) != nil {
 		writeError(ctx, 400, "配置格式错误")
@@ -58,23 +65,21 @@ func (c *Controller) AdminSaveAgentConfig(ctx iris.Context) {
 	if strings.TrimSpace(in.APIKey) == "********" {
 		in.APIKey = ""
 	}
-	out, err := saveAgentConfig(in, user)
+	out, err := c.store.saveAgentConfig(in, user)
 	if err != nil {
 		writeError(ctx, 400, err.Error())
 		return
 	}
-	_ = writeAudit(user, "save_agent_config", "model="+out.Model+", provider="+out.ProviderID)
+	_ = c.store.writeAudit(user, "save_agent_config", "model="+out.Model+", provider="+out.ProviderID)
 	_ = ctx.JSON(out)
 }
 
 func (c *Controller) AdminTestAgent(ctx iris.Context) {
-	user, _ := currentUser(ctx)
+	user, _ := c.store.currentUser(ctx)
 	in := AgentChatRequest{Message: "请只回复：智能体连接正常。", Mode: "general"}
 	started := time.Now()
-	agentMu.Lock()
-	out, err := runAgent(ctx.Request().Context(), c.root, user, in)
-	agentMu.Unlock()
-	writeAgentAudit(user, in, out, err, started)
+	out, err := c.store.runAgent(ctx.Request().Context(), c.root, user, in)
+	c.store.writeAgentAudit(user, in, out, err, started)
 	if err != nil {
 		writeError(ctx, 502, err.Error())
 		return

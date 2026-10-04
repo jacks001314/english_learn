@@ -1,4 +1,5 @@
 import { api } from "../api.js";
+import { noteExamSubmitted } from "../learningContext.js?v=20261004-practice-source-r1";
 
 export default {
   props: {
@@ -225,6 +226,8 @@ export default {
         });
         this.clearDraft();
         this.view = "result";
+        // 交卷后的轻提示：趁记忆新鲜把错题交给助教归因。
+        noteExamSubmitted(this.result);
         this.$emit("session-state", false);
         await this.load();
         window.scrollTo({ top: 0, behavior: "smooth" });

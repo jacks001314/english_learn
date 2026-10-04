@@ -17,6 +17,9 @@ import (
 // matches the filter, so the practice is not limited to a sample of ten words:
 //
 //	GET /api/meaning-quiz?level=all&type=en-zh&page=2&size=12&sort=word-asc
+//
+// source=mistakes|unmastered 时再按当前用户自己的学习记录收窄：只练错题 / 学过但未掌握的词。
+// 例如 GET /api/meaning-quiz?level=all&source=mistakes&page=1&size=12。
 func (c *Controller) MeaningQuiz(ctx iris.Context) {
 	filter := QuizFilter{
 		Level:        ctx.URLParamDefault("level", "primary"),
@@ -27,6 +30,7 @@ func (c *Controller) MeaningQuiz(ctx iris.Context) {
 		Unit:         ctx.URLParam("unit"),
 		Letter:       ctx.URLParam("letter"),
 		PartOfSpeech: ctx.URLParam("pos"),
+		Source:       ctx.URLParam("source"),
 	}
 	service := c.scoped(ctx)
 

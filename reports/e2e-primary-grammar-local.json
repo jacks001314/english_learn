@@ -1,0 +1,92 @@
+{
+  "base": "http://127.0.0.1:8099",
+  "account": "注册 p6check",
+  "results": [
+    {
+      "name": "S1 登录成功",
+      "ok": true,
+      "detail": "POST /api/auth/login → 200（注册 p6check）"
+    },
+    {
+      "name": "S2 导航出现「小学基础」分组",
+      "ok": true,
+      "detail": "导航分组=[\"小学基础\",\"入门总览\",\"词法\",\"动词\",\"句法\",\"复合句\"]"
+    },
+    {
+      "name": "S2 知识卡数量为 15",
+      "ok": true,
+      "detail": "小学基础组条目数=15"
+    },
+    {
+      "name": "S2 分组顺序：小学基础在最前",
+      "ok": true,
+      "detail": "第一个分组=小学基础"
+    },
+    {
+      "name": "S2 状态标记为知识卡",
+      "ok": true,
+      "detail": "状态=知识卡"
+    },
+    {
+      "name": "S2 指标区改为知识卡口径",
+      "ok": true,
+      "detail": "指标=[\"用法要点:3\",\"正误例句:14\",\"易错提醒:3\",\"记忆卡:2\"]"
+    },
+    {
+      "name": "S2 速查/要点/易错/记忆卡四块渲染",
+      "ok": true,
+      "detail": "块={\"quick\":\"1\",\"points\":\"1\",\"pitfalls\":\"1\",\"memory\":\"1\",\"lecture\":\"0\",\"practice\":\"0\"}"
+    },
+    {
+      "name": "S2 讲义与专项练习隐藏",
+      "ok": true,
+      "detail": "lecture=0 practice=0"
+    },
+    {
+      "name": "S2 无「开始练习」按钮",
+      "ok": true,
+      "detail": "按钮存在=false"
+    },
+    {
+      "name": "S2 速查卡与正误例句有内容",
+      "ok": true,
+      "detail": "公式=4 好例=8 错例=6"
+    },
+    {
+      "name": "S2 记忆卡有内容",
+      "ok": true,
+      "detail": "记忆卡=[\"我用 am，你用 are，is 连着他她它。\",\"单数 is，复数 are。\"]"
+    },
+    {
+      "name": "S2 目录不含讲义/专项练习",
+      "ok": true,
+      "detail": "目录=[\"速用速查\",\"用法要点 · 3\",\"易错与考法\",\"记忆卡与教材例句\"]"
+    },
+    {
+      "name": "S3 切卡后是小学知识卡",
+      "ok": true,
+      "detail": "标题=现在进行时 分组=小学基础"
+    },
+    {
+      "name": "S3 卡片正文是小学内容（be + ing）",
+      "ok": true,
+      "detail": "nav 计数=知识卡 · 3 个要点"
+    },
+    {
+      "name": "S4 g-there-be 仍是初中专题",
+      "ok": true,
+      "detail": "分组=句法 状态=待补讲义 练习=专项练习 共 6 题 · 已答 0/6语篇原句改编3 题第 1 题北京市中考英语"
+    },
+    {
+      "name": "S4 p-there-be 是小学知识卡",
+      "ok": true,
+      "detail": "分组=小学基础 状态=知识卡"
+    },
+    {
+      "name": "S5 全流程无 JS 异常",
+      "ok": true,
+      "detail": "exceptionThrown/console.error 计数 = 0"
+    }
+  ],
+  "shots": "C:\\Users\\huoga\\.syntropy-run-396867a13d5c2c6512cce517ee17a922\\workspaces\\agents\\syntropy-446b1dc3\\project\\tmp\\e2e-local-primary-grammar"
+}
