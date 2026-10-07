@@ -24,6 +24,7 @@ import {
   loadLecture,
   isCardTopic,
 } from "../grammar/index.js?v=20261004-primary-grammar-r1";
+import { publishContext } from "../learningContext.js?v=20261007-agent-leakfix-r1";
 
 const letters = ["A", "B", "C", "D", "E", "F"];
 const ORIGIN_ORDER = ["exam", "exam-other", "adapted", "authored"];
@@ -217,9 +218,22 @@ export default {
       this.spreadOpen = false;
       this.$nextTick(() => this.setupSpy());
       this.syncHash();
+      // 换专题要重新上报，助教的“语法专题”状态才跟得上（契约 §5）。
+      this.publishContext();
     },
   },
   methods: {
+    // 把“正在看哪个语法专题”发布到学习上下文总线（契约 §5：grammarTopic）。
+    publishContext() {
+      const topic = this.selected;
+      if (!topic) return;
+      publishContext({
+        view: "grammar",
+        scene: "grammar",
+        level: "middle",
+        grammarTopic: topic.title || topic.id || "",
+      });
+    },
     speak,
     groupLabelOf(topic) {
       const g = this.groups.find((x) => x.key === (topic && topic.group));
@@ -533,6 +547,7 @@ export default {
       if (deep && deep[2]) this.pendingAnchor = deep[2];
     }
     this.ensureLecture(this.selectedId);
+    this.publishContext();
     if (this.pendingAnchor) this.$nextTick(() => this.revealAnchor(this.pendingAnchor));
   },
   mounted() {

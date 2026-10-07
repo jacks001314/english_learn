@@ -1,4 +1,4 @@
-.agent-fab{position:fixed;right:22px;bottom:22px;z-index:60;border:0;border-radius:999px;background:#315cdd;color:#fff;padding:13px 18px;box-shadow:0 10px 35px #17388c55;font-weight:800}.agent-fab span{margin-left:7px}.agent-panel{position:fixed;right:22px;bottom:82px;width:min(410px,calc(100vw - 24px));height:min(620px,calc(100vh - 110px));z-index:61;background:#fff;border:1px solid #dbe3f4;border-radius:20px;box-shadow:0 18px 70px #14255044;display:flex;flex-direction:column;overflow:hidden}.agent-panel>header{padding:14px 16px;background:#172d68;color:#fff;display:flex;align-items:center;gap:8px}.agent-panel>header div{flex:1}.agent-panel>header small{display:block;opacity:.72}.agent-panel>header button{background:#ffffff18;color:#fff;border:0;border-radius:8px;padding:7px}.agent-panel>main{flex:1;overflow:auto;padding:14px;background:#f5f7fc}.agent-panel article{max-width:88%;margin:0 0 12px}.agent-panel article.user{margin-left:auto}.agent-panel article p{white-space:pre-wrap;margin:3px 0;padding:10px 12px;border-radius:14px;background:#fff}.agent-panel article.user p{background:#315cdd;color:#fff}.agent-panel article b{font-size:12px;color:#71809f}.agent-panel>footer{display:flex;gap:8px;padding:12px;border-top:1px solid #e4e9f4}.agent-panel textarea{flex:1;resize:none;border:1px solid #cad4e8;border-radius:10px;padding:9px}.agent-panel>footer button{border:0;border-radius:10px;background:#315cdd;color:#fff;padding:0 16px}.agent-error{color:#b42318;background:#fff0ee;padding:8px 12px}.agent-success{color:#087443;background:#eafbf2;padding:10px;border-radius:9px}.agent-admin{max-width:920px;margin:auto;background:#fff;border-radius:20px;padding:25px;box-shadow:0 8px 35px #15295912}.agent-admin header span{color:#315cdd;font-weight:900;letter-spacing:.12em}.agent-admin .switch{display:flex;gap:10px;margin:20px 0;font-weight:800}.agent-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.agent-admin label{display:block;font-weight:700}.agent-admin input,.agent-admin textarea{width:100%;box-sizing:border-box;margin-top:7px;border:1px solid #cbd5e7;border-radius:10px;padding:11px;font:inherit}.agent-admin>form>label:not(.switch){margin-top:18px}.agent-actions{display:flex;gap:10px;margin-top:18px}.agent-actions button{padding:11px 18px;border-radius:10px;border:1px solid #b8c4db}.agent-actions .primary{background:#315cdd;color:#fff;border-color:#315cdd}@media(max-width:620px){.agent-form-grid{grid-template-columns:1fr}.agent-fab{right:12px;bottom:12px}.agent-panel{right:12px;bottom:68px}}
+.agent-fab{position:fixed;right:22px;bottom:22px;z-index:60;border:0;border-radius:999px;background:#315cdd;color:#fff;padding:13px 18px;box-shadow:0 10px 35px #17388c55;font-weight:800}.agent-fab span{margin-left:7px}.agent-panel{position:fixed;right:22px;bottom:82px;--agent-panel-width:420px;width:min(var(--agent-panel-width),calc(100vw - 24px));height:min(620px,calc(100vh - 110px));z-index:61;background:#fff;border:1px solid #dbe3f4;border-radius:20px;box-shadow:0 18px 70px #14255044;display:flex;flex-direction:column;overflow:hidden}.agent-panel>header{padding:14px 16px;background:#172d68;color:#fff;display:flex;align-items:center;gap:8px}.agent-panel>header div{flex:1}.agent-panel>header small{display:block;opacity:.72}.agent-panel>header button{background:#ffffff18;color:#fff;border:0;border-radius:8px;padding:7px}.agent-panel>main{position:relative;flex:1;overflow:auto;padding:14px;background:#f5f7fc}.agent-panel article{max-width:88%;margin:0 0 12px}.agent-panel article.user{margin-left:auto}.agent-panel article p{white-space:pre-wrap;margin:3px 0;padding:10px 12px;border-radius:14px;background:#fff}.agent-panel article.user p{background:#315cdd;color:#fff}.agent-panel article b{font-size:12px;color:#71809f}.agent-panel>footer{display:flex;gap:8px;padding:12px;border-top:1px solid #e4e9f4}.agent-panel textarea{flex:1;resize:none;border:1px solid #cad4e8;border-radius:10px;padding:9px}.agent-panel>footer button{border:0;border-radius:10px;background:#315cdd;color:#fff;padding:0 16px}.agent-error{color:#b42318;background:#fff0ee;padding:8px 12px}.agent-success{color:#087443;background:#eafbf2;padding:10px;border-radius:9px}.agent-admin{max-width:920px;margin:auto;background:#fff;border-radius:20px;padding:25px;box-shadow:0 8px 35px #15295912}.agent-admin header span{color:#315cdd;font-weight:900;letter-spacing:.12em}.agent-admin .switch{display:flex;gap:10px;margin:20px 0;font-weight:800}.agent-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.agent-admin label{display:block;font-weight:700}.agent-admin input,.agent-admin textarea{width:100%;box-sizing:border-box;margin-top:7px;border:1px solid #cbd5e7;border-radius:10px;padding:11px;font:inherit}.agent-admin>form>label:not(.switch){margin-top:18px}.agent-actions{display:flex;gap:10px;margin-top:18px}.agent-actions button{padding:11px 18px;border-radius:10px;border:1px solid #b8c4db}.agent-actions .primary{background:#315cdd;color:#fff;border-color:#315cdd}@media(max-width:620px){.agent-form-grid{grid-template-columns:1fr}.agent-fab{right:12px;bottom:12px}.agent-panel{right:12px;bottom:68px}}
 .agent-markdown{margin-top:3px;padding:10px 12px;border-radius:14px;background:#fff;color:#17223b;line-height:1.62;overflow-wrap:anywhere}.agent-markdown>:first-child{margin-top:0}.agent-markdown>:last-child{margin-bottom:0}.agent-markdown p{padding:0!important;margin:.45em 0!important;border-radius:0!important;background:transparent!important;white-space:normal!important}.agent-markdown h1,.agent-markdown h2,.agent-markdown h3,.agent-markdown h4,.agent-markdown h5,.agent-markdown h6{margin:.8em 0 .35em;line-height:1.3;color:#14275a}.agent-markdown h1{font-size:1.35em}.agent-markdown h2{font-size:1.22em}.agent-markdown h3{font-size:1.1em}.agent-markdown ul,.agent-markdown ol{margin:.5em 0;padding-left:1.55em}.agent-markdown li{margin:.24em 0}.agent-markdown li>input{width:auto;margin-right:5px}.agent-markdown blockquote{margin:.65em 0;padding:.45em .75em;border-left:3px solid #7690e8;background:#f1f4ff;color:#42506d}.agent-markdown blockquote p{margin:0!important}.agent-markdown code{padding:.12em .34em;border:1px solid #d9e0ef;border-radius:5px;background:#f2f5fa;color:#b4234d;font:0.9em ui-monospace,SFMono-Regular,Consolas,monospace}.agent-markdown pre{max-width:100%;overflow:auto;margin:.7em 0;padding:11px;border-radius:10px;background:#14213d;color:#e8eefc}.agent-markdown pre code{padding:0;border:0;background:transparent;color:inherit;white-space:pre;font-size:.86em}.agent-markdown a{color:#2458d3;text-decoration:underline;text-decoration-style:dotted}.agent-markdown strong{font-weight:800;color:#17223b}.agent-markdown hr{border:0;border-top:1px solid #dbe2ef;margin:.8em 0}.agent-markdown img{display:block;max-width:100%;margin:.65em auto;border-radius:8px}.md-table-wrap{max-width:100%;overflow-x:auto;margin:.7em 0}.agent-markdown table{width:100%;border-collapse:collapse;font-size:.9em}.agent-markdown th,.agent-markdown td{padding:6px 8px;border:1px solid #d6dfef;vertical-align:top}.agent-markdown th{background:#eef3ff;color:#26385f}
 .agent-settings-page{max-width:1080px;margin:0 auto 80px;color:#17223b}.agent-settings-hero{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:28px 30px;border-radius:24px;background:linear-gradient(135deg,#12265f,#315cdd 68%,#6080ee);color:#fff;box-shadow:0 16px 45px #183b9930}.agent-logo{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#ffffff18;border:1px solid #ffffff45;font-size:22px;font-weight:900}.agent-settings-hero>div:nth-child(2)>span{font-size:12px;letter-spacing:.16em;font-weight:800;color:#cbd8ff}.agent-settings-hero h2{margin:5px 0;font-size:28px}.agent-settings-hero p{margin:0;color:#dce5ff}.agent-toggle{display:flex;align-items:center;gap:12px;cursor:pointer;padding:12px 15px;border-radius:15px;background:#ffffff12;border:1px solid #ffffff22}.agent-toggle input{position:absolute;opacity:0}.agent-toggle i{width:46px;height:25px;border-radius:20px;background:#7d8bb6;position:relative;transition:.2s}.agent-toggle i:after{content:"";position:absolute;width:19px;height:19px;left:3px;top:3px;border-radius:50%;background:#fff;transition:.2s}.agent-toggle input:checked+i{background:#4ee0a0}.agent-toggle input:checked+i:after{transform:translateX(21px)}.agent-toggle span{display:flex;flex-direction:column}.agent-toggle small{color:#dce5ff;margin-top:2px}.agent-loading{margin-top:18px;background:#fff;padding:40px;text-align:center;border-radius:18px}.agent-config-card{margin-top:18px;background:#fff;border:1px solid #e2e8f4;border-radius:20px;padding:24px 26px;box-shadow:0 8px 28px #1b315a0b}.agent-config-card>header{display:flex;align-items:center;gap:13px;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid #edf1f7}.agent-config-card header .step{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#edf2ff;color:#315cdd;font-weight:900}.agent-config-card h3{margin:0 0 3px;font-size:19px}.agent-config-card header p{margin:0;color:#75819a;font-size:14px}.agent-state{margin-left:auto;padding:6px 11px;border-radius:20px;background:#f0f2f6;color:#6b7487;font-size:12px;font-weight:800}.agent-state.on{background:#e7faf1;color:#08774b}.agent-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.agent-config-card label{display:block}.agent-config-card label>span{display:block;margin-bottom:7px;font-size:14px;font-weight:800}.agent-config-card input,.agent-config-card select,.agent-config-card textarea{width:100%;box-sizing:border-box;border:1px solid #cbd5e6;border-radius:11px;padding:12px 13px;background:#fff;color:#17223b;font:inherit;outline:none;transition:.2s}.agent-config-card input:focus,.agent-config-card select:focus,.agent-config-card textarea:focus{border-color:#5274e5;box-shadow:0 0 0 3px #5274e51a}.agent-config-card label>small{display:block;margin-top:6px;color:#8490a5;font-size:12px}.key-field,.unit-input{position:relative}.key-field input{padding-right:74px}.key-field em{position:absolute;right:10px;top:10px;background:#e8faf1;color:#08774b;padding:3px 7px;border-radius:7px;font-size:11px;font-style:normal;font-weight:800}.prompt-field textarea{resize:vertical;line-height:1.65}.agent-config-card.compact{padding:0;overflow:hidden}.advanced-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:19px 24px;border:0;background:#fff;text-align:left;color:#17223b}.advanced-toggle span{display:flex;flex-direction:column}.advanced-toggle small{color:#8490a5;margin-top:3px}.advanced-toggle i{font-style:normal;color:#52617d}.agent-form-grid.advanced{padding:0 24px 24px}.unit-input input{padding-right:52px}.unit-input em{position:absolute;right:13px;top:13px;color:#77849a;font-style:normal;font-size:13px}.agent-notice{margin-top:16px;padding:12px 15px;border-radius:12px}.agent-notice.success{background:#e9faf2;color:#08774b}.agent-notice.error{background:#fff0ee;color:#b42318}.agent-savebar{position:sticky;bottom:12px;margin-top:18px;padding:15px 18px;border-radius:17px;background:#fff;border:1px solid #dce3f0;box-shadow:0 12px 36px #13264d20;display:flex;align-items:center;gap:10px;z-index:3}.agent-savebar>div{flex:1;display:flex;flex-direction:column}.agent-savebar small{color:#8490a5;margin-top:3px}.agent-savebar button{border-radius:11px;padding:11px 18px;font-weight:800}.agent-savebar .secondary{background:#fff;border:1px solid #bfc9db;color:#33415c}.agent-savebar .primary{background:#315cdd;border:1px solid #315cdd;color:#fff}.agent-savebar button:disabled{opacity:.45}@media(max-width:760px){.agent-settings-hero{grid-template-columns:auto 1fr}.agent-toggle{grid-column:1/-1}.agent-form-grid{grid-template-columns:1fr}.agent-savebar{align-items:stretch;flex-wrap:wrap}.agent-savebar>div{flex-basis:100%}}@media(max-width:620px){.agent-settings-hero{padding:22px 18px}.agent-config-card{padding:20px 16px}.agent-savebar button{flex:1}}
 .engine-options{display:grid;grid-template-columns:1fr 1fr;gap:14px}.engine-options label{position:relative;display:flex;flex-direction:column;gap:5px;padding:18px 18px 18px 48px;border:1px solid #d5ddec;border-radius:15px;background:#fafbfe;cursor:pointer;transition:.2s}.engine-options label:hover{border-color:#8da4ec}.engine-options label.active{border-color:#5274e5;background:#eef3ff;box-shadow:0 0 0 3px #5274e514}.engine-options input{position:absolute!important;left:17px;top:20px;width:18px!important}.engine-options b{font-size:16px}.engine-options small{color:#71809a}.claude-note{margin-top:18px;padding:12px 14px;border-radius:11px;background:#fff8e6;border:1px solid #f0d898;color:#725516;font-size:13px}@media(max-width:620px){.engine-options{grid-template-columns:1fr}}
@@ -17,3 +17,183 @@
 .agent-nudge button.primary{background:#315cdd;border-color:#315cdd;color:#fff}
 @keyframes agent-nudge-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:620px){.agent-nudge{right:12px;bottom:68px;width:calc(100vw - 24px)}}
+
+/* ===================================================================
+   智能助教 UX 改造（20261006-agent-ux-r1）
+   - 浮动形态：420px，左缘拖拽调宽（360–560）
+   - 停靠形态：右侧 440px 栏，页面 main 让位，零遮挡
+   - 教学卡片 / 已读回执 / 骨架屏 / sticky 行动条 / 小屏全屏抽屉
+   既有类名（agent-fab / agent-nudge / agent-quick / agent-markdown /
+   agent-context / agent-drill / agent-inline-link）语义不变。
+   =================================================================== */
+
+/* ---------------------------------------------------- 状态胶囊（替代题干复述） */
+.agent-context.is-capsule{margin:10px 14px 8px;padding:0;background:transparent}
+.agent-statechip{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#eef3ff;color:#33415e;font-size:12.5px;line-height:1.45}
+.agent-statechip.is-empty{background:#f4f5f8;color:#75808f}
+.agent-statechip-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#59a37f}
+.agent-statechip.is-empty .agent-statechip-dot{background:#b9c2d2}
+.agent-statechip-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.agent-statechip-focus{flex:0 0 auto;margin-left:auto;border:1px solid #c3cfe8;background:#fff;color:#2a3a5c;border-radius:999px;padding:4px 11px;font-size:11.5px;font-weight:800;cursor:pointer}
+.agent-statechip-focus:hover{border-color:#315cdd;color:#315cdd}
+
+/* --------------------------------------------------- 教学卡片（服务端 card） */
+.agent-panel article.has-card{max-width:100%}
+.agent-card{margin-top:3px;border:1px solid #e2e8f4;border-radius:16px;background:#fff;box-shadow:0 10px 26px #14255014}
+.agent-card-empty{margin:0;padding:13px 14px;font-size:12.5px;line-height:1.6;color:#75808f}
+.agent-card-head{padding:12px 14px;border-bottom:1px solid #e4eaf6;border-radius:15px 15px 0 0;background:linear-gradient(120deg,#eef4ff,#f8fbff)}
+.agent-card-kind{display:inline-block;padding:2px 8px;border-radius:999px;background:#315cdd1a;color:#315cdd;font-size:11px;font-weight:800;letter-spacing:.06em}
+.agent-card-headline{margin:7px 0 0;font-size:15px;line-height:1.55;color:#14275a;font-weight:700}
+.agent-card-verdict{margin:6px 0 0;font-size:12.5px;line-height:1.55;color:#5b6b93}
+.agent-card-section{padding:11px 14px;border-bottom:1px dashed #e4eaf6}
+.agent-card-section:last-child{border-bottom:0}
+.agent-card-label{display:flex;align-items:center;gap:7px;margin-bottom:6px;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:#315cdd}
+.agent-card-label::before{content:'';flex:0 0 auto;width:3px;height:13px;border-radius:2px;background:#315cdd}
+.agent-card-text{margin:0;font-size:13.5px;line-height:1.75;color:#22314f;overflow-wrap:anywhere}
+.agent-card-example .en{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.6;color:#16233d}
+.agent-card-example .zh{margin:5px 0 0;font-size:13px;line-height:1.6;color:#6d7b75}
+.agent-card-speak{margin-top:8px;border:1px solid #d7e3d1;border-radius:9px;background:#f7faf5;color:#2f6b52;padding:4px 10px;font-size:12px;font-weight:700;cursor:pointer}
+.agent-card-speak:hover{border-color:#59a37f;color:#135a3f}
+.agent-card-speak.is-mini{margin:0 0 0 6px;padding:2px 7px;font-size:11.5px}
+.agent-card-toggle{margin-top:8px;border:1px solid #c3cfe8;border-radius:999px;background:#fff;color:#2a3a5c;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer}
+.agent-card-toggle:hover{border-color:#315cdd;color:#315cdd}
+.agent-card-answer{margin:8px 0 0;padding:8px 11px;border-radius:10px;background:#f2fbf6;color:#135a3f;font-size:13px;line-height:1.55}
+.agent-card-answer b{font-size:14px}
+.agent-card-words{display:flex;flex-wrap:wrap;gap:8px}
+.agent-word-chip{display:inline-flex;align-items:center;gap:7px;padding:4px 10px;border:1px solid #d7e3d1;border-radius:999px;background:#f4fbf6}
+.agent-word-meaning{font-style:normal;font-size:12px;color:#6d7b75}
+.agent-chip-add{border:0;background:transparent;color:#0b6b43;padding:0;font-size:11.5px;font-weight:800;cursor:pointer}
+.agent-chip-add:hover{text-decoration:underline}
+/* 英文词 / 短语：点一下朗读 */
+.agent-word{border:0;border-bottom:1px dotted #8aa1e8;background:transparent;color:#1d3a8f;font:inherit;font-weight:700;padding:0 1px;cursor:pointer}
+.agent-word:hover{background:#eef3ff;border-radius:4px}
+/* 底部 sticky 行动条：长讲解滚走，"30 秒小动作"始终在视野底部 */
+.agent-card-action{position:sticky;bottom:0;display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid #f0d9ad;background:#fffbef}
+.agent-card-action p{flex:1;margin:0;font-size:12.5px;line-height:1.55;color:#8a5a10}
+.agent-card-action b{margin-right:5px}
+.agent-card-action button{border:0;border-radius:10px;background:#315cdd;color:#fff;padding:9px 13px;font-size:12.5px;font-weight:800;cursor:pointer;white-space:nowrap}
+.agent-card-action button:hover{background:#2450c9}
+.agent-answer-fold{position:relative}.agent-answer-fold.is-folded .agent-markdown{max-height:266px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 60%,rgba(0,0,0,.10));mask-image:linear-gradient(180deg,#000 60%,rgba(0,0,0,.10))}.agent-fold{display:block;margin:6px 0 0;padding:3px 0;border:0;background:transparent;color:#315cdd;font-size:12px;font-weight:800;cursor:pointer}.agent-fold:hover{text-decoration:underline}.agent-fold:focus-visible{outline:2px solid #315cdd;outline-offset:2px;border-radius:6px}.agent-card-action.is-inline{position:static;border-top:1px dashed #e4eaf6;background:#fffdf6}.agent-word:focus-visible{outline:2px solid #315cdd;outline-offset:1px}
+
+/* ------------------------------------------------------------ 已读回执（receipt） */
+.agent-receipt{margin-top:8px;border:1px solid #e2e8f4;border-radius:12px;background:#fbfcfe;overflow:hidden}
+.agent-receipt-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px;width:100%;box-sizing:border-box;padding:8px 10px;border:0;background:transparent;font:inherit;text-align:left;cursor:pointer}
+.agent-receipt-head:hover{background:#f4f7fd}
+.agent-receipt-title{font-size:11.5px;font-weight:800;color:#315cdd}
+.agent-receipt-chip{padding:3px 9px;border:1px solid #d7e3d1;border-radius:999px;background:#f2f8ee;color:#3f6b45;font-size:11.5px;font-weight:700}
+.agent-receipt-chip.is-miss{border-color:#e6e6e6;background:#f7f7f7;color:#9a9a9a;font-weight:600}
+.agent-receipt-more{margin-left:auto;font-size:11px;color:#5d6b86}
+.agent-receipt.is-stale .agent-receipt-title{color:#8a5a10}
+.agent-receipt-note{margin:0;padding:9px 11px;border-top:1px dashed #e4eaf6;background:#fff;color:#8a5a10;font-size:12px;line-height:1.6}
+.agent-receipt-text{margin:0;padding:10px 11px;border-top:1px dashed #e4eaf6;background:#fff;color:#42506d;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto}
+
+/* --------------------------------------------------- 骨架屏（card 模式计时） */
+.agent-skeleton{margin-top:3px;padding:12px;border:1px solid #e4eaf6;border-radius:14px;background:#fff}
+.agent-skeleton-head{display:flex;align-items:center;gap:7px;font-size:12.5px;color:#5b6b93}
+.agent-skeleton-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#315cdd;animation:agent-pulse 1.1s ease-in-out infinite}
+.agent-skeleton-line{height:10px;margin-top:9px;border-radius:6px;background:linear-gradient(90deg,#eef2fa,#e1e8f7,#eef2fa);background-size:200% 100%;animation:agent-shimmer 1.4s linear infinite}
+.agent-skeleton-line.w1{width:92%}
+.agent-skeleton-line.w2{width:76%}
+.agent-skeleton-line.w3{width:58%}
+@keyframes agent-shimmer{from{background-position:0 0}to{background-position:-200% 0}}
+@keyframes agent-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* --------------------------------- 消息操作条 / 停止生成 / 错误与轻提示 */
+.agent-msg-actions{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:7px}
+.agent-msg-actions small{font-size:11px;color:#75808f}
+.agent-msg-actions button{border:1px solid #cfd9f0;border-radius:999px;background:#fff;color:#42506a;padding:4px 10px;font-size:11.5px;font-weight:700;cursor:pointer}
+.agent-msg-actions button:hover{border-color:#315cdd;color:#315cdd}
+.agent-stopped{font-size:11.5px;color:#8a5a10}
+.agent-copy-hint{color:#0b6b43!important;font-weight:700}
+.agent-empty-answer{margin:3px 0 0;padding:10px 12px;border-radius:14px;background:#fff;color:#75808f;font-size:12.5px}
+.agent-streambar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid #e4e9f4;background:#f2f6ff;color:#315cdd;font-size:12px}
+.agent-streambar button{margin-left:auto;border:1px solid #c3cfe8;border-radius:999px;background:#fff;color:#2a3a5c;padding:5px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.agent-streambar button:hover{border-color:#c05b4d;color:#b42318}
+.agent-error{display:flex;align-items:center;gap:8px;font-size:12.5px}
+.agent-error.is-hint{color:#8a5a10;background:#fff8ec}
+.agent-error-retry{margin-left:auto;border:1px solid #e4b7b0;border-radius:999px;background:#fff;color:#b42318;padding:4px 11px;font-size:11.5px;font-weight:800;cursor:pointer}
+
+/* --------------------------------------------- 浮动形态：420px + 左缘拖拽把手 */
+.agent-float .agent-panel{width:min(var(--agent-panel-width,420px),calc(100vw - 24px))}
+.agent-resize{position:absolute;top:0;bottom:0;left:0;width:12px;z-index:3;background:transparent;cursor:col-resize}
+.agent-resize::after{content:'';position:absolute;top:50%;left:3px;width:3px;height:44px;transform:translateY(-50%);border-radius:2px;background:#c9d5ea}
+.agent-resize:hover::after,.agent-resize:focus-visible::after,body.agent-resizing .agent-resize::after{background:#315cdd}
+.agent-resize:focus-visible{outline:2px solid #315cdd;outline-offset:-2px}
+body.agent-resizing{cursor:col-resize;user-select:none}
+/* --------------------------------------- 停靠形态：右侧 440px 栏，页面自动让位 */
+@media(min-width:1101px){
+  .agent-dock{--agent-rail:440px}
+  /* main 让出栏宽 + 页边距；宽度也要一起收，否则块级流会溢出到栏下面 */
+  .agent-dock .app-content>main,
+  .agent-dock .app-content>.hero{margin-right:calc(var(--agent-rail) + var(--page-gutter));width:calc(100% - var(--agent-rail) - var(--page-gutter)*2)}
+  /* 停靠时面板贴在让位后的栏里，不再压住任何可点区域 */
+  .agent-dock .agent-panel{top:0;bottom:0;right:0;left:auto;width:var(--agent-rail);height:100dvh;max-height:none;border:0;border-left:1px solid #dbe3f4;border-radius:0;box-shadow:-16px 0 46px #1425501f}
+  .agent-dock .agent-panel .agent-resize{display:none}
+  .agent-dock .agent-panel>footer{padding-bottom:max(12px,env(safe-area-inset-bottom))}
+  /* 轻提示与悬浮球也不许压在栏上 */
+  /* 面板展开时悬浮球多余（面板自带关闭与形态切换）。挪到栏外会压住页面内容，
+     留在原地又会被面板挡住，所以直接隐藏。 */
+  body.agent-open .agent-fab{display:none}
+
+  /* 浮动形态：面板打开时页面同样让出面板宽度。
+     "浮动"指的是面板是贴右缘的浮层（可拖宽、不参与布局），不等于允许压住页面：
+     420px 的浮层会让右侧错词栏的可点区域被盖住，所以这里让它落在一片空出来的
+     右栏里。让位宽度取 agent-live-rail（由组件按面板真实宽度写回），收起面板即恢复。 */
+  body.agent-open.agent-float .app-content>main,
+  body.agent-open.agent-float .app-content>.hero{
+    --agent-rail:var(--agent-live-rail,420px);
+    margin-right:calc(var(--agent-rail) + var(--page-gutter));
+    width:calc(100% - var(--agent-rail) - var(--page-gutter)*2)
+  }
+}
+
+/* ---------------------------------------------------------- 小屏：全屏抽屉 */
+@media(max-width:1100px){
+  .agent-float .agent-panel,
+  .agent-dock .agent-panel{position:fixed;top:0;right:0;bottom:0;left:0;width:auto;height:100dvh;max-height:none;border:0;border-radius:0;box-shadow:none;z-index:70}
+  .agent-float .agent-panel .agent-resize,
+  .agent-dock .agent-panel .agent-resize{display:none}
+  /* 抽屉形态不占栏宽，把让位规则还原，避免出现一条空栏 */
+  .agent-dock .app-content>main,
+  .agent-dock .app-content>.hero,
+  body.agent-open.agent-float .app-content>main,
+  body.agent-open.agent-float .app-content>.hero{margin-right:var(--page-gutter);width:calc(100% - var(--page-gutter)*2)}
+  .agent-dock .agent-nudge,
+  .agent-dock .agent-fab{right:12px}
+  .agent-panel>header{padding-top:max(14px,env(safe-area-inset-top))}
+  .agent-panel>footer{padding-bottom:max(12px,env(safe-area-inset-bottom))}
+  .agent-card-action{padding-bottom:max(11px,env(safe-area-inset-bottom))}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .agent-skeleton-line,.agent-skeleton-dot{animation:none}
+  .agent-nudge{animation:none}
+}
+
+/* ---------------------------- 宿主外壳兜底（验收台）+ 停靠形态轻提示避让
+   验收台 docs/agent-ux-e2e-harness.html 自带的让位 shim 是死选择器：
+   `.harness-dock-root.agent-dock .harness-shell` 要求「同一个元素同时带上这两个类」，
+   而 harness-dock-root 就绑在 .harness-shell 自身，因此永远匹配不到（实测 querySelector 为 null、
+   外壳 margin-right 恒为 0）——浮动/停靠两种形态下右侧「错词栏」都会被面板压住。
+   面板已把真实宽度写进 body 的 --agent-live-rail，这里用它给验收台外壳让出右缘空档，
+   让 V1「可点区域不被遮挡」在验收台上也真的成立。生产页面没有 .harness-shell，规则惰性。 */
+@media(min-width:1101px){
+  body.agent-open.agent-float .harness-shell,
+  body.agent-open.agent-dock .harness-shell{margin-right:calc(var(--agent-live-rail,420px) + 44px)}
+  /* 停靠形态下面板占住右栏：milestone 轻提示不能再压到栏上（悬浮球已由 body.agent-open 隐藏）。 */
+  .agent-dock .agent-nudge{right:calc(var(--agent-rail,440px) + 22px)}
+}
+
+/* ---------------------------- 全局元素选择器防御（真实页面同样会命中）
+   web/style.css 有一条全局 `header{display:flex;align-items:baseline;gap:16px;
+   box-shadow:0 2px 12px #dce5f2}`，生产页 index.html 也会加载它。教学卡片里
+   <header class="agent-card-head"> 是元素选择器命中的目标：类选择器没声明的属性
+   会被它拿走，于是 headline / verdict 被压成 flex 行内最小宽度，一行只剩 1-2 个字
+   （实测 .agent-card-head computed display:flex，headline 只有 98px 宽）。
+   这里显式把头部还原成块级流。 */
+.agent-card-head{display:block;align-items:normal;gap:0;box-shadow:none}
+.agent-panel>header{box-shadow:none}
+/* 面板消息区默认把 article 限到 88%（气泡不该顶满），但教学卡片是嵌套的
+   <article class="agent-card">，会连吃两次 88% → 420px 面板里只剩 280px。
+   卡片是结构化内容，占满消息列。 */
+.agent-panel article.agent-card{max-width:100%}

@@ -2,12 +2,16 @@
 //
 // 题目的单词、选项和答案都来自词库，判分沿用 /api/quiz/answer（与单词测验、词义练习
 // 同一个引擎），所以“AI 出的题”不会和站内的标准答案打架。
-import { noteAnswer } from '../learningContext.js?v=20261004-practice-source-r1';
+import { noteAnswer, publishContext } from '../learningContext.js?v=20261007-agent-leakfix-r1';
 
 const AUTO_NEXT_DELAY_MS = 750;
 
 export default {
-  props: { drill: { type: Object, default: null } },
+  props: {
+    drill: { type: Object, default: null },
+    // 助教面板「定位题目」下发的目标：{ wordId, level, token }
+    focusTarget: { type: Object, default: null },
+  },
   emits: ['navigate', 'speak', 'answered'],
   data() {
     return {
@@ -18,6 +22,8 @@ export default {
       autoTimer: null,
       autoPending: false,
       startedAt: Date.now(),
+      focusHighlight: false,
+      focusTimer: null,
     };
   },
   computed: {
@@ -73,17 +79,58 @@ export default {
     drill() {
       this.reset();
     },
+    // 换题、作答都重新上报，助教看到的是“这一道”而不是上一次的题（契约 §5）。
+    index() {
+      this.publishContext();
+    },
+    answers() {
+      this.publishContext();
+    },
+    focusTarget(target) {
+      this.locateFocus(target);
+    },
+  },
+  mounted() {
+    this.publishContext();
   },
   beforeUnmount() {
     this.cancelAutoNext();
+    if (this.focusTimer) window.clearTimeout(this.focusTimer);
   },
   methods: {
+    // 把“正在做哪一组变式题、第几题”发布到学习上下文总线（契约 §5）。
+    publishContext() {
+      const drill = this.drill;
+      const item = this.current;
+      if (!drill && !item) return;
+      const entry = this.currentAnswer;
+      publishContext({
+        view: "drill",
+        scene: "drill",
+        level: (item && item.word && item.word.level) || (drill && drill.level) || "all",
+        wordId: (item && item.word && item.word.id) || (drill && drill.wordId) || "",
+        spelling: (item && item.word && item.word.word) || (drill && drill.spelling) || "",
+        prompt: (item && item.prompt) || "",
+        options: (item && item.options) || [],
+        correctAnswer: entry ? entry.answer : ((item && item.answer) || ""),
+        selectedAnswer: entry ? entry.selected : "",
+        correct: entry ? !!entry.correct : undefined,
+        wrongTimes: entry && !entry.correct ? 1 : 0,
+        position: this.items.length ? this.index + 1 : 0,
+        total: this.items.length,
+        answered: this.answeredCount,
+        sessionCorrect: this.correctCount,
+        drillFocus: (drill && (drill.focus || drill.title)) || "",
+        drillCount: this.items.length,
+      });
+    },
     reset() {
       this.cancelAutoNext();
       this.index = 0;
       this.answers = {};
       this.error = '';
       this.startedAt = Date.now();
+      this.publishContext();
     },
     cancelAutoNext() {
       this.autoPending = false;
@@ -157,6 +204,26 @@ export default {
     speakCurrent() {
       if (this.current) this.$emit('speak', this.current.word.word);
     },
+    // 助教面板的「定位题目」：本组变式题里有这道题就跳过去并高亮两秒。
+    locateFocus(target) {
+      const wanted = String(target?.wordId || '').trim().toLowerCase();
+      if (!wanted) return;
+      const position = this.items.findIndex((item) => String(item.word?.id || '').trim().toLowerCase() === wanted);
+      if (position < 0) return;   // 不在本组题里：交给 main.js 的兜底提示
+      this.cancelAutoNext();
+      this.index = position;
+      this.publishContext();
+      this.flashFocus();
+    },
+    flashFocus() {
+      if (this.focusTimer) window.clearTimeout(this.focusTimer);
+      this.focusHighlight = true;
+      this.$nextTick(() => {
+        const card = this.$refs.answerCard;
+        if (card && card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      this.focusTimer = window.setTimeout(() => { this.focusHighlight = false; }, 2000);
+    },
   },
   template: `
     <section class="view drill-view">
@@ -199,7 +266,7 @@ export default {
           </div>
         </div>
 
-        <div v-else-if="current" class="drill-card">
+        <div v-else-if="current" class="drill-card" :class="{'is-agent-focus':focusHighlight}" :style="focusHighlight ? {boxShadow:'0 0 0 3px rgba(247, 181, 0, .85)'} : null" ref="answerCard">
           <div class="drill-counter">第 {{ index + 1 }} / {{ items.length }} 题</div>
           <p class="drill-prompt">{{ current.prompt }}</p>
           <div v-if="current.type === 'en-zh'" class="phonetic">{{ current.word.phonetic || '暂无音标' }}</div>

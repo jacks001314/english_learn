@@ -699,3 +699,20 @@
   line-height: 1.7;
   box-shadow: 0 12px 28px rgba(16, 44, 33, 0.14);
 }
+
+/* ---------- 助教浮动栏占位时的重排补偿 ---------- */
+/* 助教浮动栏贴右缘时占住 --agent-live-rail（默认 420px），页面可用宽度随之变小；
+   但上面的断点是按「视口宽度」写的（1279px 才收成两栏），不会因此触发，
+   于是三栏骨架（268 + 1fr + 196）把题目列挤到 ~120px，题干逐字换行。
+   这里在助教打开时按「可用宽度」重排：收起页内目录、收窄专题树，把宽度让给题目列。 */
+/* ≥1400：放得下 228px 专题树 + 可读题目列 */
+@media (min-width: 1400px) {
+  body.agent-open .gr2-layout { grid-template-columns: 228px minmax(0, 1fr); }
+}
+/* 1101–1399：同 tongbu.css，固定侧栏 + 420px 浮动栏会把题目列挤瘦（实测 1008px 视口下 .gr2-qgroup 只有 21px），
+   这一段纵向叠放；≤1100 是抽屉形态、页面本来就全宽，不需要补偿。 */
+@media (min-width: 1101px) and (max-width: 1399px) {
+  body.agent-open .gr2-layout { grid-template-columns: minmax(0, 1fr); }
+  body.agent-open .gr2-nav { position: static; max-height: none; }
+}
+body.agent-open .gr2-toc { display: none; }

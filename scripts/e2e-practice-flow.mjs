@@ -105,6 +105,18 @@ async function readCounter() {
   const m = /可练习\s*(\d+)\s*\/\s*(\d+)/.exec(String(text));
   return { text: String(text).trim(), total: m ? Number(m[1]) : -1, scope: m ? Number(m[2]) : -1 };
 }
+// 线上首次打开时题目集是异步拉取的：计数会先短暂显示 0，再跳成真实总数。
+// 直接断言会偶发假失败（2026-10-07 对线上跑，实测过一次「0 / 4590」），所以先等到真实计数再断言。
+async function waitCounter(pred, timeoutMs = 20000) {
+  const t0 = Date.now();
+  for (;;) {
+    const c = await readCounter();
+    if (pred(c)) return c;
+    if (Date.now() - t0 > timeoutMs) return c;
+    await sleep(250);
+  }
+}
+
 async function readQuestion() {
   const text = await evaluate('(document.querySelector(".meaning-counter") || {}).textContent || ""');
   const m = /第\s*(\d+)\s*\/\s*(\d+)\s*题/.exec(String(text));
@@ -150,8 +162,8 @@ try {
   const options = await evaluate("[...document.querySelector(" + JSON.stringify(SELECT) + ").options].map(o => [o.value, o.textContent.trim()])");
   const wantOptions = [["", "全部单词"], ["mistakes", "我的错题"], ["unmastered", "学过但没掌握"]];
   check("S2 练习来源选项", JSON.stringify(options) === JSON.stringify(wantOptions), "实际 " + JSON.stringify(options));
-  const baseline = await readCounter();
-  check("S2 基线计数", baseline.total > 0 && baseline.total === baseline.scope, "全部单词 → " + baseline.text);
+  const baseline = await waitCounter((c) => c.total > 0, 20000);
+  check("S2 基线计数", baseline.total > 0 && baseline.total === baseline.scope, "全部单词 → " + baseline.text + (baseline.total === 0 ? "（等满 20s 仍是 0，说明题目集真的没加载出来）" : ""));
 
   // ---------- S3 制造错题 → 选「我的错题」 ----------
   const seeded = await inPage(

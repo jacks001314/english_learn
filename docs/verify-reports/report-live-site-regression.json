@@ -1,0 +1,743 @@
+{
+  "startedAt": "2026-10-06T18:11:10.012Z",
+  "base": "http://www.gbw3bao.com",
+  "checks": [
+    {
+      "id": "S1 线上可达 + 应用外壳",
+      "ok": true,
+      "detail": "HTTP 200 / 3242 字节"
+    },
+    {
+      "id": "S2 /api/health",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "S3 index.html 引用的本地 CSS/JS 全部可用",
+      "ok": true,
+      "detail": "27/27 全部 200 且非空"
+    },
+    {
+      "id": "S4 线上 learningContext.js 含「漏 card 兜底」闸门",
+      "ok": true,
+      "detail": "looksLikeCardJson 命中=true / 11914 字节"
+    },
+    {
+      "id": "S4b 线上 ReportView.js 含「空数组兜底」修复",
+      "ok": true,
+      "detail": "HTTP 200 / 6520 字节 / 命中=true"
+    },
+    {
+      "id": "S5 线上注册/登录可用",
+      "ok": true,
+      "detail": "site-muwzvxel → register:200"
+    },
+    {
+      "id": "R home（学习首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":168,\"overflowX\":false,\"hashView\":\"home\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R smart（智能学习台）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":233,\"overflowX\":false,\"hashView\":\"smart\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R learn（单词学习）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":312,\"overflowX\":false,\"hashView\":\"learn\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R meaning-en-zh（看词选义）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":163,\"overflowX\":false,\"hashView\":\"meaning-en-zh\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R meaning-zh-en（看义选词）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":161,\"overflowX\":false,\"hashView\":\"meaning-zh-en\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R meaning-listen（听音选义）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":161,\"overflowX\":false,\"hashView\":\"meaning-listen\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R categories（分类词库）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":276,\"overflowX\":false,\"hashView\":\"categories\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R course（课程学习）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":234,\"overflowX\":false,\"hashView\":\"course\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R grammar（语法专题）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":406,\"overflowX\":false,\"hashView\":\"grammar\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R phonetics（国际音标）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":287,\"overflowX\":false,\"hashView\":\"phonetics\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R reading（英语阅读）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":321,\"overflowX\":false,\"hashView\":\"reading\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R exams（考试练习）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":145,\"overflowX\":false,\"hashView\":\"exams\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R tongbu（同步训练）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":680,\"overflowX\":false,\"hashView\":\"tongbu\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R quiz（单词测验）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":129,\"overflowX\":false,\"hashView\":\"quiz\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R review（今日复习）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":99,\"overflowX\":false,\"hashView\":\"review\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R homework（我的作业）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":95,\"overflowX\":false,\"hashView\":\"homework\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R report（学习报告）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":242,\"overflowX\":false,\"hashView\":\"report\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R mistakes（错题本）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":112,\"overflowX\":false,\"hashView\":\"mistakes\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R settings（学习设置）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":96,\"overflowX\":false,\"hashView\":\"settings\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R security（账号安全）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":99,\"overflowX\":false,\"hashView\":\"security\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R drill（变式练习）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"marker\":true,\"visible\":91,\"overflowX\":false,\"hashView\":\"drill\",\"text\":\"跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首\"}"
+    },
+    {
+      "id": "R content（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "R admin（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "R workbench（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "R exam-workbench（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "R agent-admin（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "R factory（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "R homework-admin（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "R reports（管理端 · 应回落首页）",
+      "ok": true,
+      "detail": "{\"rendered\":true,\"errs\":0,\"landed\":true,\"bootShown\":false}"
+    },
+    {
+      "id": "S6 全站回归全程 0 条 JS 报错",
+      "ok": true,
+      "detail": "0 条"
+    }
+  ],
+  "routes": [
+    {
+      "route": "home",
+      "label": "学习首页",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1261,
+      "bootShown": false,
+      "marker": true,
+      "visible": 168,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "home"
+    },
+    {
+      "route": "smart",
+      "label": "智能学习台",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1198,
+      "bootShown": false,
+      "marker": true,
+      "visible": 233,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "smart"
+    },
+    {
+      "route": "learn",
+      "label": "单词学习",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1198,
+      "bootShown": false,
+      "marker": true,
+      "visible": 312,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "learn"
+    },
+    {
+      "route": "meaning-en-zh",
+      "label": "看词选义",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1187,
+      "bootShown": false,
+      "marker": true,
+      "visible": 163,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "meaning-en-zh"
+    },
+    {
+      "route": "meaning-zh-en",
+      "label": "看义选词",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1199,
+      "bootShown": false,
+      "marker": true,
+      "visible": 161,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "meaning-zh-en"
+    },
+    {
+      "route": "meaning-listen",
+      "label": "听音选义",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1192,
+      "bootShown": false,
+      "marker": true,
+      "visible": 161,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "meaning-listen"
+    },
+    {
+      "route": "categories",
+      "label": "分类词库",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1192,
+      "bootShown": false,
+      "marker": true,
+      "visible": 276,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "categories"
+    },
+    {
+      "route": "course",
+      "label": "课程学习",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1200,
+      "bootShown": false,
+      "marker": true,
+      "visible": 234,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "course"
+    },
+    {
+      "route": "grammar",
+      "label": "语法专题",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1204,
+      "bootShown": false,
+      "marker": true,
+      "visible": 406,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "grammar"
+    },
+    {
+      "route": "phonetics",
+      "label": "国际音标",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1316,
+      "bootShown": false,
+      "marker": true,
+      "visible": 287,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "phonetics"
+    },
+    {
+      "route": "reading",
+      "label": "英语阅读",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1190,
+      "bootShown": false,
+      "marker": true,
+      "visible": 321,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "reading"
+    },
+    {
+      "route": "exams",
+      "label": "考试练习",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1203,
+      "bootShown": false,
+      "marker": true,
+      "visible": 145,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "exams"
+    },
+    {
+      "route": "tongbu",
+      "label": "同步训练",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1199,
+      "bootShown": false,
+      "marker": true,
+      "visible": 680,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "tongbu"
+    },
+    {
+      "route": "quiz",
+      "label": "单词测验",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1197,
+      "bootShown": false,
+      "marker": true,
+      "visible": 129,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "quiz"
+    },
+    {
+      "route": "review",
+      "label": "今日复习",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1204,
+      "bootShown": false,
+      "marker": true,
+      "visible": 99,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "review"
+    },
+    {
+      "route": "homework",
+      "label": "我的作业",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1201,
+      "bootShown": false,
+      "marker": true,
+      "visible": 95,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "homework"
+    },
+    {
+      "route": "report",
+      "label": "学习报告",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1196,
+      "bootShown": false,
+      "marker": true,
+      "visible": 242,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "report"
+    },
+    {
+      "route": "mistakes",
+      "label": "错题本",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1196,
+      "bootShown": false,
+      "marker": true,
+      "visible": 112,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "mistakes"
+    },
+    {
+      "route": "settings",
+      "label": "学习设置",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1190,
+      "bootShown": false,
+      "marker": true,
+      "visible": 96,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "settings"
+    },
+    {
+      "route": "security",
+      "label": "账号安全",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1185,
+      "bootShown": false,
+      "marker": true,
+      "visible": 99,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "security"
+    },
+    {
+      "route": "drill",
+      "label": "变式练习",
+      "rendered": true,
+      "errs": 0,
+      "ms": 1195,
+      "bootShown": false,
+      "marker": true,
+      "visible": 91,
+      "overflowX": false,
+      "scrollW": 1424,
+      "clientW": 1424,
+      "text": "跳到主要内容 LB Lingo Bloom 英语学习平台 < 今日 HM 学习首页 AI 智能学习台 RV 今日复习 HW 我的作业 学习与练习 Aa 单词学习 EZ 看词选义 CE 看义选词 LA 听音选义 DB 分类词库 CO 课程学习",
+      "view": "drill"
+    }
+  ],
+  "adminRoutes": [
+    {
+      "route": "content",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    },
+    {
+      "route": "admin",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    },
+    {
+      "route": "workbench",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    },
+    {
+      "route": "exam-workbench",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    },
+    {
+      "route": "agent-admin",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    },
+    {
+      "route": "factory",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    },
+    {
+      "route": "homework-admin",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    },
+    {
+      "route": "reports",
+      "rendered": true,
+      "errs": 0,
+      "bootShown": false,
+      "landed": true,
+      "visible": 175
+    }
+  ],
+  "staticAssets": [
+    {
+      "url": "/style.css?v=20260720-reading",
+      "status": 200,
+      "size": 4597,
+      "ok": true
+    },
+    {
+      "url": "/review.css?v=20260720-reading",
+      "status": 200,
+      "size": 4996,
+      "ok": true
+    },
+    {
+      "url": "/content.css?v=20260720-reading",
+      "status": 200,
+      "size": 154,
+      "ok": true
+    },
+    {
+      "url": "/reading.css?v=20260720-reading",
+      "status": 200,
+      "size": 6278,
+      "ok": true
+    },
+    {
+      "url": "/hot-topics.css?v=20260720-equal-columns",
+      "status": 200,
+      "size": 5180,
+      "ok": true
+    },
+    {
+      "url": "/responsive.css?v=20260721-left-sidebar",
+      "status": 200,
+      "size": 10669,
+      "ok": true
+    },
+    {
+      "url": "/auth-admin.css?v=20260720-platform",
+      "status": 200,
+      "size": 2952,
+      "ok": true
+    },
+    {
+      "url": "/user-menu.css?v=20260720-platform",
+      "status": 200,
+      "size": 387,
+      "ok": true
+    },
+    {
+      "url": "/platform-v2.css?v=20260720-platform-v2",
+      "status": 200,
+      "size": 1130,
+      "ok": true
+    },
+    {
+      "url": "/content-workbench.css?v=20260720-content-studio",
+      "status": 200,
+      "size": 3591,
+      "ok": true
+    },
+    {
+      "url": "/exam.css?v=20260720-exam-bank",
+      "status": 200,
+      "size": 3033,
+      "ok": true
+    },
+    {
+      "url": "/agent.css?v=20261007-agent-fold-r1",
+      "status": 200,
+      "size": 31631,
+      "ok": true
+    },
+    {
+      "url": "/factory.css?v=20260720-homework-1",
+      "status": 200,
+      "size": 10793,
+      "ok": true
+    },
+    {
+      "url": "/redesign.css?v=20261004-auto-next",
+      "status": 200,
+      "size": 54321,
+      "ok": true
+    },
+    {
+      "url": "/exam-workbench.css?v=20260727-exam-builder",
+      "status": 200,
+      "size": 21520,
+      "ok": true
+    },
+    {
+      "url": "/content-lifecycle.css?v=20260727-content-lifecycle-r3",
+      "status": 200,
+      "size": 11155,
+      "ok": true
+    },
+    {
+      "url": "/smart-learning.css?v=20260727-smart-learning-r2",
+      "status": 200,
+      "size": 9741,
+      "ok": true
+    },
+    {
+      "url": "/course.css?v=20260927-audio-r3",
+      "status": 200,
+      "size": 14538,
+      "ok": true
+    },
+    {
+      "url": "/homework-admin.css?v=20260727-homework-admin-r1",
+      "status": 200,
+      "size": 19771,
+      "ok": true
+    },
+    {
+      "url": "/adaptive-desktop.css?v=20260727-adaptive-r3",
+      "status": 200,
+      "size": 12106,
+      "ok": true
+    },
+    {
+      "url": "/phonetics.css?v=20260905-ipa-r2",
+      "status": 200,
+      "size": 9163,
+      "ok": true
+    },
+    {
+      "url": "/grammar.css?v=20261006-agent-rail-reflow-r2",
+      "status": 200,
+      "size": 24987,
+      "ok": true
+    },
+    {
+      "url": "/tongbu.css?v=20261006-agent-rail-reflow-r2",
+      "status": 200,
+      "size": 13882,
+      "ok": true
+    },
+    {
+      "url": "/meaning.css?v=20261004-auto-next",
+      "status": 200,
+      "size": 6474,
+      "ok": true
+    },
+    {
+      "url": "/learner-report.css?v=20261004-calendar-r1",
+      "status": 200,
+      "size": 3014,
+      "ok": true
+    },
+    {
+      "url": "/vendor/vue.global.prod.js",
+      "status": 200,
+      "size": 159385,
+      "ok": true
+    },
+    {
+      "url": "/js/main.js?v=20261007-capsule-progress-r1",
+      "status": 200,
+      "size": 44726,
+      "ok": true
+    }
+  ],
+  "consoleErrors": [],
+  "shots": {
+    "site-regression-home.png": "docs/images/site-regression-home.png",
+    "site-regression-tongbu.png": "docs/images/site-regression-tongbu.png",
+    "site-regression-mistakes.png": "docs/images/site-regression-mistakes.png"
+  },
+  "account": "site-muwzvxel",
+  "finishedAt": "2026-10-06T18:11:47.742Z",
+  "passed": 36,
+  "failed": 0
+}

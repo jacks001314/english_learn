@@ -1,5 +1,6 @@
 import { api } from "../api.js";
 import { speak } from "../speech.js";
+import { publishContext } from "../learningContext.js?v=20261007-agent-leakfix-r1";
 
 export default {
   name: "CourseView",
@@ -64,6 +65,22 @@ export default {
     },
   },
   methods: {
+    // 把“正在学哪个模块”发布到学习上下文总线（契约 §5：courseUnit / courseSection）。
+    publishContext() {
+      const book = this.book;
+      const section = this.section;
+      if (!book || !section) return;
+      // 单元名先在对象字面量外拼好：契约守门脚本按顶层逗号切键，字面量里出现数组
+      // 会把数组元素（book / section）误判成上报字段，所以这里不写数组字面量。
+      const unit = [book.grade, book.semester, section.section].filter(Boolean).join(" · ");
+      publishContext({
+        view: "course",
+        scene: "course",
+        level: "middle",
+        courseUnit: unit,
+        courseSection: section.title || section.section || "",
+      });
+    },
     speak,
     async load() {
       this.loading = true;
@@ -74,6 +91,7 @@ export default {
         this.books = data.books || [];
         this.bookIdx = 0;
         this.sectionIdx = 0;
+        this.publishContext();
       } catch (e) {
         this.error = e.message || "加载课程数据失败";
       } finally {
@@ -84,10 +102,12 @@ export default {
       this.bookIdx = i;
       this.sectionIdx = 0;
       this.tab = "article";
+      this.publishContext();
     },
     selectSection(s) {
       this.sectionIdx = this.sections.indexOf(s);
       this.tab = "article";
+      this.publishContext();
     },
     setTab(t) {
       this.tab = t;

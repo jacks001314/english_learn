@@ -1,0 +1,378 @@
+{
+  "startedAt": "2026-10-06T15:13:51.650Z",
+  "mode": "live",
+  "server": "http://127.0.0.1:8100",
+  "checks": [
+    {
+      "id": "U2",
+      "label": "go build ./cmd/server 成功",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "id": "U3",
+      "label": "真实服务端就绪",
+      "ok": true,
+      "detail": "http://127.0.0.1:8100"
+    },
+    {
+      "id": "U4",
+      "label": "学生账号注册成功",
+      "ok": true,
+      "detail": "e2e-student"
+    },
+    {
+      "id": "U5",
+      "label": "管理员登录（用于配置智能体）",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "U6",
+      "label": "智能体已启用（provider/model 正确）",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"model\":\"deepseek-flash\",\"providerId\":\"deepseek\"}"
+    },
+    {
+      "id": "U7",
+      "label": "打开真站点出现登录表单",
+      "ok": true,
+      "detail": "input 数=2"
+    },
+    {
+      "id": "U8",
+      "label": "用真实登录表单登录成功（进入 app-shell）",
+      "ok": true,
+      "detail": "hash=#home"
+    },
+    {
+      "id": "U9",
+      "label": "侧边栏存在「看词选义」导航",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U10",
+      "label": "词义练习渲染出真实题目与选项",
+      "ok": true,
+      "detail": "第 第 1 / 4590 题 题 · -sist- · 选项 4 个"
+    },
+    {
+      "id": "U11",
+      "label": "在真实页面上答错一道题（拿到错答态）",
+      "ok": true,
+      "detail": "再巩固一下正确答案是：词根：站立不懂，讲讲出同类题"
+    },
+    {
+      "id": "U12",
+      "label": "答错后出现助教入口 .meaning-ask",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U13",
+      "label": "就地讲解渲染成结构化教学卡片（有结论 + 判定 + 分段 + 行动条）",
+      "ok": true,
+      "detail": "headline=-sist- 是词根，意思是“站立”，不是“刀”。 sections=6"
+    },
+    {
+      "id": "U14",
+      "label": "就地讲解没有把 JSON 原文漏到页面上",
+      "ok": true,
+      "detail": "jsonLeak=false"
+    },
+    {
+      "id": "U15",
+      "label": "判定行来自服务端题库（不采信模型）",
+      "ok": true,
+      "detail": "verdict=你选了「刀」，正确答案是「词根：站立」"
+    },
+    {
+      "id": "U16",
+      "label": "默认形态是浮动面板（agent-float）",
+      "ok": true,
+      "detail": "class=agent-assistant agent-float"
+    },
+    {
+      "id": "U28",
+      "label": "视口 1200,900 下页面布局健康（主内容列 ≥300px 且无横向溢出）",
+      "ok": true,
+      "detail": "regime=rail main=511 iw=1184 scrollW=1184"
+    },
+    {
+      "id": "U17",
+      "label": "面板贴右缘浮起且宽度合理（≈420px）",
+      "ok": true,
+      "detail": "regime=rail position=fixed width=420 right=18 iw=1184"
+    },
+    {
+      "id": "U18",
+      "label": "面板打开时给页面让位（body.agent-open 且 fab 收起）",
+      "ok": true,
+      "detail": "bodyOpen=true fabDisplay=none"
+    },
+    {
+      "id": "U19",
+      "label": "浮动面板打开时零遮挡（选项 / 讲解卡 / 错词栏都不被盖，且真的量到了元素）",
+      "ok": true,
+      "detail": "选项区[.meaning-options]:0/9 答错动作区[.meaning-ask]:0/9 就地讲解卡[.agent-inline-teach]:0/9 错词栏[.meaning-review]:0/9"
+    },
+    {
+      "id": "U20",
+      "label": "面板内问一句，真模型回答渲染成卡片",
+      "ok": true,
+      "detail": "问「讲讲这道题」→ -sist- 是词根，意为“站立”，不是“刀”"
+    },
+    {
+      "id": "U21",
+      "label": "面板顶部状态胶囊显示当前场景/进度",
+      "ok": true,
+      "detail": "caption=词义练习 · 第 1 题 · 你在该词错过 1 次"
+    },
+    {
+      "id": "U22",
+      "label": "收起后页面恢复全宽（agent-open 移除、入口按钮回来）",
+      "ok": true,
+      "detail": "bodyOpen=false fabVisible=true"
+    },
+    {
+      "id": "U24-tongbu",
+      "label": "六场景页面真站点：同步训练 的胶囊显示服务端场景名",
+      "ok": true,
+      "detail": "chip=同步训练"
+    },
+    {
+      "id": "U25-tongbu",
+      "label": "六场景页面真站点：同步训练 上浮动面板零遮挡（且真的量到了元素）",
+      "ok": true,
+      "detail": "同步训练内容区[.tb-items]:0/9@280,-268,424,1342 | viewport=1184x805 panel=[746,157,420,620] main=[237,-2700,511,7713]"
+    },
+    {
+      "id": "U26-tongbu",
+      "label": "六场景页面真站点：同步训练 的题目列没被浮动栏挤瘦（≥300px）",
+      "ok": true,
+      "detail": "宽度=424px"
+    },
+    {
+      "id": "U27-tongbu",
+      "label": "六场景页面真站点：同步训练 在 window=1200,900 下没有横向溢出",
+      "ok": true,
+      "detail": "scrollWidth=1184 innerWidth=1184"
+    },
+    {
+      "id": "U24-grammar",
+      "label": "六场景页面真站点：语法专题 的胶囊显示服务端场景名",
+      "ok": true,
+      "detail": "chip=语法专题"
+    },
+    {
+      "id": "U25-grammar",
+      "label": "六场景页面真站点：语法专题 上浮动面板零遮挡（且真的量到了元素）",
+      "ok": true,
+      "detail": "语法专题内容区[.gr2-qgroup]:0/9@277,-1058,430,2921 | viewport=1184x805 panel=[746,157,420,620] main=[237,-8033,511,11705]"
+    },
+    {
+      "id": "U26-grammar",
+      "label": "六场景页面真站点：语法专题 的题目列没被浮动栏挤瘦（≥300px）",
+      "ok": true,
+      "detail": "宽度=430px"
+    },
+    {
+      "id": "U27-grammar",
+      "label": "六场景页面真站点：语法专题 在 window=1200,900 下没有横向溢出",
+      "ok": true,
+      "detail": "scrollWidth=1184 innerWidth=1184"
+    },
+    {
+      "id": "U23",
+      "label": "交互全过程没有 JS 报错",
+      "ok": true,
+      "detail": "0 条"
+    }
+  ],
+  "shots": {
+    "agent-live-inline-teach": "docs\\images\\agent-live-inline-teach-w1200.png",
+    "inline": "docs\\images\\agent-live-inline-teach-w1200.png",
+    "agent-live-float-card": "docs\\images\\agent-live-float-card-w1200.png",
+    "floatCard": "docs\\images\\agent-live-float-card-w1200.png",
+    "agent-live-float-closed": "docs\\images\\agent-live-float-closed-w1200.png",
+    "closed": "docs\\images\\agent-live-float-closed-w1200.png",
+    "agent-live-tongbu-capsule": "docs\\images\\agent-live-tongbu-capsule-w1200.png",
+    "scene-tongbu": "docs\\images\\agent-live-tongbu-capsule-w1200.png",
+    "agent-live-grammar-capsule": "docs\\images\\agent-live-grammar-capsule-w1200.png",
+    "scene-grammar": "docs\\images\\agent-live-grammar-capsule-w1200.png"
+  },
+  "consoleErrors": [],
+  "samples": {
+    "question0": {
+      "prompt": "-sist-",
+      "options": [
+        "1刀",
+        "2兔；野兔",
+        "3马克·勒布朗（人名）",
+        "4词根：站立"
+      ],
+      "counter": "第 1 / 4590 题"
+    },
+    "inline": {
+      "hasCard": true,
+      "headline": "-sist- 是词根，意思是“站立”，不是“刀”。",
+      "verdict": "你选了「刀」，正确答案是「词根：站立」",
+      "sections": 6,
+      "words": [
+        "root",
+        "resist"
+      ],
+      "action": "读例句大声读一遍例句，再说出 insist 的意思。开始自测",
+      "jsonLeak": false
+    },
+    "panel": {
+      "cls": "agent-assistant agent-float",
+      "position": "fixed",
+      "width": 420,
+      "right": 18,
+      "floatClass": true,
+      "bodyOpen": true,
+      "fabHidden": "none",
+      "viewportWidth": 1184
+    },
+    "occlusion": [
+      {
+        "name": "选项区",
+        "matched": ".meaning-options",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          272,
+          262,
+          214,
+          280
+        ]
+      },
+      {
+        "name": "答错动作区",
+        "matched": ".meaning-ask",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          396,
+          352,
+          75,
+          100
+        ]
+      },
+      {
+        "name": "就地讲解卡",
+        "matched": ".agent-inline-teach",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          272,
+          -181,
+          214,
+          1167
+        ]
+      },
+      {
+        "name": "错词栏",
+        "matched": ".meaning-review",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          537,
+          292,
+          211,
+          221
+        ]
+      }
+    ],
+    "panelCard": {
+      "asked": "讲讲这道题",
+      "chip": "词义练习 · 第 1 题 · 你在该词错过 1 次",
+      "headline": "-sist- 是词根，意为“站立”，不是“刀”",
+      "verdict": "你选了「刀」，正确答案是「词根：站立」",
+      "sections": 6,
+      "wordChips": [
+        "-sist-"
+      ]
+    },
+    "scenePages": [
+      {
+        "page": "tongbu",
+        "chip": "同步训练",
+        "occlusion": [
+          {
+            "name": "同步训练内容区",
+            "matched": ".tb-items",
+            "sampled": 9,
+            "covered": 0,
+            "rect": [
+              280,
+              -268,
+              424,
+              1342
+            ]
+          }
+        ],
+        "geom": {
+          "panelRect": [
+            746,
+            157,
+            420,
+            620
+          ],
+          "mainRect": [
+            237,
+            -2700,
+            511,
+            7713
+          ],
+          "viewport": [
+            1184,
+            805
+          ]
+        }
+      },
+      {
+        "page": "grammar",
+        "chip": "语法专题",
+        "occlusion": [
+          {
+            "name": "语法专题内容区",
+            "matched": ".gr2-qgroup",
+            "sampled": 9,
+            "covered": 0,
+            "rect": [
+              277,
+              -1058,
+              430,
+              2921
+            ]
+          }
+        ],
+        "geom": {
+          "panelRect": [
+            746,
+            157,
+            420,
+            620
+          ],
+          "mainRect": [
+            237,
+            -8033,
+            511,
+            11705
+          ],
+          "viewport": [
+            1184,
+            805
+          ]
+        }
+      }
+    ]
+  },
+  "finishedAt": "2026-10-06T15:14:03.084Z",
+  "passed": 31,
+  "failed": 0,
+  "exitCode": 0
+}

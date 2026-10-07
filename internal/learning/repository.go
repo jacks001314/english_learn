@@ -241,6 +241,25 @@ func (s *Store) findWord(level, id string) (Word, bool) {
 
 func (s *Store) wordsByLevel(level string) []Word { return s.datasets[normalizeLevel(level)] }
 
+// findWordBySpelling looks a word up by its spelling inside one practice scope.
+// A library id is not always the spelling ("Netherlands" → "country-netherlands",
+// "American" → "american adj", "at the beginning of" → "at the beginning of phr. …"),
+// so the assistant must be able to resolve a word the learner is looking at by what
+// the page shows. Without this, a word taken straight from the quiz keeps no id and
+// the learner cannot add it to today's review.
+func (s *Store) findWordBySpelling(level, spelling string) (Word, bool) {
+	target := normalizeID(spelling)
+	if target == "" {
+		return Word{}, false
+	}
+	for _, item := range s.wordsForScope(level) {
+		if normalizeID(item.Word) == target {
+			return item, true
+		}
+	}
+	return Word{}, false
+}
+
 func (s *Store) upsertManagedWords(level string, items []Word) (int, error) {
 	level = normalizeLevel(level)
 	count := 0

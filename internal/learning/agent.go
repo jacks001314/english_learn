@@ -48,6 +48,9 @@ type AgentChatRequest struct {
 	Mode        string         `json:"mode,omitempty"`
 	QuickAction string         `json:"quickAction,omitempty"`
 	Context     map[string]any `json:"context,omitempty"`
+	// Format 决定回答形态："card" 返回结构化教学卡片，"text" 返回纯文本，
+	// 留空时跟随上下文（有页面上下文就是 card）。
+	Format string `json:"format,omitempty"`
 }
 
 type AgentChatResponse struct {
@@ -62,6 +65,12 @@ type AgentChatResponse struct {
 	Actions      []AgentAction  `json:"actions,omitempty"`
 	Drill        *AgentDrill    `json:"drill,omitempty"`
 	Snapshot     *AgentSnapshot `json:"snapshot,omitempty"`
+	// Card 是结构化教学卡片；解析失败时为 nil，前端回落到 Message 的 Markdown。
+	Card *AgentCard `json:"card,omitempty"`
+	// Receipt 说明这次回答读了哪些数据，让学生可以核对。
+	Receipt *AgentReceipt `json:"receipt,omitempty"`
+	// SnapshotText 是实际注入模型的快照原文，供「助教已读」展开查看。
+	SnapshotText string `json:"snapshotText,omitempty"`
 }
 
 // AgentAction reports what the assistant did on the page (for example queuing
@@ -247,9 +256,12 @@ func (s *Store) runAgentWith(ctx context.Context, root string, user User, in Age
 	// page state and must keep their original, minimal prompt.
 	var snapshot AgentSnapshot
 	hasSnapshot := len(in.Context) > 0
+	snapshotText := ""
 	if hasSnapshot {
 		snapshot = s.buildAgentSnapshot(user, in, started)
+		snapshotText = renderAgentSnapshot(snapshot)
 	}
+	wantCard := agentWantsCard(in, hasSnapshot)
 
 	switch quick {
 	case agentQuickAddReview:
@@ -261,6 +273,7 @@ func (s *Store) runAgentWith(ctx context.Context, root string, user User, in Age
 			Message: action.Message, ThreadID: in.ThreadID, Engine: "local-action",
 			DurationMS: time.Since(started).Milliseconds(),
 			Actions:    []AgentAction{action}, Snapshot: agentSnapshotPtr(snapshot, hasSnapshot),
+			Receipt: buildAgentReceipt(snapshot, snapshotText), SnapshotText: snapshotText,
 		}, nil
 	case agentQuickDrill:
 		if !cfg.Enabled {
@@ -278,6 +291,7 @@ func (s *Store) runAgentWith(ctx context.Context, root string, user User, in Age
 			Message: note, ThreadID: in.ThreadID, Engine: cfg.Engine, Model: cfg.Model,
 			DurationMS: time.Since(started).Milliseconds(), Drill: drill,
 			Snapshot: agentSnapshotPtr(snapshot, hasSnapshot),
+			Receipt:  buildAgentReceipt(snapshot, snapshotText), SnapshotText: snapshotText,
 		}, nil
 	}
 
@@ -290,16 +304,19 @@ func (s *Store) runAgentWith(ctx context.Context, root string, user User, in Age
 	if message == "" {
 		return AgentChatResponse{}, agentRequestError("请输入问题")
 	}
-	snapshotText := ""
-	if hasSnapshot {
-		snapshotText = renderAgentSnapshot(snapshot)
-	}
 	prompt := buildLearningPrompt(message, in.Mode, snapshotText)
 	// A scene-aware brief is only appended when we know the scene; the homework
 	// grader keeps the administrator's plain system prompt. cfg is a value copy,
 	// so this cannot leak back into the stored configuration.
-	if hasSnapshot {
-		cfg.SystemPrompt = agentInstructions(cfg, snapshot.Scene)
+	if hasSnapshot || wantCard {
+		scene := "general"
+		if hasSnapshot {
+			scene = snapshot.Scene
+		}
+		cfg.SystemPrompt = agentInstructions(cfg, scene)
+		if wantCard {
+			cfg.SystemPrompt += "\n\n" + agentCardInstruction(scene)
+		}
 	}
 	timeoutCtx, cancel := context.WithTimeout(ctx, time.Duration(cfg.TimeoutSeconds)*time.Second)
 	defer cancel()
@@ -311,16 +328,28 @@ func (s *Store) runAgentWith(ctx context.Context, root string, user User, in Age
 			err = emit(out.Message)
 		}
 	} else {
-		out, err = runCodexAgent(timeoutCtx, root, cfg, prompt, in.ThreadID, emit)
+		out, err = runCodexAgentFn(timeoutCtx, root, cfg, prompt, in.ThreadID, emit)
 	}
 	if err != nil {
 		return AgentChatResponse{}, err
 	}
 	out.Snapshot = agentSnapshotPtr(snapshot, hasSnapshot)
+	if hasSnapshot {
+		out.SnapshotText = snapshotText
+		out.Receipt = buildAgentReceipt(snapshot, snapshotText)
+	}
+	if wantCard {
+		out.Card = s.parseAgentCard(out.Message, snapshot)
+	}
 	if hasSnapshot && strings.TrimSpace(out.Message) != "" {
 		// 记忆沉淀：把这次讲解压缩成一条助教笔记，下次遇到同一个词可以直接接着讲。
+		// 卡片模式下要用卡片摘要，否则存进去的会是一段 JSON。
 		// 失败不影响回答本身，所以只记日志意义的错误。
-		if _, noteErr := s.recordTutorNote(user.ID, snapshot, message, out.Message, started); noteErr != nil {
+		noteText := out.Message
+		if out.Card != nil {
+			noteText = agentCardDigest(out.Card)
+		}
+		if _, noteErr := s.recordTutorNote(user.ID, snapshot, message, noteText, started); noteErr != nil {
 			_ = noteErr
 		}
 	}
@@ -341,6 +370,11 @@ func codexConfigOptions(root string, cfg AgentConfig, stream bool) *core.ConfigO
 		Tools: &core.ToolOptions{Preset: core.ToolsNone},
 	}
 }
+
+// runCodexAgentFn 是留给测试的注入点：契约测试用确定性假模型把「请求 → 快照 →
+// 系统提示 → 模型输出 → 卡片解析 → 响应 JSON」整条链路跑通，生产路径永远指向
+// runCodexAgent，行为不变。
+var runCodexAgentFn = runCodexAgent
 
 func runCodexAgent(ctx context.Context, root string, cfg AgentConfig, prompt, threadID string, emit agentEmitter) (AgentChatResponse, error) {
 	client, err := core.NewFromConfig(ctx, codexConfigOptions(root, cfg, emit != nil))
@@ -450,7 +484,8 @@ func buildLearningPrompt(message, mode, snapshotText string) string {
 	labels := map[string]string{
 		"general": "综合学习", "word": "单词学习", "meaning": "词义练习", "quiz": "单词测验",
 		"spelling": "拼写练习", "reading": "文章阅读", "exam": "考试讲解", "writing": "作文辅导",
-		"mistake": "错题分析", "homework": "作业批改",
+		"mistake": "错题分析", "homework": "作业讲解",
+		"tongbu": "同步训练", "course": "课程学习", "drill": "变式练习", "grammar": "语法专题",
 	}
 	label := labels[mode]
 	if label == "" {
@@ -466,6 +501,19 @@ func buildLearningPrompt(message, mode, snapshotText string) string {
 	}
 	b.WriteString("学生问题：" + message)
 	return b.String()
+}
+
+// agentWantsCard reports whether this turn answers with a teaching card. The
+// default follows the context: a page-aware answer is a card, while a bare chat
+// (and the admin connection test) stays plain text.
+func agentWantsCard(in AgentChatRequest, hasSnapshot bool) bool {
+	switch strings.ToLower(strings.TrimSpace(in.Format)) {
+	case "card":
+		return true
+	case "text":
+		return false
+	}
+	return hasSnapshot
 }
 
 // agentSnapshotPtr returns nil when the page sent no context, so the response

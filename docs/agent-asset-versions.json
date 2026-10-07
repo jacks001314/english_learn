@@ -1,0 +1,230 @@
+{
+  "web/adaptive-desktop.css": {
+    "version": "20260727-adaptive-r3",
+    "sha256": "aa6eaa36b3fe9ae3"
+  },
+  "web/agent.css": {
+    "version": "20261007-agent-fold-r1",
+    "sha256": "4854afd0a7370575"
+  },
+  "web/auth-admin.css": {
+    "version": "20260720-platform",
+    "sha256": "ac776127e551144b"
+  },
+  "web/content-lifecycle.css": {
+    "version": "20260727-content-lifecycle-r3",
+    "sha256": "274ff86925056db1"
+  },
+  "web/content-workbench.css": {
+    "version": "20260720-content-studio",
+    "sha256": "65b0ccd733bd63d7"
+  },
+  "web/content.css": {
+    "version": "20260720-reading",
+    "sha256": "bb850c38512126d5"
+  },
+  "web/course.css": {
+    "version": "20260927-audio-r3",
+    "sha256": "453352576037ac22"
+  },
+  "web/exam-workbench.css": {
+    "version": "20260727-exam-builder",
+    "sha256": "6b50dd0fb5c83972"
+  },
+  "web/exam.css": {
+    "version": "20260720-exam-bank",
+    "sha256": "8e76937a1fb323ef"
+  },
+  "web/factory.css": {
+    "version": "20260720-homework-1",
+    "sha256": "9c22d5502ead92e9"
+  },
+  "web/grammar.css": {
+    "version": "20261006-agent-rail-reflow-r2",
+    "sha256": "66085d5ef13632ea"
+  },
+  "web/homework-admin.css": {
+    "version": "20260727-homework-admin-r1",
+    "sha256": "a37345bafba670ef"
+  },
+  "web/hot-topics.css": {
+    "version": "20260720-equal-columns",
+    "sha256": "424e8548a809695b"
+  },
+  "web/js/agentSpeech.js": {
+    "version": "20261006-agent-ux-r1",
+    "sha256": "89c15e429138c807"
+  },
+  "web/js/components/AgentAssistant.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "36c5a351bcfa03e6"
+  },
+  "web/js/components/AgentTeachingCard.js": {
+    "version": "20261006-agent-ux-r1",
+    "sha256": "f06abfee40561a84"
+  },
+  "web/js/components/ContentWorkbench.js": {
+    "version": "20260727-content-lifecycle-r3",
+    "sha256": "fc878063fdb7e763"
+  },
+  "web/js/components/CourseView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "8ac9f9ec9a32e544"
+  },
+  "web/js/components/DrillView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "1da4a080ee1fe3f0"
+  },
+  "web/js/components/ExamView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "ad956d5a66a4a892"
+  },
+  "web/js/components/GrammarView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "cfbab476f227705d"
+  },
+  "web/js/components/HomeworkAdminView.js": {
+    "version": "20260727-adaptive-r1",
+    "sha256": "8840770e03692735"
+  },
+  "web/js/components/HomeworkView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "8662b18a07bf73f8"
+  },
+  "web/js/components/LearnView.js": {
+    "version": "20260926-pos-r1",
+    "sha256": "ca1232dad70deb3c"
+  },
+  "web/js/components/MeaningPracticeView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "d5279ddc048a145f"
+  },
+  "web/js/components/MistakesView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "bc219504dc336b4f"
+  },
+  "web/js/components/PhoneticsView.js": {
+    "version": "20260905-ipa-r5",
+    "sha256": "cc170344cab74559"
+  },
+  "web/js/components/QuizView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "a1d360ffd2c3936a"
+  },
+  "web/js/components/ReadingView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "b7908c2936184b4b"
+  },
+  "web/js/components/ReportView.js": {
+    "version": "20261007-reportview-nullfix-r1",
+    "sha256": "01b6d26e3d2dfeff"
+  },
+  "web/js/components/SmartLearningView.js": {
+    "version": "20261004-primary-grammar-r1",
+    "sha256": "e86ffcf737836a31"
+  },
+  "web/js/components/TongbuView.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "204fedbbc304b201"
+  },
+  "web/js/grammar/exercises.js": {
+    "version": "20261004-primary-grammar-r1",
+    "sha256": "0d88cfc3e2bd27f4"
+  },
+  "web/js/grammar/ia.js": {
+    "version": "20261004-primary-grammar-r1",
+    "sha256": "2f9b17cf5f6d0f40"
+  },
+  "web/js/grammar/index.js": {
+    "version": "20261004-primary-grammar-r1",
+    "sha256": "ba17c6b22f1d52ee"
+  },
+  "web/js/grammar/primary.js": {
+    "version": "20261004-primary-grammar-r1",
+    "sha256": "fc9fae0111f15000"
+  },
+  "web/js/grammar/topics.js": {
+    "version": "20261004-primary-grammar-r1",
+    "sha256": "3cb38587819e5d76"
+  },
+  "web/js/grammar/yufan/index.js": {
+    "version": "20260928-yufan-r5",
+    "sha256": "e45f43d512b3ad6d"
+  },
+  "web/js/grammar/yufan/manifest.js": {
+    "version": "20260928-yufan-r5",
+    "sha256": "f885b8a70b9d8dbf"
+  },
+  "web/js/learningContext.js": {
+    "version": "20261007-agent-leakfix-r1",
+    "sha256": "d2cc49468e29a8b9"
+  },
+  "web/js/main.js": {
+    "version": "20261007-reportview-nullfix-r1",
+    "sha256": "e576281dc2ee1daf"
+  },
+  "web/js/markdown.js": {
+    "version": "20261006-agent-ux-r1",
+    "sha256": "053bae6601b1039e"
+  },
+  "web/js/phonemeAudio.js": {
+    "version": "20260905-ipa-r5",
+    "sha256": "56b4e4aa557bca56"
+  },
+  "web/js/speech.js": {
+    "version": "20260905-ipa-r3",
+    "sha256": "e13744f49013ced4"
+  },
+  "web/js/tongbu/index.js": {
+    "version": "20260926-tongbu-r2",
+    "sha256": "9b41760196eeda28"
+  },
+  "web/learner-report.css": {
+    "version": "20261004-calendar-r1",
+    "sha256": "f161f67e6dbc097a"
+  },
+  "web/meaning.css": {
+    "version": "20261004-auto-next",
+    "sha256": "f4635f280f6c386d"
+  },
+  "web/phonetics.css": {
+    "version": "20260905-ipa-r2",
+    "sha256": "8644ed121e4439a6"
+  },
+  "web/platform-v2.css": {
+    "version": "20260720-platform-v2",
+    "sha256": "1f47a11ff5bb3253"
+  },
+  "web/reading.css": {
+    "version": "20260720-reading",
+    "sha256": "40767be066427669"
+  },
+  "web/redesign.css": {
+    "version": "20261004-auto-next",
+    "sha256": "90a35e0b02f4dc20"
+  },
+  "web/responsive.css": {
+    "version": "20260721-left-sidebar",
+    "sha256": "140208e085425fc5"
+  },
+  "web/review.css": {
+    "version": "20260720-reading",
+    "sha256": "a2261074ed5c73f7"
+  },
+  "web/smart-learning.css": {
+    "version": "20260727-smart-learning-r2",
+    "sha256": "c35b798d2b5c2059"
+  },
+  "web/style.css": {
+    "version": "20260720-reading",
+    "sha256": "2ab7d34a595a568f"
+  },
+  "web/tongbu.css": {
+    "version": "20261006-agent-rail-reflow-r2",
+    "sha256": "38ca31232944c54c"
+  },
+  "web/user-menu.css": {
+    "version": "20260720-platform",
+    "sha256": "5d906deed264ba13"
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "startedAt": "2026-10-06T16:21:16.772Z",
+  "base": "http://www.gbw3bao.com",
+  "checks": [
+    {
+      "id": "L0 线上可达",
+      "ok": true,
+      "detail": "HTTP 200 / 3233 字节"
+    },
+    {
+      "id": "L0 /api/health",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "L1 部署一致性（本地 SHA1 = 线上 SHA1）",
+      "ok": false,
+      "detail": "不一致 19/21：web/index.html, web/agent.css, web/grammar.css, web/tongbu.css, web/js/main.js, web/js/learningContext.js, web/js/agentSpeech.js, web/js/components/AgentAssistant.js, web/js/components/AgentTeachingCard.js, web/js/components/MeaningPracticeView.js, web/js/components/QuizView.js, web/js/components/ReadingView.js, web/js/components/DrillView.js, web/js/components/ExamView.js, web/js/components/HomeworkView.js, web/js/components/TongbuView.js, web/js/components/CourseView.js, web/js/components/MistakesView.js, web/js/components/GrammarView.js"
+    },
+    {
+      "id": "L2 线上注册/登录可用",
+      "ok": true,
+      "detail": "accept-muwvylyo → register:200"
+    },
+    {
+      "id": "L3 面板为浮动形态（fixed / ≈420px / 贴右缘）",
+      "ok": false,
+      "detail": "{\"cls\":\"agent-assistant\",\"position\":\"static\",\"width\":410,\"right\":0,\"bodyOpen\":false}"
+    },
+    {
+      "id": "L4 面板打开时页面让位",
+      "ok": false,
+      "detail": "body.agent-open=false"
+    },
+    {
+      "id": "L5 浮动面板零遮挡（且真的量到了元素）",
+      "ok": true,
+      "detail": ".meaning-options:0/9 .meaning-prompt:0/9 .meaning-heading:0/9 total=0/27"
+    },
+    {
+      "id": "L6 状态胶囊显示场景/进度",
+      "ok": false,
+      "detail": "胶囊文案=\"\""
+    },
+    {
+      "id": "L7 真模型回答渲染成教学卡片",
+      "ok": false,
+      "detail": "{\"cards\":0,\"words\":0,\"markdown\":1,\"headline\":\"\",\"chips\":0,\"jsonLeak\":false}"
+    },
+    {
+      "id": "L8 卡片里的英文可点读（agent-word）",
+      "ok": false,
+      "detail": "agent-word=0"
+    },
+    {
+      "id": "L9 没有 JSON 泄漏到界面",
+      "ok": true,
+      "detail": "jsonLeak=false"
+    },
+    {
+      "id": "L10 助教已读回执 chips",
+      "ok": false,
+      "detail": "chips=0"
+    },
+    {
+      "id": "L11 阅读页选词浮条：朗读 / 讲解 / 入册",
+      "ok": false,
+      "detail": "{}"
+    },
+    {
+      "id": "L12 交互全过程没有 JS 报错",
+      "ok": true,
+      "detail": "0 条"
+    }
+  ],
+  "deployment": [
+    {
+      "file": "web/index.html",
+      "local": "0e3a371f509343580aad50e0f1cdb342e2dcd3e8",
+      "online": "bfd527470704ad7b80548cdf32937d844dea12c3",
+      "match": false
+    },
+    {
+      "file": "web/agent.css",
+      "local": "bab0960816c8e21c6e690f3566bff111aa0fe2e9",
+      "online": "d92dde06df1f269750caeab80a28c40488f5be2c",
+      "match": false
+    },
+    {
+      "file": "web/grammar.css",
+      "local": "8221d53695d2ffdb3ebe0a1130669c9327eba789",
+      "online": "38268a591741593ccce15ed310533df4f1d8c821",
+      "match": false
+    },
+    {
+      "file": "web/tongbu.css",
+      "local": "7601746be94d1255c2d33bc27b643ba54f0a0969",
+      "online": "44eef215271dd008f41ceb971ab9680fad4156e3",
+      "match": false
+    },
+    {
+      "file": "web/js/main.js",
+      "local": "9a712972775015447d7cd708fbdb4dc514a36160",
+      "online": "248e978eacd1b18062a516e87cb0f4f11b4ebaf7",
+      "match": false
+    },
+    {
+      "file": "web/js/learningContext.js",
+      "local": "c0be885177bd9e53136629cfb9d83c230f5ceaa3",
+      "online": "423455b21dcf58474f8e4c9602eee9d54e3360ac",
+      "match": false
+    },
+    {
+      "file": "web/js/agentSpeech.js",
+      "local": "fa0756a3d4d4c1194c08762b8b4c64694fbe520b",
+      "online": "HTTP 404",
+      "match": false
+    },
+    {
+      "file": "web/js/speech.js",
+      "local": "21e1b96b8a2f90079b8d21aba96562acd5104c2c",
+      "online": "21e1b96b8a2f90079b8d21aba96562acd5104c2c",
+      "match": true
+    },
+    {
+      "file": "web/js/components/AgentAssistant.js",
+      "local": "cdb4cc1a05a7a0384ab8a0505a791e05072a4da3",
+      "online": "8a15b041b150bae10da052070e394cba13c88cb1",
+      "match": false
+    },
+    {
+      "file": "web/js/components/AgentTeachingCard.js",
+      "local": "7f49d914b2a8fd03fc473fa1f31b8daf0c25ac9a",
+      "online": "HTTP 404",
+      "match": false
+    },
+    {
+      "file": "web/js/components/MeaningPracticeView.js",
+      "local": "e37965cbf77d93dc16bcd49211d1a6c484ac591d",
+      "online": "d578eebb0e07f9f163e2300e5c210674098ce990",
+      "match": false
+    },
+    {
+      "file": "web/js/components/QuizView.js",
+      "local": "640fdb5d59bf6f3d587f5733786c2961ef71c576",
+      "online": "96f2b2f5e5ce4730d15a5351006a3a4983b9fd67",
+      "match": false
+    },
+    {
+      "file": "web/js/components/ReadingView.js",
+      "local": "8b1bf2fe4b3232e451dfbb4c65088fbe3e8beb07",
+      "online": "80323829390b26f86a233feee04deb4029f544fc",
+      "match": false
+    },
+    {
+      "file": "web/js/components/DrillView.js",
+      "local": "f2850d58b054cc03d2dca5fa63c9b7ca3bfebd54",
+      "online": "d89fa1b0fc98cba0802a23fb9c14e4b46c538e86",
+      "match": false
+    },
+    {
+      "file": "web/js/components/ExamView.js",
+      "local": "16267381e558f294be8d697989721e1df07c43cf",
+      "online": "a880e83ef3ce28181602c72bc02eccd6236593cd",
+      "match": false
+    },
+    {
+      "file": "web/js/components/HomeworkView.js",
+      "local": "55e5986cbff408f992e9fc40a6d5bcb82a149f66",
+      "online": "3bb11c676ace14c00fb2deb836fadeff0a8bff8e",
+      "match": false
+    },
+    {
+      "file": "web/js/components/TongbuView.js",
+      "local": "3fc223259fca587da749eb25e74099b1c487ad29",
+      "online": "1560c9d6316658b5983f1b90c55defcb40a88fa4",
+      "match": false
+    },
+    {
+      "file": "web/js/components/CourseView.js",
+      "local": "bacb09475ec6cd3385d2cb90301af6ad006dc72b",
+      "online": "fd513fbfdf1d7b34b86754d7fff8f5676abb7761",
+      "match": false
+    },
+    {
+      "file": "web/js/components/MistakesView.js",
+      "local": "59dc0207f4ac9cc26f3aeb1c3561624c54b1946c",
+      "online": "cc47d3ad508a18e34b97cd001ea5647546671b33",
+      "match": false
+    },
+    {
+      "file": "web/js/components/GrammarView.js",
+      "local": "da7e1dfb3f2d508a82133e507b04911367c607a0",
+      "online": "77e8e983269f1b05d7412e03d379b93c30396ea4",
+      "match": false
+    },
+    {
+      "file": "web/js/components/SmartLearningView.js",
+      "local": "300c6d1de2118a24ddbfe53b09c2541e47f8acda",
+      "online": "300c6d1de2118a24ddbfe53b09c2541e47f8acda",
+      "match": true
+    }
+  ],
+  "consoleErrors": [],
+  "shots": {
+    "agent-live-acceptance-panel.png": "docs/images/agent-live-acceptance-panel.png",
+    "agent-live-acceptance-reading.png": "docs/images/agent-live-acceptance-reading.png"
+  },
+  "account": "accept-muwvylyo",
+  "panel": {
+    "cls": "agent-assistant",
+    "position": "static",
+    "width": 410,
+    "right": 0,
+    "bodyOpen": false
+  },
+  "occlusion": [
+    {
+      "sel": ".meaning-options",
+      "found": true,
+      "covered": 0,
+      "sampled": 9,
+      "rect": [
+        305,
+        370,
+        574,
+        124
+      ]
+    },
+    {
+      "sel": ".meaning-prompt",
+      "found": true,
+      "covered": 0,
+      "sampled": 9,
+      "rect": [
+        305,
+        405,
+        574,
+        55
+      ]
+    },
+    {
+      "sel": ".meaning-heading",
+      "found": true,
+      "covered": 0,
+      "sampled": 9,
+      "rect": [
+        270,
+        0,
+        1136,
+        91
+      ]
+    }
+  ],
+  "capsule": "",
+  "answer": {
+    "cards": 0,
+    "words": 0,
+    "markdown": 1,
+    "headline": "",
+    "chips": 0,
+    "jsonLeak": false
+  },
+  "reading": {},
+  "finishedAt": "2026-10-06T16:21:21.920Z",
+  "passed": 6,
+  "failed": 8
+}

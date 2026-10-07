@@ -2,7 +2,8 @@
 // 三个页面共用这个组件，只通过 mode / audioOnly 区分出题与展示方式。
 // 练习覆盖当前筛选命中的全部单词：按页取题（默认每页 12 题），翻页即可把
 // 整个年级、主题或词性下的单词练完，而不是随机抽十题。
-import { publishContext, askAssistant, noteAnswer } from '../learningContext.js?v=20261004-agent-stream-r3';
+import { publishContext, askAssistant, noteAnswer, askInline, agentEnabled } from '../learningContext.js?v=20261007-agent-leakfix-r1';
+import AgentTeachingCard from './AgentTeachingCard.js?v=20261006-agent-ux-r1';
 
 // 反馈条上的“不懂，讲讲”按钮：文案在页面里，问题本身由服务端按场景生成。
 const ASK_LABELS = { explain: '讲讲这道题', 'explain-wrong': '不懂，讲讲', compare: '易混词对比', drill: '出同类题', 'add-review': '加入今日复习' };
@@ -44,8 +45,11 @@ export default {
     mode: { type: String, default: 'en-zh' },
     audioOnly: { type: Boolean, default: false },
     userId: { type: String, default: '' },
+    // 助教面板「定位题目」下发的目标：{ wordId, level, token }
+    focusTarget: { type: Object, default: null },
   },
   emits: ['speak', 'navigate', 'answered'],
+  components: { AgentTeachingCard },
   data() {
     return {
       scope: 'all',
@@ -78,6 +82,15 @@ export default {
       autoNext: true,
       autoNextTimer: null,
       autoNextPending: false,
+      agentReady: false,      // 助教是否可用：不可用时不显示讲解入口
+      inlineCard: null,       // 就地讲解卡（结构化卡片）
+      inlineBusy: false,
+      inlineError: '',
+      inlineFor: '',          // 讲解卡属于哪道题（换题后丢弃迟到的结果）
+      inlineNote: '',         // 卡内动作（加入复习）的回执文案
+      inlineTimer: null,
+      focusHighlight: false,  // 「定位题目」的两秒高亮
+      focusTimer: null,
     };
   },
   computed: {
@@ -140,6 +153,18 @@ export default {
       return this.items.map((item, position) => {
         const entry = this.answers[wordKey(item.word)];
         return { position, key: wordKey(item.word), className: entry ? (entry.correct ? 'correct' : 'wrong') : '' };
+      });
+    },
+    // 本页全景（契约 P1-3）：把这一页每道题的作答结果一起报给助教（≤20 条）。
+    // 没作答的 correct 用 null，服务端才能区分“还没做”和“做错了”。
+    pageMap() {
+      return this.items.slice(0, 20).map((item) => {
+        const entry = this.answers[wordKey(item.word)];
+        return {
+          wordId: item.word.id,
+          spelling: item.word.word,
+          correct: entry ? !!entry.correct : null,
+        };
       });
     },
     // 计数与错词清单在作答时增量维护，渲染成本不随练习量增长。
@@ -208,16 +233,28 @@ export default {
     activeMode() {
       this.switchMode();
     },
+    // 助教面板的「定位题目」：跳到本页对应的那道题并高亮两秒。
+    focusTarget(target) {
+      this.locateFocus(target);
+    },
   },
   mounted() {
     window.addEventListener('keydown', this.handleKeydown);
     this.restoreAutoNext();
     this.restoreSession();
+    // 助教没启用（enabled:false）或状态接口失败时，讲解入口保持隐藏，页面照常可用。
+    try {
+      agentEnabled().then((enabled) => { this.agentReady = !!enabled; });
+    } catch (_) {
+      this.agentReady = false;
+    }
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeydown);
     this.cancelAutoNext();
     this.flushSession();
+    if (this.focusTimer) window.clearTimeout(this.focusTimer);
+    if (this.inlineTimer) window.clearTimeout(this.inlineTimer);
   },
   methods: {
     // 把“我正在做哪道题”发布到学习上下文总线。只上报定位信息（wordId/level），
@@ -249,12 +286,123 @@ export default {
         sessionCorrect: this.correctCount,
         scope: this.filterLabel,
         topic: this.topic,
+        pageMap: this.pageMap,
       });
     },
-    // 页内提问入口：先取消待跳转，否则讲解会被自动前进切到下一题。
+    // 面板入口（保留给「出同类题」这类需要生成动作的问题）。
     ask(quickAction) {
       this.cancelAutoNext();
       askAssistant('', { quickAction, label: ASK_LABELS[quickAction] || '问问助教' });
+    },
+    // 就地讲解（契约 P0-2）：讲解卡展开在题目卡下方，不遮挡选项，也不把人拽到右下角面板。
+    async inlineTeach(quickAction = '', message = '') {
+      // 先取消待跳转，否则答对后的自动前进会把讲解切走。
+      this.cancelAutoNext();
+      if (this.inlineBusy || !this.current) return;
+      const key = this.currentKey;
+      const action = quickAction || (this.feedbackCorrect ? 'explain' : 'explain-wrong');
+      this.inlineCard = null;
+      this.inlineError = '';
+      this.inlineNote = '';
+      this.inlineBusy = true;
+      this.inlineFor = key;
+      const result = await askInline({
+        quickAction: action,
+        message: message || '',
+        label: ASK_LABELS[action] || '问问助教',
+        contextPatch: { view: this.viewId, scene: 'meaning' },
+      });
+      // 等待期间可能已经翻题：迟到的结果直接丢掉，避免串题。
+      if (this.inlineFor !== key) return;
+      this.inlineBusy = false;
+      if (result.card) {
+        this.inlineCard = result.card;
+        return;
+      }
+      // 服务端没给出结构化卡片时回落到纯文本讲解，页面不白屏。
+      if (result.message) {
+        this.inlineCard = { kind: 'explain', headline: '助教讲解', points: [{ label: '讲解', text: result.message }] };
+        return;
+      }
+      this.inlineError = result.error || '助教暂时没有给出讲解，请重试。';
+    },
+    resetInline() {
+      this.inlineCard = null;
+      this.inlineError = '';
+      this.inlineBusy = false;
+      this.inlineFor = '';
+      this.inlineNote = '';
+      if (this.inlineTimer) { window.clearTimeout(this.inlineTimer); this.inlineTimer = null; }
+    },
+    showInlineNote(text) {
+      this.inlineNote = String(text || '');
+      if (this.inlineTimer) window.clearTimeout(this.inlineTimer);
+      this.inlineTimer = window.setTimeout(() => { this.inlineNote = ''; }, 5000);
+    },
+    // 卡内「加入今日复习」：只上报定位字段，复习队列由服务端按词库写入。
+    async addInlineReview(word) {
+      const target = word && typeof word === 'object' ? word : {};
+      const current = this.current?.word || {};
+      const wordId = String(target.id || target.wordId || target.word || current.id || '').trim();
+      const spelling = String(target.word || target.spelling || current.word || wordId).trim();
+      if (!wordId && !spelling) {
+        this.showInlineNote('这道题没有可加入复习的单词。');
+        return;
+      }
+      const level = target.level || current.level || (this.scope === 'all' ? 'all' : this.scope);
+      const result = await askInline({
+        quickAction: 'add-review',
+        label: '加入今日复习',
+        contextPatch: { wordId: wordId || spelling, level, spelling },
+      });
+      const action = (result.actions || []).find((item) => item && item.type === 'add-review');
+      const message = (action && action.message) || result.message || '';
+      if (message && !result.error) {
+        this.showInlineNote(message);
+        return;
+      }
+      this.showInlineNote(result.error || '加入复习失败，请稍后重试。');
+    },
+    speakInline(text) {
+      const value = typeof text === 'string' ? text : (text && (text.text || text.en || text.word)) || '';
+      if (value) this.$emit('speak', value);
+    },
+    askInlineAction(payload) {
+      const action = typeof payload === 'string' ? payload : (payload?.quickAction || '');
+      if (action === 'drill') { this.ask('drill'); return; }
+      // 卡片底部行动条的 kind=review 走这里：直接入册，不再去要一张讲解卡。
+      if (action === 'add-review') return this.addInlineReview(this.current && this.current.word);
+      if (action) { this.inlineTeach(action); return; }
+      const message = typeof payload === 'string' ? '' : (payload?.message || '');
+      if (message) { this.inlineTeach('explain', message); return; }
+      // 其它小动作（kind=read 之类）只在页面上回一句提示，不占用讲解卡。
+      const note = typeof payload === 'string' ? '' : (payload?.text || '');
+      if (note) this.showInlineNote(note);
+    },
+    // 助教面板的「定位题目」：本页找得到就跳过去 + 高亮两秒；找不到就交给 main.js 兜底。
+    locateFocus(target) {
+      const wanted = String(target?.wordId || '').trim().toLowerCase();
+      if (!wanted) return;
+      const position = this.items.findIndex((item) => {
+        const id = String(item.word?.id || '').trim().toLowerCase();
+        const spelling = String(item.word?.word || '').trim().toLowerCase();
+        return id === wanted || spelling === wanted;
+      });
+      if (position < 0) return;
+      this.cancelAutoNext();
+      this.index = position;
+      this.speakCurrent();
+      this.publishContext();
+      this.flashFocus();
+    },
+    flashFocus() {
+      if (this.focusTimer) window.clearTimeout(this.focusTimer);
+      this.focusHighlight = true;
+      this.$nextTick(() => {
+        const card = this.$refs.answerCard;
+        if (card && card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      this.focusTimer = window.setTimeout(() => { this.focusHighlight = false; }, 2000);
     },
     partOfSpeechLabel(value) {
       const facet = (this.facets.partsOfSpeech || []).find((item) => item.value === value);
@@ -401,6 +549,7 @@ export default {
     },
     resetAnswers() {
       this.cancelAutoNext();
+      this.resetInline();
       this.answers = {};
       this.wrongList = [];
       this.answeredTotal = 0;
@@ -604,6 +753,7 @@ export default {
       this.index = position === 'last' ? last : this.firstUnansweredIndex();
       this.ready = true;
       this.error = '';
+      this.resetInline();
       this.speakCurrent();
       this.publishContext();
     },
@@ -619,6 +769,7 @@ export default {
     },
     async answer(option) {
       if (this.answered || !this.current) return;
+      this.resetInline();
       const item = this.current;
       const key = this.currentKey;
       try {
@@ -659,6 +810,7 @@ export default {
     },
     previous() {
       this.cancelAutoNext();
+      this.resetInline();
       if (this.index > 0) {
         this.index -= 1;
         this.speakCurrent();
@@ -669,6 +821,7 @@ export default {
     },
     next() {
       this.cancelAutoNext();
+      this.resetInline();
       if (this.index < this.items.length - 1) {
         this.index += 1;
         this.speakCurrent();
@@ -679,6 +832,7 @@ export default {
     },
     gotoQuestion(position) {
       this.cancelAutoNext();
+      this.resetInline();
       this.index = position;
       this.speakCurrent();
       this.publishContext();
@@ -808,7 +962,7 @@ export default {
 
       <template v-else>
         <div class="meaning-layout">
-          <div v-if="current" class="meaning-card">
+          <div v-if="current" class="meaning-card" :class="{'is-agent-focus':focusHighlight}" :style="focusHighlight ? {boxShadow:'0 0 0 3px rgba(247, 181, 0, .85)'} : null" ref="answerCard">
             <div class="meaning-counter">第 {{ positionLabel }} / {{ total }} 题</div>
             <div class="tag">{{ audioOnly ? '听发音，选汉语意思' : questionType === 'zh-en' ? '看汉语意思，选英文单词' : '看英文单词，选汉语意思' }}</div>
 
@@ -838,11 +992,36 @@ export default {
               <b>{{ feedbackCorrect ? '回答正确' : '再巩固一下' }}</b>
               <span>{{ hint }}</span>
               <em v-if="autoNextPending" class="meaning-auto-note">{{ autoNextNote }}</em>
-              <div class="meaning-ask">
-                <button class="primary" @click="ask(feedbackCorrect ? 'explain' : 'explain-wrong')">{{ feedbackCorrect ? '讲讲这道题' : '不懂，讲讲' }}</button>
+              <!-- 助教没启用时连入口一起隐藏：页面不留点了没反应的按钮。 -->
+              <div v-if="agentReady" class="meaning-ask">
+                <button class="primary" :disabled="inlineBusy" @click="inlineTeach(feedbackCorrect ? 'explain' : 'explain-wrong')">{{ inlineBusy ? '正在讲解…' : (feedbackCorrect ? '讲讲这道题' : '不懂，讲讲') }}</button>
                 <button @click="ask('drill')">出同类题</button>
               </div>
             </div>
+
+            <!-- 就地讲解卡：紧跟在题目卡下方，不遮挡选项区，也不需要跳到右下角面板。 -->
+            <section v-if="agentReady && (inlineBusy || inlineCard || inlineError)" class="agent-inline-teach" aria-live="polite">
+              <header class="agent-inline-head">
+                <b>助教讲解</b>
+                <span v-if="inlineNote" class="agent-inline-note">{{ inlineNote }}</span>
+                <button @click="resetInline()">收起</button>
+              </header>
+              <div v-if="inlineBusy" class="agent-inline-skeleton" aria-label="助教正在准备讲解">
+                <span></span><span></span><span></span>
+              </div>
+              <agent-teaching-card
+                v-else-if="inlineCard"
+                :card="inlineCard"
+                compact
+                @add-review="addInlineReview"
+                @speak="speakInline"
+                @ask="askInlineAction"
+              />
+              <div v-else class="agent-inline-error" role="alert">
+                <span>{{ inlineError }}</span>
+                <button class="primary" @click="inlineTeach()">重试</button>
+              </div>
+            </section>
             <p v-else class="meaning-keyboard-tip">按数字键 1-4 选择答案，← → 翻题</p>
 
             <section v-if="answered" class="meaning-word-detail">

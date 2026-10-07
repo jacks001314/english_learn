@@ -625,3 +625,16 @@
   .tb-actions { margin-left: 0; }
   .tb-qtext { min-width: 100%; }
 }
+
+/* ---------- 助教浮动栏占位时的重排补偿 ---------- */
+/* 同 grammar.css：作业列表在助教浮动栏打开时收窄，把宽度让给右侧题目列。 */
+/* ≥1400：放得下 232px 列表列 + 可读题目列 */
+@media (min-width: 1400px) {
+  body.agent-open .tongbu-layout { grid-template-columns: 232px minmax(0, 1fr); }
+}
+/* 1101–1399：420px 浮动栏 + 288px 列表列会把题目列挤到几十像素（实测 1008px 视口下 .tb-items 只有 15px），
+   这一段改为纵向叠放（列表在上、题目在下），保证题目列 ≥300px。≤1100 是抽屉形态、页面本来就全宽，不需要补偿。 */
+@media (min-width: 1101px) and (max-width: 1399px) {
+  body.agent-open .tongbu-layout { grid-template-columns: minmax(0, 1fr); }
+  body.agent-open .tongbu-list { position: static; max-height: none; }
+}

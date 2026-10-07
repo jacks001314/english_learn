@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智能助教 × 页面 · 端到端验证台（docs/agent-ux-e2e-harness.html）</title>
+<!--
+  这个页面不是产品的一部分，是「智能助教 UX 改造」的验证台（对应
+  docs/agent-ux-optimization.md 的 V1–V6）。
+
+  它做三件事：
+  1. 用**真实的样式表**（与 web/index.html 同一组）与**真实的页面结构**
+     （.app-shell > .app-content > main + <agent-assistant> 兄弟节点，
+       .meaning-view / .meaning-layout / .meaning-card / .meaning-review，
+       与 web/js/components/MeaningPracticeView.js 的模板同构）搭出「看词选义」课中态，
+     这样"面板到底有没有盖住错词栏和选项"是可量的，而不是看原型自说自话；
+  2. 用**真实的前端模块**（AgentAssistant.js / AgentTeachingCard.js /
+     agentSpeech.js / learningContext.js），不复制实现，验的就是即将上线的那份代码；
+  3. 只把**模型传输层**换成桩（契约 §1–§3 的样例响应）。真实服务端一侧由
+     internal/learning/agent_http_contract_test.go 的 HTTP 端到端测试覆盖。
+
+  用法（项目根起静态服务，不能用 file://）：
+    python -m http.server 8123
+    http://127.0.0.1:8123/docs/agent-ux-e2e-harness.html?auto=1&mode=float&state=card
+  或一条命令跑完全部断言：node scripts/agent-ux-verify.mjs
+
+  查询参数：
+    mode=float|dock            面板形态（浮动 / 停靠栏）
+    state=card|streaming|text  桩的回答形态（结构化卡片 / 流式中 / 纯文本回落）
+    scene=meaning|quiz|reading|mistake|tongbu|homework|course|drill|exam|grammar
+                               页面场景（默认 meaning）。按该场景的契约 §5 字段名
+                               publishContext，并让桩的回执 / 快照带上同一场景的字段，
+                               这样 V5「六类页面都有状态胶囊」在验证台上是可断言的
+    auto=1                     载入后展开面板并发「为什么我选错了」
+    inline=1                   额外演示页内就地讲解（P0-2）
+    report=1                   页面上写出机器可读结论（scripts/agent-ux-verify.mjs 用）
+-->
+<link rel="stylesheet" href="../web/style.css?v=harness">
+<link rel="stylesheet" href="../web/review.css?v=harness">
+<link rel="stylesheet" href="../web/content.css?v=harness">
+<link rel="stylesheet" href="../web/reading.css?v=harness">
+<link rel="stylesheet" href="../web/hot-topics.css?v=harness">
+<link rel="stylesheet" href="../web/responsive.css?v=harness">
+<link rel="stylesheet" href="../web/auth-admin.css?v=harness">
+<link rel="stylesheet" href="../web/user-menu.css?v=harness">
+<link rel="stylesheet" href="../web/platform-v2.css?v=harness">
+<link rel="stylesheet" href="../web/content-workbench.css?v=harness">
+<link rel="stylesheet" href="../web/exam.css?v=harness">
+<link rel="stylesheet" href="../web/agent.css?v=20261006-agent-ux-r1">
+<link rel="stylesheet" href="../web/factory.css?v=harness">
+<link rel="stylesheet" href="../web/redesign.css?v=harness">
+<link rel="stylesheet" href="../web/exam-workbench.css?v=harness">
+<link rel="stylesheet" href="../web/content-lifecycle.css?v=harness">
+<link rel="stylesheet" href="../web/smart-learning.css?v=harness">
+<link rel="stylesheet" href="../web/course.css?v=harness">
+<link rel="stylesheet" href="../web/homework-admin.css?v=harness">
+<link rel="stylesheet" href="../web/adaptive-desktop.css?v=harness">
+<link rel="stylesheet" href="../web/phonetics.css?v=harness">
+<link rel="stylesheet" href="../web/grammar.css?v=harness">
+<link rel="stylesheet" href="../web/tongbu.css?v=harness">
+<link rel="stylesheet" href="../web/meaning.css?v=harness">
+<link rel="stylesheet" href="../web/learner-report.css?v=harness">
+<style>
+  /* 验证台自己的脚手架样式，全部带 harness- 前缀，避免污染被测样式。 */
+  html, body { margin: 0; }
+  .harness-badge { position: fixed; left: 8px; bottom: 8px; z-index: 99999; padding: 4px 10px; border-radius: 999px;
+    background: #123d30; color: #d8f3e7; font: 12px/1.6 system-ui; opacity: .88; max-width: 60vw; }
+  .harness-inline { margin-top: 12px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="app-shell">
+    <aside class="app-sidebar">
+      <div class="sidebar-brand"><span class="brand-mark">LB</span><div class="brand-copy"><strong>Lingo Bloom</strong><small>英语学习平台</small></div></div>
+      <nav class="side-nav" aria-label="学习导航">
+        <div class="nav-group-label">今日</div>
+        <button title="学习首页"><span class="nav-icon">HM</span><span class="nav-label">学习首页</span></button>
+        <button title="AI 智能学习台"><span class="nav-icon">AI</span><span class="nav-label">AI 智能学习台</span></button>
+        <div class="nav-group-label">学习与练习</div>
+        <button class="active" title="看词选义"><span class="nav-icon">EZ</span><span class="nav-label">看词选义</span></button>
+        <button title="看义选词"><span class="nav-icon">CE</span><span class="nav-label">看义选词</span></button>
+        <button title="听音选义"><span class="nav-icon">LA</span><span class="nav-label">听音选义</span></button>
+        <button title="单词测验"><span class="nav-icon">Q</span><span class="nav-label">单词测验</span></button>
+        <button title="英语阅读"><span class="nav-icon">R</span><span class="nav-label">英语阅读</span></button>
+      </nav>
+    </aside>
+
+    <div class="app-content">
+      <main id="main-content" tabindex="-1">
+        <section class="view meaning-view">
+          <div class="section-heading meaning-heading">
+            <div>
+              <span class="tag">WORD MEANING</span>
+              <h2>看词选义</h2>
+              <p class="meaning-intro">看英文单词，从四个汉语意思里选出正确的一个。</p>
+            </div>
+            <strong>可练习 4590 / 4590 个单词</strong>
+          </div>
+
+          <div class="toolbar meaning-filters">
+            <select aria-label="练习来源"><option>全部单词</option></select>
+            <select aria-label="练习范围"><option>全部范围（小学 + 初中）</option></select>
+            <select aria-label="年级"><option>全部年级</option></select>
+            <select aria-label="主题"><option>全部主题</option></select>
+            <select aria-label="题目顺序"><option>字母顺序 A→Z</option></select>
+            <button>打乱顺序</button>
+            <button>清除筛选</button>
+          </div>
+          <p class="meaning-filter-summary">当前范围：<strong>全部范围（小学 + 初中）</strong> · 命中 4590 个单词，每页 12 题，共 383 页</p>
+
+          <div class="meaning-progress" aria-label="练习进度">
+            <div>
+              <span class="on">1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+              <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+            </div>
+            <small>本页 2 / 12 · 已练 7 / 4590 · 答对 6（86%）</small>
+            <div class="meaning-actions"><button>清空作答</button></div>
+          </div>
+
+          <div class="meaning-layout">
+            <div class="meaning-card">
+              <div class="meaning-counter">第 13 / 4590 题</div>
+              <div class="tag">看英文单词，选汉语意思</div>
+              <h2 class="meaning-prompt">a kind of</h2>
+              <p class="meaning-phonetic">/ə kaɪnd əv, əv/</p>
+              <button class="sound">▶ 听一听</button>
+              <div class="options meaning-options">
+                <button class="wrong"><kbd>1</kbd><span>一种,一类</span></button>
+                <button><kbd>2</kbd><span>邀请;招待</span></button>
+                <button><kbd>3</kbd><span>因为</span></button>
+                <button class="correct"><kbd>4</kbd><span>有相同特征</span><i>正确</i></button>
+              </div>
+              <div class="meaning-feedback is-wrong" aria-live="polite">
+                <b>再巩固一下</b>
+                <span>你选了「有相同特征」，正确答案是「一种,一类」。</span>
+                <div class="meaning-ask">
+                  <button class="primary">不懂，讲讲</button>
+                  <button>出同类题</button>
+                </div>
+              </div>
+              <section class="meaning-word-detail">
+                <div><strong>a kind of</strong><span>/ə kaɪnd əv, əv/</span><button class="sound">▶</button></div>
+                <p>一种,一类<em>（短语）</em></p>
+                <p class="meaning-example">A panda is a kind of bear.</p>
+                <small>熊猫是一种熊。</small>
+                <div class="meaning-word-tags"><span>初中</span><span>科普</span><span>初中词汇</span></div>
+              </section>
+              <div class="meaning-question-nav"><button>← 上一题</button><button>下一题 →</button></div>
+              <div class="harness-inline" id="inlineHost" ref="inlineHost"></div>
+            </div>
+
+            <aside class="meaning-review">
+              <header><span>错词</span><b>7 个</b></header>
+              <div>
+                <button><span><b>a bit</b><small>一点儿 · 你的答案：(火车等的)轨道，跑起来</small></span><em>查看 →</em></button>
+                <button><span><b>cheetah</b><small>猎豹 · 你的答案：猫科动物</small></span><em>查看 →</em></button>
+                <button><span><b>track</b><small>轨道 · 你的答案：足迹</small></span><em>查看 →</em></button>
+                <button><span><b>invite</b><small>邀请 · 你的答案：发明</small></span><em>查看 →</em></button>
+                <button><span><b>because</b><small>因为 · 你的答案：成为</small></span><em>查看 →</em></button>
+                <button><span><b>similar</b><small>相似的 · 你的答案：简单的</small></span><em>查看 →</em></button>
+                <button><span><b>holiday</b><small>假日 · 你的答案：医院</small></span><em>查看 →</em></button>
+              </div>
+              <p class="meaning-status">已练 7 / 4590 词 · 答对 6 题</p>
+            </aside>
+          </div>
+
+          <div class="pager meaning-pager">
+            <button>首页</button><button>上一页</button>
+            <span>第 2 / 383 页</span>
+            <button>下一页</button><button>末页</button>
+          </div>
+        </section>
+      </main>
+
+      <agent-assistant ref="assistant" mode="meaning" @navigate="onNavigate" @focus-item="onFocusItem"></agent-assistant>
+      <footer>坚持一点点，进步看得见。</footer>
+    </div>
+  </div>
+</div>
+
+<div class="harness-badge" id="badge">验证台</div>
+
+<script>
+// ---------------------------------------------------------------- 传输层桩
+// 只替换 fetch：真实模块照常跑。响应体严格按契约 §1–§3 的字段写，
+// 这样"前端能不能渲染出卡片"就是真问题，而不是桩喂得太好。
+(function () {
+  const params = new URLSearchParams(location.search);
+  const state = params.get('state') || 'card';
+  // fold=1：换一条**很长的纯文本回答**（card=null）。长回答折叠只对回落成 Markdown 的
+  // 散文回答生效（结构化卡片折起来会把 sticky 行动条一起藏掉），所以桩必须真的能给出这条回答。
+  const foldProbe = params.get('fold') === '1';
+  // scene 决定 publishContext 用哪组字段（契约 §5）。桩的回执 / 快照也按同一场景生成，
+  // 否则会出现「胶囊说在考试讲解、回执却说自己在看词选义」这种前后矛盾而没人发现。
+  const SCENE_NAMES = ['meaning', 'quiz', 'reading', 'mistake', 'tongbu', 'homework', 'course', 'drill', 'exam', 'grammar'];
+  const sceneArg = String(params.get('scene') || '').toLowerCase();
+  const scene = SCENE_NAMES.indexOf(sceneArg) >= 0 ? sceneArg : 'meaning';
+  const badge = document.getElementById('badge');
+  badge.textContent = '验证台 · ' + (params.get('mode') || 'float') + ' · ' + scene + ' · ' + state;
+
+  // 六类场景行标题沿用契约 §5 的字段名（【作业讲解】【同步训练】…），
+  // 与页面真正 publishContext 出去的那几个键一一对应。
+  const SCENE_STUB = {
+    meaning: { label: '词义练习', line: '【学生档案】\n【当前题目】a kind of（/ə kaɪnd əv/） 选项：一种,一类｜邀请;招待｜因为｜有相同特征｜ 学生选了「有相同特征」，正确答案是「一种,一类」\n【本页全景】本页 12 题：已答 7、错 1（cheetah）\n【近期错题】cheetah（错 2 次，猎豹）' },
+    quiz: { label: '单词测验', line: '【学生档案】\n【单词测验】quizType=en-zh level=middle 第 4 / 10 题：cheetah（/ˈtʃiːtə/） 学生选了「猫科动物」，正确答案是「猎豹」\n【练习进度】已答 3、答对 2' },
+    reading: { label: '阅读理解', line: '【学生档案】\n【阅读段落】Giant Pandas（art-panda） 第 3 / 6 段：A panda is a kind of bear.\n【阅读任务】逐句拆解句子成分与指代关系' },
+    mistake: { label: '错题归因', line: '【学生档案】\n【错题归因】track（/træk/） 释义「轨道」 学生选了「足迹」，正确答案「轨道」，该词已错 3 次' },
+    tongbu: { label: '同步训练', line: '【学生档案】\n【同步训练】setTitle=人教版八年级上 Unit 3｜unitIndex=2｜setId=tb-mid-u3｜ 第 5 题\n【练习进度】已答 4、答对 3' },
+    homework: { label: '作业讲解', line: '【学生档案】\n【作业讲解】homeworkTitle=Unit 5 词汇作业｜homeworkId=hw-2041｜questionIndex=3｜questionType=choice\n【作答要求】只讲思路与排除法，不直接给答案' },
+    course: { label: '课程学习', line: '【学生档案】\n【课程学习】courseUnit=Unit 4｜courseSection=Reading｜ 第 2 节\n【学习目标】读懂说明文里的定义与举例' },
+    drill: { label: '变式练习', line: '【学生档案】\n【变式练习】drillFocus=a kind of｜drillCount=3｜ 第 2 / 3 题\n【变式意图】用同类语境巩固「种类归属」义项' },
+    exam: { label: '考试讲解', line: '【学生档案】\n【考试讲解】examTitle=2026 秋季期中英语卷｜questionNo=7｜subject=英语\n【作答要求】只讲思路与排除法，不直接给答案' },
+    grammar: { label: '语法专题', line: '【学生档案】\n【语法专题】grammarTopic=一般现在时｜ 第 4 题\n【讲解顺序】规则 → 标志词 → 常见错误 → 一个可迁移的例子' },
+  };
+  const sceneStub = SCENE_STUB[scene];
+  const hasWords = scene !== 'grammar' && scene !== 'course';
+  const receipt = {
+    items: [
+      { key: 'current', label: '本题', ok: hasWords },
+      { key: 'history', label: '该词历史', ok: hasWords && scene !== 'homework' },
+      { key: 'session', label: '练习进度', ok: scene !== 'grammar' },
+      { key: 'page', label: '本页全景', ok: scene === 'meaning' },
+      { key: 'scene', label: sceneStub.label, ok: true },
+      { key: 'weak', label: '薄弱词', ok: hasWords },
+      { key: 'review', label: '今日到期', ok: false },
+    ],
+    stale: false,
+    text: sceneStub.line,
+  };
+
+  const cardResponse = {
+    message: '{"kind":"explain","headline":"a kind of = 一种、一类（强调“种类归属”）"}',
+    threadId: 'harness-thread', model: 'stub-model', providerId: 'stub-provider', engine: 'codex-core',
+    durationMs: 1830,
+    card: {
+      kind: 'explain',
+      headline: 'a kind of = 一种、一类（强调“种类归属”）',
+      verdict: '你选了「有相同特征」，正确答案是「一种,一类」',
+      points: [
+        { label: '记忆线索', text: 'kind 本身是“种类”，a kind of 就是“某一种”，后面一定跟名词。' },
+        { label: '易混对比', text: 'a bit 表示“一点儿”，跟种类无关；a kind of 不能说成有相同特征。' },
+      ],
+      example: { en: 'A panda is a kind of bear.', zh: '熊猫是一种熊。' },
+      check: { prompt: '试着造一句：A cheetah is a kind of ___.', answer: 'cat' },
+      words: [
+        { word: 'cheetah', meaning: '猎豹', level: 'middle', id: 'cheetah' },
+        { word: 'bear', meaning: '熊', level: 'primary', id: 'bear' },
+      ],
+      action: { label: '30 秒小动作', text: '把例句读两遍，再自己造一句 A ___ is a kind of ___.', kind: 'read' },
+    },
+    receipt: receipt,
+    snapshotText: receipt.text,
+  };
+
+  const textResponse = {
+    message: 'a kind of 的意思是“一种、一类”，强调种类归属；你选的“有相同特征”是 kind 的另一个义项被用错了位置。\n\n**例句**：A panda is a kind of bear.（熊猫是一种熊。）',
+    threadId: 'harness-thread', model: 'stub-model', durationMs: 900,
+    receipt: receipt, snapshotText: receipt.text,
+  };
+
+  const longResponse = {
+    message: "先说结论：a kind of 表示「一种、一类」，强调种类归属；你选的「有相同特征」是把 kind 的另一个义项（同类）搬到了一个需要「种类」的位置上，所以意思就跑偏了。下面按「词义 → 搭配 → 易混 → 常见错误 → 例句 → 自测」六步把这件事讲透，你可以照着顺序读一遍，再回头看自己刚才的选项。\n\n第一步，词义。kind 作名词时是「种类、类型」，a kind of 这个短语的核心是「某一种」，它后面一定跟名词或名词短语，前面的 a 只是把「一种」这个数量说出来。中文里我们习惯说「一种水果」「一类动物」，英文就是把 a kind of 放在名词前面。判断时先问自己一句：这句话说的是「属于哪一类」还是「有什么特点」？如果说的是归类，就该用 a kind of。\n\n第二步，搭配。a kind of 后面通常接单数可数名词（a kind of bear）或者不可数名词（a kind of music），如果要表达「好几种」，用 kinds of 而不是 a kind of。常见的固定说法有：a kind of + 名词（一种……）、all kinds of + 名词（各种各样的……）、what kind of + 名词（哪一种……）、kind of + 形容词（口语里表示「有点」，这是另一条用法，考试里通常不会和「种类」混在一起考）。\n\n第三步，易混词。a bit 表示「一点儿」，修饰形容词或动词，和种类无关；a sort of 与 a kind of 意思接近，但更口语；a type of 更强调按标准分类，多用于书面或技术语篇；like 作介词是「像」，说的是相似而不是归属。最容易混的是「有相同特征」这一类意思，它的英文通常是 be similar to 或者 have something in common，和 a kind of 完全不是一套表达。\n\n第四步，常见错误。第一类错误是把 a kind of 后面接复数名词，写成 a kind of bears，这是不对的；第二类错误是看到 kind 就翻成「友好」，因为形容词 kind 是「善良的」，要靠位置判断词性；第三类错误就是这道题里的情形：题目问的是词义，而选项给的是「有相同特征」，看起来跟「同类」有点像，但归属关系讲的是「它属于哪一类」，不是「它和谁像」。\n\n第五步，例句。A panda is a kind of bear. 熊猫是一种熊，这里说的是分类归属。What kind of music do you like? 你喜欢哪种音乐，这里问的是种类。The cheetah is a kind of big cat. 猎豹是大型猫科动物的一种，注意后面接单数。These are all kinds of flowers. 这些是各种各样的花，复数用 kinds of。\n\n第六步，自测。先造一句：A cheetah is a kind of ____. 正确答案是 cat，因为这里要的是「猎豹属于猫科」这个分类，而不是「猎豹像猫」。再造一句：I am ____ tired today. 这里要用 a bit，因为说的是程度，不是种类。把这两句写下来，再回看这道题，你应该能一眼看出「有相同特征」为什么不合适。",
+    threadId: 'harness-thread', model: 'stub-model', durationMs: 1200,
+    receipt: receipt, snapshotText: receipt.text,
+  };
+
+  const sse = (frames) => new Response(new ReadableStream({
+    start(controller) {
+      const enc = new TextEncoder();
+      frames.forEach((frame) => controller.enqueue(enc.encode(frame)));
+      if (state !== 'streaming') controller.close();
+    },
+  }), { status: 200, headers: { 'Content-Type': 'text/event-stream' } });
+
+  const json = (payload, status = 200) => new Response(JSON.stringify(payload), {
+    status, headers: { 'Content-Type': 'application/json' },
+  });
+
+  const realFetch = window.fetch ? window.fetch.bind(window) : null;
+  window.fetch = function (input, init) {
+    const url = typeof input === 'string' ? input : (input && input.url) || '';
+    if (url.indexOf('/api/agent/status') >= 0) {
+      return Promise.resolve(json({ enabled: true, engine: 'codex-core', model: 'stub-model', providerId: 'stub-provider' }));
+    }
+    if (url.indexOf('/api/agent/chat/stream') >= 0) {
+      if (foldProbe) {
+        return Promise.resolve(sse(['data: {"type":"done","response":' + JSON.stringify(longResponse) + '}\n\n']));
+      }
+      if (state === 'card') {
+        return Promise.resolve(sse([
+          'data: {"type":"delta","text":"{\\"kind\\":\\"explain\\","}\n\n',
+          'data: {"type":"delta","text":"\\"headline\\":\\"a kind of = 一种、一类\\"}"}\n\n',
+          'data: {"type":"done","response":' + JSON.stringify(cardResponse) + '}\n\n',
+        ]));
+      }
+      if (state === 'streaming') {
+        // 故意不关流：验证台要截"骨架 + 计时"这一帧。
+        return Promise.resolve(sse(['data: {"type":"delta","text":"{\\"kind\\":\\"explain\\","}\n\n']));
+      }
+      return Promise.resolve(sse(['data: {"type":"done","response":' + JSON.stringify(textResponse) + '}\n\n']));
+    }
+    if (url.indexOf('/api/agent/chat') >= 0) {
+      return Promise.resolve(json(foldProbe ? longResponse : (state === 'text' ? textResponse : cardResponse)));
+    }
+    if (url.indexOf('/api/agent/') >= 0) return Promise.resolve(json({ ok: true }));
+    if (realFetch) return realFetch(input, init);
+    return Promise.resolve(json({ error: '验证台未实现该接口：' + url }, 404));
+  };
+})();
+</script>
+
+<script src="../web/vendor/vue.global.prod.js"></script>
+<script type="module">
+// 真实模块用**动态 import** 加载：任何一个模块不存在/语法错误，验证台会把原因写在
+// 角标里并继续渲染，而不是整页白屏（白屏正好是最该被抓住的故障，不能让它藏起来）。
+const badge = document.getElementById('badge');
+const problems = [];
+function note(title, error) {
+  problems.push(title + '：' + (error && error.message ? error.message : error));
+  badge.textContent = '验证台 ⚠ ' + problems.join(' ｜ ');
+  badge.style.background = '#7a1f1f';
+}
+
+const V = '?v=20261006-agent-ux-r1';
+const base = '../web/js/';
+async function loadModule(pathToLoad, name) {
+  try {
+    return await import(base + pathToLoad + V);
+  } catch (error) {
+    note(name, error);
+    return null;
+  }
+}
+
+const assistantModule = await loadModule('components/AgentAssistant.js', 'AgentAssistant.js');
+const cardModule = await loadModule('components/AgentTeachingCard.js', 'AgentTeachingCard.js');
+const speechModule = await loadModule('agentSpeech.js', 'agentSpeech.js');
+const busModule = await loadModule('learningContext.js', 'learningContext.js');
+
+const params = new URLSearchParams(location.search);
+const placement = params.get('mode') === 'dock' ? 'dock' : 'float';
+// 形态走 localStorage（契约 §4.4）：先写进去，组件 mounted 时就会读到。
+try { localStorage.setItem('lingoBloomAgentPlacement', placement); } catch (_) {}
+
+// 让真实的总线发布一次真实上下文：面板的状态胶囊与「助教已读」都吃它。
+// scene= 决定用哪一组字段；字段名严格取自契约 §5 的登记表，与各页面 publishContext
+// 实际写出去的一致——V5「六类页面都有对应状态胶囊」因此可以在验证台上被断言。
+const SCENE_CONTEXTS = {
+  meaning: {
+    view: 'meaning-en-zh', scene: 'meaning', level: 'all',
+    wordId: 'a kind of', spelling: 'a kind of', phonetic: '/ə kaɪnd əv, əv/',
+    options: ['一种,一类', '邀请;招待', '因为', '有相同特征'],
+    correctAnswer: '一种,一类', selectedAnswer: '有相同特征', correct: false,
+    position: 13, page: 2, pages: 383, pageSize: 12, answered: 7, sessionCorrect: 6,
+    wrongTimes: 2, scope: '全部范围（小学 + 初中）',
+    pageMap: [
+      { wordId: 'a bit', spelling: 'a bit', correct: false },
+      { wordId: 'cheetah', spelling: 'cheetah', correct: false },
+      { wordId: 'track', spelling: 'track', correct: true },
+    ],
+  },
+  quiz: {
+    view: 'quiz', scene: 'quiz', quizType: 'en-zh', level: 'middle',
+    wordId: 'cheetah', spelling: 'cheetah', phonetic: '/ˈtʃiːtə/',
+    options: ['猎豹', '猫科动物', '树懒', '长颈鹿'],
+    correctAnswer: '猎豹', selectedAnswer: '猫科动物', correct: false,
+    position: 4, total: 10, answered: 3, sessionCorrect: 2, wrongTimes: 1,
+  },
+  reading: {
+    view: 'reading', scene: 'reading', articleId: 'art-panda', articleTitle: 'Giant Pandas',
+    paragraph: 3, paragraphs: 6, sentence: 'A panda is a kind of bear.', position: 3,
+  },
+  mistake: {
+    view: 'mistakes', scene: 'mistake', quizType: 'en-zh', level: 'middle',
+    wordId: 'track', spelling: 'track', phonetic: '/træk/', prompt: '轨道',
+    selectedAnswer: '足迹', correctAnswer: '轨道', correct: false,
+    position: 1, wrongTimes: 3,
+  },
+  tongbu: {
+    view: 'tongbu', scene: 'tongbu', level: 'middle',
+    setId: 'tb-mid-u3', setTitle: '人教版八年级上 Unit 3', unitIndex: 2,
+    position: 5, answered: 4, sessionCorrect: 3, wrongTimes: 1,
+  },
+  homework: {
+    view: 'homework', scene: 'homework', level: 'middle',
+    homeworkId: 'hw-2041', homeworkTitle: 'Unit 5 词汇作业',
+    questionIndex: 3, questionType: 'choice', position: 3, wrongTimes: 2,
+  },
+  course: {
+    view: 'course', scene: 'course', level: 'middle',
+    courseUnit: 'Unit 4', courseSection: 'Reading', position: 2, wrongTimes: 0,
+  },
+  drill: {
+    view: 'drill', scene: 'drill', level: 'middle',
+    drillFocus: 'a kind of', drillCount: 3, position: 2, total: 3, wrongTimes: 1,
+  },
+  exam: {
+    view: 'exams', scene: 'exam', level: 'middle',
+    examTitle: '2026 秋季期中英语卷', questionNo: 7, subject: '英语',
+    position: 7, wrongTimes: 2,
+  },
+  grammar: {
+    view: 'grammar', scene: 'grammar', level: 'middle',
+    grammarTopic: '一般现在时', position: 4, wrongTimes: 1,
+  },
+};
+const sceneName = Object.prototype.hasOwnProperty.call(SCENE_CONTEXTS, params.get('scene'))
+  ? params.get('scene') : 'meaning';
+// inline=1 的回填是异步的；report 会等 inlineDone 再采集，避免报告跑在卡片之前（假红）。
+let inlineDone = false;
+// fold=1 的验收辅助：等长回答落地后自动点一次「展开全文」，把折叠态与展开态的实测值
+// 交给 report，这样 verify 只要读页面里的 JSON 就能断言，不必自己驱动浏览器。
+let foldDone = params.get('fold') !== '1';
+if (busModule && typeof busModule.publishContext === 'function') {
+  busModule.publishContext(SCENE_CONTEXTS[sceneName]);
+} else {
+  note('learningContext.js 不可用', '面板将拿不到页面上下文');
+}
+
+if (params.get('fold') === '1') {
+  const foldStartedAt = Date.now();
+  const foldTimer = setInterval(() => {
+    const boxes = [...document.querySelectorAll('.agent-answer-fold')];
+    const buttons = [...document.querySelectorAll('.agent-fold')];
+    const box = boxes[boxes.length - 1];
+    const button = buttons[buttons.length - 1];
+    const body = box ? box.querySelector('.agent-markdown') : null;
+    if (box && button && body) {
+      const collapsed = box.classList.contains('is-folded');
+      const clampHeight = body.clientHeight;
+      const buttonText = button.textContent.trim();
+      const textLength = body.textContent.trim().length;
+      button.click();
+      setTimeout(() => {
+        window.__foldProbe = {
+          box: true, collapsed: collapsed, clampHeight: clampHeight, buttonText: buttonText,
+          textLength: textLength,
+          expanded: box.classList.contains('is-folded'),
+          buttonAfter: button.textContent.trim(),
+          fullHeight: body.clientHeight,
+          ariaExpanded: button.getAttribute('aria-expanded'),
+        };
+        foldDone = true;
+      }, 300);
+      clearInterval(foldTimer);
+      return;
+    }
+    if (Date.now() - foldStartedAt > 12000) {
+      window.__foldProbe = { box: false, reason: '12 秒内没等到 .agent-fold（长回答没有落地？）' };
+      foldDone = true;
+      clearInterval(foldTimer);
+    }
+  }, 120);
+}
+
+const app = Vue.createApp({
+  methods: {
+    onNavigate(payload) { console.log('[harness] navigate', payload); },
+    onFocusItem(payload) { console.log('[harness] focus-item', payload); },
+  },
+});
+let vm = null;
+if (assistantModule && assistantModule.default) {
+  app.component('agent-assistant', assistantModule.default);
+  if (cardModule && cardModule.default) app.component('agent-teaching-card', cardModule.default);
+  else note('AgentTeachingCard.js 不可用', '教学卡片无法渲染');
+  vm = app.mount('#app');
+  window.__harness = {
+    vm,
+    assistant: () => vm.$refs.assistant,
+    speech: speechModule || null,
+    askInline: busModule && busModule.askInline,
+    problems,
+  };
+
+  if (params.get('auto') === '1' && vm.$refs.assistant) {
+    const assistant = vm.$refs.assistant;
+    assistant.open = true;
+    assistant.send({ quickAction: 'explain-wrong', label: '为什么我选错了' });
+  }
+
+  // inline=1：顺手验证页内就地讲解（P0-2）——答错后不遮挡选项的展开卡。
+  // askInline 契约上不抛异常（§4.2），这里仍用 then/catch 双保险：即使实现变了，
+  // 验证台也只是记一条 problems，而不是整页白屏。
+  if (params.get('inline') === '1') {
+    if (busModule && typeof busModule.askInline === 'function') {
+      busModule.askInline({
+        quickAction: 'explain-wrong',
+        label: '为什么我选错了',
+        contextPatch: { wordId: 'a kind of', level: 'all', spelling: 'a kind of' },
+      }).then((out) => {
+        const host = vm.$refs.inlineHost || document.getElementById('inlineHost') || document.querySelector('.harness-inline');
+        if (host && out) {
+          host.textContent = out.card ? '[inline card] ' + out.card.headline : '[inline] ' + (out.message || out.error || '');
+        }
+        inlineDone = true;
+      }).catch((error) => { note('askInline', error); inlineDone = true; });
+    } else {
+      note('askInline 不可用', 'learningContext.js 未导出 askInline');
+      inlineDone = true;
+    }
+  } else {
+    inlineDone = true;
+  }
+} else {
+  badge.textContent = '验证台 ✖ 前端模块加载失败';
+  badge.style.background = '#7a1f1f';
+}
+
+// ---------------------------------------------------------------- 遮挡审计
+// V1 的判据是"可点区域不再被遮挡"，不能靠肉眼。这里用 elementFromPoint 逐个采样
+// 页面上的可点元素：如果命中的不是它自己（而是助教面板），说明那个点被面板盖住了。
+function occlusionAudit() {
+  const panel = document.querySelector('.agent-panel');
+  // 判定标准是「助教 UI 有没有盖住页面可点区域」，所以命中整个组件（面板 + 悬浮球 +
+  // 轻提示）都算遮挡——只盯面板会漏掉悬浮球压住错词栏这类问题。
+  const agentUI = document.querySelector('.agent-assistant') || panel;
+  const targets = [
+    ['错词栏', document.querySelector('.meaning-review')],
+    ['题目选项', document.querySelector('.meaning-options')],
+    ['答错动作区', document.querySelector('.meaning-ask')],
+  ];
+  // viewport 一并写进报告：视口窄到抽屉断点时，采样点会落到视口外（elementFromPoint 返回 null），
+  // 被记成「未遮挡」——把视口留在机器可读结论里，这种空断言就藏不住了。
+  const report = { viewport: [window.innerWidth, window.innerHeight],
+    panel: null, placement: localStorage.getItem('lingoBloomAgentPlacement'),
+    fabVisible: !!document.querySelector('.agent-fab') && getComputedStyle(document.querySelector('.agent-fab')).display !== 'none',
+    nudgeVisible: !!document.querySelector('.agent-nudge'), targets: [] };
+  if (panel) {
+    const r = panel.getBoundingClientRect();
+    report.panel = { left: Math.round(r.left), top: Math.round(r.top), width: Math.round(r.width), height: Math.round(r.height), position: getComputedStyle(panel).position };
+  }
+  for (const [name, host] of targets) {
+    if (!host) continue;
+    const hits = [];
+    const nodes = host.querySelectorAll('button, a, [role="button"], select, input');
+    const points = [];
+    for (const node of nodes) {
+      const r = node.getBoundingClientRect();
+      if (r.width && r.height) points.push([Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2), node.textContent.trim().slice(0, 14)]);
+    }
+    if (!points.length) {
+      const r = host.getBoundingClientRect();
+      if (r.width && r.height) points.push([Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2), '(host)']);
+    }
+    let covered = 0;
+    for (const [x, y, label] of points) {
+      const hit = document.elementFromPoint(x, y);
+      const insidePanel = !!(hit && agentUI && (agentUI === hit || agentUI.contains(hit)));
+      if (insidePanel) { covered += 1; hits.push(label + '@' + x + ',' + y); }
+    }
+    report.targets.push({ name, sampled: points.length, covered, coveredPoints: hits });
+  }
+  report.ok = report.targets.every((t) => t.covered === 0);
+  return report;
+}
+window.__audit = { occlusion: occlusionAudit, params: Object.fromEntries(new URLSearchParams(location.search).entries()) };
+
+// ---------------------------------------------------------------- 自报结果
+// report=1 时，等面板不再 busy 后把审计结果写进页面（<pre id="harness-report">
+// 与 document.title）。这样用无依赖的
+//   chrome --headless --dump-dom "...&report=1"
+// 就能拿到机器可读的结论，不必靠人眼读截图——验收证据可以复跑。
+if (params.get('report') === '1') {
+  const pre = document.createElement('pre');
+  pre.id = 'harness-report';
+  pre.style.cssText = 'position:fixed;left:0;bottom:0;z-index:99999;max-width:100vw;max-height:40vh;overflow:auto;margin:0;padding:8px;background:#08150f;color:#9fe8c8;font:11px/1.5 ui-monospace,monospace;white-space:pre-wrap;';
+  document.body.appendChild(pre);
+  const startedAt = Date.now();
+  const collect = () => {
+    const a = vm && vm.$refs.assistant;
+    const payload = {
+      params: Object.fromEntries(new URLSearchParams(location.search).entries()),
+      problems: problems,
+      occlusion: occlusionAudit(),
+      panelOpen: !!(a && a.open),
+      busy: !!(a && a.busy),
+      error: (a && a.error) || '',
+      placement: localStorage.getItem('lingoBloomAgentPlacement'),
+      rootClasses: document.querySelector('.agent-assistant') ? document.querySelector('.agent-assistant').className : '',
+      bodyClasses: document.body.className,
+      cardNodes: document.querySelectorAll('agent-teaching-card, .agent-teaching-card, [class*="agent-card"]').length,
+      receiptNodes: document.querySelectorAll('[class*="agent-receipt"], [class*="agent-chip"]').length,
+      statusCapsule: !!document.querySelector('[class*="agent-statechip"], [class*="agent-context-pill"]'),
+      // V5：状态胶囊的可见文案（选择器与 verify 的断言同源，避免两边各写一套）。
+      statusCapsuleText: ((document.querySelector('[class*="agent-statechip"], [class*="agent-context-pill"]') || {}).textContent || '').trim(),
+      // V6：页内就地讲解的回填内容（askInline → #inlineHost / .harness-inline）。
+      inlineHostText: ((document.getElementById('inlineHost') || document.querySelector('.harness-inline') || {}).textContent || '').trim(),
+      inlineHostSelector: '#inlineHost / .harness-inline',
+      // P2「长回答折叠」：折叠态 / 展开态的实测值（由上面的 fold 探针写入）。
+      fold: window.__foldProbe || null,
+      stopButton: !!document.querySelector('[class*="agent-stop"], [class*="agent-streambar"] button'),
+      messages: a ? a.messages.map((m) => ({ role: m.role, hasCard: !!m.card, length: String(m.text || '').length })) : [],
+    };
+    const text = JSON.stringify(payload, null, 2);
+    pre.textContent = text;
+    document.title = 'HARNESS-REPORT ' + text;
+    window.__report = payload;
+    return payload;
+  };
+  const timer = setInterval(() => {
+    const a = vm && vm.$refs.assistant;
+    const busy = !!(a && a.busy);
+    // inline=1 时还要等 askInline 回填，否则 report 可能在卡片落地前就定稿。
+    if ((busy || !inlineDone || !foldDone) && Date.now() - startedAt < 15000) return;
+    clearInterval(timer);
+    collect();
+  }, 150);
+  setTimeout(() => { clearInterval(timer); collect(); }, 15000);
+}
+if (!problems.length) badge.textContent = '验证台 · ' + placement + ' · ' + (params.get('state') || 'card') + ' · 模块已加载';
+</script>
+</body>
+</html>

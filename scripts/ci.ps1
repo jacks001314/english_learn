@@ -13,7 +13,10 @@
 #       -LooseWords 可放宽到 error）、
 #       go run ./cmd/contentaudit（音标 / 例句 / 音频缺口审计）
 #   前端：全部 web/js 的语法检查（node --check；无构建链，语法错误必须在这里拦住）、
-#       主侧栏 hash 解析自检、语法模块信息架构自检、语法内容重复体检
+#       主侧栏 hash 解析自检、语法模块信息架构自检、语法内容重复体检、
+#       助教页面上下文契约守门（scripts/check-agent-context-contract.mjs，字段须先在
+#       docs/agent-ux-implementation-contract.md §5 登记）
+#       前端静态资源缓存版本串守门（scripts/check-agent-asset-version.mjs；文件字节变了就必须改引用处的 ?v=，否则线上一直吃旧缓存）
 # 语法重复体检默认只报告：当前 27 处命中都判定为「部分覆盖，保留」，所以默认不阻断；
 # 内容清理完成后加 -StrictGrammar 让它变成硬门禁。
 # 退出码：任一步失败、或有步骤没跑到，都返回 1；全部通过返回 0。
@@ -106,7 +109,7 @@ try {
         }
         catch { Add-Result "Frontend" "node --check" $false $_.Exception.Message }
 
-        foreach ($script in @("check-nav-hash.mjs", "check-grammar-ia.mjs")) {
+        foreach ($script in @("check-nav-hash.mjs", "check-grammar-ia.mjs", "check-agent-context-contract.mjs", "check-agent-asset-version.mjs")) {
             try { Invoke-Step "Frontend" $script "node" @((Join-Path $scriptsDir $script)) }
             catch { Add-Result "Frontend" $script $false $_.Exception.Message }
         }
@@ -138,7 +141,7 @@ finally {
 
 $expected = 0
 if ($runGo) { $expected += 5 }
-if ($runFrontend) { $expected += 4 }
+if ($runFrontend) { $expected += 6 }
 if ($E2EBase -ne "") { $expected += 3 }
 if ($results.Count -lt $expected) {
     Add-Result "CI" "门禁步骤完整性" $false ("计划 " + $expected + " 步，实际执行 " + $results.Count + " 步")

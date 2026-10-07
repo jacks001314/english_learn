@@ -1,0 +1,378 @@
+{
+  "startedAt": "2026-10-06T15:13:34.626Z",
+  "mode": "live",
+  "server": "http://127.0.0.1:8100",
+  "checks": [
+    {
+      "id": "U2",
+      "label": "go build ./cmd/server 成功",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "id": "U3",
+      "label": "真实服务端就绪",
+      "ok": true,
+      "detail": "http://127.0.0.1:8100"
+    },
+    {
+      "id": "U4",
+      "label": "学生账号注册成功",
+      "ok": true,
+      "detail": "e2e-student"
+    },
+    {
+      "id": "U5",
+      "label": "管理员登录（用于配置智能体）",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "U6",
+      "label": "智能体已启用（provider/model 正确）",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"model\":\"deepseek-flash\",\"providerId\":\"deepseek\"}"
+    },
+    {
+      "id": "U7",
+      "label": "打开真站点出现登录表单",
+      "ok": true,
+      "detail": "input 数=2"
+    },
+    {
+      "id": "U8",
+      "label": "用真实登录表单登录成功（进入 app-shell）",
+      "ok": true,
+      "detail": "hash=#home"
+    },
+    {
+      "id": "U9",
+      "label": "侧边栏存在「看词选义」导航",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U10",
+      "label": "词义练习渲染出真实题目与选项",
+      "ok": true,
+      "detail": "第 第 1 / 4590 题 题 · -sist- · 选项 4 个"
+    },
+    {
+      "id": "U11",
+      "label": "在真实页面上答错一道题（拿到错答态）",
+      "ok": true,
+      "detail": "再巩固一下正确答案是：词根：站立不懂，讲讲出同类题"
+    },
+    {
+      "id": "U12",
+      "label": "答错后出现助教入口 .meaning-ask",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U13",
+      "label": "就地讲解渲染成结构化教学卡片（有结论 + 判定 + 分段 + 行动条）",
+      "ok": true,
+      "detail": "headline=-sist- 是词根“站立”，不是 bad 的意思 sections=7"
+    },
+    {
+      "id": "U14",
+      "label": "就地讲解没有把 JSON 原文漏到页面上",
+      "ok": true,
+      "detail": "jsonLeak=false"
+    },
+    {
+      "id": "U15",
+      "label": "判定行来自服务端题库（不采信模型）",
+      "ok": true,
+      "detail": "verdict=你选了「坏的；糟的」，正确答案是「词根：站立」"
+    },
+    {
+      "id": "U16",
+      "label": "默认形态是浮动面板（agent-float）",
+      "ok": true,
+      "detail": "class=agent-assistant agent-float"
+    },
+    {
+      "id": "U28",
+      "label": "视口 1024,900 下页面布局健康（主内容列 ≥300px 且无横向溢出）",
+      "ok": true,
+      "detail": "regime=drawer main=760 iw=1008 scrollW=1008"
+    },
+    {
+      "id": "U17",
+      "label": "窄屏抽屉形态：面板占满视口（不让位、不挤瘦页面）",
+      "ok": true,
+      "detail": "regime=drawer position=fixed width=1008 right=0 iw=1008"
+    },
+    {
+      "id": "U18",
+      "label": "面板打开时给页面让位（body.agent-open 且 fab 收起）",
+      "ok": true,
+      "detail": "bodyOpen=true fabDisplay=block"
+    },
+    {
+      "id": "U19",
+      "label": "窄屏抽屉形态：页面恢复全宽、主内容列不被挤瘦（选项/错词栏仍是自然宽度）",
+      "ok": true,
+      "detail": "选项区[.meaning-options]:9/9 答错动作区[.meaning-ask]:9/9 就地讲解卡[.agent-inline-teach]:9/9 错词栏[.meaning-review]:9/9"
+    },
+    {
+      "id": "U20",
+      "label": "面板内问一句，真模型回答渲染成卡片",
+      "ok": true,
+      "detail": "问「讲讲这道题」→ -sist- 是词根“站立”，不是形容词“坏的”"
+    },
+    {
+      "id": "U21",
+      "label": "面板顶部状态胶囊显示当前场景/进度",
+      "ok": true,
+      "detail": "caption=词义练习 · 第 1 题 · 你在该词错过 1 次"
+    },
+    {
+      "id": "U22",
+      "label": "收起后页面恢复全宽（agent-open 移除、入口按钮回来）",
+      "ok": true,
+      "detail": "bodyOpen=false fabVisible=true"
+    },
+    {
+      "id": "U24-tongbu",
+      "label": "六场景页面真站点：同步训练 的胶囊显示服务端场景名",
+      "ok": true,
+      "detail": "chip=同步训练"
+    },
+    {
+      "id": "U25-tongbu",
+      "label": "六场景页面真站点：同步训练 窄屏抽屉形态：页面恢复全宽（不让位）",
+      "ok": true,
+      "detail": "同步训练内容区[.tb-items]:9/9@577,-268,379,1342 | viewport=1008x805 panel=[0,0,1008,805] main=[234,-873,760,6574]"
+    },
+    {
+      "id": "U26-tongbu",
+      "label": "六场景页面真站点：同步训练 的题目列没被浮动栏挤瘦（≥300px）",
+      "ok": true,
+      "detail": "宽度=379px"
+    },
+    {
+      "id": "U27-tongbu",
+      "label": "六场景页面真站点：同步训练 在 window=1024,900 下没有横向溢出",
+      "ok": true,
+      "detail": "scrollWidth=1008 innerWidth=1008"
+    },
+    {
+      "id": "U24-grammar",
+      "label": "六场景页面真站点：语法专题 的胶囊显示服务端场景名",
+      "ok": true,
+      "detail": "chip=语法专题"
+    },
+    {
+      "id": "U25-grammar",
+      "label": "六场景页面真站点：语法专题 窄屏抽屉形态：页面恢复全宽（不让位）",
+      "ok": true,
+      "detail": "语法专题内容区[.gr2-qgroup]:9/9@539,-1093,417,2990 | viewport=1008x805 panel=[0,0,1008,805] main=[234,-6071,760,9768]"
+    },
+    {
+      "id": "U26-grammar",
+      "label": "六场景页面真站点：语法专题 的题目列没被浮动栏挤瘦（≥300px）",
+      "ok": true,
+      "detail": "宽度=417px"
+    },
+    {
+      "id": "U27-grammar",
+      "label": "六场景页面真站点：语法专题 在 window=1024,900 下没有横向溢出",
+      "ok": true,
+      "detail": "scrollWidth=1008 innerWidth=1008"
+    },
+    {
+      "id": "U23",
+      "label": "交互全过程没有 JS 报错",
+      "ok": true,
+      "detail": "0 条"
+    }
+  ],
+  "shots": {
+    "agent-live-inline-teach": "docs\\images\\agent-live-inline-teach-w1024.png",
+    "inline": "docs\\images\\agent-live-inline-teach-w1024.png",
+    "agent-live-float-card": "docs\\images\\agent-live-float-card-w1024.png",
+    "floatCard": "docs\\images\\agent-live-float-card-w1024.png",
+    "agent-live-float-closed": "docs\\images\\agent-live-float-closed-w1024.png",
+    "closed": "docs\\images\\agent-live-float-closed-w1024.png",
+    "agent-live-tongbu-capsule": "docs\\images\\agent-live-tongbu-capsule-w1024.png",
+    "scene-tongbu": "docs\\images\\agent-live-tongbu-capsule-w1024.png",
+    "agent-live-grammar-capsule": "docs\\images\\agent-live-grammar-capsule-w1024.png",
+    "scene-grammar": "docs\\images\\agent-live-grammar-capsule-w1024.png"
+  },
+  "consoleErrors": [],
+  "samples": {
+    "question0": {
+      "prompt": "-sist-",
+      "options": [
+        "1坏的；糟的",
+        "2词根：站立",
+        "3真实地,实际上,说实在的",
+        "4在…对面，与…相对；对面的"
+      ],
+      "counter": "第 1 / 4590 题"
+    },
+    "inline": {
+      "hasCard": true,
+      "headline": "-sist- 是词根“站立”，不是 bad 的意思",
+      "verdict": "你选了「坏的；糟的」，正确答案是「词根：站立」",
+      "sections": 7,
+      "words": [
+        "resist"
+      ],
+      "action": "读例句把例句大声读两遍，再点“出同类题”练一题。开始自测",
+      "jsonLeak": false
+    },
+    "panel": {
+      "cls": "agent-assistant agent-float",
+      "position": "fixed",
+      "width": 1008,
+      "right": 0,
+      "floatClass": true,
+      "bodyOpen": true,
+      "fabHidden": "block",
+      "viewportWidth": 1008
+    },
+    "occlusion": [
+      {
+        "name": "选项区",
+        "matched": ".meaning-options",
+        "sampled": 9,
+        "covered": 9,
+        "rect": [
+          269,
+          310,
+          357,
+          185
+        ]
+      },
+      {
+        "name": "答错动作区",
+        "matched": ".meaning-ask",
+        "sampled": 9,
+        "covered": 9,
+        "rect": [
+          472,
+          368,
+          140,
+          68
+        ]
+      },
+      {
+        "name": "就地讲解卡",
+        "matched": ".agent-inline-teach",
+        "sampled": 9,
+        "covered": 9,
+        "rect": [
+          269,
+          -64,
+          357,
+          932
+        ]
+      },
+      {
+        "name": "错词栏",
+        "matched": ".meaning-review",
+        "sampled": 9,
+        "covered": 9,
+        "rect": [
+          677,
+          292,
+          317,
+          221
+        ]
+      }
+    ],
+    "panelCard": {
+      "asked": "讲讲这道题",
+      "chip": "词义练习 · 第 1 题 · 你在该词错过 1 次",
+      "headline": "-sist- 是词根“站立”，不是形容词“坏的”",
+      "verdict": "你选了「坏的；糟的」，正确答案是「词根：站立」",
+      "sections": 7,
+      "wordChips": [
+        "insist",
+        "resist"
+      ]
+    },
+    "scenePages": [
+      {
+        "page": "tongbu",
+        "chip": "同步训练",
+        "occlusion": [
+          {
+            "name": "同步训练内容区",
+            "matched": ".tb-items",
+            "sampled": 9,
+            "covered": 9,
+            "rect": [
+              577,
+              -268,
+              379,
+              1342
+            ]
+          }
+        ],
+        "geom": {
+          "panelRect": [
+            0,
+            0,
+            1008,
+            805
+          ],
+          "mainRect": [
+            234,
+            -873,
+            760,
+            6574
+          ],
+          "viewport": [
+            1008,
+            805
+          ]
+        }
+      },
+      {
+        "page": "grammar",
+        "chip": "语法专题",
+        "occlusion": [
+          {
+            "name": "语法专题内容区",
+            "matched": ".gr2-qgroup",
+            "sampled": 9,
+            "covered": 9,
+            "rect": [
+              539,
+              -1093,
+              417,
+              2990
+            ]
+          }
+        ],
+        "geom": {
+          "panelRect": [
+            0,
+            0,
+            1008,
+            805
+          ],
+          "mainRect": [
+            234,
+            -6071,
+            760,
+            9768
+          ],
+          "viewport": [
+            1008,
+            805
+          ]
+        }
+      }
+    ]
+  },
+  "finishedAt": "2026-10-06T15:13:46.315Z",
+  "passed": 31,
+  "failed": 0,
+  "exitCode": 0
+}

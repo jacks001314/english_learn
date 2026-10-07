@@ -2,7 +2,10 @@ import { articles } from "../articleData.js";
 import { hotTopicArticles } from "../hotTopicArticles.js";
 import { expandedArticles } from "../expandedArticles.js";
 import { api, postJSON } from "../api.js";
-import { publishContext, askAssistant } from "../learningContext.js?v=20261004-practice-source-r1";
+import { publishContext, askAssistant, askInline, agentEnabled } from "../learningContext.js?v=20261007-agent-leakfix-r1";
+import AgentTeachingCard from "./AgentTeachingCard.js?v=20261006-agent-ux-r1";
+// 选词浮条上的「朗读」走助教自带的语音模块（契约 §4.1），它不可用时按钮直接隐藏。
+import { speak as speakAgentText, speechSupported } from "../agentSpeech.js?v=20261006-agent-ux-r1";
 
 const progressStorageKey = "english-learn-reading-progress-v1";
 
@@ -12,6 +15,7 @@ export default {
     targetArticleId: { type: String, default: "" },
   },
   emits: ["speak"],
+  components: { AgentTeachingCard },
   data: () => ({
     articles: [...articles, ...hotTopicArticles, ...expandedArticles],
     selectedId: articles[0].id,
@@ -32,6 +36,17 @@ export default {
     scrollFrame: null,
     persistTimer: null,
     toastTimer: null,
+    agentReady: false,        // 助教是否可用：不可用时不显示「讲解 / 入册」
+    speechReady: false,       // 浏览器语音是否可用：不可用时隐藏「朗读」
+    selectionText: "",        // 当前选中的单词/短语
+    selectionBar: null,       // 浮条位置（视口坐标）
+    selectionIndex: 0,        // 选区所在的段落下标（讲解卡就地展开在这里）
+    selectionPatch: null,     // 讲解用的上下文（重试时复用）
+    selectionCard: null,
+    selectionBusy: false,
+    selectionError: "",
+    selectionNote: "",
+    selectionFor: "",         // 讲解卡属于哪一段+哪句话（换段后丢弃迟到的结果）
   }),
   computed: {
     stateStorageKey() {
@@ -112,6 +127,19 @@ export default {
 
     this.$refs.paper?.addEventListener("scroll", this.handleScroll, { passive: true });
     window.addEventListener("resize", this.handleScroll, { passive: true });
+    // 选区消失（点到别处）时收起浮条，避免浮条停在半空。
+    document.addEventListener("selectionchange", this.onDocumentSelectionChange);
+    // 助教未启用或状态接口失败时，页面照常可用：讲解入口保持隐藏。
+    try {
+      agentEnabled().then((enabled) => { this.agentReady = !!enabled; });
+    } catch (_) {
+      this.agentReady = false;
+    }
+    try {
+      this.speechReady = !!speechSupported();
+    } catch (_) {
+      this.speechReady = false;
+    }
     const seeds = [...articles, ...hotTopicArticles, ...expandedArticles];
     try {
       let data = await api("/api/articles");
@@ -142,6 +170,7 @@ export default {
     this.persistReadingState();
     this.$refs.paper?.removeEventListener("scroll", this.handleScroll);
     window.removeEventListener("resize", this.handleScroll);
+    document.removeEventListener("selectionchange", this.onDocumentSelectionChange);
     cancelAnimationFrame(this.scrollFrame);
     clearTimeout(this.persistTimer);
     clearTimeout(this.toastTimer);
@@ -159,6 +188,177 @@ export default {
         sentence: paragraph.en,
       });
       askAssistant('', { quickAction: 'explain-sentence', label: `解析第 ${index + 1} 段` });
+    },
+    // ------------------------------------------------- 选词浮条（契约 P0-3）
+    // captureSelection 在正文里松开鼠标（或抬手）时读一次选区：
+    // 有选中的单词/短语就在选区上方浮出「朗读 / 讲解 / 入册」。
+    captureSelection() {
+      const selection = typeof window !== "undefined" && window.getSelection ? window.getSelection() : null;
+      const text = selection ? String(selection).replace(/\s+/g, " ").trim() : "";
+      if (!selection || selection.isCollapsed || !text || selection.rangeCount === 0) {
+        this.hideSelection();
+        return;
+      }
+      const range = selection.getRangeAt(0);
+      const start = range.startContainer;
+      const element = start && start.nodeType === 1 ? start : (start && start.parentElement);
+      const paragraph = element && element.closest ? element.closest("[data-paragraph-index]") : null;
+      if (!paragraph) {
+        // 只处理正文里的选区：工具栏、侧栏里的选中不弹浮条。
+        this.hideSelection();
+        return;
+      }
+      const rect = range.getBoundingClientRect();
+      if (!rect || (!rect.width && !rect.height)) {
+        this.hideSelection();
+        return;
+      }
+      const below = rect.top < 80;   // 贴近视口顶部时改到选区下方，避免被顶栏压住
+      this.selectionText = text.slice(0, 200);
+      this.selectionIndex = Number(paragraph.dataset.paragraphIndex) || 0;
+      this.selectionBar = {
+        left: Math.round(rect.left + rect.width / 2),
+        top: Math.round(below ? rect.bottom + 10 : rect.top - 10),
+        below,
+      };
+      this.selectionCard = null;
+      this.selectionError = "";
+      this.selectionNote = "";
+    },
+    onDocumentSelectionChange() {
+      const selection = typeof window !== "undefined" && window.getSelection ? window.getSelection() : null;
+      if (!selection || selection.isCollapsed || !String(selection).trim()) this.hideSelection();
+    },
+    hideSelection() {
+      this.selectionText = "";
+      this.selectionBar = null;
+    },
+    readSelection() {
+      const text = this.selectionText;
+      this.hideSelection();
+      if (!text) return;
+      try {
+        speakAgentText(text, { lang: "en-US", rate: 0.9 });
+      } catch (_) {
+        // 语音模块不可用时静默：按钮本身已按 speechSupported() 隐藏。
+      }
+    },
+    // 选区的上下文：只上报段落级定位 + 选中文本，不整篇上传。
+    selectionContextPatch(text) {
+      const total = this.selected.paragraphs.length;
+      const index = Math.min(Math.max(this.selectionIndex, 0), Math.max(0, total - 1));
+      const paragraph = this.selected.paragraphs[index] || {};
+      return {
+        view: "reading",
+        scene: "reading",
+        level: "middle",
+        articleId: this.selected.id,
+        articleTitle: this.selected.title,
+        paragraph: index + 1,
+        paragraphs: total,
+        sentence: text || paragraph.en || "",
+      };
+    },
+    explainSelection() {
+      const text = this.selectionText;
+      if (!text || this.selectionBusy) return;
+      const patch = this.selectionContextPatch(text);
+      const key = patch.articleId + ":" + patch.paragraph + ":" + text;
+      this.hideSelection();
+      publishContext(patch);
+      return this.runSelectionExplain(patch, key);
+    },
+    retrySelectionExplain() {
+      if (!this.selectionPatch) return;
+      return this.runSelectionExplain(this.selectionPatch, this.selectionFor);
+    },
+    // 就地讲解：compact 卡片直接展开在选区所在段落下面，不遮挡正文。
+    async runSelectionExplain(patch, key) {
+      this.selectionCard = null;
+      this.selectionError = "";
+      this.selectionNote = "";
+      this.selectionBusy = true;
+      this.selectionFor = key;
+      this.selectionPatch = patch;
+      const result = await askInline({
+        quickAction: "explain-sentence",
+        label: "讲解这句",
+        contextPatch: patch,
+      });
+      if (this.selectionFor !== key) return;   // 已经换了段落：迟到的结果不再显示
+      this.selectionBusy = false;
+      if (result.card) {
+        this.selectionCard = result.card;
+        return;
+      }
+      // 服务端没给出结构化卡片时回落到纯文本讲解，页面不白屏。
+      if (result.message) {
+        this.selectionCard = { kind: "reading", headline: "助教讲解", points: [{ label: "讲解", text: result.message }] };
+        return;
+      }
+      this.selectionError = result.error || "助教暂时没有给出讲解，请重试。";
+    },
+    resetSelectionTeach() {
+      this.selectionCard = null;
+      this.selectionError = "";
+      this.selectionBusy = false;
+      this.selectionNote = "";
+      this.selectionFor = "";
+      this.selectionPatch = null;
+    },
+    addSelectionToReview() {
+      const text = this.selectionText;
+      // 入册请求要带上阅读段落上下文：publishContext 是合并语义，不先放上下文的话，
+      // 请求可能还挂着上一页的题目字段（服务端会当成那道题来解释）。
+      if (text) publishContext(this.selectionContextPatch(text));
+      this.hideSelection();
+      return this.addReview({ word: text, spelling: text, wordId: text });
+    },
+    // 入册：只上报选中文本的定位信息，复习队列由服务端按词库写入。
+    async addReview(target) {
+      const payload = target && typeof target === "object" ? target : {};
+      const wordId = String(payload.id || payload.wordId || payload.word || this.selectionText || "").trim();
+      const spelling = String(payload.word || payload.spelling || this.selectionText || wordId).trim();
+      if (!wordId && !spelling) {
+        this.showReadingToast("没有可加入复习的单词。");
+        return;
+      }
+      const result = await askInline({
+        quickAction: "add-review",
+        label: "加入今日复习",
+        contextPatch: { wordId: wordId || spelling, level: payload.level || "middle", spelling },
+      });
+      const action = (result.actions || []).find((item) => item && item.type === "add-review");
+      const message = (action && action.message) || result.message || "";
+      this.showReadingToast(message && !result.error ? message : (result.error || "加入复习失败，请稍后重试。"));
+    },
+    speakSelectionText(text) {
+      const value = typeof text === "string" ? text : (text && (text.text || text.en || text.word)) || "";
+      if (value) this.$emit("speak", value);
+    },
+    askSelectionInline(payload) {
+      const action = typeof payload === "string" ? payload : (payload && payload.quickAction) || "";
+      if (action === "drill") {
+        // 阅读页上下文里没有单词 ID，直接让助教按这段文字出题更稳。
+        askAssistant("请用这段文字里的重点词出 3 道小练习，并给出答案。", { label: "出同类题" });
+        return;
+      }
+      // 卡片行动条的 kind=review：选中的词/短语直接入册（讲解后选区已收起，从 patch 里取文本）。
+      if (action === "add-review") {
+        const text = this.selectionText || (this.selectionPatch && this.selectionPatch.sentence) || "";
+        if (this.selectionPatch) publishContext(this.selectionPatch);
+        return this.addReview({ word: text, spelling: text, wordId: text });
+      }
+      const patch = this.selectionPatch;
+      if (patch) { this.runSelectionExplain(patch, this.selectionFor); return; }
+      // 没有可复用段落上下文时，至少把卡片给的小动作提示出来，不留空点击。
+      const note = typeof payload === "string" ? "" : (payload && (payload.text || payload.label)) || "";
+      if (note) this.showReadingToast(note);
+    },
+    showReadingToast(text) {
+      this.toast = String(text || "");
+      clearTimeout(this.toastTimer);
+      this.toastTimer = setTimeout(() => { this.toast = ""; }, 4000);
     },
     openTargetArticle(id) {
       if (!id || !this.articles.some((article) => article.id === id)) return;
@@ -197,6 +397,8 @@ export default {
     },
     select(id) {
       this.rememberCurrentPosition();
+      this.hideSelection();
+      this.resetSelectionTeach();
       this.selectedId = id;
       this.mode = "read";
       this.revealed = new Set();
@@ -205,6 +407,8 @@ export default {
     },
     setMode(mode) {
       this.rememberCurrentPosition();
+      this.hideSelection();
+      this.resetSelectionTeach();
       this.mode = mode;
       this.revealed = new Set();
       this.activeParagraph = -1;
@@ -225,6 +429,7 @@ export default {
       if (this.scrollFrame) return;
       this.scrollFrame = requestAnimationFrame(() => {
         this.scrollFrame = null;
+        this.hideSelection();
         this.updateScrollProgress();
         clearTimeout(this.persistTimer);
         this.persistTimer = setTimeout(() => this.persistReadingState(), 250);
@@ -365,11 +570,12 @@ export default {
             </div>
           </div>
 
-          <div class="article-body">
+          <div class="article-body" @mouseup="captureSelection" @touchend="captureSelection">
             <section
               v-for="(paragraph,index) in selected.paragraphs"
               :key="index"
               :class="['reading-paragraph',{active:activeParagraph===index}]"
+              :data-paragraph-index="index"
             >
               <div class="paragraph-number">{{ String(index+1).padStart(2,'0') }}</div>
               <div class="paragraph-content">
@@ -388,6 +594,29 @@ export default {
                   <button @click="playParagraph(index,paragraph.en)">{{ activeParagraph===index ? '重听本段' : '听本段' }}</button>
                   <button @click="askParagraph(index,paragraph)">逐句解析</button>
                 </div>
+                <!-- 就地讲解（契约 P0-3）：选词后的讲解卡展开在这一段下面，compact 卡片。 -->
+                <section v-if="selectionIndex===index && (selectionBusy || selectionCard || selectionError)" class="reading-inline-teach" aria-live="polite">
+                  <header class="agent-inline-head">
+                    <b>助教讲解</b>
+                    <span v-if="selectionNote" class="agent-inline-note">{{ selectionNote }}</span>
+                    <button @click="resetSelectionTeach()">收起</button>
+                  </header>
+                  <div v-if="selectionBusy" class="agent-inline-skeleton" aria-label="助教正在准备讲解">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <agent-teaching-card
+                    v-else-if="selectionCard"
+                    :card="selectionCard"
+                    compact
+                    @add-review="addReview"
+                    @speak="speakSelectionText"
+                    @ask="askSelectionInline"
+                  />
+                  <div v-else class="agent-inline-error" role="alert">
+                    <span>{{ selectionError }}</span>
+                    <button class="primary" @click="retrySelectionExplain()">重试</button>
+                  </div>
+                </section>
               </div>
             </section>
           </div>
@@ -423,6 +652,33 @@ export default {
             >{{ isDone(selected.id,'memorized') ? '★ 已完成背诵' : '我已能完整背诵' }}</button>
           </div>
         </article>
+      </div>
+      <!-- 选词浮条（契约 P0-3）：选中单词/短语后在选区上方浮出 朗读 / 讲解 / 入册。
+           位置用内联样式写死，不依赖 agent.css 是否已经加上这个类。 -->
+      <div
+        v-if="selectionBar && selectionText && (agentReady || speechReady)"
+        class="reading-select-bar"
+        role="toolbar"
+        aria-label="选中内容的操作"
+        @mousedown.prevent
+        :style="{
+          position: 'fixed',
+          left: selectionBar.left + 'px',
+          top: selectionBar.top + 'px',
+          transform: selectionBar.below ? 'translate(-50%, 0)' : 'translate(-50%, -100%)',
+          zIndex: 70,
+          display: 'flex',
+          gap: '6px',
+          padding: '6px 8px',
+          background: '#fff',
+          border: '1px solid rgba(15, 23, 42, .12)',
+          borderRadius: '10px',
+          boxShadow: '0 8px 24px rgba(15, 23, 42, .18)',
+        }"
+      >
+        <button v-if="speechReady" @click="readSelection()">朗读</button>
+        <button v-if="agentReady" @click="explainSelection()">讲解</button>
+        <button v-if="agentReady" @click="addSelectionToReview()">入册</button>
       </div>
       <div v-if="toast" class="reading-toast">{{ toast }}</div>
     </section>

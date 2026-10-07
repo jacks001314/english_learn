@@ -35,6 +35,13 @@ export default {
     calendarCells() {
       return this.calendar.days.map((day) => ({ ...day, label: Number(day.date.slice(8, 10)) }));
     },
+    // 服务端在「没有数据」时可能回 null（非法数组），这里兜住，避免整页渲染抛错。
+    recentItems() {
+      return Array.isArray(this.report && this.report.recent) ? this.report.recent : [];
+    },
+    weakItems() {
+      return Array.isArray(this.report && this.report.weakest) ? this.report.weakest : [];
+    },
     // 首格前面补空位，让列正好对应星期几。
     calendarOffset() {
       const first = this.calendarCells[0];
@@ -105,15 +112,15 @@ export default {
         <div class="report-columns">
           <section>
             <header><div><span>RECENT</span><h3>最近学习</h3></div><small>点击查看单词详情</small></header>
-            <div v-if="report.recent.length" class="report-word-list">
-              <item-row v-for="item in report.recent" :key="item.word.level + item.word.id" :item="item" kind="recent" @navigate="$emit('navigate',$event)" />
+            <div v-if="recentItems.length" class="report-word-list">
+              <item-row v-for="item in recentItems" :key="item.word.level + item.word.id" :item="item" kind="recent" @navigate="$emit('navigate',$event)" />
             </div>
             <p v-else class="empty">还没有学习记录。</p>
           </section>
           <section>
             <header><div><span>FOCUS</span><h3>最需要加强</h3></div><small>点击进入对应错题</small></header>
-            <div v-if="report.weakest.length" class="report-word-list">
-              <item-row v-for="item in report.weakest" :key="item.word.level + item.word.id" :item="item" kind="weak" @navigate="$emit('navigate',$event)" />
+            <div v-if="weakItems.length" class="report-word-list">
+              <item-row v-for="item in weakItems" :key="item.word.level + item.word.id" :item="item" kind="weak" @navigate="$emit('navigate',$event)" />
             </div>
             <p v-else class="empty">暂时没有薄弱词汇。</p>
           </section>

@@ -1,0 +1,457 @@
+{
+  "startedAt": "2026-10-06T16:03:53.304Z",
+  "mode": "mock",
+  "server": "http://127.0.0.1:8101",
+  "checks": [
+    {
+      "id": "U1",
+      "label": "本地 mock 模型服务就绪",
+      "ok": true,
+      "detail": "http://127.0.0.1:8899"
+    },
+    {
+      "id": "U2",
+      "label": "go build ./cmd/server 成功",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "id": "U3",
+      "label": "真实服务端就绪",
+      "ok": true,
+      "detail": "http://127.0.0.1:8101"
+    },
+    {
+      "id": "U4",
+      "label": "学生账号注册成功",
+      "ok": true,
+      "detail": "e2e-student"
+    },
+    {
+      "id": "U5",
+      "label": "管理员登录（用于配置智能体）",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "U6",
+      "label": "智能体已启用（provider/model 正确）",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"model\":\"gpt-mock-1\",\"providerId\":\"openai\"}"
+    },
+    {
+      "id": "U7",
+      "label": "打开真站点出现登录表单",
+      "ok": true,
+      "detail": "input 数=2"
+    },
+    {
+      "id": "U8",
+      "label": "用真实登录表单登录成功（进入 app-shell）",
+      "ok": true,
+      "detail": "hash=#home"
+    },
+    {
+      "id": "U9",
+      "label": "侧边栏存在「看词选义」导航",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U10",
+      "label": "词义练习渲染出真实题目与选项",
+      "ok": true,
+      "detail": "第 第 1 / 4590 题 题 · -sist- · 选项 4 个"
+    },
+    {
+      "id": "U11",
+      "label": "在真实页面上答错一道题（拿到错答态）",
+      "ok": true,
+      "detail": "再巩固一下正确答案是：词根：站立不懂，讲讲出同类题"
+    },
+    {
+      "id": "U12",
+      "label": "答错后出现助教入口 .meaning-ask",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U13",
+      "label": "就地讲解渲染成结构化教学卡片（有结论 + 判定 + 分段 + 行动条）",
+      "ok": true,
+      "detail": "headline=词义练习：先判断考点，再用排除法收口 sections=5"
+    },
+    {
+      "id": "U14",
+      "label": "就地讲解没有把 JSON 原文漏到页面上",
+      "ok": true,
+      "detail": "jsonLeak=false"
+    },
+    {
+      "id": "U15",
+      "label": "判定行来自服务端题库（不采信模型）",
+      "ok": true,
+      "detail": "verdict=你选了「邀请,招待」，正确答案是「词根：站立」"
+    },
+    {
+      "id": "U16",
+      "label": "默认形态是浮动面板（agent-float）",
+      "ok": true,
+      "detail": "class=agent-assistant agent-float"
+    },
+    {
+      "id": "U17",
+      "label": "面板贴右缘浮起且宽度合理（≈420px）",
+      "ok": true,
+      "detail": "regime=rail position=fixed width=420 right=18 iw=1424"
+    },
+    {
+      "id": "U18",
+      "label": "面板打开时给页面让位（body.agent-open 且 fab 收起）",
+      "ok": true,
+      "detail": "bodyOpen=true fabDisplay=none"
+    },
+    {
+      "id": "U19",
+      "label": "浮动面板打开时零遮挡（选项 / 讲解卡 / 错词栏都不被盖，且真的量到了元素）",
+      "ok": true,
+      "detail": "选项区[.meaning-options]:0/9 答错动作区[.meaning-ask]:0/9 就地讲解卡[.agent-inline-teach]:0/9 错词栏[.meaning-review]:0/9"
+    },
+    {
+      "id": "U20",
+      "label": "面板内问一句，真模型回答渲染成卡片",
+      "ok": true,
+      "detail": "问「讲讲这道题」→ 词义练习：先判断考点，再用排除法收口"
+    },
+    {
+      "id": "U21",
+      "label": "面板顶部状态胶囊显示当前场景/进度",
+      "ok": true,
+      "detail": "caption=词义练习 · 第 1 题 · 你在该词错过 1 次"
+    },
+    {
+      "id": "U36",
+      "label": "面板回答带「助教已读」回执，点开后能看到快照原文（P1-1 线上）",
+      "ok": true,
+      "detail": "chips=[本题|该词历史|练习进度|本页全景|薄弱词|今日到期] expanded=true 原文=\"【学生档案】学段：全部范围（小学 + 初中） · 平均掌握度 8/100 · 连续学习 1 天 · 最薄弱：-sist-（错 1 次）\\n stale=false note=\"\""
+    },
+    {
+      "id": "U22",
+      "label": "收起后页面恢复全宽（agent-open 移除、入口按钮回来）",
+      "ok": true,
+      "detail": "bodyOpen=false fabVisible=true"
+    },
+    {
+      "id": "U24-tongbu",
+      "label": "六场景页面真站点：同步训练 的胶囊显示服务端场景名",
+      "ok": true,
+      "detail": "chip=同步训练"
+    },
+    {
+      "id": "U25-tongbu",
+      "label": "六场景页面真站点：同步训练 上浮动面板零遮挡（且真的量到了元素）",
+      "ok": true,
+      "detail": "同步训练内容区[.tb-items]:0/9@574,-432,358,1730 | viewport=1424x865 panel=[986,217,420,620] main=[272,-1055,712,7320]"
+    },
+    {
+      "id": "U26-tongbu",
+      "label": "六场景页面真站点：同步训练 的题目列没被浮动栏挤瘦（≥300px）",
+      "ok": true,
+      "detail": "宽度=358px"
+    },
+    {
+      "id": "U24-grammar",
+      "label": "六场景页面真站点：语法专题 的胶囊显示服务端场景名",
+      "ok": true,
+      "detail": "chip=语法专题"
+    },
+    {
+      "id": "U25-grammar",
+      "label": "六场景页面真站点：语法专题 上浮动面板零遮挡（且真的量到了元素）",
+      "ok": true,
+      "detail": "语法专题内容区[.gr2-qgroup]:0/9@561,-1074,377,3013 | viewport=1424x865 panel=[986,217,420,620] main=[272,-6299,712,10082]"
+    },
+    {
+      "id": "U26-grammar",
+      "label": "六场景页面真站点：语法专题 的题目列没被浮动栏挤瘦（≥300px）",
+      "ok": true,
+      "detail": "宽度=377px"
+    },
+    {
+      "id": "U34",
+      "label": "阅读理解：选中一个词原地浮出「朗读 / 讲解 / 入册」（P0-3 线上）",
+      "ok": true,
+      "detail": "选中=\"Every\" 按钮=[朗读/讲解/入册] rect=595,323 174x41"
+    },
+    {
+      "id": "U35",
+      "label": "阅读理解：就地讲解卡展开在本段下方、不遮挡正文（P0-3 线上）",
+      "ok": true,
+      "detail": "点讲解=true inline=true headline=\"文章阅读：先判断考点，再用排除法收口\" sections=5 遮挡=0/9 "
+    },
+    {
+      "id": "U23",
+      "label": "交互全过程没有 JS 报错",
+      "ok": true,
+      "detail": "0 条"
+    }
+  ],
+  "shots": {
+    "agent-live-inline-teach": "docs\\images\\agent-live-inline-teach.png",
+    "inline": "docs\\images\\agent-live-inline-teach.png",
+    "agent-live-float-card": "docs\\images\\agent-live-float-card.png",
+    "floatCard": "docs\\images\\agent-live-float-card.png",
+    "agent-live-float-closed": "docs\\images\\agent-live-float-closed.png",
+    "closed": "docs\\images\\agent-live-float-closed.png",
+    "agent-live-tongbu-capsule": "docs\\images\\agent-live-tongbu-capsule.png",
+    "scene-tongbu": "docs\\images\\agent-live-tongbu-capsule.png",
+    "agent-live-grammar-capsule": "docs\\images\\agent-live-grammar-capsule.png",
+    "scene-grammar": "docs\\images\\agent-live-grammar-capsule.png",
+    "agent-live-reading-select": "docs\\images\\agent-live-reading-select.png",
+    "reading": "docs\\images\\agent-live-reading-select.png"
+  },
+  "consoleErrors": [],
+  "samples": {
+    "question0": {
+      "prompt": "-sist-",
+      "options": [
+        "1邀请,招待",
+        "2数学书",
+        "3词根：站立",
+        "4雪人"
+      ],
+      "counter": "第 1 / 4590 题"
+    },
+    "inline": {
+      "hasCard": true,
+      "headline": "词义练习：先判断考点，再用排除法收口",
+      "verdict": "你选了「邀请,招待」，正确答案是「词根：站立」",
+      "sections": 5,
+      "words": [],
+      "action": "30 秒小动作把错题的选项抄一遍，标出被排除的原因。开始自测",
+      "jsonLeak": false
+    },
+    "panel": {
+      "cls": "agent-assistant agent-float",
+      "position": "fixed",
+      "width": 420,
+      "right": 18,
+      "floatClass": true,
+      "bodyOpen": true,
+      "fabHidden": "none",
+      "viewportWidth": 1424
+    },
+    "occlusion": [
+      {
+        "name": "选项区",
+        "matched": ".meaning-options",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          307,
+          350,
+          330,
+          164
+        ]
+      },
+      {
+        "name": "答错动作区",
+        "matched": ".meaning-ask",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          495,
+          398,
+          128,
+          68
+        ]
+      },
+      {
+        "name": "就地讲解卡",
+        "matched": ".agent-inline-teach",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          307,
+          41,
+          330,
+          783
+        ]
+      },
+      {
+        "name": "错词栏",
+        "matched": ".meaning-review",
+        "sampled": 9,
+        "covered": 0,
+        "rect": [
+          688,
+          322,
+          296,
+          221
+        ]
+      }
+    ],
+    "panelCard": {
+      "asked": "讲讲这道题",
+      "chip": "词义练习 · 第 1 题 · 你在该词错过 1 次",
+      "headline": "词义练习：先判断考点，再用排除法收口",
+      "verdict": "你选了「邀请,招待」，正确答案是「词根：站立」",
+      "sections": 5,
+      "wordChips": []
+    },
+    "receipt": {
+      "has": true,
+      "chips": [
+        "本题",
+        "该词历史",
+        "练习进度",
+        "本页全景",
+        "薄弱词",
+        "今日到期"
+      ],
+      "stale": false,
+      "headText": "助教已读本题该词历史练习进度本页全景薄弱词今日到期查看读了什么",
+      "text": "【学生档案】学段：全部范围（小学 + 初中） · 平均掌握度 8/100 · 连续学习 1 天 · 最薄弱：-sist-（错 1 次）\n【练习进度】第 1 题 · 本次已答 1 题，答对 0 题（题库共 4590 题） · 第 1/383 页，每页 12 题\n【当前筛选】范围=全部范围\n【当前题目】-sist- /sɪst stænd/（n） 释义：词根：站立\n  选项：1.邀请,招待 | 2.数学书 | 3.词根：站立 | 4.雪人\n  上次助教讲解（累计 1 次）：词义练习：先判断考点，再用排除法收口 考点：这题属于词义练习，考点是搭配与词义边界，不是拼写。 排除法：把明显搭配不通的选项先",
+      "expanded": "true",
+      "note": ""
+    },
+    "scenePages": [
+      {
+        "page": "tongbu",
+        "chip": "同步训练",
+        "occlusion": [
+          {
+            "name": "同步训练内容区",
+            "matched": ".tb-items",
+            "sampled": 9,
+            "covered": 0,
+            "rect": [
+              574,
+              -432,
+              358,
+              1730
+            ]
+          }
+        ],
+        "geom": {
+          "panelRect": [
+            986,
+            217,
+            420,
+            620
+          ],
+          "mainRect": [
+            272,
+            -1055,
+            712,
+            7320
+          ],
+          "viewport": [
+            1424,
+            865
+          ]
+        }
+      },
+      {
+        "page": "grammar",
+        "chip": "语法专题",
+        "occlusion": [
+          {
+            "name": "语法专题内容区",
+            "matched": ".gr2-qgroup",
+            "sampled": 9,
+            "covered": 0,
+            "rect": [
+              561,
+              -1074,
+              377,
+              3013
+            ]
+          }
+        ],
+        "geom": {
+          "panelRect": [
+            986,
+            217,
+            420,
+            620
+          ],
+          "mainRect": [
+            272,
+            -6299,
+            712,
+            10082
+          ],
+          "viewport": [
+            1424,
+            865
+          ]
+        }
+      }
+    ],
+    "readingDiag": {
+      "selection": "Every",
+      "collapsed": false,
+      "rangeCount": 1,
+      "rect": [
+        659,
+        374,
+        46,
+        21
+      ],
+      "bodyRect": [
+        548,
+        332,
+        850,
+        755
+      ],
+      "paraDisplay": "grid",
+      "paraVisibility": "visible",
+      "paraWidth": 770,
+      "innerWidth": 1424,
+      "innerHeight": 865,
+      "dock": false,
+      "panelOpen": false
+    },
+    "readingBar": {
+      "pickedWord": "Every",
+      "bar": true,
+      "buttons": [
+        "朗读",
+        "讲解",
+        "入册"
+      ],
+      "left": 595,
+      "top": 323,
+      "width": 174,
+      "height": 41,
+      "inViewport": true
+    },
+    "readingInline": {
+      "askedInline": true,
+      "inline": true,
+      "headline": "文章阅读：先判断考点，再用排除法收口",
+      "sections": 5,
+      "barGone": true,
+      "errorText": "",
+      "occlusion": [
+        {
+          "name": "阅读正文段",
+          "matched": ".article-body .reading-paragraph",
+          "sampled": 9,
+          "covered": 0,
+          "rect": [
+            588,
+            29,
+            770,
+            807
+          ]
+        }
+      ]
+    }
+  },
+  "finishedAt": "2026-10-06T16:04:01.761Z",
+  "passed": 32,
+  "failed": 0,
+  "exitCode": 0
+}

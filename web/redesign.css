@@ -406,3 +406,6 @@ html,body,#app,.app-shell,.app-content{max-width:100%;overflow-x:clip}
 .quiz-auto-next.active{border-color:var(--green);background:#eaf7f0;color:var(--green-dark)}
 .quiz-auto-next input{width:15px;height:15px;margin:0;accent-color:var(--green);cursor:pointer}
 .quiz-auto-note{color:var(--green);font-size:12px;font-style:normal;white-space:nowrap}
+.skip-link{position:fixed;z-index:1000;top:10px;left:10px;padding:10px 14px;border-radius:7px;background:#fff;color:#174f3c;font-weight:800;box-shadow:0 4px 18px rgba(0,0,0,.18);transform:translateY(-160%);transition:transform .15s}.skip-link:focus{transform:translateY(0)}
+#main-content:focus{outline:none}
+.auth-password{position:relative;display:block}.auth-password input{padding-right:62px}.auth-password button{position:absolute;right:5px;top:50%;min-width:48px;min-height:36px;transform:translateY(-50%);border:0;border-radius:7px;background:transparent;color:var(--green);font-weight:750;cursor:pointer}.auth-password button:hover{background:#edf5f1}

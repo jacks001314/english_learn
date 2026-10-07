@@ -33,6 +33,8 @@ const (
 	agentSnapshotMaxWeakItems = 3
 	agentOptionMaxRunes       = 40
 	agentExampleMaxRunes      = 160
+	// 本页全景最多带上 20 题，够一页练习用，又不会把 prompt 撑爆。
+	agentSnapshotMaxPageMap = 20
 
 	// Drill sizing.
 	agentDrillCountDefault   = 3
@@ -139,6 +141,26 @@ type AgentReadingInfo struct {
 	Sentence     string `json:"sentence,omitempty"`
 }
 
+// AgentPageMapItem 是当前页某一题的作答结果；Correct 为 nil 表示还没作答。
+type AgentPageMapItem struct {
+	WordID   string `json:"wordId,omitempty"`
+	Spelling string `json:"spelling,omitempty"`
+	Correct  *bool  `json:"correct,omitempty"`
+}
+
+// AgentPageItem 是页面位置信息里的一行（标签 + 值）。
+type AgentPageItem struct {
+	Label string `json:"label"`
+	Value string `json:"value"`
+}
+
+// AgentPageInfo 承载「非题目类」页面的位置：同步训练、作业、课程、变式练习、考试、
+// 语法专题。这些页面没有“当前题目”，但同样需要助教知道学生站在哪里。
+type AgentPageInfo struct {
+	Kind  string          `json:"kind,omitempty"`
+	Items []AgentPageItem `json:"items,omitempty"`
+}
+
 // AgentStudentInfo is the cross-session part of the profile.
 type AgentStudentInfo struct {
 	Level        string   `json:"level,omitempty"`
@@ -151,15 +173,17 @@ type AgentStudentInfo struct {
 
 // AgentSnapshot is everything the assistant is told about the learner.
 type AgentSnapshot struct {
-	Scene    string            `json:"scene,omitempty"`
-	Mode     string            `json:"mode,omitempty"`
-	QuizType string            `json:"quizType,omitempty"`
-	Filters  map[string]string `json:"filters,omitempty"`
-	Session  *AgentSessionInfo `json:"session,omitempty"`
-	Current  *AgentCurrentItem `json:"current,omitempty"`
-	Reading  *AgentReadingInfo `json:"reading,omitempty"`
-	Weak     []AgentWeakItem   `json:"weak,omitempty"`
-	Student  *AgentStudentInfo `json:"student,omitempty"`
+	Scene    string             `json:"scene,omitempty"`
+	Mode     string             `json:"mode,omitempty"`
+	QuizType string             `json:"quizType,omitempty"`
+	Filters  map[string]string  `json:"filters,omitempty"`
+	Session  *AgentSessionInfo  `json:"session,omitempty"`
+	Current  *AgentCurrentItem  `json:"current,omitempty"`
+	Reading  *AgentReadingInfo  `json:"reading,omitempty"`
+	Page     *AgentPageInfo     `json:"page,omitempty"`
+	PageMap  []AgentPageMapItem `json:"pageMap,omitempty"`
+	Weak     []AgentWeakItem    `json:"weak,omitempty"`
+	Student  *AgentStudentInfo  `json:"student,omitempty"`
 }
 
 // ---------------------------------------------------------------------------
@@ -270,8 +294,18 @@ func agentSceneFromMode(mode string) string {
 		return "reading"
 	case "mistake", "mistakes":
 		return "mistake"
-	case "exam", "homework":
+	case "exam", "exams":
 		return "exam"
+	case "homework":
+		return "homework"
+	case "tongbu":
+		return "tongbu"
+	case "course":
+		return "course"
+	case "drill":
+		return "drill"
+	case "grammar":
+		return "grammar"
 	}
 	return "general"
 }
@@ -375,6 +409,12 @@ func (s *Store) buildAgentSnapshot(user User, in AgentChatRequest, now time.Time
 
 	snapshot.Weak = s.agentWeakItems(progress, level, wordID, now)
 	snapshot.Student = s.agentStudentSummary(progress, level, now)
+	if pageMap := agentContextPageMap(values); len(pageMap) > 0 {
+		snapshot.PageMap = pageMap
+	}
+	if page := agentContextPage(snapshot.Scene, values); page != nil {
+		snapshot.Page = page
+	}
 	return snapshot
 }
 
@@ -418,6 +458,103 @@ func agentContextReading(values map[string]any) *AgentReadingInfo {
 		return nil
 	}
 	return reading
+}
+
+// agentContextPageMap 把“本页 12 题对错”折叠成结构化数据，让「刚错过的词」变成事实
+// 而不是模型的推断。
+func agentContextPageMap(values map[string]any) []AgentPageMapItem {
+	raw, ok := values["pageMap"].([]any)
+	if !ok || len(raw) == 0 {
+		return nil
+	}
+	out := make([]AgentPageMapItem, 0, agentSnapshotMaxPageMap)
+	for _, entry := range raw {
+		item, ok := entry.(map[string]any)
+		if !ok {
+			continue
+		}
+		wordID := agentContextString(item, "wordId")
+		spelling := truncateRunes(agentContextString(item, "spelling"), agentOptionMaxRunes)
+		if wordID == "" && spelling == "" {
+			continue
+		}
+		record := AgentPageMapItem{WordID: wordID, Spelling: spelling}
+		if correct, ok := agentContextBool(item, "correct"); ok {
+			value := correct
+			record.Correct = &value
+		}
+		out = append(out, record)
+		if len(out) >= agentSnapshotMaxPageMap {
+			break
+		}
+	}
+	if len(out) == 0 {
+		return nil
+	}
+	return out
+}
+
+// agentPageFields 把各类页面自报的字段翻译成人类可读的一行。键名必须与前端
+// publishContext 上报的一致（见 docs/agent-ux-implementation-contract.md §5）。
+var agentPageFields = map[string][]struct {
+	Key    string
+	Label  string
+	Prefix string
+	Suffix string
+}{
+	"tongbu":   {{Key: "setTitle", Label: "套题"}, {Key: "unitIndex", Label: "进度"}, {Key: "setId", Label: "编号"}},
+	"homework": {{Key: "homeworkTitle", Label: "作业"}, {Key: "questionIndex", Label: "题号", Prefix: "第 ", Suffix: " 题"}, {Key: "questionType", Label: "题型"}},
+	"course":   {{Key: "courseUnit", Label: "单元"}, {Key: "courseSection", Label: "板块"}},
+	"drill":    {{Key: "drillFocus", Label: "考点"}, {Key: "drillCount", Label: "题量", Suffix: " 题"}},
+	"exam":     {{Key: "examTitle", Label: "试卷"}, {Key: "questionNo", Label: "题号", Prefix: "第 ", Suffix: " 题"}, {Key: "subject", Label: "科目"}},
+	"grammar":  {{Key: "grammarTopic", Label: "专题"}},
+}
+
+func agentContextPage(scene string, values map[string]any) *AgentPageInfo {
+	fields := agentPageFields[scene]
+	if len(fields) == 0 {
+		return nil
+	}
+	items := make([]AgentPageItem, 0, len(fields))
+	for _, field := range fields {
+		value := truncateRunes(agentContextString(values, field.Key), agentOptionMaxRunes)
+		if value == "" {
+			continue
+		}
+		items = append(items, AgentPageItem{Label: field.Label, Value: field.Prefix + value + field.Suffix})
+	}
+	if len(items) == 0 {
+		return nil
+	}
+	return &AgentPageInfo{Kind: scene, Items: items}
+}
+
+// agentSceneLabel is the Chinese name of a scene, shared by the prompt and the
+// receipt chips so the assistant never leaks an internal code to the learner.
+func agentSceneLabel(scene string) string {
+	switch scene {
+	case "meaning":
+		return "词义练习"
+	case "quiz":
+		return "单词测验"
+	case "mistake":
+		return "错题分析"
+	case "reading":
+		return "文章阅读"
+	case "exam":
+		return "考试讲解"
+	case "tongbu":
+		return "同步训练"
+	case "homework":
+		return "作业讲解"
+	case "course":
+		return "课程学习"
+	case "drill":
+		return "变式练习"
+	case "grammar":
+		return "语法专题"
+	}
+	return "综合问答"
 }
 
 // agentWordHistory reads what the learner has already done with this word.
@@ -673,7 +810,7 @@ func renderAgentSnapshot(snapshot AgentSnapshot) string {
 		} else {
 			lines = append(lines, "  该词历史：学生还没有练习记录。")
 		}
-	} else if snapshot.Mode != "" && snapshot.Scene != "general" {
+	} else if snapshot.Mode != "" && snapshot.Scene != "general" && snapshot.Page == nil {
 		lines = append(lines, "【当前题目】页面没有提供具体题目（学生可能停在列表或结算页）。")
 	}
 	if reading := snapshot.Reading; reading != nil {
@@ -690,6 +827,39 @@ func renderAgentSnapshot(snapshot AgentSnapshot) string {
 		if len(parts) > 0 {
 			lines = append(lines, "【阅读上下文】"+strings.Join(parts, " · "))
 		}
+	}
+	if len(snapshot.PageMap) > 0 {
+		answered, wrong := 0, 0
+		wrongWords := make([]string, 0, 3)
+		for _, item := range snapshot.PageMap {
+			if item.Correct == nil {
+				continue
+			}
+			answered++
+			if !*item.Correct {
+				wrong++
+				if item.Spelling != "" && len(wrongWords) < 3 {
+					wrongWords = append(wrongWords, item.Spelling)
+				}
+			}
+		}
+		line := fmt.Sprintf("本页 %d 题：已答 %d", len(snapshot.PageMap), answered)
+		if wrong > 0 {
+			line += fmt.Sprintf("、错 %d", wrong)
+			if len(wrongWords) > 0 {
+				line += "（" + strings.Join(wrongWords, "、") + "）"
+			}
+		} else if answered > 0 {
+			line += "、全对"
+		}
+		lines = append(lines, "【本页全景】"+line)
+	}
+	if page := snapshot.Page; page != nil {
+		parts := make([]string, 0, len(page.Items))
+		for _, item := range page.Items {
+			parts = append(parts, item.Label+"："+item.Value)
+		}
+		lines = append(lines, "【"+agentSceneLabel(page.Kind)+"】"+strings.Join(parts, " · "))
 	}
 	if len(snapshot.Weak) > 0 {
 		items := make([]string, 0, len(snapshot.Weak))
@@ -724,12 +894,17 @@ func agentLevelLabel(level string) string {
 // administrator to maintain them) means every scene is pedagogically sane by
 // default, while the admin prompt still defines the persona.
 var agentSceneGuides = map[string]string{
-	"meaning": "当前场景：词义练习（看词选义 / 看义选词 / 听音选义）。讲解顺序：词性与核心义项 → 词根词缀或记忆线索 → 常见搭配 → 与易混词的区别 → 一个可迁移的例句。",
-	"quiz":    "当前场景：单词测验。先点出这道题考查的知识点，再逐个说明选项为什么对或错，最后给一条下次遇到同类题的判断依据。",
-	"mistake": "当前场景：错题归因。先判断错因类别（词义不熟 / 形近或音近混淆 / 搭配不熟 / 词性误判 / 粗心），再对比错误选项与正确选项，最后给一个 30 秒内能完成的自测动作。",
-	"reading": "当前场景：文章阅读。逐句拆解句子成分与指代关系，解释生词在此处的具体义项；不要整段翻译。",
-	"exam":    "当前场景：考试 / 作业讲解。只讲思路与排除法，不要直接给出答案，用提问引导学生自己得出结论。",
-	"general": "当前场景：综合学习问答。优先结合学习记录回答，给出可执行的下一步动作。",
+	"meaning":  "当前场景：词义练习（看词选义 / 看义选词 / 听音选义）。讲解顺序：词性与核心义项 → 词根词缀或记忆线索 → 常见搭配 → 与易混词的区别 → 一个可迁移的例句。",
+	"quiz":     "当前场景：单词测验。先点出这道题考查的知识点，再逐个说明选项为什么对或错，最后给一条下次遇到同类题的判断依据。",
+	"mistake":  "当前场景：错题归因。先判断错因类别（词义不熟 / 形近或音近混淆 / 搭配不熟 / 词性误判 / 粗心），再对比错误选项与正确选项，最后给一个 30 秒内能完成的自测动作。",
+	"reading":  "当前场景：文章阅读。逐句拆解句子成分与指代关系，解释生词在此处的具体义项；不要整段翻译。",
+	"exam":     "当前场景：考试 / 作业讲解。只讲思路与排除法，不要直接给出答案，用提问引导学生自己得出结论。",
+	"general":  "当前场景：综合学习问答。优先结合学习记录回答，给出可执行的下一步动作。",
+	"tongbu":   "当前场景：教材同步训练。先说明这道题考的是哪个知识点（词汇 / 词组 / 句型 / 语法），再讲为什么，最后给一句背诵或默写的小动作。",
+	"homework": "当前场景：作业讲解。先判断错因类别（词义 / 搭配 / 词性 / 粗心），再对比正确答案，最后给一个 30 秒内能完成的订正动作。",
+	"course":   "当前场景：教材课程学习。围绕当前单元的课文、词汇、句型或语法讲解，例句优先用教材原句。",
+	"drill":    "当前场景：助教生成的同考点变式练习。说明这几道题与原错题共用什么考点，并指出最容易再错的一步。",
+	"grammar":  "当前场景：语法专题。先给速查公式，再讲用法要点与易错提醒，最后给一个改错小练习。",
 }
 
 const agentCommonRules = `通用规则：

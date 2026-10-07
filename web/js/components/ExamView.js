@@ -1,5 +1,5 @@
 import { api } from "../api.js";
-import { noteExamSubmitted } from "../learningContext.js?v=20261004-practice-source-r1";
+import { noteExamSubmitted, publishContext } from "../learningContext.js?v=20261007-agent-leakfix-r1";
 
 export default {
   props: {
@@ -63,6 +63,20 @@ export default {
     this.$emit("session-state", false);
   },
   methods: {
+    // 把“正在做哪套卷、第几题”发布到学习上下文总线（契约 §5：examTitle / questionNo / subject）。
+    publishContext(questionId) {
+      const paper = this.paper;
+      if (!paper || this.view !== "exam") return;
+      const no = questionId ? this.questionNumber(questionId) : 1;
+      publishContext({
+        view: "exams",
+        scene: "exam",
+        level: "middle",
+        examTitle: paper.title || "",
+        questionNo: no > 0 ? no : 1,
+        subject: paper.subject || "英语",
+      });
+    },
     async load() {
       try {
         const [papers, attempts] = await Promise.all([
@@ -155,6 +169,7 @@ export default {
         );
         this.remaining = Math.max(0, durationSeconds - elapsedSeconds);
         this.view = "exam";
+        this.publishContext();
         this.$emit("session-state", true);
         this.persistDraft();
         this.$nextTick(() => window.scrollTo({ top: 0, behavior: "smooth" }));
@@ -198,6 +213,7 @@ export default {
       return this.allQuestions.findIndex((question) => question.id === questionId) + 1;
     },
     goQuestion(questionId) {
+      this.publishContext(questionId);
       document.getElementById(`exam-question-${questionId}`)?.scrollIntoView({
         behavior: "smooth",
         block: "center",

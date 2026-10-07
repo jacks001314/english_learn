@@ -14,6 +14,7 @@ import {
   splitBlanks,
   splitCloze,
 } from "../tongbu/index.js?v=20260926-tongbu-r2";
+import { publishContext } from "../learningContext.js?v=20261007-agent-leakfix-r1";
 
 const LETTERS = ["A", "B", "C", "D", "E", "F"];
 
@@ -78,6 +79,25 @@ export default {
       });
       return { done, total, percent: total ? Math.round((done / total) * 100) : 0 };
     },
+    // 当前做到第几题（跨 section 计数，口径与 setTotal 一致，cloze 段按空数计）：
+    // 第一道还没判过的题；全判完就停在最后一题。助教状态胶囊靠它显示「第 N / M 题」。
+    currentQuestionNo() {
+      const set = this.selected;
+      if (!set) return 0;
+      let total = 0;
+      let no = 0;
+      (set.sections || []).forEach((section) => {
+        const isCloze = section.type === "cloze";
+        const judged = isCloze && this.clozeChecked(section);
+        const count = isCloze ? (section.blanks || []).length : (section.items || []).length;
+        for (let i = 0; i < count; i += 1) {
+          total += 1;
+          const done = isCloze ? judged : !!this.results[this.keyOf(section, i)];
+          if (!no && !done) no = total;
+        }
+      });
+      return no || total;
+    },
   },
   watch: {
     userId() {
@@ -86,12 +106,36 @@ export default {
     targetSetId(id) {
       if (id && this.sets.some((set) => set.id === id)) this.selectedId = id;
     },
+    // 换作业 / 换单元都重新上报一次，助教的状态胶囊才跟得上（契约 §5）。
+    selectedId() {
+      this.publishContext();
+    },
+    unit() {
+      this.publishContext();
+    },
   },
   created() {
     this.progress = loadTongbuProgress(this.userId);
     if (this.targetSetId && this.sets.some((set) => set.id === this.targetSetId)) this.selectedId = this.targetSetId;
+    this.publishContext();
   },
   methods: {
+    // 把“正在做哪一份同步训练”发布到学习上下文总线（契约 §5：setId / setTitle / unitIndex）。
+    publishContext() {
+      const set = this.selected;
+      if (!set) return;
+      const unitIndex = this.units.indexOf(set.unit);
+      publishContext({
+        view: "tongbu",
+        scene: "tongbu",
+        level: "middle",
+        setId: set.id,
+        setTitle: set.title,
+        unitIndex: unitIndex >= 0 ? unitIndex + 1 : 0,
+        questionNo: this.currentQuestionNo,
+        total: this.selectedTotal,
+      });
+    },
     speak,
     letter(i) {
       return LETTERS[i] || String(i + 1);

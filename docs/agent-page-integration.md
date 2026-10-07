@@ -1,7 +1,9 @@
 # 智能助教 × 页面深度融合方案
 
-> 状态：方案待评审（未实施）
-> 日期：2026-10-04
+> 状态：**已被取代并落地** —— 本文件是 2026-10-04 的初版诊断，作为背景资料保留；
+> 实际实施方案见 `docs/agent-ux-optimization.md`，冻结契约见 `docs/agent-ux-implementation-contract.md`，
+> 验收证据见 `docs/agent-ux-verification.md`。
+> 日期：2026-10-04（2026-10-06 标注状态）
 > 关联代码：`web/js/components/AgentAssistant.js`、`web/js/main.js`、`internal/learning/agent.go`、`internal/learning/agent_controller.go`、`internal/learning/content_factory.go`
 
 ---

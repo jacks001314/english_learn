@@ -422,3 +422,473 @@
 - `go test ./... -count=1`：**7 个包全过**；`go test -race ./internal/learning -count=1`：**通过**（59.5s）。
 - `scripts/ci.ps1 -E2EBase http://127.0.0.1:8099`：**12 步全过**（含词库 warning 级阻断、51 个前端文件语法检查）。
 - `e2e-practice-flow.mjs`：10/10；`e2e-primary-grammar.mjs`：17/17；`e2e-grammar-entry.mjs`：7/7；`e2e-report-flow.mjs --require-admin`：13/13（连跑 3 次稳定）。
+# 第十轮：智能助教「浮动面板 + 教学卡片」全计划上线（2026-10-07）
+
+## 1. 本轮交付
+
+把智能助教这一整条改造（浮动形态、全程 JSON 教学卡片、状态胶囊、已读回执、就地讲解、
+长回答折叠、缓存版本串守门）**首次真正部署到公网** `http://www.gbw3bao.com` 并在公网上做严格验收。
+之前 20 多节的「线上」都是本机真栈（真 Go + 真 deepseek-flash + 真 Chrome，base=127.0.0.1）；
+本轮起，公网站点也跑的是本轮的代码。
+
+## 2. 部署
+
+```
+powershell -NoProfile -File ./scripts/deploy.ps1 -SkipAudioSync
+```
+
+- **部署版本**：`20261007-002149`（与远端 `VERSION` 一致）
+- **部署方式**：`scripts/deploy.ps1`（plink/pscp），远端 DB 先备份、发布包留档（保留 5 份）、`systemctl restart english-learn`
+- **部署后自检**：`audio http 200, 381166 bytes`；`/api/health = {"status":"ok"}`
+- **打包完整性审计（只读）**：本地目录 vs 发布 tar.gz 成员清单 —— `web/ 249=249`、`backend/ 98=98`、`chuzhong/ 89=89`，逐文件 MATCH（用 Python `tarfile`；Windows `tar` 的 UTF-16 输出是显示假象）
+
+## 3. 部署一致性（本地 SHA1 = 线上 SHA1）
+
+`scripts/online-live-agent-acceptance.mjs` 的 L1：公网抓取 21 个助教相关文件（`index.html`、`agent.css`、
+`main.js`、`learningContext.js`、`agentSpeech.js`、`components/*` 等）与本地 Master 计算 SHA1 对比。
+
+| | 部署前 | 部署后 |
+| --- | --- | --- |
+| L1 部署一致性 | **19/21 不一致** | **21/21 全部一致** |
+
+部署状态只读探针 `scripts/check-prod-deploy-state.mjs`：部署前 **一致 3 / 漂移 4** → 部署后 **一致 7 / 漂移 0**（exit=0）。
+
+## 4. 公网实测（部署前 / 部署后）
+
+同一套 15 条公网断言（真站点、真 deepseek-flash、真 Chrome headless + CDP）：
+
+| 断言 | 部署前 | 部署后 |
+| --- | --- | --- |
+| L3 浮动形态 | `static / 410 / right:0` FAIL | `fixed / 420 / right:18 / agent-float` PASS |
+| L4 面板让位 | `body.agent-open=false` FAIL | PASS |
+| L6 状态胶囊 | 空串 FAIL | `词义练习 · 第 1 题` PASS |
+| L7 教学卡片 | `cards:0` FAIL | `cards:1 / words:27 / chips:5` PASS |
+| L8 可点读 | `agent-word=0` FAIL | `agent-word=27` PASS |
+| L10 回执 chips | `chips:0` FAIL | `chips:5` PASS |
+| L11 阅读浮条 | `{}` FAIL | `选中="Every" 按钮=[朗读/讲解/入册]` PASS |
+| **合计** | **6 通过 / 8 失败** | **15 通过 / 0 失败** |
+
+整条质量门禁打到线上：
+
+| 命令 | 结果 |
+| --- | --- |
+| `node scripts/online-live-agent-acceptance.mjs` | 15 通过 / 0 失败（exit=0） |
+| `powershell -NoProfile -File ./scripts/ci.ps1 -E2EBase http://www.gbw3bao.com` | 14 步通过 / 0 步失败 |
+| `go build ./... / go vet ./... / go test ./... -count=1` | 0 / 0 / 0 |
+
+> 本轮为线上验收注册了临时账号 `accept-*`；脚本自身注册的 `probe-*` / `statusprobe-*` 等效一次性账号也一并计入待清理清单（与 `docs/deploy.md` §3.6 原做法一致）。
+
+## 5. 截图证据
+
+- `docs/images/agent-live-acceptance-panel.png` —— 公网浮动面板 + 教学卡片（胶囊「词义练习 · 第 1 题」、生词可点读）
+- `docs/images/agent-live-acceptance-reading.png` —— 公网阅读页选词浮条（朗读 / 讲解 / 入册）
+
+## 6. 本轮新增工具
+
+- `scripts/online-live-agent-acceptance.mjs`（新建）：不碰服务端，直接打公网，15 条断言，退出码 0/1。
+- `scripts/check-prod-deploy-state.mjs`（修）：修正「在错误的文件里找标记」的缺陷，现 `一致 7 / 漂移 0`。
+
+## 7. 补记：同一轮内的第二次上线 —— 场景胶囊「场景 · 定位」
+
+第一版上线后，面板胶囊对非词条页只显示场景名（如 `同步训练`）。同一轮内又做了一版前端改动并重新上线：
+
+- **改动**：`AgentAssistant.js` 新增 `sceneScope()` / `progressSource()`，题号统一成「第 N / M 题」；
+  版本串 bump 到 `20261007-agent-capsule-scope-r1`。
+- **部署**：`Deployed version: 20261007-003128`（同 `deploy.ps1 -SkipAudioSync`）。
+- **公网验收**：`node scripts/online-live-agent-acceptance.mjs` → **16 通过 / 0 失败**（新增 L13 非词条页胶囊）。
+- **公网实测胶囊**：`词义练习 · 第 1 / 4590 题`、`同步训练 · Homework 1: Get ready`、
+  `语法专题 · be 动词（am / is / are）`、`课程学习 · 七年级 · 上册 · Starter · Welcome to junior high!`、
+  `单词测验 · 第 1 / 10 题`。
+- **说明**：`exams` / `homework` / `mistakes` 页在新账号下无历史数据、页面不发布上下文，胶囊显示空态——既有约定，非缺陷（有数据的账号会显示 `考试讲解 · <卷名> · 第 N 题`）。
+## 8. 验收脚本扩容：L13 场景胶囊 / L14 停靠形态（仅脚本与报告，无需重新部署）
+
+站点代码未变（仍是 `20261007-003128`），本轮只把公网验收脚本做强：
+
+- **L13 非词条页场景胶囊**：进 `#tongbu` / `#grammar` / `#course` / `#quiz` 读状态胶囊，断言包含对应场景名。
+  实测：`同步训练 · Homework 1: Get ready`、`语法专题 · be 动词（am / is / are）`、
+  `课程学习 · 七年级 · 上册 · Starter · Welcome to junior high!`、`单词测验 · 第 1 / 10 题`。
+- **L14 / L14b 停靠形态**：点面板头部「停靠」→ 断言 `body.agent-dock`、栏宽 440、页面真的让位
+  （实测 `mainRight=964 ≤ panelLeft=984`）；再点「浮动」→ 断言页面恢复。
+- 同时修掉 **L6 的竞态**：新账号首次进词义页要异步拉约 4590 条题目，原先会在上下文发布前读胶囊、读到空态；
+  现在先等 `scene=meaning` 的上下文发布再读，并把 L6 断言从「非空」升级成「含场景名 + 含『第 N / M 题』」。
+
+- **L15 定位题目**（公网）：点胶囊上的「定位题目」→ 当前 `.meaning-card` 拿到 `.is-agent-focus` + 内联
+  `box-shadow: rgba(247, 181, 0, 0.85) 0 0 0 3px` 且 `inViewport=true`（2 秒后自动撤）。
+- **L16 助教已读回执展开**（公网）：点回执头 → `aria-expanded=false→true`，露出 `.agent-receipt-text` 快照原文
+  （实测片段「【学生档案】…【当前题目】-sist- … 选项：…」）。
+
+**复跑**：`node scripts/online-live-agent-acceptance.mjs` → **20 通过 / 0 失败**（exit=0）。
+
+# 第十一轮：把计划里最后两条（主动轻提示 / 归因 reason）搬上公网验收（2026-10-07）
+
+## 1. 本轮交付
+
+只改**验收脚本 + 文档 + 报告**，**站点代码未变**（线上仍 `20261007-003128`），所以**没有重新部署**。
+
+- `scripts/online-live-agent-acceptance.mjs`：新增 `L17` / `L17b`（主动轻提示）与 `L18`（归因 reason）。
+- `docs/images/agent-live-acceptance-nudge.png`：轻提示的线上截图（新增）。
+
+## 2. 新增断言
+
+- **L17 连错两题触发主动轻提示**：先 `about:blank` 清页（清掉连击/冷却），再进 `#meaning-en-zh`，
+  循环「点选项 → 读 `.meaning-feedback.is-wrong` → 找 `.agent-nudge` → 点下一题」，最多 14 轮。
+  实测：`.agent-nudge` 是 `ASIDE` / `role=status` / `position=fixed` / `right=22` / `bottom=82`，
+  文案「连错两题了停下来一分钟，让助教把这两个词的差别讲清楚，再继续练。」，主动作「讲讲我错在哪」。
+- **L17b**：页面无 `[role="dialog"] / dialog[open]` —— 不弹窗、不打断作答。
+- **L18 归因结论写入 `KnowledgeMastery.reason`**：用同一个真账号 `fetch('/api/learning/profile?level=middle|primary')`，
+  断言 `strongest` / `weakest` 里有非空 `reason`。实测 **8 条**，示例 `middle/a 分 8 → 仍有 1 次错误未完成巩固`、
+  `middle/100-metre race 分 85 → 练习证据较少，需要继续确认掌握程度`。
+
+## 3. 公网实测
+
+`node scripts/online-live-agent-acceptance.mjs`（`http://www.gbw3bao.com`）→ **23 通过 / 0 失败，exit=0**
+（报告：`docs/verify-reports/report-live-agent-acceptance.json`）。部署一致性 `L1` 仍 21/21 全一致，全程 0 条 JS 报错。
+
+## 4. 本地同构建验证
+
+- `node --check scripts/online-live-agent-acceptance.mjs` → exit=0。
+- 本轮未改 `web/**`、`internal/**`、`backend/**`，故未重跑 `go build/vet/test`、契约守门与 `ci.ps1`（第十轮结果仍适用）。
+
+## 5. 追加：L19 小屏抽屉 / L20 长问题不撑爆面板（同轮第二次复跑，2026-10-07）
+
+同轮内又补两条公网断言（仍只改脚本 + 文档 + 报告，站点代码未变）：
+
+- **L19 / L19b 小屏全屏抽屉**：`Emulation.setDeviceMetricsOverride(1024×768)` → 断言面板 `fixed / inset 0 / 1024×768 / z-index 70`、
+  拖拽条 `display:none`、主内容列 775px、无横向溢出；还原视口后断言回到 420px 浮动。
+  截图 `docs/images/agent-live-acceptance-drawer-1024.png`。
+- **L20 长问题不撑爆面板**：发一个「要求写 1000 字」的问题 → 断言回答仍以卡片返回、面板无横向溢出、
+  消息列可滚动、输入区仍在视口内。截图 `docs/images/agent-live-acceptance-long-answer.png`。
+  附本轮实测结论：面板对自由提问也带 `format:'card'`（`CARD_ACTIONS` 含空串），模型一律回卡片，
+  故「Markdown 回落 → 折叠」是兜底路径、线上不可确定性触发；其节点级验证仍见 `docs/agent-ux-verification.md` §20。
+
+**复跑**：`node scripts/online-live-agent-acceptance.mjs` → **26 通过 / 0 失败**（exit=0）。
+
+## 6. 本轮小结（第十一轮）
+
+- 站点未变（线上仍 `20261007-003128`），本轮把公网验收脚本从 23 条扩到 26 条并复跑全绿。
+- 顺带修正一处**证据标注**：`docs/verify-reports/report-ui-live-*.json` 的 `server=127.0.0.1:8100` 属本机真栈，
+  此前把它当「线上」引用不准确；现已用公网 L19 覆盖 P2-5（小屏抽屉）。
+
+## 7. 追加：L21 页内就地回答卡 / L22 流式可停止（同轮第三次复跑，2026-10-07）
+
+同轮再补两条 P0/P2 的公网断言（站点代码未变）：
+
+- **L21 页内就地回答卡**：答题 → 点「不懂，讲讲」→ 断言 `.agent-inline-teach` 里渲染出教学卡片
+  （30 个 `.agent-word`）、位于选项区之后（`belowOptions=true`）、骨架屏已撤、无 JSON 泄漏。
+  截图 `docs/images/agent-live-acceptance-inline-teach.png`。
+- **L22 流式可中途停止**：发长问题 → 断言 `.agent-streambar` 里的「停止生成」可见 → 点它 →
+  断言流式条消失、界面提示「已停止生成，这次没有内容。」。截图 `docs/images/agent-live-acceptance-stream-stop.png`。
+
+**复跑**：`node scripts/online-live-agent-acceptance.mjs` → **28 通过 / 0 失败**（exit=0）。
+
+附同轮发现的**证据口径**问题：`scripts/online-agent-ui-e2e.mjs` 会自起本地服务端
+（`const BASE = "http://127.0.0.1:" + PORT`），所以它产出的 `report-ui-live.json` 与全部 `U*` 断言都是**本机真栈**，
+不是公网；`docs/agent-ux-verification.md` §19 里凡引 `U*` 的行，公网证据以本轮新增的 L1–L22 为准。
+
+# 第十二轮：公网验收补 4 条断言 + 修掉线上抓到的「漏 card 时铺原始 JSON」并重新部署（2026-10-07）
+
+## 1. 本轮交付
+
+- 验收脚本 `scripts/online-live-agent-acceptance.mjs` 新增 4 条**公网**断言：
+  - **L11b** 阅读页选词浮条「入册」→ 加入今日复习并弹出提示；
+  - **L11c** 阅读页选词浮条「讲解」→ 该段落**下方**就地展开讲解卡（左侧正文区，不是右下角面板）；
+  - **L23** 浮动面板左缘**拖拽调宽**：变宽夹在 560、变窄夹在 360，并落盘 `localStorage['lingoBloomAgentPanelWidth']`；
+  - **L24** 故障注入：服务端「只给 `message` 不给 `card`」时，页面必须给中文兜底提示，**不许**把原始 JSON 当正文。
+- 前端修一个真缺陷：`web/js/learningContext.js` 的 `askInline` 增加「像卡片 JSON 的文本不当纯文本回落」闸门（详见 §5）。
+- 因该文件字节变化，按引用图级联 bump 缓存版本串：**13 个引用文件 + `web/index.html`，共 24 处 `?v=` → `20261007-agent-leakfix-r1`**，
+  `node scripts/check-agent-asset-version.mjs` exit=0（`--update` 刷新 `docs/agent-asset-versions.json`）。
+
+## 2. 部署
+
+```
+powershell -NoProfile -File ./scripts/deploy.ps1 -SkipAudioSync
+==> 部署版本 20261007-012501
+{"status":"ok"}
+audio http 200, 381166 bytes
+```
+
+部署前核对本地镜像与线上文件数一致，确认「整树替换」不会删掉线上文件：
+线上 `web=249 / web/audio=117 / web/audio/7 mp3=54 / chuzhong=89 / backend=98`，本地逐项相同。
+
+## 3. 部署一致性（本地 SHA1 = 线上 SHA1）
+
+L1：**21/21 全部一致**（含本轮改过的 `web/index.html`、`web/js/main.js`、`web/js/learningContext.js` 与 12 个视图）。
+
+## 4. 公网实测
+
+`node scripts/online-live-agent-acceptance.mjs` → **32 通过 / 0 失败 / 32 条断言，exit=0**。
+
+新增 4 条的原文 JSON：
+
+- L11b：`{"clicked":true,"toast":"已把「every」加入今日复习，打开「今日复习」就能看到它。"}`
+- L11c：`{"hasSection":true,"hasCard":true,"words":25,"headline":"Every 不能单独作成分，要和后面的单数名词一起看","belowParagraph":true,"jsonLeak":false,"secViewport":[362,580,591,852],"secDoc":[362,783,591,852],"cardDoc":[362,865,591,770],"pageScrollY":203,"innerH":865,"bodyScrollTop":0,"picked":"Every","clicked":true}`
+- L23：`{"before":420,"handleDisplay":"block","wide":560,"narrow":360,"min":360,"persisted":"360"}`
+- L24：`{"hasError":true,"errorText":"助教这次没把讲解整理好，请点「重试」。","hasCard":false,"sentinelOnPage":false,"rawJsonOnPage":false,"reAsked":true}`
+
+L23 走真实输入通路：先用探针确认 CDP 的 `Input.dispatchMouseEvent` 确实生成 pointer 事件
+（`pointerdown=3 / pointermove=18 / pointerup=3`），再按 `mousePressed → 6×mouseMoved → mouseReleased` 拖 `.agent-resize`。
+
+## 5. 本轮修掉的真缺陷：漏 card 时把原始 JSON 铺给学生
+
+第一次复跑时 **L21 失败**（`jsonLeak:true`）。量化：对公网 `/api/agent/chat` 连发 14 次 `explain-wrong` →
+**13 次带 card / 1 次不带**；14 次的 `message` 一律是模型原始 JSON 文本，所以漏 card 的那次学生就会看到 `{"headline":...}`。
+根因是模型偶尔漏必填字段、服务端结构化解析不过，只回原文 `message`；前端「纯文本回落」把它当正文铺开了。
+
+修法：`askInline` 里若 `!card && 文本像卡片 JSON`，返回 `{card:null, message:'', error:'助教这次没把讲解整理好，请点「重试」。'}`，
+meaning / quiz / reading 三处就地讲解一次性覆盖。L24 用故障注入确定性地验证了这条兜底（截图 `agent-live-acceptance-json-fallback.png`）。
+**服务端「漏 card」未修**（属 `internal/**`，本轮不动）：学生不会再看到 JSON，但那次讲解是缺的，只有重试入口。
+
+## 6. 截图证据
+
+`agent-live-acceptance-reading-review.png`（L11b）、`agent-live-acceptance-reading-inline.png`（L11c）、
+`agent-live-acceptance-resize-360.png`（L23）、`agent-live-acceptance-json-fallback.png`（L24）；
+同批还刷新了 panel / reading / nudge / drawer-1024 / long-answer / inline-teach / stream-stop 7 张。
+
+## 7. 诚实标注
+
+- L11c 的**整页**截图只能拍到卡片的一段：阅读正文自身是滚动容器（`redesign.css:375 .reading-paper{overflow-y:auto}`，
+  实测 `clientHeight` 653），本轮卡片实测高 770–852px，比容器还高。断言与 `secDoc/cardDoc` 数值才是完整证据。
+- 曾试 `captureBeyondViewport + clip` 单独拍卡片本体，但卡片在内层滚动容器里、clip 的文档坐标算不准（拍到空白），已放弃并删除该临时图。
+- 本轮**改了 `web/**` 并重新部署**；上一轮「不改站点代码」的约束只适用于上一轮。
+
+# 第十三轮：修复后公网复跑 + 交付面核查（不改站点代码，2026-10-07）
+
+## 1. 本轮做了什么
+
+- 站点代码零改动（`web/**`、`internal/**` 与线上 `20261007-012501` 同版本），本轮只做**复跑取证 + 交付面核查**。
+- 重跑 `node scripts/online-live-agent-acceptance.mjs`（公网 `http://www.gbw3bao.com`）。
+
+## 2. 公网实测结果
+
+```
+==> 公网助教验收 · http://www.gbw3bao.com
+--- A. 部署一致性 ---
+  [PASS] L0 线上可达 — HTTP 200 / 3239 字节
+  [PASS] L0 /api/health — HTTP 200
+  [PASS] L1 部署一致性（本地 SHA1 = 线上 SHA1） — 21/21 全部一致
+--- B. 真站 UI 断言（headless Chrome + CDP）---
+  ... L2 – L24 全 PASS ...
+==> 公网验收：32 通过 / 0 失败
+```
+
+- **32 通过 / 0 失败 / 32 条断言，exit=0**。
+- 报告 `docs/verify-reports/report-live-agent-acceptance.json` 刷新到
+  `startedAt=2026-10-06T17:29:16Z / finishedAt=2026-10-06T17:30:20Z`。
+- 第十一轮偶发失败的 **L21**（页内就地回答卡）本轮 **PASS**；**L24**（漏 card 兜底）仍 **PASS**；
+  **L12** 全程 0 条 JS 报错。11 张公网截图随本轮重跑刷新。
+
+## 3. 交付面核查（本轮新增，回答「改过的文件是否都回写了 Master」）
+
+- `node delivcheck.cjs` → `checked files in delivery scopes = 415`，`UNREGISTERED = 0`
+  （范围：`scripts` / `docs` / `web/js` / `internal` / `backend` + `web/` 根静态资源；全部已在 Master 登记）。
+- 守门三连（本轮复跑）：`node --check scripts/online-live-agent-acceptance.mjs` = 0；
+  `scripts/check-agent-asset-version.mjs` = 0（扫 104 个源文件 / 56 个 `?v=` 资源）；
+  `scripts/check-agent-context-contract.mjs` = 0（43 字段 / 10 处调用 / 覆盖 43）。
+
+## 4. 本轮回写 Master 的文件
+
+无站点代码；回写的是刷新后的报告 JSON、11 张公网截图，以及本文件与 `docs/agent-ux-verification.md` §28.7。
+
+## 5. 诚实标注
+
+- 卡片正文由真模型逐次生成，同一断言的 `headline` 文案逐轮不同（本轮 L11c 与上一轮措辞不同），
+  属模型非确定性；断言只校验结构（有卡片 / 无 JSON 泄漏 / 位置正确）。
+- 本轮**没有**做全站回归（验收覆盖 meaning / quiz / reading / tongbu / grammar / course / drill 等主路径），
+  也未重新部署（站点未变，无需部署）。
+
+# 第十四轮：新增「公网全站回归」门禁，并修掉它抓到的真缺陷（空数据时「我的学习报告」整页崩）（2026-10-07）
+
+## 1. 本轮补的是哪块空白
+
+第十二 / 十三轮之后，线上断言全部落在**助教链路**上，`README.md` 第十三轮 §5 与
+`docs/agent-ux-verification.md` §28.6 都标注过同一条余量：**「整树部署后其它页面有没有回归」没验过**。
+本轮补上这块，并把它变成可复跑的门禁。
+
+## 2. 新工具与结果
+
+- 新脚本：`scripts/online-live-site-regression.mjs`（A 静态资源完整性 / B 21 个学习者路由渲染 / C 8 个管理端路由优雅回落）。
+- 首跑 **33 通过 / 2 失败**，抓到真缺陷（见 §3）。
+- 修好并**重新部署**（`20261007-013823`）后复跑：
+
+```
+==> 全站回归：36 通过 / 0 失败     exit=0
+（R report 由 FAIL 转 PASS：marker:true / visible:242 / errs:0；S6 全程 0 条 JS 报错）
+==> 公网助教验收：32 通过 / 0 失败   exit=0（L1 部署一致性 21/21）
+```
+
+报告：`docs/verify-reports/report-live-site-regression.json`、`docs/verify-reports/report-live-agent-acceptance.json`。
+
+## 3. 抓到的真缺陷：空数据时「我的学习报告」整页崩
+
+- 现象：新注册账号打 `#report` → `TypeError: Cannot read properties of null (reading 'length')`，视图整块不渲染。
+- 线上数据侧确认：`GET /api/dashboard` 对空数据账号返回 `recent: []` 但 **`weakest: null`**。
+- 根因：`internal/learning/service.go` 的 `filtered := weak[:0]`（`weak` 在无错词时是 nil）→ Go 序列化成 `null`。
+- 修法：① 根因改成 `make([]LearningItem, 0, len(weak))`（回 `[]`）；② `ReportView.js` 用 `Array.isArray(...) ? ... : []`
+  兜底（以后服务端再回 null 也不崩）。
+- 回归测试：新增 `internal/learning/dashboard_http_test.go`；把修复临时改回去 → 测试 **FAIL**，改回 → **PASS**（先红后绿）。
+- 缓存失效：`ReportView.js` 原本没有 `?v=`，已在 `main.js` 的 import 上加 `?v=20261007-reportview-nullfix-r1`，
+  并 bump `web/index.html` 的 `main.js` 版本串；`check-agent-asset-version.mjs --update` 后守门 exit=0。
+
+## 4. 本地验证
+
+`go build ./...` = 0；`go vet ./...` = 0；`go test ./... -count=1` = 0（全包 ok）。
+
+## 5. 诚实标注
+
+- 该缺陷**不是助教改造引入的**（`ReportView.js` / `service.go` 都不在改造改动集里），是**早就在线上**的问题；
+  它到现在才暴露，正是因为此前所有公网断言只覆盖助教链路。
+- 本轮仍**没有**做「全站回归 + 助教验收之外」的其它验证（例如移动端真机、并发压测）；公网断言只覆盖
+  「路由能渲染 / 无 JS 报错 / 无横向溢出 / 关键 marker 存在」这一层。
+
+# 第十五轮：把「上一轮改了却没回写 Master」这件事查出来并收口（2026-10-07）
+
+## 1. 起因
+
+第十四轮的助教验收是 32 条；上一轮（第二十轮）给脚本加了 `L25`/`L26`，验证「同步训练 / 变式练习」两页
+状态胶囊里的题号与「错过 M 次」。上一轮复跑时 `L26` 报 `ERR ev(...).trim is not a function`，
+被当成「脚本小笔误」记下，但**没查到底**。本轮把它查到底，顺带发现一件更要紧的事。
+
+## 2. 两个发现
+
+### 2.1 上一轮的页面改动没进 Master（真问题）
+
+`project_read` 直读 Master 对账，Master 上：
+
+- `web/js/components/DrillView.js` = 11465 B，`publishContext` 里没有 `wrongTimes`（本地/线上 = 11518 B，有）；
+- `web/js/components/TongbuView.js` = 25813 B（本地/线上 = 26745 B，含 `currentQuestionNo`）；
+- `web/js/main.js` = 44720 B，Tongbu / Drill 的 import 仍是 `?v=20261007-agent-leakfix-r1`（本地 = 44726 B / `?v=20261007-capsule-progress-r1`）；
+- `web/index.html` = 3244 B，`main.js?v=20261007-reportview-nullfix-r1`（本地 = 3242 B / `?v=20261007-capsule-progress-r1`）。
+
+原因是上一轮**从本地工作副本部署**，没做回写。后果不是「线上坏了」，而是「仓库会回退」：
+谁从 Master 部署一次，`tongbu` 的题号与 `drill` 的「错过 M 次」就没了。本轮已用 `project_file_sync` 按本地字节回写 4 个文件，
+守门（`check-agent-asset-version.mjs` 57 个资源 / `check-agent-context-contract.mjs` 43 字段）均 exit=0。
+
+### 2.2 `L26` 失败是探针自己的 fixture 不合法（不是产品缺陷）
+
+旧探针拿 `context.level` 造变式题——但词义页发布的 `level` 是**筛选范围**（`all`），不是那道题的真实学段；
+`/api/quiz/answer` 按 `(level, wordId)` **精确**查词，于是 400 `word not found`，前端抛错、`wrongTimes` 恒 0。
+修法：先让页面自己真答一题，从它发出的请求体里取一对真实可判分的 `(level, wordId)`（实测 `middle` / `sist= stand,`），再用它造题。
+（`/api/agent/chat` 这条链路对 level 有 `all` 兜底，所以讲解、入册、场景识别都不受影响——只有判分接口要求精确 level。）
+
+## 3. 公网实测结果
+
+```
+==> 公网助教验收 · http://www.gbw3bao.com
+  [PASS] L1 部署一致性（本地 SHA1 = 线上 SHA1） — 21/21 全部一致
+  [PASS] L25 同步训练胶囊含「第 N / M 题」 — {"capsule":"同步训练 · Homework 1: Get ready · 第 1 / 47 题","matched":true}
+  [PASS] L26 变式练习胶囊含「第 N 题 · 你在该词错过 M 次」 — {"realPair":{"level":"middle","wordId":"sist= stand,","type":"en-zh"},"answeredReal":true,"injected":true,"answered":true,"capsule":"变式练习 · 第 1 / 1 题 · 你在该词错过 1 次"}
+==> 公网验收：34 通过 / 0 失败        exit=0
+
+==> 公网全站回归 · http://www.gbw3bao.com
+==> 全站回归：36 通过 / 0 失败        exit=0
+```
+
+报告：`docs/verify-reports/report-live-agent-acceptance.json`（22477 B）、`docs/verify-reports/report-live-site-regression.json`（25161 B）。
+
+## 4. 诚实标注
+
+- 本轮**产品侧零改动**（`web/js/**`、`internal/**` 都没动）；改的是验收脚本 + 回写 + 文档。
+- `L11c`（阅读浮条讲解）偶发失败是**真模型**非确定性（本轮 PASS），不是前端回归；确定性兜底由 `L24` 断言。
+- 仍未验证的层次照旧：移动端真机、并发压测、可访问性审计都不在公网断言覆盖内。
+
+# 第十六轮：把「空断言」审计推到公网门禁上，并重跑两条公网套件（2026-10-07）
+
+## 1. 起因
+
+第十五轮已证明**验收台**（`scripts/agent-ux-verify.mjs`）里存在「量不到也 PASS」的空断言（见 `docs/agent-ux-verification.md` §31）。
+本轮把同一类审计推向两条**公网**套件（站点 `www.gbw3bao.com`）。
+
+## 2. 审计结果
+
+| 套件 | 结论 |
+| --- | --- |
+| `scripts/online-live-site-regression.mjs` | **健康**：每条路由断言 = `rendered && errs === 0 && marker === true && visible > 3`，不存在「元素没渲染也通过」的形态 |
+| `scripts/online-live-agent-acceptance.mjs` | **找到 2 条**「缺失型」空断言，已修 |
+
+| id | 原风险 | 修法 |
+| --- | --- | --- |
+| `L9 没有 JSON 泄漏到界面` | 助教一条都没回答时 `jsonLeak` 天然 `false`，「无泄漏」是废话 | 加前提 `answered === true && (cards > 0 || text.length > 0)`；detail 带 `answered=/cards=/text=` |
+| `L17b 轻提示不阻断作答（无 blocking dialog）` | 轻提示根本没出现时「没有弹窗」是废话 | 加前提 `!!nudgeProbe`；detail 带 `nudgeShown=` |
+
+另把 **3 处** `jsonLeak` 探针从只找 `"headline"` 扩到卡片主键 `["headline","verdict","points","kind"]`（否则只漏出半截 JSON 抓不到）。
+
+## 3. 顺手修掉一个真 flake：面板打开竞态
+
+复跑时出现过一次 `[FAIL] L99 流程异常 — 等待超时：面板打开(L20)`。
+根因：`AgentAssistant.js` 的 `mounted()` 要先 `await /api/agent/status` 才决定自己出不出现，而原脚本是「fab 单次点击 + 单次等待」。
+修法：新增可重试辅助 `openPanel()`（先判 `.agent-panel` 已开 → 再判 `.agent-fab` 存在且非 `display:none` → 再点 → 400ms 重试），替换 **6 处**调用点。
+
+## 4. 公网实测结果（本轮新跑）
+
+```
+==> 公网助教验收 · http://www.gbw3bao.com
+  [PASS] L0 线上可达 — HTTP 200 / 3242 字节
+  [PASS] L1 部署一致性（本地 SHA1 = 线上 SHA1） — 21/21 全部一致
+  [PASS] L3 面板为浮动形态（fixed / ≈420px / 贴右缘） — {"cls":"agent-assistant agent-float","floatClass":true,"position":"fixed","width":420,"right":18,"bodyOpen":true}
+  [PASS] L5 浮动面板零遮挡（且真的量到了元素） — .meaning-options:0/9 .meaning-prompt:0/9 .meaning-heading:0/9 total=0/27
+  [PASS] L6 状态胶囊显示场景/进度 — 胶囊文案="词义练习 · 第 1 / 4590 题"
+  [PASS] L9 没有 JSON 泄漏到界面 — answered=true cards=1 text=56 jsonLeak=false
+  [PASS] L17b 轻提示不阻断作答（无 blocking dialog） — nudgeShown=true dialogFree=true
+  [PASS] L22 流式回答可中途停止（公网） — stopClicked=true stoppedHint=已停止生成，这次没有内容。
+  [PASS] L23 浮动面板左缘拖拽调宽：变宽夹在 560、变窄夹在 360（公网） — {"before":420,"wide":560,"narrow":360,"min":360,"persisted":"360"}
+==> 公网验收：34 通过 / 0 失败        exit=0
+
+==> 公网全站回归 · http://www.gbw3bao.com
+  [PASS] S1 线上可达 + 应用外壳 — HTTP 200 / 3242 字节
+  [PASS] S3 index.html 引用的本地 CSS/JS 全部可用 — 27/27 全部 200 且非空
+  [PASS] R×22（首页/词义×3/课程/语法/音标/阅读/考试/同步训练/测验/复习/作业/报告/错题本/设置/账号安全/变式练习 …） — 全部 rendered=true / errs=0 / marker=true
+  [PASS] S6 全站回归全程 0 条 JS 报错 — 0 条
+==> 全站回归：36 通过 / 0 失败        exit=0
+```
+
+报告：`docs/verify-reports/report-live-agent-acceptance.json`（21847 B，`passed:34 / failed:0`）、
+`docs/verify-reports/report-live-site-regression.json`（25167 B，36/0）。
+截图：`docs/images/agent-live-acceptance-*.png`（11 张）、`docs/images/site-regression-*.png`（3 张），均已回写 Master。
+
+## 5. 诚实标注
+
+- 两条空断言是**审计发现**的，改前也是绿的，所以**不宣称先红后绿**；可复现证据是修后 detail 里出现了 `answered= / cards= / nudgeShown=` 这些**前提字段**（改前没有）。
+- `openPanel` 修好后已**连续两次**独立跑都是 34/0（上一轮 1 次 + 本轮 1 次），本轮未复现任何 flake。
+- 本轮**产品侧零改动**（`web/js/**`、`internal/**` 都没动），只改验收脚本 + 证据副本 + 文档；部署一致性 `L1` 仍为 21/21。
+- 仍未覆盖的层次照旧：移动端真机、并发压测、可访问性审计。
+
+# 第十七轮：公网覆盖补到「手机宽度」，并修掉 L26 的「两段式胶囊」竞态（2026-10-07）
+
+## 1. 新覆盖：390×844 手机宽度
+
+`L19`（1024px）之外，公网此前**没有真手机宽度的证据**；而 `web/agent.css:151-153` 的抽屉规则是
+`@media(max-width:1100px)`，390px 还会命中更早那条低优先级 `@media(max-width:620px){.agent-panel{right:12px;bottom:68px}}`。
+新增 `L19c`（390×844，`mobile:true`：全屏抽屉 geometry + 无横向滚动 + 拖拽把手隐藏）与
+`L19d`（抽屉内输入区在视口内、textarea 可聚焦、发送按钮有可访问名）。
+
+实测：`{"innerWidth":390,"innerHeight":844,"position":"fixed","left":0,"top":0,"width":390,"height":844,"bottomGap":0,"zIndex":"70","resizeDisplay":"none","panelHScroll":0,"pageHScroll":0,"footTop":773,"footBottom":844,"footInViewport":true,"textareaFocusable":true,"sendLabel":"发送"}`
+
+## 2. L26 的真 flake：drill 胶囊是「两段式」发布
+
+加完新断言首次全量复跑 `35 通过 / 1 失败`，L26 读到的是上一场景的胶囊（`词义练习 · 第 2 / 4590 题`）。
+一次性探针（每 250ms 采样 `store.context.scene` + 胶囊文案）给出根因：
+
+- `DrillView` **不是挂载时** publishContext —— drill 卡渲染后连续 13s，`scene` 仍是 `meaning`；
+- 点完选项、判分回来后 `scene` 才变 `drill`，且**先给「变式练习 · 第 1 / 1 题」，再过一拍才补「· 你在该词错过 M 次」**。
+
+修法：`sleep(2600)+读一次` → **等条件**（≤25s、300ms 轮询），且等的是**被断言的完整文案**；
+第一版只等 `scene === 'drill'` 会 `waitMs=1` 就 break（仍失败），改成等完整正则后一次通过（`waitMs=316`）。
+断言未放松，只是不再赌固定时长。
+
+## 3. 本轮公网结果
+
+```
+==> 公网助教验收 · http://www.gbw3bao.com
+  [PASS] L19c 手机宽度（390×844）面板变全屏抽屉（公网） — 390×844 / z-index 70 / panelHScroll 0
+  [PASS] L19d 手机抽屉里输入区仍在视口内且可聚焦（公网） — footInViewport=true focusable=true sendLabel="发送"
+  [PASS] L26 变式练习胶囊含「第 N 题 · 你在该词错过 M 次」 — capsule="变式练习 · 第 1 / 1 题 · 你在该词错过 1 次" waitMs=316
+==> 公网验收：36 通过 / 0 失败        exit=0
+
+==> 全站回归：36 通过 / 0 失败        exit=0
+```
+
+## 4. 诚实标注
+
+- `L19c/L19d` 在修 L26 之前就已经是绿的 —— 本条是**新覆盖**，不是新修复。
+- 探针脚本是临时目录里的一次性脚本，已删除；可复现证据是 L26 detail 的 `scene`/`waitMs` 与三轮实跑记录。
+- 本轮**产品侧零改动**（`web/**`、`internal/**` 未动），只改验收脚本与证据副本；`L1` 部署一致性仍 21/21。

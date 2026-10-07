@@ -1,0 +1,615 @@
+{
+  "float-card": {
+    "params": {
+      "auto": "1",
+      "mode": "float",
+      "state": "card",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": {
+        "left": 986,
+        "top": 217,
+        "width": 420,
+        "height": 620,
+        "position": "fixed"
+      },
+      "placement": "float",
+      "fabVisible": false,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": true,
+    "busy": false,
+    "error": "",
+    "placement": "float",
+    "rootClasses": "agent-assistant agent-float",
+    "bodyClasses": "agent-float agent-open",
+    "cardNodes": 22,
+    "receiptNodes": 13,
+    "statusCapsule": true,
+    "statusCapsuleText": "词义练习 · 第 13 题 · 你在该词错过 2 次定位题目",
+    "inlineHostText": "",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": null,
+    "stopButton": false,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      },
+      {
+        "role": "user",
+        "hasCard": false,
+        "length": 7
+      },
+      {
+        "role": "assistant",
+        "hasCard": true,
+        "length": 59
+      }
+    ]
+  },
+  "dock-card": {
+    "params": {
+      "auto": "1",
+      "mode": "dock",
+      "state": "card",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": {
+        "left": 984,
+        "top": 0,
+        "width": 440,
+        "height": 865,
+        "position": "fixed"
+      },
+      "placement": "dock",
+      "fabVisible": false,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": true,
+    "busy": false,
+    "error": "",
+    "placement": "dock",
+    "rootClasses": "agent-assistant agent-dock",
+    "bodyClasses": "agent-dock agent-open",
+    "cardNodes": 22,
+    "receiptNodes": 13,
+    "statusCapsule": true,
+    "statusCapsuleText": "词义练习 · 第 13 题 · 你在该词错过 2 次定位题目",
+    "inlineHostText": "",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": null,
+    "stopButton": false,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      },
+      {
+        "role": "user",
+        "hasCard": false,
+        "length": 7
+      },
+      {
+        "role": "assistant",
+        "hasCard": true,
+        "length": 59
+      }
+    ]
+  },
+  "float-streaming": {
+    "params": {
+      "auto": "1",
+      "mode": "float",
+      "state": "streaming",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": {
+        "left": 986,
+        "top": 217,
+        "width": 420,
+        "height": 620,
+        "position": "fixed"
+      },
+      "placement": "float",
+      "fabVisible": false,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": true,
+    "busy": true,
+    "error": "",
+    "placement": "float",
+    "rootClasses": "agent-assistant agent-float",
+    "bodyClasses": "agent-float agent-open",
+    "cardNodes": 0,
+    "receiptNodes": 0,
+    "statusCapsule": true,
+    "statusCapsuleText": "词义练习 · 第 13 题 · 你在该词错过 2 次定位题目",
+    "inlineHostText": "",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": null,
+    "stopButton": true,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      },
+      {
+        "role": "user",
+        "hasCard": false,
+        "length": 7
+      },
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 0
+      }
+    ]
+  },
+  "float-text": {
+    "params": {
+      "auto": "1",
+      "mode": "float",
+      "state": "text",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": {
+        "left": 986,
+        "top": 217,
+        "width": 420,
+        "height": 620,
+        "position": "fixed"
+      },
+      "placement": "float",
+      "fabVisible": false,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": true,
+    "busy": false,
+    "error": "",
+    "placement": "float",
+    "rootClasses": "agent-assistant agent-float",
+    "bodyClasses": "agent-float agent-open",
+    "cardNodes": 0,
+    "receiptNodes": 11,
+    "statusCapsule": true,
+    "statusCapsuleText": "词义练习 · 第 13 题 · 你在该词错过 2 次定位题目",
+    "inlineHostText": "",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": null,
+    "stopButton": false,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      },
+      {
+        "role": "user",
+        "hasCard": false,
+        "length": 7
+      },
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 103
+      }
+    ]
+  },
+  "float-closed": {
+    "params": {
+      "auto": "0",
+      "mode": "float",
+      "state": "card",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": null,
+      "placement": "float",
+      "fabVisible": true,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": false,
+    "busy": false,
+    "error": "",
+    "placement": "float",
+    "rootClasses": "agent-assistant agent-float",
+    "bodyClasses": "agent-float",
+    "cardNodes": 0,
+    "receiptNodes": 0,
+    "statusCapsule": false,
+    "statusCapsuleText": "",
+    "inlineHostText": "",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": null,
+    "stopButton": false,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      }
+    ]
+  },
+  "float-scene-capsule": {
+    "params": {
+      "auto": "1",
+      "mode": "float",
+      "state": "card",
+      "scene": "exam",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": {
+        "left": 986,
+        "top": 217,
+        "width": 420,
+        "height": 620,
+        "position": "fixed"
+      },
+      "placement": "float",
+      "fabVisible": false,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": true,
+    "busy": false,
+    "error": "",
+    "placement": "float",
+    "rootClasses": "agent-assistant agent-float",
+    "bodyClasses": "agent-float agent-open",
+    "cardNodes": 22,
+    "receiptNodes": 13,
+    "statusCapsule": true,
+    "statusCapsuleText": "考试讲解 · 2026 秋季期中英语卷 · 第 7 题 · 你在该词错过 2 次",
+    "inlineHostText": "",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": null,
+    "stopButton": false,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      },
+      {
+        "role": "user",
+        "hasCard": false,
+        "length": 7
+      },
+      {
+        "role": "assistant",
+        "hasCard": true,
+        "length": 59
+      }
+    ]
+  },
+  "float-inline-ask": {
+    "params": {
+      "auto": "1",
+      "mode": "float",
+      "state": "card",
+      "inline": "1",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": {
+        "left": 986,
+        "top": 217,
+        "width": 420,
+        "height": 620,
+        "position": "fixed"
+      },
+      "placement": "float",
+      "fabVisible": false,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": true,
+    "busy": false,
+    "error": "",
+    "placement": "float",
+    "rootClasses": "agent-assistant agent-float",
+    "bodyClasses": "agent-float agent-open",
+    "cardNodes": 22,
+    "receiptNodes": 13,
+    "statusCapsule": true,
+    "statusCapsuleText": "词义练习 · 第 13 题 · 你在该词错过 2 次定位题目",
+    "inlineHostText": "[inline card] a kind of = 一种、一类（强调“种类归属”）",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": null,
+    "stopButton": false,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      },
+      {
+        "role": "user",
+        "hasCard": false,
+        "length": 7
+      },
+      {
+        "role": "assistant",
+        "hasCard": true,
+        "length": 59
+      }
+    ]
+  },
+  "float-long-fold": {
+    "params": {
+      "auto": "1",
+      "mode": "float",
+      "state": "text",
+      "fold": "1",
+      "report": "1"
+    },
+    "problems": [],
+    "occlusion": {
+      "viewport": [
+        1424,
+        865
+      ],
+      "panel": {
+        "left": 986,
+        "top": 217,
+        "width": 420,
+        "height": 620,
+        "position": "fixed"
+      },
+      "placement": "float",
+      "fabVisible": false,
+      "nudgeVisible": false,
+      "targets": [
+        {
+          "name": "错词栏",
+          "sampled": 7,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "题目选项",
+          "sampled": 4,
+          "covered": 0,
+          "coveredPoints": []
+        },
+        {
+          "name": "答错动作区",
+          "sampled": 2,
+          "covered": 0,
+          "coveredPoints": []
+        }
+      ],
+      "ok": true
+    },
+    "panelOpen": true,
+    "busy": false,
+    "error": "",
+    "placement": "float",
+    "rootClasses": "agent-assistant agent-float",
+    "bodyClasses": "agent-float agent-open",
+    "cardNodes": 0,
+    "receiptNodes": 11,
+    "statusCapsule": true,
+    "statusCapsuleText": "词义练习 · 第 13 题 · 你在该词错过 2 次定位题目",
+    "inlineHostText": "",
+    "inlineHostSelector": "#inlineHost / .harness-inline",
+    "fold": {
+      "box": true,
+      "collapsed": true,
+      "clampHeight": 266,
+      "buttonText": "展开全文",
+      "textLength": 1344,
+      "expanded": false,
+      "buttonAfter": "收起",
+      "fullHeight": 1761,
+      "ariaExpanded": "true"
+    },
+    "stopButton": false,
+    "messages": [
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 56
+      },
+      {
+        "role": "user",
+        "hasCard": false,
+        "length": 7
+      },
+      {
+        "role": "assistant",
+        "hasCard": false,
+        "length": 1360
+      }
+    ]
+  }
+}

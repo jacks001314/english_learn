@@ -589,7 +589,7 @@ func (s *Store) buildDashboard(progress map[string]Progress, now time.Time, goal
 		}
 		return left > right
 	})
-	filtered := weak[:0]
+	filtered := make([]LearningItem, 0, len(weak))
 	for _, item := range weak {
 		if item.Progress.Wrong > 0 {
 			filtered = append(filtered, item)

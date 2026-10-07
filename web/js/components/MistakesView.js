@@ -1,4 +1,4 @@
-import { publishContext, askAssistant } from '../learningContext.js?v=20261004-practice-source-r1';
+import { publishContext, askAssistant } from '../learningContext.js?v=20261007-agent-leakfix-r1';
 
 const typeNames = {
   "en-zh": "英译中",

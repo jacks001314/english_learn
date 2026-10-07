@@ -2,40 +2,48 @@ import { api, postJSON } from './api.js';
 import { speak } from './speech.js?v=20260905-ipa-r3';
 import HomeView from './components/HomeView.js';
 import LearnView from './components/LearnView.js?v=20260926-pos-r1';
-import MeaningPracticeView from './components/MeaningPracticeView.js?v=20261004-practice-source-r1';
-import QuizView from './components/QuizView.js?v=20261004-practice-source-r1';
-import ReportView from './components/ReportView.js';
-import MistakesView from './components/MistakesView.js?v=20261004-practice-source-r1';
+import MeaningPracticeView from './components/MeaningPracticeView.js?v=20261007-agent-leakfix-r1';
+import QuizView from './components/QuizView.js?v=20261007-agent-leakfix-r1';
+import ReportView from './components/ReportView.js?v=20261007-reportview-nullfix-r1';
+import MistakesView from './components/MistakesView.js?v=20261007-agent-leakfix-r1';
 import ReviewView from './components/ReviewView.js';
 import SettingsView from './components/SettingsView.js';
 import CategoryView from './components/CategoryView.js';
 import ContentStatusView from './components/ContentStatusView.js';
-import ReadingView from './components/ReadingView.js?v=20261004-practice-source-r1';
+import ReadingView from './components/ReadingView.js?v=20261007-agent-leakfix-r1';
 import AuthView from './components/AuthView.js';
 import AdminView from './components/AdminView.js';
 import SecurityView from './components/SecurityView.js';
 import AdminOverview from './components/AdminOverview.js';
 import LearnerReportView from './components/LearnerReportView.js';
 import ContentWorkbench from './components/ContentWorkbench.js?v=20260727-content-lifecycle-r3';
-import ExamView from './components/ExamView.js?v=20261004-practice-source-r1';
+import ExamView from './components/ExamView.js?v=20261007-agent-leakfix-r1';
 import ExamWorkbench from './components/ExamWorkbench.js';
-import AgentAssistant from './components/AgentAssistant.js?v=20261004-practice-source-r1';
+import AgentAssistant from './components/AgentAssistant.js?v=20261007-agent-leakfix-r1';
 import AgentAdminView from './components/AgentAdminView.js';
-import DrillView from './components/DrillView.js?v=20261004-practice-source-r1';
-import assistant, { clearContextForView, noteAnswer, noteReviewEntered, setDrill } from './learningContext.js?v=20261004-practice-source-r1';
+import DrillView from './components/DrillView.js?v=20261007-capsule-progress-r1';
+import assistant, { clearContextForView, noteAnswer, noteReviewEntered, setDrill } from './learningContext.js?v=20261007-agent-leakfix-r1';
 import ContentFactoryView from './components/ContentFactoryView.js';
-import HomeworkView from './components/HomeworkView.js';
+import HomeworkView from './components/HomeworkView.js?v=20261007-agent-leakfix-r1';
 import HomeworkAdminView from './components/HomeworkAdminView.js?v=20260727-adaptive-r1';
 import SmartLearningView from './components/SmartLearningView.js?v=20261004-primary-grammar-r1';
-import CourseView from './components/CourseView.js?v=20260927-audio-r8';
+import CourseView from './components/CourseView.js?v=20261007-agent-leakfix-r1';
 import PhoneticsView from './components/PhoneticsView.js?v=20260905-ipa-r5';
-import GrammarView from './components/GrammarView.js?v=20261004-primary-grammar-r1';
-import TongbuView from './components/TongbuView.js?v=20260926-tongbu-r2';
+import GrammarView from './components/GrammarView.js?v=20261007-agent-leakfix-r1';
+import TongbuView from './components/TongbuView.js?v=20261007-capsule-progress-r1';
 import { resolveTopicId } from './grammar/index.js?v=20261004-primary-grammar-r1';
 
-const { createApp } = Vue;
+const { createApp, nextTick } = Vue;
 const knownViews = new Set(['home','smart','learn','meaning-en-zh','meaning-zh-en','meaning-listen','categories','course','grammar','phonetics','reading','exams','tongbu','quiz','review','homework','report','reports','mistakes','settings','security','content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin','drill']);
 const adminViews = new Set(['content','admin','workbench','exam-workbench','agent-admin','factory','homework-admin','reports']);
+const viewTitles = {
+  home:'学习首页', smart:'智能学习台', learn:'单词学习', 'meaning-en-zh':'看词选义', 'meaning-zh-en':'看义选词',
+  'meaning-listen':'听音选义', categories:'分类词库', course:'课程学习', grammar:'语法专题', phonetics:'国际音标',
+  reading:'英语阅读', exams:'考试练习', tongbu:'同步训练', quiz:'单词测验', review:'今日复习', homework:'我的作业',
+  report:'学习报告', mistakes:'错题本', settings:'学习设置', security:'账号安全', content:'内容状态', admin:'用户与概览',
+  workbench:'内容工作台', 'exam-workbench':'组卷工作台', 'agent-admin':'智能体管理', factory:'AI 内容工厂',
+  'homework-admin':'作业管理', reports:'学习者报告', drill:'变式练习'
+};
 // hash 形如 #<view> 或 #<view>/<arg1>/<arg2>（例如 #grammar/g-pronouns/lecture-3）
 const locationParts = () => {
   const value = window.location.hash.replace(/^#\/?/, '');
@@ -49,6 +57,8 @@ const hashFor = (view) => {
   return cur.view === view && cur.args.length ? '#' + view + '/' + cur.args.join('/') : '#' + view;
 };
 const learningViews = new Set(['smart', 'learn', 'meaning-en-zh', 'meaning-zh-en', 'meaning-listen', 'quiz', 'review', 'reading', 'exams']);
+// 这些页面自己知道“当前这道题是哪一道”，助教的「定位题目」交给它们处理（focus-target）。
+const inlineFocusViews = new Set(['meaning-en-zh', 'meaning-zh-en', 'meaning-listen', 'quiz', 'drill']);
 const freshQuizSession = () => ({ answered: 0, correct: 0, byType: {}, history: [] });
 
 createApp({
@@ -63,10 +73,18 @@ createApp({
     mistakes: [], reviews: [], reviewSummary: { total: 0, completed: 0, goal: 10 }, reviewBusy: false,
     settings: { dailyReviewGoal: 10 }, settingsBusy: false, contentStatus: {files:[],complete:false}, error: '', currentUser: null, authChecked: false,
     sidebarCollapsed: false, mobileSidebarOpen: false, examInProgress: false,
-    learningSession: null, selectedWord: null, continuousLearning: false, mistakeFocusWord: null, readingTargetArticleId: '', grammarTargetId: viewFromLocation() === 'grammar' ? (locationParts().args[0] || '') : ''
+    learningSession: null, selectedWord: null, continuousLearning: false, mistakeFocusWord: null, readingTargetArticleId: '', grammarTargetId: viewFromLocation() === 'grammar' ? (locationParts().args[0] || '') : '',
+    focusTarget: null, focusToken: 0, notice: '', noticeTimer: null,
+    agentDockActive: false, agentDockObserver: null
   }),
   computed: {
     drillSession() { return assistant.drill; },
+    // 助教面板停靠时给根容器挂 agent-dock：web/agent.css 的让位规则是
+    // `.agent-dock .app-content>main{...}`，要求这个 class 落在 main 的祖先上。
+    // 面板侧只在「停靠 + 面板打开 + 助教启用」时把 agent-dock 镜像到 <body>，
+    // 所以这里跟随它的结论，而不是只看 localStorage 里的偏好：否则停靠但面板收起时，
+    // 页面会为一个不存在的栏白白让位（而那正是 V1 要避免的）。
+    agentDock() { return this.agentDockActive; },
     pages() { return Math.max(1, Math.ceil(this.total / this.size)); },
     masteredIds() {
       return new Set(Object.entries(this.progress).filter(([, value]) => value.mastered).map(([key]) => key));
@@ -98,6 +116,78 @@ createApp({
       setDrill(drill);
       this.selectView('drill');
     },
+    // 助教面板的「定位题目」：切到题目所在页面，并让页面把这道题高亮两秒。
+    // 练习页通过 focus-target 收到定位请求；页面定位不了时退化为滚动到题目卡 +
+    // 一条轻提示。任何情况下都不抛错、不打断答题。
+    focusAgentItem(payload) {
+      const wordId = String(payload?.wordId || payload?.itemId || '').trim();
+      const level = payload?.level || '';
+      if (!wordId) {
+        this.showNotice('助教还没读到具体题目，先打开练习页再试。');
+        return;
+      }
+      const contextView = assistant.context?.view || '';
+      if (contextView && contextView !== this.activeView && knownViews.has(contextView)) {
+        this.selectView(contextView);
+      }
+      this.focusToken += 1;
+      this.focusTarget = { wordId, level, token: this.focusToken };
+      if (inlineFocusViews.has(this.activeView)) return;
+      nextTick(() => {
+        const card = document.querySelector('.meaning-card, .quiz-card, .drill-card, .homework-question, .tb-block, .gr2-detail');
+        if (card && card.scrollIntoView) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          this.flashElement(card);
+        }
+        this.showNotice('已切到这道题所在的页面，请看高亮的位置。');
+      });
+    },
+    // flashElement 用内联样式高亮两秒，不依赖 agent.css 里是否已有对应的类。
+    flashElement(element) {
+      if (!element || !element.style) return;
+      const previous = element.style.boxShadow;
+      element.style.transition = 'box-shadow .2s ease';
+      element.style.boxShadow = '0 0 0 3px rgba(247, 181, 0, .85)';
+      window.setTimeout(() => { element.style.boxShadow = previous; }, 2000);
+    },
+    // showNotice 显示一条不打断操作的轻提示（复用错误条的样式，不新增 CSS）。
+    showNotice(text) {
+      this.notice = String(text || '');
+      if (this.noticeTimer) window.clearTimeout(this.noticeTimer);
+      this.noticeTimer = window.setTimeout(() => { this.notice = ''; }, 4000);
+    },
+    // startAgentDockMirror / stopAgentDockMirror / syncAgentDock：跟随面板在 <body> 上的 agent-dock。
+    // 形态的唯一事实源在面板侧（它还取决于面板是否打开、助教是否启用），页面只镜像它的结论，
+    // 这样「停靠 → 页面 reflow」和「收起面板 → 页面恢复」都不会漏拍。
+    startAgentDockMirror() {
+      this.syncAgentDock();
+      try {
+        this.agentDockObserver = new MutationObserver(() => this.syncAgentDock());
+        this.agentDockObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      } catch (_) {
+        // 没有 MutationObserver 时退化为挂载时读一次，不抛错。
+      }
+    },
+    stopAgentDockMirror() {
+      if (this.agentDockObserver) { try { this.agentDockObserver.disconnect(); } catch (_) {} }
+      this.agentDockObserver = null;
+    },
+    syncAgentDock() {
+      let docked = false;
+      try { docked = !!(document.body && document.body.classList.contains('agent-dock')); } catch (_) {}
+      this.agentDockActive = docked;
+      if (docked) assistant.placement = 'dock';
+    },
+    // handleAgentStorage 兜底同步助教形态：别的标签页改了设置时把 store 拉回一致。
+    handleAgentStorage(event) {
+      if (event && event.key && event.key !== 'lingoBloomAgentPlacement') return;
+      try {
+        const saved = window.localStorage.getItem('lingoBloomAgentPlacement');
+        if (saved === 'dock' || saved === 'float') assistant.placement = saved;
+      } catch (_) {
+        // 读不到就保持当前形态。
+      }
+    },
     async run(task) {
       this.error = '';
       try { await task(); } catch (error) { this.error = error.message || '操作失败，请稍后重试'; }
@@ -107,6 +197,14 @@ createApp({
       try { localStorage.setItem('english-learn-sidebar-collapsed', this.sidebarCollapsed ? '1' : '0'); } catch (_) {}
     },
     toggleMobileSidebar() { this.mobileSidebarOpen = !this.mobileSidebarOpen; },
+    handleGlobalKeydown(event) { if (event.key === 'Escape' && this.mobileSidebarOpen) this.mobileSidebarOpen = false; },
+    focusMain() {
+      nextTick(() => {
+        document.title = `${viewTitles[this.activeView] || '学习'} | Lingo Bloom`;
+        const main = document.getElementById('main-content');
+        if (main) main.focus({ preventScroll: true });
+      });
+    },
     learningStateKey() { return `english-learn-learning-state-v1:${this.currentUser?.id || 'anonymous'}`; },
     quizStateKey() { return `english-learn-quiz-session-v1:${this.currentUser?.id || 'anonymous'}`; },
     restoreLearningState() {
@@ -410,6 +508,7 @@ createApp({
       clearContextForView(view);
       this.workspaceMode = adminViews.has(view) ? 'admin' : 'learn';
       this.mobileSidebarOpen = false;
+      this.focusMain();
       if (!options.fromHistory && window.location.hash !== hashFor(view)) history.pushState({ view }, '', hashFor(view));
       if (view === 'home') this.loadHomeData();
       if (view === 'learn' || view === 'categories') { this.loadFacets(); this.loadWords(); }
@@ -463,14 +562,18 @@ createApp({
   mounted() {
     try { this.sidebarCollapsed = localStorage.getItem('english-learn-sidebar-collapsed') === '1'; } catch (_) {}
     window.addEventListener('popstate', this.handlePopState);
-    this.checkAuth().then(()=>{if(this.currentUser){if(this.activeView==='home')this.loadHomeData();else this.selectView(this.activeView,{fromHistory:true});}});
+    window.addEventListener('keydown', this.handleGlobalKeydown);
+    window.addEventListener('storage', this.handleAgentStorage);
+    this.startAgentDockMirror();
+    this.checkAuth().then(()=>{if(this.currentUser){if(this.activeView==='home'){this.loadHomeData();this.focusMain();}else this.selectView(this.activeView,{fromHistory:true});}});
   },
-  beforeUnmount() { window.removeEventListener('popstate', this.handlePopState); },
+  beforeUnmount() { window.removeEventListener('popstate', this.handlePopState); window.removeEventListener('keydown', this.handleGlobalKeydown); window.removeEventListener('storage', this.handleAgentStorage); this.stopAgentDockMirror(); if (this.noticeTimer) window.clearTimeout(this.noticeTimer); },
   template: `
     <auth-view v-if="authChecked && !currentUser" @authenticated="authenticated" />
-    <div v-else-if="authChecked" class="app-shell" :class="{'sidebar-collapsed':sidebarCollapsed,'sidebar-open':mobileSidebarOpen}">
+    <div v-else-if="authChecked" class="app-shell" :class="{'sidebar-collapsed':sidebarCollapsed,'sidebar-open':mobileSidebarOpen,'agent-dock':agentDock}">
+      <a class="skip-link" href="#main-content">跳到主要内容</a>
       <button v-if="mobileSidebarOpen" class="sidebar-scrim" aria-label="关闭导航" @click="mobileSidebarOpen=false"></button>
-      <aside class="app-sidebar">
+      <aside id="app-navigation" class="app-sidebar">
         <div class="sidebar-brand"><span class="brand-mark">LB</span><div class="brand-copy"><strong>Lingo Bloom</strong><small>英语学习平台</small></div><button class="sidebar-collapse" :aria-label="sidebarCollapsed?'展开导航':'收起导航'" :title="sidebarCollapsed?'展开导航':'收起导航'" @click="toggleSidebar">{{sidebarCollapsed?'&gt;':'&lt;'}}</button></div>
         <div v-if="currentUser.role==='admin'" class="workspace-switch" role="tablist" aria-label="工作空间">
           <button :class="{active:workspaceMode==='learn'}" @click="setWorkspace('learn')">学习空间</button>
@@ -518,15 +621,16 @@ createApp({
         <div class="sidebar-user"><span class="user-avatar">{{(currentUser.displayName||currentUser.username||'U').slice(0,1)}}</span><span class="user-copy"><b>{{currentUser.displayName}}</b><small>{{currentUser.role==='admin'?'管理员':'学习者'}}</small></span><button @click="logout" title="退出登录">退出</button></div>
       </aside>
       <div class="app-content">
-        <header class="mobile-topbar"><button class="mobile-menu-button" aria-label="打开导航菜单" @click="toggleMobileSidebar"><span></span><span></span><span></span></button><div><div class="brand">Lingo Bloom</div><div class="subtitle">让每一次练习都有进步</div></div></header>
-        <main>
+        <header class="mobile-topbar"><button class="mobile-menu-button" :aria-label="mobileSidebarOpen ? '关闭导航菜单' : '打开导航菜单'" :aria-expanded="mobileSidebarOpen" aria-controls="app-navigation" @click="toggleMobileSidebar"><span></span><span></span><span></span></button><div><div class="brand">Lingo Bloom</div><div class="subtitle">让每一次练习都有进步</div></div></header>
+        <main id="main-content" tabindex="-1">
           <div v-if="error" class="error-banner" role="alert">{{ error }} <button aria-label="关闭" @click="error=''">×</button></div>
+          <div v-if="notice" class="error-banner" role="status">{{ notice }} <button aria-label="关闭" @click="notice=''">×</button></div>
       <home-view v-if="activeView==='home'" :user="currentUser" :stats="stats" :report="report" :review-summary="reviewSummary" :session="learningSession" @navigate="handleNavigate" />
       <smart-learning-view v-else-if="activeView==='smart'" :user-id="currentUser.id" @navigate="handleNavigate" />
       <learn-view v-else-if="activeView==='learn'" v-model:level="level" v-model:query="query" v-model:topic="topic" v-model:grade="grade" v-model:unit="unit" :sort="wordSort" :letter="letter" :part-of-speech="partOfSpeech" :facets="facets" :words="words" :total="total" :page="page" :pages="pages" :mastered-ids="masteredIds" :selected-word="selectedWord" :selected-progress="selectedWordProgress" :continuous-mode="continuousLearning" @update:sort="setWordSort" @search="search" @clear-category="clearCategory" @page="changePage" @speak="speak" @master="markWord" @open="openWord" @close="closeWord" @continuous="setContinuousLearning" @practice="startWordQuiz" />
-      <meaning-practice-view v-else-if="activeView==='meaning-en-zh'" :user-id="currentUser.id" mode="en-zh" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
-      <meaning-practice-view v-else-if="activeView==='meaning-zh-en'" :user-id="currentUser.id" mode="zh-en" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
-      <meaning-practice-view v-else-if="activeView==='meaning-listen'" :user-id="currentUser.id" mode="en-zh" audio-only @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-en-zh'" :user-id="currentUser.id" mode="en-zh" :focus-target="focusTarget" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-zh-en'" :user-id="currentUser.id" mode="zh-en" :focus-target="focusTarget" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
+      <meaning-practice-view v-else-if="activeView==='meaning-listen'" :user-id="currentUser.id" mode="en-zh" audio-only :focus-target="focusTarget" @speak="speak" @navigate="handleNavigate" @answered="afterPracticeAnswer" />
       <category-view v-else-if="activeView==='categories'" :facets="facets" :level="level" @level="level=$event" @select="selectCategory" />
       <course-view v-else-if="activeView==='course'" @open-grammar="onOpenGrammar" />
       <grammar-view v-else-if="activeView==='grammar'" :user-id="currentUser.id" :target-topic-id="grammarTargetId" />
@@ -534,7 +638,7 @@ createApp({
       <reading-view v-else-if="activeView==='reading'" :user-id="currentUser.id" :target-article-id="readingTargetArticleId" @speak="speak" />
       <exam-view v-else-if="activeView==='exams'" :user-id="currentUser.id" @session-state="examInProgress=$event" />
       <tongbu-view v-else-if="activeView==='tongbu'" :user-id="currentUser.id" />
-      <quiz-view v-else-if="activeView==='quiz'" v-model:type="quizType" :quiz="quiz" :hint="quizHint" :answered="quizAnswered" :session="quizSession" :selected-answer="quizSelectedAnswer" :correct-answer="quizCorrectAnswer" :feedback-correct="quizFeedbackCorrect" :resumed="quizResumed" @change="loadQuiz" @speak="speak" @answer="answer" @next="loadQuiz" @restart="resetQuizSession" @navigate="handleNavigate" />
+      <quiz-view v-else-if="activeView==='quiz'" v-model:type="quizType" :quiz="quiz" :hint="quizHint" :answered="quizAnswered" :session="quizSession" :selected-answer="quizSelectedAnswer" :correct-answer="quizCorrectAnswer" :feedback-correct="quizFeedbackCorrect" :resumed="quizResumed" :focus-target="focusTarget" @change="loadQuiz" @speak="speak" @answer="answer" @next="loadQuiz" @restart="resetQuizSession" @navigate="handleNavigate" />
       <review-view v-else-if="activeView==='review'" :items="reviews" :level="level" :busy="reviewBusy" :summary="reviewSummary" @refresh="loadReviews" @speak="speak" @answer="answerReview" />
       <report-view v-else-if="activeView==='report'" :report="report" @refresh="loadReport" @navigate="handleNavigate" />
       <mistakes-view v-else-if="activeView==='mistakes'" :items="mistakes" :focus-word="mistakeFocusWord" @refresh="loadMistakes" @speak="speak" @resolve="resolveMistake" @navigate="handleNavigate" />
@@ -547,11 +651,11 @@ createApp({
       <homework-view v-else-if="activeView==='homework'" />
       <homework-admin-view v-else-if="activeView==='homework-admin'" />
       <security-view v-else-if="activeView==='security'" :required="currentUser.mustChangePassword" @changed="passwordChanged" />
-      <drill-view v-else-if="activeView==='drill'" :drill="drillSession" @navigate="handleNavigate" @speak="speak" />
+      <drill-view v-else-if="activeView==='drill'" :drill="drillSession" :focus-target="focusTarget" @navigate="handleNavigate" @speak="speak" />
         <content-status-view v-else-if="activeView==='content'" :status="contentStatus" @refresh="loadContentStatus" />
         <learner-report-view v-else-if="activeView==='reports'" />
         </main>
-        <agent-assistant :mode="assistantMode()" @open-drill="startDrill" @navigate="handleNavigate" />
+        <agent-assistant :mode="assistantMode()" @focus-item="focusAgentItem" @open-drill="startDrill" @navigate="handleNavigate" />
         <footer>坚持一点点，进步看得见。</footer>
       </div>
     </div>

@@ -1,0 +1,431 @@
+{
+  "startedAt": "2026-10-06T15:24:43.340Z",
+  "mode": "mock",
+  "server": "http://127.0.0.1:8099",
+  "provider": "openai",
+  "model": "gpt-mock-1",
+  "checks": [
+    {
+      "id": "S1",
+      "label": "本地 mock 模型服务已就绪",
+      "ok": true,
+      "detail": "http://127.0.0.1:8899"
+    },
+    {
+      "id": "S2",
+      "label": "go build ./cmd/server 成功",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "id": "S3",
+      "label": "真实服务端 /api/health 就绪",
+      "ok": true,
+      "detail": "http://127.0.0.1:8099  db=.tmp\\online-e2e\\e2e-mock.db"
+    },
+    {
+      "id": "S4",
+      "label": "健康检查返回 JSON",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "S5",
+      "label": "管理员登录成功并下发会话 cookie",
+      "ok": true,
+      "detail": "status=200 cookie=yes"
+    },
+    {
+      "id": "S6",
+      "label": "PUT /api/admin/agent/config 保存成功",
+      "ok": true,
+      "detail": "status=200 {\"model\":\"gpt-mock-1\",\"providerId\":\"openai\",\"enabled\":true,\"apiKeyConfigured\":true}"
+    },
+    {
+      "id": "S7",
+      "label": "响应里密钥被脱敏（apiKey 不回传）",
+      "ok": true,
+      "detail": "apiKey=undefined configured=true"
+    },
+    {
+      "id": "S8",
+      "label": "GET /api/agent/status 显示已启用且模型正确",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"engine\":\"codex-core\",\"model\":\"gpt-mock-1\",\"providerId\":\"openai\"}"
+    },
+    {
+      "id": "S9",
+      "label": "GET /api/meaning-quiz 返回真实词条与选项",
+      "ok": true,
+      "detail": "word=Fiji id=country-fiji options=4 answer=斐济"
+    },
+    {
+      "id": "C1",
+      "label": "POST /api/agent/chat 返回 200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "C2",
+      "label": "真实模型回答被解析成结构化教学卡片（card 非空）",
+      "ok": true,
+      "detail": "headline=「Fiji」先看词性，再定它在句中的角色"
+    },
+    {
+      "id": "C3",
+      "label": "卡片 headline 非空且 kind 合法",
+      "ok": true,
+      "detail": "kind=explain headline=「Fiji」先看词性，再定它在句中的角色"
+    },
+    {
+      "id": "C4",
+      "label": "卡片有 2–4 条要点",
+      "ok": true,
+      "detail": "points=3"
+    },
+    {
+      "id": "C5",
+      "label": "verdict 由服务端按题库覆写（不采信模型）",
+      "ok": true,
+      "detail": "verdict=你选了「扫,扫地」，正确答案是「斐济」"
+    },
+    {
+      "id": "C6",
+      "label": "卡片生词都可用（词库命中的带 id，词库外的必须真出现在讲解里）",
+      "ok": true,
+      "detail": "[{\"word\":\"Fiji\",\"meaning\":\"斐济\",\"level\":\"primary\",\"id\":\"country-fiji\"}]"
+    },
+    {
+      "id": "C7",
+      "label": "卡片检查题与行动条存在",
+      "ok": true,
+      "detail": "check=true action=true"
+    },
+    {
+      "id": "C8",
+      "label": "回执 receipt.items 非空（告诉学生读了哪些数据）",
+      "ok": true,
+      "detail": "[{\"key\":\"current\",\"label\":\"本题\",\"ok\":true},{\"key\":\"history\",\"label\":\"该词历史\",\"ok\":false},{\"key\":\"review\",\"label\":\"今日到期\",\"ok\":true}]"
+    },
+    {
+      "id": "C9",
+      "label": "快照原文 snapshotText 含「当前题目」行",
+      "ok": true,
+      "detail": "【学生档案】学段：小学英语 · 平均掌握度 5/100 · 今日到期复习 4 个"
+    },
+    {
+      "id": "C10",
+      "label": "真的调用了模型（有 token 计数）",
+      "ok": true,
+      "detail": "in=128 out=135 model=gpt-mock-1 ms=21"
+    },
+    {
+      "id": "C11",
+      "label": "engine/provider/model 回传正确",
+      "ok": true,
+      "detail": "engine=codex-core provider=openai model=gpt-mock-1"
+    },
+    {
+      "id": "T1",
+      "label": "POST /api/agent/chat/stream 返回 200 且是 text/event-stream",
+      "ok": true,
+      "detail": "status=200 ct=text/event-stream; charset=utf-8"
+    },
+    {
+      "id": "T2",
+      "label": "收到多个 SSE delta 增量（真的边生成边推送）",
+      "ok": true,
+      "detail": "deltas=17 firstDeltaMs=8"
+    },
+    {
+      "id": "T3",
+      "label": "SSE 以 done 事件收尾且带完整响应",
+      "ok": true,
+      "detail": "model=gpt-mock-1"
+    },
+    {
+      "id": "T4",
+      "label": "流式路径同样产出结构化卡片",
+      "ok": true,
+      "detail": "headline=「Fiji」先看词性，再定它在句中的角色"
+    },
+    {
+      "id": "T5",
+      "label": "流式增量拼起来就是最终答案（不丢字）",
+      "ok": true,
+      "detail": "streamed=539 chars"
+    },
+    {
+      "id": "A1",
+      "label": "「加入今日复习」走确定性本地动作（不调模型）",
+      "ok": true,
+      "detail": "engine=local-action actions=[\"add-review\"]"
+    },
+    {
+      "id": "A2",
+      "label": "未知词条不假装读过：快照明确写「页面没有提供具体题目」，不编造词义",
+      "ok": true,
+      "detail": "status=200 saysNoItem=true hasMeaning=false"
+    },
+    {
+      "id": "V5-tongbu",
+      "label": "六场景端到端：同步训练 —— 回执 page-scene 芯片与快照【同步训练】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=同步训练/ok=true snapshot=【同步训练】套题：Unit 1 第二课时 · 进度：2 · 编号：u1-2"
+    },
+    {
+      "id": "V5-homework",
+      "label": "六场景端到端：作业讲解 —— 回执 page-scene 芯片与快照【作业讲解】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=作业讲解/ok=true snapshot=【作业讲解】作业：同步练习册 P12 · 题号：第 3 题 · 题型：选词填空"
+    },
+    {
+      "id": "V5-course",
+      "label": "六场景端到端：课程学习 —— 回执 page-scene 芯片与快照【课程学习】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=课程学习/ok=true snapshot=【课程学习】单元：Unit 3 My Day · 板块：Section B 句型"
+    },
+    {
+      "id": "V5-drill",
+      "label": "六场景端到端：变式练习 —— 回执 page-scene 芯片与快照【变式练习】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=变式练习/ok=true snapshot=【变式练习】考点：receive 的用法 · 题量：3 题"
+    },
+    {
+      "id": "V5-exam",
+      "label": "六场景端到端：考试讲解 —— 回执 page-scene 芯片与快照【考试讲解】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=考试讲解/ok=true snapshot=【考试讲解】试卷：期中模拟卷 A · 题号：第 7 题 · 科目：英语"
+    },
+    {
+      "id": "V5-grammar",
+      "label": "六场景端到端：语法专题 —— 回执 page-scene 芯片与快照【语法专题】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=语法专题/ok=true snapshot=【语法专题】专题：一般现在时"
+    }
+  ],
+  "samples": {
+    "statusBefore": {
+      "enabled": true,
+      "engine": "codex-core",
+      "model": "gpt-mock-1",
+      "providerId": "openai"
+    },
+    "statusAfter": {
+      "enabled": true,
+      "engine": "codex-core",
+      "model": "gpt-mock-1",
+      "providerId": "openai"
+    },
+    "word": {
+      "id": "country-fiji",
+      "word": "Fiji",
+      "level": "primary",
+      "meaning": "斐济",
+      "options": [
+        "扫,扫地",
+        "解决,解答",
+        "棕色的;褐色的",
+        "斐济"
+      ],
+      "answer": "斐济",
+      "wrong": "扫,扫地"
+    },
+    "chat": {
+      "card": {
+        "kind": "explain",
+        "headline": "「Fiji」先看词性，再定它在句中的角色",
+        "verdict": "你选了「扫,扫地」，正确答案是「斐济」",
+        "points": [
+          {
+            "label": "考点",
+            "text": "Fiji（n.），释义是「斐济」。这类题先确定词性，再看句子缺什么成分。"
+          },
+          {
+            "label": "排除法",
+            "text": "把明显搭配不通的选项先划掉，剩下的两个用「谁能放进原句且不改意思」来判断。"
+          },
+          {
+            "label": "易错点",
+            "text": "最容易混的是近义词与固定搭配，记住 Fiji 后面常跟的介词，不要凭中文直译。"
+          }
+        ],
+        "example": {
+          "en": "I put the word \"Fiji\" into my own sentence every day.",
+          "zh": "我把「Fiji」每天放进自己的句子里。"
+        },
+        "check": {
+          "prompt": "30 秒自测：用 Fiji 说一句你自己的生活。",
+          "answer": "Fiji —— 说出声，再写下来。"
+        },
+        "words": [
+          {
+            "word": "Fiji",
+            "meaning": "斐济",
+            "level": "primary",
+            "id": "country-fiji"
+          }
+        ],
+        "action": {
+          "label": "30 秒小动作",
+          "text": "朗读例句两遍，再默写 Fiji。",
+          "kind": "read"
+        }
+      },
+      "message": "{\"kind\":\"explain\",\"headline\":\"「Fiji」先看词性，再定它在句中的角色\",\"points\":[{\"label\":\"考点\",\"text\":\"Fiji（n.），释义是「斐济」。这类题先确定词性，再看句子缺什么成分。\"},{\"label\":\"排除法\",\"text\":\"把明显搭配不通的选项先划掉，剩下的两个用「谁能放进原句且不改意思」来判断。\"},{\"label\":\"易错点\",\"text\":\"最容易混的是近义词与固定搭配，记住 Fiji 后面常跟的介词，不要凭中文直译。\"}],\"example\":{\"en\":\"I put the word \\\"Fiji\\\" into my own sentence every day.\",\"zh\":\"我把「Fiji」每天放进自己的句子里。\"},\"check\":{\"prompt\":\"30 秒自测：用 Fiji 说一句你自己的生活。\",\"",
+      "receipt": {
+        "items": [
+          {
+            "key": "current",
+            "label": "本题",
+            "ok": true
+          },
+          {
+            "key": "history",
+            "label": "该词历史",
+            "ok": false
+          },
+          {
+            "key": "review",
+            "label": "今日到期",
+            "ok": true
+          }
+        ],
+        "text": "【学生档案】学段：小学英语 · 平均掌握度 5/100 · 今日到期复习 4 个\n【当前题目】Fiji（n.） 释义：斐济\n  选项：1.扫,扫地 | 2.解决,解答 | 3.棕色的;褐色的 | 4.斐济\n  学生选择：扫,扫地；正确答案：斐济（答错）\n  这道题目前累计答错 3 次。\n  该词历史：学生还没有练习记录。"
+      },
+      "snapshotText": "【学生档案】学段：小学英语 · 平均掌握度 5/100 · 今日到期复习 4 个\n【当前题目】Fiji（n.） 释义：斐济\n  选项：1.扫,扫地 | 2.解决,解答 | 3.棕色的;褐色的 | 4.斐济\n  学生选择：扫,扫地；正确答案：斐济（答错）\n  这道题目前累计答错 3 次。\n  该词历史：学生还没有练习记录。",
+      "model": "gpt-mock-1",
+      "providerId": "openai",
+      "engine": "codex-core",
+      "inputTokens": 128,
+      "outputTokens": 135,
+      "durationMs": 2
+    },
+    "stream": {
+      "deltas": 17,
+      "firstDeltaMs": 8,
+      "streamedChars": 539,
+      "streamedHead": "{\"kind\":\"explain\",\"headline\":\"「Fiji」先看词性，再定它在句中的角色\",\"points\":[{\"label\":\"考点\",\"text\":\"Fiji（n.），释义是「斐济」。这类题先确定词性，再看句子缺什么成分。\"},{\"label\":\"排除法\",\"text\":\"把明显搭配不通的选项先划掉，剩下的两个用「谁能放进原句且不改意思」来判断。\"},{\"label\":\"易错点\",\"text\":\"最容易混的是近义词与固定搭配，记住 Fiji 后面常跟的介词，不要凭中文直译。\"}],\"example\":{\"en\":\"I put the word \\\"Fiji\\\" into my",
+      "done": {
+        "card": {
+          "kind": "explain",
+          "headline": "「Fiji」先看词性，再定它在句中的角色",
+          "verdict": "你选了「扫,扫地」，正确答案是「斐济」",
+          "points": [
+            {
+              "label": "考点",
+              "text": "Fiji（n.），释义是「斐济」。这类题先确定词性，再看句子缺什么成分。"
+            },
+            {
+              "label": "排除法",
+              "text": "把明显搭配不通的选项先划掉，剩下的两个用「谁能放进原句且不改意思」来判断。"
+            },
+            {
+              "label": "易错点",
+              "text": "最容易混的是近义词与固定搭配，记住 Fiji 后面常跟的介词，不要凭中文直译。"
+            }
+          ],
+          "example": {
+            "en": "I put the word \"Fiji\" into my own sentence every day.",
+            "zh": "我把「Fiji」每天放进自己的句子里。"
+          },
+          "check": {
+            "prompt": "30 秒自测：用 Fiji 说一句你自己的生活。",
+            "answer": "Fiji —— 说出声，再写下来。"
+          },
+          "words": [
+            {
+              "word": "Fiji",
+              "meaning": "斐济",
+              "level": "primary",
+              "id": "country-fiji"
+            }
+          ],
+          "action": {
+            "label": "30 秒小动作",
+            "text": "朗读例句两遍，再默写 Fiji。",
+            "kind": "read"
+          }
+        },
+        "receipt": true,
+        "snapshotText": true,
+        "model": "gpt-mock-1",
+        "inputTokens": 128,
+        "outputTokens": 135
+      },
+      "error": null
+    },
+    "sceneMatrix": [
+      {
+        "scene": "tongbu",
+        "label": "同步训练",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "同步训练",
+          "ok": true
+        },
+        "snapshotLine": "【同步训练】套题：Unit 1 第二课时 · 进度：2 · 编号：u1-2"
+      },
+      {
+        "scene": "homework",
+        "label": "作业讲解",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "作业讲解",
+          "ok": true
+        },
+        "snapshotLine": "【作业讲解】作业：同步练习册 P12 · 题号：第 3 题 · 题型：选词填空"
+      },
+      {
+        "scene": "course",
+        "label": "课程学习",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "课程学习",
+          "ok": true
+        },
+        "snapshotLine": "【课程学习】单元：Unit 3 My Day · 板块：Section B 句型"
+      },
+      {
+        "scene": "drill",
+        "label": "变式练习",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "变式练习",
+          "ok": true
+        },
+        "snapshotLine": "【变式练习】考点：receive 的用法 · 题量：3 题"
+      },
+      {
+        "scene": "exam",
+        "label": "考试讲解",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "考试讲解",
+          "ok": true
+        },
+        "snapshotLine": "【考试讲解】试卷：期中模拟卷 A · 题号：第 7 题 · 科目：英语"
+      },
+      {
+        "scene": "grammar",
+        "label": "语法专题",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "语法专题",
+          "ok": true
+        },
+        "snapshotLine": "【语法专题】专题：一般现在时"
+      }
+    ]
+  },
+  "finishedAt": "2026-10-06T15:24:45.146Z",
+  "passed": 33,
+  "failed": 0,
+  "exitCode": 0
+}

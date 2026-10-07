@@ -1,0 +1,445 @@
+{
+  "startedAt": "2026-10-06T16:08:30.862Z",
+  "mode": "live",
+  "server": "http://127.0.0.1:8099",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "checks": [
+    {
+      "id": "S2",
+      "label": "go build ./cmd/server 成功",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "id": "S3",
+      "label": "真实服务端 /api/health 就绪",
+      "ok": true,
+      "detail": "http://127.0.0.1:8099  db=.tmp\\online-e2e\\e2e-live.db"
+    },
+    {
+      "id": "S4",
+      "label": "健康检查返回 JSON",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "S5",
+      "label": "管理员登录成功并下发会话 cookie",
+      "ok": true,
+      "detail": "status=200 cookie=yes"
+    },
+    {
+      "id": "S6",
+      "label": "PUT /api/admin/agent/config 保存成功",
+      "ok": true,
+      "detail": "status=200 {\"model\":\"deepseek-flash\",\"providerId\":\"deepseek\",\"enabled\":true,\"apiKeyConfigured\":true}"
+    },
+    {
+      "id": "S7",
+      "label": "响应里密钥被脱敏（apiKey 不回传）",
+      "ok": true,
+      "detail": "apiKey=undefined configured=true"
+    },
+    {
+      "id": "S8",
+      "label": "GET /api/agent/status 显示已启用且模型正确",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"engine\":\"codex-core\",\"model\":\"deepseek-flash\",\"providerId\":\"deepseek\"}"
+    },
+    {
+      "id": "S9",
+      "label": "GET /api/meaning-quiz 返回真实词条与选项",
+      "ok": true,
+      "detail": "word=say goodbye to id=say goodbye to options=4 answer=告别,告辞"
+    },
+    {
+      "id": "C1",
+      "label": "POST /api/agent/chat 返回 200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "C2",
+      "label": "真实模型回答被解析成结构化教学卡片（card 非空）",
+      "ok": true,
+      "detail": "headline=say goodbye to sb＝向某人告别，跟“一年到头”无关"
+    },
+    {
+      "id": "C3",
+      "label": "卡片 headline 非空且 kind 合法",
+      "ok": true,
+      "detail": "kind=mistake headline=say goodbye to sb＝向某人告别，跟“一年到头”无关"
+    },
+    {
+      "id": "C4",
+      "label": "卡片有 2–4 条要点",
+      "ok": true,
+      "detail": "points=4"
+    },
+    {
+      "id": "C5",
+      "label": "verdict 由服务端按题库覆写（不采信模型）",
+      "ok": true,
+      "detail": "verdict=你选了「一年到头」，正确答案是「告别,告辞」"
+    },
+    {
+      "id": "C6",
+      "label": "卡片生词都可用（词库命中的带 id，词库外的必须真出现在讲解里）",
+      "ok": true,
+      "detail": "[{\"word\":\"goodbye\",\"meaning\":\"再见\",\"level\":\"middle\",\"id\":\"goodbye\"},{\"word\":\"station\",\"meaning\":\"车站\",\"level\":\"middle\",\"id\":\"station\"}]"
+    },
+    {
+      "id": "C7",
+      "label": "卡片检查题与行动条存在",
+      "ok": true,
+      "detail": "check=true action=true"
+    },
+    {
+      "id": "C8",
+      "label": "回执 receipt.items 非空（告诉学生读了哪些数据）",
+      "ok": true,
+      "detail": "[{\"key\":\"current\",\"label\":\"本题\",\"ok\":true},{\"key\":\"history\",\"label\":\"该词历史\",\"ok\":false},{\"key\":\"review\",\"label\":\"今日到期\",\"ok\":true}]"
+    },
+    {
+      "id": "C9",
+      "label": "快照原文 snapshotText 含「当前题目」行",
+      "ok": true,
+      "detail": "【学生档案】学段：初中英语 · 平均掌握度 5/100 · 今日到期复习 12 个"
+    },
+    {
+      "id": "C10",
+      "label": "真的调用了模型（有 token 计数）",
+      "ok": true,
+      "detail": "in=802 out=633 model=deepseek-flash ms=3335"
+    },
+    {
+      "id": "C11",
+      "label": "engine/provider/model 回传正确",
+      "ok": true,
+      "detail": "engine=codex-core provider=deepseek model=deepseek-flash"
+    },
+    {
+      "id": "T1",
+      "label": "POST /api/agent/chat/stream 返回 200 且是 text/event-stream",
+      "ok": true,
+      "detail": "status=200 ct=text/event-stream; charset=utf-8"
+    },
+    {
+      "id": "T2",
+      "label": "收到多个 SSE delta 增量（真的边生成边推送）",
+      "ok": true,
+      "detail": "deltas=261 firstDeltaMs=1380"
+    },
+    {
+      "id": "T3",
+      "label": "SSE 以 done 事件收尾且带完整响应",
+      "ok": true,
+      "detail": "model=deepseek-flash"
+    },
+    {
+      "id": "T4",
+      "label": "流式路径同样产出结构化卡片",
+      "ok": true,
+      "detail": "headline=say goodbye to＝对某人说再见，就是「告别」"
+    },
+    {
+      "id": "T5",
+      "label": "流式增量拼起来就是最终答案（不丢字）",
+      "ok": true,
+      "detail": "streamed=723 chars"
+    },
+    {
+      "id": "A1",
+      "label": "「加入今日复习」走确定性本地动作（不调模型）",
+      "ok": true,
+      "detail": "engine=local-action actions=[\"add-review\"]"
+    },
+    {
+      "id": "A2",
+      "label": "未知词条不假装读过：快照明确写「页面没有提供具体题目」，不编造词义",
+      "ok": true,
+      "detail": "status=200 saysNoItem=true hasMeaning=false"
+    },
+    {
+      "id": "V5-tongbu",
+      "label": "六场景端到端：同步训练 —— 回执 page-scene 芯片与快照【同步训练】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=同步训练/ok=true snapshot=【同步训练】套题：Unit 1 第二课时 · 进度：2 · 编号：u1-2"
+    },
+    {
+      "id": "V5-homework",
+      "label": "六场景端到端：作业讲解 —— 回执 page-scene 芯片与快照【作业讲解】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=作业讲解/ok=true snapshot=【作业讲解】作业：同步练习册 P12 · 题号：第 3 题 · 题型：选词填空"
+    },
+    {
+      "id": "V5-course",
+      "label": "六场景端到端：课程学习 —— 回执 page-scene 芯片与快照【课程学习】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=课程学习/ok=true snapshot=【课程学习】单元：Unit 3 My Day · 板块：Section B 句型"
+    },
+    {
+      "id": "V5-drill",
+      "label": "六场景端到端：变式练习 —— 回执 page-scene 芯片与快照【变式练习】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=变式练习/ok=true snapshot=【变式练习】考点：receive 的用法 · 题量：3 题"
+    },
+    {
+      "id": "V5-exam",
+      "label": "六场景端到端：考试讲解 —— 回执 page-scene 芯片与快照【考试讲解】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=考试讲解/ok=true snapshot=【考试讲解】试卷：期中模拟卷 A · 题号：第 7 题 · 科目：英语"
+    },
+    {
+      "id": "V5-grammar",
+      "label": "六场景端到端：语法专题 —— 回执 page-scene 芯片与快照【语法专题】行都命中 §5 字段",
+      "ok": true,
+      "detail": "status=200 chip=语法专题/ok=true snapshot=【语法专题】专题：一般现在时"
+    }
+  ],
+  "samples": {
+    "statusBefore": {
+      "enabled": true,
+      "engine": "codex-core",
+      "model": "deepseek-flash",
+      "providerId": "deepseek"
+    },
+    "statusAfter": {
+      "enabled": true,
+      "engine": "codex-core",
+      "model": "deepseek-flash",
+      "providerId": "deepseek"
+    },
+    "word": {
+      "id": "say goodbye to",
+      "word": "say goodbye to",
+      "level": "middle",
+      "meaning": "告别,告辞",
+      "options": [
+        "告别,告辞",
+        "一年到头",
+        "触摸；感动",
+        "瑙鲁"
+      ],
+      "answer": "告别,告辞",
+      "wrong": "一年到头"
+    },
+    "chat": {
+      "card": {
+        "kind": "mistake",
+        "headline": "say goodbye to sb＝向某人告别，跟“一年到头”无关",
+        "verdict": "你选了「一年到头」，正确答案是「告别,告辞」",
+        "points": [
+          {
+            "label": "词性与结构",
+            "text": "这是动词短语：say 是动词，goodbye 作宾语，to 引出告别的对象，后面接人或地方。"
+          },
+          {
+            "label": "记忆线索",
+            "text": "直译“对某人说再见”：say(说)＋goodbye(再见)＋to(对…)，所以是告别、告辞。"
+          },
+          {
+            "label": "常见搭配",
+            "text": "say goodbye to her 向她告别；wave goodbye 挥手告别；也可说 say goodbye to a place 告别某地。"
+          },
+          {
+            "label": "易混提醒",
+            "text": "“一年到头”是 all year round，与 goodbye 毫无关系；打招呼用 say hello to sb。"
+          }
+        ],
+        "example": {
+          "en": "We went to the station to say goodbye to her.",
+          "zh": "我们去车站向她告别。"
+        },
+        "check": {
+          "prompt": "把句中的 goodbye 换成 hello，意思变成什么？",
+          "answer": "变成“向她问好/打招呼”。"
+        },
+        "words": [
+          {
+            "word": "goodbye",
+            "meaning": "再见",
+            "level": "middle",
+            "id": "goodbye"
+          },
+          {
+            "word": "station",
+            "meaning": "车站",
+            "level": "middle",
+            "id": "station"
+          }
+        ],
+        "action": {
+          "label": "读一遍例句",
+          "text": "大声读例句两遍，再把 to her 换成 to my teacher 说一遍。",
+          "kind": "read"
+        }
+      },
+      "message": "{\"kind\":\"mistake\",\"headline\":\"say goodbye to sb＝向某人告别，跟“一年到头”无关\",\"points\":[{\"label\":\"词性与结构\",\"text\":\"这是动词短语：say 是动词，goodbye 作宾语，to 引出告别的对象，后面接人或地方。\"},{\"label\":\"记忆线索\",\"text\":\"直译“对某人说再见”：say(说)＋goodbye(再见)＋to(对…)，所以是告别、告辞。\"},{\"label\":\"常见搭配\",\"text\":\"say goodbye to her 向她告别；wave goodbye 挥手告别；也可说 say goodbye to a place 告别某地。\"},{\"label\":\"易混提醒\",\"text\":\"“一年到头”是 all year round，与 goodbye 毫无关系；打招呼用 say hello ",
+      "receipt": {
+        "items": [
+          {
+            "key": "current",
+            "label": "本题",
+            "ok": true
+          },
+          {
+            "key": "history",
+            "label": "该词历史",
+            "ok": false
+          },
+          {
+            "key": "review",
+            "label": "今日到期",
+            "ok": true
+          }
+        ],
+        "text": "【学生档案】学段：初中英语 · 平均掌握度 5/100 · 今日到期复习 12 个\n【当前题目】say goodbye to /sei ,gud'bai tu:/（phr.） 释义：告别,告辞\n  选项：1.告别,告辞 | 2.一年到头 | 3.触摸；感动 | 4.瑙鲁\n  学生选择：一年到头；正确答案：告别,告辞（答错）\n  这道题目前累计答错 3 次。\n  例句：We went to the station to say goodbye to her.（我们去车站向她告别。）\n  该词历史：学生还没有练习记录。"
+      },
+      "snapshotText": "【学生档案】学段：初中英语 · 平均掌握度 5/100 · 今日到期复习 12 个\n【当前题目】say goodbye to /sei ,gud'bai tu:/（phr.） 释义：告别,告辞\n  选项：1.告别,告辞 | 2.一年到头 | 3.触摸；感动 | 4.瑙鲁\n  学生选择：一年到头；正确答案：告别,告辞（答错）\n  这道题目前累计答错 3 次。\n  例句：We went to the station to say goodbye to her.（我们去车站向她告别。）\n  该词历史：学生还没有练习记录。",
+      "model": "deepseek-flash",
+      "providerId": "deepseek",
+      "engine": "codex-core",
+      "inputTokens": 802,
+      "outputTokens": 633,
+      "durationMs": 3315
+    },
+    "stream": {
+      "deltas": 261,
+      "firstDeltaMs": 1380,
+      "streamedChars": 723,
+      "streamedHead": "{\"kind\":\"mistake\",\"headline\":\"say goodbye to＝对某人说再见，就是「告别」\",\"points\":[{\"label\":\"结构拆解\",\"text\":\"say(说)＋goodbye(再见)＋to(对…)，连起来就是“对某人说再见”，所以是告别、告辞。\"},{\"label\":\"一句话记住\",\"text\":\"“说再见给谁”，谁就是告别对象：say goodbye to her 向她告别。\"},{\"label\":\"易混对比\",\"text\":\"“一年到头”是 all year round，跟 goodbye 完全无关；打招呼用 say hello to。\"},{\"l",
+      "done": {
+        "card": {
+          "kind": "mistake",
+          "headline": "say goodbye to＝对某人说再见，就是「告别」",
+          "verdict": "你选了「一年到头」，正确答案是「告别,告辞」",
+          "points": [
+            {
+              "label": "结构拆解",
+              "text": "say(说)＋goodbye(再见)＋to(对…)，连起来就是“对某人说再见”，所以是告别、告辞。"
+            },
+            {
+              "label": "一句话记住",
+              "text": "“说再见给谁”，谁就是告别对象：say goodbye to her 向她告别。"
+            },
+            {
+              "label": "易混对比",
+              "text": "“一年到头”是 all year round，跟 goodbye 完全无关；打招呼用 say hello to。"
+            },
+            {
+              "label": "常见搭配",
+              "text": "say goodbye to sb 向某人告别；say goodbye to a place 告别某地；wave goodbye 挥手告别。"
+            }
+          ],
+          "example": {
+            "en": "We went to the station to say goodbye to her.",
+            "zh": "我们去车站向她告别。"
+          },
+          "check": {
+            "prompt": "「向老师告别」用英语怎么说？",
+            "answer": "say goodbye to the teacher"
+          },
+          "words": [
+            {
+              "word": "goodbye",
+              "meaning": "再见",
+              "level": "middle",
+              "id": "goodbye"
+            },
+            {
+              "word": "station",
+              "meaning": "车站",
+              "level": "middle",
+              "id": "station"
+            }
+          ],
+          "action": {
+            "label": "30 秒小动作",
+            "text": "出声读一遍例句，再自己说一句 say goodbye to my friend。",
+            "kind": "read"
+          }
+        },
+        "receipt": true,
+        "snapshotText": true,
+        "model": "deepseek-flash",
+        "inputTokens": 946,
+        "outputTokens": 460
+      },
+      "error": null
+    },
+    "sceneMatrix": [
+      {
+        "scene": "tongbu",
+        "label": "同步训练",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "同步训练",
+          "ok": true
+        },
+        "snapshotLine": "【同步训练】套题：Unit 1 第二课时 · 进度：2 · 编号：u1-2"
+      },
+      {
+        "scene": "homework",
+        "label": "作业讲解",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "作业讲解",
+          "ok": true
+        },
+        "snapshotLine": "【作业讲解】作业：同步练习册 P12 · 题号：第 3 题 · 题型：选词填空"
+      },
+      {
+        "scene": "course",
+        "label": "课程学习",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "课程学习",
+          "ok": true
+        },
+        "snapshotLine": "【课程学习】单元：Unit 3 My Day · 板块：Section B 句型"
+      },
+      {
+        "scene": "drill",
+        "label": "变式练习",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "变式练习",
+          "ok": true
+        },
+        "snapshotLine": "【变式练习】考点：receive 的用法 · 题量：3 题"
+      },
+      {
+        "scene": "exam",
+        "label": "考试讲解",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "考试讲解",
+          "ok": true
+        },
+        "snapshotLine": "【考试讲解】试卷：期中模拟卷 A · 题号：第 7 题 · 科目：英语"
+      },
+      {
+        "scene": "grammar",
+        "label": "语法专题",
+        "status": 200,
+        "chip": {
+          "key": "page-scene",
+          "label": "语法专题",
+          "ok": true
+        },
+        "snapshotLine": "【语法专题】专题：一般现在时"
+      }
+    ]
+  },
+  "finishedAt": "2026-10-06T16:09:05.579Z",
+  "passed": 32,
+  "failed": 0,
+  "exitCode": 0
+}

@@ -1,0 +1,679 @@
+{
+  "startedAt": "2026-10-06T18:10:08.383Z",
+  "base": "http://www.gbw3bao.com",
+  "checks": [
+    {
+      "id": "L0 线上可达",
+      "ok": true,
+      "detail": "HTTP 200 / 3242 字节"
+    },
+    {
+      "id": "L0 /api/health",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "L1 部署一致性（本地 SHA1 = 线上 SHA1）",
+      "ok": true,
+      "detail": "21/21 全部一致"
+    },
+    {
+      "id": "L2 线上注册/登录可用",
+      "ok": true,
+      "detail": "accept-muwzulv9 → register:200"
+    },
+    {
+      "id": "L3 面板为浮动形态（fixed / ≈420px / 贴右缘）",
+      "ok": true,
+      "detail": "{\"cls\":\"agent-assistant agent-float\",\"floatClass\":true,\"position\":\"fixed\",\"width\":420,\"right\":18,\"bodyOpen\":true}"
+    },
+    {
+      "id": "L4 面板打开时页面让位",
+      "ok": true,
+      "detail": "body.agent-open=true"
+    },
+    {
+      "id": "L5 浮动面板零遮挡（且真的量到了元素）",
+      "ok": true,
+      "detail": ".meaning-options:0/9 .meaning-prompt:0/9 .meaning-heading:0/9 total=0/27"
+    },
+    {
+      "id": "L6 状态胶囊显示场景/进度",
+      "ok": true,
+      "detail": "胶囊文案=\"词义练习 · 第 1 / 4590 题\""
+    },
+    {
+      "id": "L6b 面板能输入并发送问题",
+      "ok": true,
+      "detail": "typed=true sent=true"
+    },
+    {
+      "id": "L7 真模型回答渲染成教学卡片",
+      "ok": true,
+      "detail": "{\"cards\":1,\"words\":32,\"markdown\":1,\"headline\":\"-sist- 是词根，表示“站立”，答案选 2\",\"text\":\"你好！我是你的智能英语助教。打开练习页时我能看到你正在做的题目，可以直接讲题、对比易混词，或按你的错题出同类题。\",\"chips\":5,\"jsonLeak\":false}"
+    },
+    {
+      "id": "L8 卡片里的英文可点读（agent-word）",
+      "ok": true,
+      "detail": "agent-word=32"
+    },
+    {
+      "id": "L9 没有 JSON 泄漏到界面",
+      "ok": true,
+      "detail": "answered=true cards=1 text=56 jsonLeak=false"
+    },
+    {
+      "id": "L10 助教已读回执 chips",
+      "ok": true,
+      "detail": "chips=5"
+    },
+    {
+      "id": "L16 助教已读回执可展开（露出快照原文）",
+      "ok": true,
+      "detail": "{\"clicked\":true,\"before\":{\"found\":true,\"expanded\":\"false\",\"textNodes\":0},\"after\":{\"expanded\":\"true\",\"textNodes\":1,\"text\":\"【学生档案】学段：全部范围（小学 + 初中）\\n【练习进度】第 1 题 · 第 1/383 页，每页 12 题\\n【当前筛选】范围=全部范围\\n【当前题目】-sist- /sɪst stænd/（n） 释义：词根：站立\\n  选项：1.下来,从...下来 | 2.词根：站立 | 3.宁愿；相当 | 4.下午好！\\n  例句：Th\"}}"
+    },
+    {
+      "id": "L11 阅读页选词浮条：朗读 / 讲解 / 入册",
+      "ok": true,
+      "detail": "选中=\"Every\" 按钮=[朗读/讲解/入册] rect=298,407,174,41"
+    },
+    {
+      "id": "L11b 阅读浮条「入册」→ 加入今日复习并给出提示（公网）",
+      "ok": true,
+      "detail": "{\"clicked\":true,\"toast\":\"已把「every」加入今日复习，打开「今日复习」就能看到它。\"}"
+    },
+    {
+      "id": "L11c 阅读浮条「讲解」→ 段落下方就地展开讲解卡（公网）",
+      "ok": true,
+      "detail": "{\"hasSection\":true,\"hasCard\":true,\"words\":20,\"headline\":\"Every 是限定词，不能单独作句子成分\",\"belowParagraph\":true,\"jsonLeak\":false,\"secViewport\":[362,580,591,736],\"secDoc\":[362,783,591,736],\"cardDoc\":[362,865,591,654],\"pageScrollY\":203,\"innerH\":865,\"bodyScrollTop\":0,\"picked\":\"Every\",\"clicked\":true}"
+    },
+    {
+      "id": "L12 交互全过程没有 JS 报错",
+      "ok": true,
+      "detail": "0 条"
+    },
+    {
+      "id": "L13 非词条页场景胶囊（场景识别 + 定位）",
+      "ok": true,
+      "detail": "{\"tongbu\":\"同步训练 · Homework 1: Get ready · 第 1 / 47 题\",\"grammar\":\"语法专题 · be 动词（am / is / are）\",\"course\":\"课程学习 · 七年级 · 上册 · Starter · Welcome to junior high!\",\"quiz\":\"单词测验 · 第 1 / 10 题\"}"
+    },
+    {
+      "id": "L25 同步训练胶囊含「第 N / M 题」",
+      "ok": true,
+      "detail": "{\"capsule\":\"同步训练 · Homework 1: Get ready · 第 1 / 47 题\",\"matched\":true}"
+    },
+    {
+      "id": "L26 变式练习胶囊含「第 N 题 · 你在该词错过 M 次」",
+      "ok": true,
+      "detail": "{\"realPair\":{\"level\":\"middle\",\"wordId\":\"sist= stand,\",\"type\":\"en-zh\"},\"answeredReal\":true,\"injected\":true,\"answered\":true,\"scene\":\"drill\",\"capsule\":\"变式练习 · 第 1 / 1 题 · 你在该词错过 1 次\",\"waitMs\":316}"
+    },
+    {
+      "id": "L14 停靠形态：切换生效 + 页面让位",
+      "ok": true,
+      "detail": "{\"clicked\":true,\"bodyDock\":true,\"right\":0,\"width\":440,\"mainRight\":964,\"panelLeft\":984,\"rail\":\"420px\"}"
+    },
+    {
+      "id": "L14b 切回浮动后页面恢复",
+      "ok": true,
+      "detail": "clicked=true restored=true"
+    },
+    {
+      "id": "L15 定位题目：当前题被高亮并滚进视口",
+      "ok": true,
+      "detail": "{\"clicked\":true,\"before\":{\"scrolledY\":0,\"cardTop\":491,\"highlighted\":false},\"after\":{\"scrolledY\":0,\"highlighted\":true,\"boxShadow\":\"rgba(247, 181, 0, 0.85) 0px 0px 0px 3px\",\"cardTop\":491,\"inViewport\":true}}"
+    },
+    {
+      "id": "L17 连错两题触发主动轻提示（浮动右下角 / role=status / 非弹窗）",
+      "ok": true,
+      "detail": "{\"probe\":{\"tag\":\"ASIDE\",\"role\":\"status\",\"text\":\"连错两题了停下来一分钟，让助教把这两个词的差别讲清楚，再继续练。讲讲我错在哪去错题本知道了\",\"primary\":\"讲讲我错在哪\",\"position\":\"fixed\",\"right\":22,\"bottom\":82},\"streak\":[{\"wrong\":true,\"correct\":false,\"correctText\":\"2词根：站立正确\"},{\"wrong\":true,\"correct\":false,\"correctText\":\"3100米赛跑正确\"}]}"
+    },
+    {
+      "id": "L17b 轻提示不阻断作答（无 blocking dialog）",
+      "ok": true,
+      "detail": "nudgeShown=true dialogFree=true"
+    },
+    {
+      "id": "L18 归因结论写入 KnowledgeMastery.reason（线上 profile 非空 reason）",
+      "ok": true,
+      "detail": "共 6 条；示例：middle/-sist- 分 32 → 仍有 2 次错误未完成巩固"
+    },
+    {
+      "id": "L19 小屏（1024px）面板变全屏抽屉（公网）",
+      "ok": true,
+      "detail": "{\"innerWidth\":1024,\"innerHeight\":768,\"position\":\"fixed\",\"left\":0,\"top\":0,\"width\":1024,\"height\":768,\"zIndex\":\"70\",\"resizeDisplay\":\"none\",\"mainWidth\":775,\"hScroll\":0}"
+    },
+    {
+      "id": "L19b 恢复视口后面板回到浮动宽度（抽屉只在小屏生效）",
+      "ok": true,
+      "detail": "{\"innerWidth\":1424,\"width\":420}"
+    },
+    {
+      "id": "L19c 手机宽度（390×844）面板变全屏抽屉（公网）",
+      "ok": true,
+      "detail": "{\"innerWidth\":390,\"innerHeight\":844,\"position\":\"fixed\",\"left\":0,\"top\":0,\"width\":390,\"height\":844,\"bottomGap\":0,\"zIndex\":\"70\",\"resizeDisplay\":\"none\",\"panelHScroll\":0,\"pageHScroll\":0,\"footTop\":773,\"footBottom\":844,\"footInViewport\":true,\"textareaFocusable\":true,\"sendLabel\":\"发送\"}"
+    },
+    {
+      "id": "L19d 手机抽屉里输入区仍在视口内且可聚焦（公网）",
+      "ok": true,
+      "detail": "footInViewport=true footTop=773 footBottom=844 focusable=true sendLabel=\"发送\""
+    },
+    {
+      "id": "L20 长问题（要求 1000 字）回答不撑爆面板（公网）",
+      "ok": true,
+      "detail": "{\"articles\":4,\"cards\":1,\"folds\":1,\"foldables\":0,\"lastFoldMaxH\":\"none\",\"panelBottom\":837,\"innerHeight\":865,\"panelHScroll\":0,\"mainBottom\":759,\"footTop\":759,\"footBottom\":836,\"mainScrollable\":true,\"sent\":true}"
+    },
+    {
+      "id": "L21 页内就地回答卡：答题后就地展开、不遮挡、不跳面板（公网）",
+      "ok": true,
+      "detail": "{\"hasSection\":true,\"hasCard\":true,\"cardHeadline\":\"a 是冠词，表示“一个”，不是“包括”\",\"words\":28,\"error\":\"\",\"belowOptions\":true,\"skeleton\":false,\"jsonLeak\":false,\"label\":\"不懂，讲讲\",\"clicked\":true}"
+    },
+    {
+      "id": "L24 服务端漏 card 时不把原始 JSON 当正文（公网 + 故障注入）",
+      "ok": true,
+      "detail": "{\"hasError\":true,\"errorText\":\"助教这次没把讲解整理好，请点「重试」。重试\",\"hasCard\":false,\"sentinelOnPage\":false,\"rawJsonOnPage\":false,\"reAsked\":true}"
+    },
+    {
+      "id": "L22 流式回答可中途停止（公网）",
+      "ok": true,
+      "detail": "{\"streaming\":{\"barText\":\"助教正在作答 · 已用 0 秒停止生成\",\"stopText\":\"停止生成\",\"stopVisible\":true},\"stopClicked\":true,\"stopped\":{\"streambar\":false,\"stoppedLabel\":\"\",\"stoppedHint\":\"已停止生成，这次没有内容。\",\"answerTexts\":[56]}}"
+    },
+    {
+      "id": "L23 浮动面板左缘拖拽调宽：变宽夹在 560、变窄夹在 360（公网）",
+      "ok": true,
+      "detail": "{\"before\":420,\"handleDisplay\":\"block\",\"wide\":560,\"narrow\":360,\"min\":360,\"persisted\":\"360\"}"
+    }
+  ],
+  "deployment": [
+    {
+      "file": "web/index.html",
+      "local": "aefe02f19197faef76c222f8f07f654f0896b2b5",
+      "online": "aefe02f19197faef76c222f8f07f654f0896b2b5",
+      "match": true
+    },
+    {
+      "file": "web/agent.css",
+      "local": "bab0960816c8e21c6e690f3566bff111aa0fe2e9",
+      "online": "bab0960816c8e21c6e690f3566bff111aa0fe2e9",
+      "match": true
+    },
+    {
+      "file": "web/grammar.css",
+      "local": "8221d53695d2ffdb3ebe0a1130669c9327eba789",
+      "online": "8221d53695d2ffdb3ebe0a1130669c9327eba789",
+      "match": true
+    },
+    {
+      "file": "web/tongbu.css",
+      "local": "7601746be94d1255c2d33bc27b643ba54f0a0969",
+      "online": "7601746be94d1255c2d33bc27b643ba54f0a0969",
+      "match": true
+    },
+    {
+      "file": "web/js/main.js",
+      "local": "1c1bfc47e084b437d4ef01c2996f5f83589403a5",
+      "online": "1c1bfc47e084b437d4ef01c2996f5f83589403a5",
+      "match": true
+    },
+    {
+      "file": "web/js/learningContext.js",
+      "local": "9bae8f38833d6f17bedcd38fe51822e8401bb1d4",
+      "online": "9bae8f38833d6f17bedcd38fe51822e8401bb1d4",
+      "match": true
+    },
+    {
+      "file": "web/js/agentSpeech.js",
+      "local": "fa0756a3d4d4c1194c08762b8b4c64694fbe520b",
+      "online": "fa0756a3d4d4c1194c08762b8b4c64694fbe520b",
+      "match": true
+    },
+    {
+      "file": "web/js/speech.js",
+      "local": "21e1b96b8a2f90079b8d21aba96562acd5104c2c",
+      "online": "21e1b96b8a2f90079b8d21aba96562acd5104c2c",
+      "match": true
+    },
+    {
+      "file": "web/js/components/AgentAssistant.js",
+      "local": "bc05cf666d97bee03805ced10234c7fbb9b12a1d",
+      "online": "bc05cf666d97bee03805ced10234c7fbb9b12a1d",
+      "match": true
+    },
+    {
+      "file": "web/js/components/AgentTeachingCard.js",
+      "local": "7f49d914b2a8fd03fc473fa1f31b8daf0c25ac9a",
+      "online": "7f49d914b2a8fd03fc473fa1f31b8daf0c25ac9a",
+      "match": true
+    },
+    {
+      "file": "web/js/components/MeaningPracticeView.js",
+      "local": "30c893946801d8fc5040221bcf2a4b9701284887",
+      "online": "30c893946801d8fc5040221bcf2a4b9701284887",
+      "match": true
+    },
+    {
+      "file": "web/js/components/QuizView.js",
+      "local": "2db2fdb169037bfc4e33fcdd3c2a5c5af02a22cc",
+      "online": "2db2fdb169037bfc4e33fcdd3c2a5c5af02a22cc",
+      "match": true
+    },
+    {
+      "file": "web/js/components/ReadingView.js",
+      "local": "8e8d04af1521e592b0b85346f934f23963f32f49",
+      "online": "8e8d04af1521e592b0b85346f934f23963f32f49",
+      "match": true
+    },
+    {
+      "file": "web/js/components/DrillView.js",
+      "local": "0de76154d15522c5a58120fb5e02f2dd0acd6588",
+      "online": "0de76154d15522c5a58120fb5e02f2dd0acd6588",
+      "match": true
+    },
+    {
+      "file": "web/js/components/ExamView.js",
+      "local": "94fb7711416ceae3e68293c5e5cc016c0749a1f8",
+      "online": "94fb7711416ceae3e68293c5e5cc016c0749a1f8",
+      "match": true
+    },
+    {
+      "file": "web/js/components/HomeworkView.js",
+      "local": "05dfa8f966d8b2f8668b41728b80b4bb4752bc24",
+      "online": "05dfa8f966d8b2f8668b41728b80b4bb4752bc24",
+      "match": true
+    },
+    {
+      "file": "web/js/components/TongbuView.js",
+      "local": "bac01673f6ce93f17312609f35367d8e638ed873",
+      "online": "bac01673f6ce93f17312609f35367d8e638ed873",
+      "match": true
+    },
+    {
+      "file": "web/js/components/CourseView.js",
+      "local": "c963854764f685d4ba122de56de273acdb663256",
+      "online": "c963854764f685d4ba122de56de273acdb663256",
+      "match": true
+    },
+    {
+      "file": "web/js/components/MistakesView.js",
+      "local": "b66691be4a286b02266033f8fdedd4c879841b47",
+      "online": "b66691be4a286b02266033f8fdedd4c879841b47",
+      "match": true
+    },
+    {
+      "file": "web/js/components/GrammarView.js",
+      "local": "30e97946011df6dad4a18b811748896a0f927ee5",
+      "online": "30e97946011df6dad4a18b811748896a0f927ee5",
+      "match": true
+    },
+    {
+      "file": "web/js/components/SmartLearningView.js",
+      "local": "300c6d1de2118a24ddbfe53b09c2541e47f8acda",
+      "online": "300c6d1de2118a24ddbfe53b09c2541e47f8acda",
+      "match": true
+    }
+  ],
+  "consoleErrors": [],
+  "shots": {
+    "agent-live-acceptance-panel.png": "docs/images/agent-live-acceptance-panel.png",
+    "agent-live-acceptance-reading.png": "docs/images/agent-live-acceptance-reading.png",
+    "agent-live-acceptance-reading-review.png": "docs/images/agent-live-acceptance-reading-review.png",
+    "agent-live-acceptance-reading-inline.png": "docs/images/agent-live-acceptance-reading-inline.png",
+    "agent-live-acceptance-nudge.png": "docs/images/agent-live-acceptance-nudge.png",
+    "agent-live-acceptance-drawer-1024.png": "docs/images/agent-live-acceptance-drawer-1024.png",
+    "agent-live-acceptance-drawer-390.png": "docs/images/agent-live-acceptance-drawer-390.png",
+    "agent-live-acceptance-long-answer.png": "docs/images/agent-live-acceptance-long-answer.png",
+    "agent-live-acceptance-inline-teach.png": "docs/images/agent-live-acceptance-inline-teach.png",
+    "agent-live-acceptance-json-fallback.png": "docs/images/agent-live-acceptance-json-fallback.png",
+    "agent-live-acceptance-stream-stop.png": "docs/images/agent-live-acceptance-stream-stop.png",
+    "agent-live-acceptance-resize-360.png": "docs/images/agent-live-acceptance-resize-360.png"
+  },
+  "account": "accept-muwzulv9",
+  "panel": {
+    "cls": "agent-assistant agent-float",
+    "floatClass": true,
+    "position": "fixed",
+    "width": 420,
+    "right": 18,
+    "bodyOpen": true
+  },
+  "occlusion": [
+    {
+      "sel": ".meaning-options",
+      "found": true,
+      "covered": 0,
+      "sampled": 9,
+      "rect": [
+        307,
+        350,
+        330,
+        164
+      ]
+    },
+    {
+      "sel": ".meaning-prompt",
+      "found": true,
+      "covered": 0,
+      "sampled": 9,
+      "rect": [
+        307,
+        405,
+        330,
+        55
+      ]
+    },
+    {
+      "sel": ".meaning-heading",
+      "found": true,
+      "covered": 0,
+      "sampled": 9,
+      "rect": [
+        272,
+        0,
+        712,
+        91
+      ]
+    }
+  ],
+  "capsule": "词义练习 · 第 1 / 4590 题",
+  "answer": {
+    "cards": 1,
+    "words": 32,
+    "markdown": 1,
+    "headline": "-sist- 是词根，表示“站立”，答案选 2",
+    "text": "你好！我是你的智能英语助教。打开练习页时我能看到你正在做的题目，可以直接讲题、对比易混词，或按你的错题出同类题。",
+    "chips": 5,
+    "jsonLeak": false
+  },
+  "receipt": {
+    "clicked": true,
+    "before": {
+      "found": true,
+      "expanded": "false",
+      "textNodes": 0
+    },
+    "after": {
+      "expanded": "true",
+      "textNodes": 1,
+      "text": "【学生档案】学段：全部范围（小学 + 初中）\n【练习进度】第 1 题 · 第 1/383 页，每页 12 题\n【当前筛选】范围=全部范围\n【当前题目】-sist- /sɪst stænd/（n） 释义：词根：站立\n  选项：1.下来,从...下来 | 2.词根：站立 | 3.宁愿；相当 | 4.下午好！\n  例句：Th"
+    }
+  },
+  "reading": {
+    "picked": "Every",
+    "bar": true,
+    "buttons": [
+      "朗读",
+      "讲解",
+      "入册"
+    ],
+    "rect": [
+      298,
+      407,
+      174,
+      41
+    ],
+    "inViewport": true
+  },
+  "readingReview": {
+    "clicked": true,
+    "toast": "已把「every」加入今日复习，打开「今日复习」就能看到它。"
+  },
+  "readingInline": {
+    "hasSection": true,
+    "hasCard": true,
+    "words": 20,
+    "headline": "Every 是限定词，不能单独作句子成分",
+    "belowParagraph": true,
+    "jsonLeak": false,
+    "secViewport": [
+      362,
+      580,
+      591,
+      736
+    ],
+    "secDoc": [
+      362,
+      783,
+      591,
+      736
+    ],
+    "cardDoc": [
+      362,
+      865,
+      591,
+      654
+    ],
+    "pageScrollY": 203,
+    "innerH": 865,
+    "bodyScrollTop": 0,
+    "picked": "Every",
+    "clicked": true,
+    "afterFrame": {
+      "sec": [
+        362,
+        569,
+        591,
+        736
+      ],
+      "paper": [
+        272,
+        559,
+        712,
+        318
+      ],
+      "paperScrollTop": 344,
+      "paperScrollH": 1817,
+      "paperClientH": 316,
+      "innerH": 865,
+      "docScrollY": 0
+    }
+  },
+  "sceneCapsules": {
+    "tongbu": "同步训练 · Homework 1: Get ready · 第 1 / 47 题",
+    "grammar": "语法专题 · be 动词（am / is / are）",
+    "course": "课程学习 · 七年级 · 上册 · Starter · Welcome to junior high!",
+    "quiz": "单词测验 · 第 1 / 10 题"
+  },
+  "tongbuProgress": {
+    "capsule": "同步训练 · Homework 1: Get ready · 第 1 / 47 题",
+    "matched": true
+  },
+  "drillProgress": {
+    "realPair": {
+      "level": "middle",
+      "wordId": "sist= stand,",
+      "type": "en-zh"
+    },
+    "answeredReal": true,
+    "injected": true,
+    "answered": true,
+    "scene": "drill",
+    "capsule": "变式练习 · 第 1 / 1 题 · 你在该词错过 1 次",
+    "waitMs": 316
+  },
+  "dock": {
+    "clicked": true,
+    "bodyDock": true,
+    "right": 0,
+    "width": 440,
+    "mainRight": 964,
+    "panelLeft": 984,
+    "rail": "420px"
+  },
+  "focusItem": {
+    "clicked": true,
+    "before": {
+      "scrolledY": 0,
+      "cardTop": 491,
+      "highlighted": false
+    },
+    "after": {
+      "scrolledY": 0,
+      "highlighted": true,
+      "boxShadow": "rgba(247, 181, 0, 0.85) 0px 0px 0px 3px",
+      "cardTop": 491,
+      "inViewport": true
+    }
+  },
+  "nudge": {
+    "probe": {
+      "tag": "ASIDE",
+      "role": "status",
+      "text": "连错两题了停下来一分钟，让助教把这两个词的差别讲清楚，再继续练。讲讲我错在哪去错题本知道了",
+      "primary": "讲讲我错在哪",
+      "position": "fixed",
+      "right": 22,
+      "bottom": 82
+    },
+    "streak": [
+      {
+        "wrong": true,
+        "correct": false,
+        "correctText": "2词根：站立正确"
+      },
+      {
+        "wrong": true,
+        "correct": false,
+        "correctText": "3100米赛跑正确"
+      }
+    ]
+  },
+  "masteryProfile": {
+    "middle": {
+      "status": 200,
+      "practiced": 3,
+      "strongest": [
+        {
+          "label": "-sist-",
+          "score": 32,
+          "reason": "仍有 2 次错误未完成巩固"
+        },
+        {
+          "label": "100-metre race",
+          "score": 8,
+          "reason": "仍有 1 次错误未完成巩固"
+        },
+        {
+          "label": "every",
+          "score": 5,
+          "reason": "已经到达下一次最佳复习时间"
+        }
+      ],
+      "weakest": [
+        {
+          "label": "100-metre race",
+          "score": 8,
+          "reason": "仍有 1 次错误未完成巩固"
+        },
+        {
+          "label": "-sist-",
+          "score": 32,
+          "reason": "仍有 2 次错误未完成巩固"
+        },
+        {
+          "label": "every",
+          "score": 5,
+          "reason": "已经到达下一次最佳复习时间"
+        }
+      ]
+    },
+    "primary": {
+      "status": 200,
+      "practiced": 0,
+      "strongest": [],
+      "weakest": []
+    }
+  },
+  "drawer": {
+    "innerWidth": 1024,
+    "innerHeight": 768,
+    "position": "fixed",
+    "left": 0,
+    "top": 0,
+    "width": 1024,
+    "height": 768,
+    "zIndex": "70",
+    "resizeDisplay": "none",
+    "mainWidth": 775,
+    "hScroll": 0
+  },
+  "phoneDrawer": {
+    "innerWidth": 390,
+    "innerHeight": 844,
+    "position": "fixed",
+    "left": 0,
+    "top": 0,
+    "width": 390,
+    "height": 844,
+    "bottomGap": 0,
+    "zIndex": "70",
+    "resizeDisplay": "none",
+    "panelHScroll": 0,
+    "pageHScroll": 0,
+    "footTop": 773,
+    "footBottom": 844,
+    "footInViewport": true,
+    "textareaFocusable": true,
+    "sendLabel": "发送"
+  },
+  "longAnswer": {
+    "articles": 4,
+    "cards": 1,
+    "folds": 1,
+    "foldables": 0,
+    "lastFoldMaxH": "none",
+    "panelBottom": 837,
+    "innerHeight": 865,
+    "panelHScroll": 0,
+    "mainBottom": 759,
+    "footTop": 759,
+    "footBottom": 836,
+    "mainScrollable": true,
+    "sent": true
+  },
+  "inline": {
+    "hasSection": true,
+    "hasCard": true,
+    "cardHeadline": "a 是冠词，表示“一个”，不是“包括”",
+    "words": 28,
+    "error": "",
+    "belowOptions": true,
+    "skeleton": false,
+    "jsonLeak": false,
+    "label": "不懂，讲讲",
+    "clicked": true
+  },
+  "jsonFallback": {
+    "hasError": true,
+    "errorText": "助教这次没把讲解整理好，请点「重试」。重试",
+    "hasCard": false,
+    "sentinelOnPage": false,
+    "rawJsonOnPage": false,
+    "reAsked": true
+  },
+  "streaming": {
+    "streaming": {
+      "barText": "助教正在作答 · 已用 0 秒停止生成",
+      "stopText": "停止生成",
+      "stopVisible": true
+    },
+    "stopClicked": true,
+    "stopped": {
+      "streambar": false,
+      "stoppedLabel": "",
+      "stoppedHint": "已停止生成，这次没有内容。",
+      "answerTexts": [
+        56
+      ]
+    }
+  },
+  "resize": {
+    "before": 420,
+    "handleDisplay": "block",
+    "wide": 560,
+    "narrow": 360,
+    "min": 360,
+    "persisted": "360"
+  },
+  "finishedAt": "2026-10-06T18:11:05.106Z",
+  "passed": 36,
+  "failed": 0
+}
